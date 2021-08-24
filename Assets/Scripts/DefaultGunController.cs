@@ -47,19 +47,15 @@ public class DefaultGunController : MonoBehaviour
                 Quaternion.Euler(0, 0, Random.Range(-_angleScatter, _angleScatter)));
             
             
-            ChangeBulletDirection(defaultBullet, (int) transform.parent.localScale.x);
-
-            Debug.Log((int) transform.parent.localScale.x);//
-
-            yield return new WaitForSeconds(_shootDelay);
+            ChangeBulletDirection(ref defaultBullet, (int) transform.parent.localScale.x);
+            
+            yield return new WaitForSecondsRealtime(_shootDelay );
         }
     }
 
     //Changes bullet direction due to gun local scale
-    private void ChangeBulletDirection(GameObject defaultBullet, int direction)
+    private void ChangeBulletDirection(ref GameObject defaultBullet, int direction)
     {
-        Vector3 rotation = defaultBullet.transform.rotation.eulerAngles;
-        
-       rotation.Set(0, 0, rotation.z + direction == -1 ? 180 : 0);
+       defaultBullet.transform.Rotate(0, 0, direction == 1 ? 0 : 180);
     }
 }

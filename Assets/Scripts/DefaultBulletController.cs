@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DefaultBulletController : MonoBehaviour
@@ -6,7 +7,7 @@ public class DefaultBulletController : MonoBehaviour
     [SerializeField] private float _destroyTime = 3f;
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
-    private void Awake()
+    private void Start()
     {
         _rigidbody2D.velocity = transform.right * _bulletSpeed;
         

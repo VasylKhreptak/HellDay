@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {
     [SerializeField] private int _targetFrameRate = 60;
-    private void Awake()
+
+    private void OnValidate()
     {
         Application.targetFrameRate = _targetFrameRate;
     }
