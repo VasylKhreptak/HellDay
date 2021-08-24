@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GunShootAnimation
+  m_Name: DefaultGunShootAnimation
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -24,6 +24,15 @@ AnimationClip:
     - time: 0.083333336
       value: {fileID: 6263751044956027577, guid: 5c6f01a1d5920e644885570c9b3260db, type: 3}
     attribute: m_Sprite
+    path: Gun
+    classID: 212
+    script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 3512362600518400835, guid: 5c6f01a1d5920e644885570c9b3260db, type: 3}
+    - time: 0.083333336
+      value: {fileID: 6263751044956027577, guid: 5c6f01a1d5920e644885570c9b3260db, type: 3}
+    attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
@@ -35,6 +44,13 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
+      path: 1926661051
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - serializedVersion: 2
       path: 0
       attribute: 0
       script: {fileID: 0}
@@ -42,6 +58,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
+    - {fileID: 3512362600518400835, guid: 5c6f01a1d5920e644885570c9b3260db, type: 3}
+    - {fileID: 6263751044956027577, guid: 5c6f01a1d5920e644885570c9b3260db, type: 3}
     - {fileID: 3512362600518400835, guid: 5c6f01a1d5920e644885570c9b3260db, type: 3}
     - {fileID: 6263751044956027577, guid: 5c6f01a1d5920e644885570c9b3260db, type: 3}
   m_AnimationClipSettings:
