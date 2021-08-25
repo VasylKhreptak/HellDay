@@ -4,7 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")] [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _movementSpeed = 5f;
-    [SerializeField] private float _jumpVelocity = 10f;
+    [SerializeField] private float _minJumpVelocity = 15f;
+    [SerializeField] private float _maxJumpVelocity = 30f;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private float _horizontalSensetivity = 0.5f;
     [SerializeField] private float _verticalSensetivity = 0.8f;
@@ -45,7 +46,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_joystick.Vertical > _verticalSensetivity && IsGrounded())
         {
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
+            _rigidbody2D.velocity = 
+                new Vector2(_rigidbody2D.velocity.x,  
+                     Mathf.Clamp(_maxJumpVelocity * _joystick.Vertical, _minJumpVelocity, _maxJumpVelocity));
         }
     }
 
