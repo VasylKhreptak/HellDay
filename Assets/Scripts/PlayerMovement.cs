@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")] [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _movementSpeed = 5f;
+    private float _previousMovementSpeed;
     [SerializeField] private float _minJumpVelocity = 15f;
     [SerializeField] private float _maxJumpVelocity = 30f;
     [SerializeField] private Joystick _joystick;
@@ -15,6 +17,30 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _heightRayCast = 1f;
+
+    private void Awake()
+    {
+        _previousMovementSpeed = _movementSpeed;
+        
+        Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+    }
+    
+    private void OnPlayerGetUp()
+    {
+        _movementSpeed = _previousMovementSpeed;
+    }
+
+    private void OnPlayerSitDown()
+    {
+        _movementSpeed = 0;
+    }
 
     private void Update()
     {

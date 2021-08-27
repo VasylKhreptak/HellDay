@@ -14,11 +14,37 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
     private static readonly int IsShooting = Animator.StringToHash("IsShooting");
 
     [SerializeField] private float _angleScatter = 1f;
+    [SerializeField] private float _angleScatterOnSit = 2f;
+    private float _previousAngleScatter;
 
     [SerializeField] private UnityEvent OnShoot;
 
     private Coroutine _shootingCoroutine;
 
+    private void Awake()
+    {
+        _previousAngleScatter = _angleScatter;
+        
+        Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+    }
+    
+    private void OnPlayerGetUp()
+    {
+        _angleScatter = _previousAngleScatter;
+    }
+
+    private void OnPlayerSitDown()
+    {
+        _angleScatter = _angleScatterOnSit;
+    }
+    
     public void StartShooting()
     {
         if (_shootingCoroutine != null) return;

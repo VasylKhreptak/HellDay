@@ -9,7 +9,7 @@ public class PlayerAnimationManager : MonoBehaviour
     [SerializeField] private Joystick _joystick;
 
     [Header("Preferences")] [SerializeField]
-    private float _sitSensetivity = -0.8f;
+    private float _sitJoystickSensetivity = -0.7f;
 
 
     private static readonly int Speed = Animator.StringToHash("Speed");
@@ -29,6 +29,19 @@ public class PlayerAnimationManager : MonoBehaviour
 
     private void SitAndUp()
     {
-        _animator.SetBool(Sit, _joystick.Vertical < _sitSensetivity);
+        if (_joystick.Vertical < _sitJoystickSensetivity && _animator.GetBool(Sit) == false)
+        {
+            _animator.SetBool(Sit, true);
+            Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
+            
+            Debug.Log("nsgjsd");
+        }
+        else if(_joystick.Vertical > _sitJoystickSensetivity && _animator.GetBool(Sit))
+        {
+            _animator.SetBool(Sit, false);
+            Messenger.Broadcast(GameEvent.PLAYER_GET_UP);
+            Debug.Log("nsgjsd");
+
+        }
     }
 }
