@@ -1388,6 +1388,7 @@ GameObject:
   - component: {fileID: 1755073906}
   - component: {fileID: 1755073910}
   - component: {fileID: 1755073911}
+  - component: {fileID: 1755073912}
   m_Layer: 0
   m_Name: MainPlayer
   m_TagString: Untagged
@@ -1547,12 +1548,27 @@ MonoBehaviour:
   _joystick: {fileID: 691253524}
   _horizontalSensetivity: 0.5
   _verticalSensetivity: 0.4
-  _playerAnimator: {fileID: 1755073910}
   _horizontalOffSet: 0.3
   _layerMask:
     serializedVersion: 2
     m_Bits: 8
   _heightRayCast: 0.81
+--- !u!114 &1755073912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755073905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18806e1d6ef09dd40a3cbbe4c4a25a82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 1755073907}
+  _animator: {fileID: 1755073910}
+  _joystick: {fileID: 691253524}
+  _sitSensetivity: -0.8
 --- !u!1 &1813571460
 GameObject:
   m_ObjectHideFlags: 0

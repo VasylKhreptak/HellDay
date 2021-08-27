@@ -9,9 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Joystick _joystick;
     [SerializeField] private float _horizontalSensetivity = 0.5f;
     [SerializeField] private float _verticalSensetivity = 0.8f;
-
-    [Header("Animator")] [SerializeField] private Animator _playerAnimator;
-
+    
     [Header("Ground check")] [SerializeField]
     private float _horizontalOffSet = 0.5f;
 
@@ -20,8 +18,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        _playerAnimator.SetFloat("Speed", Mathf.Abs(_rigidbody2D.velocity.x));
-
         if (_joystick.Horizontal == 0) return;
 
         HorizontalMovement();
