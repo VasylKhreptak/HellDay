@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DefaultGunController : MonoBehaviour, IGun
+public class DefaultWeapon : MonoBehaviour, IWeapon
 {
     [Header("Prefabs")] [SerializeField] private GameObject _defaultBulletPrefab;
     [SerializeField] private Transform _bulletSpawnPlace;
@@ -48,7 +48,7 @@ public class DefaultGunController : MonoBehaviour, IGun
                 Quaternion.Euler(0, 0, Random.Range(-_angleScatter, _angleScatter)));
 
 
-            ChangeBulletDirection(ref defaultBullet, (int) transform.parent.localScale.x);
+            ChangeBulletDirection(ref defaultBullet, (int) transform.parent.parent.localScale.x);
 
             yield return new WaitForSecondsRealtime(_shootDelay);
         }
