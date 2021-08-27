@@ -1386,9 +1386,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 110
-  m_LinearDrag: 4
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1494,11 +1494,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 1755073907}
   _movementSpeed: 7
-  _minJumpVelocity: 23
-  _maxJumpVelocity: 30
+  _minJumpVelocity: 15
+  _maxJumpVelocity: 18
   _joystick: {fileID: 691253524}
   _horizontalSensetivity: 0.5
-  _verticalSensetivity: 0.6
+  _verticalSensetivity: 0.4
   _playerAnimator: {fileID: 1755073910}
   _horizontalOffSet: 0.3
   _layerMask:
