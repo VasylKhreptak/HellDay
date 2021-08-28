@@ -14,6 +14,9 @@ public class PlayerAnimationManager : MonoBehaviour
 
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Sit = Animator.StringToHash("Sit");
+    private static readonly int LegPunch = Animator.StringToHash("LegPunch");
+
+    private const float PUNCH_DURATION = 0.72f;//(clip duration)1.8f / (clip speed)2.5f = 0.73f
 
     private void Update()
     {
@@ -33,15 +36,18 @@ public class PlayerAnimationManager : MonoBehaviour
         {
             _animator.SetBool(Sit, true);
             Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
-            
-            Debug.Log("nsgjsd");
         }
-        else if(_joystick.Vertical > _sitJoystickSensetivity && _animator.GetBool(Sit))
+        else if (_joystick.Vertical > _sitJoystickSensetivity && _animator.GetBool(Sit))
         {
             _animator.SetBool(Sit, false);
             Messenger.Broadcast(GameEvent.PLAYER_GET_UP);
-            Debug.Log("nsgjsd");
-
         }
+    }
+
+    public void LegPunchActions()
+    {
+        _animator.SetTrigger(LegPunch);
+        
+        Messenger<float>.Broadcast(GameEvent.PLAYER_LEG_PUNCH, PUNCH_DURATION);
     }
 }

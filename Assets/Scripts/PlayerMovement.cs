@@ -1,16 +1,17 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")] [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _movementSpeed = 5f;
-    private float _previousMovementSpeed;
     [SerializeField] private float _minJumpVelocity = 15f;
     [SerializeField] private float _maxJumpVelocity = 30f;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private float _horizontalSensetivity = 0.5f;
     [SerializeField] private float _verticalSensetivity = 0.8f;
+    [SerializeField] private bool _canMove = true; 
     
     [Header("Ground check")] [SerializeField]
     private float _horizontalOffSet = 0.5f;
@@ -20,31 +21,47 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _previousMovementSpeed = _movementSpeed;
-        
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
     }
 
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
     }
     
     private void OnPlayerGetUp()
     {
-        _movementSpeed = _previousMovementSpeed;
+        _canMove = true;
     }
 
     private void OnPlayerSitDown()
     {
-        _movementSpeed = 0;
+        _canMove = false;
     }
 
+    private void OnLegPunched(float animationDuration)
+    {
+        StartCoroutine(OnLegPunchedCoroutine(animationDuration));
+    }
+
+    private IEnumerator OnLegPunchedCoroutine(float animationDuration)
+    {
+        _canMove = false;
+
+        yield return new WaitForSeconds(animationDuration);
+
+        _canMove = true;
+    }
+    
     private void Update()
     {
         if (_joystick.Horizontal == 0) return;
+        
+        if(!_canMove) return;
 
         HorizontalMovement();
 

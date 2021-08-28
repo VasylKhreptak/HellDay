@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,8 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
 
     [Header("Gun options")] [SerializeField]
     private float _shootDelay = 0.1f;
+
+    [SerializeField] private bool _canShoot = true;
 
     [Header("Animator")] [SerializeField] private Animator _animator;
     private static readonly int IsShooting = Animator.StringToHash("IsShooting");
@@ -24,17 +27,33 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
     private void Awake()
     {
         _previousAngleScatter = _angleScatter;
-        
+
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
     }
 
     private void OnDestroy()
     {
         Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
     }
-    
+
+    private void OnLegPunched(float animationDuration)
+    {
+        StartCoroutine(OnLegPunchedCoroutine(animationDuration));
+    }
+
+    private IEnumerator OnLegPunchedCoroutine(float animationDuration)
+    {
+        _canShoot = false;
+
+        yield return new WaitForSeconds(animationDuration);
+
+        _canShoot = true;
+    }
+
     private void OnPlayerGetUp()
     {
         _angleScatter = _previousAngleScatter;
@@ -44,9 +63,11 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
     {
         _angleScatter = _angleScatterOnSit;
     }
-    
+
     public void StartShooting()
     {
+        if (!_canShoot) return;
+
         if (_shootingCoroutine != null) return;
 
         _animator.SetBool(IsShooting, true);
@@ -56,7 +77,8 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
 
     public void StopShooting()
     {
-        StopCoroutine(_shootingCoroutine);
+        if (_shootingCoroutine != null)
+            StopCoroutine(_shootingCoroutine);
 
         _animator.SetBool(IsShooting, false);
 
