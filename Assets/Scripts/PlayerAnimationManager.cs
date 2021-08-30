@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour
@@ -11,12 +12,13 @@ public class PlayerAnimationManager : MonoBehaviour
     [Header("Preferences")] [SerializeField]
     private float _sitJoystickSensetivity = -0.7f;
 
-
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Sit = Animator.StringToHash("Sit");
     private static readonly int LegPunch = Animator.StringToHash("LegPunch");
 
-    private const float PUNCH_DURATION = 0.72f;//(clip duration)1.8f / (clip speed)2.5f = 0.73f
+    private const float PUNCH_DURATION = 0.6f; //(clip duration)1.8f / (clip speed)2.5f = 0.6f
+
+    private Coroutine _legPunchActionsCoroutine;
 
     private void Update()
     {
@@ -46,8 +48,17 @@ public class PlayerAnimationManager : MonoBehaviour
 
     public void LegPunchActions()
     {
+        _legPunchActionsCoroutine ??= StartCoroutine(LegPunchActionsCoroutine());
+    }
+
+    private IEnumerator LegPunchActionsCoroutine()
+    {
         _animator.SetTrigger(LegPunch);
-        
+
         Messenger<float>.Broadcast(GameEvent.PLAYER_LEG_PUNCH, PUNCH_DURATION);
+
+        yield return new WaitForSeconds(PUNCH_DURATION);
+        
+        _legPunchActionsCoroutine = null;
     }
 }
