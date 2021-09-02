@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Joystick _joystick;
     [SerializeField] private float _horizontalSensetivity = 0.5f;
     [SerializeField] private float _verticalSensetivity = 0.8f;
-    [SerializeField] private bool _canMove = true; 
-    
+    [SerializeField] private bool _canMove = true;
+
     [Header("Ground check")] [SerializeField]
     private float _horizontalOffSet = 0.5f;
 
@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
     }
-    
+
     private void OnPlayerGetUp()
     {
         _canMove = true;
@@ -56,12 +56,12 @@ public class PlayerMovement : MonoBehaviour
 
         _canMove = true;
     }
-    
+
     private void Update()
     {
         if (_joystick.Horizontal == 0) return;
-        
-        if(!_canMove) return;
+
+        if (!_canMove) return;
 
         HorizontalMovement();
 
@@ -85,9 +85,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_joystick.Vertical > _verticalSensetivity && IsGrounded())
         {
-            _rigidbody2D.velocity = 
-                new Vector2(_rigidbody2D.velocity.x,  
-                     Mathf.Clamp(_maxJumpVelocity * _joystick.Vertical, _minJumpVelocity, _maxJumpVelocity));
+            _rigidbody2D.velocity =
+                new Vector2(_rigidbody2D.velocity.x,
+                    Mathf.Clamp(_maxJumpVelocity * _joystick.Vertical, _minJumpVelocity, _maxJumpVelocity));
         }
     }
 
