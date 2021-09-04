@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpeed: 50
-  _destroyTime: 1
   _rigidbody2D: {fileID: 298936386197796729}
+  _lifeTime: 0.5
 --- !u!61 &824030736106295306
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.125, y: 0.0625}
+    oldSize: {x: 0.2, y: 0.1}
     newSize: {x: 0.02, y: 0.01}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class DefaultWeapon : MonoBehaviour, IWeapon
 {
-    [Header("Prefabs")] [SerializeField] private GameObject _defaultBulletPrefab;
+    [Header("Prefabs")]
     [SerializeField] private Transform _bulletSpawnPlace;
 
     [Header("Gun options")] [SerializeField]
@@ -24,6 +26,8 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
 
     private Coroutine _shootingCoroutine;
 
+    private ObjectPooler _objectPooler;
+
     private void Awake()
     {
         _previousAngleScatter = _angleScatter;
@@ -31,6 +35,11 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
+    }
+
+    private void Start()
+    {
+        _objectPooler = ObjectPooler.Instance;
     }
 
     private void OnDestroy()
@@ -91,12 +100,14 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
         {
             OnShoot.Invoke();
 
-            GameObject defaultBullet = Instantiate(_defaultBulletPrefab,
-                _bulletSpawnPlace.position,
-                Quaternion.Euler(0, 0, Random.Range(-_angleScatter, _angleScatter)));
+            GameObject defaultBullet = _objectPooler.GetFromPool(Pools.DefaultBullet);
 
+            defaultBullet.transform.position = _bulletSpawnPlace.position;
+            defaultBullet.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-_angleScatter, _angleScatter));
 
             ChangeBulletDirection(ref defaultBullet, (int) transform.parent.parent.localScale.x);
+            
+            Messenger.Broadcast(GameEvent.OBJECT_SPAWNED);
 
             yield return new WaitForSecondsRealtime(_shootDelay);
         }

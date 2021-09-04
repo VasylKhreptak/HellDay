@@ -1,21 +1,38 @@
 using System.Collections;
 using UnityEngine;
 
-public class DefaultBullet : MonoBehaviour
+public class DefaultBullet : MonoBehaviour, IPooledObject
 {
     [SerializeField] private float _bulletSpeed = 3;
-    // [SerializeField] private float _destroyTime = 3f;
     [SerializeField] private Rigidbody2D _rigidbody2D;
+    [SerializeField] private float _lifeTime = 2f;
 
-    private void Start()
+    private void Awake()
+    {
+        Messenger.AddListener(GameEvent.OBJECT_SPAWNED, OnObjectSpawn);
+    }
+    
+    private IEnumerator DisableObject(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.OBJECT_SPAWNED, OnObjectSpawn);
+    }
+
+    public void OnObjectSpawn()
     {
         _rigidbody2D.velocity = transform.right * _bulletSpeed;
         
-        // Destroy(gameObject, _destroyTime);
+        StartCoroutine(DisableObject(_lifeTime));
     }
 
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     Destroy(gameObject);
-    // }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        gameObject.SetActive(false);
+    }
 }
