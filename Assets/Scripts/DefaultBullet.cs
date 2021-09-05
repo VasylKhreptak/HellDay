@@ -11,7 +11,12 @@ public class DefaultBullet : MonoBehaviour, IPooledObject
     {
         Messenger.AddListener(GameEvent.OBJECT_SPAWNED, OnObjectSpawn);
     }
-    
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.OBJECT_SPAWNED, OnObjectSpawn);
+    }
+
     private IEnumerator DisableObject(float time)
     {
         yield return new WaitForSeconds(time);
@@ -19,16 +24,12 @@ public class DefaultBullet : MonoBehaviour, IPooledObject
         gameObject.SetActive(false);
     }
 
-    private void OnDestroy()
-    {
-        Messenger.RemoveListener(GameEvent.OBJECT_SPAWNED, OnObjectSpawn);
-    }
-
     public void OnObjectSpawn()
     {
         _rigidbody2D.velocity = transform.right * _bulletSpeed;
-        
-        StartCoroutine(DisableObject(_lifeTime));
+
+        if (gameObject.activeSelf)
+            StartCoroutine(DisableObject(_lifeTime));
     }
 
     private void OnCollisionEnter2D(Collision2D other)

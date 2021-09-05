@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletSpeed: 50
   _rigidbody2D: {fileID: 298936386197796729}
-  _lifeTime: 0.5
+  _lifeTime: 0.25
 --- !u!61 &824030736106295306
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0126
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

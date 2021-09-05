@@ -12,13 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _horizontalSensetivity = 0.5f;
     [SerializeField] private float _verticalSensetivity = 0.8f;
     [SerializeField] private bool _canMove = true;
-
-    [Header("Ground check")] [SerializeField]
-    private float _horizontalOffSet = 0.5f;
-
-    [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private float _heightRayCast = 1f;
-
+    [SerializeField] private GroundChecker _groundChecker;
+    
     private void Awake()
     {
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
@@ -83,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void VerticalMovement()
     {
-        if (_joystick.Vertical > _verticalSensetivity && IsGrounded())
+        if (_joystick.Vertical > _verticalSensetivity && _groundChecker.isGrounded)
         {
             _rigidbody2D.velocity =
                 new Vector2(_rigidbody2D.velocity.x,
@@ -94,20 +89,5 @@ public class PlayerMovement : MonoBehaviour
     private void SetFaceDirection(int direction)
     {
         transform.localScale = new Vector3(direction, 1, 1);
-    }
-
-    private bool IsGrounded()
-    {
-        Vector3 position = transform.position;
-
-        if (Physics2D.Raycast(position + Vector3.right * _horizontalOffSet,
-                Vector2.down, _heightRayCast, _layerMask) ||
-            Physics2D.Raycast(position + Vector3.left * _horizontalOffSet,
-                Vector2.down, _heightRayCast, _layerMask))
-        {
-            return true;
-        }
-
-        return false;
     }
 }

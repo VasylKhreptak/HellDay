@@ -1,16 +1,15 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using Random = UnityEngine.Random;
 
 public class DefaultWeapon : MonoBehaviour, IWeapon
 {
+    private readonly Weapons _weapon = Weapons.DefaultWeapon;
+    
     [Header("Prefabs")]
     [SerializeField] private Transform _bulletSpawnPlace;
 
-    [Header("Gun options")] [SerializeField]
+    [Header("Weapon options")] [SerializeField]
     private float _shootDelay = 0.1f;
 
     [SerializeField] private bool _canShoot = true;
@@ -32,9 +31,15 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
     {
         _previousAngleScatter = _angleScatter;
 
+        //PlayerMovement
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
+        
+        //Weapnos
+        Messenger<Weapons>.AddListener(GameEvent.SET_WEAPON, CheckWeaponConformity);
+        Messenger.AddListener(GameEvent.START_SHOOTING, StartShooting);
+        Messenger.AddListener(GameEvent.STOP_SHOOTING, StopShooting);
     }
 
     private void Start()
@@ -44,11 +49,23 @@ public class DefaultWeapon : MonoBehaviour, IWeapon
 
     private void OnDestroy()
     {
+        //PlayerMovement
         Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
+        
+        //Weapnos
+        Messenger<Weapons>.RemoveListener(GameEvent.SET_WEAPON, CheckWeaponConformity);
+        Messenger.RemoveListener(GameEvent.START_SHOOTING, StartShooting);
+        Messenger.RemoveListener(GameEvent.STOP_SHOOTING, StopShooting);
     }
 
+    private void CheckWeaponConformity(Weapons weapon)
+    {
+        if (weapon != _weapon)
+            gameObject.SetActive(false);
+    }
+    
     private void OnLegPunched(float animationDuration)
     {
         StartCoroutine(OnLegPunchedCoroutine(animationDuration));
