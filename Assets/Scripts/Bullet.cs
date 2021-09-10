@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DefaultBullet : MonoBehaviour, IPooledObject
+public class Bullet : MonoBehaviour, IPoolSpawnedObject
 {
     [SerializeField] private float _bulletSpeed = 3;
     [SerializeField] private Rigidbody2D _rigidbody2D;
@@ -9,12 +9,12 @@ public class DefaultBullet : MonoBehaviour, IPooledObject
 
     private void Awake()
     {
-        Messenger.AddListener(GameEvent.OBJECT_SPAWNED, OnObjectSpawn);
+        Messenger<Pools, GameObject>.AddListener(GameEvent.POOL_OBJECT_SPAWNED, OnObjectSpawn);
     }
 
     private void OnDestroy()
     {
-        Messenger.RemoveListener(GameEvent.OBJECT_SPAWNED, OnObjectSpawn);
+        Messenger<Pools, GameObject>.RemoveListener(GameEvent.POOL_OBJECT_SPAWNED, OnObjectSpawn);
     }
 
     private IEnumerator DisableObject(float time)
@@ -24,7 +24,14 @@ public class DefaultBullet : MonoBehaviour, IPooledObject
         gameObject.SetActive(false);
     }
 
-    public void OnObjectSpawn()
+    public void OnObjectSpawn(Pools pool, GameObject bullet)
+    {
+        if (pool != Pools.DefaultBullet || gameObject != bullet) return;
+        
+        SetMovement();
+    }
+
+    private void SetMovement()
     {
         _rigidbody2D.velocity = transform.right * _bulletSpeed;
 

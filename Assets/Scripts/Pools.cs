@@ -1,4 +1,9 @@
 public enum Pools
 {
-    DefaultBullet
+    DefaultBullet,
+    DefaultBulletMuff,
+    LongBullet,
+    LongBulletMuff,
+    RedBulletMuff,
+    ShortBullet
 }

@@ -1,4 +1,10 @@
 public enum Weapons
 {
-    DefaultWeapon
+    DefaultWeapon,
+    Rifle,
+    Shotgun,
+    Minigun,
+    Vintorez,
+    MachineGun,
+    Uzi
 }
