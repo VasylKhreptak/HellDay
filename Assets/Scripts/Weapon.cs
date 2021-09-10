@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour, IWeapon
     [SerializeField] private float _shootDelay = 0.1f;
     [SerializeField] private float _angleScatter = 5f;
     [SerializeField] private bool _canShoot = true;
-    [Tooltip("Number of balls in shootgun weapon")]
+    [Tooltip("Number of balls in shotgun weapon")]
     [SerializeField] private int _shotGunCaliber = 10;
 
     [Header("Ammo options")]
