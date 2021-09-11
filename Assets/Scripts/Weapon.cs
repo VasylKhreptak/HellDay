@@ -78,6 +78,8 @@ public class Weapon : MonoBehaviour, IWeapon
     
     private void OnLegPunched(float animationDuration)
     {
+        if(!gameObject.activeSelf) return;
+        
         StartCoroutine(OnLegPunchedCoroutine(animationDuration));
     }
 

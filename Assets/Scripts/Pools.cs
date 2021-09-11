@@ -5,5 +5,6 @@ public enum Pools
     LongBullet,
     LongBulletMuff,
     RedBulletMuff,
-    ShortBullet
+    ShortBullet,
+    BoxDestroyParticle
 }

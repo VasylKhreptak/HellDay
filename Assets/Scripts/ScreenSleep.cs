@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScreenSleepController : MonoBehaviour
+public class ScreenSleep : MonoBehaviour
 {
     [SerializeField] private bool _enableScreenSleep = true;
 

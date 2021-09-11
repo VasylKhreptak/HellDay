@@ -41,6 +41,8 @@ public class Bullet : MonoBehaviour, IPoolSpawnedObject
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Messenger<Collision2D>.Broadcast(GameEvent.BULLET_HIT, other);
+        
         gameObject.SetActive(false);
     }
 }

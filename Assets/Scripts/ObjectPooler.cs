@@ -17,7 +17,7 @@ public class ObjectPooler : MonoBehaviour
         public Pools PoolType => _poolType;
     }
 
-    [SerializeField] private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
+    private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
     [SerializeField] private List<Pool> _pools;
 
     #region singleton
@@ -79,7 +79,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
         GameObject objectFromPool = _poolDictionary[pool].Dequeue();
-
+        
         objectFromPool.SetActive(true);
 
         _poolDictionary[pool].Enqueue(objectFromPool);
