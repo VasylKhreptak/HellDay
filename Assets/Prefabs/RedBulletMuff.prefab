@@ -123,6 +123,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 9004235188281881889}
   _horizontalVelocity: 3
   _lifeTime: 3
+  _torque: 4
 --- !u!61 &2268174383108859494
 BoxCollider2D:
   m_ObjectHideFlags: 0

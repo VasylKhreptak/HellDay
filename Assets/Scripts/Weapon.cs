@@ -1,43 +1,43 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
-public class Weapon : MonoBehaviour, IWeapon
+public class Weapon : MonoBehaviour
 {
-    [Header("Weapon type")]
-    [SerializeField] private Weapons _weaponType;
-    
-    [Header("Positions")]
-    [SerializeField] private Transform _bulletSpawnPlace;
-    [SerializeField] private Transform _bulletMuffSpawnPlace;
-    
-    [Header("Weapon options")] 
-    [Tooltip("Time before two shoots")]
-    [SerializeField] private float _shootDelay = 0.1f;
-    [SerializeField] private float _angleScatter = 5f;
-    [SerializeField] private bool _canShoot = true;
-    [Tooltip("Number of balls in shotgun weapon")]
-    [SerializeField] private int _shotGunCaliber = 10;
+    [Header("Weapon type")] [SerializeField]
+    protected Weapons _weaponType;
 
-    [Header("Ammo options")]
-    [SerializeField] private Pools _bullet = Pools.DefaultBullet;
-    [SerializeField] private Pools _bulletMuff = Pools.DefaultBulletMuff;
+    [Header("Positions")] [SerializeField] protected Transform _bulletSpawnPlace;
+    [SerializeField] protected Transform _bulletMuffSpawnPlace;
 
-    [Header("Animator")] 
-    [SerializeField] private Animator _animator;
-    private static readonly int IsShooting = Animator.StringToHash("IsShooting");
+    [Header("Weapon options")] [Tooltip("Time before two shoots")] [SerializeField]
+    protected float _shootDelay = 0.1f;
 
-    [Header("Weapon option on condition")]
-    [SerializeField] private float _angleScatterOnSit = 2f;
-    private float _previousAngleScatter;
+    [SerializeField] protected float _angleScatter = 5f;
+    [SerializeField] protected bool _canShoot = true;
 
-    [Header("OnShootEvent")]
-    [SerializeField] private UnityEvent OnShoot;
+    [Header("Ammo options")] [SerializeField]
+    protected Pools _bullet = Pools.DefaultBullet;
 
-    private Coroutine _shootingCoroutine;
-    private ObjectPooler _objectPooler;
+    [SerializeField] protected Pools _bulletMuff = Pools.DefaultBulletMuff;
 
-    private void Awake()
+    [Header("Animator")] [SerializeField] protected Animator _animator;
+    protected static readonly int IsShooting = Animator.StringToHash("IsShooting");
+
+    [Header("Weapon option on condition")] [SerializeField]
+    protected float _angleScatterOnSit = 2f;
+
+    protected float _previousAngleScatter;
+
+    [Header("OnShootEvent")] [SerializeField]
+    protected UnityEvent OnShoot;
+
+    protected Coroutine _shootingCoroutine;
+    protected ObjectPooler _objectPooler;
+
+    protected void Awake()
     {
         _previousAngleScatter = _angleScatter;
 
@@ -45,45 +45,45 @@ public class Weapon : MonoBehaviour, IWeapon
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
-        
+
         //Weapnos
         Messenger<Weapons>.AddListener(GameEvent.SET_WEAPON, CheckWeaponConformity);
         Messenger.AddListener(GameEvent.START_SHOOTING, StartShooting);
         Messenger.AddListener(GameEvent.STOP_SHOOTING, StopShooting);
     }
 
-    private void Start()
+    protected void Start()
     {
         _objectPooler = ObjectPooler.Instance;
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         //PlayerMovement
         Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
-        
+
         //Weapnos
         Messenger<Weapons>.RemoveListener(GameEvent.SET_WEAPON, CheckWeaponConformity);
         Messenger.RemoveListener(GameEvent.START_SHOOTING, StartShooting);
         Messenger.RemoveListener(GameEvent.STOP_SHOOTING, StopShooting);
     }
 
-    private void CheckWeaponConformity(Weapons weapon)
+    protected void CheckWeaponConformity(Weapons weapon)
     {
         if (weapon != _weaponType)
             gameObject.SetActive(false);
     }
-    
-    private void OnLegPunched(float animationDuration)
+
+    protected void OnLegPunched(float animationDuration)
     {
-        if(!gameObject.activeSelf) return;
-        
+        if (!gameObject.activeSelf) return;
+
         StartCoroutine(OnLegPunchedCoroutine(animationDuration));
     }
 
-    private IEnumerator OnLegPunchedCoroutine(float animationDuration)
+    protected IEnumerator OnLegPunchedCoroutine(float animationDuration)
     {
         _canShoot = false;
 
@@ -92,12 +92,12 @@ public class Weapon : MonoBehaviour, IWeapon
         _canShoot = true;
     }
 
-    private void OnPlayerGetUp()
+    protected void OnPlayerGetUp()
     {
         _angleScatter = _previousAngleScatter;
     }
 
-    private void OnPlayerSitDown()
+    protected void OnPlayerSitDown()
     {
         _angleScatter = _angleScatterOnSit;
     }
@@ -121,33 +121,25 @@ public class Weapon : MonoBehaviour, IWeapon
         _shootingCoroutine = null;
     }
 
-    private IEnumerator Shoot()
+    protected virtual IEnumerator Shoot()
     {
         while (true)
         {
             OnShoot.Invoke();
 
-            if (_weaponType == Weapons.Shotgun)
-            {
-                for (int i = 0; i < _shotGunCaliber; i++)
-                {
-                    SpawnBullet();
-                }
-            }
-            else
-            {
-                SpawnBullet();
-            }
+            SpawnBullet();
 
             SpawnBulletMuff();
-            
+
+            SpawnShootSmoke();
+
             _animator.SetTrigger(IsShooting);
 
             yield return new WaitForSecondsRealtime(_shootDelay);
         }
     }
 
-    private IEnumerator ControlShootSpeed()
+    protected IEnumerator ControlShootSpeed()
     {
         _canShoot = false;
 
@@ -155,31 +147,34 @@ public class Weapon : MonoBehaviour, IWeapon
 
         _canShoot = true;
     }
-    
-    private void SpawnBullet()
+
+    protected void SpawnBullet()
     {
-        GameObject defaultBullet = _objectPooler.GetFromPool(_bullet);
+        Vector3 bulletPosition = _bulletSpawnPlace.position;
+        Vector3 bulletRotation = new Vector3(0, 0, Random.Range(-_angleScatter, _angleScatter));
+        ChangeBulletDirection(ref bulletRotation);
 
-        defaultBullet.transform.position = _bulletSpawnPlace.position;
-        defaultBullet.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-_angleScatter, _angleScatter));
-
-        ChangeBulletDirection(ref defaultBullet, (int) transform.parent.parent.localScale.x);
-        
-        Messenger<Pools, GameObject>.Broadcast(GameEvent.POOL_OBJECT_SPAWNED, Pools.DefaultBullet, defaultBullet);
+        _objectPooler.GetFromPool(_bullet, bulletPosition, Quaternion.Euler(bulletRotation));
     }
 
-    private void SpawnBulletMuff()
+    protected void SpawnBulletMuff()
     {
-        GameObject defaultBulletMuff = _objectPooler.GetFromPool(_bulletMuff);
-
-        defaultBulletMuff.transform.position = _bulletMuffSpawnPlace.position;
-        
-        Messenger<Pools, GameObject>.Broadcast(GameEvent.POOL_OBJECT_SPAWNED, Pools.DefaultBulletMuff, defaultBulletMuff);
+        _objectPooler.GetFromPool(_bulletMuff,
+            _bulletMuffSpawnPlace.position,
+            quaternion.identity);
     }
-    
+
+    protected void SpawnShootSmoke()
+    {
+        GameObject pooledObject =
+            _objectPooler.GetFromPool(Pools.ShootSmoke, _bulletSpawnPlace.position, Quaternion.identity);
+
+        pooledObject.transform.localScale = new Vector3(PlayerMovement.movementDirection, 1, 1);
+    }
+
     //Changes bullet direction due to gun local scale
-    private void ChangeBulletDirection(ref GameObject defaultBullet, int direction)
+    protected void ChangeBulletDirection(ref Vector3 rotation)
     {
-        defaultBullet.transform.Rotate(0, 0, direction == 1 ? 0 : 180);
+        rotation += new Vector3(0, 0, PlayerMovement.movementDirection == 1 ? 0 : 180);
     }
 }

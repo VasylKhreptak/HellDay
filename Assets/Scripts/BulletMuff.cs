@@ -1,27 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class BulletMuff : MonoBehaviour, IPoolSpawnedObject
+public class BulletMuff : MonoBehaviour, IPooledObject
 {
     [SerializeField] private float _verticalVelocity = 1f;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _horizontalVelocity = 2f;
     [SerializeField] private float _lifeTime = 2f;
+    [SerializeField] private float _torque = 1f;
 
-    private void Awake()
+
+    public void OnEnable()
     {
-        Messenger<Pools, GameObject>.AddListener(GameEvent.POOL_OBJECT_SPAWNED, OnObjectSpawn);
-    }
-
-    private void OnDestroy()
-    {
-        Messenger<Pools, GameObject>.RemoveListener(GameEvent.POOL_OBJECT_SPAWNED, OnObjectSpawn);
-    }
-
-    public void OnObjectSpawn(Pools pool, GameObject bulletMuff)
-    {
-        if (pool != Pools.DefaultBulletMuff || gameObject != bulletMuff) return;
-
         SetMovement();
 
         if (gameObject.activeSelf)
@@ -30,8 +20,11 @@ public class BulletMuff : MonoBehaviour, IPoolSpawnedObject
 
     private void SetMovement()
     {
-        _rigidbody2D.velocity = new Vector2(Random.Range(-_horizontalVelocity, _horizontalVelocity),
+        _rigidbody2D.velocity = 
+            new Vector2(Random.Range(-_horizontalVelocity , 0)  * PlayerMovement.movementDirection,
             _verticalVelocity);
+
+        _rigidbody2D.AddTorque(Random.Range(-_torque, _torque));
     }
 
     private IEnumerator DisableObject(float time)

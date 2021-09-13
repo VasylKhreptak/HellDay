@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class CommonBox : Box
@@ -36,9 +37,6 @@ public class CommonBox : Box
 
     protected override void SpawnDestroyParticle()
     {
-        GameObject particle = _objectPooler.GetFromPool(Pools.BoxDestroyParticle);
-        particle.transform.position = transform.position;
-
-        Messenger<Pools, GameObject>.Broadcast(GameEvent.POOL_OBJECT_SPAWNED, Pools.BoxDestroyParticle, particle);
+        _objectPooler.GetFromPool(Pools.BoxDestroyParticle, transform.position, Quaternion.identity);
     }
 }

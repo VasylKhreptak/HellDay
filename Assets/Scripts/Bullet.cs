@@ -1,20 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IPoolSpawnedObject
+public class Bullet : MonoBehaviour, IPooledObject
 {
     [SerializeField] private float _bulletSpeed = 3;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _lifeTime = 2f;
 
-    private void Awake()
-    {
-        Messenger<Pools, GameObject>.AddListener(GameEvent.POOL_OBJECT_SPAWNED, OnObjectSpawn);
-    }
 
-    private void OnDestroy()
+    public void OnEnable()
     {
-        Messenger<Pools, GameObject>.RemoveListener(GameEvent.POOL_OBJECT_SPAWNED, OnObjectSpawn);
+        SetMovement();
     }
 
     private IEnumerator DisableObject(float time)
@@ -22,13 +18,6 @@ public class Bullet : MonoBehaviour, IPoolSpawnedObject
         yield return new WaitForSeconds(time);
 
         gameObject.SetActive(false);
-    }
-
-    public void OnObjectSpawn(Pools pool, GameObject bullet)
-    {
-        if (pool != Pools.DefaultBullet || gameObject != bullet) return;
-        
-        SetMovement();
     }
 
     private void SetMovement()

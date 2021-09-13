@@ -13,5 +13,4 @@ public abstract class Box : MonoBehaviour
     protected abstract bool IsBroken();
     protected abstract void TakeDamage(int damage);
     protected abstract void SpawnDestroyParticle();
-
 }
