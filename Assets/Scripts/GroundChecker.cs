@@ -1,10 +1,11 @@
+using System;
 using UnityEngine;
 
 public class GroundChecker : MonoBehaviour
 {
-    public bool isGrounded { get; private set; } = false;
+    public bool isGrounded = false;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         isGrounded = true;
     }
