@@ -42,13 +42,12 @@ public class PlayerMovement : MonoBehaviour
     {
         _canMove = true;
     }
-
+    
     private void OnPlayerMovementImpact(float percentage)
     {
         _movementSpeed -= _movementSpeed * percentage / 100f;
         _minJumpVelocity -= _minJumpVelocity * percentage / 100f;
         _maxJumpVelocity -= _maxJumpVelocity * percentage / 100f;
-
     }
 
     private void OnPlayerSitDown()

@@ -4,37 +4,37 @@ using UnityEngine.Events;
 
 public class Weapon : MonoBehaviour
 {
-    [Header("Weapon type")] 
-    [SerializeField] protected Weapons _weaponType;
+    [Header("Weapon type")] [SerializeField]
+    protected Weapons _weaponType;
 
-    [Header("Positions")] 
-    [SerializeField] protected Transform _bulletSpawnPlace;
+    [Header("Positions")] [SerializeField] protected Transform _bulletSpawnPlace;
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
 
-    [Header("Weapon options")] 
-    [Tooltip("Time before two shoots")] 
-    [SerializeField] protected float _shootDelay = 0.1f;
+    [Header("Weapon options")] [Tooltip("Time before two shoots")] [SerializeField]
+    protected float _shootDelay = 0.1f;
+
     [SerializeField] protected float _angleScatter = 5f;
     [SerializeField] protected bool _canShoot = true;
 
-    [Header("Ammo options")] 
-    [SerializeField] protected Pools _bullet = Pools.DefaultBullet;
+    [Header("Ammo options")] [SerializeField]
+    protected Pools _bullet = Pools.DefaultBullet;
+
     [SerializeField] protected Pools _bulletMuff = Pools.DefaultBulletMuff;
 
-    [Header("Animator")] 
-    [SerializeField] protected Animator _animator;
+    [Header("Animator")] [SerializeField] protected Animator _animator;
     protected static readonly int IsShooting = Animator.StringToHash("IsShooting");
 
-    [Header("Weapon option on condition")] 
-    [SerializeField] protected float _angleScatterOnSit = 2f;
+    [Header("Weapon option on condition")] [SerializeField]
+    protected float _angleScatterOnSit = 2f;
 
     protected float _previousAngleScatter;
 
-    [Header("OnShootEvent")] 
-    [SerializeField] protected UnityEvent OnShoot;
+    [Header("OnShootEvent")] [SerializeField]
+    protected UnityEvent OnShoot;
 
     [Header("Player movement impact"), Tooltip("the percentage that will reduce staff mobility")]
-    [SerializeField, Range(0, 70)] private float _movementImpact = 10f;
+    [SerializeField, Range(0, 70)]
+    private float _movementImpact = 10f;
 
     protected Coroutine _shootingCoroutine;
     protected ObjectPooler _objectPooler;
@@ -57,9 +57,6 @@ public class Weapon : MonoBehaviour
     protected void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-        
-        //PlayerMovementImpact
-        Messenger<float>.Broadcast(GameEvent.PLAYER_MOVEMENT_IMPACT, _movementImpact);
     }
 
     protected void OnDestroy()
@@ -79,6 +76,13 @@ public class Weapon : MonoBehaviour
     {
         if (weapon != _weaponType)
             gameObject.SetActive(false);
+
+        ImpactPlayerMovement();
+    }
+
+    protected void ImpactPlayerMovement()
+    {
+        Messenger<float>.Broadcast(GameEvent.PLAYER_MOVEMENT_IMPACT, _movementImpact);
     }
 
     protected void OnLegPunched(float animationDuration)
