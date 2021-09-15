@@ -72,7 +72,7 @@ public class ObjectPooler : MonoBehaviour
 
     public GameObject GetFromPool(Pools pool, Vector3 pooledObjectPosition, Quaternion pooledObjectRotation)
     {
-        if (!_poolDictionary.ContainsKey(pool))
+        if (_poolDictionary.ContainsKey(pool) == false)
         {
             Debug.LogWarning("Pool with name " + pool + "doesn't exist");
             return null;
@@ -83,7 +83,7 @@ public class ObjectPooler : MonoBehaviour
         objectFromPool.transform.position = pooledObjectPosition;
         objectFromPool.transform.rotation = pooledObjectRotation;
         
-        if(objectFromPool.activeSelf)
+        if(objectFromPool.activeSelf == true)
             objectFromPool.SetActive(false);
         
         objectFromPool.SetActive(true);

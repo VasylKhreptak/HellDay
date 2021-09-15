@@ -322,6 +322,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _movementImpact: 6
 --- !u!212 &349027441
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1652,49 +1653,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &390709976
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 390709977}
-  - component: {fileID: 390709978}
-  m_Layer: 0
-  m_Name: BulletHit
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &390709977
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390709976}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 994552759}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &390709978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390709976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7b8c6a582d8ae4458dd9df465bd8dbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &452774480
 GameObject:
   m_ObjectHideFlags: 0
@@ -59036,7 +58994,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _shotGunCaliber: 10
+  _movementImpact: 20
+  _shotGunCaliber: 16
   _smokeDensity: 3
 --- !u!212 &646487516
 SpriteRenderer:
@@ -59397,6 +59356,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _movementImpact: 5
 --- !u!82 &798250842
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59837,6 +59797,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _movementImpact: 20
 --- !u!212 &871448443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -60093,6 +60054,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _movementImpact: 15
 --- !u!212 &880354840
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -60286,7 +60248,6 @@ Transform:
   - {fileID: 1393266540}
   - {fileID: 849364416}
   - {fileID: 1052731199}
-  - {fileID: 390709977}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60396,7 +60357,7 @@ MonoBehaviour:
     folder: {fileID: 0}
   - _poolType: 1
     _prefab: {fileID: 7323977521235854913, guid: 63031606d4ca5774482567314d8a15d6, type: 3}
-    _size: 20
+    _size: 40
     folder: {fileID: 0}
   - _poolType: 2
     _prefab: {fileID: 6778941114176845010, guid: 69bebeef0aefc6147a781d0032e5b77d, type: 3}
@@ -60408,7 +60369,7 @@ MonoBehaviour:
     folder: {fileID: 0}
   - _poolType: 4
     _prefab: {fileID: 2246287890527386732, guid: 91ff1a409bdb61245925d9c5b7935ffa, type: 3}
-    _size: 3
+    _size: 5
     folder: {fileID: 0}
   - _poolType: 5
     _prefab: {fileID: 586899608010179881, guid: 91f9bdc0d97277741afa64b93309a69b, type: 3}
@@ -60420,6 +60381,10 @@ MonoBehaviour:
     folder: {fileID: 0}
   - _poolType: 7
     _prefab: {fileID: 4271707791968312466, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+    _size: 20
+    folder: {fileID: 0}
+  - _poolType: 8
+    _prefab: {fileID: 5633720356271221807, guid: dc0e81761d934ec4c806dc9b86b06b87, type: 3}
     _size: 20
     folder: {fileID: 0}
 --- !u!4 &1052731199
@@ -61335,7 +61300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00c110736004e04281f8508a12651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: 3
+  _weapon: 6
   _weapnos:
   - {fileID: 798250838}
   - {fileID: 349027437}
@@ -67018,6 +66983,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _movementImpact: 0
 --- !u!212 &1496388136
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -71145,6 +71111,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _movementImpact: 8
 --- !u!212 &1879101108
 SpriteRenderer:
   m_ObjectHideFlags: 0

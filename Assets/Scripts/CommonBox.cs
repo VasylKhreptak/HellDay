@@ -31,7 +31,7 @@ public class CommonBox : Box
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Bullet"))
+        if (other.collider.CompareTag("Bullet") == true)
             TakeDamage(1);
     }
 

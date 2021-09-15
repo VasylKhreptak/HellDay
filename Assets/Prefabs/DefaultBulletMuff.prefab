@@ -148,5 +148,5 @@ MonoBehaviour:
   _verticalVelocity: 4
   _rigidbody2D: {fileID: 4842985089857789678}
   _horizontalVelocity: 3
-  _lifeTime: 3
+  _lifeTime: 6
   _torque: 4

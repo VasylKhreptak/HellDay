@@ -14,7 +14,7 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     {
         SetMovement();
 
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf == true)
             StartCoroutine(DisableObject(_lifeTime));
     }
 

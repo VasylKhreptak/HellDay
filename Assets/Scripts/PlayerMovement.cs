@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -27,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
-        
+        Messenger<float>.AddListener(GameEvent.PLAYER_MOVEMENT_IMPACT, OnPlayerMovementImpact);
+
         SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
     }
 
@@ -36,11 +35,20 @@ public class PlayerMovement : MonoBehaviour
         Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger<float>.RemoveListener(GameEvent.PLAYER_MOVEMENT_IMPACT, OnPlayerMovementImpact);
     }
 
     private void OnPlayerGetUp()
     {
         _canMove = true;
+    }
+
+    private void OnPlayerMovementImpact(float percentage)
+    {
+        _movementSpeed -= _movementSpeed * percentage / 100f;
+        _minJumpVelocity -= _minJumpVelocity * percentage / 100f;
+        _maxJumpVelocity -= _maxJumpVelocity * percentage / 100f;
+
     }
 
     private void OnPlayerSitDown()
@@ -64,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (_joystick.Horizontal == 0 || !_canMove) return;
+        if (_joystick.Horizontal == 0 || _canMove == false) return;
 
         HorizontalMovement();
 

@@ -39,7 +39,7 @@ public class PlayerAnimationManager : MonoBehaviour
             _animator.SetBool(Sit, true);
             Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
         }
-        else if (_joystick.Vertical > _sitJoystickSensetivity && _animator.GetBool(Sit))
+        else if (_joystick.Vertical > _sitJoystickSensetivity && _animator.GetBool(Sit) == true)
         {
             _animator.SetBool(Sit, false);
             Messenger.Broadcast(GameEvent.PLAYER_GET_UP);

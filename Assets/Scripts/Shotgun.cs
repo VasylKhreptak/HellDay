@@ -26,6 +26,8 @@ public class Shotgun : Weapon
                 SpawnShootSmoke();
             }
 
+            SpawnShootSparks();
+
             _animator.SetTrigger(IsShooting);
 
             yield return new WaitForSecondsRealtime(_shootDelay);
