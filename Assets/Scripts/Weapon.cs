@@ -75,9 +75,12 @@ public class Weapon : MonoBehaviour
     protected void CheckWeaponConformity(Weapons weapon)
     {
         if (weapon != _weaponType)
+        {
             gameObject.SetActive(false);
+        }
 
-        ImpactPlayerMovement();
+        if (weapon == _weaponType)
+            ImpactPlayerMovement();
     }
 
     protected void ImpactPlayerMovement()

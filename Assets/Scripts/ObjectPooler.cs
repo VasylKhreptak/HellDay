@@ -70,7 +70,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject GetFromPool(Pools pool, Vector3 pooledObjectPosition, Quaternion pooledObjectRotation)
+    public GameObject GetFromPool(Pools pool, Vector2 pooledObjectPosition, Quaternion pooledObjectRotation)
     {
         if (_poolDictionary.ContainsKey(pool) == false)
         {

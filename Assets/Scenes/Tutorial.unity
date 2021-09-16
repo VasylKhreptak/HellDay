@@ -172,7 +172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &349027438
 Transform:
   m_ObjectHideFlags: 0
@@ -58860,7 +58860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &646487514
 AudioSource:
   m_ObjectHideFlags: 0
@@ -60297,7 +60297,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9951029, y: 1}
+    m_SensorSize: {x: 1.9795918, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -60385,6 +60385,10 @@ MonoBehaviour:
     folder: {fileID: 0}
   - _poolType: 8
     _prefab: {fileID: 5633720356271221807, guid: dc0e81761d934ec4c806dc9b86b06b87, type: 3}
+    _size: 20
+    folder: {fileID: 0}
+  - _poolType: 9
+    _prefab: {fileID: 1790929992132167908, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
     _size: 20
     folder: {fileID: 0}
 --- !u!4 &1052731199
@@ -61300,7 +61304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00c110736004e04281f8508a12651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: 6
+  _weapon: 3
   _weapnos:
   - {fileID: 798250838}
   - {fileID: 349027437}

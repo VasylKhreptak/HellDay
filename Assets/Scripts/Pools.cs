@@ -8,5 +8,6 @@ public enum Pools
     ShortBullet,
     BoxDestroyParticle,
     ShootSmoke,
-    ShootSparks
+    ShootSparks,
+    HitParticle
 }
