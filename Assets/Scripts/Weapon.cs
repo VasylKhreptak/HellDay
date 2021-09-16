@@ -168,7 +168,7 @@ public class Weapon : MonoBehaviour
         Vector3 bulletRotation = new Vector3(0, 0, Random.Range(-_angleScatter, _angleScatter));
         ChangeBulletDirection(ref bulletRotation);
 
-        _objectPooler.GetFromPool(Pools.DefaultBullet, bulletPosition, Quaternion.Euler(bulletRotation));
+        _objectPooler.GetFromPool(_bullet, bulletPosition, Quaternion.Euler(bulletRotation));
     }
 
     protected void SpawnBulletMuff()

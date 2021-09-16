@@ -58994,8 +58994,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _movementImpact: 20
-  _shotGunCaliber: 16
+  _movementImpact: 10
+  _shotGunCaliber: 10
   _smokeDensity: 3
 --- !u!212 &646487516
 SpriteRenderer:
@@ -59797,7 +59797,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _movementImpact: 20
+  _movementImpact: 15
 --- !u!212 &871448443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -60373,7 +60373,7 @@ MonoBehaviour:
     folder: {fileID: 0}
   - _poolType: 5
     _prefab: {fileID: 586899608010179881, guid: 91f9bdc0d97277741afa64b93309a69b, type: 3}
-    _size: 10
+    _size: 20
     folder: {fileID: 0}
   - _poolType: 6
     _prefab: {fileID: 3924278482209305468, guid: ca73999a5c820954fa8358cd89fdc5fd, type: 3}
@@ -71115,7 +71115,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _movementImpact: 8
+  _movementImpact: 5
 --- !u!212 &1879101108
 SpriteRenderer:
   m_ObjectHideFlags: 0

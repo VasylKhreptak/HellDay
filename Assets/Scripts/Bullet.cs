@@ -37,18 +37,11 @@ public class Bullet : MonoBehaviour, IPooledObject
     private void OnCollisionEnter2D(Collision2D other)
     {
         ContactPoint2D contactPoint2D = other.GetContact(0);
-
         Vector2 hitPosition = contactPoint2D.point;
 
         _objectPooler.GetFromPool(Pools.HitParticle,
             hitPosition, Quaternion.identity);
-
-        // Vector3.forward;
-        // Vector3.up;
-        // Vector3.right;
-
-
-
+        
         gameObject.SetActive(false);
     }
 }
