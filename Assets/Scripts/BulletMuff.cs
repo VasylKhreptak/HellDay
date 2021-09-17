@@ -21,9 +21,10 @@ public class BulletMuff : MonoBehaviour, IPooledObject
 
     private void SetMovement()
     {
-        _rigidbody2D.velocity = 
-            new Vector2(Random.Range(-_maxHorizontalVelocity , -_minHorizontalVelocity)  * PlayerMovement.movementDirection,
-            _verticalVelocity);
+        _rigidbody2D.velocity =
+            new Vector2(
+                Random.Range(-_maxHorizontalVelocity, -_minHorizontalVelocity) * PlayerMovement.movementDirection,
+                _verticalVelocity);
 
         _rigidbody2D.AddTorque(Random.Range(-_torque, _torque));
     }

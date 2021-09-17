@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _canMove = true;
     }
-    
+
     private void OnPlayerMovementImpact(float percentage)
     {
         _movementSpeed -= _movementSpeed * percentage / 100f;

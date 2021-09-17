@@ -60372,7 +60372,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.226328, y: 1}
+    m_SensorSize: {x: 2.2240186, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -61383,7 +61383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00c110736004e04281f8508a12651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: 2
+  _weapon: 3
   _weapnos:
   - {fileID: 798250838}
   - {fileID: 349027437}
@@ -70714,10 +70714,9 @@ GameObject:
   - component: {fileID: 1755073911}
   - component: {fileID: 1755073912}
   - component: {fileID: 1755073906}
-  - component: {fileID: 1755073913}
   m_Layer: 6
   m_Name: MainPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70733,7 +70732,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.006008148, y: 0.051990032}
   m_SpriteTilingProperty:
@@ -70893,25 +70892,6 @@ MonoBehaviour:
   _animator: {fileID: 1755073910}
   _joystick: {fileID: 691253524}
   _sitJoystickSensetivity: -0.7
---- !u!251 &1755073913
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755073905}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 0
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!1 &1762178634
 GameObject:
   m_ObjectHideFlags: 0
@@ -71418,6 +71398,7 @@ GameObject:
   - component: {fileID: 1968808103}
   - component: {fileID: 1968808102}
   - component: {fileID: 1968808101}
+  - component: {fileID: 1968808104}
   m_Layer: 8
   m_Name: BlueZombie
   m_TagString: Zombie
@@ -71544,13 +71525,13 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.08728409, y: -0.048504114}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.25, y: 0.5}
-    oldSize: {x: 1.7777778, y: 1.7777778}
+    oldSize: {x: 1.6, y: 1.6}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -71579,6 +71560,25 @@ MonoBehaviour:
   _groundChecker: {fileID: 518655935}
   _obstacleChecker: {fileID: 1878047493}
   _obstacleCheckDelay: 0.5
+--- !u!251 &1968808104
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968808097}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1001 &1989481220
 PrefabInstance:
   m_ObjectHideFlags: 0
