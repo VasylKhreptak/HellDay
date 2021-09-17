@@ -36,6 +36,8 @@ public class Weapon : MonoBehaviour
     [SerializeField, Range(0, 70)]
     private float _movementImpact = 10f;
 
+    [Header("Ammo")] [SerializeField] private int _ammo = 100;
+
     protected Coroutine _shootingCoroutine;
     protected ObjectPooler _objectPooler;
 
@@ -137,20 +139,30 @@ public class Weapon : MonoBehaviour
     {
         while (true)
         {
-            OnShoot.Invoke();
-
-            SpawnBullet();
-
-            SpawnBulletMuff();
-
-            SpawnShootSmoke();
-
-            SpawnShootSparks();
-
-            _animator.SetTrigger(IsShooting);
+            if (_canShoot == true)
+            {
+               ShootActions();
+            }
 
             yield return new WaitForSecondsRealtime(_shootDelay);
         }
+    }
+
+    protected virtual void ShootActions()
+    {
+        OnShoot.Invoke();
+
+        SpawnBullet();
+
+        GetAmmo();
+
+        SpawnBulletMuff();
+
+        SpawnShootSmoke();
+
+        SpawnShootSparks();
+
+        StartShootAnimation();
     }
 
     protected IEnumerator ControlShootSpeed()
@@ -171,6 +183,19 @@ public class Weapon : MonoBehaviour
         _objectPooler.GetFromPool(_bullet, bulletPosition, Quaternion.Euler(bulletRotation));
     }
 
+    protected void GetAmmo()
+    {
+        _ammo -= 1;
+        
+        if (_ammo <= 0)
+            _canShoot = false;
+    }
+    
+    protected void StartShootAnimation()
+    {
+        _animator.SetTrigger(IsShooting);
+    }
+    
     protected void SpawnBulletMuff()
     {
         _objectPooler.GetFromPool(_bulletMuff,
