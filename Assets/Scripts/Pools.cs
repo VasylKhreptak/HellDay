@@ -9,5 +9,6 @@ public enum Pools
     BoxDestroyParticle,
     ShootSmoke,
     ShootSparks,
-    HitParticle
+    HitParticle,
+    ZombieHitParticle
 }

@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour, IPooledObject
     [SerializeField] private float _bulletSpeed = 3;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _lifeTime = 2f;
-    
+
     private ObjectPooler _objectPooler;
 
     public void OnEnable()
@@ -39,9 +39,17 @@ public class Bullet : MonoBehaviour, IPooledObject
         ContactPoint2D contactPoint2D = other.GetContact(0);
         Vector2 hitPosition = contactPoint2D.point;
 
-        _objectPooler.GetFromPool(Pools.HitParticle,
-            hitPosition, Quaternion.identity);
-        
+        if (other.collider.CompareTag("Zombie"))
+        {
+            _objectPooler.GetFromPool(Pools.ZombieHitParticle,
+                hitPosition, Quaternion.identity);
+        }
+        else
+        {
+            _objectPooler.GetFromPool(Pools.HitParticle,
+                hitPosition, Quaternion.identity);
+        }
+
         gameObject.SetActive(false);
     }
 }

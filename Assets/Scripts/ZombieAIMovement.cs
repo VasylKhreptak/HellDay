@@ -32,7 +32,7 @@ public class ZombieAIMovement : MonoBehaviour
     {
         if (_canMove == true)
         {
-            _rigidbody2D.velocity = new Vector2(_movementSpeed, -_rigidbody2D.velocity.y);
+            _rigidbody2D.velocity = new Vector2(_movementSpeed, _rigidbody2D.velocity.y);
         }
     }
 
@@ -111,7 +111,5 @@ public class ZombieAIMovement : MonoBehaviour
     private void Jump()
     {
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
-
-        Debug.Log("Jump");
     }
 }
