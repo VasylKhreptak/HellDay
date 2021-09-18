@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208840828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.682, y: 0.638, z: 0}
+  m_LocalPosition: {x: 0.682, y: 0.644, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1968808100}
@@ -168,7 +168,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.27524948, y: -0.28058362}
+  m_Offset: {x: -0.057689667, y: -0.1708132}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -179,7 +179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44950104, y: 0.43883276}
+  m_Size: {x: 0.88462067, y: 0.21929193}
   m_EdgeRadius: 0
 --- !u!114 &208840831
 MonoBehaviour:
@@ -58976,7 +58976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.51, y: 4.89, z: -10}
+  m_LocalPosition: {x: 117.04, y: 1.5600001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60442,7 +60442,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.2240186, y: 1}
+    m_SensorSize: {x: 2.1790614, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -60459,7 +60459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036280480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.51, y: 4.89, z: -10}
+  m_LocalPosition: {x: 117.04, y: 1.5600001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1126636726}
@@ -70898,7 +70898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755073905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 103.51, y: 5.89, z: 0}
+  m_LocalPosition: {x: 117.04, y: 2.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1199932468}
@@ -71102,7 +71102,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1755073912}
           m_TargetAssemblyTypeName: PlayerAnimationManager, Assembly-CSharp
-          m_MethodName: LegPunchActions
+          m_MethodName: StartLegPunch
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -71469,6 +71469,7 @@ GameObject:
   - component: {fileID: 1968808102}
   - component: {fileID: 1968808101}
   - component: {fileID: 1968808104}
+  - component: {fileID: 1968808105}
   m_Layer: 8
   m_Name: BlueZombie
   m_TagString: Zombie
@@ -71555,7 +71556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968808097}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 88.43, y: 4.79, z: 0}
+  m_LocalPosition: {x: 84.347, y: 2.857, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 518655933}
@@ -71623,15 +71624,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd96d61a46e5be4b892bc48d1f78ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 1755073909}
-  _mainDetectionRadius: 9.66
-  _audioDetectionRadius: 26.04
+  _targets:
+  - {fileID: 1755073909}
+  _mainDetectionRadius: 10.89
+  _audioDetectionRadius: 30.15
+  _increaseDetectionRadiusTime: 10
   _rigidbody2D: {fileID: 1968808101}
   _movementSpeed: 1.3
   _jumpVelocity: 10
   _changeDirectionDelay: 15
   _defaultDelay: 0.5
   _obstacleCheckDelay: 0.3
+  _findTargetDelay: 1
   _groundChecker: {fileID: 518655935}
   _obstacleChecker: {fileID: 1878047493}
   _barrierChecker: {fileID: 208840831}
@@ -71654,6 +71658,19 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &1968808105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968808097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6e242377dec0546a66c1e1595cf3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
 --- !u!1001 &1989481220
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,4 +7,5 @@ public static class GameEvent
     public static readonly string START_SHOOTING = "START_SHOOTING";
     public static readonly string STOP_SHOOTING = "STOP_SHOOTING";
     public static readonly string PLAYER_MOVEMENT_IMPACT = "PLAYER_MOVEMENT_IMPACT";
+    public static readonly string PLAYED_AUDIO_SOURCE = "PLAYED_AUDIO_SOURCE";
 }

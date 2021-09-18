@@ -14,10 +14,10 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     public void OnEnable()
     {
         _particleSystem.Play();
-        
+
         StartCoroutine(DisableObject(_duration));
     }
-    
+
     private IEnumerator DisableObject(float time)
     {
         yield return new WaitForSeconds(time);

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimationManager : MonoBehaviour
@@ -46,19 +47,20 @@ public class PlayerAnimationManager : MonoBehaviour
         }
     }
 
-    public void LegPunchActions()
+    public void StartLegPunch()
     {
-        _legPunchActionsCoroutine ??= StartCoroutine(LegPunchActionsCoroutine());
+        if (_legPunchActionsCoroutine == null)
+            _legPunchActionsCoroutine = StartCoroutine(LegPunchRoutine());
     }
 
-    private IEnumerator LegPunchActionsCoroutine()
+    private IEnumerator LegPunchRoutine()
     {
         _animator.SetTrigger(LegPunch);
 
         Messenger<float>.Broadcast(GameEvent.PLAYER_LEG_PUNCH, PUNCH_DURATION);
 
         yield return new WaitForSeconds(PUNCH_DURATION);
-        
+
         _legPunchActionsCoroutine = null;
     }
 }

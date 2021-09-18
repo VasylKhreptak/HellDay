@@ -57,10 +57,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnLegPunched(float animationDuration)
     {
-        StartCoroutine(OnLegPunchedCoroutine(animationDuration));
+        StartCoroutine(OnLegPunchedRoutine(animationDuration));
     }
 
-    private IEnumerator OnLegPunchedCoroutine(float animationDuration)
+    private IEnumerator OnLegPunchedRoutine(float animationDuration)
     {
         _canMove = false;
 

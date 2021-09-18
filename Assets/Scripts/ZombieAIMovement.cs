@@ -1,16 +1,16 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ZombieAIMovement : MonoBehaviour
 {
-    [Header("Target")] [SerializeField] private Transform _target;
+    [Header("Targets")] [SerializeField] private Transform[] _targets;
 
     [Header("Target detection sensetivity")] [SerializeField]
     private float _mainDetectionRadius = 5f;
 
     [SerializeField] private float _audioDetectionRadius;
+    [SerializeField] private float _increaseDetectionRadiusTime = 10f;
 
     [Header("References")] [SerializeField]
     private Rigidbody2D _rigidbody2D;
@@ -25,6 +25,7 @@ public class ZombieAIMovement : MonoBehaviour
 
     [SerializeField] private float _defaultDelay = 0.5f;
     [SerializeField] private float _obstacleCheckDelay = 0.3f;
+    [SerializeField] private float _findTargetDelay = 1f;
 
     [Header("Environment checkers")] [SerializeField]
     private GroundChecker _groundChecker;
@@ -35,12 +36,27 @@ public class ZombieAIMovement : MonoBehaviour
     //Coroutines
     private Coroutine _randomMovementCoroutine = null;
     private Coroutine _followTargetCoroutine = null;
+    private Coroutine _increaseDetectionRadiusCoroutine = null;
 
     private bool _isFollowingTarget = false;
+
+    private Transform _closestTarget;
+
+    private void Awake()
+    {
+        StartCoroutine(FindClosestTargetRoutine());
+
+        Messenger.AddListener(GameEvent.PLAYED_AUDIO_SOURCE, OnPlayedAudioSource);
+    }
 
     private void Update()
     {
         _rigidbody2D.velocity = new Vector2(_movementSpeed, _rigidbody2D.velocity.y);
+    }
+
+    private void OnDestroy()
+    {
+        Messenger.RemoveListener(GameEvent.PLAYED_AUDIO_SOURCE, OnPlayedAudioSource);
     }
 
     private void Start()
@@ -48,6 +64,31 @@ public class ZombieAIMovement : MonoBehaviour
         StartCoroutine(CheckEnvironment());
 
         StartCoroutine(ControlMovementRoutine());
+    }
+
+    private void OnPlayedAudioSource()
+    {
+        if (Vector2.Distance(transform.position, _closestTarget.position) < _audioDetectionRadius)
+        {
+            if (_increaseDetectionRadiusCoroutine == null)
+            {
+                _increaseDetectionRadiusCoroutine =
+                    StartCoroutine(IncreaseDetectionRadiusRoutine(_increaseDetectionRadiusTime));
+            }
+        }
+    }
+
+    private IEnumerator IncreaseDetectionRadiusRoutine(float time)
+    {
+        float previousDetectionRadius = _mainDetectionRadius;
+
+        _mainDetectionRadius = _audioDetectionRadius;
+
+        yield return new WaitForSeconds(time);
+
+        _mainDetectionRadius = previousDetectionRadius;
+
+        _increaseDetectionRadiusCoroutine = null;
     }
 
     private void StartRandomMovement()
@@ -138,9 +179,9 @@ public class ZombieAIMovement : MonoBehaviour
     {
         while (true)
         {
-            if (IsTargetClose(_mainDetectionRadius) == true)
+            if (IsTargetClose(_mainDetectionRadius, _closestTarget) == true)
             {
-                StartFollowingTarget();
+                StartFollowingTarget(_closestTarget);
                 StopRandomMovement();
             }
             else
@@ -153,18 +194,18 @@ public class ZombieAIMovement : MonoBehaviour
         }
     }
 
-    private bool IsTargetClose(float detectionRadius)
+    private bool IsTargetClose(float detectionRadius, Transform target)
     {
-        return Vector2.Distance(transform.position, _target.position) < detectionRadius;
+        return Vector2.Distance(transform.position, target.position) < detectionRadius;
     }
 
-    private void StartFollowingTarget()
+    private void StartFollowingTarget(Transform target)
     {
         _isFollowingTarget = true;
 
         if (_followTargetCoroutine == null)
         {
-            _followTargetCoroutine = StartCoroutine(FollowingTargetRoutine());
+            _followTargetCoroutine = StartCoroutine(FollowTargetRoutine(target));
         }
     }
 
@@ -178,19 +219,19 @@ public class ZombieAIMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator FollowingTargetRoutine()
+    private IEnumerator FollowTargetRoutine(Transform target)
     {
         while (true)
         {
-            LookToTarget();
+            LookToTarget(target);
 
             yield return new WaitForSeconds(_defaultDelay);
         }
     }
 
-    private void LookToTarget()
+    private void LookToTarget(Transform target)
     {
-        if (transform.position.x < _target.position.x)
+        if (transform.position.x < target.position.x)
         {
             SetMovementDirection(1);
         }
@@ -200,12 +241,50 @@ public class ZombieAIMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator FindClosestTargetRoutine()
+    {
+        while (true)
+        {
+            _closestTarget = FindClosestTarget(_targets);
+
+            yield return new WaitForSeconds(_findTargetDelay);
+        }
+    }
+
+    private Transform FindClosestTarget(Transform[] targets)
+    {
+        Transform closestTarget = null;
+        float closestDistanceSqr = Mathf.Infinity;
+
+        foreach (Transform potentialTarget in targets)
+        {
+            Vector3 directionToTarget = potentialTarget.position - transform.position;
+            float sqrDirectionToTarget = directionToTarget.sqrMagnitude;
+
+            if (sqrDirectionToTarget < closestDistanceSqr)
+            {
+                closestDistanceSqr = sqrDirectionToTarget;
+                closestTarget = potentialTarget;
+            }
+        }
+
+        return closestTarget;
+    }
+
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        //Detection
+        Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, _mainDetectionRadius);
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _audioDetectionRadius);
+
+        //ClosestTarget
+        Gizmos.color = Color.red;
+        if (_closestTarget != null)
+            Gizmos.DrawWireCube(_closestTarget.position, Vector2.one);
     }
+#endif
 }

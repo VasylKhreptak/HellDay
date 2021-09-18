@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour, IPooledObject
         ContactPoint2D contactPoint2D = other.GetContact(0);
         Vector2 hitPosition = contactPoint2D.point;
 
-        if (other.collider.CompareTag("Zombie"))
+        if (other.collider.CompareTag("Zombie") == true)
         {
             _objectPooler.GetFromPool(Pools.ZombieHitParticle,
                 hitPosition, Quaternion.identity);

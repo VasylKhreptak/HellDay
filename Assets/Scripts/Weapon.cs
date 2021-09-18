@@ -121,6 +121,8 @@ public class Weapon : MonoBehaviour
         if (_shootingCoroutine != null || _canShoot == false || gameObject.activeSelf == false) return;
 
         _shootingCoroutine = StartCoroutine(Shoot());
+        
+        Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE);
 
         StartCoroutine(ControlShootSpeed());
     }
