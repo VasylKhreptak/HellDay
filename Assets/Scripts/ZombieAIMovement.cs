@@ -1,13 +1,22 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ZombieAIMovement : MonoBehaviour
 {
+    [Header("Target")] [SerializeField] private Transform _target;
+
+    [Header("Target detection sensetivity")] [SerializeField]
+    private float _smallDetectionRadius = 5f;
+
+    [SerializeField] private float _mediumDetectionRadius = 15f;
+    [SerializeField] private float _audioDetectionRadius;
+
     [Header("References")] [SerializeField]
     private Rigidbody2D _rigidbody2D;
 
-    [Header("Animator")] [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _animator;
     private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
     [Header("Movement preferences")] [SerializeField]
@@ -15,18 +24,27 @@ public class ZombieAIMovement : MonoBehaviour
 
     [SerializeField] private float _jumpVelocity = 5f;
 
-    [Tooltip("Time between possible movement direction change")] [SerializeField]
+
+    [Header("Delays")] [Tooltip("Time between possible movement direction change")] [SerializeField]
     private float _changeDirectionDelay = 3f;
+
+    [Tooltip("Time between possible movement state change")] [SerializeField]
+    private float _changeMovementStateDelay = 5;
+
+    [SerializeField] private float _controlGeneralMovementDelay = 1f;
+    [SerializeField] private float _standartDelay = 0.5f;
 
     [Header("GroundChecker")] [SerializeField]
     private GroundChecker _groundChecker;
 
     [SerializeField] private ObstacleChecker _obstacleChecker;
-
-    [SerializeField] private float _obstacleCheckDelay = 0.5f;
-
+    
     private bool _canMove = true;
-    private Coroutine _movementCoroutine = null;
+
+    //Coroutines
+    private Coroutine _randomMovementCoroutine = null;
+    private Coroutine _controlRandomMovementCoroutine = null;
+    private Coroutine _followTargetCoroutine = null;
 
     private void Update()
     {
@@ -38,9 +56,9 @@ public class ZombieAIMovement : MonoBehaviour
 
     private void Start()
     {
-        StartRandomMovement();
+        StartCoroutine(CheckObstacle());
 
-        StartCoroutine(CheckObstacleCoroutine());
+        StartCoroutine(ControlGeneralMovement());
     }
 
     private void StartRandomMovement()
@@ -49,8 +67,7 @@ public class ZombieAIMovement : MonoBehaviour
 
         SetMovementAnimation(true);
 
-        if (_movementCoroutine == null)
-            _movementCoroutine = StartCoroutine(StartRandomMovementCoroutine());
+        _randomMovementCoroutine = StartCoroutine(StartRandomMovementRoutine());
     }
 
     private void StopRandomMovement()
@@ -59,32 +76,41 @@ public class ZombieAIMovement : MonoBehaviour
 
         SetMovementAnimation(false);
 
-        StopCoroutine(_movementCoroutine);
+        if (_randomMovementCoroutine != null)
+            StopCoroutine(_randomMovementCoroutine);
     }
 
-    private IEnumerator StartRandomMovementCoroutine()
+    private IEnumerator StartRandomMovementRoutine()
     {
         while (true)
         {
-            if (Random.Range(0, 2) == 1)
+            if (Random.Range(0, 2) == 1 && 
+                _canMove == true)
             {
-                ChangeMovementDirection();
+                ReverseMovementDirection();
             }
 
             yield return new WaitForSeconds(_changeDirectionDelay);
         }
     }
 
-    private void ChangeMovementDirection()
+    private void ReverseMovementDirection()
     {
         _movementSpeed *= -1;
 
-        ChangeFaceDirection();
+        SetFaceDirection((int) Mathf.Sign(_movementSpeed));
     }
 
-    private void ChangeFaceDirection()
+    private void SetMovementDirection(int direction)
     {
-        transform.localScale = new Vector3(Mathf.Sign(_movementSpeed), 1, 1);
+        _movementSpeed *= direction;
+
+        SetFaceDirection(direction);
+    }
+
+    private void SetFaceDirection(int direction)
+    {
+        transform.localScale = new Vector3(direction, 1, 1);
     }
 
     private void SetMovementAnimation(bool state)
@@ -92,24 +118,107 @@ public class ZombieAIMovement : MonoBehaviour
         _animator.SetBool(IsMoving, state);
     }
 
-    private IEnumerator CheckObstacleCoroutine()
+    private IEnumerator CheckObstacle()
     {
         while (true)
         {
-            if (_obstacleChecker.isObstacleClose == true)
+            if (_obstacleChecker.isObstacleClose == true &&
+                _groundChecker.isGrounded == true && 
+                _canMove == true)
             {
-                if (_groundChecker.isGrounded == true)
-                {
-                    Jump();
-                }
+                Jump();
             }
 
-            yield return new WaitForSeconds(_obstacleCheckDelay);
+            yield return new WaitForSeconds(_standartDelay +
+                                            Random.Range(0, _standartDelay / 2f));
         }
     }
 
     private void Jump()
     {
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
+    }
+
+    private IEnumerator ControlRandomMovement()
+    {
+        while (true)
+        {
+            if (Random.Range(0, 2) == 1)
+            {
+                StartRandomMovement();
+            }
+            else
+            {
+                StopRandomMovement();
+            }
+
+            yield return new WaitForSeconds(_changeMovementStateDelay);
+        }
+    }
+
+    private void StopControlRandomMovement()
+    {
+        if (_controlRandomMovementCoroutine != null)
+        {
+            StopCoroutine(_controlRandomMovementCoroutine);
+        }
+    }
+
+    private IEnumerator ControlGeneralMovement()
+    {
+        while (true)
+        {
+            if (IsZombieClose(_smallDetectionRadius) == true)
+            {
+                StopControlRandomMovement();
+
+                _followTargetCoroutine = StartCoroutine(FollowTaregtRoutine());
+            }
+            else
+            {
+                _controlRandomMovementCoroutine = StartCoroutine(ControlRandomMovement());
+
+                if (_followTargetCoroutine != null)
+                {
+                    StopCoroutine(_followTargetCoroutine);
+                }
+            }
+
+            yield return new WaitForSeconds(_controlGeneralMovementDelay);
+        }
+    }
+
+    private bool IsZombieClose(float detectionRadius)
+    {
+        return Vector2.Distance(transform.position, _target.position) < detectionRadius;
+    }
+
+    private IEnumerator FollowTaregtRoutine()
+    {
+        while (true)
+        {
+            if (transform.position.x < _target.position.x)
+            {
+                SetMovementDirection(1);
+            }
+            else
+            {
+                SetMovementDirection(-1);
+            }
+
+            yield return new WaitForSeconds(_standartDelay);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _smallDetectionRadius);
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, _mediumDetectionRadius);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _audioDetectionRadius);
     }
 }
