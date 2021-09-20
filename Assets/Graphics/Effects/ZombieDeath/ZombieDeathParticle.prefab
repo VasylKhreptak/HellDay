@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3328532198995880442
+--- !u!1001 &3031765750270754045
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,11 +9,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1790929992132167908, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: m_Name
-      value: ZombieHitParticle
+      value: ZombieDeathParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: CollisionModule.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: CollisionModule.m_Bounce.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: CollisionModule.m_Dampen.scalar
+      value: 0.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 0.08
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -39,17 +71,37 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.minColor.r
       value: 0.8018868
       objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 42983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167911, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167911, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 88.286
+      value: 103.31732
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167911, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.904
+      value: 6.1637516
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167911, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: m_LocalPosition.z
