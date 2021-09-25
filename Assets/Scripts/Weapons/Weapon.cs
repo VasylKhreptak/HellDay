@@ -36,7 +36,8 @@ public class Weapon : MonoBehaviour
     [SerializeField, Range(0, 70)]
     private float _movementImpact = 10f;
 
-    [Header("Ammo")] [SerializeField] private int _ammo = 100;
+    [Header("Ammo")] [SerializeField] private int _maxAmmo = 100;
+    [SerializeField] private int _ammo;
 
     protected Coroutine _shootingCoroutine;
     protected ObjectPooler _objectPooler;
@@ -60,7 +61,13 @@ public class Weapon : MonoBehaviour
     {
         _objectPooler = ObjectPooler.Instance;
         
-        //Ammo text
+        SetAmmo(_maxAmmo);
+    }
+
+    protected void SetAmmo(int ammo)
+    {
+        _ammo = ammo;
+        
         Messenger<string>.Broadcast(GameEvent.SET_AMMO_TEXT, _ammo.ToString());
     }
 

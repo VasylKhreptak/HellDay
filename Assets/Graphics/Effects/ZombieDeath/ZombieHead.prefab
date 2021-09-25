@@ -45,7 +45,6 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -151,5 +150,5 @@ MonoBehaviour:
   _maxHorizontalVelocity: 4
   _minVerticalVelocity: 5
   _maxVerticalVelocity: 6
-  _minLifetime: 5
-  _maxLifetime: 8
+  _minLifetime: 10
+  _maxLifetime: 15

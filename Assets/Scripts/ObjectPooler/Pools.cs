@@ -15,5 +15,6 @@ public enum Pools
     ZombieHead,
     ZombieBody,
     ZombieLeg,
-    ZombieArm
+    ZombieArm,
+    ZombieBiteParticle
 }

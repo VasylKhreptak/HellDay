@@ -67,6 +67,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113720, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _mainDetectionRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113720, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _audioDetectionRadius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113721, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: m_UsedByEffector
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3826180828586113723, guid: 65394354db578714490eef9da98e78b6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -93,4 +105,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 3826180828586113719, guid: 65394354db578714490eef9da98e78b6, type: 3}
+    - {fileID: 6733176478792136663, guid: 65394354db578714490eef9da98e78b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 65394354db578714490eef9da98e78b6, type: 3}

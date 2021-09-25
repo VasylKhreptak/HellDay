@@ -1,6 +1,4 @@
-using System;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Zombie : MonoBehaviour
@@ -18,15 +16,15 @@ public class Zombie : MonoBehaviour
     {
         _health -= damage;
 
-        if (IsBroken() == true)
+        if (IsDead() == true)
         {
-            DestroyZombieParticle();
-
+            SpawnZombieParticles();
+            
             Destroy(gameObject);
         }
     }
 
-    private bool IsBroken()
+    private bool IsDead()
     {
         return _health <= 0;
     }
@@ -39,7 +37,7 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private void DestroyZombieParticle()
+    private void SpawnZombieParticles()
     {
         Pools[] pools = 
         {

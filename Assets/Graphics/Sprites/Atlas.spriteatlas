@@ -40,7 +40,6 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 0
       enableTightPacking: 0
-      enableAlphaDilation: 1
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
@@ -51,16 +50,21 @@ SpriteAtlas:
     - {fileID: 2800000, guid: e0acd42a7dcb3fd4e9e0326b86626541, type: 3}
     - {fileID: 2800000, guid: 1395a5342c706b34da6e964fd145f938, type: 3}
     - {fileID: 145889726448105504, guid: 97e9b9f01b8d3f542888c1eab4f54a73, type: 3}
+    - {fileID: 2800000, guid: 247cf1f42f52f3a4d9200617e0d9e634, type: 3}
+    - {fileID: 2800000, guid: 567cdc241df37e347bfe45ae986c7222, type: 3}
+    totalSpriteSurfaceArea: 10305
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 145889726448105504, guid: 97e9b9f01b8d3f542888c1eab4f54a73, type: 3}
+  - {fileID: 21300000, guid: 567cdc241df37e347bfe45ae986c7222, type: 3}
   - {fileID: -5386421843515853864, guid: 1395a5342c706b34da6e964fd145f938, type: 3}
   - {fileID: -812784801661770988, guid: 1395a5342c706b34da6e964fd145f938, type: 3}
   - {fileID: 2079354604877840532, guid: 1395a5342c706b34da6e964fd145f938, type: 3}
   - {fileID: 6456261949877334844, guid: 1395a5342c706b34da6e964fd145f938, type: 3}
+  - {fileID: 21300000, guid: 247cf1f42f52f3a4d9200617e0d9e634, type: 3}
   - {fileID: 21300000, guid: e0acd42a7dcb3fd4e9e0326b86626541, type: 3}
   - {fileID: 21300000, guid: fbca21aadc22e2447b51ad0ec5019593, type: 3}
   - {fileID: 21300000, guid: 10659c3ce5471f74e921ca77ce680986, type: 3}
@@ -68,10 +72,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 2652a38feb71288498db9d803cf86299, type: 3}
   m_PackedSpriteNamesToIndex:
   - TileSet_31
+  - ZombieHealthBar
   - ZombieBodyParts_0
   - ZombieBodyParts_1
   - ZombieBodyParts_2
   - ZombieBodyParts_3
+  - Heart
   - LegPunchButton
   - Joystick Hndle
   - Joystick Base
