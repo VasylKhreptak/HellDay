@@ -1,11 +1,23 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    public float Horizontal { get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; } }
-    public float Vertical { get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; } }
-    public Vector2 Direction { get { return new Vector2(Horizontal, Vertical); } }
+    public float Horizontal
+    {
+        get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; }
+    }
+
+    public float Vertical
+    {
+        get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; }
+    }
+
+    public Vector2 Direction
+    {
+        get { return new Vector2(Horizontal, Vertical); }
+    }
 
     public float HandleRange
     {
@@ -19,15 +31,32 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         set { deadZone = Mathf.Abs(value); }
     }
 
-    public AxisOptions AxisOptions { get { return AxisOptions; } set { axisOptions = value; } }
-    public bool SnapX { get { return snapX; } set { snapX = value; } }
-    public bool SnapY { get { return snapY; } set { snapY = value; } }
+    public AxisOptions AxisOptions
+    {
+        get { return AxisOptions; }
+        set { axisOptions = value; }
+    }
+
+    public bool SnapX
+    {
+        get { return snapX; }
+        set { snapX = value; }
+    }
+
+    public bool SnapY
+    {
+        get { return snapY; }
+        set { snapY = value; }
+    }
 
     [SerializeField] private float handleRange = 1;
     [SerializeField] private float deadZone = 0;
     [SerializeField] private AxisOptions axisOptions = AxisOptions.Both;
     [SerializeField] private bool snapX = false;
     [SerializeField] private bool snapY = false;
+
+    [SerializeField] protected float _handleMovementTime = 1f;
+    [SerializeField] protected AnimationCurve _handleMovementAnimationCurve;
 
     [SerializeField] protected RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
@@ -71,7 +100,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         input = (eventData.position - position) / (radius * canvas.scaleFactor);
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
-        handle.anchoredPosition = input * radius * handleRange;
+        handle.DOLocalMove(input * radius * handleRange, _handleMovementTime).SetEase(_handleMovementAnimationCurve);
     }
 
     protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
@@ -115,6 +144,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 else
                     return (value > 0) ? 1 : -1;
             }
+
             return value;
         }
         else
@@ -124,13 +154,14 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             if (value < 0)
                 return -1;
         }
+
         return 0;
     }
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
         input = Vector2.zero;
-        handle.anchoredPosition = Vector2.zero;
+        handle.DOLocalMove(Vector3.zero, _handleMovementTime);
     }
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
@@ -141,8 +172,14 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             Vector2 pivotOffset = baseRect.pivot * baseRect.sizeDelta;
             return localPoint - (background.anchorMax * baseRect.sizeDelta) + pivotOffset;
         }
+
         return Vector2.zero;
     }
 }
 
-public enum AxisOptions { Both, Horizontal, Vertical }
+public enum AxisOptions
+{
+    Both,
+    Horizontal,
+    Vertical
+}

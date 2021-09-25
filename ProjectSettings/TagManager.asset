@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: HealthBar
+    uniqueID: 2799170593
+    locked: 0
