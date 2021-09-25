@@ -5,11 +5,15 @@ public class Player : MonoBehaviour
 {
     [Header("Preferences")] 
     [SerializeField] private float _maxHealth = 100f;
+    [SerializeField] private Pools[] _playerDeathParts;
     
     private float _health;
+    private ObjectPooler _objectPooler;
 
     private void Start()
     {
+        _objectPooler = ObjectPooler.Instance;
+
         SetMaxHealth(_maxHealth);
     }
 
@@ -26,7 +30,11 @@ public class Player : MonoBehaviour
         
         if (IsDead() == true)
         {
-            DeathACtions();
+           // Messenger.Broadcast(GameEvent.PLAYER_DIED);
+
+            SpawnBodyParts();
+            
+            gameObject.SetActive(false);
         }
     }
 
@@ -35,8 +43,11 @@ public class Player : MonoBehaviour
         return _health <= 0;
     }
 
-    private void DeathACtions()
+    private void SpawnBodyParts()
     {
-        
+        foreach (var part in _playerDeathParts)
+        {
+            _objectPooler.GetFromPool(part, transform.position, Quaternion.identity);
+        }
     }
 }

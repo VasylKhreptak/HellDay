@@ -16,5 +16,11 @@ public enum Pools
     ZombieBody,
     ZombieLeg,
     ZombieArm,
-    ZombieBiteParticle
+    ZombieBiteParticle, 
+    PlayerDeathParticle,
+    PlayerHead,
+    PlayerBody,
+    PlayerStrips,
+    PlayerLeg,
+    PlayerArm
 }

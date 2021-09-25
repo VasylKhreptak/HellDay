@@ -67,6 +67,38 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.data[0]
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.data[1]
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.data[2]
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.data[3]
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.data[4]
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.data[5]
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826180828586113718, guid: 65394354db578714490eef9da98e78b6, type: 3}
+      propertyPath: _zombieDeathParts.Array.data[6]
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3826180828586113720, guid: 65394354db578714490eef9da98e78b6, type: 3}
       propertyPath: _mainDetectionRadius
       value: 10

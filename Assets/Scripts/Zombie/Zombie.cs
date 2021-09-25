@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
+    [Header("Preferences")]
     [SerializeField] private float _health = 100f;
-
+    [SerializeField] private Pools[] _zombieDeathParts;
+    
     private ObjectPooler _objectPooler;
 
     private void Start()
@@ -18,7 +20,7 @@ public class Zombie : MonoBehaviour
 
         if (IsDead() == true)
         {
-            SpawnZombieParticles();
+            SpawnBodyParts();
             
             Destroy(gameObject);
         }
@@ -37,22 +39,11 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private void SpawnZombieParticles()
+    private void SpawnBodyParts()
     {
-        Pools[] pools = 
+        foreach (var part in _zombieDeathParts)
         {
-            Pools.ZombieDeathParticle,
-            Pools.ZombieHead,
-            Pools.ZombieBody,
-            Pools.ZombieLeg,
-            Pools.ZombieLeg,
-            Pools.ZombieArm,
-            Pools.ZombieArm
-        };
-
-        foreach (var pool in pools)
-        {
-            _objectPooler.GetFromPool(pool, transform.position,
+            _objectPooler.GetFromPool(part, transform.position,
                 quaternion.identity);
         }
     }

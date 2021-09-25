@@ -25,6 +25,7 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
 
     [Header("Preferences")] [SerializeField]
     private float _fadeDuration = 1f;
+    [SerializeField] private float _torque = 3f;
 
     private float _currentLifetime;
 
@@ -47,6 +48,8 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
     {
         _rigidbody2D.velocity = new Vector2(Random.Range(_minHorizontalVelocity, _maxHorizontalVelocity),
             Random.Range(_minVerticalVelocity, _maxVerticalVelocity));
+        
+        _rigidbody2D.AddTorque(_torque);
 
         yield return new WaitForSeconds(_currentLifetime - _fadeDuration);
 

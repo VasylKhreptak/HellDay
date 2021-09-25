@@ -11,4 +11,5 @@ public static class GameEvent
     public static readonly string SET_AMMO_TEXT = "SET_AMMO_TEXT";
     public static readonly string SET_MAX_HEALTH_BAR = "SET_MAX_HEALTH_BAR";
     public static readonly string SET_HEALTH_BAR = "SET_HEALTH_BAR";
+    public static readonly string PLAYER_DIED = "PLAYER_DIED";
 }

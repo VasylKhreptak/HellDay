@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  _zombieDeathParts: 0b0000000c0000000d0000000e0000000e0000000f0000000f000000
 --- !u!114 &3826180828586113720
 MonoBehaviour:
   m_ObjectHideFlags: 0

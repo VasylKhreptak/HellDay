@@ -58955,8 +58955,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 504919775}
-  _time: 0.7
-  _startDelay: 1
+  _time: 0.8
+  _startDelay: 0.6
   _animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -58969,6 +58969,24 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.41059893
+      value: 0.81312114
+      inSlope: 1.072019
+      outSlope: 1.072019
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70239145
+      value: 0.97506034
+      inSlope: 0.20506077
+      outSlope: 0.20506077
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07919158
     - serializedVersion: 3
       time: 1
       value: 1
@@ -59180,8 +59198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 691253523}
-  _time: 0.7
-  _startDelay: 1
+  _time: 0.8
+  _startDelay: 0.6
   _animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -59194,6 +59212,24 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.41059893
+      value: 0.81312114
+      inSlope: 1.072019
+      outSlope: 1.072019
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70239145
+      value: 0.97506034
+      inSlope: 0.20506077
+      outSlope: 0.20506077
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07919158
     - serializedVersion: 3
       time: 1
       value: 1
@@ -60765,7 +60801,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0072465, y: 1}
+    m_SensorSize: {x: 1.9726027, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -60886,6 +60922,30 @@ MonoBehaviour:
   - _poolType: 16
     _prefab: {fileID: 2653510695705181996, guid: 0794e7f9bef09264282c9b2a0b5ba95c, type: 3}
     _size: 10
+    folder: {fileID: 0}
+  - _poolType: 17
+    _prefab: {fileID: 2069570050522007671, guid: ef892dc0cbda8b240a662e66b0ad7b26, type: 3}
+    _size: 1
+    folder: {fileID: 0}
+  - _poolType: 18
+    _prefab: {fileID: 4789297331399188246, guid: 2d3446e07f33ee2488e62232d3da6ddb, type: 3}
+    _size: 1
+    folder: {fileID: 0}
+  - _poolType: 19
+    _prefab: {fileID: 7715736918047035719, guid: fbd1e674f5e3d0d48a98e3592888e11e, type: 3}
+    _size: 1
+    folder: {fileID: 0}
+  - _poolType: 20
+    _prefab: {fileID: 1115214648964466260, guid: b07c9419b253d704aa4cf7b9df5cd93c, type: 3}
+    _size: 1
+    folder: {fileID: 0}
+  - _poolType: 22
+    _prefab: {fileID: 7703747415392470762, guid: 334071352ea2dae42a142259a1c72b02, type: 3}
+    _size: 1
+    folder: {fileID: 0}
+  - _poolType: 21
+    _prefab: {fileID: 8850850043269943619, guid: 5e65a36cac227c848bc3edd628b3d35d, type: 3}
+    _size: 1
     folder: {fileID: 0}
 --- !u!4 &1052731199
 Transform:
@@ -62059,8 +62119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1249625715}
-  _time: 0.7
-  _startDelay: 1
+  _time: 0.8
+  _startDelay: 0.6
   _animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -62073,6 +62133,24 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.41059893
+      value: 0.81312114
+      inSlope: 1.072019
+      outSlope: 1.072019
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70239145
+      value: 0.97506034
+      inSlope: 0.20506077
+      outSlope: 0.20506077
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07919158
     - serializedVersion: 3
       time: 1
       value: 1
@@ -62219,8 +62297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1322921540}
-  _time: 0.7
-  _startDelay: 1
+  _time: 0.8
+  _startDelay: 0.6
   _animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -62233,6 +62311,24 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.41059893
+      value: 0.81312114
+      inSlope: 1.072019
+      outSlope: 1.072019
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70239145
+      value: 0.97506034
+      inSlope: 0.20506077
+      outSlope: 0.20506077
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07919158
     - serializedVersion: 3
       time: 1
       value: 1
@@ -71772,6 +71868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _playerDeathParts: 1100000012000000130000001400000015000000150000001600000016000000
 --- !u!1 &1762178634
 GameObject:
   m_ObjectHideFlags: 0
@@ -71977,8 +72074,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 1762178635}
-  _time: 0.7
-  _startDelay: 1
+  _time: 0.8
+  _startDelay: 0.6
   _animationCurve:
     serializedVersion: 2
     m_Curve:
@@ -71991,6 +72088,24 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
+    - serializedVersion: 3
+      time: 0.41059893
+      value: 0.81312114
+      inSlope: 1.072019
+      outSlope: 1.072019
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70239145
+      value: 0.97506034
+      inSlope: 0.20506077
+      outSlope: 0.20506077
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07919158
     - serializedVersion: 3
       time: 1
       value: 1
