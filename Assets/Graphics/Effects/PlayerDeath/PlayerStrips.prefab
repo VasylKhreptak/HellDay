@@ -120,10 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 1115214648964466263}
   _spriteRenderer: {fileID: 1115214648964466256}
-  _minHorizontalVelocity: 5
+  _minHorizontalVelocity: -5
   _maxHorizontalVelocity: 5
-  _minVerticalVelocity: 0
-  _maxVerticalVelocity: 0
+  _minVerticalVelocity: 7
+  _maxVerticalVelocity: 9
   _minLifetime: 10
   _maxLifetime: 15
   _fadeDuration: 1

@@ -60801,7 +60801,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9726027, y: 1}
+    m_SensorSize: {x: 1.93379, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -61859,7 +61859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00c110736004e04281f8508a12651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weapon: 6
+  _weapon: 3
   _weapnos:
   - {fileID: 798250838}
   - {fileID: 349027437}

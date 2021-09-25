@@ -204,6 +204,11 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected bool IsTargetClose(float detectionRadius, Transform target)
     {
+        if (target == null)
+        {
+            return false;
+        }
+        
         return Vector2.Distance(transform.position, target.position) < detectionRadius;
     }
 
@@ -266,6 +271,11 @@ public class ZombieAIMovement : MonoBehaviour
 
         foreach (Transform potentialTarget in targets)
         {
+            if (potentialTarget == null || potentialTarget.gameObject.activeSelf == false)
+            {
+                continue;
+            }
+            
             Vector3 directionToTarget = potentialTarget.position - transform.position;
             float sqrDirectionToTarget = directionToTarget.sqrMagnitude;
 
