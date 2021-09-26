@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
@@ -29,8 +31,8 @@ public class Weapon : MonoBehaviour
 
     protected float _previousAngleScatter;
 
-    [Header("OnShootEvent")] [SerializeField]
-    protected UnityEvent OnShoot;
+    [Header("Audio")] [SerializeField]
+    protected AudioSource _audioSource;
 
     [Header("Player movement impact"), Tooltip("the percentage that will reduce staff mobility")]
     [SerializeField, Range(0, 70)]
@@ -50,18 +52,22 @@ public class Weapon : MonoBehaviour
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
-
-        //Weapnos
-        Messenger<Weapons>.AddListener(GameEvent.SET_WEAPON, CheckWeaponConformity);
+        
+        //weapon
         Messenger.AddListener(GameEvent.START_SHOOTING, StartShooting);
         Messenger.AddListener(GameEvent.STOP_SHOOTING, StopShooting);
+    }
+
+    protected void OnEnable()
+    {
+        Messenger<float>.Broadcast(GameEvent.PLAYER_MOVEMENT_IMPACT, _movementImpact);
+        
+        SetAmmo(_maxAmmo);
     }
 
     protected void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-        
-        SetAmmo(_maxAmmo);
     }
 
     protected void SetAmmo(int ammo)
@@ -78,31 +84,17 @@ public class Weapon : MonoBehaviour
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
 
-        //Weapnos
-        Messenger<Weapons>.RemoveListener(GameEvent.SET_WEAPON, CheckWeaponConformity);
+        //weapon
         Messenger.RemoveListener(GameEvent.START_SHOOTING, StartShooting);
         Messenger.RemoveListener(GameEvent.STOP_SHOOTING, StopShooting);
     }
 
-    protected void CheckWeaponConformity(Weapons weapon)
-    {
-        if (weapon != _weaponType)
-        {
-            gameObject.SetActive(false);
-        }
-
-        if (weapon == _weaponType)
-            ImpactPlayerMovement();
-    }
-
-    protected void ImpactPlayerMovement()
-    {
-        Messenger<float>.Broadcast(GameEvent.PLAYER_MOVEMENT_IMPACT, _movementImpact);
-    }
-
     protected void OnLegPunched(float animationDuration)
     {
-        if (gameObject.activeSelf == false) return;
+        if (gameObject.activeSelf == false)
+        {
+            return;
+        }
 
         StartCoroutine(OnLegPunchedCoroutine(animationDuration));
     }
@@ -128,7 +120,7 @@ public class Weapon : MonoBehaviour
 
     public void StartShooting()
     {
-        if (_shootingCoroutine != null || _canShoot == false || gameObject.activeSelf == false) return;
+        if (_shootingCoroutine != null || _canShoot == false) return;
 
         _shootingCoroutine = StartCoroutine(Shoot());
         
@@ -160,7 +152,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void ShootActions()
     {
-        OnShoot.Invoke();
+        _audioSource.Play();
 
         SpawnBullet();
 

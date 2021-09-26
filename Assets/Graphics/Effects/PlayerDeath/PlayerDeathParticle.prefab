@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerDeathParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167909, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: ShapeModule.type
       value: 10

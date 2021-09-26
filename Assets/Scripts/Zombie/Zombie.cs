@@ -35,7 +35,7 @@ public class Zombie : MonoBehaviour
     {
         if (other.collider.CompareTag("Bullet"))
         {
-            TakeDamage(WeaponManager.defaultBulletDamage);
+            TakeDamage(WeaponController.defaultBulletDamage);
         }
     }
 

@@ -21,7 +21,7 @@ public class Shotgun : Weapon
 
     protected override void ShootActions()
     {
-        OnShoot.Invoke();
+        _audioSource.Play();
 
 
         for (int i = 0; i < _shotgunCaliber; i++)

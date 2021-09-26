@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
 
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
+    [SerializeField] private GameObject _player;
 
     [Header("Preferences")] [SerializeField]
     private float _sitJoystickSensetivity = -0.7f;
@@ -48,7 +49,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void StartLegPunch()
     {
-        if (_legPunchActionsCoroutine == null)
+        if (_legPunchActionsCoroutine == null && _player.activeSelf == true)
             _legPunchActionsCoroutine = StartCoroutine(LegPunchRoutine());
     }
 
