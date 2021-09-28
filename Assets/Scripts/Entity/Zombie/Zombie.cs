@@ -1,19 +1,20 @@
 using UnityEngine;
 
-public class Zombie : MonoBehaviour
+public class Zombie : Entity
 {
     [Header("Preferences")]
-    [SerializeField] private float _health = 100f;
     [SerializeField] private Pools[] _zombieDeathParts;
-    
+
     private ObjectPooler _objectPooler;
 
-    private void Start()
+    protected override void Start()
     {
+        SetMaxHealth(_maxHealth);
+        
         _objectPooler = ObjectPooler.Instance;
     }
 
-    private void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         _health -= damage;
 
@@ -23,11 +24,6 @@ public class Zombie : MonoBehaviour
             
             Destroy(gameObject);
         }
-    }
-
-    private bool IsDead()
-    {
-        return _health <= 0;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

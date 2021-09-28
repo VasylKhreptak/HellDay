@@ -3,14 +3,23 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-    [SerializeField] protected int _durability = 7;
+    [SerializeField] protected int _maxDurability = 7;
+
+    protected float _durability;
     protected ObjectPooler _objectPooler;
 
     private void Start()
     {
+        SetMaxDurability(_maxDurability);
+        
         _objectPooler = ObjectPooler.Instance;
     }
 
+    protected void SetMaxDurability(int maxDurability)
+    {
+        _durability = _maxDurability;
+    }
+    
     protected bool IsBroken()
     {
         return _durability <= 0;

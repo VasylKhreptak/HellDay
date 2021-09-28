@@ -1,29 +1,28 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     [Header("Preferences")] 
-    [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private Pools[] _playerDeathParts;
     
-    private float _health;
     private ObjectPooler _objectPooler;
 
-    private void Start()
+    protected override void Start()
     {
-        _objectPooler = ObjectPooler.Instance;
-
         SetMaxHealth(_maxHealth);
+                                                                                                                            
+        _objectPooler = ObjectPooler.Instance;
     }
 
-    private void SetMaxHealth(float maxHealth)
+    protected override void SetMaxHealth(float maxHealth)
     {
         _health = _maxHealth;
+        
         Messenger<float>.Broadcast(GameEvent.SET_MAX_HEALTH_BAR, _maxHealth);
     }
     
-    public void TakeDamage(float damage)
+     public override void TakeDamage(float damage)
     {
         _health -= damage;
         Messenger<float>.Broadcast(GameEvent.SET_HEALTH_BAR, _health);
@@ -37,12 +36,7 @@ public class Player : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-    private bool IsDead()
-    {
-        return _health <= 0;
-    }
-
+    
     private void SpawnBodyParts()
     {
         foreach (Pools part in _playerDeathParts)
