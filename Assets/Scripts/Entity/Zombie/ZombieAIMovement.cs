@@ -255,7 +255,11 @@ public class ZombieAIMovement : MonoBehaviour
         if (_targetDetection.closestTarget != null)
         {
             Gizmos.DrawWireCube(_targetDetection.closestTarget.position, Vector2.one);
-            Gizmos.DrawLine(_transform.position, _targetDetection.closestTarget.position);
+
+            if (_transform.ContainsTransform(_audioDetectionRadius, _targetDetection.closestTarget))
+            {
+                Gizmos.DrawLine(_transform.position, _targetDetection.closestTarget.position);
+            }
         }
     }
 #endif

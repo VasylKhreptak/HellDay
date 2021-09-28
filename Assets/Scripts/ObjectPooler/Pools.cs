@@ -22,5 +22,6 @@ public enum Pools
     PlayerBody,
     PlayerStrips,
     PlayerLeg,
-    PlayerArm
+    PlayerArm, 
+    TVDestroyParticle
 }

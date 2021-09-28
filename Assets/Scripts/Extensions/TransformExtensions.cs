@@ -35,6 +35,6 @@ public static class TransformExtensions
             return false;
         }
         
-        return Vector2.Distance(transform.position, target.position) < radius;
+        return (transform.position - target.position).sqrMagnitude < radius * radius;
     }
 }

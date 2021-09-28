@@ -16,7 +16,7 @@ public class ObjectPooler : MonoBehaviour
         public int Size => _size;
         public Pools PoolType => _poolType;
     }
-
+    
     private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
     [SerializeField] private List<Pool> _pools;
 

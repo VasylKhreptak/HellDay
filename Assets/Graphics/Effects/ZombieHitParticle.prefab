@@ -20,6 +20,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
@@ -30,6 +34,10 @@ PrefabInstance:
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: CollisionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: CollisionModule.collisionMode

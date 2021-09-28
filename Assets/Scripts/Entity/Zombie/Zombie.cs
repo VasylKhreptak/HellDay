@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Zombie : Entity
 {
-    [Header("Preferences")]
+    [Header("Preferences")] 
+    [SerializeField] private Transform _transform;
     [SerializeField] private Pools[] _zombieDeathParts;
 
     private ObjectPooler _objectPooler;
@@ -38,7 +39,7 @@ public class Zombie : Entity
     {
         foreach (var part in _zombieDeathParts)
         {
-            _objectPooler.GetFromPool(part, transform.position,
+            _objectPooler.GetFromPool(part, _transform.position,
                 Quaternion.identity);
         }
     }

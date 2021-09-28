@@ -16,6 +16,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: moveWithTransform
       value: 1
       objectReference: {fileID: 0}
@@ -28,8 +32,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 113.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: CollisionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ShapeModule.m_Rotation.z
+      value: 29.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: CollisionModule.collisionMode
@@ -97,7 +117,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167911, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: m_RootOrder

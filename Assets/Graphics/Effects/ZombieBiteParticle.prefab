@@ -60,8 +60,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3659271135456195611, guid: 9e5b9f8f676532b40b30ad882c70c142, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659271135456195611, guid: 9e5b9f8f676532b40b30ad882c70c142, type: 3}
       propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659271135456195611, guid: 9e5b9f8f676532b40b30ad882c70c142, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 3659271135456195611, guid: 9e5b9f8f676532b40b30ad882c70c142, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 3659271135456195611, guid: 9e5b9f8f676532b40b30ad882c70c142, type: 3}
       propertyPath: InitialModule.startSpeed.scalar

@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
       propertyPath: moveWithTransform
       value: 0
       objectReference: {fileID: 0}
@@ -129,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4271707791968312466, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
       propertyPath: m_Name
-      value: ShootSparks Variant
+      value: ShootSparks
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df35b80a965095e43b0c82e368f0c850, type: 3}

@@ -15,7 +15,7 @@ public class WeaponController : MonoBehaviour
 
     public static readonly int defaultBulletDamage = 10;
 
-    private void Start()
+    private void OnValidate()
     {
         SetWeapon(_weaponToSelect);
     }

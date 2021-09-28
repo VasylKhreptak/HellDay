@@ -3,39 +3,40 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [Header("Weapon type")] [SerializeField]
-    protected Weapons _weaponType;
+    [Header("Weapon type")] 
+    [SerializeField] protected Weapons _weaponType;
 
-    [Header("Positions")] [SerializeField] protected Transform _bulletSpawnPlace;
+    [Header("Positions")] 
+    [SerializeField] protected Transform _bulletSpawnPlace;
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
 
-    [Header("Weapon options")] [Tooltip("Time before two shoots")] [SerializeField]
-    protected float _shootDelay = 0.1f;
-
-    [SerializeField] protected float _angleScatter = 5f;
+    [Header("Weapon options")] 
+    [Tooltip("Time before two shoots")] 
+    [SerializeField] protected float _shootDelay = 0.1f;
+    [SerializeField] protected float _angleScatter = 5f; 
     [SerializeField] protected bool _canShoot = true;
 
-    [Header("Ammo options")] [SerializeField]
-    protected Pools _bullet = Pools.DefaultBullet;
-
+    [Header("Ammo options")] 
+    [SerializeField] protected Pools _bullet = Pools.DefaultBullet;
     [SerializeField] protected Pools _bulletMuff = Pools.DefaultBulletMuff;
 
-    [Header("Animator")] [SerializeField] protected Animator _animator;
-    protected static readonly int IsShooting = Animator.StringToHash("IsShooting");
+    [Header("Animator")] 
+    [SerializeField] protected Animator _animator;
+    protected static readonly int ShootTrigger = Animator.StringToHash("Shoot");
 
-    [Header("Weapon option on condition")] [SerializeField]
-    protected float _angleScatterOnSit = 2f;
-
+    [Header("Weapon option on condition")] 
+    [SerializeField] protected float _angleScatterOnSit = 2f;
     protected float _previousAngleScatter;
 
-    [Header("Audio")] [SerializeField]
-    protected AudioSource _audioSource;
+    [Header("Audio")] 
+    [SerializeField] protected AudioSource _audioSource;
 
-    [Header("Player movement impact"), Tooltip("the percentage that will reduce staff mobility")]
-    [SerializeField, Range(0, 70)]
-    private float _movementImpact = 10f;
+    [Header("Player movement impact")]
+    [ Tooltip("the percentage that will reduce staff mobility")]
+    [SerializeField, Range(0, 70)] private float _movementImpact = 10f;
 
-    [Header("Ammo")] [SerializeField] private int _maxAmmo = 100;
+    [Header("Ammo")] 
+    [SerializeField] private int _maxAmmo = 100;
     [SerializeField] private int _ammo;
 
     protected Coroutine _shootingCoroutine;
@@ -128,9 +129,7 @@ public class Weapon : MonoBehaviour
     {
         if (_shootingCoroutine != null)
             StopCoroutine(_shootingCoroutine);
-
-        _animator.SetTrigger(IsShooting);
-
+        
         _shootingCoroutine = null;
     }
 
@@ -149,7 +148,7 @@ public class Weapon : MonoBehaviour
 
     protected virtual void ShootActions()
     {
-        _audioSource.Play();
+        PlayShootAudio();
 
         SpawnBullet();
 
@@ -162,6 +161,11 @@ public class Weapon : MonoBehaviour
         SpawnShootSparks();
 
         StartShootAnimation();
+    }
+
+    protected void PlayShootAudio()
+    {
+        _audioSource.Play();
     }
 
     protected IEnumerator ControlShootSpeed()
@@ -194,7 +198,7 @@ public class Weapon : MonoBehaviour
 
     protected void StartShootAnimation()
     {
-        _animator.SetTrigger(IsShooting);
+        _animator.SetTrigger(ShootTrigger);
     }
 
     protected void SpawnBulletMuff()

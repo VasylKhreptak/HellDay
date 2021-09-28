@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7406587449914740262}
   - component: {fileID: 7406587449914740257}
   - component: {fileID: 7406587449914740256}
+  - component: {fileID: 7752900502715695475}
   m_Layer: 9
   m_Name: ZombieBody
   m_TagString: Zombie
@@ -154,3 +155,18 @@ MonoBehaviour:
   _maxLifetime: 15
   _fadeDuration: 1
   _torque: 3
+--- !u!114 &7752900502715695475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7406587449914740259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxDurability: 8
+  _minInteractImpulse: 200
+  _destroyParticle: 10
