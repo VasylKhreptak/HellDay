@@ -1,46 +1,38 @@
-using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
-public class UI_SlideAnimation : MonoBehaviour
+public class UI_SlideAnimation : UI_MovementAnimation
 {
-    [SerializeField] private RectTransform _rectTransform;
-    [SerializeField] private float _time = 1f;
-    [SerializeField] private float _startDelay = 0f;
-    [SerializeField] private AnimationCurve _animationCurve;
-    [SerializeField] Transform _start;
-    private Vector3 _targetPosition;
+   [SerializeField] private float _startDelay = 0.5f;
 
-    private void Start()
-    {
-        _targetPosition = _rectTransform.position;
+   private void Awake()
+   {
+      Messenger.AddListener(GameEvent.PLAYER_DIED, OnPlayerDied);
 
-        HideBehindScreen();
+      _targetAnchoredPosition = _rectTransform.anchoredPosition;
+   }
+   
+   private void OnDestroy()
+   {
+      Messenger.RemoveListener(GameEvent.PLAYER_DIED, OnPlayerDied);
+   }
 
-        StartAnimating();
-    }
- 
-    private void HideBehindScreen()
-    {
-        _rectTransform.position = _start.position;
-    }
+   private IEnumerator Start()
+   {
+      HideBehindScreen();
+      
+      yield return new WaitForSeconds(_startDelay);
+      
+      StartAnimation(AnimationType.appear, _duration);
+   }
 
-    private void StartAnimating()
-    {
-        Sequence sequence = DOTween.Sequence();
-
-        sequence.AppendInterval(_startDelay);
-
-        sequence.Append(DOTween.To(() => _rectTransform.position,
-            x => _rectTransform.position = x,
-            _targetPosition, _time).SetEase(_animationCurve));
-    }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(_start.position, 0.5f);
-        Gizmos.DrawLine(_start.position, _rectTransform.position);
-    }
-#endif
+   private void HideBehindScreen()
+   {
+      _rectTransform.position = _startTransform.position;
+   }
+   
+   private void OnPlayerDied()
+   {
+      StartAnimation(AnimationType.disappear, _duration);
+   }
 }

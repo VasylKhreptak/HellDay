@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
-using Random = UnityEngine.Random;
 
 public class Weapon : MonoBehaviour
 {
@@ -132,7 +129,7 @@ public class Weapon : MonoBehaviour
         if (_shootingCoroutine != null)
             StopCoroutine(_shootingCoroutine);
 
-        _animator.SetBool(IsShooting, false);
+        _animator.SetTrigger(IsShooting);
 
         _shootingCoroutine = null;
     }

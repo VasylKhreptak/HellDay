@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Zombie : MonoBehaviour
@@ -44,7 +43,7 @@ public class Zombie : MonoBehaviour
         foreach (var part in _zombieDeathParts)
         {
             _objectPooler.GetFromPool(part, transform.position,
-                quaternion.identity);
+                Quaternion.identity);
         }
     }
 }

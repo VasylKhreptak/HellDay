@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
         
         if (IsDead() == true)
         {
-           // Messenger.Broadcast(GameEvent.PLAYER_DIED);
+            Messenger.Broadcast(GameEvent.PLAYER_DIED);
 
             SpawnBodyParts();
             
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void SpawnBodyParts()
     {
-        foreach (var part in _playerDeathParts)
+        foreach (Pools part in _playerDeathParts)
         {
             _objectPooler.GetFromPool(part, transform.position, Quaternion.identity);
         }

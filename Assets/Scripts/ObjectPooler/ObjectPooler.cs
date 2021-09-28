@@ -40,7 +40,7 @@ public class ObjectPooler : MonoBehaviour
 
     private void CreatePoolFolders()
     {
-        foreach (var pool in _pools)
+        foreach (Pool pool in _pools)
         {
             pool.folder = new GameObject(pool.PoolType.ToString());
             pool.folder.transform.parent = gameObject.transform;
@@ -51,7 +51,7 @@ public class ObjectPooler : MonoBehaviour
     {
         _poolDictionary = new Dictionary<Pools, Queue<GameObject>>();
 
-        foreach (var pool in _pools)
+        foreach (Pool pool in _pools)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 

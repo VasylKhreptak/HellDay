@@ -4,24 +4,23 @@ using Random = UnityEngine.Random;
 
 public class ZombieAIMovement : MonoBehaviour
 {
-    [Header("Targets")] [SerializeField] protected Transform[] _targets;
-
-    [Header("Target detection sensetivity")] [SerializeField]
-    protected float _mainDetectionRadius = 5f;
-
+    [Header("Target detection sensetivity")] 
+    [SerializeField] protected float _mainDetectionRadius = 5f;
     [SerializeField] protected float _audioDetectionRadius;
     [SerializeField] protected float _increaseDetectionRadiusTime = 10f;
 
-    [Header("References")] [SerializeField]
-    protected Rigidbody2D _rigidbody2D;
-
-    [Header("Movement preferences")] [SerializeField]
-    protected float _movementSpeed = 3f;
+    [Header("References")] 
+    [SerializeField] protected Transform _transform;
+    [SerializeField] protected Rigidbody2D _rigidbody2D;
+    [SerializeField] protected TargetDetection _targetDetection;
+    
+    [Header("Movement preferences")] 
+    [SerializeField] protected float _movementSpeed = 3f;
     [SerializeField] protected float _jumpVelocity = 5f;
 
-    [Header("Delays")] [Tooltip("Time between possible movement direction change")] [SerializeField]
-    protected float _changeDirectionDelay = 3f;
-
+    [Header("Delays")]
+    [Tooltip("Time between possible movement direction change")] 
+    [SerializeField] protected float _changeDirectionDelay = 3f;
     [SerializeField] protected float _defaultDelay = 0.5f;
     [SerializeField] protected float _obstacleCheckDelay = 0.3f;
     [SerializeField] protected float _findTargetDelay = 1f;
@@ -38,12 +37,9 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected bool _isFollowingTarget = false;
 
-    protected Transform _closestTarget;
 
     protected void Awake()
     {
-        StartCoroutine(FindClosestTargetRoutine());
-
         Messenger.AddListener(GameEvent.PLAYED_AUDIO_SOURCE, OnPlayedAudioSource);
     }
 
@@ -66,7 +62,7 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected void OnPlayedAudioSource()
     {
-        if (Vector2.Distance(transform.position, _closestTarget.position) < _audioDetectionRadius)
+        if (Vector2.Distance(_transform.position, _targetDetection.closestTarget.position) < _audioDetectionRadius)
         {
             if (_increaseDetectionRadiusCoroutine == null)
             {
@@ -146,7 +142,7 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected void SetFaceDirection(int direction)
     {
-        transform.localScale = new Vector3(direction, 1, 1);
+        _transform.localScale = new Vector3(direction, 1, 1);
     }
 
     protected IEnumerator CheckEnvironmentRoutine()
@@ -187,9 +183,9 @@ public class ZombieAIMovement : MonoBehaviour
     {
         while (true)
         {
-            if (IsTargetClose(_mainDetectionRadius, _closestTarget) == true)
+            if (_transform.ContainsTransform(_mainDetectionRadius, _targetDetection.closestTarget) == true)
             {
-                StartFollowingTarget(_closestTarget);
+                StartFollowingTarget(_targetDetection.closestTarget);
                 StopRandomMovement();
             }
             else
@@ -200,16 +196,6 @@ public class ZombieAIMovement : MonoBehaviour
 
             yield return new WaitForSeconds(_defaultDelay);
         }
-    }
-
-    protected bool IsTargetClose(float detectionRadius, Transform target)
-    {
-        if (target == null)
-        {
-            return false;
-        }
-        
-        return Vector2.Distance(transform.position, target.position) < detectionRadius;
     }
 
     protected void StartFollowingTarget(Transform target)
@@ -244,7 +230,7 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected void LookToTarget(Transform target)
     {
-        if (transform.position.x < target.position.x)
+        if (_transform.position.x < target.position.x)
         {
             SetMovementDirection(1);
         }
@@ -254,55 +240,23 @@ public class ZombieAIMovement : MonoBehaviour
         }
     }
 
-    protected IEnumerator FindClosestTargetRoutine()
-    {
-        while (true)
-        {
-            _closestTarget = FindClosestTarget(_targets);
-
-            yield return new WaitForSeconds(_findTargetDelay);
-        }
-    }
-
-    protected Transform FindClosestTarget(Transform[] targets)
-    {
-        Transform closestTarget = null;
-        float closestDistanceSqr = Mathf.Infinity;
-
-        foreach (Transform potentialTarget in targets)
-        {
-            if (potentialTarget == null || potentialTarget.gameObject.activeSelf == false)
-            {
-                continue;
-            }
-            
-            Vector3 directionToTarget = potentialTarget.position - transform.position;
-            float sqrDirectionToTarget = directionToTarget.sqrMagnitude;
-
-            if (sqrDirectionToTarget < closestDistanceSqr)
-            {
-                closestDistanceSqr = sqrDirectionToTarget;
-                closestTarget = potentialTarget;
-            }
-        }
-
-        return closestTarget;
-    }
-
 #if UNITY_EDITOR
     protected void OnDrawGizmosSelected()
     {
         //Detection
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, _mainDetectionRadius);
+        Gizmos.DrawWireSphere(_transform.position, _mainDetectionRadius);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _audioDetectionRadius);
+        Gizmos.DrawWireSphere(_transform.position, _audioDetectionRadius);
 
         //ClosestTarget
         Gizmos.color = Color.red;
-        if (_closestTarget != null)
-            Gizmos.DrawWireCube(_closestTarget.position, Vector2.one);
+        if (_targetDetection.closestTarget != null)
+        {
+            Gizmos.DrawWireCube(_targetDetection.closestTarget.position, Vector2.one);
+            Gizmos.DrawLine(_transform.position, _targetDetection.closestTarget.position);
+        }
     }
 #endif
 }

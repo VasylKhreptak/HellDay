@@ -1,40 +1,34 @@
-using System;
 using System.Collections;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ZombieCombat : MonoBehaviour
 {
-    [Header("Damage")] [SerializeField] private float _damage = 20f;
+    [Header("Damage")] 
+    [SerializeField] protected float _damage = 20f;
 
-    [Header("References")] [SerializeField]
-    private Transform _target;
+    [Header("Target Detection")]
+    [SerializeField] protected Player _player;
+    [SerializeField] protected TargetDetection _targetDetection;
+    
+    [Header("Preferences")] 
+    [SerializeField] protected float _atackRadius;
+    [SerializeField] protected Transform _atackCenter;
+    [SerializeField] protected float _atackDelay = 1;
+    [SerializeField] protected LayerMask _playerLayerMask;
 
-    [SerializeField] private ZombieAIMovement _zombieAIMovement;
+    protected ObjectPooler _objectPooler;
 
-    [SerializeField] private Player _player;
-
-    [Header("Preferences")] [SerializeField]
-    private float _atackRadius;
-
-    [SerializeField] private Transform _atackCenter;
-    [SerializeField] private float _atackDelay = 1;
-    [SerializeField] private LayerMask _playerLayerMask;
-
-    private ObjectPooler _objectPooler;
-
-    private void Awake()
+    protected void Awake()
     {
         StartCoroutine(ControlAtackRoutine());
     }
 
-    private void Start()
+    protected void Start()
     {
         _objectPooler = ObjectPooler.Instance;
     }
 
-    private IEnumerator ControlAtackRoutine()
+    protected virtual IEnumerator ControlAtackRoutine()
     {
         while (true)
         {
@@ -47,28 +41,27 @@ public class ZombieCombat : MonoBehaviour
         }
     }
 
-    private bool CanAtact()
+    protected virtual bool CanAtact()
     {
         Collider2D collider2D = Physics2D.OverlapCircle(_atackCenter.position, _atackRadius, _playerLayerMask);
 
         return collider2D != null;
     }
 
-
-    private void Atack()
+    protected void Atack()
     {
         _player.TakeDamage(_damage);
 
-        SpawnZombieBiteParticle();
+        SpawnAtackParticles();
     }
 
-    private void SpawnZombieBiteParticle()
+    protected virtual void SpawnAtackParticles()
     {
         _objectPooler.GetFromPool(Pools.ZombieBiteParticle, _atackCenter.position, Quaternion.identity);
     }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos()
+    protected void OnDrawGizmosSelected()
     {
         if (_atackCenter == null)
         {
