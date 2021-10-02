@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Zombie : Entity
+public class Zombie : Entity, IKillable
 {
     [Header("Preferences")] 
     [SerializeField] private Transform _transform;
@@ -31,7 +31,7 @@ public class Zombie : Entity
     {
         if (other.collider.CompareTag("Bullet"))
         {
-            TakeDamage(WeaponController.defaultBulletDamage);
+            TakeDamage(WeaponControl.defaultBulletDamage);
         }
     }
 

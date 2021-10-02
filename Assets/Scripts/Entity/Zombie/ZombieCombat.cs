@@ -3,18 +3,20 @@ using UnityEngine;
 
 public class ZombieCombat : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] protected Transform _transform;
+    
     [Header("Damage")] 
     [SerializeField] protected float _damage = 20f;
 
     [Header("Target Detection")]
-    [SerializeField] protected Player _player;
-    [SerializeField] protected TargetDetection _targetDetection;
+    [SerializeField] protected KillableTargetDetection  _killableTargetDetection;
     
     [Header("Preferences")] 
     [SerializeField] protected float _atackRadius;
     [SerializeField] protected Transform _atackCenter;
     [SerializeField] protected float _atackDelay = 1;
-    [SerializeField] protected LayerMask _playerLayerMask;
+    [SerializeField] protected LayerMask _killableEntityLayerMask;
 
     protected ObjectPooler _objectPooler;
 
@@ -43,15 +45,20 @@ public class ZombieCombat : MonoBehaviour
 
     protected virtual bool CanAtact()
     {
-        Collider2D collider2D = Physics2D.OverlapCircle(_atackCenter.position, _atackRadius, _playerLayerMask);
+        if (_killableTargetDetection._closestKillableTarget._transform.gameObject.activeSelf == false)
+        {
+            return false;
+        }
+        
+        Collider2D collider2D = Physics2D.OverlapCircle(_atackCenter.position, _atackRadius, _killableEntityLayerMask);
 
         return collider2D != null;
     }
 
     protected void Atack()
     {
-        _player.TakeDamage(_damage);
-
+        _killableTargetDetection._closestKillableTarget._Killable.TakeDamage(_damage);
+        
         SpawnAtackParticles();
     }
 
@@ -70,6 +77,17 @@ public class ZombieCombat : MonoBehaviour
         
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_atackCenter.position, _atackRadius);
+        
+        //_closestKillableTarget
+        Gizmos.color = Color.red;
+        if (_killableTargetDetection._closestKillableTarget != null)
+        {
+            Gizmos.DrawWireCube(_killableTargetDetection._closestKillableTarget._transform.position,
+                Vector2.one);
+
+            Gizmos.DrawLine(_transform.position,
+                _killableTargetDetection._closestKillableTarget._transform.position);
+        }
     }
 #endif
 }

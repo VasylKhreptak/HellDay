@@ -86,8 +86,9 @@ GameObject:
   - component: {fileID: 7552724589778891913}
   - component: {fileID: 7552724589778891926}
   - component: {fileID: 7552724589778891927}
-  - component: {fileID: 7552724589778891920}
   - component: {fileID: 7552724589778891912}
+  - component: {fileID: 4667588812372640135}
+  - component: {fileID: 6472815694905530543}
   m_Layer: 8
   m_Name: YellowZombie
   m_TagString: Zombie
@@ -262,8 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _transform: {fileID: 0}
-  _zombieDeathParts: 0b0000000c0000000d0000000e0000000f000000
+  _transform: {fileID: 7552724589778891921}
+  _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &7552724589778891927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,31 +277,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d90d10dac34db489ea6196ddfc736e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transform: {fileID: 7552724589778891921}
   _damage: 10
-  _player: {fileID: 0}
-  _targetDetection: {fileID: 0}
+  _killableTargetDetection: {fileID: 6472815694905530543}
   _atackRadius: 0.13
   _atackCenter: {fileID: 7552724590804465055}
   _atackDelay: 1
-  _playerLayerMask:
+  _killableEntityLayerMask:
     serializedVersion: 2
-    m_Bits: 64
---- !u!114 &7552724589778891920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7552724589778891914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2504ac04d3d09249ba0271c660e1c76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 7552724589778891921}
-  _targets:
-  - {fileID: 0}
-  _findTargetDelay: 1
+    m_Bits: 576
 --- !u!114 &7552724589778891912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,16 +303,44 @@ MonoBehaviour:
   _increaseDetectionRadiusTime: 10
   _transform: {fileID: 7552724589778891921}
   _rigidbody2D: {fileID: 7552724589778891925}
-  _targetDetection: {fileID: 7552724589778891920}
+  _killableTargetDetection: {fileID: 6472815694905530543}
   _movementSpeed: 0.9
   _jumpVelocity: 10
   _changeDirectionDelay: 15
   _defaultDelay: 0.5
   _obstacleCheckDelay: 0.3
-  _findTargetDelay: 1
   _groundChecker: {fileID: 7552724590359213039}
   _obstacleChecker: {fileID: 7552724589576219287}
   _barrierChecker: {fileID: 7552724591564454821}
+--- !u!114 &4667588812372640135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552724589778891914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7f146b734ea3c4d96d8af89fb5b3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7552724589778891921}
+--- !u!114 &6472815694905530543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552724589778891914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712d8f51a09867143ba2f12e102c91cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7552724589778891921}
+  _findTargetDelay: 1
+  _killableTargets:
+  - {fileID: 0}
 --- !u!1 &7552724590359213024
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ZombieAIMovement : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class ZombieAIMovement : MonoBehaviour
     [Header("References")] 
     [SerializeField] protected Transform _transform;
     [SerializeField] protected Rigidbody2D _rigidbody2D;
-    [SerializeField] protected TargetDetection _targetDetection;
+    [SerializeField] protected KillableTargetDetection _killableTargetDetection;
     
     [Header("Movement preferences")] 
     [SerializeField] protected float _movementSpeed = 3f;
@@ -23,7 +22,6 @@ public class ZombieAIMovement : MonoBehaviour
     [SerializeField] protected float _changeDirectionDelay = 3f;
     [SerializeField] protected float _defaultDelay = 0.5f;
     [SerializeField] protected float _obstacleCheckDelay = 0.3f;
-    [SerializeField] protected float _findTargetDelay = 1f;
 
     [Header("Environment checkers")]
     [SerializeField] protected GroundChecker _groundChecker;
@@ -62,7 +60,8 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected void OnPlayedAudioSource()
     {
-        if (Vector2.Distance(_transform.position, _targetDetection.closestTarget.position) < _audioDetectionRadius)
+        if (Vector2.Distance(_transform.position,
+            _killableTargetDetection._closestKillableTarget._transform.position) < _audioDetectionRadius)
         {
             if (_increaseDetectionRadiusCoroutine == null)
             {
@@ -183,9 +182,9 @@ public class ZombieAIMovement : MonoBehaviour
     {
         while (true)
         {
-            if (_transform.ContainsTransform(_mainDetectionRadius, _targetDetection.closestTarget) == true)
+            if (CanFollowTarget())
             {
-                StartFollowingTarget(_targetDetection.closestTarget);
+                StartFollowingTarget(_killableTargetDetection._closestKillableTarget._transform);
                 StopRandomMovement();
             }
             else
@@ -198,6 +197,13 @@ public class ZombieAIMovement : MonoBehaviour
         }
     }
 
+    protected bool CanFollowTarget()
+    {
+        return _transform.ContainsTransform(_mainDetectionRadius,
+                   _killableTargetDetection._closestKillableTarget._transform) == true &&
+               _killableTargetDetection._closestKillableTarget.gameObject.activeSelf == true;
+    }
+    
     protected void StartFollowingTarget(Transform target)
     {
         _isFollowingTarget = true;
@@ -222,15 +228,15 @@ public class ZombieAIMovement : MonoBehaviour
     {
         while (true)
         {
-            LookToTarget(target);
+            LookAtTarget(target);
 
             yield return new WaitForSeconds(_defaultDelay);
         }
     }
 
-    protected void LookToTarget(Transform target)
+    protected void LookAtTarget(Transform target)
     {
-        if (_transform.position.x < target.position.x)
+        if (_transform.position.x < target.transform.position.x)
         {
             SetMovementDirection(1);
         }
@@ -243,24 +249,11 @@ public class ZombieAIMovement : MonoBehaviour
 #if UNITY_EDITOR
     protected void OnDrawGizmosSelected()
     {
-        //Detection
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(_transform.position, _mainDetectionRadius);
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(_transform.position, _audioDetectionRadius);
-
-        //ClosestTarget
-        Gizmos.color = Color.red;
-        if (_targetDetection.closestTarget != null)
-        {
-            Gizmos.DrawWireCube(_targetDetection.closestTarget.position, Vector2.one);
-
-            if (_transform.ContainsTransform(_audioDetectionRadius, _targetDetection.closestTarget))
-            {
-                Gizmos.DrawLine(_transform.position, _targetDetection.closestTarget.position);
-            }
-        }
     }
 #endif
 }

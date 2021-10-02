@@ -168,5 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxDurability: 8
-  _minInteractImpulse: 200
+  _transform: {fileID: 8129099873947751166}
+  _minDestroyImpulse: 350
+  _minDamageImpulse: 100
   _destroyParticle: 10

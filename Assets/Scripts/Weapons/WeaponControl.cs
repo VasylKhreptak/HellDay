@@ -1,21 +1,15 @@
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class WeaponControl : MonoBehaviour
 {
     [SerializeField] private Weapons _weaponToSelect;
+    [SerializeField] private Weapon[] _weapons;
+    
+    public static readonly float defaultBulletDamage = 10;
 
-    [System.Serializable]
-    public struct weapon
-    {
-        public Weapons weaponType;
-        public GameObject weaponObject;
-    }
+    private Weapon _currentWeapon;
 
-    [SerializeField] private weapon[] _weapons;
-
-    public static readonly int defaultBulletDamage = 10;
-
-    private void OnValidate()
+    private void Start()
     {
         SetWeapon(_weaponToSelect);
     }
@@ -24,7 +18,12 @@ public class WeaponController : MonoBehaviour
     {
         foreach (var weapon in _weapons)
         {
-            weapon.weaponObject.SetActive(weapon.weaponType == weaponToSelect);
+            weapon.gameObject.SetActive(weapon.weaponType == weaponToSelect);
+
+            if (weapon.weaponType == weaponToSelect)
+            {
+                _currentWeapon = weapon;
+            }
         }
     }
 
@@ -35,8 +34,8 @@ public class WeaponController : MonoBehaviour
             return;
         }
         
-        Messenger.Broadcast(GameEvent.START_SHOOTING);
-
+        _currentWeapon.iWeapon.StartShooting();
+        
         Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
     }
 
@@ -47,7 +46,7 @@ public class WeaponController : MonoBehaviour
             return;
         }
         
-        Messenger.Broadcast(GameEvent.STOP_SHOOTING);
+        _currentWeapon.iWeapon.StopShooting();
     }
 
     private bool CanShoot()

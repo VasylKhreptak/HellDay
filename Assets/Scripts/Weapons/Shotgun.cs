@@ -1,11 +1,12 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Shotgun : Weapon
+public class Shotgun : WeaponCore
 {
-    [Tooltip("Number of balls in shotgun weapon")] [SerializeField]
-    private int _shotgunCaliber = 10;
-    
+    [Tooltip("Number of balls in shotgun weapon")] 
+    [SerializeField] private int _shotgunCaliber = 10;
+
     protected override IEnumerator Shoot()
     {
         while (true)
@@ -23,20 +24,19 @@ public class Shotgun : Weapon
     {
         _audioSource.Play();
 
-
         for (int i = 0; i < _shotgunCaliber; i++)
         {
             SpawnBullet();
         }
 
         GetAmmo();
-
-        SpawnBulletMuff();
-
-        SpawnShootSmoke();
-
-        SpawnShootSparks();
-
-        StartShootAnimation();
+        
+        _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletSpawnPlace.position, Quaternion.identity);
+        
+        _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _bulletSpawnPlace.position, Quaternion.identity);
+        
+        _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _bulletSpawnPlace.position, Quaternion.identity);
+        
+        _weaponVFX.StartShootAnimation(_animator, ShootTrigger);
     }
 }

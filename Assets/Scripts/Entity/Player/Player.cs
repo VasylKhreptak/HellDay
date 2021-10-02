@@ -1,11 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : Entity
+public class Player : Entity, IKillable
 {
     [Header("Preferences")] 
     [SerializeField] private Pools[] _playerDeathParts;
-    
+
     private ObjectPooler _objectPooler;
 
     protected override void Start()

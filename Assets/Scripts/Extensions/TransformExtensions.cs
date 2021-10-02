@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public static class TransformExtensions
@@ -10,11 +9,6 @@ public static class TransformExtensions
 
         foreach (Transform potentialTransform in transforms)
         {
-            if (potentialTransform == null || potentialTransform.gameObject.activeSelf == false)
-            {
-                continue;
-            }
-            
             Vector3 directionToTarget = potentialTransform.position - transform.position;
             float sqrDirectionToTarget = directionToTarget.sqrMagnitude;
 

@@ -1,25 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class TargetDetection : MonoBehaviour
+public class CommonTargetDetection : TargetDetectionCore
 {
-    [Header("References")] 
-    [SerializeField] private Transform _transform;
-    
     [Header("Targets")]
     [SerializeField] private Transform[] _targets;
 
-    [Header("Preferences")] 
-    [SerializeField] private float _findTargetDelay = 1;
-
     public Transform closestTarget { get; private set; }
 
-    private void Awake()
-    {
-        StartCoroutine(FindClosestTargetRoutine());
-    }
-
-    private IEnumerator FindClosestTargetRoutine()
+    protected override IEnumerator FindClosestTargetRoutine()
     {
         while (true)
         {

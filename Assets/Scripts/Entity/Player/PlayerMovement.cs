@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void VerticalMovement()
     {
-        if (_joystick.Vertical > _verticalSensetivity && _groundChecker.isGrounded)
+        if (_joystick.Vertical > _verticalSensetivity && _groundChecker.isGrounded == true)
         {
             _rigidbody2D.velocity =
                 new Vector2(_rigidbody2D.velocity.x,

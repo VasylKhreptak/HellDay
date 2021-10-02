@@ -32,16 +32,12 @@ public class DestroyableItem : PhysicalItem
         {
             DestroyActions();
         }
-        
-        Debug.Log(impulse);
     }
 
     protected override void DestroyActions()
     {
         _objectPooler.GetFromPool(_destroyParticle, _transform.position, Quaternion.identity);
         
-        Debug.Log("Destroyed Destroyable Object");
-
         Destroy(gameObject);
     }
     
