@@ -1,14 +1,17 @@
+using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [Header("References")] [SerializeField]
-    private Rigidbody2D _rigidbody2D;
-
+    [Header("References")] 
+    [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GameObject _player;
+    [SerializeField] private int _updateFrameRate = 30;
+    [SerializeField] private CoroutineObject _configurableUpdate;
 
     [Header("Preferences")] [SerializeField]
     private float _sitJoystickSensetivity = -0.7f;
@@ -21,26 +24,40 @@ public class PlayerAnimation : MonoBehaviour
 
     private Coroutine _legPunchActionsCoroutine;
 
-    private void Update()
+    private void Awake()
     {
-        Run();
-
-        SitAndUp();
+        StartCoroutine(ConfigurableUpdate(_updateFrameRate));
     }
 
-    private void Run()
+    private IEnumerator ConfigurableUpdate(int frameRate)
+    {
+        float delay = 1 / frameRate;
+        
+        while (true)
+        {
+            RunAnimation();
+
+            SitAndUpAnimation();
+            
+            yield return new WaitForSeconds(delay);
+        }
+    }
+    
+    private void RunAnimation()
     {
         _animator.SetFloat(Speed, Mathf.Abs(_rigidbody2D.velocity.x));
     }
 
-    private void SitAndUp()
+    private void SitAndUpAnimation()
     {
-        if (_joystick.Vertical < _sitJoystickSensetivity && _animator.GetBool(Sit) == false)
+        bool isSitting = _animator.GetBool(Sit);
+        
+        if (_joystick.Vertical < _sitJoystickSensetivity && isSitting == false)
         {
             _animator.SetBool(Sit, true);
             Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
         }
-        else if (_joystick.Vertical > _sitJoystickSensetivity && _animator.GetBool(Sit) == true)
+        else if (_joystick.Vertical > _sitJoystickSensetivity && isSitting == true)
         {
             _animator.SetBool(Sit, false);
             Messenger.Broadcast(GameEvent.PLAYER_GET_UP);
@@ -50,7 +67,9 @@ public class PlayerAnimation : MonoBehaviour
     public void StartLegPunch()
     {
         if (_legPunchActionsCoroutine == null && _player.activeSelf == true)
+        {
             _legPunchActionsCoroutine = StartCoroutine(LegPunchRoutine());
+        }
     }
 
     private IEnumerator LegPunchRoutine()

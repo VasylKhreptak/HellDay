@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement")] [SerializeField] private Rigidbody2D _rigidbody2D;
+    [Header("Movement")] 
+    [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private float _movementSpeed = 5f;
     [SerializeField] private float _minJumpVelocity = 15f;
     [SerializeField] private float _maxJumpVelocity = 30f;
@@ -20,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Range(-1, 1)] public static int movementDirection;
 
-    private void Awake()
+    private void OnEnable()
     {
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
@@ -55,16 +56,16 @@ public class PlayerMovement : MonoBehaviour
         _canMove = false;
     }
 
-    private void OnLegPunched(float animationDuration)
+    private void OnLegPunched(float punchDuration)
     {
-        StartCoroutine(OnLegPunchedRoutine(animationDuration));
+        StartCoroutine(OnLegPunchedRoutine(punchDuration));
     }
 
-    private IEnumerator OnLegPunchedRoutine(float animationDuration)
+    private IEnumerator OnLegPunchedRoutine(float punchDuration)
     {
         _canMove = false;
 
-        yield return new WaitForSeconds(animationDuration);
+        yield return new WaitForSeconds(punchDuration);
 
         _canMove = true;
     }

@@ -5,9 +5,8 @@ using UnityEngine;
 public class UI_AmmoNumber : MonoBehaviour
 {
     [SerializeField] private TMP_Text _TMPText;
-
-
-    private void Awake()
+    
+    private void OnEnable()
     {
         Messenger<string>.AddListener(GameEvent.SET_AMMO_TEXT, SetText);
     }

@@ -36,7 +36,7 @@ public class ZombieAIMovement : MonoBehaviour
     protected bool _isFollowingTarget = false;
 
 
-    protected void Awake()
+    protected void OnEnable()
     {
         Messenger.AddListener(GameEvent.PLAYED_AUDIO_SOURCE, OnPlayedAudioSource);
     }
@@ -46,7 +46,7 @@ public class ZombieAIMovement : MonoBehaviour
         _rigidbody2D.velocity = new Vector2(_movementSpeed, _rigidbody2D.velocity.y);
     }
 
-    protected void OnDestroy()
+    protected void OnDisable()
     {
         Messenger.RemoveListener(GameEvent.PLAYED_AUDIO_SOURCE, OnPlayedAudioSource);
     }

@@ -1,5 +1,3 @@
-using TMPro;
-using Unity.Notifications.Android;
 using UnityEngine;
 
 public class DestroyableItem : PhysicalItem
@@ -22,12 +20,13 @@ public class DestroyableItem : PhysicalItem
     protected void OnCollisionEnter2D(Collision2D collision2D)
     {
         float impulse = GetCollisionImpulse(collision2D);
-        
+
         if (collision2D.collider.CompareTag("Bullet") == true || 
             impulse > _minDamageImpulse)
         {
             TakeDamage(1f);
         }
+
         if (impulse > _minDestroyImpulse)
         {
             DestroyActions();

@@ -1,38 +1,34 @@
-using System.Collections;
 using UnityEngine;
 
-public class UI_SlideAnimation : UI_MovementAnimation
+public  class UI_SlideAnimation : UI_MovementAnimation
 {
    [SerializeField] private float _startDelay = 0.5f;
+   [SerializeField] private float _endDelay = 1;
 
-   private void Awake()
+   private void OnEnable()
    {
       Messenger.AddListener(GameEvent.PLAYER_DIED, OnPlayerDied);
-
-      _targetAnchoredPosition = _rectTransform.anchoredPosition;
    }
    
-   private void OnDestroy()
+   private void OnDisable()
    {
       Messenger.RemoveListener(GameEvent.PLAYER_DIED, OnPlayerDied);
    }
 
-   private IEnumerator Start()
+   private void Start()
    {
       HideBehindScreen();
       
-      yield return new WaitForSeconds(_startDelay);
-      
-      StartAnimation(AnimationType.appear, _duration);
+      StartAnimation(AnimationType.appear, _duration, _startDelay);
    }
 
    private void HideBehindScreen()
    {
-      _rectTransform.position = _startTransform.position;
+      _rectTransform.anchoredPosition = _startAnchoredPosition;
    }
    
    private void OnPlayerDied()
    {
-      StartAnimation(AnimationType.disappear, _duration);
+      StartAnimation(AnimationType.disappear, _duration, _endDelay);
    }
 }

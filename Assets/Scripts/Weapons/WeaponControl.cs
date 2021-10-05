@@ -18,13 +18,19 @@ public class WeaponControl : MonoBehaviour
     {
         foreach (var weapon in _weapons)
         {
-            weapon.gameObject.SetActive(weapon.weaponType == weaponToSelect);
+            weapon.gameObject.SetActive(weapon.WeaponType == weaponToSelect);
 
-            if (weapon.weaponType == weaponToSelect)
+            if (weapon.WeaponType == weaponToSelect)
             {
                 _currentWeapon = weapon;
+                ImpactPlayerMovement(weapon.MovementImpact);
             }
         }
+    }
+
+    private void ImpactPlayerMovement(float percentage)
+    {
+        Messenger<float>.Broadcast(GameEvent.PLAYER_MOVEMENT_IMPACT, percentage);
     }
 
     public void StartShooting()
@@ -34,7 +40,7 @@ public class WeaponControl : MonoBehaviour
             return;
         }
         
-        _currentWeapon.iWeapon.StartShooting();
+        _currentWeapon.Iweapon.StartShooting();
         
         Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
     }
@@ -46,7 +52,7 @@ public class WeaponControl : MonoBehaviour
             return;
         }
         
-        _currentWeapon.iWeapon.StopShooting();
+        _currentWeapon.Iweapon.StopShooting();
     }
 
     private bool CanShoot()

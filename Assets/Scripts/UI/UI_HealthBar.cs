@@ -9,13 +9,13 @@ public class UI_HealthBar : MonoBehaviour
     [SerializeField] private Image _fill;
     [SerializeField] private float _time = 1;
     [SerializeField] private AnimationCurve _animationCurve;
-    private void Awake()
+    private void OnEnable()
     {
         Messenger<float>.AddListener(GameEvent.SET_MAX_HEALTH_BAR, SetMaxHealthBar);
         Messenger<float>.AddListener(GameEvent.SET_HEALTH_BAR, SetHealthBar);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         Messenger<float>.RemoveListener(GameEvent.SET_MAX_HEALTH_BAR, SetMaxHealthBar);
         Messenger<float>.RemoveListener(GameEvent.SET_HEALTH_BAR, SetHealthBar);

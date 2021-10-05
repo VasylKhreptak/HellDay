@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PhysicalItem : MonoBehaviour
@@ -30,7 +31,7 @@ public class PhysicalItem : MonoBehaviour
 
     protected virtual void DestroyActions()
     {
-        
+        throw new NotImplementedException();
     }
     
     protected bool IsBroken()

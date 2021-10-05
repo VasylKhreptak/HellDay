@@ -1,8 +1,12 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class WeaponCore : MonoBehaviour, IWeapon
 {
+    [Header("References")] 
+    [SerializeField] protected Transform _transform;
+    
     [Header("Positions")]
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
     [SerializeField] protected Transform _bulletSpawnPlace;
@@ -33,33 +37,24 @@ public class WeaponCore : MonoBehaviour, IWeapon
     [SerializeField] protected float _angleScatterOnSit = 2f;
     protected float _previousAngleScatter;
 
-    [Header("Player movement impact")]
-    [ Tooltip("the percentage that will reduce staff mobility")]
-    [SerializeField, Range(0, 70)] private float _movementImpact = 10f;
-
     protected Coroutine _shootingCoroutine;
     protected ObjectPooler _objectPooler;
 
-    protected void Awake()
+    protected void OnEnable()
     {
         _previousAngleScatter = _angleScatter;
 
         //PlayerMovement
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+
+        _transform.DoWait(0.2f, () => { SetAmmo(_maxAmmo); });
     }
 
     protected void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-    }
-
-    protected void OnEnable()
-    {
-        Messenger<float>.Broadcast(GameEvent.PLAYER_MOVEMENT_IMPACT, _movementImpact);
-        
-        SetAmmo(_maxAmmo);
     }
 
     protected void SetAmmo(int ammo)
@@ -69,7 +64,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
         Messenger<string>.Broadcast(GameEvent.SET_AMMO_TEXT, _ammo.ToString());
     }
 
-    protected void OnDestroy()
+    protected void OnDisable()
     {
         //PlayerMovement
         Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
@@ -79,11 +74,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected void OnLegPunched(float time)
     {
-        if (gameObject.activeSelf == false)
-        {
-            return;
-        }
-
         StartCoroutine(OnLegPunchedCoroutine(time));
     }
 
@@ -144,7 +134,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
         
         GetAmmo();
         
-        _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletSpawnPlace.position, Quaternion.identity);
+        _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _bulletSpawnPlace.position, Quaternion.identity);
         
