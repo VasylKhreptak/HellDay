@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieBiteParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 3659271135456195609, guid: 9e5b9f8f676532b40b30ad882c70c142, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3659271135456195610, guid: 9e5b9f8f676532b40b30ad882c70c142, type: 3}
       propertyPath: m_RootOrder
       value: 0

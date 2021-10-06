@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class DestroyableItem : PhysicalItem
@@ -13,7 +14,7 @@ public class DestroyableItem : PhysicalItem
     protected override void Start()
     {
         SetMaxDurability(_maxDurability);
-        
+
         _objectPooler = ObjectPooler.Instance;
     }
 
@@ -21,7 +22,7 @@ public class DestroyableItem : PhysicalItem
     {
         float impulse = GetCollisionImpulse(collision2D);
 
-        if (collision2D.collider.CompareTag("Bullet") == true || 
+        if (collision2D.collider.CompareTag("Bullet") == true ||
             impulse > _minDamageImpulse)
         {
             TakeDamage(1f);
@@ -36,10 +37,12 @@ public class DestroyableItem : PhysicalItem
     protected override void DestroyActions()
     {
         _objectPooler.GetFromPool(_destroyParticle, _transform.position, Quaternion.identity);
+
+        DOTween.Kill(gameObject);
         
         Destroy(gameObject);
     }
-    
+
     protected float GetCollisionImpulse(Collision2D collision2D)
     {
         float impulse = 0f;

@@ -1,34 +1,39 @@
+using DG.Tweening;
 using UnityEngine;
 
-public  class UI_SlideAnimation : UI_MovementAnimation
+public class UI_SlideAnimation : MonoBehaviour
 {
-   [SerializeField] private float _startDelay = 0.5f;
-   [SerializeField] private float _endDelay = 1;
+    public enum AnimationType
+    {
+        show,
+        hide
+    }
 
-   private void OnEnable()
-   {
-      Messenger.AddListener(GameEvent.PLAYER_DIED, OnPlayerDied);
-   }
-   
-   private void OnDisable()
-   {
-      Messenger.RemoveListener(GameEvent.PLAYER_DIED, OnPlayerDied);
-   }
+    [Header("References")] 
+    [SerializeField] protected RectTransform _rectTransform;
+    [SerializeField] protected Vector3 _offset;
+    protected Vector3 _targetAnchoredPosition;
+    protected Vector3 _startAnchoredPosition;
 
-   private void Start()
-   {
-      HideBehindScreen();
-      
-      StartAnimation(AnimationType.appear, _duration, _startDelay);
-   }
+    [Header("Preferences")]
+    [SerializeField] protected float _duration = 1f;
+    [SerializeField] protected AnimationCurve _animationCurve;
 
-   private void HideBehindScreen()
-   {
-      _rectTransform.anchoredPosition = _startAnchoredPosition;
-   }
-   
-   private void OnPlayerDied()
-   {
-      StartAnimation(AnimationType.disappear, _duration, _endDelay);
-   }
+    protected void Awake()
+    {
+        _targetAnchoredPosition = _rectTransform.anchoredPosition;
+        _startAnchoredPosition = _targetAnchoredPosition + _offset;
+    }
+    
+    protected void HideElementBehindScreen()
+    {
+        _rectTransform.anchoredPosition = _startAnchoredPosition;
+    }
+    
+    public virtual void Animate(AnimationType animationType, float duration, float delay)
+    {
+        _rectTransform.DOAnchorPos(
+            animationType == AnimationType.show ? _targetAnchoredPosition : _startAnchoredPosition,
+            _duration).SetEase(_animationCurve).SetDelay(delay);
+    }
 }

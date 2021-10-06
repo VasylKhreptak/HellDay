@@ -21,7 +21,7 @@ public class PhysicalItem : MonoBehaviour
     {
         _durability -= damage;
 
-        if (IsBroken())
+        if (IsBroken() == true)
         {
             DestroyActions();
             

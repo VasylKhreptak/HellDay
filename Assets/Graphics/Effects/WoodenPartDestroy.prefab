@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3924278482209305469}
   - component: {fileID: -6203007224473986992}
   m_Layer: 9
-  m_Name: BoxExplosion
+  m_Name: WoodenPartDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,7 +1378,7 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
+        atime0: 54934
         atime1: 65535
         atime2: 0
         atime3: 0

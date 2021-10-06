@@ -45,7 +45,7 @@ public class ZombieCombat : MonoBehaviour
 
     protected virtual bool CanAtact()
     {
-        if (_killableTargetDetection._closestKillableTarget._transform.gameObject.activeSelf == false)
+        if (_killableTargetDetection._closestKillableTarget.Transform.gameObject.activeSelf == false)
         {
             return false;
         }
@@ -82,11 +82,11 @@ public class ZombieCombat : MonoBehaviour
         Gizmos.color = Color.red;
         if (_killableTargetDetection._closestKillableTarget != null)
         {
-            Gizmos.DrawWireCube(_killableTargetDetection._closestKillableTarget._transform.position,
+            Gizmos.DrawWireCube(_killableTargetDetection._closestKillableTarget.Transform.position,
                 Vector2.one);
 
             Gizmos.DrawLine(_transform.position,
-                _killableTargetDetection._closestKillableTarget._transform.position);
+                _killableTargetDetection._closestKillableTarget.Transform.position);
         }
     }
 #endif
