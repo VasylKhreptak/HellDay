@@ -175,6 +175,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
     //Changes bullet direction due to gun local scale
     protected void ChangeBulletDirection(ref Vector3 rotation)
     {
-        rotation += new Vector3(0, 0, PlayerMovement.movementDirection == 1 ? 0 : 180);
+        rotation += new Vector3(0, 0, PlayerMovement.MovementDirection == 1 ? 0 : 180);
     }
 }

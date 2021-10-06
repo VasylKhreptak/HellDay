@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -10,11 +8,10 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GameObject _player;
+    
+    [Header("Preferences")]
     [SerializeField] private int _updateFrameRate = 30;
-    [SerializeField] private CoroutineObject _configurableUpdate;
-
-    [Header("Preferences")] [SerializeField]
-    private float _sitJoystickSensetivity = -0.7f;
+    [SerializeField] private float _sitJoystickSensetivity = -0.7f;
 
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Sit = Animator.StringToHash("Sit");
@@ -54,8 +51,11 @@ public class PlayerAnimation : MonoBehaviour
         
         if (_joystick.Vertical < _sitJoystickSensetivity && isSitting == false)
         {
-            _animator.SetBool(Sit, true);
-            Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
+            if (LadderMovement.isOnLadder == false)
+            {
+                _animator.SetBool(Sit, true);
+                Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
+            }
         }
         else if (_joystick.Vertical > _sitJoystickSensetivity && isSitting == true)
         {
