@@ -1,4 +1,3 @@
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class LadderMovement : MonoBehaviour
@@ -21,22 +20,37 @@ public class LadderMovement : MonoBehaviour
     {
         if (isOnLadder == true)
         {
-            if(_joystick.Vertical > _joystickVerticalSensetivty)
+            if(IsMovingUp() == true)
             {
                 _rigidbody2D.velocity =
                 new Vector2(0, _movementSpeed);
 
                 AllignToLadder();
-                
-                return;
             }
-            else if (_joystick.Vertical < -_joystickVerticalSensetivty)
+            else if (IsMovingDown() == true)
             {
-                return;
+                AllignToLadder();
             }
-
-            _rigidbody2D.velocity = Vector2.zero;
+            else if (IsStaying() == true)
+            {
+                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
+            }
         }
+    }
+
+    private bool IsMovingUp()
+    {
+        return _joystick.Vertical > _joystickVerticalSensetivty;
+    }
+
+    private bool IsMovingDown()
+    {
+        return _joystick.Vertical < -_joystickVerticalSensetivty;
+    }
+
+    private bool IsStaying()
+    {
+        return IsMovingDown() == false && IsMovingUp() == false;
     }
 
     private void AllignToLadder()

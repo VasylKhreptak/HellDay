@@ -56,7 +56,6 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] private bool snapY = false;
 
     [SerializeField] protected float _handleMovementTime = 1f;
-    [SerializeField] protected AnimationCurve _handleMovementAnimationCurve;
 
     [SerializeField] protected RectTransform background = null;
     [SerializeField] private RectTransform handle = null;
@@ -100,7 +99,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         input = (eventData.position - position) / (radius * canvas.scaleFactor);
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
-        handle.DOLocalMove(input * radius * handleRange, _handleMovementTime).SetEase(_handleMovementAnimationCurve);
+        
+        handle.DOLocalMove(input * radius * handleRange, _handleMovementTime);
     }
 
     protected virtual void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)

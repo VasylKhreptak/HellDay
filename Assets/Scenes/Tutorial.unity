@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 707139307891456779, guid: d1a4fef42dec7444082695675c1fb29f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 707139307891456782, guid: d1a4fef42dec7444082695675c1fb29f, type: 3}
       propertyPath: _transform
@@ -283,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3378974506285552572, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3378974506285552575, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
       propertyPath: _transform
@@ -60982,7 +60982,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.081967, y: 1}
+    m_SensorSize: {x: 2.079518, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -67918,7 +67918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3003906475258495832, guid: 6b005042af3614941972a87f61922d4b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b005042af3614941972a87f61922d4b, type: 3}
@@ -68029,7 +68029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7781906718964601438, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7781906718964601439, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
       propertyPath: m_RootOrder
@@ -71666,7 +71666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7416989929528155694, guid: 16f8e91a2993a3442aa432d93d3fbed3, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16f8e91a2993a3442aa432d93d3fbed3, type: 3}
@@ -73504,7 +73504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7552724589778891914, guid: cc48b4e5753fc6e48be9305ae624e76d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7552724589778891921, guid: cc48b4e5753fc6e48be9305ae624e76d, type: 3}
       propertyPath: m_RootOrder
@@ -74003,7 +74003,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.018756866, y: 0.19914615}
+  m_Offset: {x: -0.018756866, y: 0.29764432}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -74014,7 +74014,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.76236725, y: 4.6289635}
+  m_Size: {x: 0.76236725, y: 4.4319673}
   m_EdgeRadius: 0
 --- !u!4 &2117608431
 Transform:
