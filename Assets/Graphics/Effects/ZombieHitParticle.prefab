@@ -68,6 +68,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 1727
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790929992132167910, guid: 56988f3bf995e544faa15ee89d043efe, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.036445353
       objectReference: {fileID: 0}

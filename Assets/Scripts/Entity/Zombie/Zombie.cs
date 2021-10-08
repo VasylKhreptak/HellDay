@@ -35,7 +35,7 @@ public class Zombie : Entity, IKillable
         }
     }
 
-    private void SpawnBodyParts()
+    public void SpawnBodyParts()
     {
         foreach (var part in _zombieDeathParts)
         {

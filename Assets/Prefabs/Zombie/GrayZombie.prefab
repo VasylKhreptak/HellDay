@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 707139307891456768}
   - component: {fileID: 707139307891456780}
   - component: {fileID: 707139307891456783}
-  - component: {fileID: 707139307891456782}
+  - component: {fileID: -794629192103801549}
   - component: {fileID: 707139307891456781}
   - component: {fileID: 946210530535211693}
   - component: {fileID: 8213087978689424294}
@@ -242,7 +242,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 767
+    m_Bits: 255
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -265,7 +265,7 @@ MonoBehaviour:
   _maxHealth: 100
   _transform: {fileID: 707139307891456772}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
---- !u!114 &707139307891456782
+--- !u!114 &-794629192103801549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -274,15 +274,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 707139307891456779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d90d10dac34db489ea6196ddfc736e, type: 3}
+  m_Script: {fileID: 11500000, guid: a3f37ae6f34100047a2596cd9a0b3fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 707139307891456772}
   _damage: 50
   _killableTargetDetection: {fileID: 8213087978689424294}
-  _atackRadius: 0.13
-  _atackCenter: {fileID: 707139307954385422}
   _atackDelay: 1
+  _biteRadius: 0.1
+  _atackCenter: {fileID: 707139307954385422}
   _killableEntityLayerMask:
     serializedVersion: 2
     m_Bits: 64

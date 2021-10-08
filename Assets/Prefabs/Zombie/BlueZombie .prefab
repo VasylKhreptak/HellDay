@@ -185,8 +185,8 @@ GameObject:
   - component: {fileID: 7781906718964601411}
   - component: {fileID: 7781906718964601436}
   - component: {fileID: 7781906718964601410}
-  - component: {fileID: 7781906718964601415}
   - component: {fileID: 7781906718964601437}
+  - component: {fileID: 8525923034131409435}
   - component: {fileID: 492986252328994814}
   - component: {fileID: 6399066725033496452}
   m_Layer: 8
@@ -342,7 +342,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 767
+    m_Bits: 255
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -365,27 +365,6 @@ MonoBehaviour:
   _maxHealth: 100
   _transform: {fileID: 7781906718964601439}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
---- !u!114 &7781906718964601415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7781906718964601438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d90d10dac34db489ea6196ddfc736e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 7781906718964601439}
-  _damage: 20
-  _killableTargetDetection: {fileID: 6399066725033496452}
-  _atackRadius: 0.13
-  _atackCenter: {fileID: 7781906718607163371}
-  _atackDelay: 1
-  _killableEntityLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &7781906718964601437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,6 +391,27 @@ MonoBehaviour:
   _groundChecker: {fileID: 7781906718839626326}
   _obstacleChecker: {fileID: 7781906717973659430}
   _barrierChecker: {fileID: 7781906719972901269}
+--- !u!114 &8525923034131409435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781906718964601438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f37ae6f34100047a2596cd9a0b3fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7781906718964601439}
+  _damage: 20
+  _killableTargetDetection: {fileID: 6399066725033496452}
+  _atackDelay: 1
+  _biteRadius: 0.1
+  _atackCenter: {fileID: 7781906718607163371}
+  _killableEntityLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &492986252328994814
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -61,7 +61,7 @@ public class ZombieAIMovement : MonoBehaviour
     protected void OnPlayedAudioSource()
     {
         if (Vector2.Distance(_transform.position,
-            _killableTargetDetection._closestKillableTarget.Transform.position) < _audioDetectionRadius)
+            _killableTargetDetection.ClosestTarget.Transform.position) < _audioDetectionRadius)
         {
             if (_increaseDetectionRadiusCoroutine == null)
             {
@@ -184,7 +184,7 @@ public class ZombieAIMovement : MonoBehaviour
         {
             if (CanFollowTarget())
             {
-                StartFollowingTarget(_killableTargetDetection._closestKillableTarget.Transform);
+                StartFollowingTarget(_killableTargetDetection.ClosestTarget.Transform);
                 StopRandomMovement();
             }
             else
@@ -200,8 +200,8 @@ public class ZombieAIMovement : MonoBehaviour
     protected bool CanFollowTarget()
     {
         return _transform.ContainsTransform(_mainDetectionRadius,
-                   _killableTargetDetection._closestKillableTarget.Transform) == true &&
-               _killableTargetDetection._closestKillableTarget.gameObject.activeSelf == true;
+                   _killableTargetDetection.ClosestTarget.Transform) == true &&
+               _killableTargetDetection.ClosestTarget.gameObject.activeSelf == true;
     }
     
     protected void StartFollowingTarget(Transform target)

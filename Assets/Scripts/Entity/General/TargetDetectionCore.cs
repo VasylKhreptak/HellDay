@@ -11,7 +11,7 @@ public class TargetDetectionCore : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] protected float _findTargetDelay = 1f;
 
-    protected void Start()
+    protected virtual void Awake()
     {
         StartCoroutine(FindClosestTargetRoutine());
     }

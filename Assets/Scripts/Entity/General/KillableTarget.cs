@@ -5,7 +5,7 @@ using  System.Linq;
 public class KillableTarget : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
-    public IKillable _Killable;
+    private IKillable _Killable;
 
     public Transform Transform => _transform;
     public IKillable Killable => _Killable;

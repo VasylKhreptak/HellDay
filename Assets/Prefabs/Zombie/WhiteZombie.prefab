@@ -15,10 +15,10 @@ GameObject:
   - component: {fileID: 3003906475258495779}
   - component: {fileID: 3003906475258495783}
   - component: {fileID: 3003906475258495780}
-  - component: {fileID: 3003906475258495781}
   - component: {fileID: 3003906475258495782}
   - component: {fileID: 4360533935424247166}
   - component: {fileID: 1226190151111486158}
+  - component: {fileID: 1183008695889494463}
   m_Layer: 8
   m_Name: WhiteZombie
   m_TagString: Zombie
@@ -173,7 +173,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 767
+    m_Bits: 255
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -196,27 +196,6 @@ MonoBehaviour:
   _maxHealth: 100
   _transform: {fileID: 3003906475258495791}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f00000015000000
---- !u!114 &3003906475258495781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3003906475258495832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d90d10dac34db489ea6196ddfc736e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 3003906475258495791}
-  _damage: 20
-  _killableTargetDetection: {fileID: 1226190151111486158}
-  _atackRadius: 0.13
-  _atackCenter: {fileID: 3003906476236602793}
-  _atackDelay: 1
-  _killableEntityLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &3003906475258495782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +252,27 @@ MonoBehaviour:
   _findTargetDelay: 1
   _killableTargets:
   - {fileID: 0}
+--- !u!114 &1183008695889494463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003906475258495832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f37ae6f34100047a2596cd9a0b3fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3003906475258495791}
+  _damage: 20
+  _killableTargetDetection: {fileID: 1226190151111486158}
+  _atackDelay: 1
+  _biteRadius: 0.1
+  _atackCenter: {fileID: 3003906476236602793}
+  _killableEntityLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &3003906475816504809
 GameObject:
   m_ObjectHideFlags: 0

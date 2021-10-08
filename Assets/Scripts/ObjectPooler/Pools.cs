@@ -23,5 +23,6 @@ public enum Pools
     PlayerStrips,
     PlayerLeg,
     PlayerArm, 
-    TVDestroyParticle
+    TVDestroyParticle,
+    GreenZombieExplosion
 }

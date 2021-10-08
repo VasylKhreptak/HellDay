@@ -6,19 +6,22 @@ public class KillableTargetDetection : TargetDetectionCore
 {
     [Header("Targets")] 
     [SerializeField] private KillableTarget[] _killableTargets;
+    private KillableTarget _closestTarget;
 
-    public KillableTarget _closestKillableTarget { get; private set; }
-
-    private void Awake()
+    public KillableTarget ClosestTarget => _closestTarget;
+    
+    protected override void Awake()
     {
-        _closestKillableTarget = _killableTargets[0];
+        base.Awake();
+        
+        _closestTarget = _killableTargets[0];
     }
 
     protected override IEnumerator FindClosestTargetRoutine()
     {
         while (true)
         {
-            _closestKillableTarget = FindClosestTarget(_killableTargets);
+            _closestTarget = FindClosestTarget(_killableTargets);
 
             yield return new WaitForSeconds(_findTargetDelay);
         }

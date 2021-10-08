@@ -70,36 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73f2551add8d1d44b2357f54e6e0414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7416989928558784902
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7416989928558784897}
-  m_Layer: 8
-  m_Name: AtackCenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7416989928558784897
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7416989928558784902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.196, y: 0.179, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7416989929528155681}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7416989929372627519
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,10 +225,10 @@ GameObject:
   - component: {fileID: 7416989929528155685}
   - component: {fileID: 7416989929528155689}
   - component: {fileID: 7416989929528155690}
-  - component: {fileID: 7416989929528155691}
   - component: {fileID: 7416989929528155688}
   - component: {fileID: 8857078008893848612}
   - component: {fileID: 5350208796334916349}
+  - component: {fileID: 1636519917627273053}
   m_Layer: 8
   m_Name: GreenZombie
   m_TagString: Zombie
@@ -280,7 +250,6 @@ Transform:
   - {fileID: 7416989929449692238}
   - {fileID: 7416989928535796504}
   - {fileID: 7416989929372627512}
-  - {fileID: 7416989928558784897}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -412,11 +381,11 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 767
+    m_Bits: 255
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 0
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -435,27 +404,6 @@ MonoBehaviour:
   _maxHealth: 100
   _transform: {fileID: 7416989929528155681}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
---- !u!114 &7416989929528155691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7416989929528155694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d90d10dac34db489ea6196ddfc736e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 7416989929528155681}
-  _damage: 20
-  _killableTargetDetection: {fileID: 5350208796334916349}
-  _atackRadius: 0.15
-  _atackCenter: {fileID: 7416989928558784897}
-  _atackDelay: 1
-  _killableEntityLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &7416989929528155688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,3 +459,26 @@ MonoBehaviour:
   _findTargetDelay: 1
   _killableTargets:
   - {fileID: 0}
+--- !u!114 &1636519917627273053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416989929528155694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b3d8eaf8089f0f48a720a7eebf30571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7416989929528155681}
+  _damage: 50
+  _killableTargetDetection: {fileID: 5350208796334916349}
+  _atackDelay: 1
+  _explosionRadius: 3.37
+  _zombieExplosionParticle: 24
+  _damageDelay: 1
+  _environmentLayerMask:
+    serializedVersion: 2
+    m_Bits: 71
+  _zombie: {fileID: 7416989929528155690}
