@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using Unity.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -52,9 +49,9 @@ public class PlayerAnimation : MonoBehaviour
         _playerJumped = true;
     }
 
-    private IEnumerator ConfigurableUpdate(int frameRate)
+    private IEnumerator ConfigurableUpdate(int framerate)
     {
-        float delay = 1 / frameRate;
+        float delay = 1 / framerate;
         
         while (true)
         {

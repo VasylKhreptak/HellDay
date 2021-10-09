@@ -1,115 +1,7 @@
 fileFormatVersion: 2
 guid: 10862602c5a8b404f909ee4b4b3464ac
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 6888708756529517008
-    second: PlayerSpriteSheet_0
-  - first:
-      213: 2788089956977029842
-    second: PlayerSpriteSheet_1
-  - first:
-      213: -8744409789289659004
-    second: PlayerSpriteSheet_2
-  - first:
-      213: 5399228094500936495
-    second: PlayerSpriteSheet_3
-  - first:
-      213: -9219114279707902762
-    second: PlayerSpriteSheet_4
-  - first:
-      213: 1866080321450298439
-    second: PlayerSpriteSheet_5
-  - first:
-      213: -4458058345491200054
-    second: PlayerSpriteSheet_6
-  - first:
-      213: -5539222966354765283
-    second: PlayerSpriteSheet_7
-  - first:
-      213: -7001849503513601457
-    second: PlayerSpriteSheet_8
-  - first:
-      213: 2667866626717793376
-    second: PlayerSpriteSheet_9
-  - first:
-      213: 5632164686164652165
-    second: PlayerSpriteSheet_10
-  - first:
-      213: -7108594070584200049
-    second: PlayerSpriteSheet_11
-  - first:
-      213: 2437179270844408111
-    second: PlayerSpriteSheet_12
-  - first:
-      213: 521139708416644201
-    second: PlayerSpriteSheet_13
-  - first:
-      213: -4892751124992632869
-    second: PlayerSpriteSheet_14
-  - first:
-      213: 660855763058781208
-    second: PlayerSpriteSheet_15
-  - first:
-      213: 5272896010637442315
-    second: PlayerSpriteSheet_16
-  - first:
-      213: 7201820008118637031
-    second: PlayerSpriteSheet_17
-  - first:
-      213: -8269642685742046349
-    second: PlayerSpriteSheet_18
-  - first:
-      213: 7704660771346630857
-    second: PlayerSpriteSheet_19
-  - first:
-      213: -8257455846536728769
-    second: PlayerSpriteSheet_20
-  - first:
-      213: 4929012548862729367
-    second: PlayerSpriteSheet_21
-  - first:
-      213: -4901810273419330075
-    second: PlayerSpriteSheet_22
-  - first:
-      213: -9081033507789774793
-    second: PlayerSpriteSheet_23
-  - first:
-      213: 2769535437919892042
-    second: PlayerSpriteSheet_24
-  - first:
-      213: -6411402964187266585
-    second: PlayerSpriteSheet_25
-  - first:
-      213: 6597050160602125388
-    second: PlayerSpriteSheet_26
-  - first:
-      213: -7702858371508696375
-    second: PlayerSpriteSheet_27
-  - first:
-      213: -1019757722742301156
-    second: PlayerSpriteSheet_28
-  - first:
-      213: 4142094729984164160
-    second: PlayerSpriteSheet_29
-  - first:
-      213: -4385414751774694148
-    second: PlayerSpriteSheet_30
-  - first:
-      213: -3534794115817346551
-    second: PlayerSpriteSheet_31
-  - first:
-      213: -4595910897897990691
-    second: PlayerSpriteSheet_32
-  - first:
-      213: 8107821990424705154
-    second: PlayerSpriteSheet_33
-  - first:
-      213: 5619868409111337256
-    second: PlayerSpriteSheet_34
-  - first:
-      213: -5204368369988498534
-    second: PlayerSpriteSheet_35
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -924,8 +816,8 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 9
-      pivot: {x: 0.4306953, y: 0.39999947}
-      border: {x: 1, y: 0, z: 0, w: 0}
+      pivot: {x: 0.4, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
