@@ -8,16 +8,17 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GameObject _player;
-    
+
     [Header("Preferences")]
     [SerializeField] private int _updateFrameRate = 30;
     [SerializeField] private float _sitJoystickSensetivity = -0.7f;
+    [SerializeField] private float _punchDelay = 0.6f;
 
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int Sit = Animator.StringToHash("Sit");
     private static readonly int LegPunch = Animator.StringToHash("LegPunch");
+    private static readonly int ClimbingLadder = Animator.StringToHash("IsClimbingLadder");
 
-    private const float PUNCH_DURATION = 0.6f; //(clip duration)1.8f / (clip speed)2.5f = 0.6f
 
     private Coroutine _legPunchActionsCoroutine;
 
@@ -35,9 +36,16 @@ public class PlayerAnimation : MonoBehaviour
             RunAnimation();
 
             SitAndUpAnimation();
+
+            LadderClimbing();
             
             yield return new WaitForSeconds(delay);
         }
+    }
+
+    private void LadderClimbing()
+    {
+        _animator.SetBool(ClimbingLadder, LadderMovement.isClimbing);
     }
     
     private void RunAnimation()
@@ -76,9 +84,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         _animator.SetTrigger(LegPunch);
 
-        Messenger<float>.Broadcast(GameEvent.PLAYER_LEG_PUNCH, PUNCH_DURATION);
+        Messenger<float>.Broadcast(GameEvent.PLAYER_LEG_PUNCH, _punchDelay);
 
-        yield return new WaitForSeconds(PUNCH_DURATION);
+        yield return new WaitForSeconds(_punchDelay);
 
         _legPunchActionsCoroutine = null;
     }

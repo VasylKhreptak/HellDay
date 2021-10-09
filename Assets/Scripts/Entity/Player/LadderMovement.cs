@@ -1,3 +1,4 @@
+using System.Text;
 using UnityEngine;
 
 public class LadderMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class LadderMovement : MonoBehaviour
     [SerializeField] private float _alligementSpeed = 3f;
 
     public static bool isOnLadder { get; private set; } = false;
+    public static bool isClimbing { get; private set; } = false;
 
     private GameObject _currentLadder;
 
@@ -25,17 +27,29 @@ public class LadderMovement : MonoBehaviour
                 _rigidbody2D.velocity =
                 new Vector2(0, _movementSpeed);
 
+                isClimbing = true;
+                
                 AllignToLadder();
             }
             else if (IsMovingDown() == true)
             {
+                isClimbing = true;
+                
                 AllignToLadder();
             }
             else if (IsStaying() == true)
             {
+                isClimbing = false;
+                
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
             }
         }
+        else
+        {
+            isClimbing = false;
+        }
+        
+        Debug.Log("IsClimbing: "  + isClimbing);
     }
 
     private bool IsMovingUp()
