@@ -8,7 +8,8 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GameObject _player;
-
+    [SerializeField] private ConfigurableUpdate _configurableUpdate;
+    
     [Header("Preferences")]
     [SerializeField] private int _updateFrameRate = 30;
     [SerializeField] private float _sitJoystickSensetivity = -0.7f;
@@ -28,7 +29,14 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(ConfigurableUpdate(_updateFrameRate));
+        _configurableUpdate.StartUpdate(_updateFrameRate, () =>
+        {
+            RunAnimation();
+
+            SitAndUpAnimation();
+
+            LadderClimbing();
+        });
     }
 
     private void OnEnable()
@@ -49,22 +57,6 @@ public class PlayerAnimation : MonoBehaviour
         _playerJumped = true;
     }
 
-    private IEnumerator ConfigurableUpdate(int framerate)
-    {
-        float delay = 1 / framerate;
-        
-        while (true)
-        {
-            RunAnimation();
-
-            SitAndUpAnimation();
-
-            LadderClimbing();
-            
-            yield return new WaitForSeconds(delay);
-        }
-    }
-    
     private void RunAnimation()
     {
         _animator.SetFloat(Speed, Mathf.Abs(_rigidbody2D.velocity.x));
