@@ -99,11 +99,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void VerticalMovement()
     {
-        if (CanJump())
+        if (CanJump() == true)
         {
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x,
-                    Mathf.Clamp(_maxJumpVelocity * _joystick.Vertical, _minJumpVelocity, _maxJumpVelocity));
+            Jump();
         }
+    }
+
+    private void Jump()
+    {
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x,
+            Mathf.Clamp(_maxJumpVelocity * _joystick.Vertical, _minJumpVelocity, _maxJumpVelocity));
+        
+        Messenger.Broadcast(GameEvent.PLAYER_JUMPED);
     }
 
     private bool CanJump()

@@ -48,8 +48,6 @@ public class LadderMovement : MonoBehaviour
         {
             isClimbing = false;
         }
-        
-        Debug.Log("IsClimbing: "  + isClimbing);
     }
 
     private bool IsMovingUp()

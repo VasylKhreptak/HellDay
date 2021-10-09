@@ -1,4 +1,7 @@
+using System;
 using System.Collections;
+using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -18,6 +21,10 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int Sit = Animator.StringToHash("Sit");
     private static readonly int LegPunch = Animator.StringToHash("LegPunch");
     private static readonly int ClimbingLadder = Animator.StringToHash("IsClimbingLadder");
+    private static readonly int Jump = Animator.StringToHash("Jump");
+    private static readonly int Landed = Animator.StringToHash("Landed");
+
+    private bool _playerJumped = false;
 
 
     private Coroutine _legPunchActionsCoroutine;
@@ -25,6 +32,24 @@ public class PlayerAnimation : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(ConfigurableUpdate(_updateFrameRate));
+    }
+
+    private void OnEnable()
+    {
+        Messenger.AddListener(GameEvent.PLAYER_JUMPED, OnPlayerJumped);
+    }
+
+    private void OnDisable()
+    {
+        Messenger.RemoveListener(GameEvent.PLAYER_JUMPED, OnPlayerJumped);
+    }
+
+    private void OnPlayerJumped()
+    {
+        _animator.ResetTrigger(Landed);
+        _animator.SetTrigger(Jump);
+
+        _playerJumped = true;
     }
 
     private IEnumerator ConfigurableUpdate(int frameRate)
@@ -42,17 +67,17 @@ public class PlayerAnimation : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
-
-    private void LadderClimbing()
-    {
-        _animator.SetBool(ClimbingLadder, LadderMovement.isClimbing);
-    }
     
     private void RunAnimation()
     {
         _animator.SetFloat(Speed, Mathf.Abs(_rigidbody2D.velocity.x));
     }
 
+    private void LadderClimbing()
+    {
+        _animator.SetBool(ClimbingLadder, LadderMovement.isClimbing);
+    }
+    
     private void SitAndUpAnimation()
     {
         bool isSitting = _animator.GetBool(Sit);
@@ -89,5 +114,16 @@ public class PlayerAnimation : MonoBehaviour
         yield return new WaitForSeconds(_punchDelay);
 
         _legPunchActionsCoroutine = null;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (_playerJumped == true)
+        {
+            _animator.ResetTrigger(Jump);
+            _animator.SetTrigger(Landed);
+
+            _playerJumped = false;
+        }
     }
 }
