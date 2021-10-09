@@ -12,7 +12,7 @@ public class CommonZombieAtack : ZombieAtackCore
         _objectPooler.GetFromPool(Pools.ZombieBiteParticle, _atackCenter.position, Quaternion.identity);
     }
 
-    protected override bool CanAtact()
+    protected override bool CanAtack()
     {
         if (_killableTargetDetection.ClosestTarget.Transform.gameObject.activeSelf == false)
         {
@@ -34,6 +34,8 @@ public class CommonZombieAtack : ZombieAtackCore
 #if UNITY_EDITOR
     protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected();
+        
         if (_atackCenter == null)
         {
             return;
@@ -41,8 +43,6 @@ public class CommonZombieAtack : ZombieAtackCore
         
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_atackCenter.position, _biteRadius);
-        
-        base.OnDrawGizmosSelected();
     }
 #endif
 

@@ -13,7 +13,7 @@ public class GreenZombieAtack : ZombieAtackCore
     [Header("References")]
     [SerializeField] private Zombie _zombie;
 
-    protected override bool CanAtact()
+    protected override bool CanAtack()
     {
         return IsTargetInRange() && IsTargetInFiendOfView();
     }
@@ -67,10 +67,10 @@ public class GreenZombieAtack : ZombieAtackCore
 #if UNITY_EDITOR
     protected override void OnDrawGizmosSelected()
     {
+        base.OnDrawGizmosSelected();
+        
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_transform.position, _explosionRadius);
-
-        base.OnDrawGizmosSelected();
     }
 #endif
 }

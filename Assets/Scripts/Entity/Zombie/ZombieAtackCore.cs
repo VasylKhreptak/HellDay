@@ -29,7 +29,7 @@ public class ZombieAtackCore : MonoBehaviour
     {
         while (true)
         {
-            if (CanAtact() == true)
+            if (CanAtack() == true)
             {
                 Atack();
             }
@@ -38,7 +38,7 @@ public class ZombieAtackCore : MonoBehaviour
         }
     }
 
-    protected virtual bool CanAtact()
+    protected virtual bool CanAtack()
     {
         throw new NotImplementedException();
     }
@@ -52,7 +52,7 @@ public class ZombieAtackCore : MonoBehaviour
     protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        if (_killableTargetDetection.ClosestTarget != null)
+        if (_killableTargetDetection.ClosestTarget?.gameObject.activeSelf == true)
         {
             Gizmos.DrawWireCube(_killableTargetDetection.ClosestTarget.Transform.position,
                 Vector2.one);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using System.Linq;
@@ -32,7 +33,7 @@ public class KillableTargetDetection : TargetDetectionCore
         Transform[] targetTransforms = killableTargets.Select(x => x.Transform).ToArray();
         
         Transform closestTransform = _transform.FindClosestTransform(targetTransforms);
-        
+
         return killableTargets.First(x => x.Transform == closestTransform);
     }
 }
