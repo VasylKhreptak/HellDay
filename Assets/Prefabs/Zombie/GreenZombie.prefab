@@ -474,7 +474,7 @@ MonoBehaviour:
   _transform: {fileID: 7416989929528155681}
   _damage: 50
   _killableTargetDetection: {fileID: 5350208796334916349}
-  _atackDelay: 1
+  _atackDelay: 0.5
   _explosionRadius: 3.37
   _zombieExplosionParticle: 24
   _damageDelay: 1

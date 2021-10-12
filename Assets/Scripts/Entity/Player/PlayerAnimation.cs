@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -8,7 +9,6 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GameObject _player;
-    [SerializeField] private ConfigurableUpdate _configurableUpdate;
     
     [Header("Preferences")]
     [SerializeField] private int _updateFrameRate = 30;
@@ -23,13 +23,15 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int Landed = Animator.StringToHash("Landed");
 
     private bool _playerJumped = false;
+    
+    private Coroutine _legPunchActionsCoroutine = null;
+    private Coroutine _configurableUpdate = null;
 
-
-    private Coroutine _legPunchActionsCoroutine;
-
-    private void Awake()
+    private void OnEnable()
     {
-        _configurableUpdate.StartUpdate(_updateFrameRate, () =>
+        Messenger.AddListener(GameEvent.PLAYER_JUMPED, OnPlayerJumped);
+        
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFrameRate, () =>
         {
             RunAnimation();
 
@@ -39,14 +41,11 @@ public class PlayerAnimation : MonoBehaviour
         });
     }
 
-    private void OnEnable()
-    {
-        Messenger.AddListener(GameEvent.PLAYER_JUMPED, OnPlayerJumped);
-    }
-
     private void OnDisable()
     {
         Messenger.RemoveListener(GameEvent.PLAYER_JUMPED, OnPlayerJumped);
+        
+        ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }
 
     private void OnPlayerJumped()

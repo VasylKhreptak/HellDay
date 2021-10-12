@@ -2,26 +2,28 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class ConfigurableUpdate : MonoBehaviour
+public static class ConfigurableUpdate 
 {
-    private Coroutine _configurableUpdate = null;
-
-    public void StartUpdate(int framerate, Action action)
+    public static void StartUpdate(MonoBehaviour owner, ref Coroutine coroutine, int framerate, Action action)
     {
-        if (_configurableUpdate == null)
+        if (coroutine == null) ;
         {
-            _configurableUpdate = StartCoroutine(UpdateRoutine(framerate, action));
+            coroutine =  owner.StartCoroutine(UpdateRoutine(framerate, action));
         }
     }
 
-    public void StopUpdate()
+    public static void StopUpdate(MonoBehaviour owner, ref Coroutine coroutine)
     {
-        StopCoroutine(_configurableUpdate);
 
-        _configurableUpdate = null;
+        if (coroutine != null)
+        {
+            owner.StopCoroutine(coroutine);
+
+            coroutine = null;
+        }
     }
 
-    private IEnumerator UpdateRoutine(int framerate, Action action)
+    private static IEnumerator UpdateRoutine(int framerate, Action action)
     {
         float delay = 1 / framerate;
 

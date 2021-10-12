@@ -1,23 +1,27 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class PlayerStripes : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Animator _animator;
-    [SerializeField] private ConfigurableUpdate _configurableUpdate;
 
     [Header("Preferences")]
     [SerializeField] private int _updateFramerate  = 10;
 
     private readonly int IsMoving = Animator.StringToHash("IsMoving");
+    
+    private Coroutine _configurableUpdate;
 
-    private void Awake()
+    private void OnEnable()
     {
-        _configurableUpdate.StartUpdate(_updateFramerate, () =>
-        {
-            MoveStripes();
-        });
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate,
+                _updateFramerate, () => { MoveStripes(); });
+    }
+
+    private void OnDisable()
+    {
+        ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }
 
     private void MoveStripes()

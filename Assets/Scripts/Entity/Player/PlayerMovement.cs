@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,12 +15,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxJumpVelocity = 30f;
     [SerializeField, Range(0f, 1f)] private float _horizontalSensetivity = 0.5f;
     [SerializeField, Range(0f, 1f)] private float _verticalSensetivity = 0.8f;
-    
-    [Header("General preferences")] 
     [SerializeField] private bool _canMove = true;
     
     [Range(-1, 1)] private static int movementDirection;
     public static  int MovementDirection => movementDirection;
+    
+    private readonly float MIN_CHANGE_DIRECTION_SPEED = 0.1f;
+    private readonly int UPDATE_FRAMERATE = 10;
+    private Coroutine _configurableUpdate = null;
+
 
     private void OnEnable()
     {
@@ -29,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
         Messenger<float>.AddListener(GameEvent.PLAYER_MOVEMENT_IMPACT, OnPlayerMovementImpact);
 
         SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
+        
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, UPDATE_FRAMERATE, () =>
+        {
+            ConfigureDirection();
+        });
     }
 
     private void OnDisable()
@@ -37,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
         Messenger<float>.RemoveListener(GameEvent.PLAYER_MOVEMENT_IMPACT, OnPlayerMovementImpact);
+        
+        ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }
 
     private void OnPlayerGetUp()
@@ -77,13 +88,11 @@ public class PlayerMovement : MonoBehaviour
         HorizontalMovement();
 
         VerticalMovement();
-
-        ConfigureDirection();
     }
 
     private void ConfigureDirection()
     {
-        if (_rigidbody2D.velocity.x != 0)
+        if (Math.Abs(_rigidbody2D.velocity.x) > MIN_CHANGE_DIRECTION_SPEED)
         {
             SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
         }
