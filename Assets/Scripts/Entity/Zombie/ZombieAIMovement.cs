@@ -165,7 +165,7 @@ public class ZombieAIMovement : MonoBehaviour
     protected virtual bool CanJump()
     {
         return _obstacleChecker.isObstacleClose == true &&
-               _groundChecker.isGrounded == true;
+               _groundChecker.IsGrounded() == true;
     }
 
     protected bool CanReverseMovementDirection()

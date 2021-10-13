@@ -124,7 +124,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanJump()
     {
-        return _joystick.Vertical > _verticalSensetivity && _groundChecker.isGrounded == true &&
+        return _joystick.Vertical > _verticalSensetivity && _groundChecker.IsGrounded() == true &&
                LadderMovement.isOnLadder == false;
     }
 

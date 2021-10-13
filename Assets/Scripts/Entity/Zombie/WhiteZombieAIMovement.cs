@@ -7,6 +7,6 @@ public class WhiteZombieAIMovement : ZombieAIMovement
     protected override bool CanJump()
     {
         return (_obstacleChecker.isObstacleClose == true  || _pitChecker.isPitNearp == true) &&
-               _groundChecker.isGrounded == true;
+               _groundChecker.IsGrounded() == true;
     }
 }

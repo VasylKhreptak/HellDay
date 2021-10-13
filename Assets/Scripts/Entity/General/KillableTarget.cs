@@ -1,5 +1,4 @@
 using UnityEngine;
-using  System.Linq;
 
 [System.Serializable]
 public class KillableTarget : MonoBehaviour

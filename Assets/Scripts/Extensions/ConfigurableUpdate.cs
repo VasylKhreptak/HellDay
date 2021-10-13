@@ -6,7 +6,7 @@ public static class ConfigurableUpdate
 {
     public static void StartUpdate(MonoBehaviour owner, ref Coroutine coroutine, int framerate, Action action)
     {
-        if (coroutine == null) ;
+        if (coroutine == null)
         {
             coroutine =  owner.StartCoroutine(UpdateRoutine(framerate, action));
         }
