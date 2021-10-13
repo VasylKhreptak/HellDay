@@ -45,7 +45,6 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -119,9 +118,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d6c863a75785543a721e95ad2562a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletSpeed: 30
   _rigidbody2D: {fileID: 1002008527181682652}
+  _transform: {fileID: 2273810424488977008}
+  _bulletSpeed: 30
   _lifeTime: 0.5
+  _detectRadius: 0.3
+  _detectLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!61 &5179006526529651887
 BoxCollider2D:
   m_ObjectHideFlags: 0

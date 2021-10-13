@@ -15,9 +15,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxJumpVelocity = 30f;
     [SerializeField, Range(0f, 1f)] private float _horizontalSensetivity = 0.5f;
     [SerializeField, Range(0f, 1f)] private float _verticalSensetivity = 0.8f;
-    [SerializeField] private bool _canMove = true;
+    [SerializeField] private float _jumpDelay = 1f;
     
+    private bool _canMove = true;
+    private bool _isJumpForbidden = false;
     [Range(-1, 1)] private static int movementDirection;
+    
     public static  int MovementDirection => movementDirection;
     
     private readonly float MIN_CHANGE_DIRECTION_SPEED = 0.1f;
@@ -36,7 +39,10 @@ public class PlayerMovement : MonoBehaviour
         
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, UPDATE_FRAMERATE, () =>
         {
-            ConfigureDirection();
+            if (IsJoystickPressed() == true)
+            {
+                ConfigureFaceDirection();
+            }
         });
     }
 
@@ -90,12 +96,17 @@ public class PlayerMovement : MonoBehaviour
         VerticalMovement();
     }
 
-    private void ConfigureDirection()
+    private void ConfigureFaceDirection()
     {
         if (Math.Abs(_rigidbody2D.velocity.x) > MIN_CHANGE_DIRECTION_SPEED)
         {
             SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
         }
+    }
+
+    private bool IsJoystickPressed()
+    {
+        return _joystick.Horizontal != 0 && _joystick.Vertical != 0;
     }
     
     private void HorizontalMovement()
@@ -118,12 +129,28 @@ public class PlayerMovement : MonoBehaviour
     {
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x,
             Mathf.Clamp(_maxJumpVelocity * _joystick.Vertical, _minJumpVelocity, _maxJumpVelocity));
-        
+
+        StartCoroutine(ControlJumpRoutine());
+
         Messenger.Broadcast(GameEvent.PLAYER_JUMPED);
+    }
+
+    private IEnumerator ControlJumpRoutine()
+    {
+        _isJumpForbidden = true;
+
+        yield return new WaitForSeconds(_jumpDelay);
+
+        _isJumpForbidden = false;
     }
 
     private bool CanJump()
     {
+        if (_isJumpForbidden == true)
+        {
+            return false;
+        }
+        
         return _joystick.Vertical > _verticalSensetivity && _groundChecker.IsGrounded() == true &&
                LadderMovement.isOnLadder == false;
     }

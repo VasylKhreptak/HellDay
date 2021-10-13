@@ -1,8 +1,12 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class ParticleDisabler : MonoBehaviour, IPooledObject
 {
+    [Header("References")] 
+    [SerializeField] private Transform _transform;
+
     [SerializeField] private ParticleSystem _particleSystem;
     private float _duration;
 
@@ -15,16 +19,9 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     {
         _particleSystem.Play();
 
-        StartCoroutine(DisableObject(_duration));
+        _transform.DoWait(_duration, () => { gameObject.SetActive(false); });
     }
-
-    private IEnumerator DisableObject(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        gameObject.SetActive(false);
-    }
-
+    
     private float GetParticleDuration()
     {
         return _particleSystem.main.startLifetime.constantMax;

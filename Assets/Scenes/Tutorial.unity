@@ -69215,7 +69215,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427317582}
   - component: {fileID: 1427317583}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: OpenedDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74195,7 +74195,7 @@ MonoBehaviour:
   _maxJumpVelocity: 17
   _horizontalSensetivity: 0.5
   _verticalSensetivity: 0.4
-  _canMove: 1
+  _jumpDelay: 0.5
 --- !u!114 &1755073912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74931,7 +74931,7 @@ GameObject:
   - component: {fileID: 1934919812}
   - component: {fileID: 1934919813}
   - component: {fileID: 1934919814}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ClosedDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,10 +1,15 @@
-using System.Collections;
+using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour, IPooledObject
 {
-    [SerializeField] private float _bulletSpeed = 3;
+    [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;
+    [SerializeField] private Transform _transform;
+    
+    [Header("Preferences")]
+    [SerializeField] private float _bulletSpeed = 3;
     [SerializeField] private float _lifeTime = 2f;
 
     private ObjectPooler _objectPooler;
@@ -19,19 +24,14 @@ public class Bullet : MonoBehaviour, IPooledObject
         _objectPooler = ObjectPooler.Instance;
     }
 
-    private IEnumerator DisableObject(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        gameObject.SetActive(false);
-    }
-
     private void SetMovement()
     {
         _rigidbody2D.velocity = transform.right * _bulletSpeed;
 
         if (gameObject.activeSelf == true)
-            StartCoroutine(DisableObject(_lifeTime));
+        {
+            _transform.DoWait(_lifeTime, () => { gameObject.SetActive(false); });
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

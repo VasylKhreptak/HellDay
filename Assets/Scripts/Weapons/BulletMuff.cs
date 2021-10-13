@@ -1,10 +1,14 @@
-using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class BulletMuff : MonoBehaviour, IPooledObject
 {
-    [SerializeField] private float _verticalVelocity = 1f;
+    [Header("References")]
+    [SerializeField] private Transform _transform;
     [SerializeField] private Rigidbody2D _rigidbody2D;
+
+    [Header("Preferences")]
+    [SerializeField] private float _verticalVelocity = 1f;
     [SerializeField] private float _maxHorizontalVelocity = 2f;
     [SerializeField] private float _minHorizontalVelocity = 1f;
     [SerializeField] private float _lifeTime = 2f;
@@ -14,9 +18,11 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     public void OnEnable()
     {
         SetMovement();
-
+        
         if (gameObject.activeSelf == true)
-            StartCoroutine(DisableObject(_lifeTime));
+        {
+            _transform.DoWait(_lifeTime, () => { gameObject.SetActive(false); });
+        }
     }
 
     private void SetMovement()
@@ -27,12 +33,5 @@ public class BulletMuff : MonoBehaviour, IPooledObject
                 _verticalVelocity);
 
         _rigidbody2D.AddTorque(Random.Range(-_torque, _torque));
-    }
-
-    private IEnumerator DisableObject(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        gameObject.SetActive(false);
     }
 }

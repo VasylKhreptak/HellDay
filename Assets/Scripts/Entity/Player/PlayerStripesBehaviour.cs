@@ -1,6 +1,6 @@
  using UnityEngine;
 
-public class PlayerStripes : MonoBehaviour
+public class PlayerStripesBehaviour : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Rigidbody2D _rigidbody2D;

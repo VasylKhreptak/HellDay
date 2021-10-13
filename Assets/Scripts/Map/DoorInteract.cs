@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 
 public class DoorInteract : MonoBehaviour
 {
@@ -8,10 +7,35 @@ public class DoorInteract : MonoBehaviour
 
     protected Door FindClosestDoor(Door[] doors)
     {
-        Transform[] targetTransforms = doors.Select(x => x.Transform).ToArray();
+        Transform[] targetTransforms = SelectTransforms(doors);
         
         Transform closestTransform = _transform.FindClosestTransform(targetTransforms);
+
+        return FindFirst(doors, closestTransform);
+    }
+    
+    private Transform[] SelectTransforms(Door[] doors)
+    {
+        Transform[] transforms = new Transform[doors.Length];
         
-        return doors.First(x => x.Transform == closestTransform);
+        for (int i = 0; i < doors.Length; i++)
+        {
+            transforms[i] = doors[i].Transform;
+        }
+
+        return transforms;
+    }
+
+    private Door FindFirst(Door[] doors, Transform transform)
+    {
+        for (int i = 0; i < doors.Length; i++)
+        {
+            if (doors[i].Transform == transform)
+            {
+                return doors[i];
+            }
+        }
+
+        return null;
     }
 }

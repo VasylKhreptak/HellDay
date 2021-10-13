@@ -1,19 +1,17 @@
 using System.Collections;
 using UnityEngine;
-using System.Linq;
 
 public class KillableTargetDetection : TargetDetectionCore
 {
-    [Header("Targets")] 
-    [SerializeField] private KillableTarget[] _killableTargets;
+    [Header("Targets")] [SerializeField] private KillableTarget[] _killableTargets;
     private KillableTarget _closestTarget;
 
     public KillableTarget ClosestTarget => _closestTarget;
-    
+
     protected override void Awake()
     {
         base.Awake();
-        
+
         _closestTarget = _killableTargets[0];
     }
 
@@ -26,13 +24,38 @@ public class KillableTargetDetection : TargetDetectionCore
             yield return new WaitForSeconds(_findTargetDelay);
         }
     }
-    
+
     private KillableTarget FindClosestTarget(KillableTarget[] killableTargets)
     {
-        Transform[] targetTransforms = killableTargets.Select(x => x.Transform).ToArray();
-        
+        Transform[] targetTransforms = SelectTransforms(killableTargets);
+
         Transform closestTransform = _transform.FindClosestTransform(targetTransforms);
 
-        return killableTargets.First(x => x.Transform == closestTransform);
+        return FindFirst(killableTargets, closestTransform);
+    }
+
+    private Transform[] SelectTransforms(KillableTarget[] killableTargets)
+    {
+        Transform[] transforms = new Transform[killableTargets.Length];
+        
+        for (int i = 0; i < killableTargets.Length; i++)
+        {
+            transforms[i] = killableTargets[i].Transform;
+        }
+
+        return transforms;
+    }
+
+    private KillableTarget FindFirst(KillableTarget[] killableTargets, Transform transform)
+    {
+        for (int i = 0; i < killableTargets.Length; i++)
+        {
+            if (_killableTargets[i].Transform == transform)
+            {
+                return _killableTargets[i];
+            }
+        }
+        
+        return null;
     }
 }

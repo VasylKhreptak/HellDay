@@ -34,7 +34,7 @@ public class PlayerAnimation : MonoBehaviour
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFrameRate, () =>
         {
             RunAnimation();
-
+            
             SitAndUpAnimation();
 
             LadderClimbing();
