@@ -27,6 +27,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public enum MessengerMode
 {
@@ -190,8 +191,11 @@ static public class Messenger
         MessengerInternal.OnBroadcasting(eventType, mode);
         var invocationList = MessengerInternal.GetInvocationList<Action>(eventType);
 
-        foreach (var callback in invocationList)
+        for (var i = 0; i < invocationList.Length; i++)
+        {
+            var callback = invocationList[i];
             callback.Invoke();
+        }
     }
 
     static public void Broadcast<TReturn>(string eventType, Action<TReturn> returnCall, MessengerMode mode)
@@ -244,8 +248,11 @@ static public class Messenger<T>
         MessengerInternal.OnBroadcasting(eventType, mode);
         var invocationList = MessengerInternal.GetInvocationList<Action<T>>(eventType);
 
-        foreach (var callback in invocationList)
+        for (var i = 0; i < invocationList.Length; i++)
+        {
+            var callback = invocationList[i];
             callback.Invoke(arg1);
+        }
     }
 
     static public void Broadcast<TReturn>(string eventType, T arg1, Action<TReturn> returnCall, MessengerMode mode)
@@ -299,8 +306,11 @@ static public class Messenger<T, U>
         MessengerInternal.OnBroadcasting(eventType, mode);
         var invocationList = MessengerInternal.GetInvocationList<Action<T, U>>(eventType);
 
-        foreach (var callback in invocationList)
+        for (var i = 0; i < invocationList.Length; i++)
+        {
+            var callback = invocationList[i];
             callback.Invoke(arg1, arg2);
+        }
     }
 
     static public void Broadcast<TReturn>(string eventType, T arg1, U arg2, Action<TReturn> returnCall,
@@ -355,8 +365,11 @@ static public class Messenger<T, U, V>
         MessengerInternal.OnBroadcasting(eventType, mode);
         var invocationList = MessengerInternal.GetInvocationList<Action<T, U, V>>(eventType);
 
-        foreach (var callback in invocationList)
+        for (var i = 0; i < invocationList.Length; i++)
+        {
+            var callback = invocationList[i];
             callback.Invoke(arg1, arg2, arg3);
+        }
     }
 
     static public void Broadcast<TReturn>(string eventType, T arg1, U arg2, V arg3, Action<TReturn> returnCall,

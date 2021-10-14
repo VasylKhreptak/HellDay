@@ -40,10 +40,10 @@ public class ObjectPooler : MonoBehaviour
 
     private void CreatePoolFolders()
     {
-        foreach (Pool pool in _pools)
+        for (int i = 0; i < _pools.Count; i++)
         {
-            pool.folder = new GameObject(pool.PoolType.ToString());
-            pool.folder.transform.parent = gameObject.transform;
+            _pools[i].folder = new GameObject(_pools[i].PoolType.ToString());
+            _pools[i].folder.transform.parent = gameObject.transform;
         }
     }
 
@@ -51,21 +51,21 @@ public class ObjectPooler : MonoBehaviour
     {
         _poolDictionary = new Dictionary<Pools, Queue<GameObject>>();
 
-        foreach (Pool pool in _pools)
+        for (int i = 0; i < _pools.Count; i++)
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            for (int i = 0; i < pool.Size; i++)
+            for (int j = 0; j < _pools[i].Size; j++)
             {
-                GameObject gameObject = Instantiate(pool.Prefab);
+                GameObject gameObject = Instantiate(_pools[i].Prefab);
                 gameObject.SetActive(false);
 
-                gameObject.transform.parent = pool.folder.transform;
+                gameObject.transform.parent = _pools[i].folder.transform;
 
                 objectPool.Enqueue(gameObject);
             }
 
-            _poolDictionary.Add(pool.PoolType, objectPool);
+            _poolDictionary.Add(_pools[i].PoolType, objectPool);
         }
     }
 

@@ -47,9 +47,9 @@ public class DestroyableItem : PhysicalItem
     {
         float impulse = 0f;
 
-        foreach (ContactPoint2D point in collision2D.contacts)
+        for (int i = 0; i < collision2D.contacts.Length; i++)
         {
-            impulse += point.normalImpulse;
+            impulse += collision2D.contacts[i].normalImpulse;
         }
 
         return impulse;

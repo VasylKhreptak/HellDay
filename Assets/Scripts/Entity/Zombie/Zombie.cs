@@ -37,8 +37,9 @@ public class Zombie : Entity, IKillable
 
     public void SpawnBodyParts()
     {
-        foreach (var part in _zombieDeathParts)
+        for (var i = 0; i < _zombieDeathParts.Length; i++)
         {
+            var part = _zombieDeathParts[i];
             _objectPooler.GetFromPool(part, _transform.position,
                 Quaternion.identity);
         }

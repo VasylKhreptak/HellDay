@@ -7,15 +7,15 @@ public static class TransformExtensions
         Transform closestTransform = null;
         float closestDistanceSqr = Mathf.Infinity;
 
-        foreach (Transform potentialTransform in transforms)
+        for (int i = 0; i < transforms.Length; i++)
         {
-            Vector3 directionToTarget = potentialTransform.position - transform.position;
+            Vector3 directionToTarget = transforms[i].position - transform.position;
             float sqrDirectionToTarget = directionToTarget.sqrMagnitude;
 
             if (sqrDirectionToTarget < closestDistanceSqr)
             {
                 closestDistanceSqr = sqrDirectionToTarget;
-                closestTransform = potentialTransform;
+                closestTransform = transforms[i];
             }
         }
 

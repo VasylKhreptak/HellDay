@@ -39,9 +39,9 @@ public class Player : Entity, IKillable
     
     private void SpawnBodyParts()
     {
-        foreach (Pools part in _playerDeathParts)
+        for (int i = 0; i < _playerDeathParts.Length; i++)
         {
-            _objectPooler.GetFromPool(part, transform.position, Quaternion.identity);
+            _objectPooler.GetFromPool(_playerDeathParts[i], transform.position, Quaternion.identity);
         }
     }
 }
