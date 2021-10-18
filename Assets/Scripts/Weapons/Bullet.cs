@@ -14,14 +14,14 @@ public class Bullet : MonoBehaviour, IPooledObject
 
     private ObjectPooler _objectPooler;
 
-    public void OnEnable()
-    {
-        SetMovement();
-    }
-
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
+    }
+
+    public void OnEnable()
+    {   
+        SetMovement();
     }
 
     private void SetMovement()

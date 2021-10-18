@@ -11,4 +11,5 @@ public static class GameEvent
     public static readonly string PLAYER_DIED = "PLAYER_DIED";
     public static readonly string ANIMATE_OPEN_DOOR_BUTTON = "ANIMATE_OPEN_DOOR_BUTTON";
     public static readonly string PLAYER_JUMPED = "PLAYER_JUMPED";
+    public static readonly string SHAKE_CAMERA = "SHAKE_CAMERA";
 }

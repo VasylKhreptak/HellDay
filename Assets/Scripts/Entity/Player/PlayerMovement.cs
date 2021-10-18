@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     private readonly int UPDATE_FRAMERATE = 10;
     private Coroutine _configurableUpdate = null;
 
-
     private void OnEnable()
     {
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);

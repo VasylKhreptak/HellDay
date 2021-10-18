@@ -20,24 +20,19 @@ public class ObjectPooler : MonoBehaviour
     private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
     [SerializeField] private List<Pool> _pools;
 
-    #region singleton
-
+    
     public static ObjectPooler Instance;
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    #endregion
-
-    private void Start()
-    {
+        
         CreatePoolFolders();
 
         FillPool();
     }
 
+    
     private void CreatePoolFolders()
     {
         for (int i = 0; i < _pools.Count; i++)
@@ -81,9 +76,11 @@ public class ObjectPooler : MonoBehaviour
 
         objectFromPool.transform.position = Position;
         objectFromPool.transform.rotation = Rotation;
-        
-        if(objectFromPool.activeSelf == true)
+
+        if (objectFromPool.activeSelf == true)
+        {
             objectFromPool.SetActive(false);
+        }
         
         objectFromPool.SetActive(true);
 

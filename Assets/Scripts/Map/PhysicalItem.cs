@@ -24,8 +24,6 @@ public class PhysicalItem : MonoBehaviour
         if (IsBroken() == true)
         {
             DestroyActions();
-            
-            Destroy(gameObject);
         }
     }
 

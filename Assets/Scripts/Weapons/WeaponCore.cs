@@ -10,6 +10,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
     [Header("Positions")]
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
     [SerializeField] protected Transform _bulletSpawnPlace;
+    [SerializeField] protected Transform _shootParticleSpawnPlace;
     
     [Header("Weapon options")] 
     [Tooltip("Time before two shoots")] 
@@ -136,9 +137,9 @@ public class WeaponCore : MonoBehaviour, IWeapon
         
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         
-        _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _bulletSpawnPlace.position, Quaternion.identity);
+        _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         
-        _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _bulletSpawnPlace.position, Quaternion.identity);
+        _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);
         
         _weaponVFX.StartShootAnimation(_animator, ShootTrigger);
     }
@@ -170,7 +171,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
         if (_ammo <= 0)
             _canShoot = false;
     }
-    
 
     //Changes bullet direction due to gun local scale
     protected void ChangeBulletDirection(ref Vector3 rotation)

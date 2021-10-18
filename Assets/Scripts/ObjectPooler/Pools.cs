@@ -24,5 +24,6 @@ public enum Pools
     PlayerLeg,
     PlayerArm, 
     TVDestroyParticle,
-    GreenZombieExplosion
+    GreenZombieExplosion,
+    BarrelExplosion
 }

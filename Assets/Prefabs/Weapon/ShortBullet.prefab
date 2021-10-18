@@ -122,8 +122,8 @@ MonoBehaviour:
   _transform: {fileID: 484213712061444837}
   _bulletSpeed: 30
   _lifeTime: 0.5
-  _detectRadius: 0.3
-  _detectLayerMask:
+  _rayDistance: 0.7
+  _layerMask:
     serializedVersion: 2
     m_Bits: 1
 --- !u!61 &7393675264666644812

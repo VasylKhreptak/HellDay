@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class DestroyableItem : PhysicalItem
 {
-    [Header("Preferences")] 
+    [Header("References")]
     [SerializeField] protected Transform _transform;
-    [SerializeField] protected float _minDestroyImpulse = 350f;
+    
+    [Header("Preferences")]
     [SerializeField] protected float _minDamageImpulse = 100f;
     [SerializeField] protected Pools _destroyParticle;
-
+    
     protected ObjectPooler _objectPooler;
 
     protected override void Start()
@@ -26,12 +27,7 @@ public class DestroyableItem : PhysicalItem
             impulse > _minDamageImpulse)
         {
             TakeDamage(1f);
-        }
-
-        if (impulse > _minDestroyImpulse)
-        {
-            DestroyActions();
-        }
+        }                                                                                
     }
 
     protected override void DestroyActions()
