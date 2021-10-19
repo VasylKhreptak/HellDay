@@ -23,7 +23,7 @@ public class DestroyableItem : PhysicalItem
     {
         float impulse = GetCollisionImpulse(collision2D);
 
-        if (collision2D.collider.CompareTag("Bullet") == true ||
+        if (collision2D.collider.CompareTag("Bullet") ||
             impulse > _minDamageImpulse)
         {
             TakeDamage(1f);

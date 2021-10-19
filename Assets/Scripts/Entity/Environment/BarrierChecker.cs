@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BarrierChecker : MonoBehaviour
 {
-    public bool isBarrierClose { get; private set; } = false;
+    public bool isBarrierClose { get; private set; }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

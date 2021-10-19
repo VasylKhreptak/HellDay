@@ -18,14 +18,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _jumpDelay = 1f;
     
     private bool _canMove = true;
-    private bool _isJumpForbidden = false;
+    private bool _isJumpForbidden ;
     [Range(-1, 1)] private static int movementDirection;
     
     public static  int MovementDirection => movementDirection;
     
     private readonly float MIN_CHANGE_DIRECTION_SPEED = 0.1f;
     private readonly int UPDATE_FRAMERATE = 10;
-    private Coroutine _configurableUpdate = null;
+    private Coroutine _configurableUpdate;
 
     private void OnEnable()
     {
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, UPDATE_FRAMERATE, () =>
         {
-            if (IsJoystickPressed() == true)
+            if (IsJoystickPressed())
             {
                 ConfigureFaceDirection();
             }
@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void VerticalMovement()
     {
-        if (CanJump() == true)
+        if (CanJump())
         {
             Jump();
         }
@@ -145,12 +145,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanJump()
     {
-        if (_isJumpForbidden == true)
+        if (_isJumpForbidden)
         {
             return false;
         }
         
-        return _joystick.Vertical > _verticalSensetivity && _groundChecker.IsGrounded() == true &&
+        return _joystick.Vertical > _verticalSensetivity && _groundChecker.IsGrounded() &&
                LadderMovement.isOnLadder == false;
     }
 

@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour, IPooledObject
     {
         _rigidbody2D.velocity = transform.right * _bulletSpeed;
 
-        if (gameObject.activeSelf == true)
+        if (gameObject.activeSelf)
         {
             _transform.DoWait(_lifeTime, () => { gameObject.SetActive(false); });
         }
@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour, IPooledObject
         ContactPoint2D contactPoint2D = other.GetContact(0);
         Vector2 hitPosition = contactPoint2D.point;
 
-        if (other.collider.CompareTag("Zombie") == true)
+        if (other.collider.CompareTag("Zombie"))
         {
             _objectPooler.GetFromPool(Pools.ZombieHitParticle,
                 hitPosition, Quaternion.identity);

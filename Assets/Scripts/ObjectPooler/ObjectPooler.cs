@@ -77,7 +77,7 @@ public class ObjectPooler : MonoBehaviour
         objectFromPool.transform.position = Position;
         objectFromPool.transform.rotation = Rotation;
 
-        if (objectFromPool.activeSelf == true)
+        if (objectFromPool.activeSelf)
         {
             objectFromPool.SetActive(false);
         }

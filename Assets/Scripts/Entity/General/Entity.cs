@@ -20,7 +20,7 @@ public class Entity : MonoBehaviour
     {
         _health -= damage;
 
-        if (IsDead() == true)
+        if (IsDead())
         {
             Destroy(gameObject);
         }

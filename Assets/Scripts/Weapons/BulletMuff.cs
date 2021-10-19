@@ -19,7 +19,7 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     {
         SetMovement();
         
-        if (gameObject.activeSelf == true)
+        if (gameObject.activeSelf)
         {
             _transform.DoWait(_lifeTime, () => { gameObject.SetActive(false); });
         }

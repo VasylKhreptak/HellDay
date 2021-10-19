@@ -13,16 +13,16 @@ public class LadderMovement : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _joystickVerticalSensetivty = 0.8f;
     [SerializeField] private float _alligementSpeed = 3f;
 
-    public static bool isOnLadder { get; private set; } = false;
-    public static bool isClimbing { get; private set; } = false;
+    public static bool isOnLadder { get; private set; }
+    public static bool isClimbing { get; private set; }
 
     private GameObject _currentLadder;
 
     private void Update()
     {
-        if (isOnLadder == true)
+        if (isOnLadder)
         {
-            if(IsMovingUp() == true)
+            if(IsMovingUp())
             {
                 _rigidbody2D.velocity =
                 new Vector2(0, _movementSpeed);
@@ -31,13 +31,13 @@ public class LadderMovement : MonoBehaviour
                 
                 AllignToLadder();
             }
-            else if (IsMovingDown() == true)
+            else if (IsMovingDown())
             {
                 isClimbing = true;
                 
                 AllignToLadder();
             }
-            else if (IsStaying() == true)
+            else if (IsStaying())
             {
                 isClimbing = false;
                 
@@ -83,7 +83,7 @@ public class LadderMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Ladder")  == true)
+        if (other.CompareTag("Ladder"))
         {
             isOnLadder = true;
 
@@ -93,7 +93,7 @@ public class LadderMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Ladder") == true)
+        if (other.CompareTag("Ladder"))
         {
             isOnLadder = false;
 

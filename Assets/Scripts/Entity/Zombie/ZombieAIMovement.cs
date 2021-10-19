@@ -29,9 +29,9 @@ public class ZombieAIMovement : MonoBehaviour
     [SerializeField] protected BarrierChecker _barrierChecker;
 
     //Coroutines
-    protected Coroutine _randomMovementCoroutine = null;
-    protected Coroutine _followTargetCoroutine = null;
-    protected Coroutine _increaseDetectionRadiusCoroutine = null;
+    protected Coroutine _randomMovementCoroutine;
+    protected Coroutine _followTargetCoroutine;
+    protected Coroutine _increaseDetectionRadiusCoroutine;
 
     protected bool _isFollowingTarget = false;
 
@@ -148,12 +148,12 @@ public class ZombieAIMovement : MonoBehaviour
     {
         while (true)
         {
-            if (CanJump() == true)
+            if (CanJump())
             {
                 Jump();
             }
 
-            if (CanReverseMovementDirection() == true)
+            if (CanReverseMovementDirection())
             {
                 ReverseMovementDirection();
             }
@@ -164,13 +164,13 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected virtual bool CanJump()
     {
-        return _obstacleChecker.isObstacleClose == true &&
-               _groundChecker.IsGrounded() == true;
+        return _obstacleChecker.isObstacleClose &&
+               _groundChecker.IsGrounded();
     }
 
     protected bool CanReverseMovementDirection()
     {
-        return _barrierChecker.isBarrierClose == true && _isFollowingTarget == false;
+        return _barrierChecker.isBarrierClose && _isFollowingTarget == false;
     }
 
     protected void Jump()
@@ -200,8 +200,8 @@ public class ZombieAIMovement : MonoBehaviour
     protected bool CanFollowTarget()
     {
         return _transform.ContainsTransform(_mainDetectionRadius,
-                   _killableTargetDetection.ClosestTarget.Transform) == true &&
-               _killableTargetDetection.ClosestTarget.gameObject.activeSelf == true;
+                   _killableTargetDetection.ClosestTarget.Transform)  &&
+               _killableTargetDetection.ClosestTarget.gameObject.activeSelf;
     }
     
     protected void StartFollowingTarget(Transform target)

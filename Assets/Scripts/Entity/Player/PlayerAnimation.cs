@@ -24,8 +24,8 @@ public class PlayerAnimation : MonoBehaviour
 
     private bool _playerJumped = false;
     
-    private Coroutine _legPunchActionsCoroutine = null;
-    private Coroutine _configurableUpdate = null;
+    private Coroutine _legPunchActionsCoroutine;
+    private Coroutine _configurableUpdate;
 
     private void OnEnable()
     {
@@ -78,7 +78,7 @@ public class PlayerAnimation : MonoBehaviour
                 Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
             }
         }
-        else if (_joystick.Vertical > _sitJoystickSensetivity && isSitting == true)
+        else if (_joystick.Vertical > _sitJoystickSensetivity && isSitting)
         {
             _animator.SetBool(Sit, false);
             Messenger.Broadcast(GameEvent.PLAYER_GET_UP);
@@ -87,7 +87,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void StartLegPunch()
     {
-        if (_legPunchActionsCoroutine == null && _player.activeSelf == true)
+        if (_legPunchActionsCoroutine == null && _player.activeSelf)
         {
             _legPunchActionsCoroutine = StartCoroutine(LegPunchRoutine());
         }
@@ -106,7 +106,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (_playerJumped == true)
+        if (_playerJumped)
         {
             _animator.ResetTrigger(Jump);
             _animator.SetTrigger(Landed);

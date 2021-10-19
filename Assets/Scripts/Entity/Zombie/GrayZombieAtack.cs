@@ -17,12 +17,12 @@ public class GrayZombieAtack : CommonZombieAtack
     {
         while (true)
         {
-            if (CanAtack() == true)
+            if (CanAtack())
             {
                 Atack();
             }
 
-            if (CanJump() == true)
+            if (CanJump())
             {
                 Jump();
             }
@@ -40,7 +40,7 @@ public class GrayZombieAtack : CommonZombieAtack
             return false;
         }
             
-        return _transform.ContainsTransform(_maxJumpRadius, targetTransform) == true &&
+        return _transform.ContainsTransform(_maxJumpRadius, targetTransform) &&
                _transform.ContainsTransform(_minJumpRadius, targetTransform) == false;
     }
 

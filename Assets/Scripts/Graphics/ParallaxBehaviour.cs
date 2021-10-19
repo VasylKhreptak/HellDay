@@ -8,8 +8,8 @@ public class ParallaxBehaviour : MonoBehaviour
     [Header("Preferences")]
     [SerializeField, Range(0f, 1f)] private float _horizontalParallaxStrength = 0.1f;
     [SerializeField, Range(0f, 1f)] private float _verticalParallaxStrength = 0.1f;
-    [SerializeField] private bool _enableHorizontalParallax = false;
-    [SerializeField] private bool _enableVerticalParallax = false;
+    [SerializeField] private bool _enableHorizontalParallax;
+    [SerializeField] private bool _enableVerticalParallax;
 
     private Vector3 _cameraPreviousPosition;
 

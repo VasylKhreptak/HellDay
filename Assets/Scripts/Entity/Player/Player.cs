@@ -27,7 +27,7 @@ public class Player : Entity, IKillable
         _health -= damage;
         Messenger<float>.Broadcast(GameEvent.SET_HEALTH_BAR, _health);
         
-        if (IsDead() == true)
+        if (IsDead())
         {
             Messenger.Broadcast(GameEvent.PLAYER_DIED);
 

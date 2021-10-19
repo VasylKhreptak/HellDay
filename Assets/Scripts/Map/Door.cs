@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
     [SerializeField] private Transform _transform;
     [SerializeField] private GameObject _openedDoor;
     [SerializeField] private GameObject _closedDoor;
-    [SerializeField] private bool _isOpened = false;
+    [SerializeField] private bool _isOpened;
 
     public Transform Transform => _transform;
     

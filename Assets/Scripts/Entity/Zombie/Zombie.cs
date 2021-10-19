@@ -19,7 +19,7 @@ public class Zombie : Entity, IKillable
     {
         _health -= damage;
 
-        if (IsDead() == true)
+        if (IsDead())
         {
             SpawnBodyParts();
             

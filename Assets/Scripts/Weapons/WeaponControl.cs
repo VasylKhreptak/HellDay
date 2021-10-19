@@ -58,7 +58,7 @@ public class WeaponControl : MonoBehaviour
 
     private bool CanShoot()
     {
-        return gameObject.transform.parent.gameObject.activeSelf == true;
+        return gameObject.transform.parent.gameObject.activeSelf;
     }
 
 }

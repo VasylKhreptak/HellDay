@@ -29,7 +29,7 @@ public class ZombieAtackCore : MonoBehaviour
     {
         while (true)
         {
-            if (CanAtack() == true)
+            if (CanAtack())
             {
                 Atack();
             }

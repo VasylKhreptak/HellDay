@@ -38,9 +38,10 @@ public class WeaponCore : MonoBehaviour, IWeapon
     [SerializeField] protected float _angleScatterOnSit = 2f;
     protected float _previousAngleScatter;
 
-    protected Coroutine _shootingCoroutine;
+    protected Coroutine _shootCoroutine;
     protected ObjectPooler _objectPooler;
-
+    
+    
     protected void OnEnable()
     {
         _previousAngleScatter = _angleScatter;
@@ -99,26 +100,26 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     public void StartShooting()
     {
-        if (_shootingCoroutine != null || _canShoot == false) return;
+        if (_shootCoroutine != null || _canShoot == false) return;
 
-        _shootingCoroutine = StartCoroutine(Shoot());
+        _shootCoroutine = StartCoroutine(Shoot());
         
         StartCoroutine(ControlShootSpeed());
     }
 
     public void StopShooting()
     {
-        if (_shootingCoroutine != null)
-            StopCoroutine(_shootingCoroutine);
+        if (_shootCoroutine != null)
+            StopCoroutine(_shootCoroutine);
         
-        _shootingCoroutine = null;
+        _shootCoroutine = null;
     }
 
     protected virtual IEnumerator Shoot()
     {
         while (true)
         {
-            if (_canShoot == true)
+            if (_canShoot)
             {
                 ShootActions();
             }
@@ -130,17 +131,11 @@ public class WeaponCore : MonoBehaviour, IWeapon
     protected virtual void ShootActions()
     {
         _weaponVFX.PlayShootAudio(_audioSource);
-        
         SpawnBullet();
-        
         GetAmmo();
-        
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
-        
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
-        
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);
-        
         _weaponVFX.StartShootAnimation(_animator, ShootTrigger);
     }
 
@@ -171,8 +166,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
         if (_ammo <= 0)
             _canShoot = false;
     }
-
-    //Changes bullet direction due to gun local scale
+    
     protected void ChangeBulletDirection(ref Vector3 rotation)
     {
         rotation += new Vector3(0, 0, PlayerMovement.MovementDirection == 1 ? 0 : 180);
