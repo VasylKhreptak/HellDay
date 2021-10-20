@@ -12,7 +12,7 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
 
     private void Awake()
     {
-        _duration = GetParticleDuration();
+        _duration = _particleSystem.main.startLifetime.constantMax;
     }
 
     public void OnEnable()
@@ -20,10 +20,5 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
         _particleSystem.Play();
 
         _transform.DOWait(_duration, () => { gameObject.SetActive(false); });
-    }
-    
-    private float GetParticleDuration()
-    {
-        return _particleSystem.main.startLifetime.constantMax;
     }
 }

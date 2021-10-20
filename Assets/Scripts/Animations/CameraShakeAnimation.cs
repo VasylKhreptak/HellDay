@@ -37,7 +37,6 @@ public class CameraShakeAnimation : MonoBehaviour
 
         _transform.DOWait(_duration, () => { _cinemachinePerlin.m_AmplitudeGain = 0; });
 
-
         Sequence sequence = DOTween.Sequence();
         
         sequence.Append( DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; }, 

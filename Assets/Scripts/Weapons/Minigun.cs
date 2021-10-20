@@ -73,8 +73,7 @@ public class Minigun : WeaponCore, IWeapon
         _isShooting = true;
 
         PlayAudioClip(_audioSource, _shootSound, true);
-
-        DOTween.KillAll();
+        
         _animator.SetBool(SpinTrigger, false);
 
         while (true)
@@ -100,6 +99,7 @@ public class Minigun : WeaponCore, IWeapon
 
     private IEnumerator PlaySpin(Action onSpinEnd)
     {
+        DOTween.KillAll();
         _animator.SetBool(SpinTrigger, true);
         
         _isSpinning = true;
