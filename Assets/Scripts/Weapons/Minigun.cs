@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class Minigun : WeaponCore, IWeapon
@@ -13,6 +14,8 @@ public class Minigun : WeaponCore, IWeapon
     [SerializeField] private AudioClip _spinLoop;
     [SerializeField] private AudioClip _shootSound;
     [SerializeField] private AudioClip _shootStop;
+    
+    protected static readonly int SpinTrigger = Animator.StringToHash("Spin");
 
     private bool _isSpinning;
     private bool _isShooting;
@@ -26,7 +29,7 @@ public class Minigun : WeaponCore, IWeapon
 
         if(_playSpinAudio == null)
         {
-            _playSpinAudio = StartCoroutine(PlaySpinAudio(() =>
+            _playSpinAudio = StartCoroutine(PlaySpin(() =>
             {
                 _shootCoroutine = StartCoroutine(Shoot());
 
@@ -38,7 +41,9 @@ public class Minigun : WeaponCore, IWeapon
     public new void StopShooting()
     {
         if (_shootCoroutine != null)
+        {
             StopCoroutine(_shootCoroutine);
+        }
 
         if (_playSpinAudio != null)
         {
@@ -48,8 +53,12 @@ public class Minigun : WeaponCore, IWeapon
         }
         
         StopShootAudio();
-        
         _shootCoroutine = null;
+
+        _transform.DOWait(1, () =>
+        {
+            _animator.SetBool(SpinTrigger, false);
+        });
     }
     
     private void PlayAudioClip(AudioSource audioSource, AudioClip audioClip, bool loop = false)
@@ -59,14 +68,15 @@ public class Minigun : WeaponCore, IWeapon
         audioSource.Play();
     }
 
-    
-    
     protected override IEnumerator Shoot()
     {
         _isShooting = true;
 
         PlayAudioClip(_audioSource, _shootSound, true);
-        
+
+        DOTween.KillAll();
+        _animator.SetBool(SpinTrigger, false);
+
         while (true)
         {
             if (_canShoot)
@@ -88,8 +98,10 @@ public class Minigun : WeaponCore, IWeapon
         _weaponVFX.StartShootAnimation(_animator, ShootTrigger);
     }
 
-    private IEnumerator PlaySpinAudio(Action onSpinEnd)
+    private IEnumerator PlaySpin(Action onSpinEnd)
     {
+        _animator.SetBool(SpinTrigger, true);
+        
         _isSpinning = true;
         
         PlayAudioClip(_audioSource, _windUp);

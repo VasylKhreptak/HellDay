@@ -51,7 +51,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
 
-        _transform.DoWait(0.2f, () => { SetAmmo(_maxAmmo); });
+        _transform.DOWait(0.2f, () => { SetAmmo(_maxAmmo); });
     }
 
     protected void Start()

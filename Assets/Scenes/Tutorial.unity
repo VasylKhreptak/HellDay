@@ -59899,7 +59899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &646487514
 AudioSource:
   m_ObjectHideFlags: 0
@@ -60932,7 +60932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &871448441
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61705,7 +61705,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1572456, y: 1}
+    m_SensorSize: {x: 2.1538463, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -61743,8 +61743,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 1036280481}
   _transform: {fileID: 1036280482}
-  _intensity: 5
-  _duration: 0.5
+  _intensity: 7
+  _duration: 0.7
 --- !u!114 &1036280484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75113,11 +75113,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332932505156407063, guid: b68253cfaa3aa304f9e626661fb537ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 94.93
+      value: 109.91
       objectReference: {fileID: 0}
     - target: {fileID: 2332932505156407063, guid: b68253cfaa3aa304f9e626661fb537ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.69
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: 2332932505156407063, guid: b68253cfaa3aa304f9e626661fb537ba, type: 3}
       propertyPath: m_LocalPosition.z

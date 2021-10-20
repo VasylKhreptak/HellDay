@@ -19,7 +19,7 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     {
         _particleSystem.Play();
 
-        _transform.DoWait(_duration, () => { gameObject.SetActive(false); });
+        _transform.DOWait(_duration, () => { gameObject.SetActive(false); });
     }
     
     private float GetParticleDuration()

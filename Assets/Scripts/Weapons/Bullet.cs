@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour, IPooledObject
 
         if (gameObject.activeSelf)
         {
-            _transform.DoWait(_lifeTime, () => { gameObject.SetActive(false); });
+            _transform.DOWait(_lifeTime, () => { gameObject.SetActive(false); });
         }
     }
 
