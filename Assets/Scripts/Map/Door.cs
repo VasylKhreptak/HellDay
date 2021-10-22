@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     [SerializeField] private GameObject _openedDoor;
     [SerializeField] private GameObject _closedDoor;
     [SerializeField] private bool _isOpened;
+    [SerializeField] private AudioSource _audioSource;
 
     public Transform Transform => _transform;
     
@@ -25,6 +26,8 @@ public class Door : MonoBehaviour
 
     public void ToggleDoor()
     {
+        _audioSource.Play();
+        
         SetDoorState(!_isOpened);
     }
 
