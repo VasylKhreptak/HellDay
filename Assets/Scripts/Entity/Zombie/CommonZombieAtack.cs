@@ -26,6 +26,8 @@ public class CommonZombieAtack : ZombieAtackCore
 
     protected override void Atack()
     {
+        _audio.PlaBiteSound();
+        
         _killableTargetDetection.ClosestTarget.Killable.TakeDamage(_damage);
         
         SpawnAtackParticles();

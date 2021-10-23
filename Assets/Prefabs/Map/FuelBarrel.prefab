@@ -149,7 +149,6 @@ MonoBehaviour:
   _minDamageImpulse: 100
   _destroyParticle: 6
   _explosionRadius: 4.69
-  _cameraImpactRadius: 0
   _explosionForce: 106.25
   _layerMask:
     serializedVersion: 2
@@ -180,3 +179,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _explosionAudioClip: {fileID: 8300000, guid: cff7949333c950f47afc3fb7fff5ebb0, type: 3}
+  _soundVolume: 1

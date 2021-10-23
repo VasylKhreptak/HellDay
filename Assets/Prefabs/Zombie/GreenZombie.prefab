@@ -384,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _transform: {fileID: 7416989929528155681}
+  _audio: {fileID: 8871311209068379307}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &7416989929528155688
 MonoBehaviour:
@@ -453,6 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 7416989929528155681}
+  _audio: {fileID: 8871311209068379307}
   _damage: 50
   _killableTargetDetection: {fileID: 5350208796334916349}
   _atackDelay: 0.5
@@ -476,8 +478,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 6617698989268328031}
-  _minDelay: 3
-  _maxDelay: 6
+  _transform: {fileID: 7416989929528155681}
+  _deathAudioClips:
+  - {fileID: 8300000, guid: 72b8b30ec3e0f94409fc50b20e20f59f, type: 3}
+  - {fileID: 8300000, guid: c8857aa139a093543bc1f682a47044bb, type: 3}
+  - {fileID: 8300000, guid: 700749db5b0a39444b3e4111d2b77c31, type: 3}
+  - {fileID: 8300000, guid: 956660dece553bd4f85414c5d3d762d9, type: 3}
+  - {fileID: 8300000, guid: 93cbb7539078b2a4bb725b0c2505f1cd, type: 3}
+  - {fileID: 8300000, guid: 2ff8f5b6699fa6740aa2285aea1459cd, type: 3}
+  - {fileID: 8300000, guid: 11e41cfd4b3e4b24ab5c72588d20eac1, type: 3}
+  - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
+  - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
+  - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
+  _minPlayDelay: 3
+  _maxPlayDelay: 6
   _walkSoundProbability: 50
   _walkAudioClips:
   - {fileID: 8300000, guid: b9ce190ba6a1763459fbf542036bde86, type: 3}

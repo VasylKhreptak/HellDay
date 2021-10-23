@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Zombie : Entity, IKillable
 {
-    [Header("Preferences")] 
+    [Header("References")] 
     [SerializeField] private Transform _transform;
+    [SerializeField] private ZombieAudio _audio;
+    
+    [Header("Preferences")]
     [SerializeField] private Pools[] _zombieDeathParts;
 
     private ObjectPooler _objectPooler;
@@ -22,6 +25,8 @@ public class Zombie : Entity, IKillable
         if (IsDead())
         {
             SpawnBodyParts();
+            
+            _audio.PlayDeathSound();
             
             Destroy(gameObject);
         }

@@ -6,6 +6,7 @@ public class ZombieAtackCore : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected Transform _transform;
+    [SerializeField] protected ZombieAudio _audio;
     
     [Header("Damage")] 
     [SerializeField] protected float _damage = 20f;

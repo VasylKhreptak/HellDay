@@ -1,19 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class ZombieSound : MonoBehaviour
+public class ZombieAudio : EntityAudio
 {
-    [Header("References")] 
-    [SerializeField] private AudioSource _audioSource;
-
     [Header("Preferences")] 
-    [SerializeField] private float _minDelay = 3f;
-    [SerializeField] private float _maxDelay = 6f;
+    [SerializeField] private float _minPlayDelay = 3f;
+    [SerializeField] private float _maxPlayDelay = 6f;
     [SerializeField, Range(0, 100)] private float _walkSoundProbability = 50f;
 
     [Header("Audio Clips")] 
     [SerializeField] private AudioClip[] _walkAudioClips;
     [SerializeField] private AudioClip[] _biteAudioClips;
+
 
     private void Awake()
     {
@@ -32,7 +30,7 @@ public class ZombieSound : MonoBehaviour
                 });
             }
 
-            yield return new WaitForSeconds(Random.Range(_minDelay, _maxDelay));
+            yield return new WaitForSeconds(Random.Range(_minPlayDelay, _maxPlayDelay));
         }
     }
 

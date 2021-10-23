@@ -41,9 +41,7 @@ public class WeaponControl : MonoBehaviour
             return;
         }
         
-        _currentWeapon.Iweapon.StartShooting();
-        
-        Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
+        _currentWeapon.Iweapon.StartShooting(); 
     }
 
     public void StopShooting()

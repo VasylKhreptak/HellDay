@@ -117,6 +117,8 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected virtual IEnumerator Shoot()
     {
+        Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
+
         while (true)
         {
             if (_canShoot)

@@ -70,6 +70,8 @@ public class Minigun : WeaponCore, IWeapon
 
     protected override IEnumerator Shoot()
     {
+        Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
+
         _isShooting = true;
 
         PlayAudioClip(_audioSource, _shootSound, true);

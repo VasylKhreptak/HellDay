@@ -52,6 +52,8 @@ public class GreenZombieAtack : ZombieAtackCore
 
     protected override void Atack()
     {
+        _audio.PlaBiteSound();
+        
         _objectPooler.GetFromPool(_zombieExplosionParticle, _transform.position, Quaternion.identity);
 
         _transform.DOWait(_damageDelay, () =>
@@ -60,7 +62,6 @@ public class GreenZombieAtack : ZombieAtackCore
         });
         
         _zombie.SpawnBodyParts();
-        
         Destroy(gameObject);
     }
 
