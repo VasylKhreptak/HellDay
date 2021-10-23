@@ -25,17 +25,14 @@ public class Minigun : WeaponCore, IWeapon
     
     public new void StartShooting()
     {
-        if (_shootCoroutine != null || _canShoot == false) return;
+        if (_shootCoroutine != null || CanShoot() == false) return;
 
-        if(_playSpinAudio == null)
+        StartPlayingSpinAudio(() =>
         {
-            _playSpinAudio = StartCoroutine(PlaySpin(() =>
-            {
-                _shootCoroutine = StartCoroutine(Shoot());
+            _shootCoroutine = StartCoroutine(Shoot());
 
-                StartCoroutine(ControlShootSpeed());
-            }));
-        }
+            StartCoroutine(ControlShootSpeed());
+        });
     }
 
     public new void StopShooting()
@@ -44,23 +41,42 @@ public class Minigun : WeaponCore, IWeapon
         {
             StopCoroutine(_shootCoroutine);
         }
+        
+        StopPlayingSpinAudio();
+        
+        StopShootAudio();
+        
+        FadeSpin();
+        
+        _shootCoroutine = null;
+    }
 
+    private void StartPlayingSpinAudio(Action onSpinEnd)
+    {
+        if(_playSpinAudio == null)
+        {
+            _playSpinAudio = StartCoroutine(PlaySpin(onSpinEnd));
+        }
+    }
+
+    private void StopPlayingSpinAudio()
+    {
         if (_playSpinAudio != null)
         {
             StopCoroutine(_playSpinAudio);
 
             _playSpinAudio = null;
         }
-        
-        StopShootAudio();
-        _shootCoroutine = null;
+    }
 
+    private void FadeSpin()
+    {
         _transform.DOWait(1, () =>
         {
             _animator.SetBool(SpinTrigger, false);
         });
     }
-    
+
     private void PlayAudioClip(AudioSource audioSource, AudioClip audioClip, bool loop = false)
     {
         audioSource.clip = audioClip;
@@ -83,6 +99,10 @@ public class Minigun : WeaponCore, IWeapon
             if (CanShoot())
             {
                 ShootActions();
+            }
+            else if(_ammo.IsEmpty)
+            {
+                StopShooting();
             }
 
             yield return new WaitForSecondsRealtime(_shootDelay);

@@ -60163,7 +60163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 200
+  _maxAmmo: 10
 --- !u!1 &675527632
 GameObject:
   m_ObjectHideFlags: 0
@@ -61775,7 +61775,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.154872, y: 1}
+    m_SensorSize: {x: 2.1548717, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -62895,7 +62895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00c110736004e04281f8508a12651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponToSelect: 6
+  _weaponToSelect: 3
   _weapons:
   - {fileID: 798250844}
   - {fileID: 349027443}

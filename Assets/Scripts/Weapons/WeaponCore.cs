@@ -89,7 +89,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     public void StartShooting()
     {
-        if (_shootCoroutine != null || _canShoot == false) return;
+        if (_shootCoroutine != null || CanShoot() == false) return;
 
         _shootCoroutine = StartCoroutine(Shoot());
         
