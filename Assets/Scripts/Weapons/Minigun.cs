@@ -80,7 +80,7 @@ public class Minigun : WeaponCore, IWeapon
 
         while (true)
         {
-            if (_canShoot)
+            if (CanShoot())
             {
                 ShootActions();
             }
@@ -92,7 +92,7 @@ public class Minigun : WeaponCore, IWeapon
     protected override void ShootActions()
     {
         SpawnBullet();
-        GetAmmo();
+        _ammo.GetAmmo();
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);

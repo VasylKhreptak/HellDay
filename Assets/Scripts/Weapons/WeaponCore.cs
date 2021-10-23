@@ -1,11 +1,11 @@
 using System.Collections;
-using DG.Tweening;
 using UnityEngine;
 
 public class WeaponCore : MonoBehaviour, IWeapon
 {
     [Header("References")] 
     [SerializeField] protected Transform _transform;
+    [SerializeField] protected Ammo _ammo;
     
     [Header("Positions")]
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
@@ -25,9 +25,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
     [Header("Ammo options")] 
     [SerializeField] protected Pools _bullet = Pools.DefaultBullet;
     [SerializeField] protected Pools _bulletMuff = Pools.DefaultBulletMuff;
-    [SerializeField] protected int _maxAmmo = 100;
-    protected int _ammo;
-
+    
     [Header("Audio")] 
     [SerializeField] protected AudioSource _audioSource;
 
@@ -50,20 +48,11 @@ public class WeaponCore : MonoBehaviour, IWeapon
         Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
         Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
-
-        _transform.DOWait(0.2f, () => { SetAmmo(_maxAmmo); });
     }
 
     protected void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-    }
-
-    protected void SetAmmo(int ammo)
-    {
-        _ammo = ammo;
-        
-        Messenger<string>.Broadcast(GameEvent.SET_AMMO_TEXT, _ammo.ToString());
     }
 
     protected void OnDisable()
@@ -121,7 +110,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
         while (true)
         {
-            if (_canShoot)
+            if (CanShoot())
             {
                 ShootActions();
             }
@@ -130,11 +119,16 @@ public class WeaponCore : MonoBehaviour, IWeapon
         }
     }
 
+    protected bool CanShoot()
+    {
+        return _canShoot && _ammo.IsEmpty == false;
+    }
+
     protected virtual void ShootActions()
     {
         _weaponVFX.PlayShootAudio(_audioSource);
         SpawnBullet();
-        GetAmmo();
+        _ammo.GetAmmo();
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);
@@ -159,16 +153,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
         _objectPooler.GetFromPool(_bullet, bulletPosition, Quaternion.Euler(bulletRotation));
     }
 
-    protected void GetAmmo()
-    {
-        _ammo -= 1;
-
-        Messenger<string>.Broadcast(GameEvent.SET_AMMO_TEXT, _ammo.ToString());
-
-        if (_ammo <= 0)
-            _canShoot = false;
-    }
-    
     protected void ChangeBulletDirection(ref Vector3 rotation)
     {
         rotation += new Vector3(0, 0, PlayerMovement.MovementDirection == 1 ? 0 : 180);

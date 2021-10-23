@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 349027443}
   - component: {fileID: 349027439}
   - component: {fileID: 349027444}
+  - component: {fileID: 349027445}
   m_Layer: 6
   m_Name: Rifle
   m_TagString: Untagged
@@ -708,6 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 349027438}
+  _ammo: {fileID: 349027445}
   _bulletMuffSpawnPlace: {fileID: 675527633}
   _bulletSpawnPlace: {fileID: 2114078573}
   _shootParticleSpawnPlace: {fileID: 1464338892}
@@ -717,7 +719,6 @@ MonoBehaviour:
   _animator: {fileID: 349027442}
   _bullet: 2
   _bulletMuff: 3
-  _maxAmmo: 100
   _audioSource: {fileID: 349027439}
   _weaponVFX: {fileID: 349027444}
   _angleScatterOnSit: 2
@@ -817,6 +818,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &349027445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349027437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 200
 --- !u!1001 &361062176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59893,6 +59907,7 @@ GameObject:
   - component: {fileID: 646487514}
   - component: {fileID: 646487519}
   - component: {fileID: 646487520}
+  - component: {fileID: 646487521}
   m_Layer: 6
   m_Name: Shotgun
   m_TagString: Untagged
@@ -60009,6 +60024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 646487518}
+  _ammo: {fileID: 646487521}
   _bulletMuffSpawnPlace: {fileID: 1546197428}
   _bulletSpawnPlace: {fileID: 1349041332}
   _shootParticleSpawnPlace: {fileID: 1646853309}
@@ -60018,7 +60034,6 @@ MonoBehaviour:
   _animator: {fileID: 646487517}
   _bullet: 5
   _bulletMuff: 4
-  _maxAmmo: 100
   _audioSource: {fileID: 646487514}
   _weaponVFX: {fileID: 646487520}
   _angleScatterOnSit: 15
@@ -60136,6 +60151,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &646487521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646487513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 200
 --- !u!1 &675527632
 GameObject:
   m_ObjectHideFlags: 0
@@ -60497,6 +60525,7 @@ GameObject:
   - component: {fileID: 798250842}
   - component: {fileID: 798250843}
   - component: {fileID: 798250845}
+  - component: {fileID: 798250846}
   m_Layer: 6
   m_Name: DefaultWeapon
   m_TagString: Untagged
@@ -60585,6 +60614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 798250839}
+  _ammo: {fileID: 798250846}
   _bulletMuffSpawnPlace: {fileID: 903647309}
   _bulletSpawnPlace: {fileID: 1594403420}
   _shootParticleSpawnPlace: {fileID: 12428888}
@@ -60594,7 +60624,6 @@ MonoBehaviour:
   _animator: {fileID: 798250843}
   _bullet: 0
   _bulletMuff: 1
-  _maxAmmo: 100
   _audioSource: {fileID: 798250842}
   _weaponVFX: {fileID: 798250845}
   _angleScatterOnSit: 1
@@ -60739,6 +60768,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &798250846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798250838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 200
 --- !u!1001 &844037363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60926,6 +60968,7 @@ GameObject:
   - component: {fileID: 871448442}
   - component: {fileID: 871448441}
   - component: {fileID: 871448447}
+  - component: {fileID: 871448448}
   m_Layer: 6
   m_Name: Minigun
   m_TagString: Untagged
@@ -61042,6 +61085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 871448445}
+  _ammo: {fileID: 871448448}
   _bulletMuffSpawnPlace: {fileID: 1275462284}
   _bulletSpawnPlace: {fileID: 2094629637}
   _shootParticleSpawnPlace: {fileID: 1433683580}
@@ -61051,7 +61095,6 @@ MonoBehaviour:
   _animator: {fileID: 871448444}
   _bullet: 0
   _bulletMuff: 1
-  _maxAmmo: 10000
   _audioSource: {fileID: 871448441}
   _weaponVFX: {fileID: 871448447}
   _angleScatterOnSit: 6
@@ -61174,6 +61217,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &871448448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871448440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 200
 --- !u!1 &880354836
 GameObject:
   m_ObjectHideFlags: 0
@@ -61189,6 +61245,7 @@ GameObject:
   - component: {fileID: 880354842}
   - component: {fileID: 880354838}
   - component: {fileID: 880354843}
+  - component: {fileID: 880354844}
   m_Layer: 6
   m_Name: MachineGun
   m_TagString: Untagged
@@ -61322,6 +61379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 880354837}
+  _ammo: {fileID: 880354844}
   _bulletMuffSpawnPlace: {fileID: 1224423983}
   _bulletSpawnPlace: {fileID: 1068538497}
   _shootParticleSpawnPlace: {fileID: 180473316}
@@ -61331,7 +61389,6 @@ MonoBehaviour:
   _animator: {fileID: 880354841}
   _bullet: 0
   _bulletMuff: 1
-  _maxAmmo: 100
   _audioSource: {fileID: 880354838}
   _weaponVFX: {fileID: 880354843}
   _angleScatterOnSit: 4
@@ -61431,6 +61488,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &880354844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880354836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 200
 --- !u!1 &903647308
 GameObject:
   m_ObjectHideFlags: 0
@@ -62825,7 +62895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00c110736004e04281f8508a12651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponToSelect: 0
+  _weaponToSelect: 6
   _weapons:
   - {fileID: 798250844}
   - {fileID: 349027443}
@@ -69132,6 +69202,7 @@ GameObject:
   - component: {fileID: 1496388138}
   - component: {fileID: 1496388134}
   - component: {fileID: 1496388139}
+  - component: {fileID: 1496388140}
   m_Layer: 6
   m_Name: Uzi
   m_TagString: Untagged
@@ -69265,6 +69336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1496388133}
+  _ammo: {fileID: 1496388140}
   _bulletMuffSpawnPlace: {fileID: 1738919741}
   _bulletSpawnPlace: {fileID: 307285269}
   _shootParticleSpawnPlace: {fileID: 414755287}
@@ -69274,7 +69346,6 @@ MonoBehaviour:
   _animator: {fileID: 1496388137}
   _bullet: 5
   _bulletMuff: 1
-  _maxAmmo: 100
   _audioSource: {fileID: 1496388134}
   _weaponVFX: {fileID: 1496388139}
   _angleScatterOnSit: 6
@@ -69374,6 +69445,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1496388140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496388132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 200
 --- !u!1 &1510148929
 GameObject:
   m_ObjectHideFlags: 0
@@ -74272,6 +74356,7 @@ GameObject:
   - component: {fileID: 1879101111}
   - component: {fileID: 1879101106}
   - component: {fileID: 1879101112}
+  - component: {fileID: 1879101113}
   m_Layer: 6
   m_Name: Vintorez
   m_TagString: Untagged
@@ -74388,6 +74473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1879101110}
+  _ammo: {fileID: 1879101113}
   _bulletMuffSpawnPlace: {fileID: 1635206836}
   _bulletSpawnPlace: {fileID: 1889875018}
   _shootParticleSpawnPlace: {fileID: 912129203}
@@ -74397,7 +74483,6 @@ MonoBehaviour:
   _animator: {fileID: 1879101109}
   _bullet: 2
   _bulletMuff: 3
-  _maxAmmo: 100
   _audioSource: {fileID: 1879101106}
   _weaponVFX: {fileID: 1879101112}
   _angleScatterOnSit: 2
@@ -74514,6 +74599,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1879101113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879101105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxAmmo: 200
 --- !u!1 &1889875017
 GameObject:
   m_ObjectHideFlags: 0
