@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class ZombieAudio : EntityAudio
 {
+    [Header("References")]
+    [SerializeField] protected AudioSource _audioSource;
+
     [Header("Preferences")] 
     [SerializeField] private float _minPlayDelay = 3f;
     [SerializeField] private float _maxPlayDelay = 6f;

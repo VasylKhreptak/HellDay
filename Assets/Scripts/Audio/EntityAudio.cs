@@ -3,7 +3,6 @@ using UnityEngine;
 public class EntityAudio : MonoBehaviour
 {
     [Header("References")] 
-    [SerializeField] protected AudioSource _audioSource;
     [SerializeField] protected Transform _transform;
     
     [Header("Audio Clips")]
