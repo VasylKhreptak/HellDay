@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class DestroyableItem : PhysicalItem
+public class DestroyableObject : PhysicalObject
 {
     [Header("References")]
     [SerializeField] protected Transform _transform;
@@ -11,6 +11,8 @@ public class DestroyableItem : PhysicalItem
     [SerializeField] protected Pools _destroyParticle;
     
     protected ObjectPooler _objectPooler;
+
+    public Transform Transform => _transform;
 
     protected override void Start()
     {
@@ -30,7 +32,7 @@ public class DestroyableItem : PhysicalItem
         }                                                                                
     }
 
-    protected override void DestroyActions()
+    public  override void DestroyActions()
     {
         _objectPooler.GetFromPool(_destroyParticle, _transform.position, Quaternion.identity);
 

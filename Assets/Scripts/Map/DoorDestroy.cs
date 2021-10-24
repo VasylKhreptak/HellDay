@@ -1,6 +1,6 @@
-public class DoorDestroy : DestroyableItem
+public class DoorDestroy : DestroyableObject
 {
-    protected override void DestroyActions()
+    public override void DestroyActions()
     {
         Destroy(_transform.parent.gameObject);
         

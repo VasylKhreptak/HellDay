@@ -3,6 +3,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [Header("Door references")] 
+    [SerializeField] private GameObject _player;
     [SerializeField] private Transform _transform;
     [SerializeField] private GameObject _openedDoor;
     [SerializeField] private GameObject _closedDoor;
@@ -35,8 +36,12 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Messenger<UI_SlideAnimation.AnimationType>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,
+            if(_player.activeSelf)
+            {
+                Messenger<UI_SlideAnimation.AnimationType>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,
                 UI_SlideAnimation.AnimationType.show);
+                
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PhysicalItem : MonoBehaviour
+public class PhysicalObject : MonoBehaviour
 {
     [Header("Preferences")] 
     [SerializeField] protected float _maxDurability = 7f;
@@ -17,7 +17,7 @@ public class PhysicalItem : MonoBehaviour
         _durability = _maxDurability;
     }
     
-    protected virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         _durability -= damage;
 
@@ -27,7 +27,7 @@ public class PhysicalItem : MonoBehaviour
         }
     }
 
-    protected virtual void DestroyActions()
+    public virtual void DestroyActions()
     {
         throw new NotImplementedException();
     }

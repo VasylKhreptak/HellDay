@@ -63,13 +63,15 @@ public class WeaponCore : MonoBehaviour, IWeapon
         Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
     }
 
-    protected void OnLegPunched(float time)
+    protected virtual void OnLegPunched(float time)
     {
         StartCoroutine(OnLegPunchedCoroutine(time));
     }
 
     protected IEnumerator OnLegPunchedCoroutine(float animationDuration)
     {
+        StopShooting();
+        
         _canShoot = false;
 
         yield return new WaitForSeconds(animationDuration);

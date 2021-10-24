@@ -198,7 +198,7 @@ MonoBehaviour:
   _maxHealth: 100
   _transform: {fileID: 3003906475258495791}
   _audio: {fileID: -7618934783012836963}
-  _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f00000015000000
+  _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &3003906475258495782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ab9593292ec484190305d1344e0ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 6091753410839302526}
   _transform: {fileID: 3003906475258495791}
   _deathAudioClips:
   - {fileID: 8300000, guid: 72b8b30ec3e0f94409fc50b20e20f59f, type: 3}
@@ -302,6 +301,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
   - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
   - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
+  _audioSource: {fileID: 6091753410839302526}
   _minPlayDelay: 3
   _maxPlayDelay: 6
   _walkSoundProbability: 50

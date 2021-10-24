@@ -67,10 +67,7 @@ public class LadderMovement : MonoBehaviour
 
     private void AllignToLadder()
     {
-        if (_currentLadder.activeSelf == false)
-        {
-            return;
-        }
+        if (_currentLadder.activeSelf == false) return;
 
         float positionX = Mathf.Lerp(_playerTransform.position.x,
             _currentLadder.transform.position.x,

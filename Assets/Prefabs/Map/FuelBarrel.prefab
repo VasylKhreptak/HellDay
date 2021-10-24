@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2332932505156407064}
   m_Layer: 0
   m_Name: FuelBarrel
-  m_TagString: Untagged
+  m_TagString: FuelBarrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -5952802550149609260, guid: 97e9b9f01b8d3f542888c1eab4f54a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -148,8 +148,10 @@ MonoBehaviour:
   _transform: {fileID: 2332932505156407063}
   _minDamageImpulse: 100
   _destroyParticle: 6
-  _explosionRadius: 4.69
-  _explosionForce: 106.25
+  _playerTransform: {fileID: 0}
+  _explosionRadius: 5
+  _cameraImpactRadius: 14
+  _explosionForce: 140
   _layerMask:
     serializedVersion: 2
     m_Bits: 4095
@@ -179,5 +181,99 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _chainExplosionDelay: 0.3
   _explosionAudioClip: {fileID: 8300000, guid: cff7949333c950f47afc3fb7fff5ebb0, type: 3}
   _soundVolume: 1
+  _shakeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.0030432
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.3999711
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _maxCameraShakeIntensity: 11
+  _maxEntityDamage: 130
+  _entityDamageCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.0030432
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.29954505
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _maxObjectDamage: 25
+  _objectDamageCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0013873475
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.29290423
+      value: 0.9996867
+      inSlope: -0.040748745
+      outSlope: -0.040748745
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.038660903
+    - serializedVersion: 3
+      time: 0.45485464
+      value: 0.64343214
+      inSlope: -2.6109884
+      outSlope: -2.6109884
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.036859393
+    - serializedVersion: 3
+      time: 1
+      value: 0.1037736
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

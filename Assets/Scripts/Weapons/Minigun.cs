@@ -51,6 +51,13 @@ public class Minigun : WeaponCore, IWeapon
         _shootCoroutine = null;
     }
 
+    protected override void OnLegPunched(float time)
+    {
+        StopShooting();
+        
+        base.OnLegPunched(time);
+    }
+
     private void StartPlayingSpinAudio(Action onSpinEnd)
     {
         if(_playSpinAudio == null)

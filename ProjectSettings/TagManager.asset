@@ -7,6 +7,7 @@ TagManager:
   - Bullet
   - Zombie
   - Ladder
+  - FuelBarrel
   layers:
   - Default
   - TransparentFX

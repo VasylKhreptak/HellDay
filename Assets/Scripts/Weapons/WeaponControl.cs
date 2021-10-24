@@ -36,20 +36,14 @@ public class WeaponControl : MonoBehaviour
 
     public void StartShooting()
     {
-        if (CanShoot() == false)
-        {
-            return;
-        }
-        
+        if (CanShoot() == false) return;
+
         _currentWeapon.Iweapon.StartShooting(); 
     }
 
     public void StopShooting()
     {
-        if (CanShoot() == false)
-        {
-            return;
-        }
+        if (CanShoot() == false) return;
         
         _currentWeapon.Iweapon.StopShooting();
     }

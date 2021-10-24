@@ -24,10 +24,7 @@ public class GroundChecker : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        if (_transform == null)
-        {
-            return;
-        }
+        if (_transform == null) return;
 
         Vector2 origin1, origin2;
         

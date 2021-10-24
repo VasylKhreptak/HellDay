@@ -73,7 +73,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
         GameObject objectFromPool = _poolDictionary[pool].Dequeue();
-
+        
         objectFromPool.transform.position = Position;
         objectFromPool.transform.rotation = Rotation;
 

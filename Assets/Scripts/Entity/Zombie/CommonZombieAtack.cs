@@ -38,10 +38,7 @@ public class CommonZombieAtack : ZombieAtackCore
     {
         base.OnDrawGizmosSelected();
         
-        if (_atackCenter == null)
-        {
-            return;
-        }
+        if (_atackCenter == null) return;
         
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_atackCenter.position, _biteRadius);

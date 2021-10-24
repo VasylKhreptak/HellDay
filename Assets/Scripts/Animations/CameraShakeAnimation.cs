@@ -9,7 +9,6 @@ public class CameraShakeAnimation : MonoBehaviour
     [SerializeField] private Transform _transform;
 
     [Header("Preferences")] 
-    [SerializeField] private float _intensity;
     [SerializeField] private float _duration;
 
     private CinemachineBasicMultiChannelPerlin _cinemachinePerlin;
@@ -21,26 +20,26 @@ public class CameraShakeAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        Messenger.AddListener(GameEvent.SHAKE_CAMERA, Shake);
+        Messenger<float>.AddListener(GameEvent.SHAKE_CAMERA, Shake);
     }
 
     private void OnDisable()
     {
-        Messenger.RemoveListener(GameEvent.SHAKE_CAMERA, Shake);
+        Messenger<float>.RemoveListener(GameEvent.SHAKE_CAMERA, Shake);
     }
  
-    public void Shake()
+    public void Shake(float intensity)
     {
         float halfDuration = _duration / 2;
         
-        _cinemachinePerlin.m_AmplitudeGain = _intensity;
+        _cinemachinePerlin.m_AmplitudeGain = intensity;
 
         _transform.DOWait(_duration, () => { _cinemachinePerlin.m_AmplitudeGain = 0; });
 
         Sequence sequence = DOTween.Sequence();
         
         sequence.Append( DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; }, 
-            x => _cinemachinePerlin.m_AmplitudeGain = x, _intensity,
+            x => _cinemachinePerlin.m_AmplitudeGain = x, intensity,
             halfDuration));
         sequence.Append(DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; },
             x => _cinemachinePerlin.m_AmplitudeGain = x, 0,
