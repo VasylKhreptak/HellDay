@@ -64,7 +64,7 @@
             Beware: use this method only when there are no tweens running.
             </summary>
             <param name="tweenersCapacity">Max Tweeners capacity.
-            Default: 1000</param>
+            Default: 2000</param>
             <param name="sequencesCapacity">Max Sequences capacity.
             Default: 50</param>
         </member>
@@ -521,7 +521,7 @@
             Beware: use this method only when there are no tweens running.
             </summary>
             <param name="tweenersCapacity">Max Tweeners capacity.
-            Default: 200</param>
+            Default: 2000</param>
             <param name="sequencesCapacity">Max Sequences capacity.
             Default: 50</param>
         </member>
@@ -1101,7 +1101,7 @@
             Beware: use this method only when there are no tweens running.
             </summary>
             <param name="tweenersCapacity">Max Tweeners capacity.
-            Default: 200</param>
+            Default: 2000</param>
             <param name="sequencesCapacity">Max Sequences capacity.
             Default: 50</param>
         </member>
