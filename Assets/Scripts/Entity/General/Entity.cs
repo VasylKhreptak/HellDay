@@ -6,6 +6,9 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float _maxHealth;
     protected float _health;
 
+    [Header("Hit React")] 
+    [SerializeField] protected OnDamageReact _onDamageReact;
+
     protected virtual void Start()
     {
         SetMaxHealth(_maxHealth);
@@ -18,6 +21,8 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        _onDamageReact.ReactOnHit();
+
         _health -= damage;
 
         if (IsDead())

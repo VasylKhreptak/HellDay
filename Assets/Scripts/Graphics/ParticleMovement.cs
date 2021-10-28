@@ -38,19 +38,11 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
         StartCoroutine(StartMovement());
     }
 
-    private void OnDisable()
-    {
-        DOTween.Kill(gameObject);
-
-        Color spriteColor = _spriteRenderer.color;
-        spriteColor.a = 1;
-    }
-
     private IEnumerator StartMovement()
     {
         _rigidbody2D.velocity = new Vector2(Random.Range(_minHorizontalVelocity, _maxHorizontalVelocity),
             Random.Range(_minVerticalVelocity, _maxVerticalVelocity));
-        
+
         _rigidbody2D.AddTorque(_torque);
 
         yield return new WaitForSeconds(_currentLifetime - _fadeDuration);
@@ -61,10 +53,5 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
     private void SetRandomLifetime()
     {
         _currentLifetime = Random.Range(_minLifetime, _maxLifetime);
-    }
-
-    private void OnDestroy()
-    {
-        DOTween.Kill(gameObject);
     }
 }

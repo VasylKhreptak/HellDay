@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1183008695889494463}
   - component: {fileID: -7618934783012836963}
   - component: {fileID: 6091753410839302526}
+  - component: {fileID: -8369543912305918424}
   m_Layer: 8
   m_Name: WhiteZombie
   m_TagString: Zombie
@@ -196,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _onDamageReact: {fileID: -8369543912305918424}
   _transform: {fileID: 3003906475258495791}
   _audio: {fileID: -7618934783012836963}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
@@ -427,6 +429,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8369543912305918424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003906475258495832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6280ab84d06fddb4484b26fd2def0690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 3003906475258495776}
+  _onHitColor: {r: 1, g: 0.50377357, b: 0.50377357, a: 1}
+  _duration: 0.2
 --- !u!1 &3003906475816504809
 GameObject:
   m_ObjectHideFlags: 0

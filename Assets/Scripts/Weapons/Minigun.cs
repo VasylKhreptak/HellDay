@@ -78,10 +78,10 @@ public class Minigun : WeaponCore, IWeapon
 
     private void FadeSpin()
     {
-        _transform.DOWait(1, () =>
+        this.DOWait(1).OnComplete(() =>
         {
             _animator.SetBool(SpinTrigger, false);
-        });
+        }).SetId("MinigunSpin");
     }
 
     private void PlayAudioClip(AudioSource audioSource, AudioClip audioClip, bool loop = false)
@@ -128,7 +128,7 @@ public class Minigun : WeaponCore, IWeapon
 
     private IEnumerator PlaySpin(Action onSpinEnd)
     {
-        DOTween.KillAll();
+        DOTween.Kill("MinigunSpin");
         _animator.SetBool(SpinTrigger, true);
         
         _isSpinning = true;

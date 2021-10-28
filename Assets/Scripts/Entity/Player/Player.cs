@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Entity, IKillable
@@ -24,6 +23,8 @@ public class Player : Entity, IKillable
     
      public override void TakeDamage(float damage)
     {
+        _onDamageReact.ReactOnHit();
+        
         _health -= damage;
         Messenger<float>.Broadcast(GameEvent.SET_HEALTH_BAR, _health);
         

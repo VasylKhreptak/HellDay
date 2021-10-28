@@ -56,7 +56,7 @@ public class GreenZombieAtack : ZombieAtackCore
         
         _objectPooler.GetFromPool(_zombieExplosionParticle, _transform.position, Quaternion.identity);
 
-        _transform.DOWait(_damageDelay, () =>
+        this.DOWait(_damageDelay).OnComplete(() =>
         {
             _killableTargetDetection.ClosestTarget.Killable.TakeDamage(_damage);
         });

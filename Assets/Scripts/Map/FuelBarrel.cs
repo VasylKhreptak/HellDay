@@ -93,7 +93,7 @@ public class FuelBarrel : DestroyableObject
 
     private void ExplodeChainedBarrel(Collider2D collider2D)
     {
-        _transform.DOWait(_chainExplosionDelay, () =>
+        this.DOWait(_chainExplosionDelay).OnComplete(() =>
         {
             if (collider2D == null)
             {

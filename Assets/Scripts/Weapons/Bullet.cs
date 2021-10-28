@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour, IPooledObject
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;
-    [SerializeField] private Transform _transform;
     
     [Header("Preferences")]
     [SerializeField] private float _bulletSpeed = 3;
@@ -30,7 +29,7 @@ public class Bullet : MonoBehaviour, IPooledObject
 
         if (gameObject.activeSelf)
         {
-            _transform.DOWait(_lifeTime, () => { gameObject.SetActive(false); });
+            this.DOWait(_lifeTime).OnComplete(() => { gameObject.SetActive(false); });
         }
     }
 

@@ -6,7 +6,6 @@ public class CameraShakeAnimation : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private CinemachineVirtualCamera _camera;
-    [SerializeField] private Transform _transform;
 
     [Header("Preferences")] 
     [SerializeField] private float _duration;
@@ -33,8 +32,11 @@ public class CameraShakeAnimation : MonoBehaviour
         float halfDuration = _duration / 2;
         
         _cinemachinePerlin.m_AmplitudeGain = intensity;
-
-        _transform.DOWait(_duration, () => { _cinemachinePerlin.m_AmplitudeGain = 0; });
+        
+        this.DOWait(_duration).OnComplete(() =>
+        {
+            _cinemachinePerlin.m_AmplitudeGain = 0;
+        });
 
         Sequence sequence = DOTween.Sequence();
         

@@ -20,6 +20,8 @@ public class Zombie : Entity, IKillable
 
     public override void TakeDamage(float damage)
     {
+        _onDamageReact.ReactOnHit();
+
         _health -= damage;
 
         if (IsDead())
@@ -44,7 +46,7 @@ public class Zombie : Entity, IKillable
     {
         for (var i = 0; i < _zombieDeathParts.Length; i++)
         {
-            var part = _zombieDeathParts[i];
+            Pools part = _zombieDeathParts[i];
             _objectPooler.GetFromPool(part, _transform.position,
                 Quaternion.identity);
         }

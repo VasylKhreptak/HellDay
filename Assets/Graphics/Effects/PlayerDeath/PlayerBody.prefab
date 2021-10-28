@@ -125,8 +125,8 @@ MonoBehaviour:
   _maxHorizontalVelocity: 5
   _minVerticalVelocity: 7
   _maxVerticalVelocity: 9
-  _minLifetime: 10
-  _maxLifetime: 15
+  _minLifetime: 40
+  _maxLifetime: 50
   _fadeDuration: 1
   _torque: 3
 --- !u!61 &7754192858861919168

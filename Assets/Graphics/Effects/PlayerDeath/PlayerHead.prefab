@@ -122,10 +122,10 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 4789297331399188242}
   _minHorizontalVelocity: -5
   _maxHorizontalVelocity: 5
-  _minVerticalVelocity: 7
-  _maxVerticalVelocity: 9
-  _minLifetime: 10
-  _maxLifetime: 15
+  _minVerticalVelocity: 10
+  _maxVerticalVelocity: 13
+  _minLifetime: 40
+  _maxLifetime: 50
   _fadeDuration: 1
   _torque: 3
 --- !u!61 &8981566028070562801

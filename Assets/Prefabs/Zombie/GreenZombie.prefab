@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 1636519917627273053}
   - component: {fileID: 8871311209068379307}
   - component: {fileID: 6617698989268328031}
+  - component: {fileID: -4528129554763413560}
   m_Layer: 8
   m_Name: GreenZombie
   m_TagString: Zombie
@@ -382,7 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6e242377dec0546a66c1e1595cf3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
+  _maxHealth: 50
+  _onDamageReact: {fileID: -4528129554763413560}
   _transform: {fileID: 7416989929528155681}
   _audio: {fileID: 8871311209068379307}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
@@ -477,7 +479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ab9593292ec484190305d1344e0ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 6617698989268328031}
   _transform: {fileID: 7416989929528155681}
   _deathAudioClips:
   - {fileID: 8300000, guid: 72b8b30ec3e0f94409fc50b20e20f59f, type: 3}
@@ -490,6 +491,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
   - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
   - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
+  _audioSource: {fileID: 6617698989268328031}
   _minPlayDelay: 3
   _maxPlayDelay: 6
   _walkSoundProbability: 50
@@ -615,3 +617,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4528129554763413560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416989929528155694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6280ab84d06fddb4484b26fd2def0690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 7416989929528155686}
+  _onHitColor: {r: 1, g: 0.50377357, b: 0.50377357, a: 1}
+  _duration: 0.2

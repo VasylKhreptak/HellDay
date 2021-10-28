@@ -1,12 +1,10 @@
 using System.Collections;
 using DG.Tweening;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class ParticleDisabler : MonoBehaviour, IPooledObject
 {
-    [Header("References")] 
-    [SerializeField] private Transform _transform;
-
     [SerializeField] private ParticleSystem _particleSystem;
     private float _duration;
 
@@ -19,6 +17,14 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     {
         _particleSystem.Play();
 
-        _transform.DOWait(_duration, () => { gameObject.SetActive(false); });
+        this.DOWait(_duration).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+        });
+    }
+
+    private void OnDisable()
+    {
+        DOTween.Kill(this);
     }
 }

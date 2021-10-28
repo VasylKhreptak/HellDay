@@ -4,7 +4,6 @@ using UnityEngine;
 public class BulletMuff : MonoBehaviour, IPooledObject
 {
     [Header("References")]
-    [SerializeField] private Transform _transform;
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
     [Header("Preferences")]
@@ -21,7 +20,7 @@ public class BulletMuff : MonoBehaviour, IPooledObject
         
         if (gameObject.activeSelf)
         {
-            _transform.DOWait(_lifeTime, () => { gameObject.SetActive(false); });
+            this.DOWait(_lifeTime).OnComplete(() => { gameObject.SetActive(false); });
         }
     }
 
