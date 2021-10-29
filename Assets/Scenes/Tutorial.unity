@@ -70025,6 +70025,7 @@ GameObject:
   - component: {fileID: 1449118623}
   - component: {fileID: 1449118622}
   - component: {fileID: 1449118624}
+  - component: {fileID: 1449118625}
   m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
@@ -70188,6 +70189,29 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1449118625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449118620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7149a62a417354ea06776f3ee81ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1449118621}
+  _audioClips:
+  - {fileID: 8300000, guid: 65050c9792e79b64ea20ebf787bcf5ef, type: 3}
+  - {fileID: 8300000, guid: 49bd2fdeaca36f74b93bcb45f68ed478, type: 3}
+  - {fileID: 8300000, guid: 237abcaec7b9b9a4bb4686fb695ad826, type: 3}
+  - {fileID: 8300000, guid: 6701b152bb663234bac78d565bfec73f, type: 3}
+  - {fileID: 8300000, guid: 02c608a3ea537514181220444c543bfc, type: 3}
+  - {fileID: 8300000, guid: 79be900732771ef4f833231a4b11e0da, type: 3}
+  - {fileID: 8300000, guid: 3bcfbeba5d6313b4480a58ec55ee7ad0, type: 3}
+  - {fileID: 8300000, guid: 28cfc0010ede35c479143904cf0c4956, type: 3}
+  - {fileID: 8300000, guid: 8e1cbd38e74c3394ea5807271f11e386, type: 3}
 --- !u!4 &1462987125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4750794571995735228, guid: 1b88308b1b5671447801f5656010ae30, type: 3}
@@ -75081,8 +75105,8 @@ GameObject:
   - component: {fileID: 1755073914}
   - component: {fileID: 1755073915}
   - component: {fileID: 1755073916}
-  - component: {fileID: 1755073917}
   - component: {fileID: 1755073918}
+  - component: {fileID: 1755073917}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -75334,11 +75358,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1755073905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bece17ab348e11e48999d3ce04f4de08, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b7149a62a417354ea06776f3ee81ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1755073909}
-  _deathAudioClips:
+  _audioClips:
   - {fileID: 8300000, guid: 72b8b30ec3e0f94409fc50b20e20f59f, type: 3}
   - {fileID: 8300000, guid: c8857aa139a093543bc1f682a47044bb, type: 3}
   - {fileID: 8300000, guid: 700749db5b0a39444b3e4111d2b77c31, type: 3}
@@ -75362,7 +75386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1755073908}
-  _onHitColor: {r: 1, g: 0.48490566, b: 0.48490566, a: 1}
+  _onDamageColor: {r: 1, g: 0.63584906, b: 0.63584906, a: 1}
   _duration: 0.2
 --- !u!1 &1762178634
 GameObject:
@@ -76384,6 +76408,7 @@ MonoBehaviour:
   _transform: {fileID: 1934919811}
   _minDamageImpulse: 20
   _destroyParticle: 6
+  _canBeDestroyed: 1
 --- !u!1 &1965935209
 GameObject:
   m_ObjectHideFlags: 0
@@ -76799,7 +76824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2332932505156407063, guid: b68253cfaa3aa304f9e626661fb537ba, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2332932505156407063, guid: b68253cfaa3aa304f9e626661fb537ba, type: 3}
       propertyPath: m_LocalPosition.x

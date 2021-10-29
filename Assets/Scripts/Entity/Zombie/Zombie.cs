@@ -4,7 +4,6 @@ public class Zombie : Entity, IKillable
 {
     [Header("References")] 
     [SerializeField] private Transform _transform;
-    [SerializeField] private ZombieAudio _audio;
     
     [Header("Preferences")]
     [SerializeField] private Pools[] _zombieDeathParts;
@@ -27,8 +26,6 @@ public class Zombie : Entity, IKillable
         if (IsDead())
         {
             SpawnBodyParts();
-            
-            _audio.PlayDeathSound();
             
             Destroy(gameObject);
         }

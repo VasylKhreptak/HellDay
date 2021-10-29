@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ZombieAudio : EntityAudio
+public class ZombieAudio : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected AudioSource _audioSource;
@@ -14,7 +14,6 @@ public class ZombieAudio : EntityAudio
     [Header("Audio Clips")] 
     [SerializeField] private AudioClip[] _walkAudioClips;
     [SerializeField] private AudioClip[] _biteAudioClips;
-
 
     private void Awake()
     {

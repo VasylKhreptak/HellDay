@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using DG.Tweening;
-using Random = UnityEngine.Random;
 
 public class ParticleMovement : MonoBehaviour, IPooledObject
 {
@@ -53,5 +50,10 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
     private void SetRandomLifetime()
     {
         _currentLifetime = Random.Range(_minLifetime, _maxLifetime);
+    }
+
+    private void OnDisable()
+    {
+        DOTween.Kill(gameObject); 
     }
 }

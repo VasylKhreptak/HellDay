@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8129099873947751160}
   - component: {fileID: 8129099873947751161}
   - component: {fileID: 8129099873947751162}
+  - component: {fileID: -5574671854533916471}
   m_Layer: 8
   m_Name: ZombieLeg
   m_TagString: Zombie
@@ -154,3 +155,20 @@ MonoBehaviour:
   _maxLifetime: 30
   _fadeDuration: 1
   _torque: 3
+--- !u!114 &-5574671854533916471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129099873947751163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxDurability: 7
+  _transform: {fileID: 8129099873947751166}
+  _minDamageImpulse: 50
+  _destroyParticle: 9
+  _canBeDestroyed: 0

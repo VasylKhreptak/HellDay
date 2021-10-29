@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class UI_HealthBar : MonoBehaviour
     [SerializeField] private Image _fill;
     [SerializeField] private float _time = 1;
     [SerializeField] private AnimationCurve _animationCurve;
+
     private void OnEnable()
     {
         Messenger<float>.AddListener(GameEvent.SET_MAX_HEALTH_BAR, SetMaxHealthBar);

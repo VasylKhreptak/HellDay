@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,11 +7,10 @@ public class OnDamageReact : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [Header("Preferences")] 
-    [SerializeField] private Color _onHitColor;
+    [SerializeField] private Color _onDamageColor;
     [SerializeField] private float _duration = 0.4f;
 
     private float _halfDuration;
-    private Sequence seq;
     
     private void Awake()
     {
@@ -21,10 +19,10 @@ public class OnDamageReact : MonoBehaviour
  
     public void ReactOnHit()
     {
-        seq = DOTween.Sequence();
+        Sequence seq = DOTween.Sequence();
 
         seq.SetId("DamageReact");
-        seq.Append(_spriteRenderer.DOColor(_onHitColor, _halfDuration).SetId("DamageReact"));
+        seq.Append(_spriteRenderer.DOColor(_onDamageColor, _halfDuration).SetId("DamageReact"));
         seq.Append(_spriteRenderer.DOColor(Color.white, _halfDuration).SetId("DamageReact"));
     }
 

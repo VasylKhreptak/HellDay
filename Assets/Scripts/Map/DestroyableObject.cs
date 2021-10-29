@@ -9,6 +9,7 @@ public class DestroyableObject : PhysicalObject
     [Header("Preferences")]
     [SerializeField] protected float _minDamageImpulse = 100f;
     [SerializeField] protected Pools _destroyParticle;
+    [SerializeField] protected bool _canBeDestroyed = true;
     
     protected ObjectPooler _objectPooler;
 
@@ -35,10 +36,17 @@ public class DestroyableObject : PhysicalObject
     public  override void DestroyActions()
     {
         _objectPooler.GetFromPool(_destroyParticle, _transform.position, Quaternion.identity);
-
-        DOTween.Kill(gameObject);
         
         Destroy(gameObject);
+
+        if (_canBeDestroyed)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     protected float GetCollisionImpulse(Collision2D collision2D)

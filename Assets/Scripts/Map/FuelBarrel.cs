@@ -16,10 +16,6 @@ public class FuelBarrel : DestroyableObject
     [SerializeField] private AnimationCurve _forceCurve;
     [SerializeField] private float _chainExplosionDelay = 0.5f;
 
-    [Header("Audio")] 
-    [SerializeField] private AudioClip _explosionAudioClip;
-    [SerializeField, Range(0f, 1f)] private float _soundVolume = 1f;
-
     [Header("Camera Shake")]
     [SerializeField] private AnimationCurve  _shakeCurve;
     [SerializeField] private float _maxCameraShakeIntensity = 11f;
@@ -34,8 +30,6 @@ public class FuelBarrel : DestroyableObject
     
     public override void DestroyActions()
     {
-        AudioSource.PlayClipAtPoint(_explosionAudioClip, _transform.position, _soundVolume);
-        
         Explode();
         
         Destroy(gameObject);

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2332932505156407066}
   - component: {fileID: 2332932505156407065}
   - component: {fileID: 2332932505156407064}
+  - component: {fileID: 8510690795750098952}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -148,6 +149,7 @@ MonoBehaviour:
   _transform: {fileID: 2332932505156407063}
   _minDamageImpulse: 100
   _destroyParticle: 6
+  _canBeDestroyed: 1
   _playerTransform: {fileID: 0}
   _explosionRadius: 5
   _cameraImpactRadius: 14
@@ -182,8 +184,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _chainExplosionDelay: 0.3
-  _explosionAudioClip: {fileID: 8300000, guid: cff7949333c950f47afc3fb7fff5ebb0, type: 3}
-  _soundVolume: 1
   _shakeCurve:
     serializedVersion: 2
     m_Curve:
@@ -277,3 +277,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8510690795750098952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7149a62a417354ea06776f3ee81ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2332932505156407063}
+  _audioClips:
+  - {fileID: 8300000, guid: cff7949333c950f47afc3fb7fff5ebb0, type: 3}
