@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class Player : Entity, IKillable
+public class Player : Entity, IDestroyable
 {
     [Header("Preferences")] 
     [SerializeField] private Pools[] _playerDeathParts;
@@ -20,23 +21,22 @@ public class Player : Entity, IKillable
         
         Messenger<float>.Broadcast(GameEvent.SET_MAX_HEALTH_BAR, _maxHealth);
     }
-    
-     public override void TakeDamage(float damage)
-    {
-        _onDamageReact.ReactOnHit();
-        
-        _health -= damage;
-        Messenger<float>.Broadcast(GameEvent.SET_HEALTH_BAR, _health);
-        
-        if (IsDead())
-        {
-            Messenger.Broadcast(GameEvent.PLAYER_DIED);
 
-            SpawnBodyParts();
+    protected override void DeathActions()
+     {
+         Messenger.Broadcast(GameEvent.PLAYER_DIED);
+
+         SpawnBodyParts();
             
-            gameObject.SetActive(false);
-        }
-    }
+         gameObject.SetActive(false);
+     }
+
+     protected override void OnTakeDamage()
+     {
+         base.OnTakeDamage();
+         
+         Messenger<float>.Broadcast(GameEvent.SET_HEALTH_BAR, _health);
+     }
     
     private void SpawnBodyParts()
     {

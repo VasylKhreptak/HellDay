@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Zombie : Entity, IKillable
+public class Zombie : Entity, IDestroyable
 {
     [Header("References")] 
     [SerializeField] private Transform _transform;
@@ -17,18 +17,11 @@ public class Zombie : Entity, IKillable
         _objectPooler = ObjectPooler.Instance;
     }
 
-    public override void TakeDamage(float damage)
+    protected override void DeathActions()
     {
-        _onDamageReact.ReactOnHit();
-
-        _health -= damage;
-
-        if (IsDead())
-        {
-            SpawnBodyParts();
+        SpawnBodyParts();
             
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

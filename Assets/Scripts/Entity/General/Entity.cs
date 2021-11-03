@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -21,18 +22,25 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        _onDamageReact.ReactOnHit();
+        OnTakeDamage();
 
         _health -= damage;
 
-        if (IsDead())
+        if (IsDead)
         {
-            Destroy(gameObject);
+           DeathActions();
         }
     }
 
-    protected bool IsDead()
+    protected virtual void DeathActions()
     {
-        return _health <= 0;
+        Destroy(gameObject);
     }
+
+    protected virtual void OnTakeDamage()
+    {
+        _onDamageReact.ReactOnHit();
+    }
+
+    protected bool IsDead => _health <= 0;
 }

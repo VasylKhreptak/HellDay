@@ -40,8 +40,11 @@ public class Door : MonoBehaviour
             {
                 Messenger<UI_SlideAnimation.AnimationType>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,
                 UI_SlideAnimation.AnimationType.show);
-                
             }
+        }
+        else if (other.CompareTag("Human"))
+        {
+            ToggleDoor();
         }
     }
 
@@ -51,6 +54,10 @@ public class Door : MonoBehaviour
         {
             Messenger<UI_SlideAnimation.AnimationType>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,
                 UI_SlideAnimation.AnimationType.hide);
+        }
+        else if (other.CompareTag("Human"))
+        {
+            ToggleDoor();
         }
     }
 }

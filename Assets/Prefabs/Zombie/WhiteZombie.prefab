@@ -177,7 +177,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 255
+    m_Bits: 12287
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -200,7 +200,6 @@ MonoBehaviour:
   _maxHealth: 100
   _onDamageReact: {fileID: -8369543912305918424}
   _transform: {fileID: 3003906475258495791}
-  _audio: {fileID: -7618934783012836963}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &3003906475258495782
 MonoBehaviour:
@@ -221,9 +220,9 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 3003906475258495779}
   _killableTargetDetection: {fileID: 1226190151111486158}
   _movementSpeed: 2
-  _jumpVelocity: 12
+  _jumpSpeed: 12
   _changeDirectionDelay: 7
-  _defaultDelay: 0.5
+  _defaultDelay: 1
   _obstacleCheckDelay: 0.3
   _groundChecker: {fileID: 5293080370099361666}
   _obstacleChecker: {fileID: 3003906476768543233}
@@ -257,7 +256,7 @@ MonoBehaviour:
   _transform: {fileID: 3003906475258495791}
   _findTargetDelay: 1
   _killableTargets:
-  - {fileID: 0}
+  - {fileID: 7781438892691268119, guid: 55972bba7baf3b14f9eb52c2900c7175, type: 3}
 --- !u!114 &1183008695889494463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +278,7 @@ MonoBehaviour:
   _atackCenter: {fileID: 3003906476236602793}
   _killableEntityLayerMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8256
 --- !u!114 &-7618934783012836963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,8 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ab9593292ec484190305d1344e0ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 3003906475258495791}
-  _audioClips: []
   _audioSource: {fileID: 6091753410839302526}
   _minPlayDelay: 3
   _maxPlayDelay: 6

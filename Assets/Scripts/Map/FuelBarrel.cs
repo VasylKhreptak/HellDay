@@ -64,7 +64,7 @@ public class FuelBarrel : DestroyableObject
         }
         else if (collider2D.TryGetComponent(out KillableTarget target))
         {
-            target.Killable.TakeDamage(GetEvaluatedCurveValue(target.Transform.position, 
+            target.Destroyable.TakeDamage(GetEvaluatedCurveValue(target.Transform.position, 
                 _transform.position, _entityDamageCurve, _maxEntityDamage, _explosionRadius));
         }
         else if (collider2D.TryGetComponent(out DestroyableObject destroyableObject))

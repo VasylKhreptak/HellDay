@@ -33,15 +33,16 @@ public class GrayZombieAtack : CommonZombieAtack
 
     private bool CanJump()
     {
-        Transform targetTransform = _killableTargetDetection.ClosestTarget.Transform;
+        Transform target = _killableTargetDetection.ClosestTarget.Transform;
 
-        if (targetTransform.gameObject.activeSelf == false)
+        if (target == null || 
+            target.gameObject.activeSelf == false)
         {
             return false;
         }
             
-        return _transform.ContainsTransform(_maxJumpRadius, targetTransform) &&
-               _transform.ContainsTransform(_minJumpRadius, targetTransform) == false;
+        return _transform.ContainsTransform(_maxJumpRadius, target) &&
+               _transform.ContainsTransform(_minJumpRadius, target) == false;
     }
 
     private void Jump()

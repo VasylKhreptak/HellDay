@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 7491494114988875582}
   - component: {fileID: 5543203967428591550}
   - component: {fileID: 8136478789381910670}
+  - component: {fileID: 7952746944130115377}
   m_Layer: 8
   m_Name: YellowZombie
   m_TagString: Zombie
@@ -295,7 +296,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 255
+    m_Bits: 12287
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -318,7 +319,6 @@ MonoBehaviour:
   _maxHealth: 70
   _onDamageReact: {fileID: 5543203967428591550}
   _transform: {fileID: 7552724589778891921}
-  _audio: {fileID: 4019713287426175634}
   _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &7552724589778891912
 MonoBehaviour:
@@ -339,9 +339,9 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 7552724589778891925}
   _killableTargetDetection: {fileID: 6472815694905530543}
   _movementSpeed: 0.9
-  _jumpVelocity: 10
+  _jumpSpeed: 10
   _changeDirectionDelay: 15
-  _defaultDelay: 0.5
+  _defaultDelay: 1
   _obstacleCheckDelay: 0.3
   _groundChecker: {fileID: 4012719427827185914}
   _obstacleChecker: {fileID: 7552724589576219287}
@@ -374,7 +374,7 @@ MonoBehaviour:
   _transform: {fileID: 7552724589778891921}
   _findTargetDelay: 1
   _killableTargets:
-  - {fileID: 0}
+  - {fileID: 7781438892691268119, guid: 55972bba7baf3b14f9eb52c2900c7175, type: 3}
 --- !u!114 &7889908331555171861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +396,7 @@ MonoBehaviour:
   _atackCenter: {fileID: 7552724590804465055}
   _killableEntityLayerMask:
     serializedVersion: 2
-    m_Bits: 1088
+    m_Bits: 8256
 --- !u!114 &4019713287426175634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,8 +409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ab9593292ec484190305d1344e0ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 7552724589778891921}
-  _audioClips: []
   _audioSource: {fileID: 7491494114988875582}
   _minPlayDelay: 3
   _maxPlayDelay: 6
@@ -576,6 +574,28 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
   - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
   - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
+--- !u!114 &7952746944130115377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552724589778891914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f37ae6f34100047a2596cd9a0b3fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7552724589778891921}
+  _audio: {fileID: 4019713287426175634}
+  _damage: 20
+  _killableTargetDetection: {fileID: 6472815694905530543}
+  _atackDelay: 1
+  _biteRadius: 0.1
+  _atackCenter: {fileID: 7552724590804465055}
+  _killableEntityLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7552724590804465040
 GameObject:
   m_ObjectHideFlags: 0

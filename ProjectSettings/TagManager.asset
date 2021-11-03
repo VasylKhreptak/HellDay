@@ -8,6 +8,7 @@ TagManager:
   - Zombie
   - Ladder
   - FuelBarrel
+  - Human
   layers:
   - Default
   - TransparentFX
@@ -21,8 +22,8 @@ TagManager:
   - Particle
   - Ladder
   - Door
-  - 
-  - 
+  - BulletOnly
+  - Human
   - 
   - 
   - 

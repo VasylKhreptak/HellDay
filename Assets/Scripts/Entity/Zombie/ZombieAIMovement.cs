@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ZombieAIMovement : MonoBehaviour
 {
-    [Header("Target detection sensetivity")] 
+    [Header("Target detection preferences")] 
     [SerializeField] protected float _mainDetectionRadius = 5f;
     [SerializeField] protected float _audioDetectionRadius;
     [SerializeField] protected float _increaseDetectionRadiusTime = 10f;
@@ -15,7 +15,7 @@ public class ZombieAIMovement : MonoBehaviour
     
     [Header("Movement preferences")] 
     [SerializeField] protected float _movementSpeed = 3f;
-    [SerializeField] protected float _jumpVelocity = 5f;
+    [SerializeField] protected float _jumpSpeed = 5f;
 
     [Header("Delays")]
     [Tooltip("Time between possible movement direction change")] 
@@ -28,7 +28,6 @@ public class ZombieAIMovement : MonoBehaviour
     [SerializeField] protected ObstacleChecker _obstacleChecker;
     [SerializeField] protected BarrierChecker _barrierChecker;
 
-    //Coroutines
     protected Coroutine _randomMovementCoroutine;
     protected Coroutine _followTargetCoroutine;
     protected Coroutine _increaseDetectionRadiusCoroutine;
@@ -114,7 +113,7 @@ public class ZombieAIMovement : MonoBehaviour
             }
 
             yield return new WaitForSeconds(_changeDirectionDelay +
-                                            Random.Range(-_changeDirectionDelay, _changeDirectionDelay));
+                                            Random.Range(0, _changeDirectionDelay));
         }
     }
 
@@ -127,15 +126,8 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected void SetMovementDirection(int direction)
     {
-        if (direction > 0)
-        {
-            _movementSpeed = Mathf.Abs(_movementSpeed);
-        }
-        else
-        {
-            _movementSpeed = -Mathf.Abs(_movementSpeed);
-        }
-
+        _movementSpeed = Mathf.Sign(direction) * Mathf.Abs(_movementSpeed);
+        
         SetFaceDirection(direction);
     }
 
@@ -175,7 +167,7 @@ public class ZombieAIMovement : MonoBehaviour
 
     protected void Jump()
     {
-        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpVelocity);
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpSpeed);
     }
 
     protected IEnumerator ControlMovementRoutine()
@@ -228,22 +220,17 @@ public class ZombieAIMovement : MonoBehaviour
     {
         while (true)
         {
-            LookAtTarget(target);
+            LookAtTaregt(target);
 
             yield return new WaitForSeconds(_defaultDelay);
         }
     }
 
-    protected void LookAtTarget(Transform target)
+    protected void LookAtTaregt(Transform target)
     {
-        if (_transform.position.x < target.transform.position.x)
-        {
-            SetMovementDirection(1);
-        }
-        else
-        {
-            SetMovementDirection(-1);
-        }
+        if(target == null) return;
+        
+        SetMovementDirection(_transform.position.x < target.transform.position.x ? 1 : -1);
     }
 
 #if UNITY_EDITOR

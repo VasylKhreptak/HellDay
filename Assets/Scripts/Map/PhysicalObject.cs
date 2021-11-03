@@ -31,9 +31,6 @@ public class PhysicalObject : MonoBehaviour
     {
         throw new NotImplementedException();
     }
-    
-    protected bool IsBroken()
-    {
-        return _durability <= 0;
-    }
+
+    protected bool IsBroken() => _durability <= 0;
 }

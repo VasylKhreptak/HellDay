@@ -7,7 +7,6 @@ public class GreenZombieAtack : ZombieAtackCore
     [SerializeField] private float _explosionRadius = 7f;
 
     [SerializeField] private Pools _zombieExplosionParticle = Pools.GreenZombieExplosion;
-    [SerializeField] private float _damageDelay = 1f;
     [SerializeField] private LayerMask _environmentLayerMask;
     
     [Header("References")]
@@ -15,39 +14,10 @@ public class GreenZombieAtack : ZombieAtackCore
 
     protected override bool CanAtack()
     {
-        return IsTargetInRange() && IsTargetInFiendOfView();
-    }
-
-    private bool IsTargetInRange()
-    {
-        return _transform.ContainsTransform(_explosionRadius,
-            _killableTargetDetection.ClosestTarget.Transform);
-    }
-
-    private bool IsTargetInFiendOfView()
-    {
-        RaycastHit2D raycastHit2D;
-        GameObject hitObject, targetObject;
-
-        raycastHit2D = Physics2D.Raycast(_transform.position,
-            GetDirectionToTarget(),
-            _explosionRadius, _environmentLayerMask);
-
-        targetObject = _killableTargetDetection.ClosestTarget.Transform.gameObject;
-        hitObject = raycastHit2D.collider.gameObject;
-
-        return hitObject == targetObject;
-    }
-
-    private Vector2 GetDirectionToTarget()
-    {
-        Vector3 direction, targetPosition;
-
-        targetPosition = _killableTargetDetection.ClosestTarget.Transform.position;
+        Transform target = _killableTargetDetection.ClosestTarget.Transform;
         
-        direction = (targetPosition - _transform.position).normalized;
-
-        return direction;
+        return _transform.ContainsTransform(_explosionRadius, target) && 
+               _transform.IsInFiendOfView(target, _explosionRadius, _environmentLayerMask);
     }
 
     protected override void Atack()
@@ -55,13 +25,11 @@ public class GreenZombieAtack : ZombieAtackCore
         _audio.PlaBiteSound();
         
         _objectPooler.GetFromPool(_zombieExplosionParticle, _transform.position, Quaternion.identity);
-
-        this.DOWait(_damageDelay).OnComplete(() =>
-        {
-            _killableTargetDetection.ClosestTarget.Killable.TakeDamage(_damage);
-        });
         
+        _killableTargetDetection.ClosestTarget.Destroyable.TakeDamage(_damage);
+
         _zombie.SpawnBodyParts();
+        
         Destroy(gameObject);
     }
 

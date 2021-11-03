@@ -14,7 +14,9 @@ public class CommonZombieAtack : ZombieAtackCore
 
     protected override bool CanAtack()
     {
-        if (_killableTargetDetection.ClosestTarget.Transform.gameObject.activeSelf == false)
+        Transform target = _killableTargetDetection.ClosestTarget.Transform;
+        
+        if (target == null || target.gameObject.activeSelf == false)
         {
             return false;
         }
@@ -28,7 +30,7 @@ public class CommonZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _killableTargetDetection.ClosestTarget.Killable.TakeDamage(_damage);
+        _killableTargetDetection.ClosestTarget.Destroyable.TakeDamage(_damage);
         
         SpawnAtackParticles();
     }

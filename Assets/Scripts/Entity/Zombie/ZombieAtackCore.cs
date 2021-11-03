@@ -52,14 +52,15 @@ public class ZombieAtackCore : MonoBehaviour
 #if UNITY_EDITOR
     protected virtual void OnDrawGizmosSelected()
     {
+        KillableTarget target = _killableTargetDetection.ClosestTarget;
         Gizmos.color = Color.red;
-        if (_killableTargetDetection.ClosestTarget?.gameObject.activeSelf == true)
+        
+        if (target != null)
         {
             Gizmos.DrawWireCube(_killableTargetDetection.ClosestTarget.Transform.position,
                 Vector2.one);
 
-            Gizmos.DrawLine(_transform.position,
-                _killableTargetDetection.ClosestTarget.Transform.position);
+            Gizmos.DrawLine(_transform.position, target.Transform.position);
         }
     }
 #endif
