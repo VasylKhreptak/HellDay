@@ -5,7 +5,7 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
 {
     [SerializeField] private ParticleSystem _particleSystem;
     private float _duration;
-
+    
     private void Awake()
     {
         _duration = _particleSystem.main.startLifetime.constantMax;

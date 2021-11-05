@@ -20,7 +20,7 @@ public class DoorInteract : MonoBehaviour
         
         for (int i = 0; i < doors.Length; i++)
         {
-            transforms[i] = doors[i].Transform;
+            transforms[i] = doors[i]._transform;
         }
 
         return transforms;
@@ -30,7 +30,7 @@ public class DoorInteract : MonoBehaviour
     {
         for (int i = 0; i < doors.Length; i++)
         {
-            if (doors[i].Transform == transform)
+            if (doors[i]._transform == transform)
             {
                 return doors[i];
             }

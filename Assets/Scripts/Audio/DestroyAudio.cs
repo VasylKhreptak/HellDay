@@ -10,6 +10,9 @@ public class DestroyAudio : MonoBehaviour
     
     private void OnDisable()
     {
-        RandomAudio.Play(_transform.position, _audioClips);
+        if (gameObject.scene.isLoaded)
+        {
+            RandomAudio.Play(_transform.position, _audioClips);
+        }
     }
 }

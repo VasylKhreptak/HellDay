@@ -1,6 +1,7 @@
+using DG.Tweening;
 using UnityEngine;
 
-public  class UI_StartSlideAnimation : UI_SlideAnimation
+public class UI_StartSlideAnimation : UI_SlideAnimation
 {
    [SerializeField] private float _startDelay = 0.5f;
    [SerializeField] private float _endDelay = 1;
@@ -9,21 +10,21 @@ public  class UI_StartSlideAnimation : UI_SlideAnimation
    {
       Messenger.AddListener(GameEvent.PLAYER_DIED, OnPlayerDied);
    }
-   
+
    private void OnDisable()
    {
       Messenger.RemoveListener(GameEvent.PLAYER_DIED, OnPlayerDied);
    }
 
-   private void Start()
+   protected override void Start()
    {
-      HideElementBehindScreen();
-      
-      Animate(AnimationType.show, _duration, _startDelay);
+      HideBehindScreen();
+
+      this.DOWait(_startDelay).OnComplete(() => { SetAnimationState(true); });
    }
 
    private void OnPlayerDied()
    {
-      Animate(AnimationType.hide, _duration, _endDelay);
+      this.DOWait(_endDelay).OnComplete(() => { SetAnimationState(false); });
    }
 }

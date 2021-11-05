@@ -50,7 +50,7 @@ MonoBehaviour:
   _signRenderer: {fileID: 6599700281999349041}
   _start: {fileID: 7684320640158328893}
   _end: {fileID: 529481757694895200}
-  _duration: 0.6
+  _duration: 0.4
   _moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _checkDelay: 1
+  _checkDelay: 0.7
   _signAnimation: {fileID: 7538235932120420031}
   _transform: {fileID: 5361956689193760204}
   _detectRadius: 7

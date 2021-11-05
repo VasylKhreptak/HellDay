@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -26,29 +25,25 @@ public class HumanDetection : MonoBehaviour
     {
         while (true)
         {
-            if (_transform.ContainsTransform(_rescueRadius, GetClosestHuman()))
-            {
-                Debug.Log("Show Button");
-            }
-            else
-            {
-                Debug.Log("Hide button");
-            }
+            _closestHuman = GetClosestHuman();
             
+            bool canShowBtn = _transform.ContainsTransform(_rescueRadius, _closestHuman); 
+            
+            Messenger<bool>.Broadcast(GameEvent.ANIMATE_SAVE_HUMAN_BUTTON, canShowBtn);
             yield return new WaitForSeconds(_checkDelay);
         }
     }
 
     public void ResqueHuman()
     {
-        GameObject human = _closestHuman.gameObject;
+        Transform human = _closestHuman;
 
         if (human != null)
         {
-            Destroy(human);
+            Destroy(human.gameObject);
+            
+            Debug.Log("Added resqued human to the score!");
         }
-        
-        Debug.Log("Add resqued human to the score!");
     }
 
     private Transform GetClosestHuman()

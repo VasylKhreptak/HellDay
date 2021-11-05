@@ -3,37 +3,49 @@ using UnityEngine;
 
 public class UI_SlideAnimation : MonoBehaviour
 {
-    public enum AnimationType
-    {
-        show,
-        hide
-    }
-
     [Header("References")] 
     [SerializeField] protected RectTransform _rectTransform;
     [SerializeField] protected Vector3 _offset;
-    protected Vector3 _targetAnchoredPosition;
-    protected Vector3 _startAnchoredPosition;
+    protected Vector3 _targetAnchoredPos;
+    protected Vector3 _startAnchoredPos;
 
     [Header("Preferences")]
     [SerializeField] protected float _duration = 1f;
     [SerializeField] protected AnimationCurve _animationCurve;
 
+    protected bool _isShown;
+    
+    protected virtual void Start()
+    {
+        HideBehindScreen();
+    }
+
     protected void Awake()
     {
-        _targetAnchoredPosition = _rectTransform.anchoredPosition;
-        _startAnchoredPosition = _targetAnchoredPosition + _offset;
+        _targetAnchoredPos = _rectTransform.anchoredPosition;
+        _startAnchoredPos = _targetAnchoredPos + _offset;
     }
     
-    protected void HideElementBehindScreen()
+    protected void HideBehindScreen()
     {
-        _rectTransform.anchoredPosition = _startAnchoredPosition;
+        _rectTransform.anchoredPosition = _startAnchoredPos;
+    }
+
+    protected  void SetAnimationState(bool show)
+    {
+        if (show && _isShown || (show == false && _isShown == false))
+        {
+            return;
+        }
+        
+        Animate(show);
+        _isShown = show;
     }
     
-    public virtual void Animate(AnimationType animationType, float duration, float delay)
+    private void Animate(bool show)
     {
         _rectTransform.DOAnchorPos(
-            animationType == AnimationType.show ? _targetAnchoredPosition : _startAnchoredPosition,
-            _duration).SetEase(_animationCurve).SetDelay(delay);
+            show ? _targetAnchoredPos : _startAnchoredPos,
+            _duration).SetEase(_animationCurve);
     }
 }

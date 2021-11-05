@@ -99,7 +99,7 @@ MonoBehaviour:
   _signRenderer: {fileID: 3453765855219676935}
   _start: {fileID: 8447012012521872055}
   _end: {fileID: 4928070270295894164}
-  _duration: 0.6
+  _duration: 0.4
   _moveCurve:
     serializedVersion: 2
     m_Curve:

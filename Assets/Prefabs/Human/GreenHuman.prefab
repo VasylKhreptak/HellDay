@@ -181,7 +181,7 @@ MonoBehaviour:
   _signRenderer: {fileID: 5151546411641028673}
   _start: {fileID: 165634790074981836}
   _end: {fileID: 8107814120622095837}
-  _duration: 0.6
+  _duration: 0.4
   _moveCurve:
     serializedVersion: 2
     m_Curve:

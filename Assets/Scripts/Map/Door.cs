@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [Header("Door references")] 
+    [Header("References")] 
     [SerializeField] private GameObject _player;
-    [SerializeField] private Transform _transform;
+    public Transform _transform;
     [SerializeField] private GameObject _openedDoor;
     [SerializeField] private GameObject _closedDoor;
     [SerializeField] private bool _isOpened;
     [SerializeField] private AudioSource _audioSource;
-
-    public Transform Transform => _transform;
     
     private void Awake()
     {
@@ -34,17 +32,13 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && _player.activeSelf)
         {
-            if(_player.activeSelf)
-            {
-                Messenger<UI_SlideAnimation.AnimationType>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,
-                UI_SlideAnimation.AnimationType.show);
-            }
+            Messenger<bool>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,true);
         }
         else if (other.CompareTag("Human"))
         {
-            ToggleDoor();
+            SetDoorState(true);
         }
     }
 
@@ -52,12 +46,11 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Messenger<UI_SlideAnimation.AnimationType>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,
-                UI_SlideAnimation.AnimationType.hide);
+            Messenger<bool>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,false);
         }
         else if (other.CompareTag("Human"))
         {
-            ToggleDoor();
+            SetDoorState(false);
         }
     }
 }
