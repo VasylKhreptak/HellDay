@@ -48,7 +48,7 @@ MonoBehaviour:
   _distanceBetweenRays: 0.3
   _layerMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 1
 --- !u!1 &7416989929372627519
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94700f44dc93e34ea19ce17ab7957e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2599
 --- !u!1 &7416989929449692237
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf4a0c6b082a4f449c265e9e8a32afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2599
 --- !u!1 &7416989929528155694
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +218,7 @@ GameObject:
   - component: {fileID: 6617698989268328031}
   - component: {fileID: -4528129554763413560}
   - component: {fileID: 867874301492137003}
+  - component: {fileID: -2452806562005995179}
   m_Layer: 8
   m_Name: GreenZombie
   m_TagString: Zombie
@@ -364,7 +371,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 12287
+    m_Bits: 10495
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -386,8 +393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 50
   _onDamageReact: {fileID: -4528129554763413560}
-  _transform: {fileID: 7416989929528155681}
-  _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &7416989929528155688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,12 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd96d61a46e5be4b892bc48d1f78ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainDetectionRadius: 10
-  _audioDetectionRadius: 20
-  _increaseDetectionRadiusTime: 10
   _transform: {fileID: 7416989929528155681}
   _rigidbody2D: {fileID: 7416989929528155685}
-  _killableTargetDetection: {fileID: 5350208796334916349}
   _movementSpeed: 1.7
   _jumpSpeed: 10
   _changeDirectionDelay: 15
@@ -414,6 +415,10 @@ MonoBehaviour:
   _groundChecker: {fileID: 5733933950537692591}
   _obstacleChecker: {fileID: 7416989929449692236}
   _barrierChecker: {fileID: 7416989929372627518}
+  _killableTargetDetection: {fileID: 5350208796334916349}
+  _mainDetectionRadius: 10
+  _audioDetectionRadius: 20
+  _increaseDetectionRadiusTime: 10
 --- !u!114 &8857078008893848612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,8 +466,6 @@ MonoBehaviour:
   _killableTargetDetection: {fileID: 5350208796334916349}
   _atackDelay: 0.5
   _explosionRadius: 3.37
-  _zombieExplosionParticle: 24
-  _damageDelay: 1
   _environmentLayerMask:
     serializedVersion: 2
     m_Bits: 10311
@@ -644,3 +647,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
   - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
   - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
+--- !u!114 &-2452806562005995179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416989929528155694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b1bb63c2a9c6d4bbd22707c2837817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7416989929528155681}
+  _destroyParticles: 0c0000000d0000000e0000000e0000000f0000000f0000000b00000017000000

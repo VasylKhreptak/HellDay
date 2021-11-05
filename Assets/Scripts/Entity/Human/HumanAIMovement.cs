@@ -2,39 +2,21 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class HumanAIMovement : MonoBehaviour
+public class HumanAIMovement : AIMovementCore
 {
-    [Header("References")] 
-    [SerializeField] private Transform _transform;
-    [SerializeField] private Rigidbody2D _rigidbody2D;
-
-    [Header("MovementPreferences")] 
-    [SerializeField] private float _movementSpeed = 13f;
-    [SerializeField] private float _jumpSpeed = 18f;
-
-    [Header("Delays")]
-    [SerializeField] private float _obstacleCheckDelay;
-    [SerializeField] private float _defaultDelay = 0.5f;
-    [SerializeField] private float _chagneDirectionDelay = 10f;
-    
-    [Header("Environment checkers")] 
-    [SerializeField] private GroundChecker _groundChecker;
-    [SerializeField] private ObstacleChecker _obstacleChecker;
-    [SerializeField] private BarrierChecker _barrierChecker;
-    [SerializeField] private PitChecker _pitChecker;
+    [Header("Environment checkers")]
+    [SerializeField] protected PitChecker _pitChecker;
 
     [Header("Threat detection preferences")]
-    [SerializeField] private float _detectionRadius = 5f;
-    [SerializeField] private KillableTargetDetection _killableTargetDetection;
+    [SerializeField] protected float _detectionRadius = 5f;
+    [SerializeField] protected KillableTargetDetection _killableTargetDetection;
     
-    private bool _canMove = true;
-    private bool _isRunningFromThreat;
+    protected bool _canMove = true;
+    protected bool _isRunningFromThreat;
 
-    private Coroutine _randomMovementCoroutine;
-    private Coroutine _runFromThreatCoroutine;
-    private Coroutine _checkEnvironmentCorouitne;
+    protected Coroutine _runFromThreatCoroutine;
 
-    private void Update()
+    protected override void Update()
     {
         if (_canMove)
         {
@@ -42,14 +24,14 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-    private void Start()
+    protected void Start()
     {
         StartCheckingEnvironment();
         
         StartCoroutine(ControlMovementRoutine());
     }
 
-    private void StartCheckingEnvironment()
+    protected void StartCheckingEnvironment()
     {
         if (_checkEnvironmentCorouitne == null)
         {
@@ -57,7 +39,7 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-    private void StopCheckingEnvironment()
+    protected void StopCheckingEnvironment()
     {
         if (_checkEnvironmentCorouitne != null)
         {
@@ -66,26 +48,8 @@ public class HumanAIMovement : MonoBehaviour
             _checkEnvironmentCorouitne = null;
         }
     }
-    
-    private IEnumerator CheckEnvironmentRoutine()
-    {
-        while (true)
-        {
-            if (CanJump())
-            {
-                Jump();
-            }
-            
-            if (CanReverseMovementDirection())
-            {
-                ReverseMovementDirection();
-            }
-            
-        yield return new WaitForSeconds(_obstacleCheckDelay);
-        }
-    }
-    
-    private IEnumerator ControlMovementRoutine()
+
+    protected IEnumerator ControlMovementRoutine()
     {
         while (true)
         {
@@ -104,37 +68,18 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-    private bool CanJump()
+    protected override bool CanJump()
     {
         return (_obstacleChecker.isObstacleClose  || _pitChecker.isPitNearp) &&
                _groundChecker.IsGrounded();
     }
 
-    private void Jump()
+    protected override bool CanReverseMovementDirection()
     {
-        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpSpeed);
+        return _barrierChecker.isBarrierClose && _isRunningFromThreat == false;
     }
 
-    private bool CanReverseMovementDirection()
-    {
-        if (_isRunningFromThreat) return false;
-        
-        return _barrierChecker.isBarrierClose;
-    }
-
-    private void ReverseMovementDirection()
-    {
-        _movementSpeed *= -1;
-        
-        SetFaceDirection((int) Mathf.Sign(_movementSpeed));
-    }
-
-    private void SetFaceDirection(int direction)
-    {
-        _transform.localScale = new Vector3(direction, 1, 1);
-    }
-
-    private void StartRandomMovement()
+    protected void StartRandomMovement()
     {
         if (_randomMovementCoroutine == null)
         {
@@ -142,7 +87,7 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-    private void StopRandomMovement()
+    protected void StopRandomMovement()
     {
         if (_randomMovementCoroutine != null)
         {
@@ -154,7 +99,7 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator RandomMovementRoutine()
+    protected IEnumerator RandomMovementRoutine()
     {
         while (true)
         {
@@ -168,17 +113,17 @@ public class HumanAIMovement : MonoBehaviour
                 StartStaying();
             }
 
-            yield return new WaitForSeconds(_chagneDirectionDelay +
-                                            Random.Range(0, _chagneDirectionDelay));
+            yield return new WaitForSeconds(_changeDirectionDelay +
+                                            Random.Range(0, _changeDirectionDelay));
         }
     }
 
-    private bool IsThreatClose()
+    protected bool IsThreatClose()
     {
         return _transform.ContainsTransform(_detectionRadius, _killableTargetDetection.ClosestTarget.Transform);
     }
 
-    private void StartRunningFromThreat()
+    protected void StartRunningFromThreat()
     {
         if (_runFromThreatCoroutine == null)
         {
@@ -188,7 +133,7 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator RunFromThreatRoutine()
+    protected IEnumerator RunFromThreatRoutine()
     {
         while (true)
         {
@@ -198,35 +143,28 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-    private void TurnAwayFromThreat()
+    protected void TurnAwayFromThreat()
     {
         Transform target = _killableTargetDetection.ClosestTarget.Transform;
         
         SetMovementDirection(_transform.position.x < target.transform.position.x ? -1 : 1);
     }
 
-    private void SetMovementDirection(int direction)
-    {
-        _movementSpeed = Mathf.Sign(direction) * Mathf.Abs(_movementSpeed);
-
-        SetFaceDirection(direction);
-    }
-
-    private void StartStaying()
+    protected void StartStaying()
     {
         _canMove = false;
         
         StopCheckingEnvironment();
     }
 
-    private void StopStaying()
+    protected void StopStaying()
     {
         _canMove = true;
         
         StartCheckingEnvironment();
     }
 
-    private void StopRunningFromThreat()
+    protected void StopRunningFromThreat()
     {
         if (_runFromThreatCoroutine != null)
         {
@@ -238,8 +176,7 @@ public class HumanAIMovement : MonoBehaviour
         }
     }
 
-#if UNITY_EDITOR
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         if (_transform == null) return;
 
@@ -253,5 +190,4 @@ public class HumanAIMovement : MonoBehaviour
         Gizmos.DrawLine(_transform.position, threat.position);
         Gizmos.DrawCube(threat.position, new Vector3(0.5f, 0.5f, 0.5f));
     }
-#endif
 }

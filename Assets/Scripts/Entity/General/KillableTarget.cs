@@ -4,13 +4,13 @@ using UnityEngine;
 public class KillableTarget : MonoBehaviour
 {
     [SerializeField] private Transform _transform;
-    private IDestroyable _destroyable;
+    private IKillable _killable;
 
     public Transform Transform => _transform;
-    public IDestroyable Destroyable => _destroyable;
+    public IKillable Killable => _killable;
     
     private void Awake()
     {
-        _destroyable = GetComponent<IDestroyable>();
+        _killable = GetComponent<IKillable>();
     }
 }

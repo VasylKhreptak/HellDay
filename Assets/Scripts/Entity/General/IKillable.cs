@@ -1,4 +1,4 @@
-public interface IDestroyable
+public interface IKillable
 {
     public void TakeDamage(float damage);
 }

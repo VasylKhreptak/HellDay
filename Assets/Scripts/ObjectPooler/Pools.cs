@@ -10,14 +10,13 @@ public enum Pools
     ShootSmoke,
     ShootSparks,
     HitParticle,
-    ZombieHitParticle,
-    ZombieDeathParticle,
+    EntityHitParticle,
+    EntityDeathParticle,
     ZombieHead,
     ZombieBody,
     ZombieLeg,
     ZombieArm,
     ZombieBiteParticle, 
-    PlayerDeathParticle,
     PlayerHead,
     PlayerBody,
     PlayerStrips,
@@ -25,5 +24,10 @@ public enum Pools
     PlayerArm, 
     TVDestroyParticle,
     GreenZombieExplosion,
-    BarrelExplosion
+    BarrelExplosion,
+    HumanHead,
+    HumanLeftLeg,
+    HumanRightLeg,
+    HumanRightArm,
+    HumanLeftArm
 }

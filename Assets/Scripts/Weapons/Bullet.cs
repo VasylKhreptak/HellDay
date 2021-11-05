@@ -40,7 +40,7 @@ public class Bullet : MonoBehaviour, IPooledObject
 
         if (other.collider.CompareTag("Zombie"))
         {
-            _objectPooler.GetFromPool(Pools.ZombieHitParticle,
+            _objectPooler.GetFromPool(Pools.EntityHitParticle,
                 hitPosition, Quaternion.identity);
         }
         else

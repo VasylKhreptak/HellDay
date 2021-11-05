@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5854442659380750340}
   - component: {fileID: 972120287445397559}
   - component: {fileID: 6461306231982072084}
+  - component: {fileID: -3079625226593564845}
   m_Layer: 12
   m_Name: Skull
   m_TagString: Untagged
@@ -126,7 +127,6 @@ MonoBehaviour:
   _maxDurability: 3
   _transform: {fileID: 1828525846168805646}
   _minDamageImpulse: 100
-  _destroyParticle: 23
   _canBeDestroyed: 1
 --- !u!114 &6461306231982072084
 MonoBehaviour:
@@ -147,3 +147,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e19f8eadee8f78047a64fba683350969, type: 3}
   - {fileID: 8300000, guid: 4b268f97ea709d244aee0c1329ea7a32, type: 3}
   - {fileID: 8300000, guid: 3855f0ec390f47e40a38af343ecac56b, type: 3}
+--- !u!114 &-3079625226593564845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216803610130405942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b1bb63c2a9c6d4bbd22707c2837817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1828525846168805646}
+  _destroyParticles: 16000000

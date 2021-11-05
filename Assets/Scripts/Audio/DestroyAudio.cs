@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DestroyAudio : RandomAudioCore
+public class DestroyAudio : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Transform _transform;
@@ -10,6 +10,6 @@ public class DestroyAudio : RandomAudioCore
     
     private void OnDisable()
     {
-        PlayRandomAudio(_transform.position, _audioClips);
+        RandomAudio.Play(_transform.position, _audioClips);
     }
 }

@@ -100,6 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94700f44dc93e34ea19ce17ab7957e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2599
 --- !u!1 &3378974506285552572
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,6 +126,7 @@ GameObject:
   - component: {fileID: 6170368832719441398}
   - component: {fileID: 9059326616366066559}
   - component: {fileID: 3625498612111855267}
+  - component: {fileID: -1834513055825569247}
   m_Layer: 8
   m_Name: RedZombie
   m_TagString: Zombie
@@ -276,7 +280,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 12287
+    m_Bits: 10495
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -298,8 +302,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 200
   _onDamageReact: {fileID: 9059326616366066559}
-  _transform: {fileID: 3378974506285552565}
-  _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &3378974506285552574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,12 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd96d61a46e5be4b892bc48d1f78ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainDetectionRadius: 6
-  _audioDetectionRadius: 40
-  _increaseDetectionRadiusTime: 10
   _transform: {fileID: 3378974506285552565}
   _rigidbody2D: {fileID: 3378974506285552569}
-  _killableTargetDetection: {fileID: 8146395567742145361}
   _movementSpeed: 0.7
   _jumpSpeed: 10
   _changeDirectionDelay: 15
@@ -326,6 +324,10 @@ MonoBehaviour:
   _groundChecker: {fileID: 7893370723071284246}
   _obstacleChecker: {fileID: 3378974506961274545}
   _barrierChecker: {fileID: 3378974505983830874}
+  _killableTargetDetection: {fileID: 8146395567742145361}
+  _mainDetectionRadius: 6
+  _audioDetectionRadius: 40
+  _increaseDetectionRadiusTime: 10
 --- !u!114 &3115062365855905780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +556,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
   - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
   - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
+--- !u!114 &-1834513055825569247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378974506285552572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b1bb63c2a9c6d4bbd22707c2837817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3378974506285552565}
+  _destroyParticles: 0c0000000d0000000e0000000e0000000f0000000f0000000b000000
 --- !u!1 &3378974506961274544
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf4a0c6b082a4f449c265e9e8a32afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2599
 --- !u!1 &8541038155406386081
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,4 +691,4 @@ MonoBehaviour:
   _distanceBetweenRays: 0.3
   _layerMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 1

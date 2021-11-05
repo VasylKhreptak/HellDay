@@ -1,12 +1,9 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class GreenZombieAtack : ZombieAtackCore
 {
     [Header("Preferences")] 
     [SerializeField] private float _explosionRadius = 7f;
-
-    [SerializeField] private Pools _zombieExplosionParticle = Pools.GreenZombieExplosion;
     [SerializeField] private LayerMask _environmentLayerMask;
     
     [Header("References")]
@@ -24,16 +21,11 @@ public class GreenZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _objectPooler.GetFromPool(_zombieExplosionParticle, _transform.position, Quaternion.identity);
-        
-        _killableTargetDetection.ClosestTarget.Destroyable.TakeDamage(_damage);
-
-        _zombie.SpawnBodyParts();
+        _killableTargetDetection.ClosestTarget.Killable.TakeDamage(_damage);
         
         Destroy(gameObject);
     }
 
-#if UNITY_EDITOR
     protected override void OnDrawGizmosSelected()
     {
         base.OnDrawGizmosSelected();
@@ -41,5 +33,4 @@ public class GreenZombieAtack : ZombieAtackCore
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_transform.position, _explosionRadius);
     }
-#endif
 }

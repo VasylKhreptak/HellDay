@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3831244053540752817}
   - component: {fileID: 4082703668417561358}
   - component: {fileID: -3453994506303609764}
+  - component: {fileID: 7449160994020674170}
   m_Layer: 0
   m_Name: CommonBox
   m_TagString: Untagged
@@ -148,7 +149,6 @@ MonoBehaviour:
   _maxDurability: 8
   _transform: {fileID: 3831244053206440010}
   _minDamageImpulse: 60
-  _destroyParticle: 6
   _canBeDestroyed: 1
 --- !u!114 &-3453994506303609764
 MonoBehaviour:
@@ -173,3 +173,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3bcfbeba5d6313b4480a58ec55ee7ad0, type: 3}
   - {fileID: 8300000, guid: 28cfc0010ede35c479143904cf0c4956, type: 3}
   - {fileID: 8300000, guid: 8e1cbd38e74c3394ea5807271f11e386, type: 3}
+--- !u!114 &7449160994020674170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3831244053540752822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b1bb63c2a9c6d4bbd22707c2837817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3831244053206440010}
+  _destroyParticles: 06000000

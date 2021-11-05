@@ -51,7 +51,6 @@ public class GrayZombieAtack : CommonZombieAtack
             _jumpSpeed);
     }
     
-#if UNITY_EDITOR
     protected override void OnDrawGizmosSelected()
     {
         base.OnDrawGizmosSelected();
@@ -60,5 +59,4 @@ public class GrayZombieAtack : CommonZombieAtack
         Gizmos.DrawWireSphere(_transform.position, _maxJumpRadius);
         Gizmos.DrawWireSphere(_transform.position, _minJumpRadius);
     }
-#endif
 }

@@ -49,7 +49,6 @@ public class ZombieAtackCore : MonoBehaviour
         throw new NotImplementedException();
     }
     
-#if UNITY_EDITOR
     protected virtual void OnDrawGizmosSelected()
     {
         KillableTarget target = _killableTargetDetection.ClosestTarget;
@@ -63,5 +62,4 @@ public class ZombieAtackCore : MonoBehaviour
             Gizmos.DrawLine(_transform.position, target.Transform.position);
         }
     }
-#endif
 }

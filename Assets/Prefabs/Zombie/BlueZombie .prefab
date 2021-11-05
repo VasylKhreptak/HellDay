@@ -48,7 +48,7 @@ MonoBehaviour:
   _distanceBetweenRays: 0.3
   _layerMask:
     serializedVersion: 2
-    m_Bits: 65
+    m_Bits: 1
 --- !u!1 &7781906717973659424
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf4a0c6b082a4f449c265e9e8a32afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2599
 --- !u!1 &7781906718607163370
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +175,7 @@ GameObject:
   - component: {fileID: -2699416364089631990}
   - component: {fileID: 3276350981171141693}
   - component: {fileID: 1128328647874744906}
+  - component: {fileID: 2243141985040101696}
   m_Layer: 8
   m_Name: 'BlueZombie '
   m_TagString: Zombie
@@ -325,7 +329,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 12287
+    m_Bits: 10495
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -347,8 +351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _onDamageReact: {fileID: 3276350981171141693}
-  _transform: {fileID: 7781906718964601439}
-  _zombieDeathParts: 0b0000000c0000000d0000000e0000000f0000000f0000000e000000
 --- !u!114 &7781906718964601437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,12 +363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acd96d61a46e5be4b892bc48d1f78ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainDetectionRadius: 10
-  _audioDetectionRadius: 30
-  _increaseDetectionRadiusTime: 10
   _transform: {fileID: 7781906718964601439}
   _rigidbody2D: {fileID: 7781906718964601411}
-  _killableTargetDetection: {fileID: 6399066725033496452}
   _movementSpeed: 1.3
   _jumpSpeed: 10
   _changeDirectionDelay: 15
@@ -375,6 +373,10 @@ MonoBehaviour:
   _groundChecker: {fileID: 316062208001661710}
   _obstacleChecker: {fileID: 7781906717973659430}
   _barrierChecker: {fileID: 7781906719972901269}
+  _killableTargetDetection: {fileID: 6399066725033496452}
+  _mainDetectionRadius: 10
+  _audioDetectionRadius: 30
+  _increaseDetectionRadiusTime: 10
 --- !u!114 &8525923034131409435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,6 +605,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
   - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
   - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
+--- !u!114 &2243141985040101696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781906718964601438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b1bb63c2a9c6d4bbd22707c2837817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7781906718964601439}
+  _destroyParticles: 0c0000000d0000000e0000000e0000000f0000000f0000000b000000
 --- !u!1 &7781906719972901271
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,3 +689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94700f44dc93e34ea19ce17ab7957e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 2599

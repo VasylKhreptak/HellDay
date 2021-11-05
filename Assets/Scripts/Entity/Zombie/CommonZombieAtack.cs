@@ -30,12 +30,11 @@ public class CommonZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _killableTargetDetection.ClosestTarget.Destroyable.TakeDamage(_damage);
+        _killableTargetDetection.ClosestTarget.Killable.TakeDamage(_damage);
         
         SpawnAtackParticles();
     }
 
-#if UNITY_EDITOR
     protected override void OnDrawGizmosSelected()
     {
         base.OnDrawGizmosSelected();
@@ -45,6 +44,4 @@ public class CommonZombieAtack : ZombieAtackCore
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_atackCenter.position, _biteRadius);
     }
-#endif
-
 }

@@ -11,10 +11,13 @@ public class CameraShakeAnimation : MonoBehaviour
     [SerializeField] private float _duration;
 
     private CinemachineBasicMultiChannelPerlin _cinemachinePerlin;
+    private float _halfDuration;
+    
 
     private void Awake()
     {
         _cinemachinePerlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        _halfDuration = _duration / 2;
     }
 
     private void OnEnable()
@@ -29,8 +32,6 @@ public class CameraShakeAnimation : MonoBehaviour
  
     public void Shake(float intensity)
     {
-        float halfDuration = _duration / 2;
-        
         _cinemachinePerlin.m_AmplitudeGain = intensity;
         
         this.DOWait(_duration).OnComplete(() =>
@@ -41,10 +42,8 @@ public class CameraShakeAnimation : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
         
         sequence.Append( DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; }, 
-            x => _cinemachinePerlin.m_AmplitudeGain = x, intensity,
-            halfDuration));
+            x => _cinemachinePerlin.m_AmplitudeGain = x, intensity, _halfDuration));
         sequence.Append(DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; },
-            x => _cinemachinePerlin.m_AmplitudeGain = x, 0,
-            halfDuration));
+            x => _cinemachinePerlin.m_AmplitudeGain = x, 0, _halfDuration));
     }
 }

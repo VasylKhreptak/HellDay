@@ -2,7 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 
-public class UI_ButtonAnimation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class UI_ButtonPressAnimation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private RectTransform _rectTransform;
     [SerializeField] private Vector3 _targetScale;

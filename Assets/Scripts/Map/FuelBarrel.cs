@@ -64,7 +64,7 @@ public class FuelBarrel : DestroyableObject
         }
         else if (collider2D.TryGetComponent(out KillableTarget target))
         {
-            target.Destroyable.TakeDamage(GetEvaluatedCurveValue(target.Transform.position, 
+            target.Killable.TakeDamage(GetEvaluatedCurveValue(target.Transform.position, 
                 _transform.position, _entityDamageCurve, _maxEntityDamage, _explosionRadius));
         }
         else if (collider2D.TryGetComponent(out DestroyableObject destroyableObject))
@@ -108,7 +108,6 @@ public class FuelBarrel : DestroyableObject
         return curve.Evaluate(distance / impactRadius) * maxValue;
     }
 
-#if  UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         if (_transform == null || _playerTransform == null) return;
@@ -119,5 +118,4 @@ public class FuelBarrel : DestroyableObject
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(_transform.position, _cameraImpactRadius);
     }
-#endif
 }

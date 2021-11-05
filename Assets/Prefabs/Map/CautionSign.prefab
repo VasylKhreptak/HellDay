@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7050687630367452698}
   - component: {fileID: 4439302247018444329}
   - component: {fileID: 7587738914753718026}
+  - component: {fileID: -2843719283107617371}
   m_Layer: 12
   m_Name: CautionSign
   m_TagString: Untagged
@@ -126,7 +127,6 @@ MonoBehaviour:
   _maxDurability: 3
   _transform: {fileID: 2992080162134271760}
   _minDamageImpulse: 100
-  _destroyParticle: 6
   _canBeDestroyed: 1
 --- !u!114 &7587738914753718026
 MonoBehaviour:
@@ -151,3 +151,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3bcfbeba5d6313b4480a58ec55ee7ad0, type: 3}
   - {fileID: 8300000, guid: 28cfc0010ede35c479143904cf0c4956, type: 3}
   - {fileID: 8300000, guid: 8e1cbd38e74c3394ea5807271f11e386, type: 3}
+--- !u!114 &-2843719283107617371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307197539075415080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b1bb63c2a9c6d4bbd22707c2837817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2992080162134271760}
+  _destroyParticles: 06000000

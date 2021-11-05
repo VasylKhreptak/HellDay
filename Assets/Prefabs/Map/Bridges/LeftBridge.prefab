@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: -3540603444341006223}
   - component: {fileID: 3473609101023234835}
   - component: {fileID: -7355577100318436949}
+  - component: {fileID: 4042126692544085242}
+  - component: {fileID: -5147696483128030103}
   m_Layer: 0
   m_Name: LeftBridge
   m_TagString: Untagged
@@ -134,7 +136,6 @@ MonoBehaviour:
   _maxDurability: 7
   _transform: {fileID: 5531183613353782938}
   _minDamageImpulse: 300
-  _destroyParticle: 6
   _canBeDestroyed: 1
 --- !u!114 &6882298876788600329
 MonoBehaviour:
@@ -205,7 +206,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!251 &-7355577100318436949
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -225,6 +226,37 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &4042126692544085242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670738832622765518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34021b99e32b8a144a08e22ad4e36c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3473609101023234835}
+  boxCollider2D: {fileID: -3540603444341006223}
+  platformEffector2D: {fileID: -7355577100318436949}
+  _nextBridgeElements: []
+  isDeactivated: 0
+--- !u!114 &-5147696483128030103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670738832622765518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b1bb63c2a9c6d4bbd22707c2837817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 5531183613353782938}
+  _destroyParticles: 06000000
 --- !u!1 &8845054882074338933
 GameObject:
   m_ObjectHideFlags: 0

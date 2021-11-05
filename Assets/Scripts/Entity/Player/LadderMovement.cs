@@ -73,8 +73,7 @@ public class LadderMovement : MonoBehaviour
             _currentLadder.transform.position.x,
             _alligementSpeed);
 
-        _playerTransform.position =
-            new Vector3(positionX, _playerTransform.position.y,
+        _playerTransform.position = new Vector3(positionX, _playerTransform.position.y,
                 _playerTransform.position.z);
     }
 

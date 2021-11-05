@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class ZombieAudio : MonoBehaviour
 {
@@ -27,10 +26,7 @@ public class ZombieAudio : MonoBehaviour
         {
             if (_audioSource.isPlaying == false)
             {
-                Probability.Execute(_walkSoundProbability, () =>
-                {
-                    PlayWalkSound();
-                });
+                Probability.Execute(_walkSoundProbability, () => { PlayWalkSound(); });
             }
 
             yield return new WaitForSeconds(Random.Range(_minPlayDelay, _maxPlayDelay));
@@ -39,17 +35,11 @@ public class ZombieAudio : MonoBehaviour
 
     private void PlayWalkSound()
     {
-        PlayRandomSound(_walkAudioClips);
+        RandomAudio.Play(_audioSource, _walkAudioClips);
     }
 
     public void PlaBiteSound()
     {
-        PlayRandomSound(_biteAudioClips);
-    }
-
-    private void PlayRandomSound(AudioClip[] audioClips)
-    {
-        _audioSource.clip = audioClips[Random.Range(0, _walkAudioClips.Length)];
-        _audioSource.Play();
+        RandomAudio.Play(_audioSource, _biteAudioClips);
     }
 }

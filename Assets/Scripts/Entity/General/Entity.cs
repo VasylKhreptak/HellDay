@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -10,6 +9,8 @@ public class Entity : MonoBehaviour
     [Header("Hit React")] 
     [SerializeField] protected OnDamageReact _onDamageReact;
 
+    protected bool IsDead => _health <= 0;
+    
     protected virtual void Start()
     {
         SetMaxHealth(_maxHealth);
@@ -22,10 +23,10 @@ public class Entity : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        OnTakeDamage();
-
         _health -= damage;
 
+        OnTakeDamage();
+        
         if (IsDead)
         {
            DeathActions();
@@ -41,6 +42,4 @@ public class Entity : MonoBehaviour
     {
         _onDamageReact.ReactOnHit();
     }
-
-    protected bool IsDead => _health <= 0;
 }

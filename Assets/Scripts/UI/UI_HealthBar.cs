@@ -1,4 +1,5 @@
 using DG.Tweening;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class UI_HealthBar : MonoBehaviour
     [SerializeField] private Slider _slider;
     [SerializeField] private Gradient _gradient;
     [SerializeField] private Image _fill;
-    [SerializeField] private float _time = 1;
+    [SerializeField] private float _moveTime = 1;
     [SerializeField] private AnimationCurve _animationCurve;
 
     private void OnEnable()
@@ -33,9 +34,9 @@ public class UI_HealthBar : MonoBehaviour
     {
         DOTween.Kill(gameObject);
         
-        DOTween.To(() => _slider.value, x => _slider.value = x, health, _time).
+        DOTween.To(() => _slider.value, x => _slider.value = x, health, _moveTime).
             SetEase(_animationCurve);
-        _fill.DOColor(_gradient.Evaluate(health / _slider.maxValue), _time).
+        _fill.DOColor(_gradient.Evaluate(health / _slider.maxValue), _moveTime).
             SetEase(_animationCurve);
     }
 }
