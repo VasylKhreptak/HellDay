@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: 8403851451936388472}
   - component: {fileID: 815372771959781784}
   - component: {fileID: 4019682235512326454}
+  - component: {fileID: 6921123278532973149}
   m_Layer: 13
   m_Name: GreenHuman
   m_TagString: Human
@@ -737,6 +738,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 5953720082183312751}
   _destroyParticles: 190000001a0000001b0000001c0000001d0000000b000000
+--- !u!114 &6921123278532973149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953720082183312748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcaecb2b8918d648b2a63d2eb3c432c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 5953720082183312751}
+  _killableTarget: {fileID: 8289889534423630516}
+  _damageDelay: 1
+  _damage: 15
+  _blood: 16
+  _damageAudioClips:
+  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
+  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
+  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
+  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
+  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
+  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
+  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
+  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
 --- !u!1 &6292533600055082441
 GameObject:
   m_ObjectHideFlags: 0

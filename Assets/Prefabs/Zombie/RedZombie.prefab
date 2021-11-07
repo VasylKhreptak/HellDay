@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 9059326616366066559}
   - component: {fileID: 3625498612111855267}
   - component: {fileID: -1834513055825569247}
+  - component: {fileID: 5719579040978923910}
   m_Layer: 8
   m_Name: RedZombie
   m_TagString: Zombie
@@ -570,6 +571,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 3378974506285552565}
   _destroyParticles: 0c0000000d0000000e0000000e0000000f0000000f0000000b000000
+--- !u!114 &5719579040978923910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378974506285552572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcaecb2b8918d648b2a63d2eb3c432c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3378974506285552565}
+  _killableTarget: {fileID: 3115062365855905780}
+  _damageDelay: 1
+  _damage: 15
+  _blood: 16
+  _damageAudioClips:
+  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
+  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
+  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
+  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
+  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
+  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
+  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
+  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
 --- !u!1 &3378974506961274544
 GameObject:
   m_ObjectHideFlags: 0
