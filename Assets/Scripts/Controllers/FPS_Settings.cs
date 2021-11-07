@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FPS : MonoBehaviour
+public class FPS_Settings : MonoBehaviour
 {
     [SerializeField] private int _targetFrameRate = 60;
 

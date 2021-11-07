@@ -70,7 +70,7 @@ public class AIMovementCore : MonoBehaviour
         SetFaceDirection((int) Mathf.Sign(_movementSpeed));
     }
     
-    protected void SetFaceDirection(int direction)
+    protected virtual void SetFaceDirection(int direction)
     {
         _transform.localScale = new Vector3(direction, 1, 1);
     }

@@ -74,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2385011650565111156}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.126, y: 0, z: 0}
+  m_LocalPosition: {x: 0.028, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8447012012521872055}
@@ -223,7 +223,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3425279346747846146}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.987, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1733673874902450744}
@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 1197590625259280434}
   - component: {fileID: 1630710002590930050}
   - component: {fileID: -9000216560565403365}
+  - component: {fileID: 1509392439470279922}
   m_Layer: 13
   m_Name: RedHuman
   m_TagString: Human
@@ -488,7 +489,7 @@ BoxCollider2D:
   m_Offset: {x: -0.0017683208, y: -0.18449235}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.66, y: 0.5}
     oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -565,6 +566,7 @@ MonoBehaviour:
   _pitChecker: {fileID: 1522386914647617194}
   _detectionRadius: 15.86
   _killableTargetDetection: {fileID: 370106617922917920}
+  _sign: {fileID: 1509392439470279922}
 --- !u!114 &2265316142172481290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _playerObj: {fileID: 0}
   _checkDelay: 0.7
   _signAnimation: {fileID: 5045841497719757298}
   _transform: {fileID: 6592567245772834832}
@@ -682,6 +685,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
   - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
   - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+--- !u!114 &1509392439470279922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6592567245772834835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956792bf653dc944b8b5f9b65dad0faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _signRenderer: {fileID: 3453765855219676935}
 --- !u!1 &6823461262281744566
 GameObject:
   m_ObjectHideFlags: 0

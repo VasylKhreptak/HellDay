@@ -10,6 +10,9 @@ public class HumanAIMovement : AIMovementCore
     [Header("Threat detection preferences")]
     [SerializeField] protected float _detectionRadius = 5f;
     [SerializeField] protected KillableTargetDetection _killableTargetDetection;
+
+    [Header("Sign Scale Compensate")] 
+    [SerializeField] private SignScaleCompensate _sign;
     
     protected bool _canMove = true;
     protected bool _isRunningFromThreat;
@@ -174,6 +177,13 @@ public class HumanAIMovement : AIMovementCore
 
             _isRunningFromThreat = false;
         }
+    }
+
+    protected override void SetFaceDirection(int direction)
+    {
+        base.SetFaceDirection(direction);
+        
+        _sign.OnScaleChanged(direction);
     }
 
     protected void OnDrawGizmosSelected()

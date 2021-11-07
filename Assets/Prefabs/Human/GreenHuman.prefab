@@ -156,7 +156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3076119604157010726}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.126, y: 0, z: 0}
+  m_LocalPosition: {x: 0.028, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 165634790074981836}
@@ -378,7 +378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3907067198257414143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.987, z: 0}
+  m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8322191618581198707}
@@ -437,6 +437,7 @@ GameObject:
   - component: {fileID: 815372771959781784}
   - component: {fileID: 4019682235512326454}
   - component: {fileID: 6921123278532973149}
+  - component: {fileID: -7314933447992179803}
   m_Layer: 13
   m_Name: GreenHuman
   m_TagString: Human
@@ -570,7 +571,7 @@ BoxCollider2D:
   m_Offset: {x: -0.0017683208, y: -0.18449235}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.66, y: 0.5}
     oldSize: {x: 1, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
@@ -647,6 +648,7 @@ MonoBehaviour:
   _pitChecker: {fileID: 2072437516107592661}
   _detectionRadius: 15.86
   _killableTargetDetection: {fileID: 918943402569894751}
+  _sign: {fileID: -7314933447992179803}
 --- !u!114 &1626460420190059125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,6 +722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _playerObj: {fileID: 0}
   _checkDelay: 0.7
   _signAnimation: {fileID: 346384691935417686}
   _transform: {fileID: 5953720082183312751}
@@ -764,6 +767,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
   - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
   - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+--- !u!114 &-7314933447992179803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953720082183312748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 956792bf653dc944b8b5f9b65dad0faa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _signRenderer: {fileID: 5151546411641028673}
 --- !u!1 &6292533600055082441
 GameObject:
   m_ObjectHideFlags: 0

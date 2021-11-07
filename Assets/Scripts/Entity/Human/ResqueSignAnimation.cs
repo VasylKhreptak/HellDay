@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class ResqueSignAnimation : MonoBehaviour
 {
-    [Header("References")] [SerializeField]
-    private Transform _signTransform;
-
+    [Header("References")] 
+    [SerializeField] private Transform _signTransform;
     [SerializeField] private SpriteRenderer _signRenderer;
 
-    [Header("Preferences")] [SerializeField]
-    private Transform _start;
-
+    [Header("Preferences")] 
+    [SerializeField] private Transform _start;
     [SerializeField] private Transform _end;
     [SerializeField] private float _duration;
-
-    [Header("Curves")] [SerializeField] private AnimationCurve _moveCurve;
+    
+    [Header("Curves")] 
+    [SerializeField] private AnimationCurve _moveCurve;
     [SerializeField] private AnimationCurve _alphaCurve;
     [SerializeField] private AnimationCurve _scaleCurve;
 
@@ -38,13 +37,12 @@ public class ResqueSignAnimation : MonoBehaviour
         {
             return;
         }
-        
-        Animate(state);
+
+        ShowSign(state);
         _isShown = state;
     }
-
-
-    private void Animate(bool state)
+    
+    private void ShowSign(bool state)
     {
         _signTransform.DOLocalMove(state ? _end.localPosition : _start.localPosition, _duration).SetEase(_moveCurve);
         _signTransform.DOScale(state ? _end.localScale : _start.localScale, _duration).SetEase(_scaleCurve);
@@ -55,5 +53,6 @@ public class ResqueSignAnimation : MonoBehaviour
     {
         _signTransform.DOKill();
         _signRenderer.DOKill();
+        
     }
 }
