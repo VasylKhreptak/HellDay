@@ -89,14 +89,11 @@ public class FuelBarrel : DestroyableObject
     {
         this.DOWait(_chainExplosionDelay).OnComplete(() =>
         {
-            if (collider2D == null)
+            if (collider2D != null && 
+                collider2D.TryGetComponent(out FuelBarrel fuelBarrel))
             {
-                return;
+                fuelBarrel.DestroyActions();
             }
-            
-            FuelBarrel fuelBarrel = collider2D.GetComponent<FuelBarrel>();
-
-            fuelBarrel.DestroyActions();
         });
     }
 

@@ -5,6 +5,8 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
 {
     [SerializeField] private ParticleSystem _particleSystem;
     private float _duration;
+
+    private Tween _tween;
     
     private void Awake()
     {
@@ -14,7 +16,7 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     public void OnEnable()
     {
         _particleSystem.Play();
-        this.DOWait(_duration).OnComplete(() =>
+        _tween = this.DOWait(_duration).OnComplete(() =>
         {
             gameObject.SetActive(false);
         });
@@ -22,6 +24,6 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
 
     private void OnDisable()
     {
-        DOTween.Kill(this);
+        _tween.Kill();
     }
 }

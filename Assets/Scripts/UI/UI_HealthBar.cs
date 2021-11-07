@@ -10,6 +10,8 @@ public class UI_HealthBar : MonoBehaviour
     [SerializeField] private float _moveTime = 1;
     [SerializeField] private AnimationCurve _animationCurve;
 
+    private Tween _tween;
+    
     private void OnEnable()
     {
         Messenger<float>.AddListener(GameEvent.SET_MAX_HEALTH_BAR, SetMaxHealthBar);
@@ -31,9 +33,9 @@ public class UI_HealthBar : MonoBehaviour
     
     public void SetHealthBar(float health)
     {
-        DOTween.Kill(gameObject);
+        _tween.Kill();
         
-        DOTween.To(() => _slider.value, x => _slider.value = x, health, _moveTime).
+        _tween = DOTween.To(() => _slider.value, x => _slider.value = x, health, _moveTime).
             SetEase(_animationCurve);
         _fill.DOColor(_gradient.Evaluate(health / _slider.maxValue), _moveTime).
             SetEase(_animationCurve);

@@ -22,6 +22,8 @@ public class Minigun : WeaponCore, IWeapon
 
     private Coroutine _playSpinAudio;
     private Coroutine _stopShootAudio;
+
+    private Tween _minigunSpinTween;
     
     public new void StartShooting()
     {
@@ -78,10 +80,10 @@ public class Minigun : WeaponCore, IWeapon
 
     private void FadeSpin()
     {
-        this.DOWait(1).OnComplete(() =>
+        _minigunSpinTween = this.DOWait(1).OnComplete(() =>
         {
             _animator.SetBool(SpinTrigger, false);
-        }).SetId("MinigunSpin");
+        });
     }
 
     private void PlayAudioClip(AudioSource audioSource, AudioClip audioClip, bool loop = false)
@@ -128,7 +130,7 @@ public class Minigun : WeaponCore, IWeapon
 
     private IEnumerator PlaySpin(Action onSpinEnd)
     {
-        DOTween.Kill("MinigunSpin");
+        _minigunSpinTween.Kill();    
         _animator.SetBool(SpinTrigger, true);
         
         _isSpinning = true;

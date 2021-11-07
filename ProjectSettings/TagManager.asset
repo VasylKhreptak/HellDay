@@ -9,6 +9,7 @@ TagManager:
   - Ladder
   - FuelBarrel
   - Human
+  - Spikes
   layers:
   - Default
   - TransparentFX

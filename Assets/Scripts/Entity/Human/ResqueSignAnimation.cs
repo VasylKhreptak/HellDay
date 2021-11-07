@@ -53,6 +53,7 @@ public class ResqueSignAnimation : MonoBehaviour
 
     private void OnDestroy()
     {
-        DOTween.KillAll(gameObject);
+        _signTransform.DOKill();
+        _signRenderer.DOKill();
     }
 }

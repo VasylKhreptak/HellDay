@@ -28,6 +28,8 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
 
     private float _currentLifetime;
 
+    private Tween _tween;
+
     public void OnEnable()
     {
         SetRandomLifetime();
@@ -44,7 +46,8 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
 
         yield return new WaitForSeconds(_currentLifetime - _fadeDuration);
 
-        _spriteRenderer.DOFade(0, _fadeDuration).OnComplete(() => gameObject.SetActive(false));
+        _tween = _spriteRenderer.DOFade(0, _fadeDuration).
+            OnComplete(() => gameObject.SetActive(false));
     }
 
     private void SetRandomLifetime()
@@ -54,6 +57,6 @@ public class ParticleMovement : MonoBehaviour, IPooledObject
 
     private void OnDisable()
     {
-        DOTween.Kill(gameObject); 
+        _tween.Kill();
     }
 }

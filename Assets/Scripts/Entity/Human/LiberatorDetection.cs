@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +5,7 @@ public class LiberatorDetection : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Transform _player;
+    [SerializeField] private GameObject _playerObj;
     [SerializeField] private float _checkDelay = 1.5f;
     [SerializeField] private ResqueSignAnimation _signAnimation;
 
@@ -27,7 +27,10 @@ public class LiberatorDetection : MonoBehaviour
     {
         while (true)
         {
-            _signAnimation.SetSignState(_transform.ContainsTransform(_detectRadius, _player));
+            if (_playerObj.activeSelf)
+            {
+                _signAnimation.SetSignState(_transform.ContainsTransform(_detectRadius, _player));
+            }
 
             yield return new WaitForSeconds(_checkDelay);
         }

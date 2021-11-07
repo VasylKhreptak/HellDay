@@ -29,5 +29,9 @@ public enum Pools
     HumanLeftLeg,
     HumanRightLeg,
     HumanRightArm,
-    HumanLeftArm
+    HumanLeftArm, 
+    BlueBird,
+    RedBird,
+    GreenBird,
+    YellowBird
 }

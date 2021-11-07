@@ -11,6 +11,9 @@ public class KillableTarget : MonoBehaviour
     
     private void Awake()
     {
-        _killable = GetComponent<IKillable>();
+        if (TryGetComponent(out IKillable killable))
+        {
+            _killable = killable;
+        }
     }
 }

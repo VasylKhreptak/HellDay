@@ -11,6 +11,8 @@ public class OnDamageReact : MonoBehaviour
     [SerializeField] private float _duration = 0.4f;
 
     private float _halfDuration;
+    private Sequence _seq;
+    private Tween _tween;
     
     private void Awake()
     {
@@ -19,15 +21,15 @@ public class OnDamageReact : MonoBehaviour
  
     public void ReactOnHit()
     {
-        Sequence seq = DOTween.Sequence();
+        _seq = DOTween.Sequence();
 
-        seq.SetId("DamageReact");
-        seq.Append(_spriteRenderer.DOColor(_onDamageColor, _halfDuration).SetId("DamageReact"));
-        seq.Append(_spriteRenderer.DOColor(Color.white, _halfDuration).SetId("DamageReact"));
+        _seq.Append(_spriteRenderer.DOColor(_onDamageColor, _halfDuration)).SetId("FadeTween");
+        _seq.Append(_spriteRenderer.DOColor(Color.white, _halfDuration)).SetId("FadeTween");
     }
 
     private void OnDestroy()
     {
-        DOTween.Kill("DamageReact");
+        _seq.Kill();
+        DOTween.Kill("FadeTween");
     }
 }

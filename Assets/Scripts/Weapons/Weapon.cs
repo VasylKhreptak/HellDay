@@ -17,6 +17,9 @@ public class Weapon : MonoBehaviour
     
     private void Awake()
     {
-        iWeapon = GetComponent<IWeapon>();
+        if (TryGetComponent(out IWeapon weapon))
+        {
+            iWeapon = weapon;
+        }
     }
 }
