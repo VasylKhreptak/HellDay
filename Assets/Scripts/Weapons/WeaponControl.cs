@@ -31,7 +31,7 @@ public class WeaponControl : MonoBehaviour
 
     private void ImpactPlayerMovement(float percentage)
     {
-        Messenger<float>.Broadcast(GameEvent.PLAYER_MOVEMENT_IMPACT, percentage);
+        Messenger<float>.Broadcast(GameEvents.PLAYER_MOVEMENT_IMPACT, percentage);
     }
 
     public void StartShooting()

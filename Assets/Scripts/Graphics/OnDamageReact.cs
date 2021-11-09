@@ -30,6 +30,6 @@ public class OnDamageReact : MonoBehaviour
     private void OnDestroy()
     {
         _seq.Kill();
-        DOTween.Kill("FadeTween");
+       DOTween.Kill("FadeTween");
     }
 }

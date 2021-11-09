@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2332932505156407064}
   - component: {fileID: 8510690795750098952}
   - component: {fileID: -6370888208695199561}
+  - component: {fileID: 5002272835743946276}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -125,7 +126,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 6
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -146,14 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0333a88b8e01d2b4dacb87bf3537a876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDurability: 7
-  _transform: {fileID: 2332932505156407063}
-  _minDamageImpulse: 100
-  _canBeDestroyed: 1
   _playerTransform: {fileID: 0}
+  _transform: {fileID: 2332932505156407063}
   _explosionRadius: 5
   _cameraImpactRadius: 14
-  _explosionForce: 140
+  _explosionForce: 400
   _layerMask:
     serializedVersion: 2
     m_Bits: 15169
@@ -306,3 +304,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2332932505156407063}
   _destroyParticles: 18000000
+--- !u!114 &5002272835743946276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxDurability: 3
+  _transform: {fileID: 2332932505156407063}
+  _minDamageImpulse: 20
+  _canBeDestroyed: 1

@@ -4,12 +4,12 @@ public class Player : Entity, IKillable
     {
         _health = _maxHealth;
         
-        Messenger<float>.Broadcast(GameEvent.SET_MAX_HEALTH_BAR, _maxHealth);
+        Messenger<float>.Broadcast(GameEvents.SET_MAX_HEALTH_BAR, _maxHealth);
     }
 
     protected override void DeathActions()
      {
-         Messenger.Broadcast(GameEvent.PLAYER_DIED);
+         Messenger.Broadcast(GameEvents.PLAYER_DIED);
          
          gameObject.SetActive(false);
      }
@@ -18,6 +18,6 @@ public class Player : Entity, IKillable
      {
          _onDamageReact.ReactOnHit();
          
-         Messenger<float>.Broadcast(GameEvent.SET_HEALTH_BAR, _health);
+         Messenger<float>.Broadcast(GameEvents.SET_HEALTH_BAR, _health);
      }
 }

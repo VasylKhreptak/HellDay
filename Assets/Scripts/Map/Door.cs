@@ -34,7 +34,7 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player") && _player.activeSelf)
         {
-            Messenger<bool>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,true);
+            Messenger<bool>.Broadcast(GameEvents.ANIMATE_OPEN_DOOR_BUTTON,true);
         }
         else if (other.CompareTag("Human"))
         {
@@ -46,7 +46,7 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Messenger<bool>.Broadcast(GameEvent.ANIMATE_OPEN_DOOR_BUTTON,false);
+            Messenger<bool>.Broadcast(GameEvents.ANIMATE_OPEN_DOOR_BUTTON,false);
         }
         else if (other.CompareTag("Human"))
         {

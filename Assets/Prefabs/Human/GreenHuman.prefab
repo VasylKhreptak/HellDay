@@ -261,14 +261,14 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.93243223
-      value: 1.054324
-      inSlope: 0.49319884
-      outSlope: 0.49319884
+      time: 0.82642764
+      value: 1.027798
+      inSlope: 0.83360326
+      outSlope: 0.83360326
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.21628371
+      outWeight: 0.28075057
     - serializedVersion: 3
       time: 1
       value: 1.0023052
@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 4019682235512326454}
   - component: {fileID: 6921123278532973149}
   - component: {fileID: -7314933447992179803}
+  - component: {fileID: 495254447103033987}
   m_Layer: 13
   m_Name: GreenHuman
   m_TagString: Human
@@ -546,7 +547,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 80
+  m_Mass: 7
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -566,7 +567,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.0017683208, y: -0.18449235}
   m_SpriteTilingProperty:
@@ -637,14 +638,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 5953720082183312751}
   _rigidbody2D: {fileID: 5526802037380226356}
-  _movementSpeed: 3
-  _jumpSpeed: 13
+  _movementForce: 8
+  _jumpForce: 70
+  _forceMode2D: 1
+  _maxHorVelocity: 4
   _changeDirectionDelay: 3
   _defaultDelay: 1
   _obstacleCheckDelay: 0.4
   _groundChecker: {fileID: 8851837292332708707}
   _obstacleChecker: {fileID: 7666713082686630963}
   _barrierChecker: {fileID: 2932752926582823379}
+  _frameRate: 5
   _pitChecker: {fileID: 2072437516107592661}
   _detectionRadius: 15.86
   _killableTargetDetection: {fileID: 918943402569894751}
@@ -780,6 +784,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _signRenderer: {fileID: 5151546411641028673}
+--- !u!251 &495254447103033987
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953720082183312748}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 2309
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &6292533600055082441
 GameObject:
   m_ObjectHideFlags: 0

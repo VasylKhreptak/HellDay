@@ -179,14 +179,14 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.93243223
-      value: 1.054324
-      inSlope: 0.49319884
-      outSlope: 0.49319884
+      time: 0.82642764
+      value: 1.027798
+      inSlope: 0.83360326
+      outSlope: 0.83360326
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.21628371
+      outWeight: 0.28075057
     - serializedVersion: 3
       time: 1
       value: 1.0023052
@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 1630710002590930050}
   - component: {fileID: -9000216560565403365}
   - component: {fileID: 1509392439470279922}
+  - component: {fileID: 3009455238061028502}
   m_Layer: 13
   m_Name: RedHuman
   m_TagString: Human
@@ -464,7 +465,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 80
+  m_Mass: 7
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -484,7 +485,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.0017683208, y: -0.18449235}
   m_SpriteTilingProperty:
@@ -555,14 +556,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 6592567245772834832}
   _rigidbody2D: {fileID: 4994906563865673803}
-  _movementSpeed: 3
-  _jumpSpeed: 13
+  _movementForce: 8
+  _jumpForce: 70
+  _forceMode2D: 1
+  _maxHorVelocity: 4
   _changeDirectionDelay: 3
   _defaultDelay: 1
   _obstacleCheckDelay: 0.4
   _groundChecker: {fileID: 8303044777138777628}
   _obstacleChecker: {fileID: 7171981067445825868}
   _barrierChecker: {fileID: 2400813439451382956}
+  _frameRate: 5
   _pitChecker: {fileID: 1522386914647617194}
   _detectionRadius: 15.86
   _killableTargetDetection: {fileID: 370106617922917920}
@@ -698,6 +702,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _signRenderer: {fileID: 3453765855219676935}
+--- !u!251 &3009455238061028502
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6592567245772834835}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 2309
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &6823461262281744566
 GameObject:
   m_ObjectHideFlags: 0

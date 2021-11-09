@@ -8,12 +8,12 @@ public class UI_AmmoNumber : MonoBehaviour
     
     private void OnEnable()
     {
-        Messenger<string>.AddListener(GameEvent.SET_AMMO_TEXT, SetText);
+        Messenger<string>.AddListener(GameEvents.SET_AMMO_TEXT, SetText);
     }
 
     private void OnDestroy()
     {
-        Messenger<string>.RemoveListener(GameEvent.SET_AMMO_TEXT, SetText);
+        Messenger<string>.RemoveListener(GameEvents.SET_AMMO_TEXT, SetText);
     }
 
     private void SetText(string text)

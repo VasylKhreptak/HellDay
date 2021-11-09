@@ -29,7 +29,7 @@ public class HumanDetection : MonoBehaviour
             
             bool canShowBtn = _transform.ContainsTransform(_rescueRadius, _closestHuman); 
             
-            Messenger<bool>.Broadcast(GameEvent.ANIMATE_SAVE_HUMAN_BUTTON, canShowBtn);
+            Messenger<bool>.Broadcast(GameEvents.ANIMATE_SAVE_HUMAN_BUTTON, canShowBtn);
             yield return new WaitForSeconds(_checkDelay);
         }
     }

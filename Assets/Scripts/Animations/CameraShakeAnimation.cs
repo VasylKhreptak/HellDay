@@ -22,12 +22,12 @@ public class CameraShakeAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        Messenger<float>.AddListener(GameEvent.SHAKE_CAMERA, Shake);
+        Messenger<float>.AddListener(GameEvents.SHAKE_CAMERA, Shake);
     }
 
     private void OnDisable()
     {
-        Messenger<float>.RemoveListener(GameEvent.SHAKE_CAMERA, Shake);
+        Messenger<float>.RemoveListener(GameEvents.SHAKE_CAMERA, Shake);
     }
  
     public void Shake(float intensity)

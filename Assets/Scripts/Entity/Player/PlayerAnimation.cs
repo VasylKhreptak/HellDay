@@ -8,7 +8,6 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private GameObject _player;
     
     [Header("Preferences")]
     [SerializeField] private int _updateFrameRate = 30;
@@ -24,12 +23,11 @@ public class PlayerAnimation : MonoBehaviour
 
     private bool _playerJumped = false;
     
-    private Coroutine _legPunchActionsCoroutine;
     private Coroutine _configurableUpdate;
 
     private void OnEnable()
     {
-        Messenger.AddListener(GameEvent.PLAYER_JUMPED, OnPlayerJumped);
+        Messenger.AddListener(GameEvents.PLAYER_JUMPED, OnPlayerJumped);
         
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFrameRate, () =>
         {
@@ -43,7 +41,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnDisable()
     {
-        Messenger.RemoveListener(GameEvent.PLAYER_JUMPED, OnPlayerJumped);
+        Messenger.RemoveListener(GameEvents.PLAYER_JUMPED, OnPlayerJumped);
         
         ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }
@@ -75,33 +73,21 @@ public class PlayerAnimation : MonoBehaviour
             if (LadderMovement.isOnLadder == false)
             {
                 _animator.SetBool(Sit, true);
-                Messenger.Broadcast(GameEvent.PLAYER_SIT_DOWN);
+                Messenger.Broadcast(GameEvents.PLAYER_SIT_DOWN);
             }
         }
         else if (_joystick.Vertical > _sitJoystickSensetivity && isSitting)
         {
             _animator.SetBool(Sit, false);
-            Messenger.Broadcast(GameEvent.PLAYER_GET_UP);
+            Messenger.Broadcast(GameEvents.PLAYER_GET_UP);
         }
     }
 
-    public void StartLegPunch()
-    {
-        if (_legPunchActionsCoroutine == null && _player.activeSelf)
-        {
-            _legPunchActionsCoroutine = StartCoroutine(LegPunchRoutine());
-        }
-    }
-
-    private IEnumerator LegPunchRoutine()
+    public void LegKick()
     {
         _animator.SetTrigger(LegPunch);
 
-        Messenger<float>.Broadcast(GameEvent.PLAYER_LEG_PUNCH, _punchDelay);
-
-        yield return new WaitForSeconds(_punchDelay);
-
-        _legPunchActionsCoroutine = null;
+        Messenger<float>.Broadcast(GameEvents.PLAYER_LEG_PUNCH, _punchDelay);    
     }
 
     private void OnCollisionEnter2D(Collision2D other)

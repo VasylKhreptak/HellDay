@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDurability: 7
+  _maxDurability: 5
   _transform: {fileID: 5531183613353782938}
-  _minDamageImpulse: 300
+  _minDamageImpulse: 20
   _canBeDestroyed: 1
 --- !u!114 &6882298876788600329
 MonoBehaviour:

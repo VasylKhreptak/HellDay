@@ -17,4 +17,11 @@ public static class Rigidbody2DExtensions
         rb.AddForce(Mathf.Lerp(0, force, 
             forceCurve.Evaluate(explosionDistance / radius)) * explosionDir, mode);
     }
+
+    public static void LimitHorizontalVelocity(this Rigidbody2D rigidbody2D, float maxVelovity)
+    {
+        rigidbody2D.velocity = 
+            new Vector2(Mathf.Clamp(rigidbody2D.velocity.x, -maxVelovity, maxVelovity), 
+                rigidbody2D.velocity.y);
+    }
 }

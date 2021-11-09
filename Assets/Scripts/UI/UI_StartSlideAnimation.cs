@@ -8,12 +8,12 @@ public class UI_StartSlideAnimation : UI_SlideAnimation
 
    private void OnEnable()
    {
-      Messenger.AddListener(GameEvent.PLAYER_DIED, OnPlayerDied);
+      Messenger.AddListener(GameEvents.PLAYER_DIED, OnPlayerDied);
    }
 
    private void OnDisable()
    {
-      Messenger.RemoveListener(GameEvent.PLAYER_DIED, OnPlayerDied);
+      Messenger.RemoveListener(GameEvents.PLAYER_DIED, OnPlayerDied);
    }
 
    protected override void Start()

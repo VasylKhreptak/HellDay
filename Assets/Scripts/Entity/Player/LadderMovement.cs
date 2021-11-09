@@ -1,4 +1,3 @@
-using System.Text;
 using UnityEngine;
 
 public class LadderMovement : MonoBehaviour
@@ -13,6 +12,9 @@ public class LadderMovement : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _joystickVerticalSensetivty = 0.8f;
     [SerializeField] private float _alligementSpeed = 3f;
 
+    [Header("Ladder Audio")] 
+    [SerializeField] private LadderAudio _ladderAudio;
+
     public static bool isOnLadder { get; private set; }
     public static bool isClimbing { get; private set; }
 
@@ -24,24 +26,17 @@ public class LadderMovement : MonoBehaviour
         {
             if(IsMovingUp())
             {
-                _rigidbody2D.velocity =
-                new Vector2(0, _movementSpeed);
+                _rigidbody2D.velocity = new Vector2(0, _movementSpeed);
 
-                isClimbing = true;
-                
-                AllignToLadder();
+                MoveOnLadderActions();
             }
             else if (IsMovingDown())
             {
-                isClimbing = true;
-                
-                AllignToLadder();
+                MoveOnLadderActions();
             }
             else if (IsStaying())
             {
-                isClimbing = false;
-                
-                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
+                StayActions();
             }
         }
         else
@@ -94,6 +89,26 @@ public class LadderMovement : MonoBehaviour
             isOnLadder = false;
 
             _currentLadder = null;
+            
+            _ladderAudio.StopPlaying();
         }
+    }
+
+    private void MoveOnLadderActions()
+    {
+        isClimbing = true;
+                
+        AllignToLadder();
+                
+        _ladderAudio.StartPlying();
+    }
+
+    private void StayActions()
+    {
+        isClimbing = false;
+                
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, 0);
+                
+        _ladderAudio.StopPlaying();
     }
 }

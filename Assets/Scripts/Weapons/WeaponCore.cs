@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class WeaponCore : MonoBehaviour, IWeapon
@@ -45,9 +46,9 @@ public class WeaponCore : MonoBehaviour, IWeapon
         _previousAngleScatter = _angleScatter;
 
         //PlayerMovement
-        Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
-        Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger.AddListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger.AddListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
     }
 
     protected void Start()
@@ -58,9 +59,9 @@ public class WeaponCore : MonoBehaviour, IWeapon
     protected void OnDisable()
     {
         //PlayerMovement
-        Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger.RemoveListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger.RemoveListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
     }
 
     protected virtual void OnLegPunched(float time)
@@ -94,8 +95,14 @@ public class WeaponCore : MonoBehaviour, IWeapon
         if (_shootCoroutine != null || CanShoot() == false) return;
 
         _shootCoroutine = StartCoroutine(Shoot());
-        
-        StartCoroutine(ControlShootSpeed());
+
+        ControlShootSpeed();
+    }
+
+    protected void ControlShootSpeed()
+    {
+        _canShoot = false;
+        this.DOWait(_shootDelay).OnComplete(() => { _canShoot = true; });
     }
 
     public void StopShooting()
@@ -108,7 +115,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected virtual IEnumerator Shoot()
     {
-        Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
+        Messenger.Broadcast(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
 
         while (true)
         {
@@ -135,15 +142,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.StartShootAnimation(_animator, ShootTrigger);
-    }
-
-    protected IEnumerator ControlShootSpeed()
-    {
-        _canShoot = false;
-
-        yield return new WaitForSeconds(_shootDelay);
-
-        _canShoot = true;
     }
 
     protected void SpawnBullet()

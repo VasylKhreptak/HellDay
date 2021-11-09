@@ -261,7 +261,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
@@ -317,8 +317,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 3378974506285552565}
   _rigidbody2D: {fileID: 3378974506285552569}
-  _movementSpeed: 0.7
-  _jumpSpeed: 10
+  _movementForce: 6
+  _jumpForce: 90
+  _forceMode2D: 1
+  _maxHorVelocity: 1
   _changeDirectionDelay: 15
   _defaultDelay: 1
   _obstacleCheckDelay: 0.3

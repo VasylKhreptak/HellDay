@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class ParticleDisabler : MonoBehaviour, IPooledObject
 {
+    [Header("References")]
     [SerializeField] private ParticleSystem _particleSystem;
-    private float _duration;
 
+    [Header("Preferences")] 
+    [SerializeField] private float _additionalDelay;
+    
+    private float _duration;
     private Tween _tween;
     
     private void Awake()
@@ -16,7 +20,7 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     public void OnEnable()
     {
         _particleSystem.Play();
-        _tween = this.DOWait(_duration).OnComplete(() =>
+        _tween = this.DOWait(_duration + _additionalDelay).OnComplete(() =>
         {
             gameObject.SetActive(false);
         });

@@ -1,10 +1,12 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class FuelBarrel : DestroyableObject
+public class FuelBarrel : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _playerTransform;
+    [SerializeField] private Transform _transform;
 
     [Header("Preferences")] 
     [SerializeField] private float _explosionRadius;
@@ -27,9 +29,18 @@ public class FuelBarrel : DestroyableObject
     [Header("Physical Object Damage")] 
     [SerializeField] private float _maxObjectDamage = 25f;
     [SerializeField] private AnimationCurve _objectDamageCurve;
-    
-    public override void DestroyActions()
+
+    private ObjectPooler _objectPooler;
+
+    private void Start()
     {
+        _objectPooler = ObjectPooler.Instance;
+    }
+
+    public void OnDestroy()
+    {
+        if (gameObject.scene.isLoaded == false) return;
+        
         Explode();
         
         Destroy(gameObject);
@@ -39,7 +50,9 @@ public class FuelBarrel : DestroyableObject
 
     private  void Explode()
     {
-        Messenger<float>.Broadcast(GameEvent.SHAKE_CAMERA, GetEvaluatedCurveValue(
+        Messenger.Broadcast(GameEvents.PLAYED_LOUD_AUDIO_SOURCE);
+
+        Messenger<float>.Broadcast(GameEvents.SHAKE_CAMERA, GetEvaluatedCurveValue(
             _playerTransform.position, _transform.position, _shakeCurve, _maxCameraShakeIntensity,
             _cameraImpactRadius));
         
@@ -92,7 +105,7 @@ public class FuelBarrel : DestroyableObject
             if (collider2D != null && 
                 collider2D.TryGetComponent(out FuelBarrel fuelBarrel))
             {
-                fuelBarrel.DestroyActions();
+                fuelBarrel.OnDestroy();
             }
         });
     }

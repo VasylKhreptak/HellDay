@@ -1,9 +1,24 @@
-public class DoorDestroy : DestroyableObject
+using UnityEngine;
+
+public class DoorDestroy : MonoBehaviour
 {
-    public override void DestroyActions()
+    [Header("References")] 
+    [SerializeField] private Transform _transform;
+    [SerializeField] private Pools _destoyParticle = Pools.WoodItemDestroyParticle;
+
+    private ObjectPooler _objectPooler;
+
+    private void Start()
     {
-        Destroy(_transform.parent.gameObject);
+        _objectPooler = ObjectPooler.Instance;
+    }
+
+    public void  OnDestroy()
+    {
+        if (gameObject.scene.isLoaded == false) return;
         
-        base.DestroyActions();
+        _objectPooler.GetFromPool(_destoyParticle, _transform.position, Quaternion.identity);
+        
+        Destroy(_transform.parent.gameObject);
     }
 }

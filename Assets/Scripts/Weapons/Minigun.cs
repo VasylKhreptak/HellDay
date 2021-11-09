@@ -33,7 +33,7 @@ public class Minigun : WeaponCore, IWeapon
         {
             _shootCoroutine = StartCoroutine(Shoot());
 
-            StartCoroutine(ControlShootSpeed());
+            ControlShootSpeed();
         });
     }
 
@@ -95,7 +95,7 @@ public class Minigun : WeaponCore, IWeapon
 
     protected override IEnumerator Shoot()
     {
-        Messenger.Broadcast(GameEvent.PLAYED_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
+        Messenger.Broadcast(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
 
         _isShooting = true;
 

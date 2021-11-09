@@ -124,7 +124,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxDurability: 7
   _transform: {fileID: 4750794571995735228}
-  _minDamageImpulse: 100
+  _minDamageImpulse: 20
   _canBeDestroyed: 1
 --- !u!114 &-8025058348955438707
 MonoBehaviour:

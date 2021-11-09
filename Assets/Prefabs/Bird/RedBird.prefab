@@ -116,5 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2514119371090672641}
-  _speed: 0.03
+  _movementSpeed: 0.03
   _lifeTime: 20
+  _liftDuration: 1
+  _increasedSpeed: 0.047

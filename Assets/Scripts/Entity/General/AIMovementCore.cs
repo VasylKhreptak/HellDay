@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -8,8 +9,10 @@ public class AIMovementCore : MonoBehaviour
     [SerializeField] protected Rigidbody2D _rigidbody2D;
     
     [Header("MovementPreferences")] 
-    [SerializeField] protected float _movementSpeed = 13f;
-    [SerializeField] protected float _jumpSpeed = 18f;
+    [SerializeField] protected float _movementForce = 13f;
+    [SerializeField] protected float _jumpForce = 18f;
+    [SerializeField] protected ForceMode2D _forceMode2D;
+    [SerializeField] protected float _maxHorVelocity = 5f;
     
     [Header("Delays")]
     [SerializeField] protected float _changeDirectionDelay = 3f;
@@ -20,13 +23,17 @@ public class AIMovementCore : MonoBehaviour
     [SerializeField] protected GroundChecker _groundChecker;
     [SerializeField] protected ObstacleChecker _obstacleChecker;
     [SerializeField] protected BarrierChecker _barrierChecker;
+
+    [Header("Configurable Update")] 
+    [SerializeField] protected int _frameRate = 5;
     
     protected Coroutine _randomMovementCoroutine;
     protected Coroutine _checkEnvironmentCorouitne;
-    
-    protected virtual void Update()
-    { 
-        _rigidbody2D.velocity = new Vector2(_movementSpeed, _rigidbody2D.velocity.y);
+
+    protected virtual void FixedUpdate()
+    {
+        _rigidbody2D.AddForce(new Vector2(_movementForce, 0), _forceMode2D);
+        _rigidbody2D.LimitHorizontalVelocity(_maxHorVelocity);
     }
 
     protected IEnumerator CheckEnvironmentRoutine()
@@ -55,7 +62,7 @@ public class AIMovementCore : MonoBehaviour
     
     protected void Jump()
     {
-        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpSpeed);
+        _rigidbody2D.AddForce(new Vector2(0, _jumpForce), _forceMode2D);
     }
     
     protected virtual bool CanReverseMovementDirection()
@@ -65,9 +72,9 @@ public class AIMovementCore : MonoBehaviour
     
     protected void ReverseMovementDirection()
     {
-        _movementSpeed *= -1;
+        _movementForce *= -1;
         
-        SetFaceDirection((int) Mathf.Sign(_movementSpeed));
+        SetFaceDirection((int) Mathf.Sign(_movementForce));
     }
     
     protected virtual void SetFaceDirection(int direction)
@@ -77,7 +84,7 @@ public class AIMovementCore : MonoBehaviour
     
     protected void SetMovementDirection(int direction)
     {
-        _movementSpeed = Mathf.Sign(direction) * Mathf.Abs(_movementSpeed);
+        _movementForce = Mathf.Sign(direction) * Mathf.Abs(_movementForce);
         
         SetFaceDirection(direction);
     }

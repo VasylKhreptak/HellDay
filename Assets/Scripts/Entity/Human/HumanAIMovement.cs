@@ -19,11 +19,11 @@ public class HumanAIMovement : AIMovementCore
 
     protected Coroutine _runFromThreatCoroutine;
 
-    protected override void Update()
+    protected override void FixedUpdate()
     {
         if (_canMove)
         {
-            _rigidbody2D.velocity = new Vector2(_movementSpeed, _rigidbody2D.velocity.y);
+            base.FixedUpdate();
         }
     }
 

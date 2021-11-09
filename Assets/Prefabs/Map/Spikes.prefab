@@ -159,5 +159,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxDurability: 7
   _transform: {fileID: 4660529857484229696}
-  _minDamageImpulse: 100
+  _minDamageImpulse: 20
   _canBeDestroyed: 1

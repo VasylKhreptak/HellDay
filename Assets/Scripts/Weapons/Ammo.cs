@@ -19,13 +19,13 @@ public class Ammo : MonoBehaviour
     {
         _ammo = ammo;
         
-        Messenger<string>.Broadcast(GameEvent.SET_AMMO_TEXT, _ammo.ToString());
+        Messenger<string>.Broadcast(GameEvents.SET_AMMO_TEXT, _ammo.ToString());
     }
     
     public void GetAmmo()
     {
         _ammo -= 1;
 
-        Messenger<string>.Broadcast(GameEvent.SET_AMMO_TEXT, _ammo.ToString());
+        Messenger<string>.Broadcast(GameEvents.SET_AMMO_TEXT, _ammo.ToString());
     }
 }

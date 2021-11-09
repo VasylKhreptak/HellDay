@@ -20,12 +20,12 @@ public class ZombieAIMovement : AIMovementCore
 
     protected void OnEnable()
     {
-        Messenger.AddListener(GameEvent.PLAYED_AUDIO_SOURCE, OnPlayedAudioSource);
+        Messenger.AddListener(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, OnPlayedAudioSource);
     }
 
     protected void OnDisable()
     {
-        Messenger.RemoveListener(GameEvent.PLAYED_AUDIO_SOURCE, OnPlayedAudioSource);
+        Messenger.RemoveListener(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, OnPlayedAudioSource);
     }
 
     protected virtual void Start()

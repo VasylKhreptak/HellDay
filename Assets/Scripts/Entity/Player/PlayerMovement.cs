@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,12 +11,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GroundChecker _groundChecker;
     
     [Header("Preferences")]
-    [SerializeField] private float _movementSpeed = 5f;
-    [SerializeField] private float _minJumpVelocity = 15f;
-    [SerializeField] private float _maxJumpVelocity = 30f;
+    [SerializeField] private float _movementForce = 5f;
+    [SerializeField] private float _minJumpForce = 15f;
+    [SerializeField] private float _maxJumpForce = 30f;
     [SerializeField, Range(0f, 1f)] private float _horizontalSensetivity = 0.5f;
     [SerializeField, Range(0f, 1f)] private float _verticalSensetivity = 0.8f;
     [SerializeField] private float _jumpDelay = 1f;
+    [SerializeField] private float _maxHorVelocity = 5f;
+    [SerializeField] private ForceMode2D _movementMode = ForceMode2D.Impulse;
     
     private bool _canMove = true;
     private bool _isJumpForbidden ;
@@ -26,13 +29,27 @@ public class PlayerMovement : MonoBehaviour
     private readonly float MIN_CHANGE_DIRECTION_SPEED = 0.1f;
     private readonly int UPDATE_FRAMERATE = 10;
     private Coroutine _configurableUpdate;
+    private bool _isGrounded;
+
+    private float _previousMovementForce,
+                  _previousMinJumpForce,
+                  _previousMaxJumpForce,
+                  _previousMaxHorVelocity;
+
+    private void Awake()
+    {
+        _previousMovementForce = _movementForce;
+        _previousMinJumpForce = _minJumpForce;
+        _previousMaxJumpForce = _maxJumpForce;
+        _previousMaxHorVelocity = _maxHorVelocity;
+    }
 
     private void OnEnable()
     {
-        Messenger.AddListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger.AddListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.AddListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
-        Messenger<float>.AddListener(GameEvent.PLAYER_MOVEMENT_IMPACT, OnPlayerMovementImpact);
+        Messenger.AddListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger.AddListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger<float>.AddListener(GameEvents.PLAYER_MOVEMENT_IMPACT, ImpactMovement);
 
         SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
         
@@ -47,10 +64,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        Messenger.RemoveListener(GameEvent.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger.RemoveListener(GameEvent.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.RemoveListener(GameEvent.PLAYER_LEG_PUNCH, OnLegPunched);
-        Messenger<float>.RemoveListener(GameEvent.PLAYER_MOVEMENT_IMPACT, OnPlayerMovementImpact);
+        Messenger.RemoveListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
+        Messenger.RemoveListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger<float>.RemoveListener(GameEvents.PLAYER_MOVEMENT_IMPACT, ImpactMovement);
         
         ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }
@@ -60,11 +77,24 @@ public class PlayerMovement : MonoBehaviour
         _canMove = true;
     }
 
-    private void OnPlayerMovementImpact(float percentage)
+    private void ImpactMovement(float percentage)
     {
-        _movementSpeed -= _movementSpeed * percentage / 100f;
-        _minJumpVelocity -= _minJumpVelocity * percentage / 100f;
-        _maxJumpVelocity -= _maxJumpVelocity * percentage / 100f;
+        RestoreMovementPreferences();
+        
+        float clampedPercentage = percentage / 100f;
+        
+        _movementForce -= _movementForce * clampedPercentage;
+        _minJumpForce -= _minJumpForce * clampedPercentage;
+        _maxJumpForce -= _maxJumpForce * clampedPercentage;
+        _maxHorVelocity -= _maxJumpForce * clampedPercentage;
+    }
+
+    private void RestoreMovementPreferences()
+    {
+        _movementForce = _previousMovementForce;
+        _minJumpForce = _previousMinJumpForce;
+        _maxJumpForce = _previousMaxJumpForce;
+        _maxHorVelocity = _previousMaxHorVelocity;
     }
 
     private void OnPlayerSitDown()
@@ -112,7 +142,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Mathf.Abs(_joystick.Horizontal) > _horizontalSensetivity)
         {
-            _rigidbody2D.velocity = new Vector2(_joystick.Horizontal * _movementSpeed, _rigidbody2D.velocity.y);
+            _rigidbody2D.AddForce(new Vector2(_joystick.Horizontal * _movementForce, 0), _movementMode);
+            _rigidbody2D.LimitHorizontalVelocity(_maxHorVelocity);
         }
     }
 
@@ -126,23 +157,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x,
-            Mathf.Clamp(_maxJumpVelocity * _joystick.Vertical, _minJumpVelocity, _maxJumpVelocity));
-
-        StartCoroutine(ControlJumpRoutine());
-
-        Messenger.Broadcast(GameEvent.PLAYER_JUMPED);
-    }
-
-    private IEnumerator ControlJumpRoutine()
-    {
+        _rigidbody2D.AddForce(new Vector2(0, Mathf.Clamp(_maxJumpForce * _joystick.Vertical, 
+            _minJumpForce, _maxJumpForce)), _movementMode);
+        
         _isJumpForbidden = true;
+        this.DOWait(_jumpDelay).OnComplete(() => { _isJumpForbidden = false; });
 
-        yield return new WaitForSeconds(_jumpDelay);
-
-        _isJumpForbidden = false;
+        Messenger.Broadcast(GameEvents.PLAYER_JUMPED);
     }
-
+    
     private bool CanJump()
     {
         if (_isJumpForbidden)

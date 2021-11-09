@@ -1,5 +1,3 @@
-using System.Drawing;
-using DG.Tweening;
 using UnityEngine;
 
 public class DestroyableObject : PhysicalObject
@@ -24,10 +22,8 @@ public class DestroyableObject : PhysicalObject
 
     protected void OnCollisionEnter2D(Collision2D collision2D)
     {
-        float impulse = GetCollisionImpulse(collision2D);
-
         if (collision2D.collider.CompareTag("Bullet") ||
-            impulse > _minDamageImpulse)
+            collision2D.GetImpulse() > _minDamageImpulse)
         {
             TakeDamage(1f);
         }                                                                                
@@ -43,17 +39,5 @@ public class DestroyableObject : PhysicalObject
         {
             gameObject.SetActive(false);
         }
-    }
-
-    protected float GetCollisionImpulse(Collision2D collision2D)
-    {
-        float impulse = 0f;
-
-        for (int i = 0; i < collision2D.contacts.Length; i++)
-        {
-            impulse += collision2D.contacts[i].normalImpulse;
-        }
-
-        return impulse;
     }
 }

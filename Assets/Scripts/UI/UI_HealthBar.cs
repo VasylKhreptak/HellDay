@@ -14,14 +14,14 @@ public class UI_HealthBar : MonoBehaviour
     
     private void OnEnable()
     {
-        Messenger<float>.AddListener(GameEvent.SET_MAX_HEALTH_BAR, SetMaxHealthBar);
-        Messenger<float>.AddListener(GameEvent.SET_HEALTH_BAR, SetHealthBar);
+        Messenger<float>.AddListener(GameEvents.SET_MAX_HEALTH_BAR, SetMaxHealthBar);
+        Messenger<float>.AddListener(GameEvents.SET_HEALTH_BAR, SetHealthBar);
     }
 
     private void OnDisable()
     {
-        Messenger<float>.RemoveListener(GameEvent.SET_MAX_HEALTH_BAR, SetMaxHealthBar);
-        Messenger<float>.RemoveListener(GameEvent.SET_HEALTH_BAR, SetHealthBar);
+        Messenger<float>.RemoveListener(GameEvents.SET_MAX_HEALTH_BAR, SetMaxHealthBar);
+        Messenger<float>.RemoveListener(GameEvents.SET_HEALTH_BAR, SetHealthBar);
     }
 
     public void SetMaxHealthBar(float health)
