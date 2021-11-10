@@ -19,6 +19,9 @@ public class PlayerLegKick : MonoBehaviour
     [Header("Player Animation")] 
     [SerializeField] private PlayerAnimation _playerAnimation;
 
+    [Header("Player Audio")] 
+    [SerializeField] private PlayerAudio _playerAudio;
+
     private bool _canKick = true;
     
     public void KickActions()
@@ -41,6 +44,8 @@ public class PlayerLegKick : MonoBehaviour
             
         if(atackedObj == null) return;
 
+        _playerAudio.PlayLegKickSound();
+        
         if (atackedObj.TryGetComponent(out Rigidbody2D rb))
         {
             if(rb.bodyType != RigidbodyType2D.Static)
@@ -49,6 +54,7 @@ public class PlayerLegKick : MonoBehaviour
                 _upwardsVelocity);
             }
         }
+        
         if (atackedObj.CompareTag("Zombie") && atackedObj.TryGetComponent(out KillableTarget target))
         {
             target.Killable.TakeDamage(_entityDamage);

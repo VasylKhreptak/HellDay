@@ -7,9 +7,10 @@ public static class RandomAudio
         AudioSource.PlayClipAtPoint(audioClips.Random(), position, volume);
     }
     
-    public static void Play(AudioSource audioSource, AudioClip[] audioClips)
+    public static void Play(AudioSource audioSource, AudioClip[] audioClips, float volume = 1f)
     {
-        audioSource.clip = audioClips.Random();
-        audioSource.Play();
+        audioSource.enabled = true;
+            
+        audioSource.PlayOneShot(audioClips.Random(), volume);
     }
 }

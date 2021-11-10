@@ -34,7 +34,7 @@ public static class TransformExtensions
             return false;
         }
         
-        return (transform.position - target.position).sqrMagnitude < radius * radius;
+        return Vector3.Distance(transform.position, target.position) < radius;
     }
     
     public static bool IsInFiendOfView(this Transform transform, Transform target, float radius, LayerMask layerMask)

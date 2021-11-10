@@ -14,10 +14,8 @@ public class Player : Entity, IKillable
          gameObject.SetActive(false);
      }
 
-     protected override void OnTakeDamage()
+     public void UpdateHealthBar()
      {
-         _onDamageReact.ReactOnHit();
-         
          Messenger<float>.Broadcast(GameEvents.SET_HEALTH_BAR, _health);
      }
 }

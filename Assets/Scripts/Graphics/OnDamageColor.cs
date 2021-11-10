@@ -1,7 +1,8 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class OnDamageReact : MonoBehaviour
+[RequireComponent(typeof(SpriteRenderer))]
+public class OnDamageColor : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -19,7 +20,7 @@ public class OnDamageReact : MonoBehaviour
         _halfDuration = _duration / 2;
     }
  
-    public void ReactOnHit()
+    public void ReactOnDamage()
     {
         _seq = DOTween.Sequence();
 

@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 3625498612111855267}
   - component: {fileID: -1834513055825569247}
   - component: {fileID: 5719579040978923910}
+  - component: {fileID: -643017004439290007}
   m_Layer: 8
   m_Name: RedZombie
   m_TagString: Zombie
@@ -302,7 +303,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 200
-  _onDamageReact: {fileID: 9059326616366066559}
+  _onDamageColor: {fileID: 9059326616366066559}
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9059326616366066559}
+        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
+        m_MethodName: ReactOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3378974506285552574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,6 +343,7 @@ MonoBehaviour:
   _groundChecker: {fileID: 7893370723071284246}
   _obstacleChecker: {fileID: 3378974506961274545}
   _barrierChecker: {fileID: 3378974505983830874}
+  _frameRate: 5
   _killableTargetDetection: {fileID: 8146395567742145361}
   _mainDetectionRadius: 6
   _audioDetectionRadius: 40
@@ -424,7 +441,7 @@ AudioSource:
   m_GameObject: {fileID: 3378974506285552572}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 25349006337207511, guid: 5c6430f1a5f3c84428a3caea2255cee6, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -599,6 +616,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
   - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
   - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+--- !u!114 &-643017004439290007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378974506285552572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9b0158640742c4db76c4cc0e7cd5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 3378974506285552565}
+  _audioListener: {fileID: 0}
+  _audioSource: {fileID: 6170368832719441398}
+  _checkFramerate: 2
 --- !u!1 &3378974506961274544
 GameObject:
   m_ObjectHideFlags: 0

@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 6368822738420683505}
   - component: {fileID: -2770891227907475456}
   - component: {fileID: -3070268500316650912}
+  - component: {fileID: -8054206750990064636}
   m_Layer: 13
   m_Name: YellowHuman
   m_TagString: Human
@@ -496,7 +497,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _onDamageReact: {fileID: 1037229582985468630}
+  _onDamageColor: {fileID: 1037229582985468630}
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1037229582985468630}
+        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
+        m_MethodName: ReactOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2689526998081996512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,6 +701,21 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &-8054206750990064636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361956689193760207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91a9aaf0153cfc448a3c1b879e77d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _doorLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &5494458432691061530
 GameObject:
   m_ObjectHideFlags: 0

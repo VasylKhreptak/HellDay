@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Entity : MonoBehaviour
 {
@@ -7,7 +8,10 @@ public class Entity : MonoBehaviour
     protected float _health;
 
     [Header("Hit React")] 
-    [SerializeField] protected OnDamageReact _onDamageReact;
+    [SerializeField] protected OnDamageColor _onDamageColor;
+
+    [Header("Damage Event")] 
+    [SerializeField] private UnityEvent OnTakeDamage;
 
     protected bool IsDead => _health <= 0;
     
@@ -25,7 +29,7 @@ public class Entity : MonoBehaviour
     {
         _health -= damage;
 
-        OnTakeDamage();
+        OnTakeDamage.Invoke();
         
         if (IsDead)
         {
@@ -36,10 +40,5 @@ public class Entity : MonoBehaviour
     protected virtual void DeathActions()
     {
         Destroy(gameObject);
-    }
-
-    protected virtual void OnTakeDamage()
-    {
-        _onDamageReact.ReactOnHit();
     }
 }
