@@ -4875,7 +4875,7 @@ GameObject:
   - component: {fileID: 117044832499467817}
   - component: {fileID: 7782176968736333314}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: FuelBarrelExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

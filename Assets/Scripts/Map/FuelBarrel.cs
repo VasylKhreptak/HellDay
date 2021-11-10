@@ -1,12 +1,11 @@
-using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class FuelBarrel : MonoBehaviour
+public class FuelBarrel : DestroyableObject
 {
     [Header("References")]
     [SerializeField] private Transform _playerTransform;
-    [SerializeField] private Transform _transform;
 
     [Header("Preferences")] 
     [SerializeField] private float _explosionRadius;
@@ -17,6 +16,7 @@ public class FuelBarrel : MonoBehaviour
     [SerializeField] private ForceMode2D _forceMode2D;
     [SerializeField] private AnimationCurve _forceCurve;
     [SerializeField] private float _chainExplosionDelay = 0.5f;
+    [SerializeField] private Pools _fuelBarrelExplosion = Pools.FuelBarrelExplosion;
 
     [Header("Camera Shake")]
     [SerializeField] private AnimationCurve  _shakeCurve;
@@ -30,22 +30,68 @@ public class FuelBarrel : MonoBehaviour
     [SerializeField] private float _maxObjectDamage = 25f;
     [SerializeField] private AnimationCurve _objectDamageCurve;
 
-    private ObjectPooler _objectPooler;
+    [Header("Smoke Preferences")]
+    [SerializeField] private Transform _smokeSpawnPlace;
+    [SerializeField] private float _explodeDelay = 2f;
+    [SerializeField, Range(0, 0.99f)] private float _percentage;
+    [SerializeField] private Pools _smoke;
 
-    private void Start()
+    private GameObject _smokeObj;
+    private Transform _previousSmokeParent;
+    private float _percentagedMaxDurability;
+    private bool _isSmokeSpawned;
+
+    private void Awake()
     {
-        _objectPooler = ObjectPooler.Instance;
+        _percentagedMaxDurability = _maxDurability * _percentage;
     }
 
-    public void OnDestroy()
+    public override void TakeDamage(float damage)
+    {
+        if (_durability < _percentagedMaxDurability && _isSmokeSpawned == false)
+        {
+            StartCoroutine(SmokeRoutine());
+
+            _isSmokeSpawned = true;
+        }
+        
+        base.TakeDamage(damage);
+    }
+
+    private IEnumerator SmokeRoutine()
+    {
+        _smokeObj = _objectPooler.GetFromPool(_smoke, _smokeSpawnPlace.position, Quaternion.identity);
+        _previousSmokeParent = _smokeObj.transform.parent;
+        
+        yield return new WaitForSeconds(_explodeDelay);
+        
+        ExplodeActions();
+    }
+
+    public void OnDisable()
     {
         if (gameObject.scene.isLoaded == false) return;
         
-        Explode();
-        
-        Destroy(gameObject);
+        ExplodeActions();
+    }
 
-        _objectPooler.GetFromPool(Pools.BarrelExplosion, _transform.position, Quaternion.identity);
+    private void DisableSmoke()
+    {
+        if(_smokeObj == null) return;
+        
+        _smokeObj.SetActive(false);
+        _smokeObj.transform.parent = _previousSmokeParent;
+    }
+
+    private void ExplodeActions()
+    {
+        _objectPooler.GetFromPool(_fuelBarrelExplosion, _transform.position, Quaternion.identity);
+
+        DisableSmoke();
+        
+        Explode();
+
+        Destroy(gameObject);
     }
 
     private  void Explode()
@@ -102,10 +148,9 @@ public class FuelBarrel : MonoBehaviour
     {
         this.DOWait(_chainExplosionDelay).OnComplete(() =>
         {
-            if (collider2D != null && 
-                collider2D.TryGetComponent(out FuelBarrel fuelBarrel))
+            if (collider2D != null)
             {
-                fuelBarrel.OnDestroy();
+                collider2D.gameObject.SetActive(false);
             }
         });
     }

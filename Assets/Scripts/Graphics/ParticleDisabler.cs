@@ -28,6 +28,8 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
 
     private void OnDisable()
     {
+        if (gameObject.scene.isLoaded == false) return;
+
         _tween.Kill();
     }
 }

@@ -24,7 +24,7 @@ public enum Pools
     PlayerArm, 
     TVDestroyParticle,
     GreenZombieExplosion,
-    BarrelExplosion,
+    FuelBarrelExplosion,
     HumanHead,
     HumanLeftLeg,
     HumanRightLeg,
@@ -33,5 +33,6 @@ public enum Pools
     BlueBird,
     RedBird,
     GreenBird,
-    YellowBird
+    YellowBird, 
+    FuelBarrelSmoke
 }

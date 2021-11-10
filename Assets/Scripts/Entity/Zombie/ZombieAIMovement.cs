@@ -37,8 +37,11 @@ public class ZombieAIMovement : AIMovementCore
     
     protected void OnPlayedAudioSource()
     {
-        if (Vector2.Distance(_transform.position,
-            _killableTargetDetection.ClosestTarget.Transform.position) < _audioDetectionRadius)
+        Transform target = _killableTargetDetection.ClosestTarget.Transform;
+        
+        if (_transform == null || target == null) return;
+        
+        if (Vector2.Distance(_transform.position, target.position) < _audioDetectionRadius)
         {
             float previousDetectionRadius = _mainDetectionRadius;
             _mainDetectionRadius = _audioDetectionRadius;
