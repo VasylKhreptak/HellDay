@@ -1,5 +1,6 @@
 using System.Collections;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class ZombieAIMovement : AIMovementCore
@@ -10,12 +11,13 @@ public class ZombieAIMovement : AIMovementCore
     [Header("Target detection preferences")] 
     [SerializeField] protected float _mainDetectionRadius = 5f;
     [SerializeField] protected float _audioDetectionRadius;
-    [SerializeField] protected float _increaseDetectionRadiusTime = 10f;
+    [SerializeField] protected float _incDetectionRadiusDur = 10f;
     
     protected Coroutine _followTargetCoroutine;
     protected Coroutine _increaseDetectionRadiusCoroutine;
 
     protected bool _isFollowingTarget;
+    protected float previousDetectionRadius;
 
 
     protected void OnEnable()
@@ -30,6 +32,8 @@ public class ZombieAIMovement : AIMovementCore
 
     protected virtual void Start()
     {
+        previousDetectionRadius = _mainDetectionRadius;
+        
         StartCoroutine(CheckEnvironmentRoutine());
 
         StartCoroutine(ControlMovementRoutine());
@@ -39,18 +43,18 @@ public class ZombieAIMovement : AIMovementCore
     {
         Transform target = _killableTargetDetection.ClosestTarget.Transform;
         
-        if (_transform == null || target == null) return;
+        if (target == null ||_transform == null) return;
         
-        if (Vector2.Distance(_transform.position, target.position) < _audioDetectionRadius)
-        {
-            float previousDetectionRadius = _mainDetectionRadius;
-            _mainDetectionRadius = _audioDetectionRadius;
+        StartCoroutine(ControlDetectionRadius());
+    }
 
-            this.DOWait(_increaseDetectionRadiusTime).OnComplete(() =>
-            {
-                _mainDetectionRadius = previousDetectionRadius;
-            });
-        }
+    protected IEnumerator ControlDetectionRadius()
+    {
+        _mainDetectionRadius = _audioDetectionRadius;
+
+        yield return new WaitForSeconds(_incDetectionRadiusDur);
+
+        _mainDetectionRadius = previousDetectionRadius;
     }
 
     protected void StartRandomMovement()

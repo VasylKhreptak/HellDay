@@ -16,9 +16,8 @@ public class WeaponControl : MonoBehaviour
 
     public void SetWeapon(Weapons weaponToSelect)
     {
-        for (var i = 0; i < _weapons.Length; i++)
+        foreach (var weapon in _weapons)
         {
-            var weapon = _weapons[i];
             weapon.gameObject.SetActive(weapon.WeaponType == weaponToSelect);
 
             if (weapon.WeaponType == weaponToSelect)

@@ -48,14 +48,14 @@ public class KillableTargetDetection : TargetDetectionCore
 
     private KillableTarget FindFirst(KillableTarget[] killableTargets, Transform transform)
     {
-        for (int i = 0; i < killableTargets.Length; i++)
+        foreach (var target in killableTargets)
         {
-            if (_killableTargets[i].Transform == transform)
+            if (target.Transform == transform)
             {
-                return _killableTargets[i];
+                return target;
             }
         }
-        
+
         return null;
     }
 }

@@ -15,6 +15,11 @@ public class PlayerLegKick : MonoBehaviour
     [SerializeField] private float _kickDelay;
     [SerializeField] private float _delayBeforeKick = 0.2f;
     [SerializeField] private float _entityDamage = 30f;
+    [SerializeField] private ForceMode2D _forceMode2D;
+
+    [Header("KickTorque")] 
+    [SerializeField] private float _minKickTorque;
+    [SerializeField] private float _maxkickTorque;
  
     [Header("Player Animation")] 
     [SerializeField] private PlayerAnimation _playerAnimation;
@@ -29,7 +34,7 @@ public class PlayerLegKick : MonoBehaviour
         if (_playerObj.activeSelf == false || _canKick == false) return;
         
         _playerAnimation.LegKick();
-
+        
         this.DOWait(_delayBeforeKick).OnComplete(() =>
         {
             Kick();
@@ -52,6 +57,8 @@ public class PlayerLegKick : MonoBehaviour
             {
                 rb.velocity = new Vector2(_kickVelocity * PlayerMovement.MovementDirection,
                 _upwardsVelocity);
+                
+                rb.AddTorque(Random.Range(-_minKickTorque, _maxkickTorque), _forceMode2D);
             }
         }
         

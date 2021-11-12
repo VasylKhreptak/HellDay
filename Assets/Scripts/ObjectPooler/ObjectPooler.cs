@@ -35,10 +35,10 @@ public class ObjectPooler : MonoBehaviour
     
     private void CreatePoolFolders()
     {
-        for (int i = 0; i < _pools.Count; i++)
+        foreach (var pool in _pools)
         {
-            _pools[i].folder = new GameObject(_pools[i].PoolType.ToString());
-            _pools[i].folder.transform.parent = gameObject.transform;
+            pool.folder = new GameObject(pool.PoolType.ToString());
+            pool.folder.transform.parent = gameObject.transform;
         }
     }
 

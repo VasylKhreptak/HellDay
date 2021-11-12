@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerFallDamage : MonoBehaviour
+public class PlayerFallInteract : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private KillableTarget _playerKillableTarget;

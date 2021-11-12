@@ -15,11 +15,11 @@ public class BridgeElement : MonoBehaviour
 
     private void OnDestroy()
     {
-        for (var i = 0; i < _nextBridgeElements.Length; i++)
+        foreach (var bridge in _nextBridgeElements)
         {
-            if(_nextBridgeElements[i] == null) continue;
+            if(bridge == null) continue;
 
-            DeactivateBridgeElement(_nextBridgeElements[i]);
+            DeactivateBridgeElement(bridge);
         }
     }
 

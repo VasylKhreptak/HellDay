@@ -104,10 +104,10 @@ public class FuelBarrel : DestroyableObject
         
         Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(_transform.position,
             _explosionRadius, _layerMask);
-        
-        for (int i = 0; i < overlappedColliders.Length; i++)
+
+        foreach (var coll in overlappedColliders)
         {
-            InteractWithCollider(overlappedColliders[i]);
+            InteractWithCollider(coll);
         }
     }
 

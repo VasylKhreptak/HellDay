@@ -1481,7 +1481,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.28, y: -0.03}
-  m_ConnectedAnchor: {x: -0.270293, y: 0.6701}
+  m_ConnectedAnchor: {x: -0.2702998, y: 0.6701}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -60209,7 +60209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.979187, y: -14.255004, z: 10.717207}
+  m_LocalPosition: {x: -73.26081, y: -15.475004, z: 10.717207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 518623207}
@@ -64055,7 +64055,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1602898, y: 1}
+    m_SensorSize: {x: 2.1632125, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -64072,7 +64072,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036280480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.979187, y: -14.255004, z: 10.717207}
+  m_LocalPosition: {x: -73.26081, y: -15.475004, z: 10.717207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1126636726}
@@ -78304,7 +78304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755073905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.1, y: -1, z: 0}
+  m_LocalPosition: {x: 13.86, y: -2.22, z: 0}
   m_LocalScale: {x: 0.9805, y: 1, z: 1}
   m_Children:
   - {fileID: 1199932468}
@@ -78592,6 +78592,9 @@ MonoBehaviour:
   _kickDelay: 0.7
   _delayBeforeKick: 0.2
   _entityDamage: 40
+  _forceMode2D: 1
+  _minKickTorque: 1
+  _maxkickTorque: 3
   _playerAnimation: {fileID: 1755073912}
   _playerAudio: {fileID: 1755073925}
 --- !u!114 &1755073923
@@ -78609,10 +78612,10 @@ MonoBehaviour:
   _playerKillableTarget: {fileID: 1755073914}
   _groundLayerMask:
     serializedVersion: 2
-    m_Bits: 2049
+    m_Bits: 1
   _landingDamage: 40
   _minDamageImpulse: 150
-  _playerAudio: {fileID: 0}
+  _playerAudio: {fileID: 1755073925}
 --- !u!114 &1755073924
 MonoBehaviour:
   m_ObjectHideFlags: 0

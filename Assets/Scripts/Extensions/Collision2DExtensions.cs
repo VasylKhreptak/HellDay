@@ -6,9 +6,9 @@ public static class Collision2DExtensions
     {
         float impulse = 0f;
 
-        for (int i = 0; i < collision2D.contacts.Length; i++)
+        foreach (var contactPoint in collision2D.contacts)
         {
-            impulse += collision2D.contacts[i].normalImpulse;
+            impulse += contactPoint.normalImpulse;
         }
 
         return impulse;

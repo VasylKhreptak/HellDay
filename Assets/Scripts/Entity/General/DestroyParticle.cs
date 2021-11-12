@@ -17,9 +17,9 @@ public class DestroyParticle : MonoBehaviour
 
     private void SpawnDestroyParticles()
     {
-        for (int i = 0; i < _destroyParticles.Length; i++)
+        foreach (var particle in _destroyParticles)
         {
-            _objectPooler.GetFromPool(_destroyParticles[i], _transform.position, Quaternion.identity);
+            _objectPooler.GetFromPool(particle, _transform.position, Quaternion.identity);
         }
     }
 
