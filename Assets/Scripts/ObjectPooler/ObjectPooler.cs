@@ -7,14 +7,10 @@ public class ObjectPooler : MonoBehaviour
     [Serializable]
     private class Pool
     {
-        [SerializeField] private Pools _poolType;
-        [SerializeField] private GameObject _prefab;
-        [SerializeField] private int _size;
+        public Pools _poolType;
+        public GameObject _prefab;
+        public int _size;
         [HideInInspector] public GameObject folder;
-
-        public GameObject Prefab => _prefab;
-        public int Size => _size;
-        public Pools PoolType => _poolType;
     }
     
     private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
@@ -37,7 +33,7 @@ public class ObjectPooler : MonoBehaviour
     {
         foreach (var pool in _pools)
         {
-            pool.folder = new GameObject(pool.PoolType.ToString());
+            pool.folder = new GameObject(pool._poolType.ToString());
             pool.folder.transform.parent = gameObject.transform;
         }
     }
@@ -50,9 +46,9 @@ public class ObjectPooler : MonoBehaviour
         {
             Queue<GameObject> objectPool = new Queue<GameObject>();
 
-            for (int j = 0; j < _pools[i].Size; j++)
+            for (int j = 0; j < _pools[i]._size; j++)
             {
-                GameObject gameObject = Instantiate(_pools[i].Prefab);
+                GameObject gameObject = Instantiate(_pools[i]._prefab);
                 gameObject.SetActive(false);
 
                 gameObject.transform.parent = _pools[i].folder.transform;
@@ -60,7 +56,7 @@ public class ObjectPooler : MonoBehaviour
                 objectPool.Enqueue(gameObject);
             }
 
-            _poolDictionary.Add(_pools[i].PoolType, objectPool);
+            _poolDictionary.Add(_pools[i]._poolType, objectPool);
         }
     }
 

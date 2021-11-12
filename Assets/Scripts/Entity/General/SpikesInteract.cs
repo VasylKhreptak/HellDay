@@ -18,9 +18,11 @@ public class SpikesInteract : MonoBehaviour
 
     private Coroutine _damageCoroutine;
     private ObjectPooler _objectPooler;
+    private AudioPooler _audioPooler;
 
     private void Start()
     {
+        _audioPooler = AudioPooler.Instance;
         _objectPooler = ObjectPooler.Instance;
     }
 
@@ -71,7 +73,8 @@ public class SpikesInteract : MonoBehaviour
 
     private void PlayDamageSound()
     {
-        RandomAudio.Play(_transform.position, _damageAudioClips);
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _damageAudioClips.Random(),
+            _transform.position, 1f, 1f);
     }
 
     private void SpawnBlood()

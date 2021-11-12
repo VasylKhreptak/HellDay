@@ -6,8 +6,7 @@ public class LadderAudio : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Transform _transform;
     
-    [Header("Preferences")] 
-    [SerializeField] private float _volume = 1f;
+    [Header("Preferences")]
     [SerializeField] private float _delay;
 
     [Header("AudioClips")] 
@@ -15,6 +14,13 @@ public class LadderAudio : MonoBehaviour
 
     private Coroutine _playAudioCoroutine;
     
+    private AudioPooler _audioPooler;
+    
+    private void Start()
+    {
+        _audioPooler = AudioPooler.Instance;
+    }
+
     public void StartPlying()
     {
         if (_playAudioCoroutine == null)
@@ -37,7 +43,8 @@ public class LadderAudio : MonoBehaviour
     {
         while (true)
         {
-            RandomAudio.Play(_transform.position, _audioClips, _volume);
+            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _audioClips.Random(),
+                _transform.position, 1f, 1f);
             
             yield return new WaitForSeconds(_delay);
         }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DestroyAudio : MonoBehaviour
@@ -7,12 +8,20 @@ public class DestroyAudio : MonoBehaviour
 
     [Header("Audio Clips")] 
     [SerializeField] private AudioClip[] _audioClips;
+
+    private AudioPooler _audioPooler;
     
+    private void Start()
+    {
+        _audioPooler = AudioPooler.Instance;
+    }
+
     private void OnDisable()
     {
         if (gameObject.scene.isLoaded)
         {
-            RandomAudio.Play(_transform.position, _audioClips);
+            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _audioClips.Random(), _transform.position,
+                1f, 1f);
         }
     }
 }

@@ -605,7 +605,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &53651739
 PrefabInstance:
@@ -960,10 +960,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -643017004439290007, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 3378974506285552565, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -3465,10 +3461,6 @@ PrefabInstance:
       propertyPath: _killableTargets.Array.data[12]
       value: 
       objectReference: {fileID: 1755073914}
-    - target: {fileID: 9203287935636292430, guid: d1a4fef42dec7444082695675c1fb29f, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1a4fef42dec7444082695675c1fb29f, type: 3}
 --- !u!4 &489133466 stripped
@@ -60699,10 +60691,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -6468556259764297506, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 5728540992062626080, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -62013,10 +62001,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -6468556259764297506, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 5728540992062626080, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -62653,6 +62637,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7781906718964601439, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
   m_PrefabInstance: {fileID: 759340524}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &856029555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 856029556}
+  - component: {fileID: 856029557}
+  m_Layer: 0
+  m_Name: AudioPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &856029556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856029555}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.9, y: 2.7, z: -239.46387}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &856029557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856029555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fac83241d4bb8c419c8235614a3a979, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: 5c6430f1a5f3c84428a3caea2255cee6, type: 2}
+  _maxSounds: 15
+  _maxSoundDistance: 25
+  _minSoundDistance: 1
+  rolloffMode: 1
 --- !u!4 &858150056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2241750354051892543, guid: 7ed5c1fbf0c044749a75c5204e6911f6, type: 3}
@@ -63483,10 +63515,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -643017004439290007, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 3378974506285552565, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -64055,7 +64083,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1632125, y: 1}
+    m_SensorSize: {x: 2.2066457, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -65327,10 +65355,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -643017004439290007, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 3378974506285552565, guid: 000abcff9a75a0a4eb7510474cdd673b, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -65738,7 +65762,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145079091
 GameObject:
@@ -65798,7 +65822,7 @@ Transform:
   - {fileID: 23757819}
   - {fileID: 198760420}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &1145079095
 Tilemap:
@@ -66721,10 +66745,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -9051736271904312921, guid: 16f8e91a2993a3442aa432d93d3fbed3, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 5350208796334916349, guid: 16f8e91a2993a3442aa432d93d3fbed3, type: 3}
       propertyPath: _killableTargets.Array.size
       value: 13
@@ -72829,10 +72849,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -140755304452090601, guid: cc48b4e5753fc6e48be9305ae624e76d, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 2982323137896364967, guid: cc48b4e5753fc6e48be9305ae624e76d, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -76636,10 +76652,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteZombie (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 5954720544687119768, guid: 6b005042af3614941972a87f61922d4b, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 6226399228717433169, guid: 6b005042af3614941972a87f61922d4b, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -77197,10 +77209,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteZombie
       objectReference: {fileID: 0}
-    - target: {fileID: 5954720544687119768, guid: 6b005042af3614941972a87f61922d4b, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 6226399228717433169, guid: 6b005042af3614941972a87f61922d4b, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -78629,7 +78637,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1755073909}
-  _volume: 1
   _delay: 0.2
   _audioClips:
   - {fileID: 8300000, guid: 8713986d8f7f6d1499c2589483278325, type: 3}
@@ -78649,7 +78656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c3d1830c8e603b40a4018ca1e94e436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioSource: {fileID: 1755073926}
   _transform: {fileID: 1755073909}
   _legKickAudioClips:
   - {fileID: 8300000, guid: 39a5a0e1ca83b034faa8decad8b0baea, type: 3}
@@ -79017,10 +79023,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -6468556259764297506, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 5728540992062626080, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -80727,10 +80729,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338766123}
     m_Modifications:
-    - target: {fileID: -6468556259764297506, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 5728540992062626080, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -81525,10 +81523,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WhiteZombie (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5954720544687119768, guid: 6b005042af3614941972a87f61922d4b, type: 3}
-      propertyPath: _audioListener
-      value: 
-      objectReference: {fileID: 519420029}
     - target: {fileID: 6226399228717433169, guid: 6b005042af3614941972a87f61922d4b, type: 3}
       propertyPath: m_Layer
       value: 8
