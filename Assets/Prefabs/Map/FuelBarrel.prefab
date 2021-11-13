@@ -153,7 +153,6 @@ MonoBehaviour:
   _canBeDestroyed: 1
   _playerTransform: {fileID: 0}
   _explosionRadius: 5
-  _cameraImpactRadius: 14
   _explosionForce: 400
   _layerMask:
     serializedVersion: 2
@@ -186,31 +185,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   _chainExplosionDelay: 0.3
   _fuelBarrelExplosion: 24
-  _shakeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1.0030432
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.3999711
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _maxCameraShakeIntensity: 11
   _maxEntityDamage: 130
   _entityDamageCurve:
     serializedVersion: 2
@@ -280,7 +254,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _smokeSpawnPlace: {fileID: 3752098223863716663}
-  _explodeDelay: 2
+  _explodeDelay: 4
   _percentage: 0.619
   _smoke: 34
 --- !u!114 &8510690795750098952

@@ -3984,13 +3984,13 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
     ratio: 1
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.01
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4818,6 +4818,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4875,5 +4876,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac70d69d741d9cc4bb9b3cee004fefe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 7403700498404203981}
   _particleSystem: {fileID: 7403700498404203982}
+  _additionalDelay: 0

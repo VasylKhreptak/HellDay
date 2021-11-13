@@ -57,7 +57,8 @@ public class FuelBarrel : DestroyableObject
     {
         _smokeObj = _objectPooler.GetFromPool(_smoke, _smokeSpawnPlace.position, Quaternion.identity);
         _previousSmokeParent = _smokeObj.transform.parent;
-        
+        _smokeObj.transform.parent = _transform;
+
         yield return new WaitForSeconds(_explodeDelay);
         
         ExplodeActions();
@@ -80,10 +81,10 @@ public class FuelBarrel : DestroyableObject
 
     private void ExplodeActions()
     {
-        _objectPooler.GetFromPool(_fuelBarrelExplosion, _transform.position, Quaternion.identity);
-
         DisableSmoke();
         
+        _objectPooler.GetFromPool(_fuelBarrelExplosion, _transform.position, Quaternion.identity);
+
         Explode();
 
         Destroy(gameObject);

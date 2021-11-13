@@ -16,6 +16,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: TrailModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
       propertyPath: ShapeModule.arc.value
       value: 360
       objectReference: {fileID: 0}
@@ -38,6 +42,14 @@ PrefabInstance:
     - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
       propertyPath: ShapeModule.radiusThickness
       value: 0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: TrailModule.lifetime.scalar
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: TrailModule.minVertexDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -92,6 +104,18 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.b
+      value: 0.07924521
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.g
+      value: 0.6975012
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: TrailModule.colorOverTrail.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312464, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 10
       objectReference: {fileID: 0}
@@ -143,6 +167,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HitParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312467, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271707791968312467, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df35b80a965095e43b0c82e368f0c850, type: 3}
 --- !u!4 &1790929992132167911 stripped
