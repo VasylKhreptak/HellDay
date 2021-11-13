@@ -27,16 +27,6 @@ public static class TransformExtensions
         return closestTransform;
     }
 
-    public static bool ContainsTransform(this Transform transform, float radius, Transform target)
-    {
-        if (target == null)
-        {
-            return false;
-        }
-        
-        return Vector3.Distance(transform.position, target.position) < radius;
-    }
-    
     public static bool IsInFiendOfView(this Transform transform, Transform target, float radius, LayerMask layerMask)
     {
         Vector3 rayDirection  = (target.position - transform.position).normalized;

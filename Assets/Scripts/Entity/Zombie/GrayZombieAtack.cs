@@ -41,8 +41,8 @@ public class GrayZombieAtack : CommonZombieAtack
             return false;
         }
             
-        return _transform.ContainsTransform(_maxJumpRadius, target) &&
-               _transform.ContainsTransform(_minJumpRadius, target) == false;
+        return _transform.position.ContainsPosition(_maxJumpRadius, target.position) &&
+               _transform.position.ContainsPosition(_minJumpRadius, target.position) == false;
     }
 
     private void Jump()

@@ -123,7 +123,8 @@ public class HumanAIMovement : AIMovementCore
 
     protected bool IsThreatClose()
     {
-        return _transform.ContainsTransform(_detectionRadius, _killableTargetDetection.ClosestTarget.Transform);
+        return _transform.position.ContainsPosition(_detectionRadius, 
+            _killableTargetDetection.ClosestTarget.Transform.position);
     }
 
     protected void StartRunningFromThreat()

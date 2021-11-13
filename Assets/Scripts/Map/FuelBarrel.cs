@@ -9,7 +9,6 @@ public class FuelBarrel : DestroyableObject
 
     [Header("Preferences")] 
     [SerializeField] private float _explosionRadius;
-    [SerializeField] private float _cameraImpactRadius;
     [SerializeField] private float _explosionForce;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _upwardsModifier;
@@ -17,11 +16,7 @@ public class FuelBarrel : DestroyableObject
     [SerializeField] private AnimationCurve _forceCurve;
     [SerializeField] private float _chainExplosionDelay = 0.5f;
     [SerializeField] private Pools _fuelBarrelExplosion = Pools.FuelBarrelExplosion;
-
-    [Header("Camera Shake")]
-    [SerializeField] private AnimationCurve  _shakeCurve;
-    [SerializeField] private float _maxCameraShakeIntensity = 11f;
-
+    
     [Header("Entity Damage")] 
     [SerializeField] private float _maxEntityDamage = 100f;
     [SerializeField] private AnimationCurve _entityDamageCurve;
@@ -97,11 +92,8 @@ public class FuelBarrel : DestroyableObject
     private  void Explode()
     {
         Messenger.Broadcast(GameEvents.PLAYED_LOUD_AUDIO_SOURCE);
+        Messenger<Vector3>.Broadcast(GameEvents.SHAKE_CAMERA, _transform.position);
 
-        Messenger<float>.Broadcast(GameEvents.SHAKE_CAMERA, GetEvaluatedCurveValue(
-            _playerTransform.position, _transform.position, _shakeCurve, _maxCameraShakeIntensity,
-            _cameraImpactRadius));
-        
         Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(_transform.position,
             _explosionRadius, _layerMask);
 
@@ -123,13 +115,13 @@ public class FuelBarrel : DestroyableObject
         }
         else if (collider2D.TryGetComponent(out KillableTarget target))
         {
-            target.Killable.TakeDamage(GetEvaluatedCurveValue(target.Transform.position, 
-                _transform.position, _entityDamageCurve, _maxEntityDamage, _explosionRadius));
+            target.Killable.TakeDamage(_entityDamageCurve.Evaluate(target.Transform.position, 
+                _transform.position, _maxEntityDamage, _explosionRadius));
         }
         else if (collider2D.TryGetComponent(out DestroyableObject destroyableObject))
         {
-            destroyableObject.TakeDamage( GetEvaluatedCurveValue(destroyableObject.Transform.position,
-                _transform.position, _objectDamageCurve, _maxObjectDamage, _explosionRadius));
+            destroyableObject.TakeDamage( _objectDamageCurve.Evaluate(destroyableObject.Transform.position,
+                _transform.position, _maxObjectDamage, _explosionRadius));
         }
     }
 
@@ -155,22 +147,11 @@ public class FuelBarrel : DestroyableObject
         });
     }
 
-    private float GetEvaluatedCurveValue(Vector3 target, Vector3 expPosition, AnimationCurve curve, 
-        float maxValue, float impactRadius)
-    {
-        float distance = Vector3.Distance(target, expPosition);
-
-        return curve.Evaluate(distance / impactRadius) * maxValue;
-    }
-
     private void OnDrawGizmosSelected()
     {
         if (_transform == null || _playerTransform == null) return;
         
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_transform.position, _explosionRadius);
-        
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(_transform.position, _cameraImpactRadius);
     }
 }

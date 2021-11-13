@@ -29,7 +29,7 @@ public class LiberatorDetection : MonoBehaviour
         {
             if (_playerObj.activeSelf)
             {
-                _signAnimation.SetSignState(_transform.ContainsTransform(_detectRadius, _player));
+                _signAnimation.SetSignState(_transform.position.ContainsPosition(_detectRadius, _player.position));
             }
 
             yield return new WaitForSeconds(_checkDelay);

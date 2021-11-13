@@ -13,7 +13,7 @@ public class GreenZombieAtack : ZombieAtackCore
     {
         Transform target = _killableTargetDetection.ClosestTarget.Transform;
         
-        return _transform.ContainsTransform(_explosionRadius, target) && 
+        return _transform.position.ContainsPosition(_explosionRadius, target.position) && 
                _transform.IsInFiendOfView(target, _explosionRadius, _environmentLayerMask);
     }
 

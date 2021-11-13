@@ -117,8 +117,8 @@ public class ZombieAIMovement : AIMovementCore
 
     protected bool CanFollowTarget()
     {
-        return _transform.ContainsTransform(_mainDetectionRadius,
-                   _killableTargetDetection.ClosestTarget.Transform)  &&
+        return _transform.position.ContainsPosition(_mainDetectionRadius,
+                   _killableTargetDetection.ClosestTarget.Transform.position)  &&
                _killableTargetDetection.ClosestTarget.gameObject.activeSelf;
     }
     
