@@ -1,4 +1,3 @@
-using System;
 using Cinemachine;
 using DG.Tweening;
 using UnityEngine;
@@ -9,40 +8,34 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private Transform _transform;
 
-    [Header("Preferences")] 
-    [SerializeField] private float _duration;
-
     [Header("Intensity Preferences")]
     [SerializeField] private AnimationCurve _curve;
-    [SerializeField] private float _maxIntensity = 11f;
     [SerializeField] private float _maxSourceRange = 25f;
 
     private CinemachineBasicMultiChannelPerlin _cinemachinePerlin;
-    private float _halfDuration;
-    
 
     private void Awake()
     {
         _cinemachinePerlin = _camera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
-        _halfDuration = _duration / 2;
     }
 
     private void OnEnable()
     {
-        Messenger<Vector3>.AddListener(GameEvents.SHAKE_CAMERA, Shake);
+        Messenger<Vector3, float, float>.AddListener(GameEvents.SHAKE_CAMERA, Shake);
     }
 
     private void OnDisable()
     {
-        Messenger<Vector3>.RemoveListener(GameEvents.SHAKE_CAMERA, Shake);
+        Messenger<Vector3, float, float>.RemoveListener(GameEvents.SHAKE_CAMERA, Shake);
     }
  
-    public void Shake(Vector3 source)
+    public void Shake(Vector3 source, float  maxIntensity, float duration)
     {
         if (CanShake(source) == false) return;
         
         float intensity = _curve.Evaluate(_transform.position, source,
-            _maxIntensity, _maxSourceRange);
+            maxIntensity, _maxSourceRange);
+        float _halfDuration = duration / 2;
         
         _cinemachinePerlin.m_AmplitudeGain = intensity;
 

@@ -1,12 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class KillableTargetDetection : TargetDetectionCore
 {
-    [Header("Targets")] [SerializeField] private KillableTarget[] _killableTargets;
+    [Header("Targets")] 
+    [SerializeField] private KillableTarget[] _killableTargets;
     private KillableTarget _closestTarget;
 
     public KillableTarget ClosestTarget => _closestTarget;
+    
+#if UNITY_EDITOR
+    [SerializeField] private LayerMask _findLayerMask;
+#endif
 
     protected override void Awake()
     {
@@ -58,4 +64,24 @@ public class KillableTargetDetection : TargetDetectionCore
 
         return null;
     }
+    
+    #if UNITY_EDITOR
+
+    public void FindKillableTargets()
+    {
+        KillableTarget[] allKillableTargets = FindObjectsOfType<KillableTarget>();
+        var killableTargets = new List<KillableTarget>();
+
+        foreach (var potentialTarget in allKillableTargets)
+        {
+            if (_findLayerMask.ContainsLayer(potentialTarget.gameObject.layer))
+            {
+                killableTargets.Add(potentialTarget);
+            }
+        }
+
+        _killableTargets = killableTargets.ToArray();
+    }
+    
+    #endif
 }

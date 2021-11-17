@@ -6,7 +6,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
 {
     [Header("References")] 
     [SerializeField] protected Transform _transform;
-    [SerializeField] protected Ammo _ammo;
+    [SerializeField] protected PlayerWeaponAmmo _playerWeaponAmmo;
     
     [Header("Positions")]
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
@@ -130,14 +130,14 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected bool CanShoot()
     {
-        return _canShoot && _ammo.IsEmpty == false;
+        return _canShoot && _playerWeaponAmmo.IsEmpty == false;
     }
 
     protected virtual void ShootActions()
     {
         _weaponVFX.PlayShootAudio(_audioSource);
         SpawnBullet();
-        _ammo.GetAmmo();
+        _playerWeaponAmmo.GetAmmo();
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);

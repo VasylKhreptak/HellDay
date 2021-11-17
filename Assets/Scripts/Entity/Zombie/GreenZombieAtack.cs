@@ -5,13 +5,12 @@ public class GreenZombieAtack : ZombieAtackCore
     [Header("Preferences")] 
     [SerializeField] private float _explosionRadius = 7f;
     [SerializeField] private LayerMask _environmentLayerMask;
-    
-    [Header("References")]
-    [SerializeField] private Zombie _zombie;
 
     protected override bool CanAtack()
     {
         Transform target = _killableTargetDetection.ClosestTarget.Transform;
+
+        if (_transform == null || target == null) return false;
         
         return _transform.position.ContainsPosition(_explosionRadius, target.position) && 
                _transform.IsInFiendOfView(target, _explosionRadius, _environmentLayerMask);

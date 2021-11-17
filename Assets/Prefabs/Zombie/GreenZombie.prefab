@@ -466,6 +466,9 @@ MonoBehaviour:
   _findTargetDelay: 1
   _killableTargets:
   - {fileID: 7781438892691268119, guid: 55972bba7baf3b14f9eb52c2900c7175, type: 3}
+  _findLayerMask:
+    serializedVersion: 2
+    m_Bits: 8256
 --- !u!114 &1636519917627273053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,7 +490,6 @@ MonoBehaviour:
   _environmentLayerMask:
     serializedVersion: 2
     m_Bits: 10311
-  _zombie: {fileID: 7416989929528155690}
 --- !u!114 &8871311209068379307
 MonoBehaviour:
   m_ObjectHideFlags: 0

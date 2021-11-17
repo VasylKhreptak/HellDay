@@ -47,10 +47,10 @@ public class PlayerLegKick : MonoBehaviour
     {
         GameObject atackedObj = GetAttackedObject();
             
-        if(atackedObj == null) return;
-
         _playerAudio.PlayLegKickSound();
         
+        if(atackedObj == null) return;
+
         if (atackedObj.TryGetComponent(out Rigidbody2D rb))
         {
             if(rb.bodyType != RigidbodyType2D.Static)

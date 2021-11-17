@@ -373,8 +373,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 3378974506285552565}
   _findTargetDelay: 1
-  _killableTargets:
-  - {fileID: 7781438892691268119, guid: 55972bba7baf3b14f9eb52c2900c7175, type: 3}
+  _killableTargets: []
+  _findLayerMask:
+    serializedVersion: 2
+    m_Bits: 8256
 --- !u!114 &8396576186129868626
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,13 +13,13 @@
         <option value="$PROJECT_DIR$/UserSettings" />
         <option value="$PROJECT_DIR$/Assets/Animations" />
         <option value="$PROJECT_DIR$/Assets/Audio" />
-        <option value="$PROJECT_DIR$/Assets/Editor" />
         <option value="$PROJECT_DIR$/Assets/Graphics" />
         <option value="$PROJECT_DIR$/Assets/Materials" />
         <option value="$PROJECT_DIR$/Assets/Packages" />
         <option value="$PROJECT_DIR$/Assets/Prefabs" />
         <option value="$PROJECT_DIR$/Assets/Resources" />
         <option value="$PROJECT_DIR$/Assets/Scenes" />
+        <option value="$PROJECT_DIR$/Assets/Editor/com.unity.mobile.notifications" />
       </list>
     </option>
   </component>

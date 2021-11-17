@@ -109,7 +109,7 @@ public class Minigun : WeaponCore, IWeapon
             {
                 ShootActions();
             }
-            else if(_ammo.IsEmpty)
+            else if(_playerWeaponAmmo.IsEmpty)
             {
                 StopShooting();
             }
@@ -121,7 +121,7 @@ public class Minigun : WeaponCore, IWeapon
     protected override void ShootActions()
     {
         SpawnBullet();
-        _ammo.GetAmmo();
+        _playerWeaponAmmo.GetAmmo();
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);

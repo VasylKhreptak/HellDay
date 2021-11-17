@@ -1,6 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class HumanAIMovement : AIMovementCore
 {
@@ -9,7 +9,7 @@ public class HumanAIMovement : AIMovementCore
 
     [Header("Threat detection preferences")]
     [SerializeField] protected float _detectionRadius = 5f;
-    [SerializeField] protected KillableTargetDetection _killableTargetDetection;
+    [SerializeField] protected CommonTargetDetection _commonTargetDetectin;
 
     [Header("Sign Scale Compensate")] 
     [SerializeField] private SignScaleCompensate _sign;
@@ -123,8 +123,10 @@ public class HumanAIMovement : AIMovementCore
 
     protected bool IsThreatClose()
     {
+        if (_commonTargetDetectin.ClosestTarget == null) return false;
+        
         return _transform.position.ContainsPosition(_detectionRadius, 
-            _killableTargetDetection.ClosestTarget.Transform.position);
+            _commonTargetDetectin.ClosestTarget.position);
     }
 
     protected void StartRunningFromThreat()
@@ -149,7 +151,7 @@ public class HumanAIMovement : AIMovementCore
 
     protected void TurnAwayFromThreat()
     {
-        Transform target = _killableTargetDetection.ClosestTarget.Transform;
+        Transform target = _commonTargetDetectin.ClosestTarget;
         
         SetMovementDirection(_transform.position.x < target.transform.position.x ? -1 : 1);
     }
@@ -194,9 +196,9 @@ public class HumanAIMovement : AIMovementCore
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_transform.position, _detectionRadius);
 
-        if (_killableTargetDetection.ClosestTarget == null) return;
+        if (_commonTargetDetectin.ClosestTarget == null) return;
         
-        Transform threat = _killableTargetDetection.ClosestTarget.Transform;
+        Transform threat = _commonTargetDetectin.ClosestTarget;
         
         Gizmos.DrawLine(_transform.position, threat.position);
         Gizmos.DrawCube(threat.position, new Vector3(0.5f, 0.5f, 0.5f));

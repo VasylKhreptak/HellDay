@@ -350,7 +350,6 @@ GameObject:
   - component: {fileID: 3767227304296987452}
   - component: {fileID: 5164444463824438023}
   - component: {fileID: 2265316142172481290}
-  - component: {fileID: 370106617922917920}
   - component: {fileID: 9025818914224777223}
   - component: {fileID: 1197590625259280434}
   - component: {fileID: 1630710002590930050}
@@ -358,6 +357,7 @@ GameObject:
   - component: {fileID: 1509392439470279922}
   - component: {fileID: 3009455238061028502}
   - component: {fileID: 7030954651496317799}
+  - component: {fileID: 3480555642836361567}
   m_Layer: 13
   m_Name: RedHuman
   m_TagString: Human
@@ -585,7 +585,7 @@ MonoBehaviour:
   _frameRate: 5
   _pitChecker: {fileID: 1522386914647617194}
   _detectionRadius: 15.86
-  _killableTargetDetection: {fileID: 370106617922917920}
+  _commonTargetDetectin: {fileID: 3480555642836361567}
   _sign: {fileID: 1509392439470279922}
 --- !u!114 &2265316142172481290
 MonoBehaviour:
@@ -602,27 +602,6 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 6592567245772834838}
   _onDamageColor: {r: 1, g: 0.56037736, b: 0.56037736, a: 1}
   _duration: 0.2
---- !u!114 &370106617922917920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6592567245772834835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 712d8f51a09867143ba2f12e102c91cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 6592567245772834832}
-  _findTargetDelay: 1
-  _killableTargets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &9025818914224777223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,6 +731,24 @@ MonoBehaviour:
   _doorLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!114 &3480555642836361567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6592567245772834835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2504ac04d3d09249ba0271c660e1c76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 6592567245772834832}
+  _findTargetDelay: 1
+  _targets: []
+  _findLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &6823461262281744566
 GameObject:
   m_ObjectHideFlags: 0

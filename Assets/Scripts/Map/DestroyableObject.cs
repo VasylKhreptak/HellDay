@@ -8,7 +8,7 @@ public class DestroyableObject : PhysicalObject
     [Header("Preferences")]
     [SerializeField] protected float _minDamageImpulse = 100f;
     [SerializeField] protected bool _canBeDestroyed = true;
-    
+
     protected ObjectPooler _objectPooler;
 
     public Transform Transform => _transform;
