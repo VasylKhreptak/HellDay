@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 85083228}
-  _destroyParticles: 06000000
+  _destroyParticles: 24000000
 --- !u!68 &85083225
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -62507,7 +62507,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.968015, y: 1}
+    m_SensorSize: {x: 2.0222223, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -62888,6 +62888,10 @@ MonoBehaviour:
   - _poolType: 35
     _prefab: {fileID: 3601221705042318743, guid: c8e156b8fb50eab43bfabcbb096b8eb2, type: 3}
     _size: 3
+    folder: {fileID: 0}
+  - _poolType: 36
+    _prefab: {fileID: 1256258239844593169, guid: 3b31c868c6fcca349841f08f478b9289, type: 3}
+    _size: 4
     folder: {fileID: 0}
 --- !u!4 &1052731199
 Transform:

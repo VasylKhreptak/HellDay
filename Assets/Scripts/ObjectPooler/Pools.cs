@@ -35,5 +35,6 @@ public enum Pools
     GreenBird,
     YellowBird, 
     FuelBarrelSmoke, 
-    Missile
+    Missile, 
+    GreenItemDestroy
 }
