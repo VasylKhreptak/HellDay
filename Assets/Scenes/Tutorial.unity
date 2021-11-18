@@ -62507,7 +62507,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0222223, y: 1}
+    m_SensorSize: {x: 2.0217392, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -76434,7 +76434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 640.0004, y: 309.99905}
+  m_AnchoredPosition: {x: 640.0005, y: 309.99905}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1776124843
@@ -79058,6 +79058,10 @@ PrefabInstance:
       propertyPath: _joystick
       value: 
       objectReference: {fileID: 691253524}
+    - target: {fileID: 3370208106438200598, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _weaponToSelect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3370208107374590887, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.2702998
