@@ -6,7 +6,7 @@ public class Zombie : Entity, IKillable
     {
         if (other.collider.CompareTag("Bullet"))
         {
-            TakeDamage(WeaponControl.defaultBulletDamage);
+            TakeDamage(PlayerWeaponControl.defaultBulletDamage);
         }
     }
 }

@@ -3,18 +3,19 @@ using UnityEngine;
 public class WeaponAmmo : MonoBehaviour
 {
     [Header("Preferences")] 
-    [SerializeField] protected int _maxAmmo = 200;
-
+    [SerializeField] protected int _startupAmmo = 200;
+        
     protected int _ammo;
 
     public bool IsEmpty => _ammo <= 0;
+    public int Ammo => _ammo;
     
-    protected void Start()  
+    protected virtual void Awake()  
     {
-        SetAmmo(_maxAmmo);
+        SetAmmo(_startupAmmo);
     }
 
-    protected virtual void SetAmmo(int ammo)
+    public void SetAmmo(int ammo)
     {
         _ammo = ammo;
     }

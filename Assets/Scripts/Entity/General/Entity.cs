@@ -14,6 +14,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private UnityEvent OnTakeDamage;
 
     protected bool IsDead => _health <= 0;
+    public float Health => _health;
     
     protected virtual void Start()
     {
@@ -25,9 +26,14 @@ public class Entity : MonoBehaviour
         _health = maxHealth;
     }
 
+    public virtual void SetHealth(float health)
+    {
+        _health = Mathf.Clamp(health, 0, _maxHealth);
+    }
+
     public virtual void TakeDamage(float damage)
     {
-        _health -= damage;
+        SetHealth(_health - damage);
 
         OnTakeDamage.Invoke();
         

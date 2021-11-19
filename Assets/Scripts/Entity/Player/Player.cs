@@ -14,7 +14,14 @@ public class Player : Entity, IKillable
          gameObject.SetActive(false);
      }
 
-     public void UpdateHealthBar()
+    public override void SetHealth(float health)
+    {
+        base.SetHealth(health);
+        
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
      {
          Messenger<float>.Broadcast(GameEvents.SET_HEALTH_BAR, _health);
      }

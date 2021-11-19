@@ -27,7 +27,14 @@ public class Minigun : WeaponCore, IWeapon
     
     public new void StartShooting()
     {
-        if (_shootCoroutine != null || CanShoot() == false) return;
+        if (_shootCoroutine != null || _canShoot == false) return;
+
+        if (_playerAmmo.IsEmpty)
+        {
+            _weaponVFX.PlayEmptyAmmoSound(_transform.position);
+            
+            return;
+        }
 
         StartPlayingSpinAudio(() =>
         {
@@ -109,7 +116,7 @@ public class Minigun : WeaponCore, IWeapon
             {
                 ShootActions();
             }
-            else if(_playerWeaponAmmo.IsEmpty)
+            else if(_playerAmmo.IsEmpty)
             {
                 StopShooting();
             }
@@ -121,7 +128,7 @@ public class Minigun : WeaponCore, IWeapon
     protected override void ShootActions()
     {
         SpawnBullet();
-        _playerWeaponAmmo.GetAmmo();
+        _playerAmmo.GetAmmo();
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);

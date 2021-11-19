@@ -215,6 +215,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1376040741097037551, guid: d33fa6d9b387c8c46a2e61d8e87e9ef7, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1376040741097037551, guid: d33fa6d9b387c8c46a2e61d8e87e9ef7, type: 3}
       propertyPath: ShapeModule.arc.value
       value: 360
       objectReference: {fileID: 0}
@@ -230,7 +234,8 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.scalar
       value: 5.33
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1376040741097037457, guid: d33fa6d9b387c8c46a2e61d8e87e9ef7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d33fa6d9b387c8c46a2e61d8e87e9ef7, type: 3}
 --- !u!4 &1939582119013590866 stripped
 Transform:

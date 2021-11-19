@@ -5,6 +5,8 @@ public class Weapon : MonoBehaviour
     [Header("Weapon")]
     [SerializeField] private  Weapons weaponType;
     private IWeapon iWeapon;
+    public PlayerAmmo playerAmmo;
+    public Pools weaponPoolName;
     
     [Header("Player movement impact")]
     [ Tooltip("the percentage that will reduce staff mobility")]

@@ -6,7 +6,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
 {
     [Header("References")] 
     [SerializeField] protected Transform _transform;
-    [SerializeField] protected PlayerWeaponAmmo _playerWeaponAmmo;
+    [SerializeField] protected PlayerAmmo _playerAmmo;
     
     [Header("Positions")]
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
@@ -45,7 +45,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
     {
         _previousAngleScatter = _angleScatter;
 
-        //PlayerMovement
         Messenger.AddListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger<float>.AddListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
         Messenger.AddListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
@@ -58,7 +57,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected void OnDisable()
     {
-        //PlayerMovement
         Messenger.RemoveListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
         Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
@@ -92,10 +90,12 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     public void StartShooting()
     {
-        if (_shootCoroutine != null || CanShoot() == false) return;
-
+        if (_shootCoroutine != null || _canShoot == false) return;
+            
+        if (_playerAmmo.IsEmpty) _weaponVFX.PlayEmptyAmmoSound(_transform.position);
+        
         _shootCoroutine = StartCoroutine(Shoot());
-
+        
         ControlShootSpeed();
     }
 
@@ -108,7 +108,9 @@ public class WeaponCore : MonoBehaviour, IWeapon
     public void StopShooting()
     {
         if (_shootCoroutine != null)
+        {
             StopCoroutine(_shootCoroutine);
+        }
         
         _shootCoroutine = null;
     }
@@ -123,6 +125,10 @@ public class WeaponCore : MonoBehaviour, IWeapon
             {
                 ShootActions();
             }
+            else
+            {
+                StopShooting();
+            }
 
             yield return new WaitForSecondsRealtime(_shootDelay);
         }
@@ -130,14 +136,14 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected bool CanShoot()
     {
-        return _canShoot && _playerWeaponAmmo.IsEmpty == false;
+        return _canShoot && _playerAmmo.IsEmpty == false;
     }
 
     protected virtual void ShootActions()
     {
         _weaponVFX.PlayShootAudio(_audioSource);
         SpawnBullet();
-        _playerWeaponAmmo.GetAmmo();
+        _playerAmmo.GetAmmo();
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);

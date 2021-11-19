@@ -144,7 +144,7 @@ MonoBehaviour:
   _explosionForce: 100.91
   _layerMask:
     serializedVersion: 2
-    m_Bits: 7105
+    m_Bits: 15297
   _upwardsModifier: 0
   _forceMode2D: 0
   _forceCurve:

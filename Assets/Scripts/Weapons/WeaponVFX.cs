@@ -1,12 +1,20 @@
+using TMPro;
 using UnityEngine;
 
 public class WeaponVFX : MonoBehaviour
 {
+    
+    
+    [Header("Empty Ammo Sound ")]
+    [SerializeField] private AudioClip _emptyAmmo;
+    
     private ObjectPooler _objectPooler;
+    private AudioPooler _audioPooler;
 
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
+        _audioPooler = AudioPooler.Instance;
     }
 
     public void PlayShootAudio(AudioSource audioSource)
@@ -36,5 +44,10 @@ public class WeaponVFX : MonoBehaviour
         GameObject pooledObject = _objectPooler.GetFromPool(type, position, rotation);
 
         pooledObject.transform.localScale = new Vector3(PlayerMovement.MovementDirection, 1, 1);
+    }
+
+    public void PlayEmptyAmmoSound(Vector3 position)
+    {
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _emptyAmmo, position, 1f, 1f);
     }
 }
