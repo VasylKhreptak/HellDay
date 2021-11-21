@@ -1,28 +1,25 @@
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WeaponBonusItem : BonusItemCore
 {
     [Header("References")] 
     [SerializeField] private Weapon _weapon;
 
-    [Header("Startup Preferences")]
+    [Header("Preferences")]
     [SerializeField] private int _minAmmo = 40;
-    [SerializeField] private int _maxAmmo = 120;
-
+    [SerializeField] private int _maxAmmo = 100;
+    
     [Header("Interact prefeernces")]
     [SerializeField] private float _swapDelay = 2f;
 
     private bool _canSwap;
 
-    private void Start()
-    {
-        // _weapon.playerAmmo.SetAmmo(Random.Range(_minAmmo, _maxAmmo));
-        _weapon.playerAmmo.SetAmmo(123);
-    }
-
     private void OnEnable()
     {
+        _weapon.playerAmmo.SetAmmo(Random.Range(_minAmmo, _maxAmmo));
+        
         ConfigureSwapSpeed();
     }
 

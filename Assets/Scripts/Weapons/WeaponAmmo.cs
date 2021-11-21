@@ -4,7 +4,6 @@ public class WeaponAmmo : MonoBehaviour
 {
     [Header("Preferences")] 
     [SerializeField] protected int _startupAmmo = 200;
-        
     protected int _ammo;
 
     public bool IsEmpty => _ammo <= 0;

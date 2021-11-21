@@ -9,7 +9,7 @@ public class PlayerStripesBehaviour : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] private int _updateFramerate  = 10;
 
-    private readonly int IsMoving = Animator.StringToHash("IsMoving");
+    private readonly int Speed = Animator.StringToHash("Speed");
     
     private Coroutine _configurableUpdate;
 
@@ -26,6 +26,6 @@ public class PlayerStripesBehaviour : MonoBehaviour
 
     private void MoveStripes()
     {
-        _animator.SetBool(IsMoving, _rigidbody2D.velocity != Vector2.zero);
+        _animator.SetFloat(Speed, _rigidbody2D.velocity.magnitude);
     }
 }

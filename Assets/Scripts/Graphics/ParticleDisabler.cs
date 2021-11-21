@@ -1,9 +1,11 @@
+using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class ParticleDisabler : MonoBehaviour, IPooledObject
 {
-    [Header("References")]
+    [Header("References")] 
     [SerializeField] private ParticleSystem _particleSystem;
 
     [Header("Preferences")] 
@@ -20,6 +22,7 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     public void OnEnable()
     {
         _particleSystem.Play();
+        
         _tween = this.DOWait(_duration + _additionalDelay).OnComplete(() =>
         {
             gameObject.SetActive(false);

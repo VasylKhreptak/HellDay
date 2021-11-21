@@ -148,9 +148,9 @@ MonoBehaviour:
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _transform: {fileID: 3670401215029178898}
   _minHealth: 10
   _maxHealth: 40
+  _applyEffect: 47
 --- !u!114 &4103401361379493032
 MonoBehaviour:
   m_ObjectHideFlags: 0

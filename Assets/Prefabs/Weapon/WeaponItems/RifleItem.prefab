@@ -180,8 +180,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _weapon: {fileID: 5480064571113374362}
-  _minAmmo: 40
-  _maxAmmo: 120
+  _minAmmo: 7
+  _maxAmmo: 25
   _swapDelay: 1
 --- !u!114 &509888894445895031
 MonoBehaviour:

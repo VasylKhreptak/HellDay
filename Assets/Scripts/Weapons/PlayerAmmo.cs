@@ -5,7 +5,7 @@ public class PlayerAmmo : WeaponAmmo
         SetAmmo(_startupAmmo);
     }
 
-    protected void Start()
+    protected void OnEnable()
     {
         UpdateAmmoText();
     }
@@ -26,6 +26,7 @@ public class PlayerAmmo : WeaponAmmo
 
     private void UpdateAmmoText()
     {
-        Messenger<string>.Broadcast(GameEvents.SET_AMMO_TEXT, _ammo.ToString());
+        Messenger<string>.Broadcast(GameEvents.SET_AMMO_TEXT, 
+            _ammo.ToString(), MessengerMode.DONT_REQUIRE_LISTENER);
     }
 }

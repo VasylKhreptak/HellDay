@@ -14,7 +14,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private UnityEvent OnTakeDamage;
 
     protected bool IsDead => _health <= 0;
-    public float Health => _health;
+    public float health => _health;
+    public float maxHealth => _maxHealth;
     
     protected virtual void Start()
     {

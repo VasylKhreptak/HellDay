@@ -24,5 +24,6 @@ public enum Pools
     GreenItemDestroy, 
     HealthBonus,
     AmmoBonus, WeaponBonus,
-    DefaultWeapon, Rifle, Minigun, Vintorez, MachineGun, Uzi, Shotgun
+    DefaultWeapon, Rifle, Minigun, Vintorez, MachineGun, Uzi, Shotgun,
+    HealSpellParticle
 }

@@ -38,27 +38,22 @@ public class PlayerWeaponControl : MonoBehaviour
 
     public void SwapWeapon(Weapon toWeapon)
     {
-        Debug.Log("Before change weapon ammo: " + (currentWeapon.playerAmmo.Ammo));
-        Debug.Log("Weapon to cahgne ammo: " + (toWeapon.playerAmmo.Ammo));
-        
-        ThrowWeapon(currentWeapon);
+        ThrowCurrentWeapon();
         
         SetWeapon(toWeapon.WeaponType);
         currentWeapon.playerAmmo.SetAmmoWithTextUpdate(toWeapon.playerAmmo.Ammo);
-        Debug.Log("Current weapon name: " + (currentWeapon.name));
-        Debug.Log("After weapon change  ammo: " + (currentWeapon.playerAmmo.Ammo));
     }
 
-    private void ThrowWeapon(Weapon weapon)
+    private void ThrowCurrentWeapon()
     {
-        GameObject weaponObj = _objectPooler.GetFromPool(weapon.weaponPoolName,
+        GameObject weaponObj = _objectPooler.GetFromPool(currentWeapon.weaponPoolName,
             _transform.position, Quaternion.identity);
 
         weaponObj.transform.localScale = _transform.localScale;
 
         if (weaponObj.TryGetComponent(out PlayerAmmo playerAmmo))
         {
-            playerAmmo.SetAmmo(weapon.playerAmmo.Ammo); 
+            playerAmmo.SetAmmo(currentWeapon.playerAmmo.Ammo);
         }
     }
 

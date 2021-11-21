@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Statistic">
+    <option name="fileTypes" value="class;svn-base;svn-work;Extra;gif;png;jpg;jpeg;bmp;tga;tiff;ear;war;zip;jar;iml;iws;ipr;bz2;gz;pyc;asset;meta;sln;csproj;" />
+    <option name="separateTabsFileTypes" value="css;" />
     <option name="excludedDirectories">
       <list>
         <option value="$PROJECT_DIR$/.idea" />
@@ -13,13 +15,20 @@
         <option value="$PROJECT_DIR$/UserSettings" />
         <option value="$PROJECT_DIR$/Assets/Animations" />
         <option value="$PROJECT_DIR$/Assets/Audio" />
-        <option value="$PROJECT_DIR$/Assets/Graphics" />
+        <option value="$PROJECT_DIR$/Assets/Editor" />
         <option value="$PROJECT_DIR$/Assets/Materials" />
         <option value="$PROJECT_DIR$/Assets/Packages" />
         <option value="$PROJECT_DIR$/Assets/Prefabs" />
         <option value="$PROJECT_DIR$/Assets/Resources" />
         <option value="$PROJECT_DIR$/Assets/Scenes" />
-        <option value="$PROJECT_DIR$/Assets/Editor/com.unity.mobile.notifications" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/Effects" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/Fonts" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/Materials" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/Shaders" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/Sprites" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/URP" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/TileGraphics/Palletes" />
+        <option value="$PROJECT_DIR$/Assets/Graphics/TileGraphics/Tiles/Main" />
       </list>
     </option>
   </component>

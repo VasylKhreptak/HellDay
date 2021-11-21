@@ -181,7 +181,7 @@ MonoBehaviour:
     m_Bits: 64
   _weapon: {fileID: 8244427010060784824}
   _minAmmo: 40
-  _maxAmmo: 120
+  _maxAmmo: 100
   _swapDelay: 1
 --- !u!114 &8244427010060784823
 MonoBehaviour:

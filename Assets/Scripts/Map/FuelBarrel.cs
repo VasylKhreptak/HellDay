@@ -10,7 +10,6 @@ public class FuelBarrel: ExplosiveObjectCore
     [SerializeField] private Pools _smoke;
 
     private GameObject _smokeObj;
-    private Transform _previousSmokeParent;
     private bool _isSmokeSpawned;
     private ObjectPooler _objectPooler;
     private int _currentTakeDamageNumber;
@@ -31,7 +30,6 @@ public class FuelBarrel: ExplosiveObjectCore
     private IEnumerator SmokeRoutine()
     {
         _smokeObj = _objectPooler.GetFromPool(_smoke, _smokeSpawnPlace.position, Quaternion.identity);
-        _previousSmokeParent = _smokeObj.transform.parent;
         _smokeObj.transform.parent = _transform;
 
         yield return new WaitForSeconds(_explodeDelay);
@@ -51,7 +49,6 @@ public class FuelBarrel: ExplosiveObjectCore
         if(_smokeObj == null) return;
         
         _smokeObj.SetActive(false);
-        _smokeObj.transform.parent = _previousSmokeParent;
     }
 
     private void ExplodeActions()

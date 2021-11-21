@@ -168,6 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxDurability: 7
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
   _transform: {fileID: 5548356009680308859}
   _minDamageImpulse: 50
   _canBeDestroyed: 0

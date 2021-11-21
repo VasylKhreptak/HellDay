@@ -148,8 +148,28 @@ MonoBehaviour:
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _minAmmo: 20
-  _maxAmmo: 60
+  _bonusPreferences:
+  - weaponType: 0
+    minAmmo: 20
+    maxAmmo: 60
+  - weaponType: 1
+    minAmmo: 7
+    maxAmmo: 25
+  - weaponType: 2
+    minAmmo: 5
+    maxAmmo: 15
+  - weaponType: 3
+    minAmmo: 60
+    maxAmmo: 130
+  - weaponType: 4
+    minAmmo: 40
+    maxAmmo: 60
+  - weaponType: 5
+    minAmmo: 50
+    maxAmmo: 100
+  - weaponType: 6
+    minAmmo: 40
+    maxAmmo: 90
 --- !u!114 &-5412098099354638344
 MonoBehaviour:
   m_ObjectHideFlags: 0
