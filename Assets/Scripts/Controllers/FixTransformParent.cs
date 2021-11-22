@@ -17,7 +17,7 @@ public class FixTransformParent : MonoBehaviour
     private void OnDisable()
     {
         //if (gameObject.scene.isLoaded == false) return;
-
+                                                    
         //_transform.parent = _previousParent;
     }
 }

@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 2083933987343572723}
   - component: {fileID: 2083933987343572727}
   - component: {fileID: 2083933987343572720}
-  - component: {fileID: 2083933987343572726}
+  - component: {fileID: 6201544449621131289}
+  - component: {fileID: -8826978673266114851}
   m_Layer: 12
   m_Name: Rabbit
   m_TagString: Zombie
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2083933987343572492}
   _destroyParticles: 10000000
---- !u!114 &2083933987343572726
+--- !u!114 &6201544449621131289
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,10 +180,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2083933987343572493}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDurability: 3
-  _transform: {fileID: 2083933987343572492}
-  _minDamageImpulse: 20
+  _maxHealth: 40
   _canBeDestroyed: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-8826978673266114851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083933987343572493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 6201544449621131289}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 128

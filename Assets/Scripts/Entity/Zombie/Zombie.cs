@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Zombie : Entity, IKillable
+public class Zombie : DamageableObject
 {
     private void OnCollisionEnter2D(Collision2D other)
     {

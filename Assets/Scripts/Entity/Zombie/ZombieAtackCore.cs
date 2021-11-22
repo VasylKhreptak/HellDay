@@ -12,7 +12,7 @@ public class ZombieAtackCore : MonoBehaviour
     [SerializeField] protected float _damage = 20f;
 
     [Header("Target Detection")]
-    [SerializeField] protected KillableTargetDetection  _killableTargetDetection;
+    [SerializeField] protected DamageableTargetDetection  _damageableTargetDetection;
     
     [Header("Preferences")]
     [SerializeField] protected float _atackDelay = 1;
@@ -51,12 +51,12 @@ public class ZombieAtackCore : MonoBehaviour
     
     protected virtual void OnDrawGizmosSelected()
     {
-        KillableTarget target = _killableTargetDetection.ClosestTarget;
+        DamageableTarget target = _damageableTargetDetection.ClosestTarget;
         Gizmos.color = Color.red;
         
         if (target != null)
         {
-            Gizmos.DrawWireCube(_killableTargetDetection.ClosestTarget.Transform.position,
+            Gizmos.DrawWireCube(_damageableTargetDetection.ClosestTarget.Transform.position,
                 Vector2.one);
 
             Gizmos.DrawLine(_transform.position, target.Transform.position);

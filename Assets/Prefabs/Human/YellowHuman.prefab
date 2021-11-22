@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _onDamageColor: {fileID: 1037229582985468630}
+  _canBeDestroyed: 1
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -641,7 +641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 5361956689193760204}
-  _killableTarget: {fileID: 7781438892691268119}
+  _damageableTarget: {fileID: 7781438892691268119}
   _damageDelay: 1
   _damage: 15
   _blood: 16
@@ -715,7 +715,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 5361956689193760204}
   _findTargetDelay: 1
-  _targets: []
+  _targets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _findLayerMask:
     serializedVersion: 2
     m_Bits: 256

@@ -14,9 +14,11 @@ public class PlayerLegKick : MonoBehaviour
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _kickDelay;
     [SerializeField] private float _delayBeforeKick = 0.2f;
-    [SerializeField] private float _entityDamage = 30f;
     [SerializeField] private ForceMode2D _forceMode2D;
 
+    [Header("Damage")] 
+    [SerializeField] private float _kickDamage = 30f;
+    
     [Header("KickTorque")] 
     [SerializeField] private float _minKickTorque;
     [SerializeField] private float _maxkickTorque;
@@ -62,9 +64,9 @@ public class PlayerLegKick : MonoBehaviour
             }
         }
         
-        if (atackedObj.CompareTag("Zombie") && atackedObj.TryGetComponent(out KillableTarget target))
+        if (atackedObj.CompareTag("Human") == false && atackedObj.TryGetComponent(out IDamageable target))
         {
-            target.Killable.TakeDamage(_entityDamage);
+            target.TakeDamage(_kickDamage);
         }
     }
 

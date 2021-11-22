@@ -1,4 +1,4 @@
-public class Player : Entity, IKillable
+public class Player : DamageableObject
 {
     protected override void SetMaxHealth(float maxHealth)
     {
@@ -11,7 +11,7 @@ public class Player : Entity, IKillable
      {
          Messenger.Broadcast(GameEvents.PLAYER_DIED);
          
-         gameObject.SetActive(false);
+         base.DeathActions();
      }
 
     public override void SetHealth(float health)

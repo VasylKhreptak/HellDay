@@ -196,7 +196,9 @@ GameObject:
   - component: {fileID: 2631920038594490531}
   - component: {fileID: 2631920038594490530}
   - component: {fileID: 2631920038594490529}
-  - component: {fileID: 2631920038594490528}
+  - component: {fileID: 860217084594707549}
+  - component: {fileID: 7231389117494755404}
+  - component: {fileID: 7226936234029771181}
   m_Layer: 0
   m_Name: ClosedDoor
   m_TagString: Untagged
@@ -309,7 +311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2631920038594490532}
   _destoyParticle: 6
---- !u!114 &2631920038594490528
+--- !u!114 &860217084594707549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,10 +320,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 2631920038594490533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDurability: 7
-  _transform: {fileID: 2631920038594490532}
-  _minDamageImpulse: 100
+  _maxHealth: 60
   _canBeDestroyed: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7231389117494755404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631920038594490533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 860217084594707549}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &7226936234029771181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631920038594490533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 860217084594707549}
+  _minDamageImpulse: 30
+  _damageAmplifier: 0.4

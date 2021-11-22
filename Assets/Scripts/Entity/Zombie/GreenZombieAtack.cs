@@ -8,7 +8,7 @@ public class GreenZombieAtack : ZombieAtackCore
 
     protected override bool CanAtack()
     {
-        Transform target = _killableTargetDetection.ClosestTarget.Transform;
+        Transform target = _damageableTargetDetection.ClosestTarget.Transform;
 
         if (_transform == null || target == null) return false;
         
@@ -20,7 +20,7 @@ public class GreenZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _killableTargetDetection.ClosestTarget.Killable.TakeDamage(_damage);
+        _damageableTargetDetection.ClosestTarget.Damageable.TakeDamage(_damage);
         
         Destroy(gameObject);
     }

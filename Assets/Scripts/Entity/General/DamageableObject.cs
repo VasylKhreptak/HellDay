@@ -1,19 +1,18 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Entity : MonoBehaviour
+public class DamageableObject : MonoBehaviour, IDamageable
 {
     [Header("Preferences")] 
-    [SerializeField] protected float _maxHealth;
+    [SerializeField] protected float _maxHealth = 100f;
+    [SerializeField] protected bool _canBeDestroyed = true;
+    
     protected float _health;
-
-    [Header("Hit React")] 
-    [SerializeField] protected OnDamageColor _onDamageColor;
 
     [Header("Damage Event")] 
     [SerializeField] private UnityEvent OnTakeDamage;
 
-    protected bool IsDead => _health <= 0;
+    protected bool isDead => _health <= 0;
     public float health => _health;
     public float maxHealth => _maxHealth;
     
@@ -38,7 +37,7 @@ public class Entity : MonoBehaviour
 
         OnTakeDamage.Invoke();
         
-        if (IsDead)
+        if (isDead)
         {
            DeathActions();
         }
@@ -46,6 +45,13 @@ public class Entity : MonoBehaviour
 
     protected virtual void DeathActions()
     {
-        Destroy(gameObject);
+        if (_canBeDestroyed)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

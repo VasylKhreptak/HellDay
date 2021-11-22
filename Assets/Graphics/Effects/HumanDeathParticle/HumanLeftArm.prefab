@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5548356009680308861}
   - component: {fileID: 5548356009680308860}
   - component: {fileID: 5548356009680308863}
-  - component: {fileID: 1048543066141577292}
+  - component: {fileID: 6187182766871285920}
   m_Layer: 8
   m_Name: HumanLeftArm
   m_TagString: Zombie
@@ -155,7 +155,7 @@ MonoBehaviour:
   _maxLifetime: 30
   _fadeDuration: 1
   _torque: 3
---- !u!114 &1048543066141577292
+--- !u!114 &6187182766871285920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,13 +164,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5548356009680308862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDurability: 7
+  _maxHealth: 100
+  _canBeDestroyed: 0
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
-  _transform: {fileID: 5548356009680308859}
-  _minDamageImpulse: 50
-  _canBeDestroyed: 0

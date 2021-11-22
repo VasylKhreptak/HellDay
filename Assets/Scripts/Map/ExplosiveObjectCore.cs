@@ -14,16 +14,12 @@ public class ExplosiveObjectCore : MonoBehaviour
     [SerializeField] protected ForceMode2D _forceMode2D;
     [SerializeField] protected AnimationCurve _forceCurve;
     [SerializeField] protected float _chainExplosionDelay = 0.5f;
-    [SerializeField] protected Pools _fuelBarrelExplosion = Pools.FuelBarrelExplosion;
+    [SerializeField] protected Pools _explosionEffect = Pools.FuelBarrelExplosion;
     
-    [Header("Entity Damage")] 
-    [SerializeField] protected float _maxEntityDamage = 100f;
-    [SerializeField] protected AnimationCurve _entityDamageCurve;
+    [Header("Damage")] 
+    [SerializeField] protected float _maxDamage = 100f;
+    [SerializeField] protected AnimationCurve _damageCurve;
 
-    [Header("Physical Object Damage")] 
-    [SerializeField] protected float _maxObjectDamage = 25f;
-    [SerializeField] protected AnimationCurve _objectDamageCurve;
-    
     [Header("Camera Shake")] 
     [SerializeField] protected float _maxCameraShakeIntensity = 13f;
     [SerializeField] protected float _shakeDuration = 0.7f;
@@ -53,15 +49,10 @@ public class ExplosiveObjectCore : MonoBehaviour
         {
             ExplodeChainedObject(collider2D);
         }
-        else if (collider2D.TryGetComponent(out KillableTarget target))
+        else if (collider2D.TryGetComponent(out IDamageable target))
         {
-            target.Killable.TakeDamage(_entityDamageCurve.Evaluate(target.Transform.position, 
-                _transform.position, _maxEntityDamage, _explosionRadius));
-        }
-        else if (collider2D.TryGetComponent(out DestroyableObject destroyableObject))
-        {
-            destroyableObject.TakeDamage( _objectDamageCurve.Evaluate(destroyableObject.Transform.position,
-                _transform.position, _maxObjectDamage, _explosionRadius));
+            target.TakeDamage(_damageCurve.Evaluate(collider2D.transform.position, 
+                _transform.position, _maxDamage, _explosionRadius));
         }
     }
 

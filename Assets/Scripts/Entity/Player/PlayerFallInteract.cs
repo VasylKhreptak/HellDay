@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerFallInteract : MonoBehaviour
 {
     [Header("References")] 
-    [SerializeField] private KillableTarget _playerKillableTarget;
+    [SerializeField] private DamageableTarget _playerDamageableTarget;
     
     [Header("Preferences")] 
     [SerializeField] private LayerMask _groundLayerMask;
@@ -18,7 +18,7 @@ public class PlayerFallInteract : MonoBehaviour
         if (_groundLayerMask.ContainsLayer(other.gameObject.layer) &&
             other.GetImpulse() > _minDamageImpulse)
         {
-            _playerKillableTarget.Killable.TakeDamage(_landingDamage);
+            _playerDamageableTarget.Damageable.TakeDamage(_landingDamage);
             
             _playerAudio.PlayBoneCrackSound();
         }

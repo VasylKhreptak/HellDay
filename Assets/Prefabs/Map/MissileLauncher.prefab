@@ -44,8 +44,10 @@ GameObject:
   - component: {fileID: 8095864718571885540}
   - component: {fileID: 8095864718571885547}
   - component: {fileID: 8095864718571885537}
-  - component: {fileID: 8095864718571885539}
   - component: {fileID: 8095864718571885541}
+  - component: {fileID: 4250873461489992447}
+  - component: {fileID: -4515145204444310264}
+  - component: {fileID: 7022105961401053989}
   m_Layer: 12
   m_Name: MissileLauncher
   m_TagString: Untagged
@@ -186,26 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 3
---- !u!114 &8095864718571885539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8095864718571885545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxDurability: 7
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  _transform: {fileID: 8095864718571885536}
-  _minDamageImpulse: 20
-  _canBeDestroyed: 1
+  _startupAmmo: 200
 --- !u!68 &8095864718571885541
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -233,3 +216,51 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &4250873461489992447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095864718571885545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 40
+  _canBeDestroyed: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-4515145204444310264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095864718571885545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 4250873461489992447}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &7022105961401053989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095864718571885545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 4250873461489992447}
+  _minDamageImpulse: 50
+  _damageAmplifier: 0.3

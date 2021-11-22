@@ -55,7 +55,7 @@ public class FuelBarrel: ExplosiveObjectCore
     {
         DisableSmoke();
         
-        _objectPooler.GetFromPool(_fuelBarrelExplosion, _transform.position, Quaternion.identity);
+        _objectPooler.GetFromPool(_explosionEffect, _transform.position, Quaternion.identity);
 
         Explode();
 

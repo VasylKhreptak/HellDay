@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 1519929459479449052}
   - component: {fileID: 1519929459479449055}
   - component: {fileID: 1519929459479449054}
-  - component: {fileID: 1771078737195287393}
   - component: {fileID: 8082973605881455667}
   - component: {fileID: 5142041586569251349}
+  - component: {fileID: 5455720286084738128}
+  - component: {fileID: -3812355922564535833}
+  - component: {fileID: 3420492717266519076}
   m_Layer: 0
   m_Name: AmmoBonusBox
   m_TagString: Untagged
@@ -134,25 +136,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1771078737195287393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519929459479449049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxDurability: 8
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  _transform: {fileID: 1519929459141105701}
-  _minDamageImpulse: 20
-  _canBeDestroyed: 1
 --- !u!114 &8082973605881455667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,3 +173,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 1519929459141105701}
   _destroyParticles: 0600000026000000
+--- !u!114 &5455720286084738128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519929459479449049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 40
+  _canBeDestroyed: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-3812355922564535833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519929459479449049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 5455720286084738128}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &3420492717266519076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519929459479449049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 5455720286084738128}
+  _minDamageImpulse: 50
+  _damageAmplifier: 0.3

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Human : Entity, IKillable
+public class Human : DamageableObject, IDamageable
 {
     public void SaveHuman()
     {

@@ -27,7 +27,7 @@ public class CommonTargetDetection : TargetDetectionCore
 
     public void FindTargets()
     {
-        KillableTarget[] allTargets = FindObjectsOfType<KillableTarget>();
+        DamageableTarget[] allTargets = FindObjectsOfType<DamageableTarget>();
         var targets = new List<Transform>();
 
         foreach (var potentialTarget in allTargets)

@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 3625498612111855267}
   - component: {fileID: -1834513055825569247}
   - component: {fileID: 5719579040978923910}
+  - component: {fileID: -5805755169398782318}
   m_Layer: 8
   m_Name: RedZombie
   m_TagString: Zombie
@@ -301,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 200
-  _onDamageColor: {fileID: 9059326616366066559}
+  _canBeDestroyed: 1
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -342,7 +343,7 @@ MonoBehaviour:
   _obstacleChecker: {fileID: 3378974506961274545}
   _barrierChecker: {fileID: 3378974505983830874}
   _frameRate: 5
-  _killableTargetDetection: {fileID: 8146395567742145361}
+  _damageableTargetDetection: {fileID: 8146395567742145361}
   _mainDetectionRadius: 6
   _audioDetectionRadius: 40
   _incDetectionRadiusDur: 10
@@ -373,7 +374,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 3378974506285552565}
   _findTargetDelay: 1
-  _killableTargets: []
+  _damageableTargets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _findLayerMask:
     serializedVersion: 2
     m_Bits: 8256
@@ -392,7 +406,7 @@ MonoBehaviour:
   _transform: {fileID: 3378974506285552565}
   _audio: {fileID: -3812442080085687691}
   _damage: 30
-  _killableTargetDetection: {fileID: 8146395567742145361}
+  _damageableTargetDetection: {fileID: 8146395567742145361}
   _atackDelay: 1
   _biteRadius: 0.1
   _atackCenter: {fileID: 3378974505747532310}
@@ -498,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3378974506285552565}
-  _killableTarget: {fileID: 3115062365855905780}
+  _damageableTarget: {fileID: 3115062365855905780}
   _damageDelay: 1
   _damage: 15
   _blood: 16
@@ -511,6 +525,22 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
   - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
   - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+--- !u!114 &-5805755169398782318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378974506285552572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 3378974506285552568}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &3378974506961274544
 GameObject:
   m_ObjectHideFlags: 0

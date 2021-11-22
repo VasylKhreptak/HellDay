@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 5603249874811509610}
   - component: {fileID: 4750794571995735226}
   - component: {fileID: 4750794571995735227}
-  - component: {fileID: 4750794571995735224}
   - component: {fileID: -8025058348955438707}
+  - component: {fileID: 202023072429888342}
+  - component: {fileID: -1936104073567138232}
+  - component: {fileID: -8921039409280259590}
   m_Layer: 0
   m_Name: TVItem
   m_TagString: Untagged
@@ -133,22 +135,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4750794571995735224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4750794571995735225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxDurability: 7
-  _transform: {fileID: 4750794571995735228}
-  _minDamageImpulse: 20
-  _canBeDestroyed: 1
 --- !u!114 &-8025058348955438707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +149,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 4750794571995735228}
   _destroyParticles: 16000000
+--- !u!114 &202023072429888342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750794571995735225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 40
+  _canBeDestroyed: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-1936104073567138232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750794571995735225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 202023072429888342}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &-8921039409280259590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750794571995735225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 202023072429888342}
+  _minDamageImpulse: 50
+  _damageAmplifier: 0.3

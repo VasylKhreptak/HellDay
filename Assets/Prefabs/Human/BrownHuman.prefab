@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _onDamageColor: {fileID: 4459915908287009490}
+  _canBeDestroyed: 1
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 8784631849592028616}
-  _killableTarget: {fileID: 6376268440250493459}
+  _damageableTarget: {fileID: 6376268440250493459}
   _damageDelay: 1
   _damage: 15
   _blood: 16

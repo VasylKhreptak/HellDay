@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 2332932505156407064}
   - component: {fileID: 8510690795750098952}
   - component: {fileID: -6370888208695199561}
-  - component: {fileID: 3177104449408827107}
+  - component: {fileID: 4834108193137379625}
+  - component: {fileID: 1832710681056524358}
+  - component: {fileID: -4454755025597967632}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -182,12 +184,12 @@ MonoBehaviour:
     m_RotationOrder: 4
   _chainExplosionDelay: 0.3
   _fuelBarrelExplosion: 24
-  _maxEntityDamage: 130
-  _entityDamageCurve:
+  _maxDamage: 130
+  _damageCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.0013873475
       value: 1.0030432
       inSlope: 0
       outSlope: 0
@@ -196,51 +198,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 0.29954505
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _maxObjectDamage: 25
-  _objectDamageCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0013873475
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.29290423
-      value: 0.9996867
-      inSlope: -0.040748745
-      outSlope: -0.040748745
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.038660903
-    - serializedVersion: 3
-      time: 0.45485464
-      value: 0.64343214
-      inSlope: -2.6109884
-      outSlope: -2.6109884
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.036859393
-    - serializedVersion: 3
-      time: 1
-      value: 0.1037736
+      time: 0.99958384
+      value: -0.0057820873
       inSlope: 0
       outSlope: 0
       tangentMode: 136
@@ -285,7 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2332932505156407063}
   _destroyParticles: 18000000
---- !u!114 &3177104449408827107
+--- !u!114 &4834108193137379625
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,28 +253,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 2332932505156407061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDurability: 7
+  _maxHealth: 40
+  _canBeDestroyed: 1
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2332932505156407064}
-        m_TargetAssemblyTypeName: FuelBarrel, Assembly-CSharp
-        m_MethodName: OnTakeDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _transform: {fileID: 2332932505156407063}
-  _minDamageImpulse: 20
-  _canBeDestroyed: 1
+      m_Calls: []
+--- !u!114 &1832710681056524358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 4834108193137379625}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &-4454755025597967632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 4834108193137379625}
+  _minDamageImpulse: 60
+  _damageAmplifier: 0.2
 --- !u!1 &7900906738514500328
 GameObject:
   m_ObjectHideFlags: 0

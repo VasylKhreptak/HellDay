@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(KillableTarget))]
+[RequireComponent(typeof(DamageableTarget))]
 public class SpikesInteract : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Transform _transform;
-    [SerializeField] private KillableTarget _killableTarget;
+    [SerializeField] private DamageableTarget _damageableTarget;
 
     [Header("Preferences")] 
     [SerializeField] private float _damageDelay = 0.5f;
@@ -61,7 +61,7 @@ public class SpikesInteract : MonoBehaviour
     {
         while (true)
         {
-            _killableTarget.Killable.TakeDamage(_damage);
+            _damageableTarget.Damageable.TakeDamage(_damage);
             
             PlayDamageSound();
             

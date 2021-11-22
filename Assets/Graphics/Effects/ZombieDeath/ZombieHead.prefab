@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3326083451539426045}
   - component: {fileID: 3326083451539426018}
   - component: {fileID: 3326083451539426019}
-  - component: {fileID: -8910322277736895533}
+  - component: {fileID: 3594970783650347284}
   m_Layer: 8
   m_Name: ZombieHead
   m_TagString: Zombie
@@ -155,7 +155,7 @@ MonoBehaviour:
   _maxLifetime: 30
   _fadeDuration: 1
   _torque: 3
---- !u!114 &-8910322277736895533
+--- !u!114 &3594970783650347284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,10 +164,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3326083451539426016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce606f4711729cf49b972899b2c6dae4, type: 3}
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxDurability: 7
-  _transform: {fileID: 3326083451539426047}
-  _minDamageImpulse: 50
+  _maxHealth: 100
   _canBeDestroyed: 0
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []

@@ -6,7 +6,7 @@ using UnityEngine;
 public class ZombieAIMovement : AIMovementCore
 {
     [Header("References")]
-    [SerializeField] protected KillableTargetDetection _killableTargetDetection;
+    [SerializeField] protected DamageableTargetDetection _damageableTargetDetection;
     
     [Header("Target detection preferences")] 
     [SerializeField] protected float _mainDetectionRadius = 5f;
@@ -41,7 +41,7 @@ public class ZombieAIMovement : AIMovementCore
     
     protected void OnPlayedAudioSource()
     {
-        Transform target = _killableTargetDetection.ClosestTarget.Transform;
+        Transform target = _damageableTargetDetection.ClosestTarget.Transform;
         
         if (target == null ||_transform == null) return;
         
@@ -102,7 +102,7 @@ public class ZombieAIMovement : AIMovementCore
         {
             if (CanFollowTarget())
             {
-                StartFollowingTarget(_killableTargetDetection.ClosestTarget.Transform);
+                StartFollowingTarget(_damageableTargetDetection.ClosestTarget.Transform);
                 StopRandomMovement();
             }
             else
@@ -118,8 +118,8 @@ public class ZombieAIMovement : AIMovementCore
     protected bool CanFollowTarget()
     {
         return _transform.position.ContainsPosition(_mainDetectionRadius,
-                   _killableTargetDetection.ClosestTarget.Transform.position)  &&
-               _killableTargetDetection.ClosestTarget.gameObject.activeSelf;
+                   _damageableTargetDetection.ClosestTarget.Transform.position)  &&
+               _damageableTargetDetection.ClosestTarget.gameObject.activeSelf;
     }
     
     protected void StartFollowingTarget(Transform target)

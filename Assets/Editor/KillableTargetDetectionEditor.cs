@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(KillableTargetDetection))]
+[CustomEditor(typeof(DamageableTargetDetection))]
 public class KillableTargetEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -9,11 +9,11 @@ public class KillableTargetEditor : Editor
         base.OnInspectorGUI();
 
         EditorGUILayout.Space();
-        KillableTargetDetection killableTargetDetection =  (KillableTargetDetection)target;
+        DamageableTargetDetection damageableTargetDetection =  (DamageableTargetDetection)target;
 
         if (GUILayout.Button("Find killable targets"))
         {
-            killableTargetDetection.FindKillableTargets();
+            damageableTargetDetection.FindKillableTargets();
         }
     }
 }
