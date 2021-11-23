@@ -21,9 +21,11 @@ public class FuelBarrel: ExplosiveObjectCore
 
     public void OnTakeDamage()
     {
-        if (_currentTakeDamageNumber++ == _maxTakeDamageNumber)
+        if (++_currentTakeDamageNumber == _maxTakeDamageNumber)
         {
             StartCoroutine(SmokeRoutine());
+            
+            Debug.Log("Fuel barrel took damage");
         }
     }
 

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class FixTransformParent : MonoBehaviour
@@ -7,17 +8,20 @@ public class FixTransformParent : MonoBehaviour
 
     private Transform _previousParent;
 
-    private void OnEnable()
+    private void Awake()
     {
-      //  _previousParent = _transform.parent;
-        
-        //Debug.Log("Previous parent name : " + (_previousParent.name));
+        this.DOWait(0).OnComplete(() =>
+        {
+            _previousParent = _transform.parent;
+            
+            Debug.Log("Previous parent: " + (_previousParent.name));
+        });
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        //if (gameObject.scene.isLoaded == false) return;
-                                                    
-        //_transform.parent = _previousParent;
+        if (gameObject.scene.isLoaded == false) return;
+
+        _transform.parent = null;
     }
 }

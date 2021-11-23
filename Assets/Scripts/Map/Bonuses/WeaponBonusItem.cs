@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,6 +16,12 @@ public class WeaponBonusItem : BonusItemCore
     [SerializeField] private float _swapDelay = 2f;
 
     private bool _canSwap;
+    private PlayerWeaponControl _playerWeaponControl;
+
+    private void Start()
+    {
+        _playerWeaponControl = PlayerWeaponControl.Instance;
+    }
 
     private void OnEnable()
     {
@@ -27,10 +34,9 @@ public class WeaponBonusItem : BonusItemCore
     {
         if (_canSwap == false) return;
 
-        if (player.transform.GetChild(0).gameObject.TryGetComponent(out PlayerWeaponControl playerWeaponControl) &&
-            player.gameObject.activeSelf)
+        if (player.gameObject.activeSelf)
         {
-           playerWeaponControl.SwapWeapon(_weapon);
+           _playerWeaponControl.SwapWeapon(_weapon);
            
            ConfigureSwapSpeed();
 

@@ -12,6 +12,12 @@ public class Weapon : MonoBehaviour
     [ Tooltip("the percentage that will reduce staff mobility")]
     [SerializeField, Range(0, 70)] private float _movementImpact = 10f;
 
+    [Header("Damage")] 
+    [SerializeField] private float _minDamage = 10f;
+    [SerializeField] private float _maxDamage = 20f;
+    
+    public float GetDamageValue() => Random.Range(_minDamage, _maxDamage);
+    
     public Weapons WeaponType => weaponType;
     public IWeapon Iweapon => iWeapon;
     public float MovementImpact => _movementImpact;

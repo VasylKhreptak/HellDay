@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3003906475258495778}
   - component: {fileID: 3003906475258495779}
   - component: {fileID: 3003906475258495783}
-  - component: {fileID: 3003906475258495780}
   - component: {fileID: 3003906475258495782}
   - component: {fileID: 4360533935424247166}
   - component: {fileID: 1226190151111486158}
@@ -25,6 +24,8 @@ GameObject:
   - component: {fileID: -1057881582408972396}
   - component: {fileID: -7764234854965184367}
   - component: {fileID: -604111449784526728}
+  - component: {fileID: -5478087810871367721}
+  - component: {fileID: -370082132941081515}
   m_Layer: 8
   m_Name: WhiteZombie
   m_TagString: Zombie
@@ -187,35 +188,6 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
---- !u!114 &3003906475258495780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3003906475258495832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6e242377dec0546a66c1e1595cf3cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _canBeDestroyed: 1
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -8369543912305918424}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &3003906475258495782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +408,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 3003906475258495780}
+  _damageableObject: {fileID: -5478087810871367721}
+  _bulletLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &-5478087810871367721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003906475258495832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _canBeDestroyed: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8369543912305918424}
+        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
+        m_MethodName: ReactOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-370082132941081515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003906475258495832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: -5478087810871367721}
   _bulletLayerMask:
     serializedVersion: 2
     m_Bits: 128

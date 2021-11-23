@@ -47,7 +47,6 @@ GameObject:
   - component: {fileID: 8095864718571885541}
   - component: {fileID: 4250873461489992447}
   - component: {fileID: -4515145204444310264}
-  - component: {fileID: 7022105961401053989}
   m_Layer: 12
   m_Name: MissileLauncher
   m_TagString: Untagged
@@ -228,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 40
+  _maxHealth: 100
   _canBeDestroyed: 1
   OnTakeDamage:
     m_PersistentCalls:
@@ -249,18 +248,3 @@ MonoBehaviour:
   _bulletLayerMask:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &7022105961401053989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8095864718571885545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 4250873461489992447}
-  _minDamageImpulse: 50
-  _damageAmplifier: 0.3

@@ -1,4 +1,5 @@
-using Unity.VisualScripting;
+using System;
+using Unity.Collections;
 using UnityEngine;
 
 public class PlayerWeaponControl : MonoBehaviour
@@ -10,11 +11,17 @@ public class PlayerWeaponControl : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] private Weapons _weaponToSelect;
     
-    public static readonly float defaultBulletDamage = 10;
     [HideInInspector] public Weapon currentWeapon;
 
     private ObjectPooler _objectPooler;
+
+    public static PlayerWeaponControl Instance;
     
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;

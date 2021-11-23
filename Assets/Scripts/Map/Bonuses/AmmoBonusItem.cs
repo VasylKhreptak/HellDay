@@ -1,4 +1,5 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AmmoBonusItem : BonusItemCore
 {
@@ -12,13 +13,21 @@ public class AmmoBonusItem : BonusItemCore
 
     [Header("Bonus preferences")] 
     [SerializeField] private BonusPreference[] _bonusPreferences;
-    
+
+    private PlayerWeaponControl _playerWeaponControl;
+
+    private void Start()
+    {
+        _playerWeaponControl = PlayerWeaponControl.Instance;
+    }
+
     protected override void OnCollisionWithPlayer(Collision2D player)
     {
-        if (player.transform.GetChild(0).TryGetComponent(out PlayerWeaponControl weaponControl) && 
-            weaponControl.transform.parent.gameObject.activeSelf)
+        Transform weaponControlTransform = player.transform.GetChild(0);
+        
+        if (weaponControlTransform != null)
         {
-            AssignAmmo(weaponControl.currentWeapon);
+            AssignAmmo(_playerWeaponControl.currentWeapon);
         }
 
         gameObject.SetActive(false);
