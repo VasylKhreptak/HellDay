@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4940626286080394762}
   - component: {fileID: 4842985089857789678}
   - component: {fileID: 7829158302877547958}
+  - component: {fileID: 2191132026997827142}
   m_Layer: 3
   m_Name: DefaultBulletMuff
   m_TagString: Untagged
@@ -144,9 +145,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9549bdf9222174249a9503fadb57929f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _verticalVelocity: 4
   _rigidbody2D: {fileID: 4842985089857789678}
+  _verticalVelocity: 4
   _maxHorizontalVelocity: 2
   _minHorizontalVelocity: 1
   _lifeTime: 6
   _torque: 4
+--- !u!114 &2191132026997827142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7323977521235854913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d0ef4322af0f348af708c3f2d8949c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2738196149040425319}
+  _audioClips:
+  - {fileID: 8300000, guid: b67f4a80873441a4290c7ba44bd1188b, type: 3}
+  - {fileID: 8300000, guid: 01f9a553085fa264cbb9139efd341d73, type: 3}
+  - {fileID: 8300000, guid: 8c1e6fed946ea8f40881449ff59f1438, type: 3}
+  - {fileID: 8300000, guid: 70ac09b14e379b047a2aa23b893ff594, type: 3}
+  - {fileID: 8300000, guid: d21dd9c8e40a2e14daf0bfcbd1790f8e, type: 3}
+  - {fileID: 8300000, guid: 805ebda250ca5e1409e50d81aba7bb9c, type: 3}
+  _muffAudios:
+  - surfaceType: 0
+    volume: 1
+  - surfaceType: 1
+    volume: 1
+  _playSoundProbabilities:
+  - weaponType: 0
+    probability: 20
+  - weaponType: 1
+    probability: 100
+  - weaponType: 2
+    probability: 100
+  - weaponType: 3
+    probability: 10
+  - weaponType: 4
+    probability: 25
+  - weaponType: 5
+    probability: 25
+  - weaponType: 6
+    probability: 15

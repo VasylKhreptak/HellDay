@@ -9,7 +9,7 @@ public class PlayerWeaponControl : MonoBehaviour
     [SerializeField] private Weapon[] _weapons;
     
     [Header("Preferences")]
-    [SerializeField] private Weapons _weaponToSelect;
+    [SerializeField] private Weapons _startupWeapon;
     
     [HideInInspector] public Weapon currentWeapon;
 
@@ -26,7 +26,7 @@ public class PlayerWeaponControl : MonoBehaviour
     {
         _objectPooler = ObjectPooler.Instance;
         
-        SetWeapon(_weaponToSelect);
+        SetWeapon(_startupWeapon);
     }
 
     public void SetWeapon(Weapons weaponToSelect)

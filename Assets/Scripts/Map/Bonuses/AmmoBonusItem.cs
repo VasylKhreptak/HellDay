@@ -23,12 +23,9 @@ public class AmmoBonusItem : BonusItemCore
 
     protected override void OnCollisionWithPlayer(Collision2D player)
     {
-        Transform weaponControlTransform = player.transform.GetChild(0);
+        if (_playerWeaponControl.transform.parent.gameObject.activeSelf == false) return;
         
-        if (weaponControlTransform != null)
-        {
-            AssignAmmo(_playerWeaponControl.currentWeapon);
-        }
+        AssignAmmo(_playerWeaponControl.currentWeapon);
 
         gameObject.SetActive(false);
     }

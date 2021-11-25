@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5754024052505772156}
   - component: {fileID: 3258598343698460848}
   - component: {fileID: -4022383073505992412}
+  - component: {fileID: 3521268348250307220}
   m_Layer: 12
   m_Name: Turtle
   m_TagString: Zombie
@@ -187,7 +188,19 @@ MonoBehaviour:
   _canBeDestroyed: 1
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3521268348250307220}
+        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
+        m_MethodName: ReactOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-4022383073505992412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,3 +217,18 @@ MonoBehaviour:
   _bulletLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &3521268348250307220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754024052505772161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6280ab84d06fddb4484b26fd2def0690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5754024052505772157}
+  _onDamageColor: {r: 1, g: 0.63584906, b: 0.63584906, a: 1}
+  _duration: 0.2
