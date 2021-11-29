@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2a5a5c53b484e04b864444859e636a0, type: 3}
+  m_Name: DefaultZombieAudioData
+  m_EditorClassIdentifier: 
+  _minPlayDelay: 3
+  _maxPlayDelay: 6
+  _moveSoundProbability: 50
+  moveAudioClips:
+  - {fileID: 8300000, guid: b9ce190ba6a1763459fbf542036bde86, type: 3}
+  - {fileID: 8300000, guid: 49b868d719996a645a376c99da8261f6, type: 3}
+  - {fileID: 8300000, guid: 4d571793b858a2c448343a9c4bae4c60, type: 3}
+  - {fileID: 8300000, guid: 9f9eb8e5274b3ed4da37d5b1c115287a, type: 3}
+  - {fileID: 8300000, guid: 29195162b0518e843b4a3616620bcb81, type: 3}
+  - {fileID: 8300000, guid: 60f93fde8ad6f464b95ec1fca13e4ef1, type: 3}
+  - {fileID: 8300000, guid: 665adbff44a6d3e46b5f50f9122e7328, type: 3}
+  biteAudioClips:
+  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
+  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
+  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
+  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
+  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
+  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
+  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
+  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}

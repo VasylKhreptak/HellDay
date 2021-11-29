@@ -526,8 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747310918a2d5d542aaa01b45e984a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _canBeDestroyed: 1
+  data: {fileID: 11400000, guid: b25140ac7a9315a46b27bc7b16d0643e, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -572,19 +571,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 6592567245772834832}
   _rigidbody2D: {fileID: 4994906563865673803}
+  _dataCore: {fileID: 11400000, guid: 4ce442336fc4a8d45b88a4e884e7f491, type: 2}
   _movementForce: 8
-  _jumpForce: 70
-  _forceMode2D: 1
-  _maxHorVelocity: 4
-  _changeDirectionDelay: 3
-  _defaultDelay: 1
-  _obstacleCheckDelay: 0.4
   _groundChecker: {fileID: 8303044777138777628}
   _obstacleChecker: {fileID: 7171981067445825868}
   _barrierChecker: {fileID: 2400813439451382956}
-  _frameRate: 5
+  _movementData: {fileID: 11400000, guid: 06bfb49f88b5e2b46b66a25e7d87e0af, type: 2}
   _pitChecker: {fileID: 1522386914647617194}
-  _detectionRadius: 15.86
   _commonTargetDetectin: {fileID: 3480555642836361567}
   _sign: {fileID: 1509392439470279922}
 --- !u!114 &2265316142172481290
@@ -600,8 +593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 6592567245772834838}
-  _onDamageColor: {r: 1, g: 0.56037736, b: 0.56037736, a: 1}
-  _duration: 0.2
+  _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &9025818914224777223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 6592567245772834832}
-  _destroyParticles: 190000001a0000001b0000001c0000001d0000000b000000
+  _data: {fileID: 11400000, guid: 04fe077faaebf1945add118c4dc8364a, type: 2}
 --- !u!114 &-9000216560565403365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,18 +664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 6592567245772834832}
   _damageableTarget: {fileID: 8856828643998146507}
-  _damageDelay: 1
-  _damage: 15
-  _blood: 16
-  _damageAudioClips:
-  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
-  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
-  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
-  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
-  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
-  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
-  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
-  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+  _data: {fileID: 11400000, guid: 83aee3a36c283f645a3f21d589ed8333, type: 2}
 --- !u!114 &1509392439470279922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 6592567245772834832}
-  _findTargetDelay: 1
+  _data: {fileID: 11400000, guid: d71c3135bed2a784196f2e554daf4b58, type: 2}
   _targets: []
   _findLayerMask:
     serializedVersion: 2

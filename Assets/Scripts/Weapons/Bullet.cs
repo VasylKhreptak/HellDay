@@ -6,10 +6,9 @@ public class Bullet : MonoBehaviour, IPooledObject
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;
-    
-    [Header("Preferences")]
-    [SerializeField] private float _bulletSpeed = 3;
-    [SerializeField] private float _lifeTime = 2f;
+
+    [Header("Bullet Data")] 
+    [SerializeField] private BulletData _data;
 
     private ObjectPooler _objectPooler;
 
@@ -25,30 +24,16 @@ public class Bullet : MonoBehaviour, IPooledObject
 
     private void SetMovement()
     {
-        _rigidbody2D.velocity = transform.right * _bulletSpeed;
+        _rigidbody2D.velocity = transform.right * _data.Speed;
 
         if (gameObject.activeSelf)
         {
-            this.DOWait(_lifeTime).OnComplete(() => { gameObject.SetActive(false); });
+            this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
         }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        ContactPoint2D contactPoint2D = other.GetContact(0);
-        Vector2 hitPosition = contactPoint2D.point;
-
-        if (other.collider.CompareTag("Zombie"))
-        {
-            _objectPooler.GetFromPool(Pools.EntityHitParticle,
-                hitPosition, Quaternion.identity);
-        }
-        else
-        {
-            _objectPooler.GetFromPool(Pools.HitParticle,
-                hitPosition, Quaternion.identity);
-        }
-
         gameObject.SetActive(false);
     }
 }

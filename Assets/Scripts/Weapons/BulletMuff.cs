@@ -6,12 +6,9 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
-    [Header("Preferences")]
-    [SerializeField] private float _verticalVelocity = 1f;
-    [SerializeField] private float _maxHorizontalVelocity = 2f;
-    [SerializeField] private float _minHorizontalVelocity = 1f;
-    [SerializeField] private float _lifeTime = 2f;
-    [SerializeField] private float _torque = 1f;
+    [Header("Bullet Muff Data")] 
+    [SerializeField] private BulletMuffData _data;
+
 
 
     public void OnEnable()
@@ -20,7 +17,7 @@ public class BulletMuff : MonoBehaviour, IPooledObject
         
         if (gameObject.activeSelf)
         {
-            this.DOWait(_lifeTime).OnComplete(() => { gameObject.SetActive(false); });
+            this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
         }
     }
 
@@ -28,9 +25,9 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     {
         _rigidbody2D.velocity =
             new Vector2(
-                Random.Range(-_maxHorizontalVelocity, -_minHorizontalVelocity) * PlayerMovement.MovementDirection,
-                _verticalVelocity);
+                Random.Range(-_data.MAXHorVelocity, -_data.MINHorVelocity) * PlayerMovement.MovementDirection,
+                _data.VertVelocity);
 
-        _rigidbody2D.AddTorque(Random.Range(-_torque, _torque));
+        _rigidbody2D.AddTorque(Random.Range(-_data.Torque, _data.Torque));
     }
 }

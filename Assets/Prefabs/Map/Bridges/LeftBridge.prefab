@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 1834710422371254087}
   - component: {fileID: -6628738613339305837}
   - component: {fileID: 4617722700878504616}
+  - component: {fileID: -8661252174275225948}
   m_Layer: 0
   m_Name: LeftBridge
   m_TagString: Untagged
@@ -242,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 5531183613353782938}
-  _destroyParticles: 06000000
+  _data: {fileID: 11400000, guid: 966f87c3e9d4e89458d0d77654cd999d, type: 2}
 --- !u!114 &1834710422371254087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,8 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 80
-  _canBeDestroyed: 1
+  data: {fileID: 11400000, guid: 7481c7dfea9650e4c94bd1e2f5de801f, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -273,9 +273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 1834710422371254087}
-  _bulletLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
 --- !u!114 &4617722700878504616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +292,19 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 32639
+--- !u!114 &-8661252174275225948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670738832622765518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 90a827b1803f2434298d9737eb50cedc, type: 2}
 --- !u!1 &8845054882074338933
 GameObject:
   m_ObjectHideFlags: 0

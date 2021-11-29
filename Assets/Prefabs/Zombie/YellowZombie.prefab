@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 874205219488162536}
   - component: {fileID: -64014290128593452}
   - component: {fileID: -6800690676723985350}
-  - component: {fileID: -3269653567504618305}
+  - component: {fileID: 4582042604944406389}
   m_Layer: 8
   m_Name: YellowZombie
   m_TagString: Zombie
@@ -323,21 +323,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 7552724589778891921}
   _rigidbody2D: {fileID: 7552724589778891925}
+  _dataCore: {fileID: 11400000, guid: 5ef8762ab8218f64ca3d6174e69f1452, type: 2}
   _movementForce: 6
-  _jumpForce: 60
-  _forceMode2D: 1
-  _maxHorVelocity: 1
-  _changeDirectionDelay: 15
-  _defaultDelay: 1
-  _obstacleCheckDelay: 0.3
   _groundChecker: {fileID: 4012719427827185914}
   _obstacleChecker: {fileID: 7552724589576219287}
   _barrierChecker: {fileID: 7552724591564454821}
-  _frameRate: 5
   _damageableTargetDetection: {fileID: 6472815694905530543}
   _mainDetectionRadius: 20
-  _audioDetectionRadius: 50
-  _incDetectionRadiusDur: 10
+  _movementData: {fileID: 11400000, guid: 97e93356183dd484d941456077cb4d6b, type: 2}
 --- !u!114 &4667588812372640135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 7552724589778891921}
-  _findTargetDelay: 1
+  _data: {fileID: 11400000, guid: d71c3135bed2a784196f2e554daf4b58, type: 2}
   _damageableTargets:
   - {fileID: 0}
   - {fileID: 0}
@@ -379,6 +372,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _closestTarget: {fileID: 0}
   _findLayerMask:
     serializedVersion: 2
     m_Bits: 8256
@@ -417,26 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 7552724589778891921}
-  _minPlayDelay: 3
-  _maxPlayDelay: 6
-  _walkSoundProbability: 50
-  _walkAudioClips:
-  - {fileID: 8300000, guid: b9ce190ba6a1763459fbf542036bde86, type: 3}
-  - {fileID: 8300000, guid: 49b868d719996a645a376c99da8261f6, type: 3}
-  - {fileID: 8300000, guid: 4d571793b858a2c448343a9c4bae4c60, type: 3}
-  - {fileID: 8300000, guid: 9f9eb8e5274b3ed4da37d5b1c115287a, type: 3}
-  - {fileID: 8300000, guid: 29195162b0518e843b4a3616620bcb81, type: 3}
-  - {fileID: 8300000, guid: 60f93fde8ad6f464b95ec1fca13e4ef1, type: 3}
-  - {fileID: 8300000, guid: 665adbff44a6d3e46b5f50f9122e7328, type: 3}
-  _biteAudioClips:
-  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
-  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
-  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
-  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
-  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
-  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
-  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
-  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+  _data: {fileID: 11400000, guid: c4f7bf36f0a16b346ac596f20aa5032d, type: 2}
 --- !u!114 &5543203967428591550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,8 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 7552724589778891922}
-  _onDamageColor: {r: 1, g: 0.60754716, b: 0.60754716, a: 1}
-  _duration: 0.2
+  _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &8136478789381910670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 7552724589778891921}
-  _destroyParticles: 0c0000000d0000000e0000000e0000000f0000000f0000000b000000
+  _data: {fileID: 11400000, guid: 44657a413456e8143b117e296173280c, type: 2}
 --- !u!114 &874205219488162536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,18 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 7552724589778891921}
   _damageableTarget: {fileID: 4667588812372640135}
-  _damageDelay: 1
-  _damage: 15
-  _blood: 16
-  _damageAudioClips:
-  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
-  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
-  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
-  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
-  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
-  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
-  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
-  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+  _data: {fileID: 11400000, guid: 83aee3a36c283f645a3f21d589ed8333, type: 2}
 --- !u!114 &-64014290128593452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,9 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: -6800690676723985350}
-  _bulletLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
 --- !u!114 &-6800690676723985350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,8 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _canBeDestroyed: 1
+  data: {fileID: 11400000, guid: 3dc5a88db012a8149bb960cf9cc53eed, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -561,7 +521,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-3269653567504618305
+--- !u!114 &4582042604944406389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -570,13 +530,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7552724589778891914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: -6800690676723985350}
-  _bulletLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}
 --- !u!1 &7552724590804465040
 GameObject:
   m_ObjectHideFlags: 0

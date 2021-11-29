@@ -46,7 +46,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
         _previousAngleScatter = _angleScatter;
 
         Messenger.AddListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
         Messenger.AddListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
     }
 
@@ -59,7 +59,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
     {
         Messenger.RemoveListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
     }
 
     protected virtual void OnLegPunched(float time)

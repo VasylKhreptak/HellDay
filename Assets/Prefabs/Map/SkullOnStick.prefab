@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -4298385276538179825}
   - component: {fileID: 2623608916044514042}
   - component: {fileID: 7793993722144331969}
+  - component: {fileID: -9209100597567537919}
   m_Layer: 12
   m_Name: SkullOnStick
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_Sprite: {fileID: -8591695492787358082, guid: 97e9b9f01b8d3f542888c1eab4f54a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -149,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1368027826900950366}
-  _destroyParticles: 16000000
+  _data: {fileID: 11400000, guid: d459d4a127688164fbe1baa03935e9be, type: 2}
 --- !u!114 &2623608916044514042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 50
-  _canBeDestroyed: 1
+  data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -180,6 +180,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 2623608916044514042}
-  _bulletLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
+--- !u!114 &-9209100597567537919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981294602039633510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 1157702905e0af9469572dc274857116, type: 2}

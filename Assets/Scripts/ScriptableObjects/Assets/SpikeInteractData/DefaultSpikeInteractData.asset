@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceace861f794f3f4aa18b12604a32e81, type: 3}
+  m_Name: DefaultSpikeInteractData
+  m_EditorClassIdentifier: 
+  _damageDelay: 1
+  _minDamage: 10
+  _maxDamage: 20
+  blood: 16
+  biteAudioClips:
+  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
+  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
+  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
+  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
+  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
+  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
+  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
+  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}

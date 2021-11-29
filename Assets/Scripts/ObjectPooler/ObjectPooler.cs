@@ -67,7 +67,7 @@ public class ObjectPooler : MonoBehaviour
             Debug.LogWarning("Pool with name " + pool + "doesn't exist");
             return null;
         }
-
+        
         GameObject objectFromPool = _poolDictionary[pool].Dequeue();
         
         objectFromPool.transform.position = Position;

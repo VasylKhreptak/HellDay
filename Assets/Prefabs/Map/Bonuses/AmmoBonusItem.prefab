@@ -145,31 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1a74fb768899246bf0c11dd48df45f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _bonusPreferences:
-  - weaponType: 0
-    minAmmo: 20
-    maxAmmo: 60
-  - weaponType: 1
-    minAmmo: 7
-    maxAmmo: 25
-  - weaponType: 2
-    minAmmo: 5
-    maxAmmo: 15
-  - weaponType: 3
-    minAmmo: 60
-    maxAmmo: 130
-  - weaponType: 4
-    minAmmo: 40
-    maxAmmo: 60
-  - weaponType: 5
-    minAmmo: 50
-    maxAmmo: 100
-  - weaponType: 6
-    minAmmo: 40
-    maxAmmo: 90
+  _data: {fileID: 11400000, guid: 6b3d91528a209a641a305c4428d27cdf, type: 2}
 --- !u!114 &-5412098099354638344
 MonoBehaviour:
   m_ObjectHideFlags: 0

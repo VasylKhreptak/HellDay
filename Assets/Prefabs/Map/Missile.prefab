@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 4512444473467553754}
   - component: {fileID: -1074101849761211494}
   - component: {fileID: -610313096862388322}
+  - component: {fileID: -4573701919072884411}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: d575fdf3fee998243a1d313146ae773e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -127,8 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 3601221705042318738}
   _rigidbody2D: {fileID: 8416350087372488302}
-  _rotationSpeed: 200
-  _movementSpeed: 7
+  _data: {fileID: 11400000, guid: 10d8a09170f17e34c9c4d8f3a727264b, type: 2}
 --- !u!114 &3601221705042318740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,66 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3601221705042318738}
-  _explosionRadius: 3
-  _explosionForce: 100.91
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 15297
-  _upwardsModifier: 0
-  _forceMode2D: 0
-  _forceCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0020810212
-      value: 0.9984784
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.99889016
-      value: 0.0048691602
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _chainExplosionDelay: 0.5
-  _explosionEffect: 24
-  _maxDamage: 80
-  _damageCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: -0.0013873475
-      value: 1.0060865
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.99889016
-      value: 0.00030433992
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _maxCameraShakeIntensity: 13
-  _shakeDuration: 0.7
+  _explosiveObjData: {fileID: 11400000, guid: 367a36b97955cb4459f2fb768629f06b, type: 2}
 --- !u!61 &7615396280010964311
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -256,7 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3601221705042318738}
-  _destroyParticles: 18000000
+  _data: {fileID: 11400000, guid: 31bae5e15e456da4493d5c6875ac8334, type: 2}
 --- !u!82 &4512444473467553754
 AudioSource:
   m_ObjectHideFlags: 0
@@ -366,9 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 7977788013707594839, guid: 36d73d00ca0d9c841bb4080778e73b96, type: 3}
-  _bulletLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
 --- !u!114 &-610313096862388322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,11 +320,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _canBeDestroyed: 0
+  data: {fileID: 11400000, guid: 4dc1fa7beb78dc34d9ef447f1837d099, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-4573701919072884411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601221705042318743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 00cd2a1da8241c346ab8fe421196d86c, type: 2}
 --- !u!1 &6291951516285451092
 GameObject:
   m_ObjectHideFlags: 0

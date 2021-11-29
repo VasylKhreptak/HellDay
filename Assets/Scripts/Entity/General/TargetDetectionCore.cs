@@ -7,9 +7,10 @@ public class TargetDetectionCore : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected Transform _transform;
-    
-    [Header("Preferences")]
-    [SerializeField] protected float _findTargetDelay = 1f;
+
+    [Header("Data")] 
+    [SerializeField] protected TargetDetectionData _data;
+
 
     protected virtual void Awake()
     {

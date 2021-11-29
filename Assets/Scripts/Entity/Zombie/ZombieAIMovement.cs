@@ -1,17 +1,16 @@
 using System.Collections;
-using DG.Tweening;
-using TMPro;
 using UnityEngine;
 
 public class ZombieAIMovement : AIMovementCore
 {
     [Header("References")]
     [SerializeField] protected DamageableTargetDetection _damageableTargetDetection;
+
+    [Header("Target Detection Preferences")]
+    [SerializeField] private float _mainDetectionRadius;
     
-    [Header("Target detection preferences")] 
-    [SerializeField] protected float _mainDetectionRadius = 5f;
-    [SerializeField] protected float _audioDetectionRadius;
-    [SerializeField] protected float _incDetectionRadiusDur = 10f;
+    [Header("Movement Data")] 
+    [SerializeField] private ZombieAIMovementData _movementData;
     
     protected Coroutine _followTargetCoroutine;
     protected Coroutine _increaseDetectionRadiusCoroutine;
@@ -41,7 +40,7 @@ public class ZombieAIMovement : AIMovementCore
     
     protected void OnPlayedAudioSource()
     {
-        Transform target = _damageableTargetDetection.ClosestTarget.Transform;
+        Transform target = _damageableTargetDetection._closestTarget.Transform;
         
         if (target == null ||_transform == null) return;
         
@@ -50,19 +49,20 @@ public class ZombieAIMovement : AIMovementCore
 
     protected IEnumerator ControlDetectionRadius()
     {
-        _mainDetectionRadius = _audioDetectionRadius;
+        _mainDetectionRadius = _movementData.AudioDetectionRadius;
 
-        yield return new WaitForSeconds(_incDetectionRadiusDur);
+        yield return new WaitForSeconds(_movementData.IncDetectionRadiusDur);
 
         _mainDetectionRadius = previousDetectionRadius;
     }
 
     protected void StartRandomMovement()
     {
-        _isFollowingTarget = false;
 
         if (_randomMovementCoroutine == null)
         {
+            _isFollowingTarget = false;
+        
             _randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
         }
     }
@@ -86,8 +86,8 @@ public class ZombieAIMovement : AIMovementCore
                 ReverseMovementDirection();
             }
 
-            yield return new WaitForSeconds(_changeDirectionDelay +
-                                            Random.Range(0, _changeDirectionDelay));
+            yield return new WaitForSeconds(_dataCore.ChangeDirectionDelay +
+                                            Random.Range(0, _dataCore.ChangeDirectionDelay));
         }
     }
 
@@ -102,53 +102,59 @@ public class ZombieAIMovement : AIMovementCore
         {
             if (CanFollowTarget())
             {
-                StartFollowingTarget(_damageableTargetDetection.ClosestTarget.Transform);
                 StopRandomMovement();
+                StartFollowingClosestTarget();
             }
             else
             {
+                StopFollowingClosestTarget();
                 StartRandomMovement();
-                StopFollowingTarget();
             }
 
-            yield return new WaitForSeconds(_defaultDelay);
+            yield return new WaitForSeconds(_dataCore.DefaultDelay);
         }
     }
 
     protected bool CanFollowTarget()
     {
-        return _transform.position.ContainsPosition(_mainDetectionRadius,
-                   _damageableTargetDetection.ClosestTarget.Transform.position)  &&
-               _damageableTargetDetection.ClosestTarget.gameObject.activeSelf;
+        Transform closestTarget = _damageableTargetDetection._closestTarget.Transform;
+
+        if (closestTarget == null) return false;
+        
+        return _transform.position.ContainsPosition(_mainDetectionRadius, closestTarget.position);
     }
     
-    protected void StartFollowingTarget(Transform target)
+    protected void StartFollowingClosestTarget()
     {
-        _isFollowingTarget = true;
-
         if (_followTargetCoroutine == null)
         {
-            _followTargetCoroutine = StartCoroutine(FollowTargetRoutine(target));
+            _followTargetCoroutine = StartCoroutine(FollowClosestTargetRoutine());
+
+            _isFollowingTarget = true;
         }
     }
 
-    protected void StopFollowingTarget()
+    protected void StopFollowingClosestTarget()
     {
         if (_followTargetCoroutine != null)
         {
             StopCoroutine(_followTargetCoroutine);
 
             _followTargetCoroutine = null;
+
+            _isFollowingTarget = false;
         }
     }
 
-    protected IEnumerator FollowTargetRoutine(Transform target)
+    protected IEnumerator FollowClosestTargetRoutine()
     {
         while (true)
         {
-            LookAtTaregt(target);
+            Transform closestTarget = _damageableTargetDetection._closestTarget.Transform;
+            
+            LookAtTaregt(closestTarget);
 
-            yield return new WaitForSeconds(_defaultDelay);
+            yield return new WaitForSeconds(_dataCore.DefaultDelay);
         }
     }
 
@@ -165,6 +171,6 @@ public class ZombieAIMovement : AIMovementCore
         Gizmos.DrawWireSphere(_transform.position, _mainDetectionRadius);
 
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(_transform.position, _audioDetectionRadius);
+        Gizmos.DrawWireSphere(_transform.position, _movementData.AudioDetectionRadius);
     }
 }

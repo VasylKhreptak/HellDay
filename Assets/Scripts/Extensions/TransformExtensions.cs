@@ -7,13 +7,15 @@ public static class TransformExtensions
         Transform closestTransform = null;
         float closestDistanceSqr = Mathf.Infinity;
 
-        foreach(var potentiaTransform in transforms)
+        foreach (var potentiaTransform in transforms)
         {
-            if (potentiaTransform == null)
+            if (potentiaTransform == null || (potentiaTransform.gameObject != null && 
+                                              potentiaTransform.gameObject.activeSelf == false))
+
             {
                 continue;
             }
-            
+
             Vector3 directionToTarget = potentiaTransform.position - transform.position;
             float sqrDirectionToTarget = directionToTarget.sqrMagnitude;
 

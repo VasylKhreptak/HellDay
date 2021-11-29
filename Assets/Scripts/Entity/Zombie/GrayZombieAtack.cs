@@ -32,7 +32,7 @@ public class GrayZombieAtack : CommonZombieAtack
 
     private bool CanJump()
     {
-        Transform target = _damageableTargetDetection.ClosestTarget.Transform;
+        Transform target = _damageableTargetDetection._closestTarget.Transform;
 
         if (target == null || 
             target.gameObject.activeSelf == false)

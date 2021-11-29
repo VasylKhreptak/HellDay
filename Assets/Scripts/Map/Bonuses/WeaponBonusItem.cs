@@ -3,8 +3,11 @@ using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class WeaponBonusItem : BonusItemCore
+public class WeaponBonusItem : MonoBehaviour
 {
+    [Header("Data")] 
+    [SerializeField] private WeaponBonusItemData _data;
+    
     [Header("References")] 
     [SerializeField] private Weapon _weapon;
 
@@ -12,10 +15,8 @@ public class WeaponBonusItem : BonusItemCore
     [SerializeField] private int _minAmmo = 40;
     [SerializeField] private int _maxAmmo = 100;
     
-    [Header("Interact prefeernces")]
-    [SerializeField] private float _swapDelay = 2f;
-
     private bool _canSwap;
+
     private PlayerWeaponControl _playerWeaponControl;
 
     private void Start()
@@ -30,9 +31,10 @@ public class WeaponBonusItem : BonusItemCore
         ConfigureSwapSpeed();
     }
 
-    protected override void OnCollisionWithPlayer(Collision2D player)
+    private void OnCollisionEnter2D(Collision2D player)
     {
-        if (_canSwap == false) return;
+        if (_data.playerLayerMask.ContainsLayer(player.gameObject.layer) == false || 
+            _canSwap == false) return;
 
         if (player.gameObject.activeSelf)
         {
@@ -47,7 +49,7 @@ public class WeaponBonusItem : BonusItemCore
     private void ConfigureSwapSpeed()
     {
         _canSwap = false;
-        this.DOWait(_swapDelay).OnComplete(() => { _canSwap = true; });
+        this.DOWait(_data.SwapDelay).OnComplete(() => { _canSwap = true; });
     }
 
     private void OnDisable()

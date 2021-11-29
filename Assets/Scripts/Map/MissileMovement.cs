@@ -5,10 +5,9 @@ public class MissileMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private Rigidbody2D _rigidbody2D;
-    
-    [Header("Preferences")] 
-    [SerializeField] private float _rotationSpeed;
-    [SerializeField] private float _movementSpeed;
+
+    [Header("Data")] 
+    [SerializeField] private MissileMovementData _data;
 
     private Transform _target;
 
@@ -25,8 +24,8 @@ public class MissileMovement : MonoBehaviour
         dirToTarget.Normalize();
 
         float rotateAmount = Vector3.Cross(dirToTarget, _transform.up).z;
-        _rigidbody2D.angularVelocity = -rotateAmount * _rotationSpeed;
-        _rigidbody2D.velocity = _transform.up * _movementSpeed;
+        _rigidbody2D.angularVelocity = -rotateAmount * _data.RotationSpeed;
+        _rigidbody2D.velocity = _transform.up * _data.MovementSpeed;
     }
 
     private void OnDrawGizmosSelected()

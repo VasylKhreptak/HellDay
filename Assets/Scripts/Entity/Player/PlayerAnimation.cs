@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Net.Http.Headers;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
@@ -12,16 +11,16 @@ public class PlayerAnimation : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] private int _updateFrameRate = 30;
     [SerializeField] private float _sitJoystickSensetivity = -0.7f;
-    [SerializeField] private float _punchDelay = 0.6f;
 
-    private static readonly int Speed = Animator.StringToHash("Speed");
-    private static readonly int Sit = Animator.StringToHash("Sit");
-    private static readonly int LegPunch = Animator.StringToHash("LegPunch");
-    private static readonly int ClimbingLadder = Animator.StringToHash("IsClimbingLadder");
-    private static readonly int Jump = Animator.StringToHash("Jump");
-    private static readonly int Landed = Animator.StringToHash("Landed");
+    private readonly int Speed = Animator.StringToHash("Speed");
+    private readonly int Sit = Animator.StringToHash("Sit");
+    private readonly int LegPunch = Animator.StringToHash("LegPunch");
+    private readonly int ClimbingLadder = Animator.StringToHash("IsClimbingLadder");
+    private readonly int Jump = Animator.StringToHash("Jump");
+    private readonly int Landed = Animator.StringToHash("Landed");
 
-    private bool _playerJumped = false;
+    private bool _playerJumped;
+    private float _legKickDuration;
     
     private Coroutine _configurableUpdate;
 
@@ -52,6 +51,8 @@ public class PlayerAnimation : MonoBehaviour
         _animator.SetTrigger(Jump);
 
         _playerJumped = true;
+        
+        Debug.Log("Jumped");
     }
 
     private void RunAnimation()
@@ -83,11 +84,21 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
-    public void LegKick()
+    public void PlayLegKickAnimation()
     {
         _animator.SetTrigger(LegPunch);
 
-        Messenger<float>.Broadcast(GameEvents.PLAYER_LEG_PUNCH, _punchDelay);    
+        this.DOWait(0.1f).OnComplete(() =>
+        {
+            _animator.ResetTrigger(LegPunch);
+        });
+
+        if (_legKickDuration == 0)
+        {
+            _legKickDuration = _animator.GetCurrentAnimatorStateInfo(0).length;
+        }
+
+        Messenger<float>.Broadcast(GameEvents.PLAYER_LEG_KICK, _legKickDuration);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -98,6 +109,8 @@ public class PlayerAnimation : MonoBehaviour
             _animator.SetTrigger(Landed);
 
             _playerJumped = false;
+            
+            Debug.Log("Landed");
         }
     }
 }

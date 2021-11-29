@@ -2,7 +2,7 @@ public static class GameEvents
 {
     public static readonly string PLAYER_GET_UP = "PLAYER_GET_UP";
     public static readonly string PLAYER_SIT_DOWN = "PLAYER_SIT_DOWN";
-    public static readonly string PLAYER_LEG_PUNCH = "PLAYER_LEG_PUNCH";
+    public static readonly string PLAYER_LEG_KICK = "PLAYER_LEG_PUNCH";
     public static readonly string PLAYER_MOVEMENT_IMPACT = "PLAYER_MOVEMENT_IMPACT";
     public static readonly string PLAYED_LOUD_AUDIO_SOURCE = "PLAYED_LOUD_AUDIO_SOURCE";
     public static readonly string SET_AMMO_TEXT = "SET_AMMO_TEXT";

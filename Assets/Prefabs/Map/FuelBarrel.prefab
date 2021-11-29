@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4834108193137379625}
   - component: {fileID: 1832710681056524358}
   - component: {fileID: -4454755025597967632}
+  - component: {fileID: 479341544790557788}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: -5952802550149609260, guid: 97e9b9f01b8d3f542888c1eab4f54a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -151,70 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2332932505156407063}
-  _explosionRadius: 5
-  _explosionForce: 300
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 15169
-  _upwardsModifier: 0.1
-  _forceMode2D: 1
-  _forceCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: -0.7000122
-      outSlope: -0.7000122
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.2999878
-      inSlope: -0.7000122
-      outSlope: -0.7000122
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _chainExplosionDelay: 0.3
-  _explosionEffect: 24
-  _maxDamage: 130
-  _damageCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0013873475
-      value: 1.0030432
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.99958384
-      value: -0.0057820873
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _maxCameraShakeIntensity: 13
-  _shakeDuration: 0.7
+  _explosiveObjData: {fileID: 11400000, guid: 0ecb8988479863e478b07eafa9b2fd5a, type: 2}
   _smokeSpawnPlace: {fileID: 3752098223863716663}
-  _explodeDelay: 4
-  _maxTakeDamageNumber: 2
-  _smoke: 34
+  _fuelBarrelData: {fileID: 11400000, guid: 9432ebf8e73433b4f8e08564c10f56b8, type: 2}
 --- !u!114 &8510690795750098952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2332932505156407063}
-  _destroyParticles: 18000000
+  _data: {fileID: 11400000, guid: 31bae5e15e456da4493d5c6875ac8334, type: 2}
 --- !u!114 &4834108193137379625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,8 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _canBeDestroyed: 1
+  data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -286,9 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 4834108193137379625}
-  _bulletLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
 --- !u!114 &-4454755025597967632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +243,20 @@ MonoBehaviour:
   _damageAmplifier: 1
   _layerMask:
     serializedVersion: 2
-    m_Bits: 32639
+    m_Bits: 32575
+--- !u!114 &479341544790557788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 00cd2a1da8241c346ab8fe421196d86c, type: 2}
 --- !u!1 &7900906738514500328
 GameObject:
   m_ObjectHideFlags: 0

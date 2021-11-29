@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3326083451539426018}
   - component: {fileID: 3326083451539426019}
   - component: {fileID: 3594970783650347284}
+  - component: {fileID: -5493058844416879881}
   m_Layer: 8
   m_Name: ZombieHead
   m_TagString: Zombie
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 6456261949877334844, guid: 1395a5342c706b34da6e964fd145f938, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,8 +168,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _canBeDestroyed: 0
+  data: {fileID: 11400000, guid: 4dc1fa7beb78dc34d9ef447f1837d099, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-5493058844416879881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326083451539426016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}

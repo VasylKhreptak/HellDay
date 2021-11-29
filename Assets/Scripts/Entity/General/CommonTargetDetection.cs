@@ -19,7 +19,7 @@ public class CommonTargetDetection : TargetDetectionCore
         {
             ClosestTarget = _transform.FindClosestTransform(_targets);
             
-            yield return new WaitForSeconds(_findTargetDelay);
+            yield return new WaitForSeconds(_data.FindTargetDelay);
         }   
     }
 

@@ -4,9 +4,9 @@ public class OnBulletHit : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private DamageableObject _damageableObject;
-    
-    [Header("Preferences")] 
-    [SerializeField] private LayerMask _bulletLayerMask;
+
+    [Header("Data")] 
+    [SerializeField] private ObjectOnBulletHitData _data;
 
     private PlayerWeaponControl _playerWeaponControl;
 
@@ -17,7 +17,7 @@ public class OnBulletHit : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (_bulletLayerMask.ContainsLayer(other.gameObject.layer))
+        if (_data.bulletLayerMask.ContainsLayer(other.gameObject.layer))
         {
             _damageableObject.TakeDamage(_playerWeaponControl.currentWeapon.GetDamageValue());
         }

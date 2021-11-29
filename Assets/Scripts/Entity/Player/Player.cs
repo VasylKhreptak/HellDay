@@ -2,9 +2,9 @@ public class Player : DamageableObject
 {
     protected override void SetMaxHealth(float maxHealth)
     {
-        _health = _maxHealth;
+        _health = data.MAXHealth;
         
-        Messenger<float>.Broadcast(GameEvents.SET_MAX_HEALTH_BAR, _maxHealth);
+        Messenger<float>.Broadcast(GameEvents.SET_MAX_HEALTH_BAR, data.MAXHealth);
     }
 
     protected override void DeathActions()

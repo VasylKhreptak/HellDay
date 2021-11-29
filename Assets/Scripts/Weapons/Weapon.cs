@@ -3,8 +3,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("Weapon")]
-    [SerializeField] private  Weapons weaponType;
-    private IWeapon iWeapon;
+    public  Weapons weaponType;
+    public IWeapon IWeapon;
     public PlayerAmmo playerAmmo;
     public Pools weaponPoolName;
     
@@ -17,9 +17,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float _maxDamage = 20f;
     
     public float GetDamageValue() => Random.Range(_minDamage, _maxDamage);
-    
-    public Weapons WeaponType => weaponType;
-    public IWeapon Iweapon => iWeapon;
     public float MovementImpact => _movementImpact;
 
     
@@ -27,7 +24,7 @@ public class Weapon : MonoBehaviour
     {
         if (TryGetComponent(out IWeapon weapon))
         {
-            iWeapon = weapon;
+            IWeapon = weapon;
         }
     }
 }

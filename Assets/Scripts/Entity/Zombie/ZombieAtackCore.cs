@@ -48,18 +48,4 @@ public class ZombieAtackCore : MonoBehaviour
     {
         throw new NotImplementedException();
     }
-    
-    protected virtual void OnDrawGizmosSelected()
-    {
-        DamageableTarget target = _damageableTargetDetection.ClosestTarget;
-        Gizmos.color = Color.red;
-        
-        if (target != null)
-        {
-            Gizmos.DrawWireCube(_damageableTargetDetection.ClosestTarget.Transform.position,
-                Vector2.one);
-
-            Gizmos.DrawLine(_transform.position, target.Transform.position);
-        }
-    }
 }

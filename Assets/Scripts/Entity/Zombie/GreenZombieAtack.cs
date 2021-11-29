@@ -8,7 +8,7 @@ public class GreenZombieAtack : ZombieAtackCore
 
     protected override bool CanAtack()
     {
-        Transform target = _damageableTargetDetection.ClosestTarget.Transform;
+        Transform target = _damageableTargetDetection._closestTarget.Transform;
 
         if (_transform == null || target == null) return false;
         
@@ -20,15 +20,15 @@ public class GreenZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _damageableTargetDetection.ClosestTarget.Damageable.TakeDamage(_damage);
+        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(_damage);
         
         Destroy(gameObject);
     }
 
-    protected override void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
-        base.OnDrawGizmosSelected();
-        
+        if(_transform == null ) return;
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_transform.position, _explosionRadius);
     }

@@ -14,7 +14,7 @@ public class CommonZombieAtack : ZombieAtackCore
 
     protected override bool CanAtack()
     {
-        Transform target = _damageableTargetDetection.ClosestTarget.Transform;
+        Transform target = _damageableTargetDetection._closestTarget.Transform;
         
         if (target == null || target.gameObject.activeSelf == false)
         {
@@ -30,15 +30,13 @@ public class CommonZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _damageableTargetDetection.ClosestTarget.Damageable.TakeDamage(_damage);
+        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(_damage);
         
         SpawnAtackParticles();
     }
 
-    protected override void OnDrawGizmosSelected()
+    protected virtual void OnDrawGizmosSelected()
     {
-        base.OnDrawGizmosSelected();
-        
         if (_atackCenter == null) return;
         
         Gizmos.color = Color.red;

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BridgeElement : MonoBehaviour
@@ -11,7 +10,7 @@ public class BridgeElement : MonoBehaviour
     [Header("Linked bridge elements")] 
     [SerializeField] private BridgeElement[] _nextBridgeElements;
 
-    public bool isDeactivated;
+    [HideInInspector] public bool isDeactivated;
 
     private void OnDestroy()
     {

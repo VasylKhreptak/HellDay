@@ -117,6 +117,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2514119371090672641}
   _movementSpeed: 0.03
-  _lifeTime: 20
-  _liftDuration: 1
-  _increasedSpeed: 0.047
+  _birdData: {fileID: 11400000, guid: 0200a15a0ccf25748a365d893f639762, type: 2}

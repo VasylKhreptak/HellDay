@@ -33,9 +33,9 @@ public class PlayerWeaponControl : MonoBehaviour
     {
         foreach (var weapon in _weapons)
         {
-            weapon.gameObject.SetActive(weapon.WeaponType == weaponToSelect);
+            weapon.gameObject.SetActive(weapon.weaponType == weaponToSelect);
 
-            if (weapon.WeaponType == weaponToSelect)
+            if (weapon.weaponType == weaponToSelect)
             {
                 currentWeapon = weapon;
                 ImpactPlayerMovement(weapon.MovementImpact);
@@ -47,7 +47,7 @@ public class PlayerWeaponControl : MonoBehaviour
     {
         ThrowCurrentWeapon();
         
-        SetWeapon(toWeapon.WeaponType);
+        SetWeapon(toWeapon.weaponType);
         currentWeapon.playerAmmo.SetAmmoWithTextUpdate(toWeapon.playerAmmo.Ammo);
     }
 
@@ -73,14 +73,14 @@ public class PlayerWeaponControl : MonoBehaviour
     {
         if (CanShoot() == false) return;
 
-        currentWeapon.Iweapon.StartShooting(); 
+        currentWeapon.IWeapon.StartShooting(); 
     }
 
     public void StopShooting()
     {
         if (CanShoot() == false) return;
         
-        currentWeapon.Iweapon.StopShooting();
+        currentWeapon.IWeapon.StopShooting();
     }
 
     private bool CanShoot()

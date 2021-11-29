@@ -7,9 +7,8 @@ public class OnDamageColor : MonoBehaviour
     [Header("References")] 
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    [Header("Preferences")] 
-    [SerializeField] private Color _onDamageColor;
-    [SerializeField] private float _duration = 0.4f;
+    [Header("Data")] 
+    [SerializeField] private ObjectOnDamageColorData _data;
 
     private float _halfDuration;
     private Sequence _seq;
@@ -17,14 +16,14 @@ public class OnDamageColor : MonoBehaviour
     
     private void Awake()
     {
-        _halfDuration = _duration / 2;
+        _halfDuration = _data.Duration / 2;
     }
  
     public void ReactOnDamage()
     {
         _seq = DOTween.Sequence();
 
-        _seq.Append(_spriteRenderer.DOColor(_onDamageColor, _halfDuration)).SetId("FadeTween");
+        _seq.Append(_spriteRenderer.DOColor(_data.onDamageColor, _halfDuration)).SetId("FadeTween");
         _seq.Append(_spriteRenderer.DOColor(Color.white, _halfDuration)).SetId("FadeTween");
     }
 

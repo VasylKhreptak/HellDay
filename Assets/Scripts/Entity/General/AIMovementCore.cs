@@ -7,33 +7,26 @@ public class AIMovementCore : MonoBehaviour
     [Header("References")] 
     [SerializeField] protected Transform _transform;
     [SerializeField] protected Rigidbody2D _rigidbody2D;
-    
-    [Header("MovementPreferences")] 
-    [SerializeField] protected float _movementForce = 13f;
-    [SerializeField] protected float _jumpForce = 18f;
-    [SerializeField] protected ForceMode2D _forceMode2D;
-    [SerializeField] protected float _maxHorVelocity = 5f;
-    
-    [Header("Delays")]
-    [SerializeField] protected float _changeDirectionDelay = 3f;
-    [SerializeField] protected float _defaultDelay = 0.5f;
-    [SerializeField] protected float _obstacleCheckDelay = 0.3f;
+
+    [Header("Data core")] 
+    [SerializeField] protected AIMovementCoreData _dataCore;
+
+    [Header("Movement Preferences")] 
+    [SerializeField]
+    private float _movementForce = 6f;
     
     [Header("Environment checkers")]
     [SerializeField] protected GroundChecker _groundChecker;
     [SerializeField] protected ObstacleChecker _obstacleChecker;
     [SerializeField] protected BarrierChecker _barrierChecker;
 
-    [Header("Configurable Update")] 
-    [SerializeField] protected int _frameRate = 5;
-    
     protected Coroutine _randomMovementCoroutine;
     protected Coroutine _checkEnvironmentCorouitne;
 
     protected virtual void FixedUpdate()
     {
-        _rigidbody2D.AddForce(new Vector2(_movementForce, 0), _forceMode2D);
-        _rigidbody2D.LimitHorizontalVelocity(_maxHorVelocity);
+        _rigidbody2D.AddForce(new Vector2(_movementForce, 0), _dataCore.ForceMode2D);
+        _rigidbody2D.LimitHorizontalVelocity(_dataCore.MAXHorVelocity);
     }
 
     protected IEnumerator CheckEnvironmentRoutine()
@@ -50,7 +43,7 @@ public class AIMovementCore : MonoBehaviour
                 ReverseMovementDirection();
             }
 
-            yield return new WaitForSeconds(_obstacleCheckDelay);
+            yield return new WaitForSeconds(_dataCore.ObstacleCheckDelay);
         }
     }
     
@@ -62,7 +55,7 @@ public class AIMovementCore : MonoBehaviour
     
     protected void Jump()
     {
-        _rigidbody2D.AddForce(new Vector2(0, _jumpForce), _forceMode2D);
+        _rigidbody2D.AddForce(new Vector2(0, _dataCore.JumpForce), _dataCore.ForceMode2D);
     }
     
     protected virtual bool CanReverseMovementDirection()

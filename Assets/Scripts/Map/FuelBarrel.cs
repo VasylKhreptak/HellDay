@@ -5,9 +5,9 @@ public class FuelBarrel: ExplosiveObjectCore
 {
     [Header("Smoke Preferences")]
     [SerializeField] private Transform _smokeSpawnPlace;
-    [SerializeField] private float _explodeDelay = 2f;
-    [SerializeField] private int _maxTakeDamageNumber = 4;
-    [SerializeField] private Pools _smoke;
+
+    [Header("Fuel Barrel Data")] 
+    [SerializeField] private FuelBarrelData _fuelBarrelData;
 
     private GameObject _smokeObj;
     private bool _isSmokeSpawned;
@@ -21,7 +21,7 @@ public class FuelBarrel: ExplosiveObjectCore
 
     public void OnTakeDamage()
     {
-        if (++_currentTakeDamageNumber == _maxTakeDamageNumber)
+        if (++_currentTakeDamageNumber == _fuelBarrelData.MAXTakeDamageNumber)
         {
             StartCoroutine(SmokeRoutine());
         }
@@ -29,10 +29,10 @@ public class FuelBarrel: ExplosiveObjectCore
 
     private IEnumerator SmokeRoutine()
     {
-        _smokeObj = _objectPooler.GetFromPool(_smoke, _smokeSpawnPlace.position, Quaternion.identity);
+        _smokeObj = _objectPooler.GetFromPool(_fuelBarrelData.Smoke, _smokeSpawnPlace.position, Quaternion.identity);
         _smokeObj.transform.parent = _transform;
 
-        yield return new WaitForSeconds(_explodeDelay);
+        yield return new WaitForSeconds(_fuelBarrelData.ExplodeDelay);
         
         ExplodeActions();
     }
@@ -54,8 +54,6 @@ public class FuelBarrel: ExplosiveObjectCore
     private void ExplodeActions()
     {
         DisableSmoke();
-        
-        _objectPooler.GetFromPool(_explosionEffect, _transform.position, Quaternion.identity);
 
         Explode();
 

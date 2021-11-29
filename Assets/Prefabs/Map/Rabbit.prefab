@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6201544449621131289}
   - component: {fileID: -8826978673266114851}
   - component: {fileID: -4312528787129427133}
+  - component: {fileID: 8939115591479565398}
   m_Layer: 12
   m_Name: Rabbit
   m_TagString: Zombie
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 4
   m_Sprite: {fileID: 2961870812263972312, guid: 97e9b9f01b8d3f542888c1eab4f54a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2083933987343572492}
-  _destroyParticles: 10000000
+  _data: {fileID: 11400000, guid: 9d9b0af18ccc2dd4d90d261e624c2ebf, type: 2}
 --- !u!114 &6201544449621131289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 20
-  _canBeDestroyed: 1
+  data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -214,9 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 6201544449621131289}
-  _bulletLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
+  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
 --- !u!114 &-4312528787129427133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,5 +228,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2083933987343572721}
-  _onDamageColor: {r: 1, g: 0.63584906, b: 0.63584906, a: 1}
-  _duration: 0.2
+  _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
+--- !u!114 &8939115591479565398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083933987343572493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}

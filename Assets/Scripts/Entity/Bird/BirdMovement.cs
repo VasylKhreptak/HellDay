@@ -8,12 +8,10 @@ public class BirdMovement : MonoBehaviour
 
     [Header("Preferences")]
     [SerializeField] private float _movementSpeed = 1f;
-    [SerializeField] private float _lifeTime = 10f;
 
-    [Header("OnPlaeyrLoudAudio")]
-    [SerializeField] private float _liftDuration = 1f;
-    [SerializeField] private float _increasedSpeed = 2f;
-
+    [Header("BirdData")] 
+    [SerializeField] private BirdData _birdData;
+    
     private Tween _tween;
     
     private void FixedUpdate()
@@ -25,7 +23,7 @@ public class BirdMovement : MonoBehaviour
     {
         KillTweens();
 
-            _tween = this.DOWait(_lifeTime).OnComplete(() => { gameObject.SetActive(false); });
+            _tween = this.DOWait(_birdData.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
         
         Messenger.AddListener(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, OnPlayedLoudAudio);
     }
@@ -44,7 +42,7 @@ public class BirdMovement : MonoBehaviour
     private void OnPlayedLoudAudio()
     {
         float normalSpeed = _movementSpeed;
-        _movementSpeed = _increasedSpeed;
-        this.DOWait(_liftDuration).OnComplete(() => { _movementSpeed = normalSpeed; });
+        _movementSpeed = _birdData.IncreasedSpeed;
+        this.DOWait(_birdData.LiftDuration).OnComplete(() => { _movementSpeed = normalSpeed; });
     }
 }

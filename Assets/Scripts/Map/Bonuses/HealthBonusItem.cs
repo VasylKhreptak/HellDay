@@ -1,16 +1,11 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class HealthBonusItem : BonusItemCore
+public class HealthBonusItem : MonoBehaviour
 {
-    [Header("Preferences")] 
-    [SerializeField] private float _minHealth = 10f;
-    [SerializeField] private float _maxHealth = 40f;
+    [Header("Data")]
+    [SerializeField] private HealthBonusItemData _data;
 
-    [Header("Apply effect")]
-    [SerializeField] private Pools _applyEffect;
-    
     private Player _player;
     private ObjectPooler _objectPooler;
 
@@ -19,17 +14,19 @@ public class HealthBonusItem : BonusItemCore
         _objectPooler = ObjectPooler.Instance;
     }
 
-    protected override void OnCollisionWithPlayer(Collision2D player)
+    private  void OnCollisionEnter2D(Collision2D other)
     {
+        if (_data.playerLayerMask.ContainsLayer(other.gameObject.layer) == false) return;
+        
         if (_player == null)
         {
-            player.gameObject.TryGetComponent(out _player);
+            other.gameObject.TryGetComponent(out _player);
         }
 
         if (_player && _player.gameObject.activeSelf && 
-            Mathf.Approximately(_player.health, _player.maxHealth) == false)
+            Mathf.Approximately(_player.Health, _player.data.MAXHealth) == false)
         {
-            _player.SetHealth(_player.health + Random.Range(_minHealth, _maxHealth));
+            this._player.SetHealth(_player.Health + Random.Range(_data.MINHealth, _data.MAXHealth));
 
             SpawnHealthSpellEffect(_player);
             
@@ -39,7 +36,7 @@ public class HealthBonusItem : BonusItemCore
 
     private void SpawnHealthSpellEffect(Player player)
     {
-        GameObject healSpell = _objectPooler.GetFromPool(_applyEffect, 
+        GameObject healSpell = _objectPooler.GetFromPool(_data.applyEffect, 
             player.transform.position, Quaternion.identity);
 
         healSpell.transform.parent = player.transform;

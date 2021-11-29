@@ -1,21 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ZombieAudio : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Transform _transform;
-    
-    [Header("Preferences")] 
-    [SerializeField] private float _minPlayDelay = 3f;
-    [SerializeField] private float _maxPlayDelay = 6f;
-    [SerializeField, Range(0, 100)] private float _walkSoundProbability = 50f;
 
-    [Header("Audio Clips")] 
-    [SerializeField] private AudioClip[] _walkAudioClips;
-    [SerializeField] private AudioClip[] _biteAudioClips;
+    [Header("Data")] 
+    [SerializeField] private ZombieAudioData _data;
+
 
     private AudioPooler _audioPooler;
+    private uint _audioID;
     
     private void Start()
     {
@@ -28,21 +25,28 @@ public class ZombieAudio : MonoBehaviour
     {
         while (true)
         {
-            Probability.Execute(_walkSoundProbability, () => { PlayWalkSound(); });
+            Probability.Execute(_data.MoveSoundProbability, () => { PlayWalkSound(); });
 
-            yield return new WaitForSeconds(Random.Range(_minPlayDelay, _maxPlayDelay));
+            yield return new WaitForSeconds(Random.Range(_data.MINPlayDelay, _data.MAXPlayDelay));
         }
     }
 
     private void PlayWalkSound()
     {
-        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _walkAudioClips.Random(),
+        _audioID = _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.moveAudioClips.Random(),
             _transform.position, 1f, 1f);
     }
 
     public void PlaBiteSound()
     {
-        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _biteAudioClips.Random(),
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.biteAudioClips.Random(),
             _transform.position, 1f, 1f);
+    }
+
+    private void OnDestroy()
+    {
+        if (gameObject.scene.isLoaded == false) return;
+        
+        _audioPooler.StopOneShootSound(_audioID);
     }
 }

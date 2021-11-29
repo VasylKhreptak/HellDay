@@ -5,8 +5,8 @@ public class DestroyParticle : MonoBehaviour
     [Header("References")] 
     [SerializeField] private Transform _transform;
 
-    [Header("Preferences")]
-    [SerializeField] private Pools[] _destroyParticles;
+    [Header("Data")] 
+    [SerializeField] private DestroyParticleData _data;
 
     private ObjectPooler _objectPooler;
 
@@ -17,7 +17,7 @@ public class DestroyParticle : MonoBehaviour
 
     private void SpawnDestroyParticles()
     {
-        foreach (var particle in _destroyParticles)
+        foreach (var particle in _data.destroyParticles)
         {
             _objectPooler.GetFromPool(particle, _transform.position, Quaternion.identity);
         }
@@ -25,9 +25,8 @@ public class DestroyParticle : MonoBehaviour
 
     private void OnDisable()
     {
-        if (gameObject.scene.isLoaded)
-        {
-            SpawnDestroyParticles();
-        }
+        if (gameObject.scene.isLoaded == false) return;
+
+        SpawnDestroyParticles();
     }
 }

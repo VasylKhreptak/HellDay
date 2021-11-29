@@ -6,9 +6,9 @@ public class DamageableTargetDetection : TargetDetectionCore
 {
     [Header("Targets")] 
     [SerializeField] private DamageableTarget[] _damageableTargets;
-    private DamageableTarget _closestTarget;
+    
+    [HideInInspector] public DamageableTarget _closestTarget;
 
-    public DamageableTarget ClosestTarget => _closestTarget;
     
 #if UNITY_EDITOR
     [SerializeField] private LayerMask _findLayerMask;
@@ -27,7 +27,7 @@ public class DamageableTargetDetection : TargetDetectionCore
         {
             _closestTarget = FindClosestTarget(_damageableTargets);
 
-            yield return new WaitForSeconds(_findTargetDelay);
+            yield return new WaitForSeconds(_data.FindTargetDelay);
         }
     }
 
@@ -64,8 +64,19 @@ public class DamageableTargetDetection : TargetDetectionCore
 
         return null;
     }
-    
-    #if UNITY_EDITOR
+
+    protected virtual void OnDrawGizmosSelected()
+    {
+        if (_closestTarget == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(_closestTarget.Transform.position,
+            Vector2.one);
+
+        Gizmos.DrawLine(_transform.position, _closestTarget.Transform.position);
+    }
+
+#if UNITY_EDITOR
 
     public void FindKillableTargets()
     {

@@ -9,7 +9,7 @@ public enum Pools
     WoodItemDestroyParticle,
     ShootSmoke,
     ShootSparks,
-    HitParticle,
+    DefaultHitParticle,
     EntityHitParticle,
     EntityDeathParticle,
     ZombieHead, ZombieBody, ZombieLeg, ZombieArm, ZombieBiteParticle, 
@@ -23,7 +23,9 @@ public enum Pools
     Missile, 
     GreenItemDestroy, 
     HealthBonus,
-    AmmoBonus, WeaponBonus,
+    AmmoBonus,
     DefaultWeapon, Rifle, Minigun, Vintorez, MachineGun, Uzi, Shotgun,
-    HealSpellParticle
+    HealSpellParticle,
+    MetalHitParticle,
+    WoodenObjHitParticle
 }

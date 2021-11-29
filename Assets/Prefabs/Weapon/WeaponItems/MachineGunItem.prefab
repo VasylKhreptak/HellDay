@@ -104,6 +104,8 @@ MonoBehaviour:
   playerAmmo: {fileID: 877156770158056955}
   weaponPoolName: 44
   _movementImpact: 8
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!114 &877156770158056955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,13 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6842db54bbebacd43877e1be774f85a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
+  _data: {fileID: 11400000, guid: 419d7067a404f4a44b81bc36be5ecb32, type: 2}
   _weapon: {fileID: 2019471789815420121}
   _minAmmo: 40
   _maxAmmo: 120
-  _swapDelay: 1
 --- !u!114 &4604613445435881645
 MonoBehaviour:
   m_ObjectHideFlags: 0

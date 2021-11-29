@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Messenger.AddListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.AddListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
         Messenger<float>.AddListener(GameEvents.PLAYER_MOVEMENT_IMPACT, ImpactMovement);
 
         SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Messenger.RemoveListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
         Messenger.RemoveListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_PUNCH, OnLegPunched);
+        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
         Messenger<float>.RemoveListener(GameEvents.PLAYER_MOVEMENT_IMPACT, ImpactMovement);
         
         ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);

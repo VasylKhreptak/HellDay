@@ -8,13 +8,8 @@ public class SpikesInteract : MonoBehaviour
     [SerializeField] private Transform _transform;
     [SerializeField] private DamageableTarget _damageableTarget;
 
-    [Header("Preferences")] 
-    [SerializeField] private float _damageDelay = 0.5f;
-    [SerializeField] private float _damage = 15f;
-    [SerializeField] private Pools _blood;
-
-    [Header("Damage Audio Clips")] 
-    [SerializeField] private AudioClip[] _damageAudioClips;
+    [Header("Data")] 
+    [SerializeField] private SpikeInteractData _data;
 
     private Coroutine _damageCoroutine;
     private ObjectPooler _objectPooler;
@@ -61,24 +56,24 @@ public class SpikesInteract : MonoBehaviour
     {
         while (true)
         {
-            _damageableTarget.Damageable.TakeDamage(_damage);
+            _damageableTarget.Damageable.TakeDamage(Random.Range(_data.MINDamage, _data.MAXDamage));
             
             PlayDamageSound();
             
             SpawnBlood();
             
-            yield return new WaitForSeconds(_damageDelay);
+            yield return new WaitForSeconds(_data.DamageDelay);
         }
     }
 
     private void PlayDamageSound()
     {
-        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _damageAudioClips.Random(),
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.biteAudioClips.Random(),
             _transform.position, 1f, 1f);
     }
 
     private void SpawnBlood()
     {
-        _objectPooler.GetFromPool(_blood, _transform.position, Quaternion.identity);
+        _objectPooler.GetFromPool(_data.blood, _transform.position, Quaternion.identity);
     }
 }

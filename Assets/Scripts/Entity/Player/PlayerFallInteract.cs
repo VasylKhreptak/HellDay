@@ -7,7 +7,7 @@ public class PlayerFallInteract : MonoBehaviour
     
     [Header("Preferences")] 
     [SerializeField] private LayerMask _groundLayerMask;
-    [SerializeField] private float _landingDamage = 40f;
+    [SerializeField] private float _damageApmlifier = 0.5f;
     [SerializeField] private float _minDamageImpulse;
 
     [Header("Player Audio")] 
@@ -15,10 +15,11 @@ public class PlayerFallInteract : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (_groundLayerMask.ContainsLayer(other.gameObject.layer) &&
-            other.GetImpulse() > _minDamageImpulse)
+        float impulse = other.GetImpulse();
+        
+        if (_groundLayerMask.ContainsLayer(other.gameObject.layer) && impulse > _minDamageImpulse)
         {
-            _playerDamageableTarget.Damageable.TakeDamage(_landingDamage);
+            _playerDamageableTarget.Damageable.TakeDamage(impulse * _damageApmlifier);
             
             _playerAudio.PlayBoneCrackSound();
         }

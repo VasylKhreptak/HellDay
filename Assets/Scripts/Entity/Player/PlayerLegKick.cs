@@ -12,8 +12,6 @@ public class PlayerLegKick : MonoBehaviour
     [SerializeField] private float _upwardsVelocity;
     [SerializeField] private float _kickLength;
     [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private float _kickDelay;
-    [SerializeField] private float _delayBeforeKick = 0.2f;
     [SerializeField] private ForceMode2D _forceMode2D;
 
     [Header("Damage")] 
@@ -21,59 +19,43 @@ public class PlayerLegKick : MonoBehaviour
     
     [Header("KickTorque")] 
     [SerializeField] private float _minKickTorque;
-    [SerializeField] private float _maxkickTorque;
- 
-    [Header("Player Animation")] 
-    [SerializeField] private PlayerAnimation _playerAnimation;
-
-    [Header("Player Audio")] 
-    [SerializeField] private PlayerAudio _playerAudio;
+    [SerializeField] private float _maxKickTorque;
 
     private bool _canKick = true;
-    
-    public void KickActions()
+
+    public void Kick()
     {
         if (_playerObj.activeSelf == false || _canKick == false) return;
         
-        _playerAnimation.LegKick();
-        
-        this.DOWait(_delayBeforeKick).OnComplete(() =>
-        {
-            Kick();
-        });
-        
-        ControlKickSpeed();
-    }
-
-    private void Kick()
-    {
         GameObject atackedObj = GetAttackedObject();
-            
-        _playerAudio.PlayLegKickSound();
         
         if(atackedObj == null) return;
 
+        DiscardObject(atackedObj);
+
+        DamageObject(atackedObj);
+    }
+
+    private void DiscardObject(GameObject atackedObj)
+    {
         if (atackedObj.TryGetComponent(out Rigidbody2D rb))
         {
             if(rb.bodyType != RigidbodyType2D.Static)
             {
                 rb.velocity = new Vector2(_kickVelocity * PlayerMovement.MovementDirection,
-                _upwardsVelocity);
+                    _upwardsVelocity);
                 
-                rb.AddTorque(Random.Range(-_minKickTorque, _maxkickTorque), _forceMode2D);
+                rb.AddTorque(Random.Range(-_minKickTorque, _maxKickTorque), _forceMode2D);
             }
-        }
-        
-        if (atackedObj.CompareTag("Human") == false && atackedObj.TryGetComponent(out IDamageable target))
-        {
-            target.TakeDamage(_kickDamage);
         }
     }
 
-    private void ControlKickSpeed()
+    private void DamageObject(GameObject atackedObj)
     {
-        _canKick = false;
-        this.DOWait(_kickDelay).OnComplete(() => { _canKick = true; });
+        if (atackedObj.TryGetComponent(out IDamageable target))
+        {
+            target.TakeDamage(_kickDamage);
+        }
     }
 
     private GameObject GetAttackedObject()
@@ -89,11 +71,6 @@ public class PlayerLegKick : MonoBehaviour
         }
         
         return hit.collider.gameObject;
-    }
-
-    private void OnDestroy()
-    {
-        this.DOKill();
     }
 
     private void OnDrawGizmosSelected()

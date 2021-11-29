@@ -1,33 +1,14 @@
-using System;
-using Cinemachine;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class BulletMuffAudio : MonoBehaviour
 {
-    [System.Serializable]
-    private class MuffAudio
-    {
-        public SurfaceTypes surfaceType;
-        [Range(1f, 100f)] public float volume = 1f;
-    }
-
-    [System.Serializable]
-    private class PlaySoundProbability
-    {
-        public Weapons weaponType;
-        [Range(0f, 100f)] public float probability;
-    }
-
     [Header("References")] 
     [SerializeField] private Transform _transform;
 
-    [Header("Preferences")] 
-    [SerializeField] private AudioClip[] _audioClips;
-    [SerializeField] private MuffAudio[] _muffAudios;
-    [SerializeField] private PlaySoundProbability[] _playSoundProbabilities;
-    [SerializeField] private float _tileDetectLength = 0.3f;
-        
+    [Header("Bullet Muff Audio Data")]
+    [SerializeField] private BulletMuffAudioData _data;
+    
     private AudioPooler _audioPooler;
     private Tilemap _tilemap;
     private bool _playedAudio;
@@ -53,13 +34,13 @@ public class BulletMuffAudio : MonoBehaviour
     {
         if (CanPlaySound() &&
             _tilemap.TryGetSurfaceType(out SurfaceTypes? fallenSurface, _transform.position -
-                                                                        new Vector3(0, _tileDetectLength, 0)))
+                                                                        new Vector3(0, _data.TileDetectLength, 0)))
         {
-            foreach (var muffAudio in _muffAudios)
+            foreach (var muffAudio in _data.muffAudios)
             {
                 if (muffAudio.surfaceType == fallenSurface)
                 {
-                    _audioPooler.PlayOneShootSound(AudioMixerGroups.WEAPON, _audioClips.Random(),
+                    _audioPooler.PlayOneShootSound(AudioMixerGroups.WEAPON, _data.audioClips.Random(),
                         _transform.position, muffAudio.volume, 1f);
                     _playedAudio = true;
                 }
@@ -75,9 +56,9 @@ public class BulletMuffAudio : MonoBehaviour
 
     private float GetSoundProbability()
     {
-        Weapons curentWeapon = _playerWeaponControl.currentWeapon.WeaponType;
+        Weapons curentWeapon = _playerWeaponControl.currentWeapon.weaponType;
 
-        foreach (var sound in _playSoundProbabilities)
+        foreach (var sound in _data.playSoundProbabilities)
         {
             if (sound.weaponType == curentWeapon)
             {
@@ -93,6 +74,6 @@ public class BulletMuffAudio : MonoBehaviour
         if(_transform == null) return; 
         
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(_transform.position, _transform.position - new Vector3(0, _tileDetectLength, 0));
+        Gizmos.DrawLine(_transform.position, _transform.position - new Vector3(0, _data.TileDetectLength, 0));
     }
 }

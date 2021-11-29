@@ -1,18 +1,11 @@
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class AmmoBonusItem : BonusItemCore
+public class AmmoBonusItem : MonoBehaviour
 {
-    [System.Serializable]
-    private class BonusPreference
-    {
-        public Weapons weaponType;
-        public int minAmmo;
-        public int maxAmmo;
-    }
-
-    [Header("Bonus preferences")] 
-    [SerializeField] private BonusPreference[] _bonusPreferences;
+    [Header("Data")] 
+    [SerializeField] private AmmoBonusItemData _data;
 
     private PlayerWeaponControl _playerWeaponControl;
 
@@ -21,9 +14,10 @@ public class AmmoBonusItem : BonusItemCore
         _playerWeaponControl = PlayerWeaponControl.Instance;
     }
 
-    protected override void OnCollisionWithPlayer(Collision2D player)
+    private void OnCollisionEnter2D(Collision2D player)
     {
-        if (_playerWeaponControl.transform.parent.gameObject.activeSelf == false) return;
+        if (_data.playerLayerMask.ContainsLayer(player.gameObject.layer) == false ||
+            _playerWeaponControl.transform.parent.gameObject.activeSelf == false) return;
         
         AssignAmmo(_playerWeaponControl.currentWeapon);
 
@@ -32,9 +26,9 @@ public class AmmoBonusItem : BonusItemCore
 
     private void AssignAmmo(Weapon currentWeapon)
     {
-        foreach (var preference in _bonusPreferences)
+        foreach (var preference in _data.bonusPreferences)
         {
-            if (currentWeapon.WeaponType == preference.weaponType)
+            if (currentWeapon.weaponType == preference.weaponType)
             {
                 currentWeapon.playerAmmo.SetAmmoWithTextUpdate(currentWeapon.playerAmmo.Ammo + 
                                                                Random.Range(preference.minAmmo, preference.maxAmmo));

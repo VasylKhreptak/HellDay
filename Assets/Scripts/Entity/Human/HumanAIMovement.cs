@@ -1,14 +1,15 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class HumanAIMovement : AIMovementCore
 {
+    [Header("Movement Data")] 
+    [SerializeField] private HumanAIMovementData _movementData;
+    
     [Header("Environment checkers")]
     [SerializeField] protected PitChecker _pitChecker;
 
-    [Header("Threat detection preferences")]
-    [SerializeField] protected float _detectionRadius = 5f;
+    [Header("Threat detection")]
     [SerializeField] protected CommonTargetDetection _commonTargetDetectin;
 
     [Header("Sign Scale Compensate")] 
@@ -67,7 +68,7 @@ public class HumanAIMovement : AIMovementCore
                 StopRunningFromThreat();
             }
             
-            yield return new WaitForSeconds(_defaultDelay);
+            yield return new WaitForSeconds(_dataCore.DefaultDelay);
         }
     }
 
@@ -116,8 +117,8 @@ public class HumanAIMovement : AIMovementCore
                 StartStaying();
             }
 
-            yield return new WaitForSeconds(_changeDirectionDelay +
-                                            Random.Range(0, _changeDirectionDelay));
+            yield return new WaitForSeconds(_dataCore.ChangeDirectionDelay +
+                                            Random.Range(0, _dataCore.ChangeDirectionDelay));
         }
     }
 
@@ -125,7 +126,7 @@ public class HumanAIMovement : AIMovementCore
     {
         if (_commonTargetDetectin.ClosestTarget == null) return false;
         
-        return _transform.position.ContainsPosition(_detectionRadius, 
+        return _transform.position.ContainsPosition(_movementData.DetectionRadius, 
             _commonTargetDetectin.ClosestTarget.position);
     }
 
@@ -145,13 +146,15 @@ public class HumanAIMovement : AIMovementCore
         {
             TurnAwayFromThreat();
             
-            yield return new WaitForSeconds(_defaultDelay);
+            yield return new WaitForSeconds(_dataCore.DefaultDelay);
         }
     }
 
     protected void TurnAwayFromThreat()
     {
         Transform target = _commonTargetDetectin.ClosestTarget;
+
+        if (target == null) return;
         
         SetMovementDirection(_transform.position.x < target.transform.position.x ? -1 : 1);
     }
@@ -194,7 +197,7 @@ public class HumanAIMovement : AIMovementCore
         if (_transform == null) return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_transform.position, _detectionRadius);
+        Gizmos.DrawWireSphere(_transform.position, _movementData.DetectionRadius);
 
         if (_commonTargetDetectin.ClosestTarget == null) return;
         
