@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -1074101849761211494}
   - component: {fileID: -610313096862388322}
   - component: {fileID: -4573701919072884411}
+  - component: {fileID: -3116698608551023975}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -323,7 +324,19 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 4dc1fa7beb78dc34d9ef447f1837d099, type: 2}
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3116698608551023975}
+        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
+        m_MethodName: ReactOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-4573701919072884411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +350,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 00cd2a1da8241c346ab8fe421196d86c, type: 2}
+--- !u!114 &-3116698608551023975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3601221705042318743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6280ab84d06fddb4484b26fd2def0690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 7293623835007871919}
+  _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!1 &6291951516285451092
 GameObject:
   m_ObjectHideFlags: 0

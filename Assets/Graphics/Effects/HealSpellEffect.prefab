@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8849197831923337246}
   - component: {fileID: 6672652765558751543}
   - component: {fileID: -8079958026045081363}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HealSpellEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 3878300524953921836}
   - component: {fileID: 5588506187434633621}
   - component: {fileID: 650565588613956209}
-  - component: {fileID: 232640463128838455}
   - component: {fileID: 8554187835385114158}
   - component: {fileID: 8178373132025112809}
   - component: {fileID: 2027813047198603532}
   - component: {fileID: 8575357859750578019}
+  - component: {fileID: -8839877120962428898}
   m_Layer: 0
   m_Name: MinigunItem
   m_TagString: Untagged
@@ -101,24 +101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 3
-  playerAmmo: {fileID: 232640463128838455}
-  weaponPoolName: 42
+  playerAmmo: {fileID: -8839877120962428898}
+  weaponPoolName: 41
   _movementImpact: 8
   _minDamage: 10
   _maxDamage: 20
---- !u!114 &232640463128838455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7405380516110558701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startupAmmo: 200
 --- !u!50 &8554187835385114158
 Rigidbody2D:
   serializedVersion: 4
@@ -197,3 +184,16 @@ MonoBehaviour:
   _transform: {fileID: 3878300524953921836}
   _audioClips:
   - {fileID: 8300000, guid: 262fe6eaa326d7f409fe7fe51fed109c, type: 3}
+--- !u!114 &-8839877120962428898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405380516110558701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startupAmmo: 200

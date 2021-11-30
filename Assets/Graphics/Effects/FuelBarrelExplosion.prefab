@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1825469691702855051}
   - component: {fileID: 2093288963814631233}
   - component: {fileID: 9220087281084582496}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4874,7 +4874,7 @@ GameObject:
   - component: {fileID: 934802523100610083}
   - component: {fileID: 117044832499467817}
   - component: {fileID: 7782176968736333314}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FuelBarrelExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9748,8 +9748,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac70d69d741d9cc4bb9b3cee004fefe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 8343709453477329188}
   _particleSystem: {fileID: 1551451763681207364}
+  _additionalDelay: 0
 --- !u!1 &6322106467451611846
 GameObject:
   m_ObjectHideFlags: 0
@@ -9761,7 +9761,7 @@ GameObject:
   - component: {fileID: 398580054568433039}
   - component: {fileID: 1551451763681207364}
   - component: {fileID: 8773419063155808157}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Derbis
   m_TagString: Untagged
   m_Icon: {fileID: 0}

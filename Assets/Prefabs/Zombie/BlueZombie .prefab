@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 5005449065025068211}
   - component: {fileID: 8858061609578700829}
   - component: {fileID: -9096818054651666865}
+  - component: {fileID: 7762542097487322059}
   m_Layer: 8
   m_Name: 'BlueZombie '
   m_TagString: Zombie
@@ -564,6 +565,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}
+--- !u!114 &7762542097487322059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781906718964601438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee928a6a3323bb24e8813ebe718a47aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7781906718964601439}
+  _data: {fileID: 11400000, guid: 1ff0a0ed47d7d01459c4bcc52270e209, type: 2}
 --- !u!1 &7781906719972901271
 GameObject:
   m_ObjectHideFlags: 0

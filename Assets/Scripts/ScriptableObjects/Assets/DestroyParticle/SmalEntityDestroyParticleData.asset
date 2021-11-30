@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f118942230ebb4d91a79f53ba02a04, type: 3}
-  m_Name: FuelBarrelExplosionData
+  m_Script: {fileID: 11500000, guid: 6b6384f366562f24ebf02178268a9e11, type: 3}
+  m_Name: SmalEntityDestroyParticleData
   m_EditorClassIdentifier: 
+  destroyParticles: 10000000

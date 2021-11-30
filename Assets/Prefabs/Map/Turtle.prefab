@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: -4022383073505992412}
   - component: {fileID: 3521268348250307220}
   - component: {fileID: 1386669110151482632}
+  - component: {fileID: 8728029760102592324}
+  - component: {fileID: 6551192206975482444}
   m_Layer: 12
   m_Name: Turtle
   m_TagString: Zombie
@@ -242,3 +244,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}
+--- !u!114 &8728029760102592324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754024052505772161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6280ab84d06fddb4484b26fd2def0690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 5754024052505772157}
+  _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
+--- !u!114 &6551192206975482444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754024052505772161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee928a6a3323bb24e8813ebe718a47aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 5754024052505772160}
+  _data: {fileID: 11400000, guid: bb41058ca1d287d4c9c6f1760ef81ee3, type: 2}

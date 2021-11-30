@@ -51,8 +51,6 @@ public class PlayerAnimation : MonoBehaviour
         _animator.SetTrigger(Jump);
 
         _playerJumped = true;
-        
-        Debug.Log("Jumped");
     }
 
     private void RunAnimation()
@@ -109,8 +107,6 @@ public class PlayerAnimation : MonoBehaviour
             _animator.SetTrigger(Landed);
 
             _playerJumped = false;
-            
-            Debug.Log("Landed");
         }
     }
 }

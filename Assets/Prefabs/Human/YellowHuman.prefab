@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: -3070268500316650912}
   - component: {fileID: -8054206750990064636}
   - component: {fileID: -5367110404729133395}
+  - component: {fileID: -8114722772789247139}
   m_Layer: 13
   m_Name: YellowHuman
   m_TagString: Human
@@ -713,6 +714,20 @@ MonoBehaviour:
   _findLayerMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &-8114722772789247139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361956689193760207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee928a6a3323bb24e8813ebe718a47aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 5361956689193760204}
+  _data: {fileID: 11400000, guid: 1ff0a0ed47d7d01459c4bcc52270e209, type: 2}
 --- !u!1 &5494458432691061530
 GameObject:
   m_ObjectHideFlags: 0

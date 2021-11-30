@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: -64014290128593452}
   - component: {fileID: -6800690676723985350}
   - component: {fileID: 4582042604944406389}
+  - component: {fileID: 7375401668465794014}
   m_Layer: 8
   m_Name: YellowZombie
   m_TagString: Zombie
@@ -534,6 +535,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}
+--- !u!114 &7375401668465794014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552724589778891914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee928a6a3323bb24e8813ebe718a47aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7552724589778891921}
+  _data: {fileID: 11400000, guid: 1ff0a0ed47d7d01459c4bcc52270e209, type: 2}
 --- !u!1 &7552724590804465040
 GameObject:
   m_ObjectHideFlags: 0
