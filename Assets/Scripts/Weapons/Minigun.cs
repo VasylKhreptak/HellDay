@@ -60,11 +60,11 @@ public class Minigun : WeaponCore, IWeapon
         _shootCoroutine = null;
     }
 
-    protected override void OnLegPunched(float time)
+    protected override void OnLegKick(float time)
     {
         StopShooting();
         
-        base.OnLegPunched(time);
+        base.OnLegKick(time);
     }
 
     private void StartPlayingSpinAudio(Action onSpinEnd)
@@ -102,8 +102,8 @@ public class Minigun : WeaponCore, IWeapon
 
     protected override IEnumerator Shoot()
     {
-        Messenger.Broadcast(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
-
+        onShoot?.Invoke();
+        
         _isShooting = true;
 
         PlayAudioClip(_audioSource, _shootSound, true);
@@ -150,7 +150,7 @@ public class Minigun : WeaponCore, IWeapon
 
         yield return new WaitForSeconds(_spinTime);
 
-        onSpinEnd.Invoke();
+        onSpinEnd?.Invoke();
     }
     
     private void  StopShootAudio()

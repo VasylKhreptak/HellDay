@@ -14,6 +14,8 @@ public class PlayerWeaponControl : MonoBehaviour
     [HideInInspector] public Weapon currentWeapon;
 
     private ObjectPooler _objectPooler;
+
+    public static Action<float> onImpactMovement;
     
     private void Start()
     {
@@ -59,7 +61,7 @@ public class PlayerWeaponControl : MonoBehaviour
 
     private void ImpactPlayerMovement(float percentage)
     {
-        Messenger<float>.Broadcast(GameEvents.PLAYER_MOVEMENT_IMPACT, percentage);
+        onImpactMovement?.Invoke(percentage);
     }
 
     public void StartShooting()

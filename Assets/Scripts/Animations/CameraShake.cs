@@ -21,12 +21,14 @@ public class CameraShake : MonoBehaviour
 
     private void OnEnable()
     {
-        Messenger<Vector3, float, float>.AddListener(GameEvents.SHAKE_CAMERA, Shake);
+        ExplosiveObjectCore.onCameraShake += Shake;
+        MissileLauncher.onCameraShake += Shake;
     }
 
     private void OnDisable()
     {
-        Messenger<Vector3, float, float>.RemoveListener(GameEvents.SHAKE_CAMERA, Shake);
+        ExplosiveObjectCore.onCameraShake -= Shake;
+        MissileLauncher.onCameraShake -= Shake;
     }
  
     public void Shake(Vector3 source, float  maxIntensity, float duration)

@@ -33,7 +33,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
     {
         SetHealth(_health - damage);
 
-        OnTakeDamage.Invoke(damage);
+        OnTakeDamage?.Invoke(damage);
         
         if (IsDead)
         {

@@ -1,5 +1,9 @@
+using System;
+
 public class PlayerAmmo : WeaponAmmo
 {
+    public static Action<string> onSetAmmoText;
+    
     protected override void Awake()
     {
         SetAmmo(_startupAmmo);
@@ -26,7 +30,6 @@ public class PlayerAmmo : WeaponAmmo
 
     private void UpdateAmmoText()
     {
-        Messenger<string>.Broadcast(GameEvents.SET_AMMO_TEXT, 
-            _ammo.ToString(), MessengerMode.DONT_REQUIRE_LISTENER);
+        onSetAmmoText?.Invoke(_ammo.ToString());
     }
 }

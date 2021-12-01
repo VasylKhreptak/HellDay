@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,12 +9,17 @@ public class ExplosiveObjectCore : MonoBehaviour
 
     [Header("Data")] 
     [SerializeField] private ExplosiveObjectCoreData _explosiveObjData;
+
+    public static Action onPlayedLoudSound;
+    public static Action<Vector3, float, float> onCameraShake;
     
+
     protected  void Explode()
     {
-        Messenger.Broadcast(GameEvents.PLAYED_LOUD_AUDIO_SOURCE);
-        Messenger<Vector3, float, float>.Broadcast(GameEvents.SHAKE_CAMERA, _transform.position,
-            _explosiveObjData.MAXCameraShakeIntensity, _explosiveObjData.ShakeDuration);
+        onPlayedLoudSound?.Invoke();
+
+        onCameraShake?.Invoke(_transform.position, _explosiveObjData.MAXCameraShakeIntensity,
+            _explosiveObjData.ShakeDuration);
 
         Collider2D[] overlappedColliders = Physics2D.OverlapCircleAll(_transform.position,
             _explosiveObjData.ExplosionRadius, _explosiveObjData.layerMask);

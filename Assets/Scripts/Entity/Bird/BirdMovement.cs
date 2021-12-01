@@ -23,14 +23,18 @@ public class BirdMovement : MonoBehaviour
     {
         KillTweens();
 
-            _tween = this.DOWait(_birdData.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
-        
-        Messenger.AddListener(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, OnPlayedLoudAudio);
+        _tween = this.DOWait(_birdData.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
+
+        ExplosiveObjectCore.onPlayedLoudSound += OnPlayedLoudAudio;
+        WeaponCore.onShoot += OnPlayedLoudAudio;
     }
 
     private void OnDisable()
     {
         KillTweens();
+        
+        ExplosiveObjectCore.onPlayedLoudSound -= OnPlayedLoudAudio;
+        WeaponCore.onShoot -= OnPlayedLoudAudio;
     }
 
     private void KillTweens()

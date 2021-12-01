@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WeaponCore : MonoBehaviour, IWeapon
 {
@@ -39,15 +41,16 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected Coroutine _shootCoroutine;
     protected ObjectPooler _objectPooler;
-    
+
+    public static Action onShoot;
     
     protected void OnEnable()
     {
         _previousAngleScatter = _angleScatter;
-
-        Messenger.AddListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
-        Messenger.AddListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
+        
+        PlayerAnimation.onPlayerGetUp += OnPlayerGetUp;
+        PlayerAnimation.onPlayerLegKick += OnLegKick;
+        PlayerAnimation.onPlayerSitDown += OnPlayerSitDown;
     }
 
     protected void Start()
@@ -57,12 +60,12 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected void OnDisable()
     {
-        Messenger.RemoveListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger.RemoveListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
+        PlayerAnimation.onPlayerGetUp -= OnPlayerGetUp;
+        PlayerAnimation.onPlayerLegKick -= OnLegKick;
+        PlayerAnimation.onPlayerSitDown -= OnPlayerSitDown;
     }
 
-    protected virtual void OnLegPunched(float time)
+    protected virtual void OnLegKick(float time)
     {
         StartCoroutine(OnLegPunchedCoroutine(time));
     }
@@ -117,8 +120,8 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected virtual IEnumerator Shoot()
     {
-        Messenger.Broadcast(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, MessengerMode.DONT_REQUIRE_LISTENER);
-
+        onShoot?.Invoke();
+            
         while (true)
         {
             if (CanShoot())

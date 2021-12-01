@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ public class HumanDetection : MonoBehaviour
     private Coroutine _checkCoroutine;
     public Transform _closestHuman { get; private set; }
 
+    public static Action<bool> onHumanNear;
+    
     private void Awake()
     {
         StartCoroutine(CheckRoutine());
@@ -31,7 +34,7 @@ public class HumanDetection : MonoBehaviour
             {
                 bool canShowBtn = _transform.position.ContainsPosition(_rescueRadius, _closestHuman.position);
 
-                Messenger<bool>.Broadcast(GameEvents.ANIMATE_SAVE_HUMAN_BUTTON, canShowBtn);
+                onHumanNear?.Invoke(canShowBtn);
             }
 
             yield return new WaitForSeconds(_checkDelay);

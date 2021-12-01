@@ -29,7 +29,7 @@ public static class ConfigurableUpdate
 
         while (true)
         {
-            action.Invoke();
+            action?.Invoke();
             
             yield return new WaitForSeconds(delay);
         }

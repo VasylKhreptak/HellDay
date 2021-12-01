@@ -1,13 +1,17 @@
+using System;
+
 public class PlayerDoorInteract : DoorInteractCore
 {
+    public static Action<bool> onAnimateOpenDoorBtn;
+    
     protected override void OnEnteredDoorArea()
     {
-        Messenger<bool>.Broadcast(GameEvents.ANIMATE_OPEN_DOOR_BUTTON,true);
+        onAnimateOpenDoorBtn?.Invoke(true);
     }
 
     protected override void OnExitDoorArea()
     {
-        Messenger<bool>.Broadcast(GameEvents.ANIMATE_OPEN_DOOR_BUTTON,false);
+        onAnimateOpenDoorBtn?.Invoke(false);
     }
 
     public void ToggleDoor()

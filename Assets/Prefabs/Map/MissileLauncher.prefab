@@ -138,14 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 8095864718571885536}
   _missileSpawnPlace: {fileID: 8095864717548970804}
-  _target: {fileID: 0}
-  _missile: 35
   _weaponAmmo: {fileID: 8095864718571885537}
-  _shootDelay: 2
-  _maxCameraShakeIntensity: 2
-  _cameraShakeDuration: 0.4
-  _checkRange: 9
-  _shootAudioClip: {fileID: 8300000, guid: 3cc2eda79b6b45f4c94afab01e057d6f, type: 3}
+  _data: {fileID: 11400000, guid: 5f068cab9cbfa9f4dadafcd887aa6d9c, type: 2}
 --- !u!114 &8095864718571885540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fbbd118d9c29145a3ec21ac03fd2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startupAmmo: 200
+  _startupAmmo: 3
 --- !u!68 &8095864718571885541
 EdgeCollider2D:
   m_ObjectHideFlags: 0

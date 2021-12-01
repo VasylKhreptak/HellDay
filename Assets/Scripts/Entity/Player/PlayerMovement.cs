@@ -31,10 +31,9 @@ public class PlayerMovement : MonoBehaviour
     private Coroutine _configurableUpdate;
     private bool _isGrounded;
 
-    private float _previousMovementForce,
-                  _previousMinJumpForce,
-                  _previousMaxJumpForce,
-                  _previousMaxHorVelocity;
+    private float _previousMovementForce, _previousMinJumpForce, _previousMaxJumpForce, _previousMaxHorVelocity;
+
+    public static Action onPlayerJumped;
 
     private void Awake()
     {
@@ -46,11 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        Messenger.AddListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger.AddListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.AddListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
-        Messenger<float>.AddListener(GameEvents.PLAYER_MOVEMENT_IMPACT, ImpactMovement);
-
+        PlayerAnimation.onPlayerGetUp += OnPlayerGetUp;
+        PlayerAnimation.onPlayerSitDown += OnPlayerSitDown;
+        PlayerAnimation.onPlayerLegKick += OnLegKick;
+        PlayerWeaponControl.onImpactMovement += ImpactMovement;
+        
         SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
         
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, UPDATE_FRAMERATE, () =>
@@ -64,10 +63,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        Messenger.RemoveListener(GameEvents.PLAYER_GET_UP, OnPlayerGetUp);
-        Messenger.RemoveListener(GameEvents.PLAYER_SIT_DOWN, OnPlayerSitDown);
-        Messenger<float>.RemoveListener(GameEvents.PLAYER_LEG_KICK, OnLegPunched);
-        Messenger<float>.RemoveListener(GameEvents.PLAYER_MOVEMENT_IMPACT, ImpactMovement);
+        PlayerAnimation.onPlayerGetUp -= OnPlayerGetUp;
+        PlayerAnimation.onPlayerSitDown -= OnPlayerSitDown;
+        PlayerAnimation.onPlayerLegKick -= OnLegKick;
+        PlayerWeaponControl.onImpactMovement -= ImpactMovement;   
         
         ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }
@@ -102,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         _canMove = false;
     }
 
-    private void OnLegPunched(float punchDuration)
+    private void OnLegKick(float punchDuration)
     {
         StartCoroutine(OnLegPunchedRoutine(punchDuration));
     }
@@ -163,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
         _isJumpForbidden = true;
         this.DOWait(_jumpDelay).OnComplete(() => { _isJumpForbidden = false; });
 
-        Messenger.Broadcast(GameEvents.PLAYER_JUMPED);
+        onPlayerJumped?.Invoke();
     }
     
     private bool CanJump()

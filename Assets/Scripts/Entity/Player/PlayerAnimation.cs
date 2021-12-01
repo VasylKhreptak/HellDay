@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -25,9 +26,13 @@ public class PlayerAnimation : MonoBehaviour
     
     private Coroutine _configurableUpdate;
 
+    public static Action onPlayerGetUp;
+    public static Action onPlayerSitDown;
+    public static Action<float> onPlayerLegKick;
+
     private void OnEnable()
     {
-        Messenger.AddListener(GameEvents.PLAYER_JUMPED, OnPlayerJumped);
+        PlayerMovement.onPlayerJumped += OnPlayerJumped;
         
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFrameRate, () =>
         {
@@ -41,8 +46,8 @@ public class PlayerAnimation : MonoBehaviour
 
     private void OnDisable()
     {
-        Messenger.RemoveListener(GameEvents.PLAYER_JUMPED, OnPlayerJumped);
-        
+        PlayerMovement.onPlayerJumped -= OnPlayerJumped;
+
         ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }
 
@@ -73,13 +78,13 @@ public class PlayerAnimation : MonoBehaviour
             if (LadderMovement.isOnLadder == false)
             {
                 _animator.SetBool(Sit, true);
-                Messenger.Broadcast(GameEvents.PLAYER_SIT_DOWN);
+                onPlayerSitDown?.Invoke();
             }
         }
         else if (_joystick.Vertical > _sitJoystickSensetivity && isSitting)
         {
             _animator.SetBool(Sit, false);
-            Messenger.Broadcast(GameEvents.PLAYER_GET_UP);
+            onPlayerGetUp?.Invoke();
         }
     }
 
@@ -96,9 +101,8 @@ public class PlayerAnimation : MonoBehaviour
         {
             _legKickDuration = _animator.GetCurrentAnimatorStateInfo(0).length;
         }
-
-        Messenger<float>.Broadcast(GameEvents.PLAYER_LEG_KICK, _legKickDuration, 
-            MessengerMode.DONT_REQUIRE_LISTENER);
+        
+        onPlayerLegKick?.Invoke(_legKickDuration);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

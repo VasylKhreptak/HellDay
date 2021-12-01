@@ -1,15 +1,23 @@
+using System;
+
 public class Player : DamageableObject
 {
+    public static Action onPlayerDied;
+    public static Action<float> onSetMaxHealthBar;
+    public static Action<float> onSetHealthBar;
+
+
+    
     protected override void SetMaxHealth(float maxHealth)
     {
         _health = data.MAXHealth;
         
-        Messenger<float>.Broadcast(GameEvents.SET_MAX_HEALTH_BAR, data.MAXHealth);
+        onSetMaxHealthBar?.Invoke(data.MAXHealth);
     }
 
     protected override void DeathActions()
      {
-         Messenger.Broadcast(GameEvents.PLAYER_DIED);
+         onPlayerDied?.Invoke();
          
          base.DeathActions();
      }
@@ -23,6 +31,6 @@ public class Player : DamageableObject
 
     private void UpdateHealthBar()
      {
-         Messenger<float>.Broadcast(GameEvents.SET_HEALTH_BAR, _health);
+         onSetHealthBar?.Invoke(_health);
      }
 }

@@ -21,12 +21,14 @@ public class ZombieAIMovement : AIMovementCore
 
     protected void OnEnable()
     {
-        Messenger.AddListener(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, OnPlayedAudioSource);
+        ExplosiveObjectCore.onPlayedLoudSound += OnPlayedLoudSound;
+        WeaponCore.onShoot += OnPlayedLoudSound;
     }
 
     protected void OnDisable()
     {
-        Messenger.RemoveListener(GameEvents.PLAYED_LOUD_AUDIO_SOURCE, OnPlayedAudioSource);
+        ExplosiveObjectCore.onPlayedLoudSound -= OnPlayedLoudSound;
+        WeaponCore.onShoot -= OnPlayedLoudSound;
     }
 
     protected virtual void Start()
@@ -38,7 +40,7 @@ public class ZombieAIMovement : AIMovementCore
         StartCoroutine(ControlMovementRoutine());
     }
     
-    protected void OnPlayedAudioSource()
+    protected void OnPlayedLoudSound()
     {
         Transform target = _damageableTargetDetection._closestTarget.Transform;
         

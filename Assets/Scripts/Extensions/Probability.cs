@@ -10,7 +10,7 @@ public static class Probability
         
         if (Random.Range(0f, 100f) <= probability)
         {
-            action.Invoke();
+            action?.Invoke();
         }
     }
 
