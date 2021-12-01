@@ -17,6 +17,8 @@ public class OnDamagePopup : MonoBehaviour
 
     public void SpawnDamagePopup(float damage)
     {
+        if (damage < 1) return;
+        
         GameObject obj = _objectPooler.GetFromPool(_data.damagePopupPool, _transform.position, 
             Quaternion.identity);
 

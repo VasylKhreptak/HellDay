@@ -1,25 +1,15 @@
-using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class WalkAudio : MonoBehaviour
 {
-    [System.Serializable]
-    private class StepAudio
-    {
-        public SurfaceTypes surfaceTypes;
-        public AudioClip[] audioClips;
-        [Range(0f, 1f)] public float volume = 1f;
-    }
+    [Header("Data")] 
+    [SerializeField] private WalkAudioData _data;
 
     [Header("References")] 
     [SerializeField] private Transform _transform;
     private Tilemap _tilemap;
-
-    [Header("Preferences")] 
-    [SerializeField] private StepAudio[] _stepAudios;
-    [SerializeField] private AudioClip[] _defaultStepAudios;
-
+    
     private AudioPooler _audioPooler;
 
     private void Start()
@@ -32,7 +22,7 @@ public class WalkAudio : MonoBehaviour
     {
         if (_tilemap.TryGetSurfaceType(out SurfaceTypes? steppedSurface, _transform.position - new Vector3(0, 1, 0)))
         {
-            foreach (var stepAudio in _stepAudios)
+            foreach (var stepAudio in _data.stepAudios)
             {
                 if (stepAudio.surfaceTypes == steppedSurface)
                 {
@@ -45,7 +35,7 @@ public class WalkAudio : MonoBehaviour
         }
         else
         {
-            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _defaultStepAudios.Random(),
+            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.defaultStepAudios.Random(),
                 _transform.position, 1f, 1f);
         }
     }
