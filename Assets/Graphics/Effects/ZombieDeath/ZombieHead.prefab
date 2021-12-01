@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -5493058844416879881}
   - component: {fileID: 6466259937800122857}
   - component: {fileID: -3571651825384071935}
+  - component: {fileID: 540936765819105208}
   m_Layer: 9
   m_Name: ZombieHead
   m_TagString: Untagged
@@ -149,15 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 3326083451539426045}
-  _spriteRenderer: {fileID: 3326083451539426044}
-  _minHorizontalVelocity: 1
-  _maxHorizontalVelocity: 6
-  _minVerticalVelocity: 9
-  _maxVerticalVelocity: 12
-  _minLifetime: 20
-  _maxLifetime: 30
-  _fadeDuration: 1
-  _torque: 3
+  _movementData: {fileID: 11400000, guid: 81437a5504c38ee44b9007e76e4d6162, type: 2}
 --- !u!114 &3594970783650347284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,3 +220,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 3594970783650347284}
   _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
+--- !u!114 &540936765819105208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326083451539426016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db3e4fe664dc3740a7ef219bf71fcf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 3326083451539426044}
+  _data: {fileID: 11400000, guid: 1f89512bc53c8a9469e5285f3d981e48, type: 2}

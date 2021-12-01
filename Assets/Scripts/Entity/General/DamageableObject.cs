@@ -9,7 +9,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
     protected float _health;
 
     [Header("Damage Event")] 
-    [SerializeField] private UnityEvent OnTakeDamage;
+    [SerializeField] private UnityEvent<float> OnTakeDamage;
 
     public bool IsDead => _health <= 0;
     public float Health => _health; 
@@ -33,7 +33,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
     {
         SetHealth(_health - damage);
 
-        OnTakeDamage.Invoke();
+        OnTakeDamage.Invoke(damage);
         
         if (IsDead)
         {

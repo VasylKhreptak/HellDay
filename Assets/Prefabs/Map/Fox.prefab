@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -3030408397500040501}
   - component: {fileID: 7506168231031224550}
   - component: {fileID: -3419841217682125325}
+  - component: {fileID: 1105675950004768932}
   m_Layer: 12
   m_Name: Fox
   m_TagString: Zombie
@@ -203,10 +204,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1382383338630164929}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
+      - m_Target: {fileID: 1105675950004768932}
+        m_TargetAssemblyTypeName: OnDamagePopup, Assembly-CSharp
+        m_MethodName: SpawnDamagePopup
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -284,3 +285,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2241750354051892543}
   _data: {fileID: 11400000, guid: bb41058ca1d287d4c9c6f1760ef81ee3, type: 2}
+--- !u!114 &1105675950004768932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241750354051892542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d8b6ac1cc98614c9a45cc69d5399f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2241750354051892543}
+  _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}

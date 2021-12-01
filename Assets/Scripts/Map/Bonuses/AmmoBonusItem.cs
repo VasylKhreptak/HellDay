@@ -11,7 +11,7 @@ public class AmmoBonusItem : MonoBehaviour
 
     private void Start()
     {
-        _playerWeaponControl = PlayerWeaponControl.Instance;
+        _playerWeaponControl = GameAssets.Instance.playerWeaponControl;
     }
 
     private void OnCollisionEnter2D(Collision2D player)

@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: -5671939042278429792}
   - component: {fileID: -895530468006664097}
   - component: {fileID: 2616108528986180355}
+  - component: {fileID: -2680386199953951414}
   m_Layer: 8
   m_Name: GreenZombie
   m_TagString: Zombie
@@ -463,7 +464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 7416989929528155681}
   _audio: {fileID: 8871311209068379307}
-  _damage: 50
+  _minDamage: 35
+  _maxDamage: 50
   _damageableTargetDetection: {fileID: 5350208796334916349}
   _atackDelay: 0.5
   _explosionRadius: 3.37
@@ -579,6 +581,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -2680386199953951414}
+        m_TargetAssemblyTypeName: OnDamagePopup, Assembly-CSharp
+        m_MethodName: SpawnDamagePopup
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-5671939042278429792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,3 +634,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 7416989929528155681}
   _data: {fileID: 11400000, guid: 1ff0a0ed47d7d01459c4bcc52270e209, type: 2}
+--- !u!114 &-2680386199953951414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416989929528155694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d8b6ac1cc98614c9a45cc69d5399f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7416989929528155681}
+  _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}

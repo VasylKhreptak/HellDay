@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: FuelBarrelExplosionData
   m_EditorClassIdentifier: 
   _explosionRadius: 5
-  _explosionForce: 300
+  _explosionForce: 100
+  _upwardsModifier: 0.5
+  _forceMode2D: 1
+  _chainExplosionDelay: 0.3
+  _maxDamage: 130
+  _maxCameraShakeIntensity: 13
+  _shakeDuration: 0.7
   layerMask:
     serializedVersion: 2
     m_Bits: 15297
-  _upwardsModifier: 0.1
-  _forceMode2D: 1
   forceCurve:
     serializedVersion: 2
     m_Curve:
@@ -43,8 +47,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _chainExplosionDelay: 0.3
-  _maxDamage: 130
   damageCurve:
     serializedVersion: 2
     m_Curve:
@@ -69,5 +71,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxCameraShakeIntensity: 13
-  _shakeDuration: 0.7

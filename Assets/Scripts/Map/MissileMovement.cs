@@ -11,9 +11,9 @@ public class MissileMovement : MonoBehaviour
 
     private Transform _target;
 
-    private void Awake()
+    private void Start()
     {
-        _target = FindObjectOfType<Player>().transform;
+        _target = GameAssets.Instance.playerTransfrom;
     }
 
     private void FixedUpdate()

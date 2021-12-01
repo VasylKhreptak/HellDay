@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2189580276505270320}
   - component: {fileID: 2048323617436931303}
   - component: {fileID: -5356666681114736782}
+  - component: {fileID: -3689801476683181486}
   m_Layer: 9
   m_Name: ZombieLeg
   m_TagString: Untagged
@@ -149,15 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 8129099873947751160}
-  _spriteRenderer: {fileID: 8129099873947751167}
-  _minHorizontalVelocity: -6
-  _maxHorizontalVelocity: 6
-  _minVerticalVelocity: 4
-  _maxVerticalVelocity: 5
-  _minLifetime: 20
-  _maxLifetime: 30
-  _fadeDuration: 1
-  _torque: 3
+  _movementData: {fileID: 11400000, guid: 778c5c9cb3c37d647bd8a385c8415dc0, type: 2}
 --- !u!114 &7482283976521225962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,3 +220,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 7482283976521225962}
   _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
+--- !u!114 &-3689801476683181486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129099873947751163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db3e4fe664dc3740a7ef219bf71fcf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 8129099873947751167}
+  _data: {fileID: 11400000, guid: 1f89512bc53c8a9469e5285f3d981e48, type: 2}

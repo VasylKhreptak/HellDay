@@ -102,7 +102,7 @@ public class AudioPooler : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        _listenerTransform = FindObjectOfType<AudioListener>().transform;
+        _listenerTransform = GameAssets.Instance.listenerTransform;
     }
 
     private IEnumerator SetTrackVolumeInternal(string track, float volume, float fadeTime)

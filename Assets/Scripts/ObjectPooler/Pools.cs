@@ -30,5 +30,6 @@ public enum Pools
     WoodenObjHitParticle,
     EntityDestroyParticle1, EntityDestroyParticle2, EntityDestroyParticle3, EntityDestroyParticle4, 
     EntityDestroyParticle5, EntityDestroyParticle6, EntityDestroyParticle7, EntityDestroyParticle8,
-    EntityDestroyParticle9
+    EntityDestroyParticle9,
+    DamagePopup
 }

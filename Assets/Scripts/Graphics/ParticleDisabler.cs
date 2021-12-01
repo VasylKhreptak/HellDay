@@ -12,7 +12,6 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     [SerializeField] private float _additionalDelay;
     
     private float _duration;
-    private Tween _tween;
     
     private void Awake()
     {
@@ -23,7 +22,7 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
     {
         _particleSystem.Play();
         
-        _tween = this.DOWait(_duration + _additionalDelay).OnComplete(() =>
+        this.DOWait(_duration + _additionalDelay).OnComplete(() =>
         {
             gameObject.SetActive(false);
         });
@@ -31,8 +30,6 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
 
     private void OnDisable()
     {
-        if (gameObject.scene.isLoaded == false) return;
-
-        _tween.Kill();
+        this.DOKill();
     }
 }

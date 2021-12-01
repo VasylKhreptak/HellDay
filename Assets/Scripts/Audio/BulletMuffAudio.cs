@@ -13,16 +13,12 @@ public class BulletMuffAudio : MonoBehaviour
     private Tilemap _tilemap;
     private bool _playedAudio;
     private PlayerWeaponControl _playerWeaponControl;
-
-    private void Awake()
-    {
-        _tilemap = FindObjectsOfType<Tilemap>()[1];
-    }
-
+    
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;
-        _playerWeaponControl = PlayerWeaponControl.Instance;
+        _playerWeaponControl = GameAssets.Instance.playerWeaponControl;
+        _tilemap = GameAssets.Instance.mainTilemap;
     }
 
     private void OnEnable()
@@ -57,7 +53,7 @@ public class BulletMuffAudio : MonoBehaviour
     private float GetSoundProbability()
     {
         Weapons curentWeapon = _playerWeaponControl.currentWeapon.weaponType;
-
+        
         foreach (var sound in _data.playSoundProbabilities)
         {
             if (sound.weaponType == curentWeapon)

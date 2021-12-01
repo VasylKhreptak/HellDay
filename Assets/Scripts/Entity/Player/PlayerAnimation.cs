@@ -7,6 +7,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Animator _animator;
     [SerializeField] private Joystick _joystick;
+    [SerializeField] private WalkAudio _playerWalkAudio;
     
     [Header("Preferences")]
     [SerializeField] private int _updateFrameRate = 30;
@@ -96,13 +97,16 @@ public class PlayerAnimation : MonoBehaviour
             _legKickDuration = _animator.GetCurrentAnimatorStateInfo(0).length;
         }
 
-        Messenger<float>.Broadcast(GameEvents.PLAYER_LEG_KICK, _legKickDuration);
+        Messenger<float>.Broadcast(GameEvents.PLAYER_LEG_KICK, _legKickDuration, 
+            MessengerMode.DONT_REQUIRE_LISTENER);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (_playerJumped)
         {
+            _playerWalkAudio.PlayStepSound();
+            
             _animator.ResetTrigger(Jump);
             _animator.SetTrigger(Landed);
 

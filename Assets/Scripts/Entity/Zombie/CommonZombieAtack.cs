@@ -30,7 +30,7 @@ public class CommonZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(_damage);
+        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(DamageValue);
         
         SpawnAtackParticles();
     }

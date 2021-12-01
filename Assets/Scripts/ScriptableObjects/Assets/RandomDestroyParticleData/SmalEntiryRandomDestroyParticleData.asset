@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: SmalEntiryRandomDestroyParticleData
   m_EditorClassIdentifier: 
   destroyParticles:
-  - particle: 0
-    probability: 0
-  - particle: 0
-    probability: 0
-  - particle: 0
-    probability: 0
-  - particle: 0
-    probability: 0
-  - particle: 0
-    probability: 0
-  - particle: 0
-    probability: 0
-  - particle: 0
-    probability: 0
+  - particle: 51
+    probability: 24.1
+  - particle: 52
+    probability: 24.8
+  - particle: 53
+    probability: 21.7
+  - particle: 54
+    probability: 25.3
+  - particle: 55
+    probability: 24.7
+  - particle: 56
+    probability: 18.7
+  - particle: 57
+    probability: 25.3

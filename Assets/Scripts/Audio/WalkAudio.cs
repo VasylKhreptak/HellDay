@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,8 +14,8 @@ public class WalkAudio : MonoBehaviour
 
     [Header("References")] 
     [SerializeField] private Transform _transform;
-    [SerializeField] private Tilemap _tilemap;
-    
+    private Tilemap _tilemap;
+
     [Header("Preferences")] 
     [SerializeField] private StepAudio[] _stepAudios;
     [SerializeField] private AudioClip[] _defaultStepAudios;
@@ -24,6 +25,7 @@ public class WalkAudio : MonoBehaviour
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;
+        _tilemap = GameAssets.Instance.mainTilemap;
     }
 
     public void PlayStepSound()

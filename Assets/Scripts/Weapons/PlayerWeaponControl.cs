@@ -14,14 +14,7 @@ public class PlayerWeaponControl : MonoBehaviour
     [HideInInspector] public Weapon currentWeapon;
 
     private ObjectPooler _objectPooler;
-
-    public static PlayerWeaponControl Instance;
     
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;

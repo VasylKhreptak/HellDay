@@ -12,7 +12,7 @@ public class OnBulletHit : MonoBehaviour
 
     private void Start()
     {
-        _playerWeaponControl = PlayerWeaponControl.Instance;
+        _playerWeaponControl = GameAssets.Instance.playerWeaponControl;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

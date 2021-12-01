@@ -21,7 +21,7 @@ public class WeaponBonusItem : MonoBehaviour
 
     private void Start()
     {
-        _playerWeaponControl = PlayerWeaponControl.Instance;
+        _playerWeaponControl = GameAssets.Instance.playerWeaponControl;
     }
 
     private void OnEnable()

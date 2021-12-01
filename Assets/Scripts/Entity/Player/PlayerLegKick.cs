@@ -15,13 +15,15 @@ public class PlayerLegKick : MonoBehaviour
     [SerializeField] private ForceMode2D _forceMode2D;
 
     [Header("Damage")] 
-    [SerializeField] private float _kickDamage = 30f;
+    [SerializeField] private float _minKickDamage = 20f;
+    [SerializeField] private float _maxKickDamage = 30f;
     
     [Header("KickTorque")] 
     [SerializeField] private float _minKickTorque;
     [SerializeField] private float _maxKickTorque;
 
     private bool _canKick = true;
+    private float DamageValue => Random.Range(_minKickDamage, _maxKickDamage);
 
     public void Kick()
     {
@@ -54,7 +56,7 @@ public class PlayerLegKick : MonoBehaviour
     {
         if (atackedObj.TryGetComponent(out IDamageable target))
         {
-            target.TakeDamage(_kickDamage);
+            target.TakeDamage(DamageValue);
         }
     }
 
