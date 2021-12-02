@@ -58,7 +58,7 @@ public class PlayerAnimation : MonoBehaviour
 
         _playerJumped = true;
     }
-
+    
     private void RunAnimation()
     {
         _animator.SetFloat(Speed, Mathf.Abs(_rigidbody2D.velocity.x));

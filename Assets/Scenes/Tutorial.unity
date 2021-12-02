@@ -62827,7 +62827,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.8488529, y: 1}
+    m_SensorSize: {x: 2.0386474, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -78344,6 +78344,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c195d69f421153547b34838e5c65debd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1755073925 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3370208105785574490, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+  m_PrefabInstance: {fileID: 3370208107536943395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755073905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20f4e77e907014b489703ff92e431d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1755073927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82109,9 +82120,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 691253524}
     - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 85eb35f083579f04d8a99fcf8694bef6, type: 2}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
       propertyPath: _damageApmlifier
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _damageableObject
+      value: 
+      objectReference: {fileID: 1755073925}
     - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
       propertyPath: _minDamageImpulse
       value: 140

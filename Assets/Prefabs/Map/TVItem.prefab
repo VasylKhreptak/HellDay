@@ -206,11 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 202023072429888342}
-  _minDamageImpulse: 40
-  _damageAmplifier: 0.3
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 32639
+  _data: {fileID: 11400000, guid: 6d06bf2c6359c1e43bdd115971ba79f4, type: 2}
 --- !u!114 &-2899590387510029910
 MonoBehaviour:
   m_ObjectHideFlags: 0

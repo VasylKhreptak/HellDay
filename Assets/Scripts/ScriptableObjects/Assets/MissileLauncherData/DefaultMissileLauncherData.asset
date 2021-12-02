@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e3cc2c0e3a0cd4599a02a0f01c5e66, type: 3}
   m_Name: DefaultMissileLauncherData
   m_EditorClassIdentifier: 
-  missile: 0
+  missile: 35
   _shootDelay: 2
   _maxCameraShakeIntensity: 2
   _cameraShakeDuration: 0.4
   _checkRange: 9
-  _missileLaunchSound: {fileID: 0}
+  _missileLaunchSound: {fileID: 8300000, guid: 3cc2eda79b6b45f4c94afab01e057d6f, type: 3}

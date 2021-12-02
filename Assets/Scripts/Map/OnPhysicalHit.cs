@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class OnPhysicalHit : MonoBehaviour
@@ -6,19 +7,21 @@ public class OnPhysicalHit : MonoBehaviour
     [SerializeField] private DamageableObject _damageableObject;
 
     [Header("Preferences")] 
-    [SerializeField, Min(0f)] private float _minDamageImpulse = 60f;
-    [SerializeField, Min(0f)] private float _damageAmplifier = 0.2f;
-    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private OnPhysicalHitData _data;
+
+    public Action onPhysicalHit;
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (_layerMask.ContainsLayer(other.gameObject.layer) == false) return;
+        if (_data.layerMask.ContainsLayer(other.gameObject.layer) == false) return;
         
         float impulse = other.GetImpulse();
     
-        if (impulse > _minDamageImpulse)
+        if (impulse > _data.MINDamageImpulse)
         {
-            _damageableObject.TakeDamage(impulse * _damageAmplifier);
+            _damageableObject.TakeDamage(impulse * _data.DamageAmplifier);
+            
+            onPhysicalHit?.Invoke();
         }
     }
 }
