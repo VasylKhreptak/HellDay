@@ -4,6 +4,5 @@ using UnityEngine;
 public class OnBulletHitParticleData : ScriptableObject
 {
     [Header("Preferences")]
-    public LayerMask bulletLayerMask;
     public Pools particle;
 }

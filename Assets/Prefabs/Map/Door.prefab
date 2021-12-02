@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 7226936234029771181}
   - component: {fileID: 994183506022071972}
   - component: {fileID: 1369320811666953573}
+  - component: {fileID: 5538755975716982270}
   m_Layer: 0
   m_Name: ClosedDoor
   m_TagString: Untagged
@@ -340,21 +341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1369320811666953573}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &7231389117494755404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 860217084594707549}
-  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
+  _onBulletHitEvent: {fileID: 5538755975716982270}
 --- !u!114 &7226936234029771181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,6 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onBulletHitEvent: {fileID: 5538755975716982270}
   _data: {fileID: 11400000, guid: 90a827b1803f2434298d9737eb50cedc, type: 2}
 --- !u!114 &1369320811666953573
 MonoBehaviour:
@@ -409,4 +396,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2631920038594490531}
+  _damageableObject: {fileID: 860217084594707549}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
+--- !u!114 &5538755975716982270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631920038594490533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ce596a24c59f499bb874df4004247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}

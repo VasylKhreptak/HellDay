@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4105045469047707014}
   - component: {fileID: -570631561840407178}
   - component: {fileID: 3900403480465838692}
+  - component: {fileID: 6349122131827532291}
   m_Layer: 9
   m_Name: EntityDestroyParticle_2
   m_TagString: Untagged
@@ -164,21 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 4dc1fa7beb78dc34d9ef447f1837d099, type: 2}
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4105045469047707014}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5889979929306531443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onBulletHitEvent: {fileID: 6349122131827532291}
   _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}
 --- !u!114 &4105045469047707014
 MonoBehaviour:
@@ -205,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1213989383792997432}
+  _damageableObject: {fileID: 2555602164113189781}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &-570631561840407178
 MonoBehaviour:
@@ -219,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 2555602164113189781}
-  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
+  _onBulletHitEvent: {fileID: 6349122131827532291}
 --- !u!114 &3900403480465838692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,3 +222,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1213989383792997432}
   _data: {fileID: 11400000, guid: 1f89512bc53c8a9469e5285f3d981e48, type: 2}
+--- !u!114 &6349122131827532291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213989383792997436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ce596a24c59f499bb874df4004247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}

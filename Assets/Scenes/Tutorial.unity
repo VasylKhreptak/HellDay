@@ -3103,6 +3103,7 @@ GameObject:
   - component: {fileID: 495567611}
   - component: {fileID: 495567610}
   - component: {fileID: 495567612}
+  - component: {fileID: 495567613}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -59274,7 +59275,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onBulletHitEvent: {fileID: 495567613}
   _data: {fileID: 11400000, guid: 1157702905e0af9469572dc274857116, type: 2}
+--- !u!114 &495567613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495567604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ce596a24c59f499bb874df4004247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}
 --- !u!1001 &499989544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62827,7 +62842,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0386474, y: 1}
+    m_SensorSize: {x: 2.0091324, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -78294,6 +78309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1755073909}
+  _damageableObject: {fileID: 1755073925}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
 --- !u!114 &1755073908 stripped
 MonoBehaviour:
@@ -82115,6 +82131,10 @@ PrefabInstance:
       propertyPath: _data
       value: 
       objectReference: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
+    - target: {fileID: 3370208105785574493, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _damageableObject
+      value: 
+      objectReference: {fileID: 1755073925}
     - target: {fileID: 3370208105785574495, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
       propertyPath: _joystick
       value: 
@@ -82123,6 +82143,10 @@ PrefabInstance:
       propertyPath: _data
       value: 
       objectReference: {fileID: 11400000, guid: 85eb35f083579f04d8a99fcf8694bef6, type: 2}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _transform
+      value: 
+      objectReference: {fileID: 1755073909}
     - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
       propertyPath: _damageApmlifier
       value: 0.2
@@ -82139,6 +82163,30 @@ PrefabInstance:
       propertyPath: _playerDamageableTarget
       value: 
       objectReference: {fileID: 1755073914}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _boneCrackAudioClips.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _boneCrackAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 224c083fc44024848b86ad9021b86662, type: 3}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _boneCrackAudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: df65887dad2cc5a448bec1fa5b39b354, type: 3}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _boneCrackAudioClips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: e19f8eadee8f78047a64fba683350969, type: 3}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _boneCrackAudioClips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b268f97ea709d244aee0c1329ea7a32, type: 3}
+    - target: {fileID: 3370208105785574560, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _boneCrackAudioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3855f0ec390f47e40a38af343ecac56b, type: 3}
     - target: {fileID: 3370208105785574561, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
       propertyPath: _kickDelay
       value: 1
@@ -82959,6 +83007,10 @@ PrefabInstance:
       propertyPath: _stepAudios.Array.data[3].audioClips.Array.data[10]
       value: 
       objectReference: {fileID: 8300000, guid: 9c280d698f16f42419f3933abf5eb4a8, type: 3}
+    - target: {fileID: 3370208106056099464, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 5fc7817aaba786e48860a0a93150b56e, type: 2}
     - target: {fileID: 3370208106194749328, guid: 43152ade012893c409d605aeed1dce7c, type: 3}
       propertyPath: _playerAmmo
       value: 

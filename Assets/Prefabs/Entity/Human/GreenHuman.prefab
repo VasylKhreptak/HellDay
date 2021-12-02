@@ -44,11 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2884323285179535675}
-  _rayHeight: 0.1
-  _distanceBetweenRays: 0.3
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 65
+  _data: {fileID: 11400000, guid: 5fc7817aaba786e48860a0a93150b56e, type: 2}
 --- !u!1 &2837030567138173462
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,9 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf4a0c6b082a4f449c265e9e8a32afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 2599
+  _data: {fileID: 11400000, guid: e72d99e4a49077f44a7800f6ca690b49, type: 2}
 --- !u!1 &3907067198257414143
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,6 +436,7 @@ GameObject:
   - component: {fileID: 6877750337172207174}
   - component: {fileID: 6202640741434709371}
   - component: {fileID: 4131101956576998354}
+  - component: {fileID: 5233039744937930773}
   m_Layer: 13
   m_Name: GreenHuman
   m_TagString: Human
@@ -611,33 +606,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: b25140ac7a9315a46b27bc7b16d0643e, type: 2}
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1626460420190059125}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 4131101956576998354}
-        m_TargetAssemblyTypeName: OnDamagePopup, Assembly-CSharp
-        m_MethodName: SpawnDamagePopup
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &4442164844535817795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -689,6 +657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 5953720082183312745}
+  _damageableObject: {fileID: 1217716363719380448}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &8403851451936388472
 MonoBehaviour:
@@ -866,7 +835,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 5953720082183312751}
+  _damageableObject: {fileID: 1217716363719380448}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
+--- !u!114 &5233039744937930773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5953720082183312748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ed1c0242aeb544983bc71e8006cd27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: 1217716363719380448}
+  _data: {fileID: 11400000, guid: 85eb35f083579f04d8a99fcf8694bef6, type: 2}
+  _transform: {fileID: 5953720082183312751}
+  _boneCrackAudioClips:
+  - {fileID: 8300000, guid: 224c083fc44024848b86ad9021b86662, type: 3}
+  - {fileID: 8300000, guid: df65887dad2cc5a448bec1fa5b39b354, type: 3}
+  - {fileID: 8300000, guid: e19f8eadee8f78047a64fba683350969, type: 3}
+  - {fileID: 8300000, guid: 4b268f97ea709d244aee0c1329ea7a32, type: 3}
+  - {fileID: 8300000, guid: 3855f0ec390f47e40a38af343ecac56b, type: 3}
 --- !u!1 &6292533600055082441
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,9 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94700f44dc93e34ea19ce17ab7957e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 2599
+  _data: {fileID: 11400000, guid: 1309058674c42464abea1c286b6b8c82, type: 2}
 --- !u!1 &8915658410569601896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,3 +999,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1e674c0a9ba974e9e8e23c14bb4b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 50adbb8257ebf134f9216a64900d791b, type: 2}

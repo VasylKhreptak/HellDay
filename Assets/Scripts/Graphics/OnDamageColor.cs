@@ -6,6 +6,7 @@ public class OnDamageColor : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private DamageableObject _damageableObject;
 
     [Header("Data")] 
     [SerializeField] private ObjectOnDamageColorData _data;
@@ -19,8 +20,18 @@ public class OnDamageColor : MonoBehaviour
         _data.halfDuration = _data.Duration / 2;
         previous = _spriteRenderer.color;
     }
- 
-    public void ReactOnDamage()
+
+    private void OnEnable()
+    {
+        _damageableObject.onTakeDamage += ReactOnDamage;
+    }
+
+    private void OnDisable()
+    {
+        _damageableObject.onTakeDamage -= ReactOnDamage;
+    }
+
+    public void ReactOnDamage(float damage)
     {
         _seq = DOTween.Sequence();
 

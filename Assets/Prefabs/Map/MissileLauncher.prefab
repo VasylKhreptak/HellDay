@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 2078283136499940470}
   - component: {fileID: 5620676730960520793}
   - component: {fileID: -140992886124013357}
+  - component: {fileID: 1720846263908670891}
   m_Layer: 12
   m_Name: MissileLauncher
   m_TagString: Untagged
@@ -138,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 8095864718571885536}
   _missileSpawnPlace: {fileID: 8095864717548970804}
+  _target: {fileID: 0}
   _weaponAmmo: {fileID: 8095864718571885537}
   _data: {fileID: 11400000, guid: 5f068cab9cbfa9f4dadafcd887aa6d9c, type: 2}
 --- !u!114 &8095864718571885540
@@ -226,33 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5231692996594535001}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: -140992886124013357}
-        m_TargetAssemblyTypeName: OnDamagePopup, Assembly-CSharp
-        m_MethodName: SpawnDamagePopup
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &-4515145204444310264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 4250873461489992447}
-  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
+  _onBulletHitEvent: {fileID: 1720846263908670891}
 --- !u!114 &5231692996594535001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8095864718571885543}
+  _damageableObject: {fileID: 4250873461489992447}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &2078283136499940470
 MonoBehaviour:
@@ -293,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onBulletHitEvent: {fileID: 1720846263908670891}
   _data: {fileID: 11400000, guid: 00cd2a1da8241c346ab8fe421196d86c, type: 2}
 --- !u!114 &5620676730960520793
 MonoBehaviour:
@@ -307,6 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 8095864718571885543}
+  _damageableObject: {fileID: 4250873461489992447}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &-140992886124013357
 MonoBehaviour:
@@ -321,4 +299,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 8095864718571885536}
+  _damageableObject: {fileID: 4250873461489992447}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
+--- !u!114 &1720846263908670891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095864718571885545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ce596a24c59f499bb874df4004247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}

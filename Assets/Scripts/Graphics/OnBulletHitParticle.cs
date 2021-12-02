@@ -1,8 +1,10 @@
-using System;
 using UnityEngine;
 
 public class OnBulletHitParticle : MonoBehaviour
 {
+    [Header("References")] 
+    [SerializeField] private OnBulletHitEvent _onBulletHitEvent;
+    
     [Header("Data")] 
     [SerializeField] private OnBulletHitParticleData _data;
 
@@ -13,12 +15,14 @@ public class OnBulletHitParticle : MonoBehaviour
         _objectPooler = ObjectPooler.Instance;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnEnable()
     {
-        if (_data.bulletLayerMask.ContainsLayer(other.gameObject.layer))
-        {
-            SpawnParticle(other);
-        }
+        _onBulletHitEvent.onBulletHit += SpawnParticle;
+    }
+
+    private void OnDisable()
+    {
+        _onBulletHitEvent.onBulletHit -= SpawnParticle;
     }
 
     private void SpawnParticle(Collision2D collisionData)

@@ -1,21 +1,13 @@
-using UnityEngine;
-
-public class BarrierChecker : MonoBehaviour
+public class BarrierChecker : EnvironmentCheckerCore
 {
-    [Header("Preferences")] 
-    [SerializeField] private LayerMask _layerMask;
-    
     public bool isBarrierClose { get; private set; }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnEnterSmth()
     {
-        if (_layerMask.ContainsLayer(other.gameObject.layer))
-        {
-            isBarrierClose = true;
-        }
+        isBarrierClose = true;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    protected override void OnExitSmth()
     {
         isBarrierClose = false;
     }

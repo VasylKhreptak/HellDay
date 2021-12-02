@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270855f17940d4a4b85af3550f64935c, type: 3}
-  m_Name: ObjectOnBulletHitData
+  m_Script: {fileID: 11500000, guid: 0f082369f938bd3469cf406bd24ecc5d, type: 3}
+  m_Name: ZombieOnPhysicalFallData
   m_EditorClassIdentifier: 
-  bulletLayerMask:
+  _minDamageImpulse: 100
+  _damageAmplifier: 0.2
+  layerMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1

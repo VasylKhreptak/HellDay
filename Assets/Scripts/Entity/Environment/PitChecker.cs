@@ -1,15 +1,13 @@
-using UnityEngine;
-
-public class PitChecker : MonoBehaviour
+public class PitChecker : EnvironmentCheckerCore
 {
     public bool isPitNearp { get;private set; }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void OnEnterSmth()
     {
         isPitNearp = false;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    protected override void OnExitSmth()
     {
         isPitNearp = true;
     }

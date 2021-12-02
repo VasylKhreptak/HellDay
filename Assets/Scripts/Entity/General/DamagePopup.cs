@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class DamagePopup : MonoBehaviour
     [Header("Data")] 
     [SerializeField] private DamagePopupData _data;
     
-    private void Awake()
+    private void Start()
     {
         _data.previousScale = _rectTransform.localScale;
     }

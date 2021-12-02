@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 5700340255813981454}
   - component: {fileID: 418654113987802514}
   - component: {fileID: 7748304026682578195}
+  - component: {fileID: 487084664422848679}
+  - component: {fileID: -5478725276248333434}
   m_Layer: 8
   m_Name: WhiteZombie
   m_TagString: Zombie
@@ -272,7 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 3003906475258495791}
   _audio: {fileID: -7618934783012836963}
-  _damage: 20
+  _minDamage: 10
+  _maxDamage: 20
   _damageableTargetDetection: {fileID: 1226190151111486158}
   _atackDelay: 1
   _biteRadius: 0.1
@@ -307,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3003906475258495776}
+  _damageableObject: {fileID: -5478087810871367721}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &9106996787451204420
 MonoBehaviour:
@@ -374,33 +378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 42b9df218f603cf44ac02df56e692496, type: 2}
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -8369543912305918424}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7748304026682578195}
-        m_TargetAssemblyTypeName: OnDamagePopup, Assembly-CSharp
-        m_MethodName: SpawnDamagePopup
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &-370082132941081515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: -5478087810871367721}
-  _data: {fileID: 11400000, guid: b90d62f14abb4f342a847cb2f6fbbc90, type: 2}
+  _onBulletHitEvent: {fileID: 487084664422848679}
 --- !u!114 &5700340255813981454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onBulletHitEvent: {fileID: 487084664422848679}
   _data: {fileID: 11400000, guid: f14f22e83a53bd4468fe4a19530e7e8d, type: 2}
 --- !u!114 &418654113987802514
 MonoBehaviour:
@@ -455,7 +433,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3003906475258495791}
+  _damageableObject: {fileID: -5478087810871367721}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
+--- !u!114 &487084664422848679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003906475258495832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ce596a24c59f499bb874df4004247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}
+--- !u!114 &-5478725276248333434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3003906475258495832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20ed1c0242aeb544983bc71e8006cd27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageableObject: {fileID: -5478087810871367721}
+  _data: {fileID: 11400000, guid: 7da706e9c1ffbfa45873fcced9a5abe5, type: 2}
+  _transform: {fileID: 3003906475258495791}
+  _boneCrackAudioClips:
+  - {fileID: 8300000, guid: 224c083fc44024848b86ad9021b86662, type: 3}
+  - {fileID: 8300000, guid: df65887dad2cc5a448bec1fa5b39b354, type: 3}
+  - {fileID: 8300000, guid: e19f8eadee8f78047a64fba683350969, type: 3}
+  - {fileID: 8300000, guid: 4b268f97ea709d244aee0c1329ea7a32, type: 3}
+  - {fileID: 8300000, guid: 3855f0ec390f47e40a38af343ecac56b, type: 3}
 --- !u!1 &3003906475816504809
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1e674c0a9ba974e9e8e23c14bb4b73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 50adbb8257ebf134f9216a64900d791b, type: 2}
 --- !u!1 &3003906476236602794
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,9 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94700f44dc93e34ea19ce17ab7957e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 2599
+  _data: {fileID: 11400000, guid: 1309058674c42464abea1c286b6b8c82, type: 2}
 --- !u!1 &3003906476768543234
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,9 +711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf4a0c6b082a4f449c265e9e8a32afa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 2599
+  _data: {fileID: 11400000, guid: e72d99e4a49077f44a7800f6ca690b49, type: 2}
 --- !u!1 &6226399228717433169
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,8 +756,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 5339653357312416248}
-  _rayHeight: 0.1
-  _distanceBetweenRays: 0.3
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 1
+  _data: {fileID: 11400000, guid: 5fc7817aaba786e48860a0a93150b56e, type: 2}

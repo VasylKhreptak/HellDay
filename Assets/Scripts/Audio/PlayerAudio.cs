@@ -7,7 +7,6 @@ public class PlayerAudio : MonoBehaviour
 
     [Header("Audio Clips")]
     [SerializeField] private AudioClip[] _legKickAudioClips;
-    [SerializeField] private AudioClip[] _boneCrackAudioClips;
 
     private AudioPooler _audioPooler;
     
@@ -19,12 +18,6 @@ public class PlayerAudio : MonoBehaviour
     public void PlayLegKickSound()
     {
         _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _legKickAudioClips.Random(),
-            _transform.position, 1f, 1f);
-    }
-
-    public void PlayBoneCrackSound()
-    {
-        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _boneCrackAudioClips.Random(),
             _transform.position, 1f, 1f);
     }
 }

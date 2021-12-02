@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BonusBoxOnPhysicalHitData
   m_EditorClassIdentifier: 
   _minDamageImpulse: 40
-  _damageAmplifier: 0.3
+  _damageAmplifier: 1
   layerMask:
     serializedVersion: 2
     m_Bits: 2049

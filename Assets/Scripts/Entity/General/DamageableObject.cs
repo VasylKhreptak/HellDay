@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class DamageableObject : MonoBehaviour, IDamageable
 {
@@ -8,9 +8,8 @@ public class DamageableObject : MonoBehaviour, IDamageable
     
     protected float _health;
 
-    [Header("Damage Event")] 
-    [SerializeField] private UnityEvent<float> OnTakeDamage;
-
+    public Action<float> onTakeDamage; 
+    
     public bool IsDead => _health <= 0;
     public float Health => _health; 
 
@@ -33,7 +32,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
     {
         SetHealth(_health - damage);
 
-        OnTakeDamage?.Invoke(damage);
+        onTakeDamage?.Invoke(damage);
         
         if (IsDead)
         {

@@ -4,6 +4,7 @@ public class OnDamagePopup : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform _transform;
+    [SerializeField] private DamageableObject _damageableObject;
     
     [Header("Data")] 
     [SerializeField] private OnDamagePopupData _data;
@@ -13,6 +14,16 @@ public class OnDamagePopup : MonoBehaviour
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
+    }
+
+    private void OnEnable()
+    {
+        _damageableObject.onTakeDamage += SpawnDamagePopup;
+    }
+
+    private void OnDisable()
+    {
+        _damageableObject.onTakeDamage -= SpawnDamagePopup;
     }
 
     public void SpawnDamagePopup(float damage)
