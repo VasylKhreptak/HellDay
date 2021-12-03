@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosionRadius: 3
   _explosionForce: 100
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 4553
   _upwardsModifier: 0
   _forceMode2D: 1
+  _chainExplosionDelay: 0.1
+  _maxDamage: 80
+  _maxCameraShakeIntensity: 13
+  _shakeDuration: 0.7
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 5065
   forceCurve:
     serializedVersion: 2
     m_Curve:
@@ -43,8 +47,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _chainExplosionDelay: 0.1
-  _maxDamage: 80
   damageCurve:
     serializedVersion: 2
     m_Curve:
@@ -69,5 +71,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _maxCameraShakeIntensity: 13
-  _shakeDuration: 0.7

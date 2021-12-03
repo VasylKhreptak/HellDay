@@ -13,14 +13,43 @@ public class LiberatorDetection : MonoBehaviour
     [SerializeField] private Transform _transform;
     [SerializeField] private float _detectRadius = 10f;
 
+    private Coroutine _detectionCoroutine;
+
     private void Awake()
     {
         StartDetection();
     }
 
+    private void OnEnable()
+    {
+        Player.onPlayerDied += StopDetection;
+        Player.onResurrection += StartDetection;
+    }
+
+    private void OnDisable()
+    {
+        Player.onPlayerDied -= StopDetection;
+        Player.onResurrection -= StartDetection;
+    }
+
     private void StartDetection()
     {
-        StartCoroutine(DetectionRoutine());
+        if (_detectionCoroutine == null)
+        {
+            _detectionCoroutine = StartCoroutine(DetectionRoutine());
+        }
+    }
+
+    private void StopDetection()
+    {
+        if (_detectionCoroutine != null)
+        {
+            StopCoroutine(_detectionCoroutine);
+
+            _detectionCoroutine = null;
+
+            _signAnimation.SetSignState(false);
+        }
     }
 
     private IEnumerator DetectionRoutine()
@@ -29,7 +58,8 @@ public class LiberatorDetection : MonoBehaviour
         {
             if (_playerObj.activeSelf)
             {
-                _signAnimation.SetSignState(_transform.position.ContainsPosition(_detectRadius, _player.position));
+                _signAnimation.SetSignState(_transform.position.ContainsPosition(_detectRadius, 
+                    _player.position));
             }
 
             yield return new WaitForSeconds(_checkDelay);

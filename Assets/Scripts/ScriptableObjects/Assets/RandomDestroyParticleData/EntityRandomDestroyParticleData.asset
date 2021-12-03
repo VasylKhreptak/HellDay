@@ -13,21 +13,21 @@ MonoBehaviour:
   m_Name: EntityRandomDestroyParticleData
   m_EditorClassIdentifier: 
   destroyParticles:
-  - particle: 49
+  - particle: 48
     probability: 100
+  - particle: 49
+    probability: 75.6
   - particle: 50
-    probability: 77.2
-  - particle: 51
     probability: 76
+  - particle: 51
+    probability: 20.7
   - particle: 52
     probability: 20.7
   - particle: 53
     probability: 20.7
   - particle: 54
-    probability: 20.7
-  - particle: 55
     probability: 20
-  - particle: 56
+  - particle: 55
     probability: 16.9
-  - particle: 57
+  - particle: 56
     probability: 19.4

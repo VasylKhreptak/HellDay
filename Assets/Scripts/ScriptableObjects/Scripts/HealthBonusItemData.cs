@@ -9,6 +9,10 @@ public class HealthBonusItemData : BonusItemData
 
     [Header("Apply effect")]
     public Pools applyEffect;
+    public Pools healthPopup = Pools.DamagePopup;
+
+    [Header("Popup Color")] 
+    public Color popupColor = Color.green;
     
     public float MINHealth => _minHealth;
     public float MAXHealth => _maxHealth;

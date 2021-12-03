@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 479341544790557788}
   - component: {fileID: -4223586774371580319}
   - component: {fileID: -7322198967888827408}
+  - component: {fileID: -7710512303906793430}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -36,10 +37,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2332932505156407061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106.24, y: 2.78, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3752098223863716663}
+  - {fileID: 4558552942433850535}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -155,7 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2332932505156407063}
   _explosiveObjData: {fileID: 11400000, guid: 0ecb8988479863e478b07eafa9b2fd5a, type: 2}
-  _smokeSpawnPlace: {fileID: 3752098223863716663}
+  _damageableObject: {fileID: 4834108193137379625}
+  _smoke: {fileID: 857037403123436573}
   _fuelBarrelData: {fileID: 11400000, guid: 9432ebf8e73433b4f8e08564c10f56b8, type: 2}
 --- !u!114 &8510690795750098952
 MonoBehaviour:
@@ -269,33 +271,89 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}
---- !u!1 &7900906738514500328
-GameObject:
+--- !u!114 &-7710512303906793430
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3752098223863716663}
-  m_Layer: 0
-  m_Name: SmokeSpawnPlace
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3752098223863716663
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d8b6ac1cc98614c9a45cc69d5399f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2332932505156407063}
+  _damageableObject: {fileID: 4834108193137379625}
+  _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
+--- !u!1001 &7717508810803726845
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2332932505156407063}
+    m_Modifications:
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.193
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.469
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6989260779262445024, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222707960136979582, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: m_Name
+      value: FuelBarrelSmoke
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+--- !u!4 &4558552942433850535 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+  m_PrefabInstance: {fileID: 7717508810803726845}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900906738514500328}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.19, y: 0.464, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2332932505156407063}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &857037403123436573 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6989260779262445024, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+  m_PrefabInstance: {fileID: 7717508810803726845}
+  m_PrefabAsset: {fileID: 0}

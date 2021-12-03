@@ -41,6 +41,6 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  damagePopupPool: 58
+  damagePopupPool: 57
   _minDamageColorValue: 5
   _maxDamageColorValue: 25

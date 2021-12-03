@@ -21,8 +21,7 @@ public class BirdMovement : MonoBehaviour
     
     private void OnEnable()
     {
-        KillTweens();
-
+        _tween.Kill();
         _tween = this.DOWait(_birdData.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
 
         ExplosiveObjectCore.onPlayedLoudSound += OnPlayedLoudAudio;
@@ -31,16 +30,10 @@ public class BirdMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        KillTweens();
+        _tween.Kill();
         
         ExplosiveObjectCore.onPlayedLoudSound -= OnPlayedLoudAudio;
         WeaponCore.onShoot -= OnPlayedLoudAudio;
-    }
-
-    private void KillTweens()
-    {
-        _tween.Kill();
-        this.DOKill();
     }
 
     private void OnPlayedLoudAudio()

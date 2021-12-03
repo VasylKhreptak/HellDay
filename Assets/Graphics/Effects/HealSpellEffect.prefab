@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7050223219633469960}
   - component: {fileID: 8849197831923337246}
   - component: {fileID: 6672652765558751543}
-  - component: {fileID: -8079958026045081363}
   m_Layer: 9
   m_Name: HealSpellEffect
   m_TagString: Untagged
@@ -4780,7 +4779,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 20
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
@@ -4820,16 +4819,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 7050223219633469960}
   _additionalDelay: 0
---- !u!114 &-8079958026045081363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6392242989480813475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ec2046f524bbfb4e8d7e3abd4d2a3fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transform: {fileID: 1358160030522500513}

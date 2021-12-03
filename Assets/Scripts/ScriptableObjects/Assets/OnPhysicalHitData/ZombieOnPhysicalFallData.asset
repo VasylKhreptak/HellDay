@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f082369f938bd3469cf406bd24ecc5d, type: 3}
   m_Name: ZombieOnPhysicalFallData
   m_EditorClassIdentifier: 
-  _minDamageImpulse: 100
-  _damageAmplifier: 0.2
+  _minDamageImpulse: 120
+  _damageAmplifier: 0.17
   layerMask:
     serializedVersion: 2
     m_Bits: 1

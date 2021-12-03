@@ -22,12 +22,11 @@ public class PlayerLegKick : MonoBehaviour
     [SerializeField] private float _minKickTorque;
     [SerializeField] private float _maxKickTorque;
 
-    private bool _canKick = true;
     private float DamageValue => Random.Range(_minKickDamage, _maxKickDamage);
 
     public void Kick()
     {
-        if (_playerObj.activeSelf == false || _canKick == false) return;
+        if (CanKick() == false) return;
         
         GameObject atackedObj = GetAttackedObject();
         
@@ -36,6 +35,11 @@ public class PlayerLegKick : MonoBehaviour
         DiscardObject(atackedObj);
 
         DamageObject(atackedObj);
+    }
+
+    private bool CanKick()
+    {
+        return _playerObj.activeSelf;
     }
 
     private void DiscardObject(GameObject atackedObj)

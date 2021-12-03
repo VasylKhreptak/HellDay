@@ -10,6 +10,8 @@ public class DamagePopup : MonoBehaviour
 
     [Header("Data")] 
     [SerializeField] private DamagePopupData _data;
+
+    private Tween _tween1, _tween2, _tween3;
     
     private void Start()
     {
@@ -24,17 +26,26 @@ public class DamagePopup : MonoBehaviour
 
     private void OnEnable()
     {
+        KillTweens();
+        
         _rectTransform.localScale = _data.previousScale;
         
-        this.DOWait(_data.Lifetime).OnComplete(() => { gameObject.SetActive(false);});
-        _TMP.DOFade(0, _data.Lifetime).SetEase(_data._alphaCurve);
-        _rectTransform.DOScale(Vector3.zero, _data.Lifetime).SetEase(_data._scaleCurve);
+        _tween1 = this.DOWait(_data.Lifetime).OnComplete(() => { gameObject.SetActive(false);});
+        _tween2 = _TMP.DOFade(0, _data.Lifetime).SetEase(_data._alphaCurve);
+        _tween3 = _rectTransform.DOScale(Vector3.zero, _data.Lifetime).SetEase(_data._scaleCurve);
     }
 
     private void OnDisable()
     {
-        this.DOKill();
-        _TMP.DOKill();
-        _rectTransform.DOKill();
+        if (gameObject.scene.isLoaded == false) return;
+        
+        KillTweens();
+    }
+
+    private void KillTweens()
+    {
+        _tween1.Kill();
+        _tween2.Kill();
+        _tween3.Kill();
     }
 }

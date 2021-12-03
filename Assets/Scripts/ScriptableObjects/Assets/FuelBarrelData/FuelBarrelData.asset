@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FuelBarrelData
   m_EditorClassIdentifier: 
   _explodeDelay: 4
-  _maxTakeDamageNumber: 2
-  _smoke: 34
+  _healthPercentage: 55.1
+  smoke: 34

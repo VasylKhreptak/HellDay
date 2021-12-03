@@ -1,4 +1,5 @@
 using DG.Tweening;
+using DG.Tweening.Core;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -12,13 +13,11 @@ public class OnDamageColor : MonoBehaviour
     [SerializeField] private ObjectOnDamageColorData _data;
 
     private Sequence _seq;
-    private Tween _tween;
-    private Color previous;
+    private Color _previousColor;
     
     private void Awake()
     {
-        _data.halfDuration = _data.Duration / 2;
-        previous = _spriteRenderer.color;
+        _previousColor = _spriteRenderer.color;
     }
 
     private void OnEnable()
@@ -33,15 +32,17 @@ public class OnDamageColor : MonoBehaviour
 
     public void ReactOnDamage(float damage)
     {
-        _seq = DOTween.Sequence();
+        _seq.Kill();
 
-        _seq.Append(_spriteRenderer.DOColor(_data.onDamageColor,  _data.halfDuration)).SetId("FadeTween");
-        _seq.Append(_spriteRenderer.DOColor(previous,  _data.halfDuration)).SetId("FadeTween");
+        _seq = DOTween.Sequence();
+        _seq.Append(_spriteRenderer.DOColor(_data.onDamageColor, _data.HalfDuration));
+        _seq.Append(_spriteRenderer.DOColor(_previousColor, _data.HalfDuration));
     }
 
     private void OnDestroy()
     {
+        if (gameObject.scene.isLoaded == false) return;
+
         _seq.Kill();
-       DOTween.Kill("FadeTween");
     }
 }

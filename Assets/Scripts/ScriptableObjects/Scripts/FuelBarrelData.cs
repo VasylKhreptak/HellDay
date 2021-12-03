@@ -5,11 +5,8 @@ public class FuelBarrelData : ScriptableObject
 {
     [Header("Preferences")]
     [SerializeField] private float _explodeDelay = 4f;
-    [SerializeField] private int _maxTakeDamageNumber = 2;
-    [SerializeField] private Pools _smoke;
+    [SerializeField, Range(0f, 100f)] private float _healthPercentage = 50f;
     
     public float ExplodeDelay => _explodeDelay;
-    public int MAXTakeDamageNumber => _maxTakeDamageNumber;
-    public Pools Smoke => _smoke;
-
+    public float HealthPercentage => _healthPercentage;
 }

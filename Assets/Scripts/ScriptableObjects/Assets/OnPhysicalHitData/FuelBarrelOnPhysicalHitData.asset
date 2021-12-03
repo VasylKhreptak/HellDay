@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f082369f938bd3469cf406bd24ecc5d, type: 3}
   m_Name: FuelBarrelOnPhysicalHitData
   m_EditorClassIdentifier: 
-  _minDamageImpulse: 40
-  _damageAmplifier: 1
+  _minDamageImpulse: 80
+  _damageAmplifier: 0.6
   layerMask:
     serializedVersion: 2
     m_Bits: 2049

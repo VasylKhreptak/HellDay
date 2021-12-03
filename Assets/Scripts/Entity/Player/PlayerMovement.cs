@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -14,45 +13,41 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _movementForce = 5f;
     [SerializeField] private float _minJumpForce = 15f;
     [SerializeField] private float _maxJumpForce = 30f;
+    [SerializeField] private float _maxHorVelocity = 5f;
     [SerializeField, Range(0f, 1f)] private float _horizontalSensetivity = 0.5f;
     [SerializeField, Range(0f, 1f)] private float _verticalSensetivity = 0.8f;
     [SerializeField] private float _jumpDelay = 1f;
-    [SerializeField] private float _maxHorVelocity = 5f;
     [SerializeField] private ForceMode2D _movementMode = ForceMode2D.Impulse;
+    [SerializeField] private float _minChangeDirectionSpeed = 0.1f;
+    [SerializeField] private int _confFaceDirFramerate = 6;
     
     private bool _canMove = true;
     private bool _isJumpForbidden ;
-    [Range(-1, 1)] private static int movementDirection;
+    private bool _isGrounded;
     
+    [Range(-1, 1)] private static int movementDirection;
     public static  int MovementDirection => movementDirection;
     
-    private readonly float MIN_CHANGE_DIRECTION_SPEED = 0.1f;
-    private readonly int UPDATE_FRAMERATE = 10;
-    private Coroutine _configurableUpdate;
-    private bool _isGrounded;
 
-    private float _previousMovementForce, _previousMinJumpForce, _previousMaxJumpForce, _previousMaxHorVelocity;
+    private float _previousMaxHorVelocity;
 
     public static Action onPlayerJumped;
+    private Coroutine _configurableUpdate;
 
     private void Awake()
     {
-        _previousMovementForce = _movementForce;
-        _previousMinJumpForce = _minJumpForce;
-        _previousMaxJumpForce = _maxJumpForce;
         _previousMaxHorVelocity = _maxHorVelocity;
     }
 
     private void OnEnable()
     {
-        PlayerAnimation.onPlayerGetUp += OnPlayerGetUp;
-        PlayerAnimation.onPlayerSitDown += OnPlayerSitDown;
-        PlayerAnimation.onPlayerLegKick += OnLegKick;
+        PlayerSitAndUpAnimation.onGetUp += () => { _canMove = true; };
+        PlayerSitAndUpAnimation.onSitDown += () => { _canMove = false; };
         PlayerWeaponControl.onImpactMovement += ImpactMovement;
         
         SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
         
-        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, UPDATE_FRAMERATE, () =>
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _confFaceDirFramerate, () =>
         {
             if (IsJoystickPressed())
             {
@@ -63,17 +58,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerAnimation.onPlayerGetUp -= OnPlayerGetUp;
-        PlayerAnimation.onPlayerSitDown -= OnPlayerSitDown;
-        PlayerAnimation.onPlayerLegKick -= OnLegKick;
+        PlayerSitAndUpAnimation.onGetUp -= () => { _canMove = true; };
+        PlayerSitAndUpAnimation.onSitDown -= () => { _canMove = false;};
         PlayerWeaponControl.onImpactMovement -= ImpactMovement;   
         
         ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
-    }
-
-    private void OnPlayerGetUp()
-    {
-        _canMove = true;
     }
 
     private void ImpactMovement(float percentage)
@@ -81,43 +70,20 @@ public class PlayerMovement : MonoBehaviour
         RestoreMovementPreferences();
         
         float clampedPercentage = percentage / 100f;
-        
-        _movementForce -= _movementForce * clampedPercentage;
-        _minJumpForce -= _minJumpForce * clampedPercentage;
-        _maxJumpForce -= _maxJumpForce * clampedPercentage;
-        _maxHorVelocity -= _maxJumpForce * clampedPercentage;
+
+        _maxHorVelocity -= _maxHorVelocity * clampedPercentage;
     }
 
     private void RestoreMovementPreferences()
     {
-        _movementForce = _previousMovementForce;
-        _minJumpForce = _previousMinJumpForce;
-        _maxJumpForce = _previousMaxJumpForce;
         _maxHorVelocity = _previousMaxHorVelocity;
-    }
-
-    private void OnPlayerSitDown()
-    {
-        _canMove = false;
-    }
-
-    private void OnLegKick(float punchDuration)
-    {
-        StartCoroutine(OnLegPunchedRoutine(punchDuration));
-    }
-
-    private IEnumerator OnLegPunchedRoutine(float punchDuration)
-    {
-        _canMove = false;
-
-        yield return new WaitForSeconds(punchDuration);
-
-        _canMove = true;
     }
 
     private void Update()
     {
-        if (_joystick.Horizontal == 0 || _canMove == false) return;
+        Debug.Log("Is leg in movement: " + (PlayerLegKickAnimation.IsPlaying));
+        
+        if (_joystick.Horizontal == 0 || _canMove == false || PlayerLegKickAnimation.IsPlaying) return;
 
         HorizontalMovement();
 
@@ -126,12 +92,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void ConfigureFaceDirection()
     {
-        if (Math.Abs(_rigidbody2D.velocity.x) > MIN_CHANGE_DIRECTION_SPEED)
+        if (Math.Abs(_rigidbody2D.velocity.x) > _minChangeDirectionSpeed)
         {
             SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
         }
     }
 
+    private void SetDirection(int direction)
+    {
+        transform.localScale = new Vector3(direction, 1, 1);
+
+        movementDirection = direction;
+    }
+    
     private bool IsJoystickPressed()
     {
         return _joystick.Horizontal != 0 && _joystick.Vertical != 0;
@@ -174,12 +147,5 @@ public class PlayerMovement : MonoBehaviour
         
         return _joystick.Vertical > _verticalSensetivity && _groundChecker.IsGrounded() &&
                LadderMovement.isOnLadder == false;
-    }
-
-    private void SetDirection(int direction)
-    {
-        transform.localScale = new Vector3(direction, 1, 1);
-
-        movementDirection = direction;
     }
 }

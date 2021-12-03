@@ -17,6 +17,6 @@ MonoBehaviour:
     m_Bits: 64
   _minHealth: 10
   _maxHealth: 40
-  applyEffect: 46
-  player: {fileID: 0}
-  objectPooler: {fileID: 0}
+  applyEffect: 45
+  healthPopup: 57
+  popupColor: {r: 0, g: 1, b: 0, a: 1}

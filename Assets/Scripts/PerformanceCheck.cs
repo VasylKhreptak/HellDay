@@ -3,20 +3,22 @@ using UnityEngine;
 
 public class PerformanceCheck : MonoBehaviour
 {
-    // private readonly int _iterations = 1;
+    // private readonly int _iterations = 20000000;
     //
     // private void Start()
     // {
-    //     Debug.Log("tag");
+    //     ObjectPooler testReference = ObjectPooler.Instance;
+    //     
+    //     Debug.Log("!= null");
     //     Debug.Log(GetExecutionTime(_iterations, () =>
     //     {
-    //
+    //         if (testReference != null) ;
     //     }));
     //     
-    //     Debug.Log("component");
+    //     Debug.Log("!");
     //     Debug.Log(GetExecutionTime(_iterations, () =>
     //     {
-    //         
+    //         if (testReference) ;
     //     }));
     // }
     //

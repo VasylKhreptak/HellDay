@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3370208105785574480}
   - component: {fileID: 3370208105785574485}
   - component: {fileID: 3370208105785574484}
-  - component: {fileID: 3370208105785574491}
   - component: {fileID: 3370208105785574481}
   - component: {fileID: 3370208105785574490}
   - component: {fileID: 3370208105785574489}
@@ -168,24 +167,6 @@ MonoBehaviour:
   _jumpDelay: 0.5
   _maxHorVelocity: 7
   _movementMode: 1
---- !u!114 &3370208105785574491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3370208105785574482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18806e1d6ef09dd40a3cbbe4c4a25a82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody2D: {fileID: 3370208105785574480}
-  _animator: {fileID: 3370208105785574485}
-  _joystick: {fileID: 0}
-  _updateFrameRate: 10
-  _sitJoystickSensetivity: -0.7
-  _punchDelay: 0.6
 --- !u!61 &3370208105785574481
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -224,35 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f4e77e907014b489703ff92e431d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _onDamageColor: {fileID: 3370208105785574493}
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3370208105785574493}
-        m_TargetAssemblyTypeName: OnDamageColor, Assembly-CSharp
-        m_MethodName: ReactOnDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 3370208105785574490}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: UpdateHealthBar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  data: {fileID: 0}
 --- !u!114 &3370208105785574489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,8 +266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3370208105785574487}
-  _onDamageColor: {r: 1, g: 0.63584906, b: 0.63584906, a: 1}
-  _duration: 0.2
+  _damageableObject: {fileID: 0}
+  _data: {fileID: 0}
 --- !u!114 &3370208105785574494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208105785574486}
-  _destroyParticles: 110000001200000013000000140000001400000015000000150000000b000000
+  _data: {fileID: 0}
 --- !u!114 &3370208105785574562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,19 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208105785574486}
-  _killableTarget: {fileID: 3370208105785574489}
-  _damageDelay: 1
-  _damage: 15
-  _blood: 16
-  _damageAudioClips:
-  - {fileID: 8300000, guid: 8461aba903d62a342b7704028d4cfca0, type: 3}
-  - {fileID: 8300000, guid: 6bbff1939df6dea42a7c32024e83848a, type: 3}
-  - {fileID: 8300000, guid: 6c8a62022ba08a143a32bf33714bd9aa, type: 3}
-  - {fileID: 8300000, guid: e524cf30be369564684b1137a0c6b27a, type: 3}
-  - {fileID: 8300000, guid: 4c4caa00f3f0c7a4e925392668381e19, type: 3}
-  - {fileID: 8300000, guid: c639a5343e65e4741bddd1fcd71278ed, type: 3}
-  - {fileID: 8300000, guid: 48a9c85fce2a43e4298e78a80c9c07db, type: 3}
-  - {fileID: 8300000, guid: f95c4f9a481ca37459f0f6a1aa2b3eec, type: 3}
+  _damageableTarget: {fileID: 0}
+  _data: {fileID: 0}
 --- !u!114 &3370208105785574561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,14 +369,11 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 13057
-  _kickDelay: 0.7
-  _delayBeforeKick: 0.2
-  _entityDamage: 40
   _forceMode2D: 1
+  _minKickDamage: 20
+  _maxKickDamage: 30
   _minKickTorque: 1
-  _maxkickTorque: 3
-  _playerAnimation: {fileID: 3370208105785574491}
-  _playerAudio: {fileID: 3370208105785574566}
+  _maxKickTorque: 0
 --- !u!114 &3370208105785574560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,13 +386,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ed1c0242aeb544983bc71e8006cd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerKillableTarget: {fileID: 3370208105785574489}
-  _groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  _landingDamage: 40
-  _minDamageImpulse: 150
-  _playerAudio: {fileID: 3370208105785574566}
+  _damageableObject: {fileID: 0}
+  _data: {fileID: 0}
+  _transform: {fileID: 0}
+  _boneCrackAudioClips: []
 --- !u!114 &3370208105785574567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,12 +430,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2078e8d3ff3ee864abb95cf006bb9a74, type: 3}
   - {fileID: 8300000, guid: b860a7acacd54a3449e9c7ad5d2db2c7, type: 3}
   - {fileID: 8300000, guid: b0d786c314568a748b887a316d8cbd2e, type: 3}
-  _boneCrackAudioClips:
-  - {fileID: 8300000, guid: 224c083fc44024848b86ad9021b86662, type: 3}
-  - {fileID: 8300000, guid: df65887dad2cc5a448bec1fa5b39b354, type: 3}
-  - {fileID: 8300000, guid: e19f8eadee8f78047a64fba683350969, type: 3}
-  - {fileID: 8300000, guid: 4b268f97ea709d244aee0c1329ea7a32, type: 3}
-  - {fileID: 8300000, guid: 3855f0ec390f47e40a38af343ecac56b, type: 3}
 --- !u!82 &3370208105785574565
 AudioSource:
   m_ObjectHideFlags: 0
@@ -820,11 +750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208106056099466}
-  _rayHeight: 0.06
-  _distanceBetweenRays: 0.3
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 257
+  _data: {fileID: 0}
 --- !u!1 &3370208106184490346
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,13 +904,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208106194749333}
-  _playerWeaponAmmo: {fileID: 3370208106194749338}
+  _playerAmmo: {fileID: 0}
   _bulletMuffSpawnPlace: {fileID: 3370208105938210711}
   _bulletSpawnPlace: {fileID: 3370208106184490345}
   _shootParticleSpawnPlace: {fileID: 3370208107232523664}
   _shootDelay: 0.15
   _angleScatter: 3
-  _canShoot: 1
   _animator: {fileID: 3370208106194749334}
   _bullet: 2
   _bulletMuff: 3
@@ -1004,7 +929,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 4
+  playerAmmo: {fileID: 0}
+  weaponPoolName: 0
   _movementImpact: 6
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!82 &3370208106194749329
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1113,6 +1042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _emptyAmmo: {fileID: 0}
 --- !u!114 &3370208106194749338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,7 +1055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 100
+  _startupAmmo: 200
 --- !u!1 &3370208106262268840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,7 +1166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d00c110736004e04281f8508a12651ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponToSelect: 3
+  _transform: {fileID: 0}
   _weapons:
   - {fileID: 3370208106842021503}
   - {fileID: 3370208107726386512}
@@ -1245,6 +1175,8 @@ MonoBehaviour:
   - {fileID: 3370208107196624697}
   - {fileID: 3370208106613086985}
   - {fileID: 3370208106958623996}
+  _startupWeapon: 0
+  currentWeapon: {fileID: 0}
 --- !u!1 &3370208106528673936
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,13 +1360,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208106613086982}
-  _playerWeaponAmmo: {fileID: 3370208106613086991}
+  _playerAmmo: {fileID: 0}
   _bulletMuffSpawnPlace: {fileID: 3370208105899247134}
   _bulletSpawnPlace: {fileID: 3370208107835769910}
   _shootParticleSpawnPlace: {fileID: 3370208107662221556}
   _shootDelay: 0.07
   _angleScatter: 10
-  _canShoot: 1
   _animator: {fileID: 3370208106613086986}
   _bullet: 5
   _bulletMuff: 1
@@ -1454,7 +1385,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 6
+  playerAmmo: {fileID: 0}
+  weaponPoolName: 0
   _movementImpact: 5
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!82 &3370208106613086981
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1563,6 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _emptyAmmo: {fileID: 0}
 --- !u!114 &3370208106613086991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1575,7 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 100
+  _startupAmmo: 200
 --- !u!1 &3370208106676342616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,13 +1706,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208106842021492}
-  _playerWeaponAmmo: {fileID: 3370208106842021501}
+  _playerAmmo: {fileID: 0}
   _bulletMuffSpawnPlace: {fileID: 3370208107207399790}
   _bulletSpawnPlace: {fileID: 3370208106581140351}
   _shootParticleSpawnPlace: {fileID: 3370208107528204155}
   _shootDelay: 0.1
   _angleScatter: 5
-  _canShoot: 1
   _animator: {fileID: 3370208106842021496}
   _bullet: 0
   _bulletMuff: 1
@@ -1796,7 +1731,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0
+  playerAmmo: {fileID: 0}
+  weaponPoolName: 0
   _movementImpact: 5
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!82 &3370208106842021497
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1924,6 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _emptyAmmo: {fileID: 0}
 --- !u!114 &3370208106842021501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1936,7 +1876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 100
+  _startupAmmo: 200
 --- !u!1 &3370208106861703923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,13 +2030,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208106958623997}
-  _playerWeaponAmmo: {fileID: 3370208106958623938}
+  _playerAmmo: {fileID: 0}
   _bulletMuffSpawnPlace: {fileID: 3370208106528673943}
   _bulletSpawnPlace: {fileID: 3370208106725848471}
   _shootParticleSpawnPlace: {fileID: 3370208105958307230}
   _shootDelay: 1.4
   _angleScatter: 15
-  _canShoot: 1
   _animator: {fileID: 3370208106958623998}
   _bullet: 5
   _bulletMuff: 4
@@ -2213,7 +2152,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 2
+  playerAmmo: {fileID: 0}
+  weaponPoolName: 0
   _movementImpact: 15.8
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!114 &3370208106958623939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2226,6 +2169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _emptyAmmo: {fileID: 0}
 --- !u!114 &3370208106958623938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2238,7 +2182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 10
+  _startupAmmo: 200
 --- !u!1 &3370208107108045731
 GameObject:
   m_ObjectHideFlags: 0
@@ -2392,13 +2336,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208107196624694}
-  _playerWeaponAmmo: {fileID: 3370208107196624703}
+  _playerAmmo: {fileID: 0}
   _bulletMuffSpawnPlace: {fileID: 3370208106315952908}
   _bulletSpawnPlace: {fileID: 3370208107108045730}
   _shootParticleSpawnPlace: {fileID: 3370208107423614151}
   _shootDelay: 0.12
   _angleScatter: 6
-  _canShoot: 1
   _animator: {fileID: 3370208107196624698}
   _bullet: 0
   _bulletMuff: 1
@@ -2418,7 +2361,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 5
+  playerAmmo: {fileID: 0}
+  weaponPoolName: 0
   _movementImpact: 8
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!82 &3370208107196624693
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2527,6 +2474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _emptyAmmo: {fileID: 0}
 --- !u!114 &3370208107196624703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2539,7 +2487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 100
+  _startupAmmo: 200
 --- !u!1 &3370208107207399791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,7 +2671,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 3
+  playerAmmo: {fileID: 0}
+  weaponPoolName: 0
   _movementImpact: 8
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!114 &3370208107305154137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2737,13 +2689,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208107305154142}
-  _playerWeaponAmmo: {fileID: 3370208107305154211}
+  _playerAmmo: {fileID: 0}
   _bulletMuffSpawnPlace: {fileID: 3370208106262268847}
   _bulletSpawnPlace: {fileID: 3370208105982331430}
   _shootParticleSpawnPlace: {fileID: 3370208106676342623}
   _shootDelay: 0.05
   _angleScatter: 10
-  _canShoot: 1
   _animator: {fileID: 3370208107305154143}
   _bullet: 0
   _bulletMuff: 1
@@ -2864,6 +2815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _emptyAmmo: {fileID: 0}
 --- !u!114 &3370208107305154211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2876,7 +2828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 200
+  _startupAmmo: 200
 --- !u!1 &3370208107374590812
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,13 +3207,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 3370208107726386509}
-  _playerWeaponAmmo: {fileID: 3370208107726386518}
+  _playerAmmo: {fileID: 0}
   _bulletMuffSpawnPlace: {fileID: 3370208106861703922}
   _bulletSpawnPlace: {fileID: 3370208106027142734}
   _shootParticleSpawnPlace: {fileID: 3370208106711187695}
   _shootDelay: 1
   _angleScatter: 3
-  _canShoot: 1
   _animator: {fileID: 3370208107726386513}
   _bullet: 2
   _bulletMuff: 3
@@ -3281,7 +3232,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 1
+  playerAmmo: {fileID: 0}
+  weaponPoolName: 0
   _movementImpact: 6
+  _minDamage: 10
+  _maxDamage: 20
 --- !u!82 &3370208107726386508
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3390,6 +3345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a73f332108b4745a6a2c70310e8d30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _emptyAmmo: {fileID: 0}
 --- !u!114 &3370208107726386518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3402,7 +3358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a364e1f7cd632489f5877fc32e0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAmmo: 20
+  _startupAmmo: 200
 --- !u!1 &3370208107835769911
 GameObject:
   m_ObjectHideFlags: 0

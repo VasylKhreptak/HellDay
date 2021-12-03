@@ -19,7 +19,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
     [Tooltip("Time before two shoots")] 
     [SerializeField] protected float _shootDelay = 0.1f;
     [SerializeField] protected float _angleScatter = 5f; 
-    [SerializeField] protected bool _canShoot = true;
 
     [Header("Animator")] 
     [SerializeField] protected Animator _animator;
@@ -44,13 +43,15 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     public static Action onShoot;
     
+    protected bool _canShoot = true;
+    
     protected void OnEnable()
     {
         _previousAngleScatter = _angleScatter;
         
-        PlayerAnimation.onPlayerGetUp += OnPlayerGetUp;
-        PlayerAnimation.onPlayerLegKick += OnLegKick;
-        PlayerAnimation.onPlayerSitDown += OnPlayerSitDown;
+        PlayerSitAndUpAnimation.onGetUp += OnPlayerGetUp;
+        PlayerLegKickAnimation.onPlayed += StopShooting;
+        PlayerSitAndUpAnimation.onSitDown += OnPlayerSitDown;
     }
 
     protected void Start()
@@ -60,25 +61,9 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected void OnDisable()
     {
-        PlayerAnimation.onPlayerGetUp -= OnPlayerGetUp;
-        PlayerAnimation.onPlayerLegKick -= OnLegKick;
-        PlayerAnimation.onPlayerSitDown -= OnPlayerSitDown;
-    }
-
-    protected virtual void OnLegKick(float time)
-    {
-        StartCoroutine(OnLegPunchedCoroutine(time));
-    }
-
-    protected IEnumerator OnLegPunchedCoroutine(float animationDuration)
-    {
-        StopShooting();
-        
-        _canShoot = false;
-
-        yield return new WaitForSeconds(animationDuration);
-
-        _canShoot = true;
+        PlayerSitAndUpAnimation.onGetUp -= OnPlayerGetUp;
+        PlayerLegKickAnimation.onPlayed -= StopShooting;
+        PlayerSitAndUpAnimation.onSitDown -= OnPlayerSitDown;
     }
 
     protected void OnPlayerGetUp()
@@ -93,9 +78,9 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     public void StartShooting()
     {
-        if (_shootCoroutine != null || _canShoot == false) return;
-            
         if (_playerAmmo.IsEmpty) _weaponVFX.PlayEmptyAmmoSound(_transform.position);
+            
+        if (_shootCoroutine != null || _canShoot == false) return;
         
         _shootCoroutine = StartCoroutine(Shoot());
         
@@ -120,13 +105,13 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected virtual IEnumerator Shoot()
     {
-        onShoot?.Invoke();
-            
         while (true)
         {
             if (CanShoot())
             {
                 ShootActions();
+
+                onShoot?.Invoke();
             }
             else
             {
@@ -139,7 +124,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected bool CanShoot()
     {
-        return _canShoot && _playerAmmo.IsEmpty == false;
+        return _canShoot && _playerAmmo.IsEmpty == false && PlayerLegKickAnimation.IsPlaying == false;
     }
 
     protected virtual void ShootActions()

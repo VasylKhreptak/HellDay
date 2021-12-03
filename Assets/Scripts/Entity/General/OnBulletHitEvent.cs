@@ -12,7 +12,7 @@ public class OnBulletHitEvent : MonoBehaviour
     {
         if (_data.bulletLayerMask.ContainsLayer(other.gameObject.layer))
         {
-            onBulletHit.Invoke(other);
+            onBulletHit?.Invoke(other);
         }
     }
 }

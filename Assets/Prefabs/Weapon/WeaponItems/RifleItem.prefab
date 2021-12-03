@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 5991401774331609250}
   - component: {fileID: 509888894445895031}
   - component: {fileID: 9018785063688345065}
+  - component: {fileID: 2446544086834303338}
+  - component: {fileID: -2628861566141304190}
   m_Layer: 0
   m_Name: RifleItem
   m_TagString: Untagged
@@ -102,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponType: 1
   playerAmmo: {fileID: 9018785063688345065}
-  weaponPoolName: 40
+  weaponPoolName: 39
   _movementImpact: 6
   _minDamage: 10
   _maxDamage: 20
@@ -197,3 +199,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startupAmmo: 200
+--- !u!114 &2446544086834303338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069407383748528936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b881a7578bd0241963035e0fab0a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onBulletHitEvent: {fileID: -2628861566141304190}
+  _data: {fileID: 11400000, guid: 00cd2a1da8241c346ab8fe421196d86c, type: 2}
+--- !u!114 &-2628861566141304190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4069407383748528936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611ce596a24c59f499bb874df4004247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}

@@ -1,0 +1,36 @@
+using System;
+using DG.Tweening;
+using UnityEngine;
+
+public class PlayerLegKickAnimation : MonoBehaviour
+{
+    [Header("References")] 
+    [SerializeField] private Animator _animator;
+
+    public static Action onPlayed;
+    private float _legKickDuration;
+
+    private static bool _isPlaying;
+    public static bool IsPlaying => _isPlaying;
+
+    private Tween _tween;
+    
+    private readonly int LegKick = Animator.StringToHash("LegKick");
+    
+    public void PlayLegKickAnimation()
+    {
+        _animator.SetTrigger(LegKick);
+        this.DOWait(0.1f).OnComplete(() => { _animator.ResetTrigger(LegKick); });
+
+        if (_legKickDuration == 0)
+        {
+            _legKickDuration = _animator.GetCurrentAnimatorStateInfo(0).length;
+        }
+
+        _tween.Kill();
+        _isPlaying = true;
+        _tween = this.DOWait(_legKickDuration).OnComplete(() => { _isPlaying = false; });
+        
+        onPlayed?.Invoke();
+    }
+}

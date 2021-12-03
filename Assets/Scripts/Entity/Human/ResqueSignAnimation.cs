@@ -20,6 +20,8 @@ public class ResqueSignAnimation : MonoBehaviour
 
     private bool _isShown;
 
+    private Tween _tween1, _tween2, _tween3;
+    
     private void Awake()
     {
         Color color = _signRenderer.color;
@@ -44,15 +46,24 @@ public class ResqueSignAnimation : MonoBehaviour
     
     private void ShowSign(bool state)
     {
-        _signTransform.DOLocalMove(state ? _end.localPosition : _start.localPosition, _duration).SetEase(_moveCurve);
-        _signTransform.DOScale(state ? _end.localScale : _start.localScale, _duration).SetEase(_scaleCurve);
-        _signRenderer.DOFade(Convert.ToSingle(state), _duration).SetEase(_alphaCurve);
+        KillTweens();
+        
+        _tween1 = _signTransform.DOLocalMove(state ? _end.localPosition : _start.localPosition, _duration).SetEase(_moveCurve);
+        _tween2 = _signTransform.DOScale(state ? _end.localScale : _start.localScale, _duration).SetEase(_scaleCurve);
+        _tween3 = _signRenderer.DOFade(Convert.ToSingle(state), _duration).SetEase(_alphaCurve);
     }
 
     private void OnDestroy()
     {
-        _signTransform.DOKill();
-        _signRenderer.DOKill();
-        
+        if (gameObject.scene.isLoaded == false) return;
+
+        KillTweens();
+    }
+
+    private void KillTweens()
+    {
+        _tween1.Kill();
+        _tween2.Kill();
+        _tween3.Kill();
     }
 }

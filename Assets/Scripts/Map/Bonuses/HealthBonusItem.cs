@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,10 +10,16 @@ public class HealthBonusItem : MonoBehaviour
 
     private Player _player;
     private ObjectPooler _objectPooler;
+    private float _healthValue;
 
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
+    }
+
+    private void OnEnable()
+    {
+        _healthValue = Random.Range(_data.MINHealth, _data.MAXHealth);
     }
 
     private  void OnCollisionEnter2D(Collision2D other)
@@ -26,19 +34,25 @@ public class HealthBonusItem : MonoBehaviour
         if (_player && _player.gameObject.activeSelf && 
             Mathf.Approximately(_player.Health, _player.data.MAXHealth) == false)
         {
-            this._player.SetHealth(_player.Health + Random.Range(_data.MINHealth, _data.MAXHealth));
+            this._player.SetHealth(_player.Health + _healthValue);
 
-            SpawnHealthSpellEffect(_player);
+            SpawnHealEffects(_player);
             
             gameObject.SetActive(false);
         }
     }
 
-    private void SpawnHealthSpellEffect(Player player)
+    private void SpawnHealEffects(Player player)
     {
-        GameObject healSpell = _objectPooler.GetFromPool(_data.applyEffect, 
+        _objectPooler.GetFromPool(_data.applyEffect,
             player.transform.position, Quaternion.identity);
 
-        healSpell.transform.parent = player.transform;
+        GameObject healthPopup = _objectPooler.GetFromPool(_data.healthPopup, player.transform.position,
+            Quaternion.identity);
+
+        if (healthPopup.TryGetComponent(out DamagePopup popup))
+        {
+            popup.Init("+" + ((int) _healthValue).ToString(), _data.popupColor);
+        }
     }
 }

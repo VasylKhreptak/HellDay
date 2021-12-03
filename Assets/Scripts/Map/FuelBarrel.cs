@@ -3,25 +3,32 @@ using UnityEngine;
 
 public class FuelBarrel: ExplosiveObjectCore
 {
-    [Header("Smoke Preferences")]
-    [SerializeField] private Transform _smokeSpawnPlace;
+    [Header("References")] 
+    [SerializeField] private DamageableObject _damageableObject;
+
+    [Header("Smoke Preferences")] 
+    [SerializeField] private ParticleSystem _smoke;
 
     [Header("Fuel Barrel Data")] 
     [SerializeField] private FuelBarrelData _fuelBarrelData;
 
     private GameObject _smokeObj;
     private bool _isSmokeSpawned;
-    private ObjectPooler _objectPooler;
-    private int _currentTakeDamageNumber;
-    
+    private float _percentagedHealth;
+
     private void Start()
     {
-        _objectPooler = ObjectPooler.Instance;
+        _percentagedHealth = _damageableObject.Health * (_fuelBarrelData.HealthPercentage / 100f);
     }
 
-    public void OnTakeDamage()
+    private void OnEnable()
     {
-        if (++_currentTakeDamageNumber == _fuelBarrelData.MAXTakeDamageNumber)
+        _damageableObject.onTakeDamage += ControlSmokeAppearance;
+    }
+    
+    public void ControlSmokeAppearance(float damage)
+    {
+        if (_damageableObject.Health < _percentagedHealth)
         {
             StartCoroutine(SmokeRoutine());
         }
@@ -29,8 +36,7 @@ public class FuelBarrel: ExplosiveObjectCore
 
     private IEnumerator SmokeRoutine()
     {
-        _smokeObj = _objectPooler.GetFromPool(_fuelBarrelData.Smoke, _smokeSpawnPlace.position, Quaternion.identity);
-        _smokeObj.transform.parent = _transform;
+        _smoke.Play();
 
         yield return new WaitForSeconds(_fuelBarrelData.ExplodeDelay);
         
@@ -39,6 +45,8 @@ public class FuelBarrel: ExplosiveObjectCore
 
     public void OnDisable()
     {
+        _damageableObject.onTakeDamage -= ControlSmokeAppearance;
+
         if (gameObject.scene.isLoaded == false) return;
         
         ExplodeActions();

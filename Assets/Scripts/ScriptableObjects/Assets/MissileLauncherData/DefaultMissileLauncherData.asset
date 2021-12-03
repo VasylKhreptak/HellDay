@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e3cc2c0e3a0cd4599a02a0f01c5e66, type: 3}
   m_Name: DefaultMissileLauncherData
   m_EditorClassIdentifier: 
-  missile: 35
+  missile: 34
   _shootDelay: 2
   _maxCameraShakeIntensity: 2
   _cameraShakeDuration: 0.4
