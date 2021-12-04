@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: -4223586774371580319}
   - component: {fileID: -7322198967888827408}
   - component: {fileID: -7710512303906793430}
+  - component: {fileID: -7262268117712673338}
+  - component: {fileID: -1298053040064316947}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -286,6 +288,41 @@ MonoBehaviour:
   _transform: {fileID: 2332932505156407063}
   _damageableObject: {fileID: 4834108193137379625}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
+--- !u!114 &-7262268117712673338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dbe9d9f46b3164a8f2e2f31cc63492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2332932505156407063}
+  _onPhysicalHit: {fileID: -4454755025597967632}
+  _audioClips:
+  - {fileID: 8300000, guid: d5daaa3e2cf43844785fa51917f6143a, type: 3}
+  - {fileID: 8300000, guid: 003259fff64c4094da04120a656aff81, type: 3}
+  - {fileID: 8300000, guid: b178fea8c3bd309439f9702f606c8102, type: 3}
+  - {fileID: 8300000, guid: d28108295c88e074a87d48a48b6a33bc, type: 3}
+  - {fileID: 8300000, guid: f76b28ab91bebd5438d6483dcb0d50f5, type: 3}
+--- !u!114 &-1298053040064316947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 2332932505156407063}
+  _onBulletHitEvent: {fileID: -7322198967888827408}
+  _data: {fileID: 11400000, guid: a55b21e741984bc40916956e4e3595d9, type: 2}
 --- !u!1001 &7717508810803726845
 PrefabInstance:
   m_ObjectHideFlags: 0

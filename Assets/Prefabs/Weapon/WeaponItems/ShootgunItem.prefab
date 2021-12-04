@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -1655720786631030952}
   - component: {fileID: -7877076843593023159}
   - component: {fileID: 7094437632197349772}
+  - component: {fileID: 1444853811297730874}
   m_Layer: 0
   m_Name: ShootgunItem
   m_TagString: Untagged
@@ -226,3 +227,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}
+--- !u!114 &1444853811297730874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8693127765709484366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7736863913159793329}
+  _onBulletHitEvent: {fileID: 7094437632197349772}
+  _data: {fileID: 11400000, guid: a55b21e741984bc40916956e4e3595d9, type: 2}

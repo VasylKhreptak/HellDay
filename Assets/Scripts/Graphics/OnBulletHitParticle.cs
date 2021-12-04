@@ -17,12 +17,12 @@ public class OnBulletHitParticle : MonoBehaviour
 
     private void OnEnable()
     {
-        _onBulletHitEvent.onBulletHit += SpawnParticle;
+        _onBulletHitEvent.onHit += SpawnParticle;
     }
 
     private void OnDisable()
     {
-        _onBulletHitEvent.onBulletHit -= SpawnParticle;
+        _onBulletHitEvent.onHit -= SpawnParticle;
     }
 
     private void SpawnParticle(Collision2D collisionData)

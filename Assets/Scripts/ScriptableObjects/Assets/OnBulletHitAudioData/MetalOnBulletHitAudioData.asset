@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a48fd620459289448cd4ffca67bd3d7, type: 3}
+  m_Name: MetalOnBulletHitAudioData
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: db33731c2ce0a7d4692afc69b43692bb, type: 3}
+  - {fileID: 8300000, guid: 5a5eda992df01ea42aba94f9c5005ee0, type: 3}
+  - {fileID: 8300000, guid: ea8d7e78cf108aa49b372a0f14bd9a8b, type: 3}
+  - {fileID: 8300000, guid: 81318aa6b948aac4f8cd7b84732d4593, type: 3}
+  - {fileID: 8300000, guid: aeeb1b5ba711f5140afb5e25bb9df658, type: 3}

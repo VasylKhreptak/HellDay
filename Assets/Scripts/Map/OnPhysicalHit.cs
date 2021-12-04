@@ -9,7 +9,7 @@ public class OnPhysicalHit : MonoBehaviour
     [Header("Preferences")] 
     [SerializeField] private OnPhysicalHitData _data;
 
-    public Action onPhysicalHit;
+    public Action onHit;
     
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -21,7 +21,7 @@ public class OnPhysicalHit : MonoBehaviour
         {
             _damageableObject.TakeDamage(impulse * _data.DamageAmplifier);
             
-            onPhysicalHit?.Invoke();
+            onHit?.Invoke();
         }
     }
 }

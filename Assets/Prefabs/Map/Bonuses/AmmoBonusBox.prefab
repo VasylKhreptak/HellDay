@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 1782006892018404400}
   - component: {fileID: 7974226965044179563}
   - component: {fileID: 8046754441631267577}
+  - component: {fileID: -8751490033027238408}
+  - component: {fileID: 7399254083334178979}
   m_Layer: 0
   m_Name: AmmoBonusBox
   m_TagString: Untagged
@@ -259,3 +261,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: 7974226965044179563}
   _data: {fileID: 11400000, guid: 90a827b1803f2434298d9737eb50cedc, type: 2}
+--- !u!114 &-8751490033027238408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519929459479449049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57dbe9d9f46b3164a8f2e2f31cc63492, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1519929459141105701}
+  _onPhysicalHit: {fileID: 3420492717266519076}
+  _audioClips:
+  - {fileID: 8300000, guid: eb3eb1c98975ca8468fc035b501641cb, type: 3}
+  - {fileID: 8300000, guid: 0f431b82a0eceaa4fac0e78efb6d6e04, type: 3}
+  - {fileID: 8300000, guid: 362cbc4ee6bf97f4ab8135f86de8efa4, type: 3}
+  - {fileID: 8300000, guid: 8277beeb9aaac224f832c97fb1df8b10, type: 3}
+  - {fileID: 8300000, guid: ef99db57ba9ad7b4caf40aa725b2df96, type: 3}
+  - {fileID: 8300000, guid: 54dfb76a5e389564b9cc17777441e3be, type: 3}
+--- !u!114 &7399254083334178979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519929459479449049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1519929459141105701}
+  _onBulletHitEvent: {fileID: 7974226965044179563}
+  _data: {fileID: 11400000, guid: e485e65e079384d49b1bc822e0117ac2, type: 2}

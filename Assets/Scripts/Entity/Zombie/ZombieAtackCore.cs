@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class ZombieAtackCore : MonoBehaviour
 {
@@ -9,18 +8,13 @@ public class ZombieAtackCore : MonoBehaviour
     [SerializeField] protected Transform _transform;
     [SerializeField] protected ZombieAudio _audio;
     
-    [Header("Damage")] 
-    [SerializeField] protected float _minDamage = 10f;
-    [SerializeField] protected float _maxDamage = 20f;
-
     [Header("Target Detection")]
     [SerializeField] protected DamageableTargetDetection  _damageableTargetDetection;
-    
-    [Header("Preferences")]
-    [SerializeField] protected float _atackDelay = 1;
-    
+
+    [Header("Core Data")] 
+    [SerializeField] private ZombieAtackCoreData _coreData;
+
     protected ObjectPooler _objectPooler;
-    protected float DamageValue => Random.Range(_minDamage, _maxDamage);
 
     protected void Start()
     {
@@ -38,7 +32,7 @@ public class ZombieAtackCore : MonoBehaviour
                 Atack();
             }
 
-            yield return new WaitForSeconds(_atackDelay);
+            yield return new WaitForSeconds(_coreData.AtackDelay);
         }
     }
 

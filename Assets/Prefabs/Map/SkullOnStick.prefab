@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -9209100597567537919}
   - component: {fileID: -2996661139924671088}
   - component: {fileID: -3499737167493247871}
+  - component: {fileID: -1565954676157870516}
   m_Layer: 12
   m_Name: SkullOnStick
   m_TagString: Untagged
@@ -222,3 +223,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 8a04937699943bf47aa74e085a9d2793, type: 2}
+--- !u!114 &-1565954676157870516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981294602039633510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1368027826900950366}
+  _onBulletHitEvent: {fileID: -3499737167493247871}
+  _data: {fileID: 11400000, guid: e485e65e079384d49b1bc822e0117ac2, type: 2}

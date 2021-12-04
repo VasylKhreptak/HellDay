@@ -15,12 +15,12 @@ public class OnBulletHitDamage : MonoBehaviour
 
     private void OnEnable()
     {
-        _onBulletHitEvent.onBulletHit += ReactOnBullet;
+        _onBulletHitEvent.onHit += ReactOnBullet;
     }
 
     private void OnDisable()
     {
-        _onBulletHitEvent.onBulletHit -= ReactOnBullet;
+        _onBulletHitEvent.onHit -= ReactOnBullet;
     }
 
     private void ReactOnBullet(Collision2D other)

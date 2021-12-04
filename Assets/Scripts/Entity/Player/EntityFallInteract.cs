@@ -18,12 +18,12 @@ public class EntityFallInteract : OnPhysicalHit
 
     private void OnEnable()
     {
-        onPhysicalHit += ReactOnHit;
+        onHit += ReactOnHit;
     }
 
     private void OnDisable()
     {
-        onPhysicalHit -= ReactOnHit;
+        onHit -= ReactOnHit;
     }
 
     private void ReactOnHit()

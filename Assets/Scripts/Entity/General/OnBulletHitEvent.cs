@@ -6,13 +6,13 @@ public class OnBulletHitEvent : MonoBehaviour
     [Header("Data")] 
     [SerializeField] private OnBulletHitEventData _data;
     
-    public Action<Collision2D> onBulletHit;
+    public Action<Collision2D> onHit;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (_data.bulletLayerMask.ContainsLayer(other.gameObject.layer))
         {
-            onBulletHit?.Invoke(other);
+            onHit?.Invoke(other);
         }
     }
 }

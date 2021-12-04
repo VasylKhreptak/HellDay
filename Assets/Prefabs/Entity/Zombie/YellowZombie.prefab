@@ -388,15 +388,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 7552724589778891921}
   _audio: {fileID: 4019713287426175634}
-  _minDamage: 7
-  _maxDamage: 14
   _damageableTargetDetection: {fileID: 6472815694905530543}
-  _atackDelay: 0.6
-  _biteRadius: 0.1
+  _coreData: {fileID: 11400000, guid: 0298492448e580c4d88f65f44f06d41e, type: 2}
   _atackCenter: {fileID: 7552724590804465055}
-  _killableEntityLayerMask:
-    serializedVersion: 2
-    m_Bits: 8256
+  _commonZombieData: {fileID: 11400000, guid: 0298492448e580c4d88f65f44f06d41e, type: 2}
 --- !u!114 &4019713287426175634
 MonoBehaviour:
   m_ObjectHideFlags: 0

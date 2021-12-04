@@ -121,8 +121,8 @@ public class AudioPooler : MonoBehaviour
         _audioMixer.SetFloat(track, volume);
     }
 
-    private uint ConfigurePoolObject(int poolIndex, string track, AudioClip clip, Vector3 position,float volume,
-        float spatialBlend, float unimportance)
+    private uint ConfigurePoolObject(int poolIndex, string track, AudioClip clip, Vector3 position,
+        float volume, float spatialBlend, float unimportance)
     {
         if (poolIndex < 0 || poolIndex >= _pool.Count) return 0;
 
@@ -190,7 +190,8 @@ public class AudioPooler : MonoBehaviour
         if (CanPlayAudio(position) == false || _tracks.ContainsKey(track) == false || 
             clip == null || volume.Equals(0f)) return 0;
 
-        float unimportance = (_listenerTransform.position - position).sqrMagnitude / Mathf.Max(1, priority);
+        float unimportance = (_listenerTransform.position - position).sqrMagnitude / 
+                             Mathf.Max(1, priority);
 
         int leastImportantIndex = -1;
         float leastImportanceValue = float.MaxValue;

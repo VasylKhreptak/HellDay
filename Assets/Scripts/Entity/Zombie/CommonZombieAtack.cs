@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class CommonZombieAtack : ZombieAtackCore
 {
-    [Header("Preferences")]
-    [SerializeField] protected float _biteRadius;
+    [Header("References")]
     [SerializeField] protected Transform _atackCenter;
-    [SerializeField] protected LayerMask _killableEntityLayerMask;
 
-    protected virtual void SpawnAtackParticles()
+    [Header("Common Data")] 
+    [SerializeField] private CommonZombieAtackData _commonZombieData;
+
+    protected virtual void SpawnAtackParticle()
     {
         _objectPooler.GetFromPool(Pools.ZombieBiteParticle, _atackCenter.position, Quaternion.identity);
     }
@@ -21,7 +22,8 @@ public class CommonZombieAtack : ZombieAtackCore
             return false;
         }
         
-        Collider2D collider2D = Physics2D.OverlapCircle(_atackCenter.position, _biteRadius, _killableEntityLayerMask);
+        Collider2D collider2D = Physics2D.OverlapCircle(_atackCenter.position, 
+            _commonZombieData.BiteRadius, _commonZombieData.entityLayerMask);
 
         return collider2D != null;
     }
@@ -30,9 +32,9 @@ public class CommonZombieAtack : ZombieAtackCore
     {
         _audio.PlaBiteSound();
         
-        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(DamageValue);
+        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(_commonZombieData.DamageValue);
         
-        SpawnAtackParticles();
+        SpawnAtackParticle();
     }
 
     protected virtual void OnDrawGizmosSelected()
@@ -40,6 +42,6 @@ public class CommonZombieAtack : ZombieAtackCore
         if (_atackCenter == null) return;
         
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_atackCenter.position, _biteRadius);
+        Gizmos.DrawWireSphere(_atackCenter.position, _commonZombieData.BiteRadius);
     }
 }

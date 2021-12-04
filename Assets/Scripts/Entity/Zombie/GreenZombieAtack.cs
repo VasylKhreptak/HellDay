@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class GreenZombieAtack : ZombieAtackCore
 {
-    [Header("Preferences")] 
-    [SerializeField] private float _explosionRadius = 7f;
-    [SerializeField] private LayerMask _environmentLayerMask;
+    [Header("Green Zombie Data")] 
+    [SerializeField] private GreenZombieAtackData _greenZombieData;
+    
 
     protected override bool CanAtack()
     {
@@ -12,15 +12,15 @@ public class GreenZombieAtack : ZombieAtackCore
 
         if (_transform == null || target == null) return false;
         
-        return _transform.position.ContainsPosition(_explosionRadius, target.position) && 
-               _transform.IsInFiendOfView(target, _explosionRadius, _environmentLayerMask);
+        return _transform.position.ContainsPosition(_greenZombieData.ExplosionRadius, target.position) && 
+               _transform.IsInFiendOfView(target, _greenZombieData.ExplosionRadius, _greenZombieData.environmentLayerMask);
     }
 
     protected override void Atack()
     {
         _audio.PlaBiteSound();
         
-        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(DamageValue);
+        _damageableTargetDetection._closestTarget.Damageable.TakeDamage(_greenZombieData.DamageValue);
         
         Destroy(gameObject);
     }
@@ -30,6 +30,6 @@ public class GreenZombieAtack : ZombieAtackCore
         if(_transform == null ) return;
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_transform.position, _explosionRadius);
+        Gizmos.DrawWireSphere(_transform.position, _greenZombieData.ExplosionRadius);
     }
 }
