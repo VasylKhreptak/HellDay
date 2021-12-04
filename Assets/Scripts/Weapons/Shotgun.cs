@@ -18,6 +18,6 @@ public class Shotgun : WeaponCore
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);
-        _weaponVFX.StartShootAnimation(_animator, ShootTrigger);
+        _weaponVFX.TriggerShootAnimation(_animator, ShootTrigger);
     }
 }

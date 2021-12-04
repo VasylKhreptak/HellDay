@@ -81,8 +81,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Is leg in movement: " + (PlayerLegKickAnimation.IsPlaying));
-        
         if (_joystick.Horizontal == 0 || _canMove == false || PlayerLegKickAnimation.IsPlaying) return;
 
         HorizontalMovement();

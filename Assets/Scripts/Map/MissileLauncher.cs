@@ -21,15 +21,47 @@ public class MissileLauncher : MonoBehaviour
 
     public static Action<Vector3, float, float> onCameraShake;
 
+    private Coroutine _targetDetectionCoroutine;
+
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
         _audioPooler = AudioPooler.Instance;
         
-        StartCoroutine(ControlShootRoutine());
+        StartCoroutine(TargetDetectionRoutine());
     }
 
-    private IEnumerator ControlShootRoutine()
+    private void OnEnable()
+    {
+        Player.onDie += StopDetection;
+        Player.onResurrection += StartDetection;
+    }
+
+    private void OnDisable()
+    {
+        Player.onDie -= StopDetection;
+        Player.onResurrection -= StartDetection;
+    }
+
+    private void StartDetection()
+    {
+        if (_targetDetectionCoroutine == null)
+        {
+            _targetDetectionCoroutine = StartCoroutine(TargetDetectionRoutine());
+        }
+    }
+
+    private void StopDetection()
+    {
+        if (_targetDetectionCoroutine != null)
+        {
+            StopCoroutine(_targetDetectionCoroutine);
+
+            _targetDetectionCoroutine = null;
+        }
+    }
+    
+    private IEnumerator TargetDetectionRoutine()
     {
         while (true)
         {

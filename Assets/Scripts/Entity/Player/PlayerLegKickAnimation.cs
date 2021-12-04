@@ -8,7 +8,7 @@ public class PlayerLegKickAnimation : MonoBehaviour
     [SerializeField] private Animator _animator;
 
     public static Action onPlayed;
-    private float _legKickDuration;
+    [SerializeField] private float _legKickDuration = 0.6f;
 
     private static bool _isPlaying;
     public static bool IsPlaying => _isPlaying;
@@ -22,15 +22,10 @@ public class PlayerLegKickAnimation : MonoBehaviour
         _animator.SetTrigger(LegKick);
         this.DOWait(0.1f).OnComplete(() => { _animator.ResetTrigger(LegKick); });
 
-        if (_legKickDuration == 0)
-        {
-            _legKickDuration = _animator.GetCurrentAnimatorStateInfo(0).length;
-        }
-
-        _tween.Kill();
         _isPlaying = true;
+        _tween.Kill();
         _tween = this.DOWait(_legKickDuration).OnComplete(() => { _isPlaying = false; });
-        
+
         onPlayed?.Invoke();
     }
 }

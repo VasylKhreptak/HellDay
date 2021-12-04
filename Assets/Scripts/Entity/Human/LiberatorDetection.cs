@@ -22,13 +22,13 @@ public class LiberatorDetection : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.onPlayerDied += StopDetection;
+        Player.onDie += StopDetection;
         Player.onResurrection += StartDetection;
     }
 
     private void OnDisable()
     {
-        Player.onPlayerDied -= StopDetection;
+        Player.onDie -= StopDetection;
         Player.onResurrection -= StartDetection;
     }
 

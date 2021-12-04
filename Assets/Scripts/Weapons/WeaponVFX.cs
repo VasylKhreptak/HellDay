@@ -22,7 +22,7 @@ public class WeaponVFX : MonoBehaviour
         audioSource.Play();
     }
     
-    public void StartShootAnimation(Animator animator, int id)
+    public void TriggerShootAnimation(Animator animator, int id)
     {
         animator.SetTrigger(id);
     }

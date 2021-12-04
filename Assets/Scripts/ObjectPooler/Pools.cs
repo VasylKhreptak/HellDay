@@ -57,5 +57,6 @@ public enum Pools
     EntityDestroyParticle7 = 54,
     EntityDestroyParticle8 = 55,
     EntityDestroyParticle9 = 56,
-    DamagePopup = 57
+    DamagePopup = 57,
+    GrassDamageParticle = 58,
 }

@@ -2,7 +2,7 @@ using System;
 
 public class Player : DamageableObject
 {
-    public static Action onPlayerDied;
+    public static Action onDie;
     public static Action<float> onSetMaxHealthBar;
     public static Action<float> onSetHealthBar;
     public static Action onResurrection;
@@ -19,14 +19,14 @@ public class Player : DamageableObject
 
     protected override void SetMaxHealth(float maxHealth)
     {
-        _health = data.MAXHealth;
+        _health = MAXHealth;
         
-        onSetMaxHealthBar?.Invoke(data.MAXHealth);
+        onSetMaxHealthBar?.Invoke(MAXHealth);
     }
 
     protected override void DeathActions()
      {
-         onPlayerDied?.Invoke();
+         onDie?.Invoke();
          
          base.DeathActions();
 

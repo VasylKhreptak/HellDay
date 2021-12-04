@@ -4,18 +4,19 @@ using UnityEngine;
 public class DamageableObject : MonoBehaviour, IDamageable
 {
     [Header("Data")] 
-    public DamageableObjectData data;
+    [SerializeField] private DamageableObjectData _data;
     
     protected float _health;
 
     public Action<float> onTakeDamage; 
     
     public bool IsDead => _health <= 0;
-    public float Health => _health; 
+    public float Health => _health;
+    public float MAXHealth => _data.MAXHealth;
 
     protected virtual void Start()
     {
-        SetMaxHealth(data.MAXHealth);
+        SetMaxHealth(_data.MAXHealth);
     }
 
     protected virtual void SetMaxHealth(float maxHealth)
@@ -25,7 +26,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
 
     public virtual void SetHealth(float health)
     {
-        _health = Mathf.Clamp(health, 0, data.MAXHealth);
+        _health = Mathf.Clamp(health, 0, _data.MAXHealth);
     }
 
     public virtual void TakeDamage(float damage)
@@ -42,7 +43,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
 
     protected virtual void DeathActions()
     {
-        if (data.CanBeDestroyed)
+        if (_data.CanBeDestroyed)
         {
             Destroy(gameObject);
         }

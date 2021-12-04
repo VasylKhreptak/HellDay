@@ -8,12 +8,12 @@ public class UI_StartSlideAnimation : UI_SlideAnimation
 
    private void OnEnable()
    {
-      Player.onPlayerDied += OnPlayerDied;
+      Player.onDie += OnPlayerDied;
    }
 
    private void OnDisable()
    {
-      Player.onPlayerDied -= OnPlayerDied;
+      Player.onDie -= OnPlayerDied;
    }
 
    protected override void Start()

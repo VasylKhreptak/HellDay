@@ -32,7 +32,7 @@ public class HealthBonusItem : MonoBehaviour
         }
 
         if (_player && _player.gameObject.activeSelf && 
-            Mathf.Approximately(_player.Health, _player.data.MAXHealth) == false)
+            Mathf.Approximately(_player.Health, _player.MAXHealth) == false)
         {
             this._player.SetHealth(_player.Health + _healthValue);
 

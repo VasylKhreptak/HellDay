@@ -44,6 +44,8 @@ public class WeaponCore : MonoBehaviour, IWeapon
     public static Action onShoot;
     
     protected bool _canShoot = true;
+
+    private Tween _shootTween;
     
     protected void OnEnable()
     {
@@ -78,9 +80,14 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     public void StartShooting()
     {
-        if (_playerAmmo.IsEmpty) _weaponVFX.PlayEmptyAmmoSound(_transform.position);
+        if (_playerAmmo.IsEmpty)
+        {
+            _weaponVFX.PlayEmptyAmmoSound(_transform.position);
             
-        if (_shootCoroutine != null || _canShoot == false) return;
+            return;
+        }
+            
+        if (_shootCoroutine != null || CanShoot() == false) return;
         
         _shootCoroutine = StartCoroutine(Shoot());
         
@@ -90,7 +97,8 @@ public class WeaponCore : MonoBehaviour, IWeapon
     protected void ControlShootSpeed()
     {
         _canShoot = false;
-        this.DOWait(_shootDelay).OnComplete(() => { _canShoot = true; });
+        _shootTween.Kill();
+        _shootTween = this.DOWait(_shootDelay).OnComplete(() => { _canShoot = true; });
     }
 
     public void StopShooting()
@@ -98,9 +106,11 @@ public class WeaponCore : MonoBehaviour, IWeapon
         if (_shootCoroutine != null)
         {
             StopCoroutine(_shootCoroutine);
+
+            _shootCoroutine = null;
+
+            ControlShootSpeed();
         }
-        
-        _shootCoroutine = null;
     }
 
     protected virtual IEnumerator Shoot()
@@ -135,7 +145,7 @@ public class WeaponCore : MonoBehaviour, IWeapon
         _weaponVFX.SpawnBulletMuff(_bulletMuff, _bulletMuffSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSmoke(Pools.ShootSmoke, _shootParticleSpawnPlace.position, Quaternion.identity);
         _weaponVFX.SpawnShootSparks(Pools.ShootSparks, _shootParticleSpawnPlace.position, Quaternion.identity);
-        _weaponVFX.StartShootAnimation(_animator, ShootTrigger);
+        _weaponVFX.TriggerShootAnimation(_animator, ShootTrigger);
     }
 
     protected void SpawnBullet()
