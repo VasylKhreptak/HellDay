@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a48fd620459289448cd4ffca67bd3d7, type: 3}
+  m_Name: BodyOnBulletHitAudioData
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: 8de060a3ba023b04b8e14e98badb27c9, type: 3}
+  - {fileID: 8300000, guid: b1f2b3842c05a394cad307d5aa9272fa, type: 3}
+  - {fileID: 8300000, guid: f2eada20a078d7e4fb738d9b5e4cd185, type: 3}
+  - {fileID: 8300000, guid: d9a1e24a5a4607942887d95e3225fa54, type: 3}
+  - {fileID: 8300000, guid: b69b5755d11684a4bba8065d6f481420, type: 3}
+  - {fileID: 8300000, guid: 52fa7f8b996c1bd4e94c9aa977d8cfa9, type: 3}
+  - {fileID: 8300000, guid: 46418abefff776545aaff5a510c34254, type: 3}

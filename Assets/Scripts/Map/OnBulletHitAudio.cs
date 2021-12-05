@@ -1,11 +1,9 @@
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class OnBulletHitAudio : MonoBehaviour
 {
     [Header("References")] 
-    [SerializeField] private Transform _transform;
     [SerializeField] private OnBulletHitEvent _onBulletHitEvent;
 
     [Header("Data")] 
@@ -34,8 +32,8 @@ public class OnBulletHitAudio : MonoBehaviour
     {
         if (_canPlay)
         {
-            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.audioClips.Random(), _transform.position,
-                1f, 1f);
+            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.audioClips.Random(), 
+                other.transform.position, 1f, 1f);
 
             ControlPlaySpeed();
         }

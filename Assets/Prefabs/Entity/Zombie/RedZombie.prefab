@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: -7499586852219837715}
   - component: {fileID: -4741251296903198432}
   - component: {fileID: -6199128826837237650}
+  - component: {fileID: -3768852657178822627}
   m_Layer: 8
   m_Name: RedZombie
   m_TagString: Zombie
@@ -563,6 +564,20 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e19f8eadee8f78047a64fba683350969, type: 3}
   - {fileID: 8300000, guid: 4b268f97ea709d244aee0c1329ea7a32, type: 3}
   - {fileID: 8300000, guid: 3855f0ec390f47e40a38af343ecac56b, type: 3}
+--- !u!114 &-3768852657178822627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3378974506285552572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onBulletHitEvent: {fileID: -4741251296903198432}
+  _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
 --- !u!1 &3378974506961274544
 GameObject:
   m_ObjectHideFlags: 0
