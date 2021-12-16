@@ -2,8 +2,8 @@ using UnityEngine;
 
 public static class ColorExtensions
 {
-    public static void SetAlpha(this Color c, ref Color color, float alphaValue)
+    public static Color WithAlpha(this Color color, float alphaValue)
     {
-        color.a = alphaValue;
+        return new Color(color.r, color.g, color.b, alphaValue);
     }
 }

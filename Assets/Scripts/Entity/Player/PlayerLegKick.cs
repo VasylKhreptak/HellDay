@@ -48,7 +48,7 @@ public class PlayerLegKick : MonoBehaviour
         {
             if(rb.bodyType != RigidbodyType2D.Static)
             {
-                rb.velocity = new Vector2(_kickVelocity * PlayerMovement.MovementDirection,
+                rb.velocity = new Vector2(_kickVelocity * PlayerMovement.Direction,
                     _upwardsVelocity);
                 
                 rb.AddTorque(Random.Range(-_minKickTorque, _maxKickTorque), _forceMode2D);
@@ -66,7 +66,7 @@ public class PlayerLegKick : MonoBehaviour
 
     private GameObject GetAttackedObject()
     {
-        Vector2 rayDir = new Vector2(PlayerMovement.MovementDirection, 0);
+        Vector2 rayDir = new Vector2(PlayerMovement.Direction, 0);
         RaycastHit2D hit;
         
         hit = Physics2D.Raycast(_startKickTransform.position, rayDir, _kickLength, _layerMask);

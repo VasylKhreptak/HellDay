@@ -159,6 +159,6 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected void ChangeBulletDirection(ref Vector3 rotation)
     {
-        rotation += new Vector3(0, 0, PlayerMovement.MovementDirection == 1 ? 0 : 180);
+        rotation += new Vector3(0, 0, PlayerMovement.Direction == 1 ? 0 : 180);
     }
 }

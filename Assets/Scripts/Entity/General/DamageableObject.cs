@@ -8,7 +8,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
     
     protected float _health;
 
-    public Action<float> onTakeDamage; 
+    public Action<float> onTakeDamage;
     
     public bool IsDead => _health <= 0;
     public float Health => _health;

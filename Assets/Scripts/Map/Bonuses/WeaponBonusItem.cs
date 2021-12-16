@@ -19,7 +19,7 @@ public class WeaponBonusItem : MonoBehaviour
 
     private PlayerWeaponControl _playerWeaponControl;
 
-    private Tween _tween;
+    private Tween _waitTween;
 
     private void Start()
     {
@@ -51,12 +51,12 @@ public class WeaponBonusItem : MonoBehaviour
     private void ConfigureSwapSpeed()
     {
         _canSwap = false;
-        _tween.Kill();
-        _tween = this.DOWait(_data.SwapDelay).OnComplete(() => { _canSwap = true; });
+        _waitTween.Kill();
+        _waitTween = this.DOWait(_data.SwapDelay).OnComplete(() => { _canSwap = true; });
     }
 
     private void OnDisable()
     {
-        _tween.Kill();
+        _waitTween.Kill();
     }
 }

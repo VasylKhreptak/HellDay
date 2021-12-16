@@ -116,5 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1542337810763183889}
+  _spriteRenderer: {fileID: 1542337810763183902}
   _movementSpeed: 0.015
   _birdData: {fileID: 11400000, guid: 282ce85888bdbdf4d82f2f6156b3665b, type: 2}

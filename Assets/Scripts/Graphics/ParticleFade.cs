@@ -11,7 +11,7 @@ public class ParticleFade : MonoBehaviour, IPooledObject
     [SerializeField] private ParticleFadeData _data;
     
     private float _currentLifetime;
-    private Tween _tween;
+    private Tween _fadeTween;
 
 
     public void OnEnable()
@@ -25,12 +25,12 @@ public class ParticleFade : MonoBehaviour, IPooledObject
     {
         yield return new WaitForSeconds(_currentLifetime - _data.FadeDuration);
 
-        _tween = _spriteRenderer.DOFade(0, _data.FadeDuration).
+        _fadeTween = _spriteRenderer.DOFade(0, _data.FadeDuration).
             OnComplete(() => gameObject.SetActive(false));
     }
     
     private void OnDisable()
     {
-        _tween.Kill();
+        _fadeTween.Kill();
     }
 }

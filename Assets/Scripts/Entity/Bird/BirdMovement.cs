@@ -5,6 +5,7 @@ public class BirdMovement : MonoBehaviour
 {
     [Header("References")] 
     [SerializeField] private Transform _transform;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [Header("Preferences")]
     [SerializeField] private float _movementSpeed = 1f;
@@ -12,8 +13,8 @@ public class BirdMovement : MonoBehaviour
     [Header("BirdData")] 
     [SerializeField] private BirdData _birdData;
     
-    private Tween _tween;
-    
+    private Tween _waitTween, _fadeTween;
+
     private void FixedUpdate()
     {
         _transform.Translate(new Vector3(-_movementSpeed, 0, 0));
@@ -21,25 +22,38 @@ public class BirdMovement : MonoBehaviour
     
     private void OnEnable()
     {
-        _tween.Kill();
-        _tween = this.DOWait(_birdData.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
+        KillTweens();
 
-        ExplosiveObjectCore.onPlayedLoudSound += OnPlayedLoudAudio;
-        WeaponCore.onShoot += OnPlayedLoudAudio;
+        _spriteRenderer.color = _spriteRenderer.color.WithAlpha(1f);
+        
+        _waitTween = this.DOWait(_birdData.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
+        _fadeTween = this.DOWait(_birdData.LifeTime - _birdData.FadeDuration).OnComplete(() =>
+        {
+            _spriteRenderer.DOFade(0f, _birdData.FadeDuration);
+        });
+
+        ExplosiveObjectCore.onPlayedLoudSound += IncreaseSpeed;
+        WeaponCore.onShoot += IncreaseSpeed;
     }
 
     private void OnDisable()
     {
-        _tween.Kill();
+        KillTweens();
         
-        ExplosiveObjectCore.onPlayedLoudSound -= OnPlayedLoudAudio;
-        WeaponCore.onShoot -= OnPlayedLoudAudio;
+        ExplosiveObjectCore.onPlayedLoudSound -= IncreaseSpeed;
+        WeaponCore.onShoot -= IncreaseSpeed;
     }
 
-    private void OnPlayedLoudAudio()
+    private void IncreaseSpeed()
     {
         float normalSpeed = _movementSpeed;
         _movementSpeed = _birdData.IncreasedSpeed;
-        this.DOWait(_birdData.LiftDuration).OnComplete(() => { _movementSpeed = normalSpeed; });
+        this.DOWait(_birdData.IncreaseSpeedTime).OnComplete(() => { _movementSpeed = normalSpeed; });
+    }
+
+    private void KillTweens()
+    {
+        _waitTween.Kill();
+        _fadeTween.Kill();
     }
 }

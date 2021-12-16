@@ -26,12 +26,12 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     
     [Range(-1, 1)] private static int movementDirection;
-    public static  int MovementDirection => movementDirection;
+    public static  int Direction => movementDirection;
     
 
     private float _previousMaxHorVelocity;
 
-    public static Action onPlayerJumped;
+    public static Action onJumped;
     private Coroutine _configurableUpdate;
 
     private void Awake()
@@ -133,7 +133,7 @@ public class PlayerMovement : MonoBehaviour
         _isJumpForbidden = true;
         this.DOWait(_jumpDelay).OnComplete(() => { _isJumpForbidden = false; });
 
-        onPlayerJumped?.Invoke();
+        onJumped?.Invoke();
     }
     
     private bool CanJump()

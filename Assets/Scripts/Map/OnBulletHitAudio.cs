@@ -9,7 +9,7 @@ public class OnBulletHitAudio : MonoBehaviour
     [Header("Data")] 
     [SerializeField] private OnBulletHitAudioData _data;
 
-    private Tween _tween;
+    private Tween _waitTween;
     private bool _canPlay = true;
     private AudioPooler _audioPooler;
 
@@ -41,7 +41,7 @@ public class OnBulletHitAudio : MonoBehaviour
 
     private void ControlPlaySpeed()
     {
-        _tween.Kill();
+        _waitTween.Kill();
         _canPlay = false;
         this.DOWait(_data.MINDelay).OnComplete(() => { _canPlay = true; });
     }

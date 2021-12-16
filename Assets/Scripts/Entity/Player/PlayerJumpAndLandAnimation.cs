@@ -13,12 +13,12 @@ public class PlayerJumpAndLandAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerMovement.onPlayerJumped += OnPlayerJumped;
+        PlayerMovement.onJumped += OnPlayerJumped;
     }
 
     private void OnDisable()
     {
-        PlayerMovement.onPlayerJumped += OnPlayerJumped;
+        PlayerMovement.onJumped += OnPlayerJumped;
     }
 
     private void OnPlayerJumped()
