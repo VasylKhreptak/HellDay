@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: -7710512303906793430}
   - component: {fileID: -7262268117712673338}
   - component: {fileID: -1298053040064316947}
+  - component: {fileID: 9062655704171773570}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -320,9 +321,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 2332932505156407063}
   _onBulletHitEvent: {fileID: -7322198967888827408}
   _data: {fileID: 11400000, guid: a55b21e741984bc40916956e4e3595d9, type: 2}
+--- !u!114 &9062655704171773570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761bea2e634c8ba419fca61e0d34ad00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _AHAP: {fileID: 4900000, guid: d0b64051763b1c549b2619cf9db22522, type: 3}
+  _destroyWaweForm: {fileID: 11400000, guid: 0fa43bf871c9d134ca66cf4170f6355d, type: 2}
 --- !u!1001 &7717508810803726845
 PrefabInstance:
   m_ObjectHideFlags: 0
