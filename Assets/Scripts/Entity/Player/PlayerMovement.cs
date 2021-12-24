@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")] 
+    [SerializeField] private Transform _transform;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GroundChecker _groundChecker;
@@ -18,25 +19,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _verticalSensetivity = 0.8f;
     [SerializeField] private float _jumpDelay = 1f;
     [SerializeField] private ForceMode2D _movementMode = ForceMode2D.Impulse;
-    [SerializeField] private float _minChangeDirectionSpeed = 0.1f;
-    [SerializeField] private int _confFaceDirFramerate = 6;
-    
+
     private bool _canMove = true;
     private bool _isJumpForbidden ;
     private bool _isGrounded;
     
-    [Range(-1, 1)] private static int movementDirection;
-    public static  int Direction => movementDirection;
-    
+    [Range(-1, 1)] private static int _movementDirection;
+    public static  int Direction => _movementDirection;
 
     private float _previousMaxHorVelocity;
 
     public static Action onJumped;
-    private Coroutine _configurableUpdate;
 
     private void Awake()
     {
         _previousMaxHorVelocity = _maxHorVelocity;
+        
+        _movementDirection = (int) Mathf.Sign(_transform.localScale.x);
     }
 
     private void OnEnable()
@@ -44,25 +43,13 @@ public class PlayerMovement : MonoBehaviour
         PlayerSitAndUpAnimation.onGetUp += () => { _canMove = true; };
         PlayerSitAndUpAnimation.onSitDown += () => { _canMove = false; };
         PlayerWeaponControl.onImpactMovement += ImpactMovement;
-        
-        SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
-        
-        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _confFaceDirFramerate, () =>
-        {
-            if (IsJoystickPressed())
-            {
-                ConfigureFaceDirection();
-            }
-        });
     }
 
     private void OnDisable()
     {
         PlayerSitAndUpAnimation.onGetUp -= () => { _canMove = true; };
         PlayerSitAndUpAnimation.onSitDown -= () => { _canMove = false;};
-        PlayerWeaponControl.onImpactMovement -= ImpactMovement;   
-        
-        ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
+        PlayerWeaponControl.onImpactMovement -= ImpactMovement;
     }
 
     private void ImpactMovement(float percentage)
@@ -79,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         _maxHorVelocity = _previousMaxHorVelocity;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_joystick.Horizontal == 0 || _canMove == false || PlayerLegKickAnimation.IsPlaying) return;
 
@@ -88,32 +75,14 @@ public class PlayerMovement : MonoBehaviour
         VerticalMovement();
     }
 
-    private void ConfigureFaceDirection()
-    {
-        if (Math.Abs(_rigidbody2D.velocity.x) > _minChangeDirectionSpeed)
-        {
-            SetDirection((int) Mathf.Sign(_rigidbody2D.velocity.x));
-        }
-    }
-
-    private void SetDirection(int direction)
-    {
-        transform.localScale = new Vector3(direction, 1, 1);
-
-        movementDirection = direction;
-    }
-    
-    private bool IsJoystickPressed()
-    {
-        return _joystick.Horizontal != 0 && _joystick.Vertical != 0;
-    }
-    
     private void HorizontalMovement()
     {
         if (Mathf.Abs(_joystick.Horizontal) > _horizontalSensetivity)
         {
             _rigidbody2D.AddForce(new Vector2(_joystick.Horizontal * _movementForce, 0), _movementMode);
             _rigidbody2D.LimitHorizontalVelocity(_maxHorVelocity);
+
+            _movementDirection = (int) Mathf.Sign(_joystick.Horizontal);
         }
     }
 

@@ -1560,11 +1560,12 @@ MonoBehaviour:
   _playerRb: {fileID: 1755073907}
   _transform: {fileID: 265663104}
   _animator: {fileID: 265663105}
-  _updateFramerate: 6
+  _updateFramerate: 4
   _upTransform: {fileID: 1547827172}
   _middleTransform: {fileID: 797553518}
   _bottomTransform: {fileID: 1801806300}
-  _rotationDur: 1
+  _rotationDur: 0.3
+  _accuracy: 0.5
 --- !u!1001 &276385621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60361,7 +60362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -74.28781, y: -15.457004, z: 10.717207}
+  m_LocalPosition: {x: -74.03781, y: -15.457004, z: 10.717207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 518623207}
@@ -60588,6 +60589,51 @@ MonoBehaviour:
     m_RotationOrder: 4
   _startDelay: 0.5
   _endDelay: 0.7
+--- !u!114 &524391151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524391147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1755073934}
+          m_TargetAssemblyTypeName: PlayerFaceDirectionController, Assembly-CSharp
+          m_MethodName: StartConfiguring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1755073934}
+          m_TargetAssemblyTypeName: PlayerFaceDirectionController, Assembly-CSharp
+          m_MethodName: StopConfiguring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &556238776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -64558,7 +64604,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.4098737, y: 1}
+    m_SensorSize: {x: 2.3771234, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -64575,7 +64621,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036280480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -74.28781, y: -15.457004, z: 10.717207}
+  m_LocalPosition: {x: -74.03781, y: -15.457004, z: 10.717207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1126636726}
@@ -80776,6 +80822,7 @@ GameObject:
   - component: {fileID: 1755073931}
   - component: {fileID: 1755073933}
   - component: {fileID: 1755073932}
+  - component: {fileID: 1755073934}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -80841,8 +80888,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755073905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.833, y: -2.202, z: 0}
-  m_LocalScale: {x: 0.9805, y: 1, z: 1}
+  m_LocalPosition: {x: 13.083, y: -2.202, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1199932468}
   - {fileID: 2021404585}
@@ -80882,6 +80929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48ed67e25d68d89408b6b581fb7a84b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transform: {fileID: 1755073909}
   _rigidbody2D: {fileID: 1755073907}
   _joystick: {fileID: 691253524}
   _groundChecker: {fileID: 2021404587}
@@ -80893,8 +80941,6 @@ MonoBehaviour:
   _verticalSensetivity: 0.4
   _jumpDelay: 0.5
   _movementMode: 1
-  _minChangeDirectionSpeed: 0.3
-  _confFaceDirFramerate: 6
 --- !u!114 &1755073912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81397,6 +81443,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1755073910}
   _updateFramerate: 6
+--- !u!114 &1755073934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755073905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f68cf2f41a656c34bbc64cddd3c8efa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 1755073909}
+  _joystick: {fileID: 691253524}
+  _updateFramerate: 15
+  _joystickSensetivity: 0.3
 --- !u!1 &1762178634
 GameObject:
   m_ObjectHideFlags: 0
@@ -81872,7 +81934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 640.0005, y: 309.99905}
+  m_AnchoredPosition: {x: 640.00055, y: 309.99905}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1776124843

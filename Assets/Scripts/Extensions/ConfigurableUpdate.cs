@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class ConfigurableUpdate 
 {
-    public static void StartUpdate(MonoBehaviour owner, ref Coroutine coroutine, int framerate, Action action)
+    public static void StartUpdate(MonoBehaviour owner, ref Coroutine coroutine, float framerate, Action action)
     {
         if (coroutine == null)
         {
@@ -23,7 +23,7 @@ public static class ConfigurableUpdate
         }
     }
 
-    private static IEnumerator UpdateRoutine(int framerate, Action action)
+    private static IEnumerator UpdateRoutine(float framerate, Action action)
     {
         float delay = 1 / framerate;
 

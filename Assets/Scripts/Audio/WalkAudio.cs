@@ -32,9 +32,7 @@ public class WalkAudio : MonoBehaviour
                     return;
                 }
             }
-        }
-        else
-        {
+            
             _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.defaultStepAudios.Random(),
                 _transform.position, 1f, 1f);
         }
