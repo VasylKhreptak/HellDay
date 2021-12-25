@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class HumanAIMovement : AIMovementCore
 {
-    [Header("Movement Data")] 
+    [Header("Movement Data")]
     [SerializeField] private HumanAIMovementData _movementData;
-    
+
     [Header("Environment checkers")]
     [SerializeField] protected PitChecker _pitChecker;
 
     [Header("Threat detection")]
     [SerializeField] protected CommonTargetDetection _commonTargetDetectin;
 
-    [Header("Sign Scale Compensate")] 
+    [Header("Sign Scale Compensate")]
     [SerializeField] private SignScaleCompensate _sign;
-    
+
     protected bool _canMove = true;
     protected bool _isRunningFromThreat;
 
@@ -22,25 +22,19 @@ public class HumanAIMovement : AIMovementCore
 
     protected override void FixedUpdate()
     {
-        if (_canMove)
-        {
-            base.FixedUpdate();
-        }
+        if (_canMove) base.FixedUpdate();
     }
 
     protected void Start()
     {
         StartCheckingEnvironment();
-        
+
         StartCoroutine(ControlMovementRoutine());
     }
 
     protected void StartCheckingEnvironment()
     {
-        if (_checkEnvironmentCorouitne == null)
-        {
-            _checkEnvironmentCorouitne = StartCoroutine(CheckEnvironmentRoutine());
-        }
+        if (_checkEnvironmentCorouitne == null) _checkEnvironmentCorouitne = StartCoroutine(CheckEnvironmentRoutine());
     }
 
     protected void StopCheckingEnvironment()
@@ -67,14 +61,14 @@ public class HumanAIMovement : AIMovementCore
                 StartRandomMovement();
                 StopRunningFromThreat();
             }
-            
+
             yield return new WaitForSeconds(_dataCore.DefaultDelay);
         }
     }
 
     protected override bool CanJump()
     {
-        return (_obstacleChecker.isObstacleClose  || _pitChecker.isPitNearp) &&
+        return (_obstacleChecker.isObstacleClose || _pitChecker.isPitNearp) &&
                _groundChecker.IsGrounded();
     }
 
@@ -85,10 +79,7 @@ public class HumanAIMovement : AIMovementCore
 
     protected void StartRandomMovement()
     {
-        if (_randomMovementCoroutine == null)
-        {
-            _randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
-        }
+        if (_randomMovementCoroutine == null) _randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
     }
 
     protected void StopRandomMovement()
@@ -98,7 +89,7 @@ public class HumanAIMovement : AIMovementCore
             StopCoroutine(_randomMovementCoroutine);
 
             StopStaying();
-            
+
             _randomMovementCoroutine = null;
         }
     }
@@ -125,8 +116,8 @@ public class HumanAIMovement : AIMovementCore
     protected bool IsThreatClose()
     {
         if (_commonTargetDetectin.ClosestTarget == null) return false;
-        
-        return _transform.position.ContainsPosition(_movementData.DetectionRadius, 
+
+        return _transform.position.ContainsPosition(_movementData.DetectionRadius,
             _commonTargetDetectin.ClosestTarget.position);
     }
 
@@ -145,31 +136,31 @@ public class HumanAIMovement : AIMovementCore
         while (true)
         {
             TurnAwayFromThreat();
-            
+
             yield return new WaitForSeconds(_dataCore.DefaultDelay);
         }
     }
 
     protected void TurnAwayFromThreat()
     {
-        Transform target = _commonTargetDetectin.ClosestTarget;
+        var target = _commonTargetDetectin.ClosestTarget;
 
         if (target == null) return;
-        
+
         SetMovementDirection(_transform.position.x < target.transform.position.x ? -1 : 1);
     }
 
     protected void StartStaying()
     {
         _canMove = false;
-        
+
         StopCheckingEnvironment();
     }
 
     protected void StopStaying()
     {
         _canMove = true;
-        
+
         StartCheckingEnvironment();
     }
 
@@ -188,7 +179,7 @@ public class HumanAIMovement : AIMovementCore
     protected override void SetFaceDirection(int direction)
     {
         base.SetFaceDirection(direction);
-        
+
         _sign.OnScaleChanged(direction);
     }
 
@@ -200,9 +191,9 @@ public class HumanAIMovement : AIMovementCore
         Gizmos.DrawWireSphere(_transform.position, _movementData.DetectionRadius);
 
         if (_commonTargetDetectin.ClosestTarget == null) return;
-        
-        Transform threat = _commonTargetDetectin.ClosestTarget;
-        
+
+        var threat = _commonTargetDetectin.ClosestTarget;
+
         Gizmos.DrawLine(_transform.position, threat.position);
         Gizmos.DrawCube(threat.position, new Vector3(0.5f, 0.5f, 0.5f));
     }

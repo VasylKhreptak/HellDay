@@ -10,8 +10,8 @@ public class WalkAudioData : ScriptableObject
         public AudioClip[] audioClips;
         [Range(0f, 1f)] public float volume = 1f;
     }
-    
-    [Header("Audios")] 
+
+    [Header("Audios")]
     public StepAudio[] stepAudios;
     public AudioClip[] defaultStepAudios;
 }

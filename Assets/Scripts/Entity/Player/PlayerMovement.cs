@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GroundChecker _groundChecker;
-    
+
     [Header("Preferences")]
     [SerializeField] private float _movementForce = 5f;
     [SerializeField] private float _minJumpForce = 15f;
     [SerializeField] private float _maxJumpForce = 30f;
     [SerializeField] private float _maxHorVelocity = 5f;
-    [SerializeField, Range(0f, 1f)] private float _horizontalSensetivity = 0.5f;
-    [SerializeField, Range(0f, 1f)] private float _verticalSensetivity = 0.8f;
+    [SerializeField] [Range(0f, 1f)] private float _horizontalSensetivity = 0.5f;
+    [SerializeField] [Range(0f, 1f)] private float _verticalSensetivity = 0.8f;
     [SerializeField] private float _jumpDelay = 1f;
     [SerializeField] private ForceMode2D _movementMode = ForceMode2D.Impulse;
 
     private bool _canMove = true;
-    private bool _isJumpForbidden ;
+    private bool _isJumpForbidden;
     private bool _isGrounded;
-    
+
     [Range(-1, 1)] private static int _movementDirection;
-    public static  int Direction => _movementDirection;
+    public static int Direction => _movementDirection;
 
     private float _previousMaxHorVelocity;
 
@@ -34,8 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _previousMaxHorVelocity = _maxHorVelocity;
-        
-        _movementDirection = (int) Mathf.Sign(_transform.localScale.x);
+
+        _movementDirection = (int)Mathf.Sign(_transform.localScale.x);
     }
 
     private void OnEnable()
@@ -48,15 +48,15 @@ public class PlayerMovement : MonoBehaviour
     private void OnDisable()
     {
         PlayerSitAndUpAnimation.onGetUp -= () => { _canMove = true; };
-        PlayerSitAndUpAnimation.onSitDown -= () => { _canMove = false;};
+        PlayerSitAndUpAnimation.onSitDown -= () => { _canMove = false; };
         PlayerWeaponControl.onImpactMovement -= ImpactMovement;
     }
 
     private void ImpactMovement(float percentage)
     {
         RestoreMovementPreferences();
-        
-        float clampedPercentage = percentage / 100f;
+
+        var clampedPercentage = percentage / 100f;
 
         _maxHorVelocity -= _maxHorVelocity * clampedPercentage;
     }
@@ -82,36 +82,30 @@ public class PlayerMovement : MonoBehaviour
             _rigidbody2D.AddForce(new Vector2(_joystick.Horizontal * _movementForce, 0), _movementMode);
             _rigidbody2D.LimitHorizontalVelocity(_maxHorVelocity);
 
-            _movementDirection = (int) Mathf.Sign(_joystick.Horizontal);
+            _movementDirection = (int)Mathf.Sign(_joystick.Horizontal);
         }
     }
 
     private void VerticalMovement()
     {
-        if (CanJump())
-        {
-            Jump();
-        }
+        if (CanJump()) Jump();
     }
 
     private void Jump()
     {
-        _rigidbody2D.AddForce(new Vector2(0, Mathf.Clamp(_maxJumpForce * _joystick.Vertical, 
+        _rigidbody2D.AddForce(new Vector2(0, Mathf.Clamp(_maxJumpForce * _joystick.Vertical,
             _minJumpForce, _maxJumpForce)), _movementMode);
-        
+
         _isJumpForbidden = true;
         this.DOWait(_jumpDelay).OnComplete(() => { _isJumpForbidden = false; });
 
         onJumped?.Invoke();
     }
-    
+
     private bool CanJump()
     {
-        if (_isJumpForbidden)
-        {
-            return false;
-        }
-        
+        if (_isJumpForbidden) return false;
+
         return _joystick.Vertical > _verticalSensetivity && _groundChecker.IsGrounded() &&
                LadderMovement.isOnLadder == false;
     }

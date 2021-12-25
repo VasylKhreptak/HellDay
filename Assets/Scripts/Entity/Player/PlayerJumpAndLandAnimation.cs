@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerJumpAndLandAnimation : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Animator _animator;
     [SerializeField] private WalkAudio _walkAudio;
 
@@ -28,7 +28,7 @@ public class PlayerJumpAndLandAnimation : MonoBehaviour
 
         _playerJumped = true;
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (_playerJumped)
@@ -37,7 +37,7 @@ public class PlayerJumpAndLandAnimation : MonoBehaviour
             _animator.SetTrigger(Landed);
 
             _walkAudio.PlayStepSound();
-            
+
             _playerJumped = false;
         }
     }

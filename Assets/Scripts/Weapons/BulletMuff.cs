@@ -6,7 +6,7 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
-    [Header("Bullet Muff Data")] 
+    [Header("Bullet Muff Data")]
     [SerializeField] private BulletMuffData _data;
 
 
@@ -14,11 +14,8 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     public void OnEnable()
     {
         SetMovement();
-        
-        if (gameObject.activeSelf)
-        {
-            this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
-        }
+
+        if (gameObject.activeSelf) this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
     }
 
     private void SetMovement()

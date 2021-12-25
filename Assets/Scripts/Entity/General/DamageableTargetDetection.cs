@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DamageableTargetDetection : TargetDetectionCore
 {
-    [Header("Targets")] 
+    [Header("Targets")]
     [SerializeField] private DamageableTarget[] _damageableTargets;
-    
+
     [HideInInspector] public DamageableTarget _closestTarget;
 
-    
+
 #if UNITY_EDITOR
     [SerializeField] private LayerMask _findLayerMask;
 #endif
@@ -33,21 +33,18 @@ public class DamageableTargetDetection : TargetDetectionCore
 
     private DamageableTarget FindClosestTarget(DamageableTarget[] damageableTargets)
     {
-        Transform[] targetTransforms = SelectTransforms(damageableTargets);
+        var targetTransforms = SelectTransforms(damageableTargets);
 
-        Transform closestTransform = _transform.FindClosestTransform(targetTransforms);
+        var closestTransform = _transform.FindClosestTransform(targetTransforms);
 
         return FindFirst(damageableTargets, closestTransform);
     }
 
     private Transform[] SelectTransforms(DamageableTarget[] damageableTargets)
     {
-        Transform[] transforms = new Transform[damageableTargets.Length];
-        
-        for (int i = 0; i < damageableTargets.Length; i++)
-        {
-            transforms[i] = damageableTargets[i].Transform;
-        }
+        var transforms = new Transform[damageableTargets.Length];
+
+        for (var i = 0; i < damageableTargets.Length; i++) transforms[i] = damageableTargets[i].Transform;
 
         return transforms;
     }
@@ -55,12 +52,8 @@ public class DamageableTargetDetection : TargetDetectionCore
     private DamageableTarget FindFirst(DamageableTarget[] damageableTargets, Transform transform)
     {
         foreach (var target in damageableTargets)
-        {
             if (target.Transform == transform)
-            {
                 return target;
-            }
-        }
 
         return null;
     }
@@ -80,19 +73,15 @@ public class DamageableTargetDetection : TargetDetectionCore
 
     public void FindKillableTargets()
     {
-        DamageableTarget[] allDamageableTargets = FindObjectsOfType<DamageableTarget>();
+        var allDamageableTargets = FindObjectsOfType<DamageableTarget>();
         var damageableTargets = new List<DamageableTarget>();
 
         foreach (var potentialTarget in allDamageableTargets)
-        {
             if (_findLayerMask.ContainsLayer(potentialTarget.gameObject.layer))
-            {
                 damageableTargets.Add(potentialTarget);
-            }
-        }
 
         _damageableTargets = damageableTargets.ToArray();
     }
-    
+
     #endif
 }

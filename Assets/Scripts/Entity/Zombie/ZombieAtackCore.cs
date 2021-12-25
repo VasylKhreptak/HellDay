@@ -7,11 +7,11 @@ public class ZombieAtackCore : MonoBehaviour
     [Header("References")]
     [SerializeField] protected Transform _transform;
     [SerializeField] protected ZombieAudio _audio;
-    
-    [Header("Target Detection")]
-    [SerializeField] protected DamageableTargetDetection  _damageableTargetDetection;
 
-    [Header("Core Data")] 
+    [Header("Target Detection")]
+    [SerializeField] protected DamageableTargetDetection _damageableTargetDetection;
+
+    [Header("Core Data")]
     [SerializeField] private ZombieAtackCoreData _coreData;
 
     protected ObjectPooler _objectPooler;
@@ -19,7 +19,7 @@ public class ZombieAtackCore : MonoBehaviour
     protected void Start()
     {
         StartCoroutine(ControlAtackRoutine());
-        
+
         _objectPooler = ObjectPooler.Instance;
     }
 
@@ -27,10 +27,7 @@ public class ZombieAtackCore : MonoBehaviour
     {
         while (true)
         {
-            if (CanAtack())
-            {
-                Atack();
-            }
+            if (CanAtack()) Atack();
 
             yield return new WaitForSeconds(_coreData.AtackDelay);
         }

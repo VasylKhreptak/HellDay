@@ -10,6 +10,6 @@ public class RandomDestroyParticleData : ScriptableObject
         [Range(0f, 100f)] public float probability;
     }
 
-    [Header("Particles")] 
+    [Header("Particles")]
     public DestroyParticle[] destroyParticles;
 }

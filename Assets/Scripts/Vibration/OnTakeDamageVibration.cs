@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class OnTakeDamageVibration : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private DamageableObject _damageableObject;
 
-    [Header("Preferences")] 
+    [Header("Preferences")]
     [SerializeField] private HapticTypes _vibrationType = HapticTypes.LightImpact;
 
     private void OnEnable()

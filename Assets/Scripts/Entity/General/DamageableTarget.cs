@@ -8,12 +8,9 @@ public class DamageableTarget : MonoBehaviour
 
     public Transform Transform => _transform;
     public IDamageable Damageable => _damageable;
-    
+
     private void Awake()
     {
-        if (TryGetComponent(out IDamageable damageable))
-        {
-            _damageable = damageable;
-        }
+        if (TryGetComponent(out IDamageable damageable)) _damageable = damageable;
     }
 }

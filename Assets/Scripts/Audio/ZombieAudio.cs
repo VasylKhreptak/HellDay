@@ -4,20 +4,20 @@ using Random = UnityEngine.Random;
 
 public class ZombieAudio : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private ZombieAudioData _data;
 
 
     private AudioPooler _audioPooler;
     private uint _audioID;
-    
+
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;
-        
+
         StartCoroutine(PlayWalkSoundRoutine());
     }
 
@@ -46,7 +46,7 @@ public class ZombieAudio : MonoBehaviour
     private void OnDestroy()
     {
         if (gameObject.scene.isLoaded == false) return;
-        
+
         _audioPooler.StopOneShootSound(_audioID);
     }
 }

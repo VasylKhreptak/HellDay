@@ -3,14 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ParticleMovementData", menuName = "ScriptableObjects/ParticleMovementData")]
 public class ParticleMovementData : ScriptableObject
 {
-    [Header("Horizontal Movement")] 
+    [Header("Horizontal Movement")]
     [SerializeField] private float _minHorizontalVelocity = -6f;
     [SerializeField] private float _maxHorizontalVelocity = 6f;
 
-    [Header("Vertical Movement")] 
+    [Header("Vertical Movement")]
     [SerializeField] private float _minVerticalVelocity = 1f;
     [SerializeField] private float _maxVerticalVelocity = 2f;
-    
+
     [Header("Preferences")]
     [SerializeField] private float _torque = 3f;
 

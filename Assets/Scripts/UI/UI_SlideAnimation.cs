@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UI_SlideAnimation : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] protected RectTransform _rectTransform;
     [SerializeField] protected Vector3 _offset;
     protected Vector3 _targetAnchoredPos;
@@ -14,7 +14,7 @@ public class UI_SlideAnimation : MonoBehaviour
     [SerializeField] protected AnimationCurve _animationCurve;
 
     protected bool _isShown;
-    
+
     protected virtual void Start()
     {
         HideBehindScreen();
@@ -25,23 +25,20 @@ public class UI_SlideAnimation : MonoBehaviour
         _targetAnchoredPos = _rectTransform.anchoredPosition;
         _startAnchoredPos = _targetAnchoredPos + _offset;
     }
-    
+
     protected void HideBehindScreen()
     {
         _rectTransform.anchoredPosition = _startAnchoredPos;
     }
 
-    protected  void SetAnimationState(bool show)
+    protected void SetAnimationState(bool show)
     {
-        if (show && _isShown || (show == false && _isShown == false))
-        {
-            return;
-        }
-        
+        if (show && _isShown || show == false && _isShown == false) return;
+
         Animate(show);
         _isShown = show;
     }
-    
+
     private void Animate(bool show)
     {
         _rectTransform.DOAnchorPos(

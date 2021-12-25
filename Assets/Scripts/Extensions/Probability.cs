@@ -7,11 +7,8 @@ public static class Probability
     public static void Execute(float probability, Action action)
     {
         Mathf.Clamp(probability, 0, 100);
-        
-        if (Random.Range(0f, 100f) <= probability)
-        {
-            action?.Invoke();
-        }
+
+        if (Random.Range(0f, 100f) <= probability) action?.Invoke();
     }
 
     public static bool GetBoolean(float trueProbability)

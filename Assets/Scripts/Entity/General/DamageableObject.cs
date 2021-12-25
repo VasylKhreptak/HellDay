@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class DamageableObject : MonoBehaviour, IDamageable
 {
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private DamageableObjectData _data;
-    
+
     protected float _health;
 
     public Action<float> onTakeDamage;
-    
+
     public bool IsDead => _health <= 0;
     public float Health => _health;
     public float MAXHealth => _data.MAXHealth;
@@ -34,22 +34,13 @@ public class DamageableObject : MonoBehaviour, IDamageable
         SetHealth(_health - damage);
 
         onTakeDamage?.Invoke(damage);
-        
-        if (IsDead)
-        {
-           DeathActions();
-        }
+
+        if (IsDead) DeathActions();
     }
 
     protected virtual void DeathActions()
     {
-        if (_data.CanBeDestroyed)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            gameObject.SetActive(false);
-        }
+        if (_data.CanBeDestroyed) Destroy(gameObject);
+        else gameObject.SetActive(false);
     }
 }

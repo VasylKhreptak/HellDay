@@ -10,7 +10,7 @@ public class ObjectOnDamageColorData : ScriptableObject
     private float _halfDuration;
     public float Duration => _duration;
     public float HalfDuration => _halfDuration;
- 
+
     private void Awake()
     {
         _halfDuration = _duration / 2f;

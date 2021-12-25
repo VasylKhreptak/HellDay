@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class AmmoBonusItem : MonoBehaviour
 {
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private AmmoBonusItemData _data;
 
     private PlayerWeaponControl _playerWeaponControl;
@@ -18,7 +18,7 @@ public class AmmoBonusItem : MonoBehaviour
     {
         if (_data.playerLayerMask.ContainsLayer(player.gameObject.layer) == false ||
             _playerWeaponControl.transform.parent.gameObject.activeSelf == false) return;
-        
+
         AssignAmmo(_playerWeaponControl.currentWeapon);
 
         gameObject.SetActive(false);
@@ -27,12 +27,8 @@ public class AmmoBonusItem : MonoBehaviour
     private void AssignAmmo(Weapon currentWeapon)
     {
         foreach (var preference in _data.bonusPreferences)
-        {
             if (currentWeapon.weaponType == preference.weaponType)
-            {
-                currentWeapon.playerAmmo.SetAmmoWithTextUpdate(currentWeapon.playerAmmo.Ammo + 
+                currentWeapon.playerAmmo.SetAmmoWithTextUpdate(currentWeapon.playerAmmo.Ammo +
                                                                Random.Range(preference.minAmmo, preference.maxAmmo));
-            }
-        }
     }
 }

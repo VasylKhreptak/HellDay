@@ -4,11 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(DamageableTarget))]
 public class SpikesInteract : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private DamageableTarget _damageableTarget;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private SpikeInteractData _data;
 
     private Coroutine _damageCoroutine;
@@ -23,10 +23,7 @@ public class SpikesInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Spikes"))
-        {
-            StartDamage();
-        }
+        if (other.CompareTag("Spikes")) StartDamage();
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -36,10 +33,7 @@ public class SpikesInteract : MonoBehaviour
 
     private void StartDamage()
     {
-        if (_damageCoroutine == null)
-        {
-            _damageCoroutine = StartCoroutine(DamageRoutine());
-        }
+        if (_damageCoroutine == null) _damageCoroutine = StartCoroutine(DamageRoutine());
     }
 
     private void StopDamage()
@@ -57,11 +51,11 @@ public class SpikesInteract : MonoBehaviour
         while (true)
         {
             _damageableTarget.Damageable.TakeDamage(Random.Range(_data.MINDamage, _data.MAXDamage));
-            
+
             PlayDamageSound();
-            
+
             SpawnBlood();
-            
+
             yield return new WaitForSeconds(_data.DamageDelay);
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private CinemachineVirtualCamera _camera;
     [SerializeField] private Transform _transform;
 
@@ -30,20 +30,20 @@ public class CameraShake : MonoBehaviour
         ExplosiveObjectCore.onCameraShake -= Shake;
         MissileLauncher.onCameraShake -= Shake;
     }
- 
-    public void Shake(Vector3 source, float  maxIntensity, float duration)
+
+    public void Shake(Vector3 source, float maxIntensity, float duration)
     {
         if (CanShake(source) == false) return;
-        
-        float intensity = _curve.Evaluate(_transform.position, source,
+
+        var intensity = _curve.Evaluate(_transform.position, source,
             maxIntensity, _maxSourceRange);
-        float _halfDuration = duration / 2;
-        
+        var _halfDuration = duration / 2;
+
         _cinemachinePerlin.m_AmplitudeGain = intensity;
 
-        Sequence sequence = DOTween.Sequence();
-        
-        sequence.Append( DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; }, 
+        var sequence = DOTween.Sequence();
+
+        sequence.Append(DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; },
             x => _cinemachinePerlin.m_AmplitudeGain = x, intensity, _halfDuration));
         sequence.Append(DOTween.To(() => { return _cinemachinePerlin.m_AmplitudeGain; },
             x => _cinemachinePerlin.m_AmplitudeGain = x, 0, _halfDuration));
@@ -56,8 +56,8 @@ public class CameraShake : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if(_transform == null) return;
-        
+        if (_transform == null) return;
+
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(_transform.position, _maxSourceRange);
     }

@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour, IPooledObject
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
-    [Header("Bullet Data")] 
+    [Header("Bullet Data")]
     [SerializeField] private BulletData _data;
 
     private ObjectPooler _objectPooler;
@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour, IPooledObject
     }
 
     public void OnEnable()
-    {   
+    {
         SetMovement();
     }
 
@@ -26,10 +26,7 @@ public class Bullet : MonoBehaviour, IPooledObject
     {
         _rigidbody2D.velocity = transform.right * _data.Speed;
 
-        if (gameObject.activeSelf)
-        {
-            this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
-        }
+        if (gameObject.activeSelf) this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
     }
 
     private void OnCollisionEnter2D(Collision2D other)

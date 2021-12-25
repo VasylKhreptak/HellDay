@@ -3,7 +3,7 @@ using System;
 public class PlayerAmmo : WeaponAmmo
 {
     public static Action<string> onSetAmmoText;
-    
+
     protected override void Awake()
     {
         SetAmmo(_startupAmmo);
@@ -24,7 +24,7 @@ public class PlayerAmmo : WeaponAmmo
     public override void GetAmmo()
     {
         base.GetAmmo();
-        
+
         UpdateAmmoText();
     }
 

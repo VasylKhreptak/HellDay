@@ -8,17 +8,17 @@ public class ExplosiveObjectCoreData : ScriptableObject
     [SerializeField] private float _explosionForce = 300f;
     [SerializeField] private float _upwardsModifier = 0.1f;
     [SerializeField] private ForceMode2D _forceMode2D = ForceMode2D.Impulse;
-    
+
     [Header("Chain Effect Preferences")]
     [SerializeField] private float _chainExplosionDelay = 0.3f;
-    
+
     [Header("Damage")]
     [SerializeField] private float _maxDamage = 130f;
-    
+
     [Header("Camera Shake Preferences")]
     [SerializeField] private float _maxCameraShakeIntensity = 13f;
     [SerializeField] private float _shakeDuration = 0.7f;
-    
+
     public LayerMask layerMask;
     public AnimationCurve forceCurve;
     public AnimationCurve damageCurve;

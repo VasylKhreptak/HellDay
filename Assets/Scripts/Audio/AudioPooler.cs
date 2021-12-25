@@ -25,13 +25,13 @@ public class AudioPooler : MonoBehaviour
         public IEnumerator coroutine;
         public uint ID;
     }
-    
+
     public static AudioPooler Instance;
-    
-    [Header("References")] 
+
+    [Header("References")]
     [SerializeField] private AudioMixer _audioMixer;
-    
-    [Header("Preferences")] 
+
+    [Header("Preferences")]
     [SerializeField] private int _maxSounds = 30;
     [SerializeField] private float _maxSoundDistance = 25f;
     [SerializeField] private float _minSoundDistance = 1f;
@@ -46,7 +46,7 @@ public class AudioPooler : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        
+
         DontDestroyOnLoad(gameObject);
 
         FillTrackInfo();
@@ -56,11 +56,11 @@ public class AudioPooler : MonoBehaviour
 
     private void FillTrackInfo()
     {
-        AudioMixerGroup[] groups = _audioMixer.FindMatchingGroups(string.Empty);
+        var groups = _audioMixer.FindMatchingGroups(string.Empty);
 
         foreach (var group in groups)
         {
-            TrackInfo trackInfo = new TrackInfo();
+            var trackInfo = new TrackInfo();
             trackInfo.name = group.name;
             trackInfo.@group = group;
             trackInfo.trackFader = null;
@@ -70,22 +70,22 @@ public class AudioPooler : MonoBehaviour
 
     private void FillPool()
     {
-        for (int i = 0; i < _maxSounds; i++)
+        for (var i = 0; i < _maxSounds; i++)
         {
-            GameObject go = new GameObject("Pool Item");
-            AudioSource audioSource = go.AddComponent<AudioSource>();
+            var go = new GameObject("Pool Item");
+            var audioSource = go.AddComponent<AudioSource>();
             go.transform.parent = transform;
 
-            AudioPoolItem poolItem = new AudioPoolItem();
+            var poolItem = new AudioPoolItem();
             poolItem.go = go;
             poolItem.audioSource = audioSource;
             poolItem.isPlaying = false;
             poolItem.audioSource.rolloffMode = rolloffMode;
             poolItem.audioSource.maxDistance = _maxSoundDistance;
             poolItem.audioSource.minDistance = _minSoundDistance;
-            
+
             go.SetActive(false);
-            
+
             _pool.Add(poolItem);
         }
     }
@@ -107,7 +107,7 @@ public class AudioPooler : MonoBehaviour
 
     private IEnumerator SetTrackVolumeInternal(string track, float volume, float fadeTime)
     {
-        float startVolume = 0f;
+        var startVolume = 0f;
 
         _audioMixer.GetFloat(track, out startVolume);
 
@@ -126,11 +126,11 @@ public class AudioPooler : MonoBehaviour
     {
         if (poolIndex < 0 || poolIndex >= _pool.Count) return 0;
 
-        AudioPoolItem poolItem = _pool[poolIndex];
+        var poolItem = _pool[poolIndex];
 
         _idGiver++;
 
-        AudioSource source = poolItem.audioSource;
+        var source = poolItem.audioSource;
         source.clip = clip;
         source.volume = volume;
         source.spatialBlend = spatialBlend;
@@ -156,11 +156,8 @@ public class AudioPooler : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         AudioPoolItem activeSound;
-        
-        if (_activePool.TryGetValue(id, out activeSound))
-        {
-            KillAudioPoolItem(activeSound, id);
-        }
+
+        if (_activePool.TryGetValue(id, out activeSound)) KillAudioPoolItem(activeSound, id);
     }
 
     private void KillAudioPoolItem(AudioPoolItem activeSound, uint id)
@@ -171,7 +168,7 @@ public class AudioPooler : MonoBehaviour
         activeSound.isPlaying = false;
         _activePool.Remove(id);
     }
-    
+
     public void StopOneShootSound(uint id)
     {
         AudioPoolItem activeSound;
@@ -187,18 +184,18 @@ public class AudioPooler : MonoBehaviour
     public uint PlayOneShootSound(string track, AudioClip clip, Vector3 position, float volume,
         float spatialBlend, int priority = 128)
     {
-        if (CanPlayAudio(position) == false || _tracks.ContainsKey(track) == false || 
+        if (CanPlayAudio(position) == false || _tracks.ContainsKey(track) == false ||
             clip == null || volume.Equals(0f)) return 0;
 
-        float unimportance = (_listenerTransform.position - position).sqrMagnitude / 
-                             Mathf.Max(1, priority);
+        var unimportance = (_listenerTransform.position - position).sqrMagnitude /
+                           Mathf.Max(1, priority);
 
-        int leastImportantIndex = -1;
-        float leastImportanceValue = float.MaxValue;
-        
-        for(int i = 0;i < _pool.Count; i++)
+        var leastImportantIndex = -1;
+        var leastImportanceValue = float.MaxValue;
+
+        for (var i = 0; i < _pool.Count; i++)
         {
-            AudioPoolItem poolItem = _pool[i];
+            var poolItem = _pool[i];
 
             if (poolItem.isPlaying == false)
             {
@@ -212,10 +209,8 @@ public class AudioPooler : MonoBehaviour
         }
 
         if (leastImportanceValue > unimportance)
-        {
-            return ConfigurePoolObject(leastImportantIndex, track, clip, position, 
+            return ConfigurePoolObject(leastImportantIndex, track, clip, position,
                 volume, spatialBlend, unimportance);
-        }
 
         return 0;
     }

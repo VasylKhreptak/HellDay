@@ -9,12 +9,12 @@ public class PlayerAudio : MonoBehaviour
     [SerializeField] private AudioClip[] _legKickAudioClips;
 
     private AudioPooler _audioPooler;
-    
+
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;
     }
-    
+
     public void PlayLegKickSound()
     {
         _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _legKickAudioClips.Random(),

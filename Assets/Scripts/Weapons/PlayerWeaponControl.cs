@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayerWeaponControl : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private Weapon[] _weapons;
-    
+
     [Header("Preferences")]
     [SerializeField] private Weapons _startupWeapon;
-    
+
     [HideInInspector] public Weapon currentWeapon;
 
     private ObjectPooler _objectPooler;
 
     public static Action<float> onImpactMovement;
-    
+
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
-        
+
         SetWeapon(_startupWeapon);
     }
 
@@ -41,22 +41,19 @@ public class PlayerWeaponControl : MonoBehaviour
     public void SwapWeapon(Weapon toWeapon)
     {
         ThrowCurrentWeapon();
-        
+
         SetWeapon(toWeapon.weaponType);
         currentWeapon.playerAmmo.SetAmmoWithTextUpdate(toWeapon.playerAmmo.Ammo);
     }
 
     private void ThrowCurrentWeapon()
     {
-        GameObject weaponObj = _objectPooler.GetFromPool(currentWeapon.weaponPoolName,
+        var weaponObj = _objectPooler.GetFromPool(currentWeapon.weaponPoolName,
             _transform.position, Quaternion.identity);
 
         weaponObj.transform.localScale = _transform.localScale;
 
-        if (weaponObj.TryGetComponent(out PlayerAmmo playerAmmo))
-        {
-            playerAmmo.SetAmmo(currentWeapon.playerAmmo.Ammo);
-        }
+        if (weaponObj.TryGetComponent(out PlayerAmmo playerAmmo)) playerAmmo.SetAmmo(currentWeapon.playerAmmo.Ammo);
     }
 
     private void ImpactPlayerMovement(float percentage)
@@ -68,13 +65,13 @@ public class PlayerWeaponControl : MonoBehaviour
     {
         if (CanShoot() == false) return;
 
-        currentWeapon.IWeapon.StartShooting(); 
+        currentWeapon.IWeapon.StartShooting();
     }
 
     public void StopShooting()
     {
         if (CanShoot() == false) return;
-        
+
         currentWeapon.IWeapon.StopShooting();
     }
 

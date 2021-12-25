@@ -3,7 +3,7 @@ using System;
 public class PlayerDoorInteract : DoorInteractCore
 {
     public static Action<bool> onAnimateOpenDoorBtn;
-    
+
     protected override void OnEnteredDoorArea()
     {
         onAnimateOpenDoorBtn?.Invoke(true);
@@ -16,9 +16,6 @@ public class PlayerDoorInteract : DoorInteractCore
 
     public void ToggleDoor()
     {
-        if (_closestDoor)
-        {
-            _closestDoor.ToggleDoor();
-        }
+        if (_closestDoor) _closestDoor.ToggleDoor();
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ZombieAtackCoreData : ScriptableObject
 {
-    [Header("Damage Preferences")] 
+    [Header("Damage Preferences")]
     [SerializeField] private float _minDamage = 10f;
     [SerializeField] private float _maxDamage = 20f;
     [SerializeField] private float _atackDelay = 1f;

@@ -16,7 +16,7 @@ public class BulletMuffAudioData : ScriptableObject
         public Weapons weaponType;
         [Range(0f, 100f)] public float probability;
     }
-    
+
     public AudioClip[] audioClips;
     public MuffAudio[] muffAudios;
     public PlaySoundProbability[] playSoundProbabilities;

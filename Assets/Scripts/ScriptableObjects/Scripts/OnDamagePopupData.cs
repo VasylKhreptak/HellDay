@@ -6,7 +6,7 @@ public class OnDamagePopupData : ScriptableObject
     [Header("Preferences")]
     public Gradient colorGradient;
     public Pools damagePopupPool;
-    
+
     [SerializeField] private float _minDamageColorValue;
     [SerializeField] private float _maxDamageColorValue;
 

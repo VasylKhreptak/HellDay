@@ -10,13 +10,13 @@ public class GrassDestroyData : ScriptableObject
         public Sprite sprite;
         public Material shaderMaterial;
     }
-    
+
     [Header("Grass Damage effect")]
     public Pools damageEffect;
-    
+
     [Header("Preferences")]
     public GrassState[] grassStates;
 
-    [Header("Data")] 
+    [Header("Data")]
     public AudioClip[] _stateChangeAudioClips;
 }

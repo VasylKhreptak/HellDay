@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class BridgeElement : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider2D;
     public PlatformEffector2D platformEffector2D;
 
-    [Header("Linked bridge elements")] 
+    [Header("Linked bridge elements")]
     [SerializeField] private BridgeElement[] _nextBridgeElements;
 
     [HideInInspector] public bool isDeactivated;
@@ -16,7 +16,7 @@ public class BridgeElement : MonoBehaviour
     {
         foreach (var bridge in _nextBridgeElements)
         {
-            if(bridge == null) continue;
+            if (bridge == null) continue;
 
             DeactivateBridgeElement(bridge);
         }
@@ -25,7 +25,7 @@ public class BridgeElement : MonoBehaviour
     public void DeactivateBridgeElement(BridgeElement bridgeElement)
     {
         if (bridgeElement.isDeactivated) return;
-        
+
         bridgeElement.boxCollider2D.usedByEffector = false;
         Destroy(bridgeElement.platformEffector2D);
 

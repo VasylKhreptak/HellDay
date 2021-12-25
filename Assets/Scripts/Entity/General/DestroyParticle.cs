@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class DestroyParticle : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private DestroyParticleData _data;
 
     private ObjectPooler _objectPooler;
@@ -17,10 +17,7 @@ public class DestroyParticle : MonoBehaviour
 
     private void SpawnDestroyParticles()
     {
-        foreach (var particle in _data.destroyParticles)
-        {
-            _objectPooler.GetFromPool(particle, _transform.position, Quaternion.identity);
-        }
+        foreach (var particle in _data.destroyParticles) _objectPooler.GetFromPool(particle, _transform.position, Quaternion.identity);
     }
 
     private void OnDisable()

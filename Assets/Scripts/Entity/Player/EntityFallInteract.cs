@@ -3,14 +3,14 @@ using UnityEngine.AI;
 
 public class EntityFallInteract : OnPhysicalHit
 {
-    [Header("references")] 
+    [Header("references")]
     [SerializeField] private Transform _transform;
-    
-    [Header("Audio")] 
+
+    [Header("Audio")]
     [SerializeField] private AudioClip[] _boneCrackAudioClips;
 
     private AudioPooler _audioPooler;
-    
+
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;
@@ -28,7 +28,7 @@ public class EntityFallInteract : OnPhysicalHit
 
     private void ReactOnHit()
     {
-        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _boneCrackAudioClips.Random(), 
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _boneCrackAudioClips.Random(),
             _transform.position, 1f, 1f);
     }
 }

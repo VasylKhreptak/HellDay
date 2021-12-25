@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class DoorDestroy : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
 
-    public void  OnDestroy()
+    public void OnDestroy()
     {
         if (gameObject.scene.isLoaded == false) return;
-        
+
         Destroy(_transform.parent.gameObject);
     }
 }

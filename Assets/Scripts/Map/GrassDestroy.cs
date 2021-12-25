@@ -3,12 +3,12 @@ using GrassState = GrassDestroyData.GrassState;
 
 public class GrassDestroy : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private DamageableObject _damageableObject;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private GrassDestroyData _data;
 
     private ObjectPooler _objectPooler;
@@ -32,7 +32,7 @@ public class GrassDestroy : MonoBehaviour
 
     private void ProcessDamage(float damage)
     {
-        if (TryFindAppropriateState(_data.grassStates, out GrassState state))
+        if (TryFindAppropriateState(_data.grassStates, out var state))
         {
             SetGrassState(state);
 
@@ -40,7 +40,7 @@ public class GrassDestroy : MonoBehaviour
 
             PlayChagneStateAudio();
         }
-        
+
     }
 
     private void SetGrassState(GrassState grass)
@@ -51,17 +51,13 @@ public class GrassDestroy : MonoBehaviour
 
     private bool TryFindAppropriateState(GrassState[] states, out GrassState state)
     {
-        state = null; 
-        
+        state = null;
+
         if (states.Length == 0) return false;
 
         foreach (var potentialState in states)
-        {
-            if (_damageableObject.Health < (potentialState.healthPercentage / 100f * _damageableObject.MAXHealth))
-            {
+            if (_damageableObject.Health < potentialState.healthPercentage / 100f * _damageableObject.MAXHealth)
                 state = potentialState;
-            }
-        }
 
         if (state == null || state.sprite == _spriteRenderer.sprite) return false;
 

@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private GameObject _player;
     public Transform _transform;
     [SerializeField] private GameObject _openedDoor;
     [SerializeField] private GameObject _closedDoor;
     [SerializeField] private bool _isOpened;
 
-    [Header("Toogle Sound")] 
+    [Header("Toogle Sound")]
     [SerializeField] private AudioClip _doorSound;
 
     private AudioPooler _audioPooler;
-    
+
     private void Awake()
     {
         SetDoorState(_isOpened);
@@ -35,9 +35,9 @@ public class Door : MonoBehaviour
 
     public void ToggleDoor()
     {
-        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _doorSound, _transform.position, 
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _doorSound, _transform.position,
             1f, 1f);
-        
+
         SetDoorState(!_isOpened);
     }
 }

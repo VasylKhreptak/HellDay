@@ -11,37 +11,34 @@ public class Player : DamageableObject
 
     private void OnEnable()
     {
-        if (_wasDied)
-        {
-            onResurrection?.Invoke();
-        }
+        if (_wasDied) onResurrection?.Invoke();
     }
 
     protected override void SetMaxHealth(float maxHealth)
     {
         _health = MAXHealth;
-        
+
         onSetMaxHealthBar?.Invoke(MAXHealth);
     }
 
     protected override void DeathActions()
-     {
-         onDie?.Invoke();
-         
-         base.DeathActions();
+    {
+        onDie?.Invoke();
 
-         _wasDied = true;
-     }
+        base.DeathActions();
+
+        _wasDied = true;
+    }
 
     public override void SetHealth(float health)
     {
         base.SetHealth(health);
-        
+
         UpdateHealthBar();
     }
 
     private void UpdateHealthBar()
-     {
-         onSetHealthBar?.Invoke(_health);
-     }
+    {
+        onSetHealthBar?.Invoke(_health);
+    }
 }

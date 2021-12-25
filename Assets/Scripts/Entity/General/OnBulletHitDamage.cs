@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class OnBulletHitDamage : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private DamageableObject _damageableObject;
     [SerializeField] private OnBulletHitEvent _onBulletHitEvent;
-    
+
     private PlayerWeaponControl _playerWeaponControl;
 
     private void Start()

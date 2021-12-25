@@ -11,7 +11,7 @@ public class UI_HealthBar : MonoBehaviour
     [SerializeField] private AnimationCurve _animationCurve;
 
     private Tween _sliderTween;
-    
+
     private void OnEnable()
     {
         Player.onSetMaxHealthBar += SetMaxHealthBar;
@@ -27,17 +27,15 @@ public class UI_HealthBar : MonoBehaviour
     public void SetMaxHealthBar(float health)
     {
         _slider.maxValue = health;
-        
+
         SetHealthBar(health);
     }
-    
+
     public void SetHealthBar(float health)
     {
         _sliderTween.Kill();
-        
-        _sliderTween = DOTween.To(() => _slider.value, x => _slider.value = x, health, _moveTime).
-            SetEase(_animationCurve);
-        _fill.DOColor(_gradient.Evaluate(health / _slider.maxValue), _moveTime).
-            SetEase(_animationCurve);
+
+        _sliderTween = DOTween.To(() => _slider.value, x => _slider.value = x, health, _moveTime).SetEase(_animationCurve);
+        _fill.DOColor(_gradient.Evaluate(health / _slider.maxValue), _moveTime).SetEase(_animationCurve);
     }
 }

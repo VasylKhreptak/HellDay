@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerLegKickAnimation : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Animator _animator;
 
     public static Action onPlayed;
@@ -14,9 +14,9 @@ public class PlayerLegKickAnimation : MonoBehaviour
     public static bool IsPlaying => _isPlaying;
 
     private Tween _waitTween;
-    
+
     private readonly int LegKick = Animator.StringToHash("LegKick");
-    
+
     public void PlayLegKickAnimation()
     {
         _animator.SetTrigger(LegKick);

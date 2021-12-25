@@ -7,7 +7,7 @@ public class ScreenSleep : MonoBehaviour
     private void Awake()
     {
         if (_canSleep == false) return;
-        
+
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 }

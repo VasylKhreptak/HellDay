@@ -5,16 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class OnDamageColor : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private DamageableObject _damageableObject;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private ObjectOnDamageColorData _data;
 
     private Sequence _seq;
     private Color _previousColor;
-    
+
     private void Awake()
     {
         _previousColor = _spriteRenderer.color;

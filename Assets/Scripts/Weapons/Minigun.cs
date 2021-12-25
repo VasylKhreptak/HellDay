@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class Minigun : WeaponCore, IWeapon
 {
-    [Header("Preferences")] 
+    [Header("Preferences")]
     [SerializeField] private float _spinTime = 2f;
 
-    [Header("Audio Clips")] 
+    [Header("Audio Clips")]
     [SerializeField] private AudioClip _windUp;
     [SerializeField] private AudioClip _windDown;
     [SerializeField] private AudioClip _spinLoop;
     [SerializeField] private AudioClip _shootSound;
     [SerializeField] private AudioClip _shootStop;
-    
+
     protected static readonly int SpinTrigger = Animator.StringToHash("Spin");
 
     private bool _isSpinning;
@@ -24,7 +24,7 @@ public class Minigun : WeaponCore, IWeapon
     private Coroutine _stopShootAudio;
 
     private Tween _minigunSpinTween;
-    
+
     public new void StartShooting()
     {
         if (_shootCoroutine != null || _canShoot == false) return;
@@ -32,12 +32,11 @@ public class Minigun : WeaponCore, IWeapon
         if (_playerAmmo.IsEmpty)
         {
             _weaponVFX.PlayEmptyAmmoSound(_transform.position);
-            
+
             return;
         }
 
-        StartPlayingSpinAudio(() =>
-        {
+        StartPlayingSpinAudio(() => {
             _shootCoroutine = StartCoroutine(Shoot());
 
             ControlShootSpeed();
@@ -46,26 +45,20 @@ public class Minigun : WeaponCore, IWeapon
 
     public new void StopShooting()
     {
-        if (_shootCoroutine != null)
-        {
-            StopCoroutine(_shootCoroutine);
-        }
-        
+        if (_shootCoroutine != null) StopCoroutine(_shootCoroutine);
+
         StopPlayingSpinAudio();
-        
+
         StopShootAudio();
-        
+
         FadeSpin();
-        
+
         _shootCoroutine = null;
     }
 
     private void StartPlayingSpinAudio(Action onSpinEnd)
     {
-        if(_playSpinAudio == null)
-        {
-            _playSpinAudio = StartCoroutine(PlaySpin(onSpinEnd));
-        }
+        if (_playSpinAudio == null) _playSpinAudio = StartCoroutine(PlaySpin(onSpinEnd));
     }
 
     private void StopPlayingSpinAudio()
@@ -80,8 +73,7 @@ public class Minigun : WeaponCore, IWeapon
 
     private void FadeSpin()
     {
-        _minigunSpinTween = this.DOWait(1).OnComplete(() =>
-        {
+        _minigunSpinTween = this.DOWait(1).OnComplete(() => {
             _animator.SetBool(SpinTrigger, false);
         });
     }
@@ -96,23 +88,17 @@ public class Minigun : WeaponCore, IWeapon
     protected override IEnumerator Shoot()
     {
         onShoot?.Invoke();
-        
+
         _isShooting = true;
 
         PlayAudioClip(_audioSource, _shootSound, true);
-        
+
         _animator.SetBool(SpinTrigger, false);
 
         while (true)
         {
-            if (CanShoot())
-            {
-                ShootActions();
-            }
-            else if(_playerAmmo.IsEmpty)
-            {
-                StopShooting();
-            }
+            if (CanShoot()) ShootActions();
+            else if (_playerAmmo.IsEmpty) StopShooting();
 
             yield return new WaitForSecondsRealtime(_shootDelay);
         }
@@ -130,32 +116,26 @@ public class Minigun : WeaponCore, IWeapon
 
     private IEnumerator PlaySpin(Action onSpinEnd)
     {
-        _minigunSpinTween.Kill();    
+        _minigunSpinTween.Kill();
         _animator.SetBool(SpinTrigger, true);
-        
+
         _isSpinning = true;
-        
+
         PlayAudioClip(_audioSource, _windUp);
 
         yield return new WaitForSeconds(_windUp.length);
-        
+
         PlayAudioClip(_audioSource, _spinLoop, true);
 
         yield return new WaitForSeconds(_spinTime);
 
         onSpinEnd?.Invoke();
     }
-    
-    private void  StopShootAudio()
+
+    private void StopShootAudio()
     {
-        if (_isShooting)
-        {
-            PlayAudioClip(_audioSource, _shootStop);
-        }
-        else if (_isSpinning)
-        {
-            PlayAudioClip(_audioSource, _windDown);
-        }
+        if (_isShooting) PlayAudioClip(_audioSource, _shootStop);
+        else if (_isSpinning) PlayAudioClip(_audioSource, _windDown);
 
         _isShooting = false;
         _isSpinning = false;

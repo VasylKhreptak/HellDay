@@ -5,16 +5,16 @@ using Random = UnityEngine.Random;
 
 public class WeaponBonusItem : MonoBehaviour
 {
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private WeaponBonusItemData _data;
-    
-    [Header("References")] 
+
+    [Header("References")]
     [SerializeField] private Weapon _weapon;
 
     [Header("Preferences")]
     [SerializeField] private int _minAmmo = 40;
     [SerializeField] private int _maxAmmo = 100;
-    
+
     private bool _canSwap;
 
     private PlayerWeaponControl _playerWeaponControl;
@@ -29,22 +29,22 @@ public class WeaponBonusItem : MonoBehaviour
     private void OnEnable()
     {
         _weapon.playerAmmo.SetAmmo(Random.Range(_minAmmo, _maxAmmo));
-        
+
         ConfigureSwapSpeed();
     }
 
     private void OnCollisionEnter2D(Collision2D player)
     {
-        if (_data.playerLayerMask.ContainsLayer(player.gameObject.layer) == false || 
+        if (_data.playerLayerMask.ContainsLayer(player.gameObject.layer) == false ||
             _canSwap == false) return;
 
         if (player.gameObject.activeSelf)
         {
-           _playerWeaponControl.SwapWeapon(_weapon);
-           
-           ConfigureSwapSpeed();
+            _playerWeaponControl.SwapWeapon(_weapon);
 
-           gameObject.SetActive(false);
+            ConfigureSwapSpeed();
+
+            gameObject.SetActive(false);
         }
     }
 

@@ -498,7 +498,6 @@ GameObject:
   - component: {fileID: 7295552138771740383}
   - component: {fileID: 4459915908287009490}
   - component: {fileID: 6905969448154766815}
-  - component: {fileID: 3589494580942857384}
   - component: {fileID: 4005998623598645707}
   - component: {fileID: 7881268756987159692}
   - component: {fileID: 8644686176363525946}
@@ -754,24 +753,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 412e2b0916677424ebb359bf28a17b14, type: 3}
   - {fileID: 8300000, guid: ad051abd56e2bc84abebf96a84629018, type: 3}
   - {fileID: 8300000, guid: c29cab548ed7dc3479d19aef1ac2bfa5, type: 3}
---- !u!114 &3589494580942857384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8784631849592028619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62cc5264833b65149a5f6cb1558be547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _player: {fileID: 0}
-  _playerObj: {fileID: 0}
-  _checkDelay: 0.7
-  _signAnimation: {fileID: 8044264842672417480}
-  _transform: {fileID: 8784631849592028616}
-  _detectRadius: 10
 --- !u!114 &4005998623598645707
 MonoBehaviour:
   m_ObjectHideFlags: 0

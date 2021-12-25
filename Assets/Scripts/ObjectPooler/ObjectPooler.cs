@@ -12,23 +12,23 @@ public class ObjectPooler : MonoBehaviour
         public int _size;
         [HideInInspector] public GameObject folder;
     }
-    
+
     private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
     [SerializeField] private List<Pool> _pools;
 
-    
+
     public static ObjectPooler Instance;
 
     private void Awake()
     {
         Instance = this;
-        
+
         CreatePoolFolders();
 
         FillPool();
     }
 
-    
+
     private void CreatePoolFolders()
     {
         foreach (var pool in _pools)
@@ -42,13 +42,13 @@ public class ObjectPooler : MonoBehaviour
     {
         _poolDictionary = new Dictionary<Pools, Queue<GameObject>>();
 
-        for (int i = 0; i < _pools.Count; i++)
+        for (var i = 0; i < _pools.Count; i++)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
+            var objectPool = new Queue<GameObject>();
 
-            for (int j = 0; j < _pools[i]._size; j++)
+            for (var j = 0; j < _pools[i]._size; j++)
             {
-                GameObject gameObject = Instantiate(_pools[i]._prefab);
+                var gameObject = Instantiate(_pools[i]._prefab);
                 gameObject.SetActive(false);
 
                 gameObject.transform.SetParent(_pools[i].folder.transform);
@@ -67,17 +67,14 @@ public class ObjectPooler : MonoBehaviour
             Debug.LogWarning("Pool with name " + pool + "doesn't exist");
             return null;
         }
-        
-        GameObject objectFromPool = _poolDictionary[pool].Dequeue();
-        
+
+        var objectFromPool = _poolDictionary[pool].Dequeue();
+
         objectFromPool.transform.position = Position;
         objectFromPool.transform.rotation = Rotation;
 
-        if (objectFromPool.activeSelf)
-        {
-            objectFromPool.SetActive(false);
-        }
-        
+        if (objectFromPool.activeSelf) objectFromPool.SetActive(false);
+
         objectFromPool.SetActive(true);
 
         _poolDictionary[pool].Enqueue(objectFromPool);

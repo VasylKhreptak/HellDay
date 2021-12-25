@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ResqueSignAnimation : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _signTransform;
     [SerializeField] private SpriteRenderer _signRenderer;
 
-    [Header("Preferences")] 
+    [Header("Preferences")]
     [SerializeField] private Transform _start;
     [SerializeField] private Transform _end;
     [SerializeField] private float _duration;
-    
-    [Header("Curves")] 
+
+    [Header("Curves")]
     [SerializeField] private AnimationCurve _moveCurve;
     [SerializeField] private AnimationCurve _alphaCurve;
     [SerializeField] private AnimationCurve _scaleCurve;
@@ -21,7 +21,7 @@ public class ResqueSignAnimation : MonoBehaviour
     private bool _isShown;
 
     private Tween _localMoveTween, _scaleTween, _fadeTween;
-    
+
     private void Awake()
     {
         _signRenderer.color = _signRenderer.color.WithAlpha(0f);
@@ -33,19 +33,16 @@ public class ResqueSignAnimation : MonoBehaviour
 
     public void SetSignState(bool state)
     {
-        if (state && _isShown || (state == false && _isShown == false))
-        {
-            return;
-        }
+        if (state && _isShown || state == false && _isShown == false) return;
 
         ShowSign(state);
         _isShown = state;
     }
-    
+
     private void ShowSign(bool state)
     {
         KillTweens();
-        
+
         _localMoveTween = _signTransform.DOLocalMove(state ? _end.localPosition : _start.localPosition, _duration).SetEase(_moveCurve);
         _scaleTween = _signTransform.DOScale(state ? _end.localScale : _start.localScale, _duration).SetEase(_scaleCurve);
         _fadeTween = _signRenderer.DOFade(Convert.ToSingle(state), _duration).SetEase(_alphaCurve);

@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class HumanAudio : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
 
-    [Header("Resque AudioClips")] 
+    [Header("Resque AudioClips")]
     [SerializeField] private AudioClip[] _resqueAudioClips;
 
     private AudioPooler _audioPooler;
-    
+
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;

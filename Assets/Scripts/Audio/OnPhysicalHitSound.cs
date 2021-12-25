@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class OnPhysicalHitSound : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Transform _transform;
     [SerializeField] private OnPhysicalHit _onPhysicalHit;
 
-    [Header("Audio Clips")] 
+    [Header("Audio Clips")]
     [SerializeField] private AudioClip[] _audioClips;
 
     private AudioPooler _audioPooler;
-    
+
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;

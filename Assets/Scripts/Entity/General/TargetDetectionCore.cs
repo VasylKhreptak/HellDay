@@ -8,7 +8,7 @@ public class TargetDetectionCore : MonoBehaviour
     [Header("References")]
     [SerializeField] protected Transform _transform;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] protected TargetDetectionData _data;
 
 

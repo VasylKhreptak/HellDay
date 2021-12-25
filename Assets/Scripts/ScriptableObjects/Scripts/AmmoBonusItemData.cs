@@ -10,7 +10,7 @@ public class AmmoBonusItemData : BonusItemData
         public int minAmmo;
         public int maxAmmo;
     }
-    
+
     public BonusPreference[] bonusPreferences;
 
 }

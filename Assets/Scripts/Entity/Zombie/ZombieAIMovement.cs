@@ -8,10 +8,10 @@ public class ZombieAIMovement : AIMovementCore
 
     [Header("Target Detection Preferences")]
     [SerializeField] private float _mainDetectionRadius;
-    
-    [Header("Movement Data")] 
+
+    [Header("Movement Data")]
     [SerializeField] private ZombieAIMovementData _movementData;
-    
+
     protected Coroutine _followTargetCoroutine;
     protected Coroutine _increaseDetectionRadiusCoroutine;
 
@@ -34,18 +34,18 @@ public class ZombieAIMovement : AIMovementCore
     protected virtual void Start()
     {
         previousDetectionRadius = _mainDetectionRadius;
-        
+
         StartCoroutine(CheckEnvironmentRoutine());
 
         StartCoroutine(ControlMovementRoutine());
     }
-    
+
     protected void OnPlayedLoudSound()
     {
-        Transform target = _damageableTargetDetection._closestTarget.Transform;
-        
-        if (target == null ||_transform == null) return;
-        
+        var target = _damageableTargetDetection._closestTarget.Transform;
+
+        if (target == null || _transform == null) return;
+
         StartCoroutine(ControlDetectionRadius());
     }
 
@@ -64,7 +64,7 @@ public class ZombieAIMovement : AIMovementCore
         if (_randomMovementCoroutine == null)
         {
             _isFollowingTarget = false;
-        
+
             _randomMovementCoroutine = StartCoroutine(RandomMovementRoutine());
         }
     }
@@ -83,10 +83,7 @@ public class ZombieAIMovement : AIMovementCore
     {
         while (true)
         {
-            if (Random.Range(0, 2) == 1)
-            {
-                ReverseMovementDirection();
-            }
+            if (Random.Range(0, 2) == 1) ReverseMovementDirection();
 
             yield return new WaitForSeconds(_dataCore.ChangeDirectionDelay +
                                             Random.Range(0, _dataCore.ChangeDirectionDelay));
@@ -119,13 +116,13 @@ public class ZombieAIMovement : AIMovementCore
 
     protected bool CanFollowTarget()
     {
-        Transform closestTarget = _damageableTargetDetection._closestTarget.Transform;
+        var closestTarget = _damageableTargetDetection._closestTarget.Transform;
 
         if (closestTarget == null) return false;
-        
+
         return _transform.position.ContainsPosition(_mainDetectionRadius, closestTarget.position);
     }
-    
+
     protected void StartFollowingClosestTarget()
     {
         if (_followTargetCoroutine == null)
@@ -152,8 +149,8 @@ public class ZombieAIMovement : AIMovementCore
     {
         while (true)
         {
-            Transform closestTarget = _damageableTargetDetection._closestTarget.Transform;
-            
+            var closestTarget = _damageableTargetDetection._closestTarget.Transform;
+
             LookAtTaregt(closestTarget);
 
             yield return new WaitForSeconds(_dataCore.DefaultDelay);
@@ -162,8 +159,8 @@ public class ZombieAIMovement : AIMovementCore
 
     protected void LookAtTaregt(Transform target)
     {
-        if(target == null) return;
-        
+        if (target == null) return;
+
         SetMovementDirection(_transform.position.x < target.transform.position.x ? 1 : -1);
     }
 

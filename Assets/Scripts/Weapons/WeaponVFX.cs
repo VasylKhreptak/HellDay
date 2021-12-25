@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class WeaponVFX : MonoBehaviour
 {
-    
-    
     [Header("Empty Ammo Sound ")]
     [SerializeField] private AudioClip _emptyAmmo;
-    
+
     private ObjectPooler _objectPooler;
     private AudioPooler _audioPooler;
 
@@ -21,7 +19,7 @@ public class WeaponVFX : MonoBehaviour
     {
         audioSource.Play();
     }
-    
+
     public void TriggerShootAnimation(Animator animator, int id)
     {
         animator.SetTrigger(id);
@@ -34,14 +32,14 @@ public class WeaponVFX : MonoBehaviour
 
     public void SpawnShootSmoke(Pools type, Vector2 position, Quaternion rotation)
     {
-        GameObject pooledObject = _objectPooler.GetFromPool(type, position, rotation );
+        var pooledObject = _objectPooler.GetFromPool(type, position, rotation);
 
         pooledObject.transform.localScale = new Vector3(PlayerMovement.Direction, 1, 1);
     }
 
     public void SpawnShootSparks(Pools type, Vector2 position, Quaternion rotation)
     {
-        GameObject pooledObject = _objectPooler.GetFromPool(type, position, rotation);
+        var pooledObject = _objectPooler.GetFromPool(type, position, rotation);
 
         pooledObject.transform.localScale = new Vector3(PlayerMovement.Direction, 1, 1);
     }

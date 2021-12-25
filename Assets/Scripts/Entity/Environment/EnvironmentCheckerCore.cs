@@ -3,15 +3,12 @@ using UnityEngine;
 
 public class EnvironmentCheckerCore : MonoBehaviour
 {
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private EnvironmentCheckerCoreData _data;
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_data.layerMask.ContainsLayer(other.gameObject.layer))
-        {
-            OnEnterSmth();
-        }
+        if (_data.layerMask.ContainsLayer(other.gameObject.layer)) OnEnterSmth();
     }
 
     private void OnTriggerExit2D(Collider2D other)

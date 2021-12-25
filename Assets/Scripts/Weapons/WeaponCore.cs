@@ -6,35 +6,35 @@ using Random = UnityEngine.Random;
 
 public class WeaponCore : MonoBehaviour, IWeapon
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] protected Transform _transform;
     [SerializeField] protected PlayerAmmo _playerAmmo;
-    
+
     [Header("Positions")]
     [SerializeField] protected Transform _bulletMuffSpawnPlace;
     [SerializeField] protected Transform _bulletSpawnPlace;
     [SerializeField] protected Transform _shootParticleSpawnPlace;
-    
-    [Header("Weapon options")] 
-    [Tooltip("Time before two shoots")] 
-    [SerializeField] protected float _shootDelay = 0.1f;
-    [SerializeField] protected float _angleScatter = 5f; 
 
-    [Header("Animator")] 
+    [Header("Weapon options")]
+    [Tooltip("Time before two shoots")]
+    [SerializeField] protected float _shootDelay = 0.1f;
+    [SerializeField] protected float _angleScatter = 5f;
+
+    [Header("Animator")]
     [SerializeField] protected Animator _animator;
     protected static readonly int ShootTrigger = Animator.StringToHash("Shoot");
-    
-    [Header("Ammo options")] 
+
+    [Header("Ammo options")]
     [SerializeField] protected Pools _bullet = Pools.DefaultBullet;
     [SerializeField] protected Pools _bulletMuff = Pools.DefaultBulletMuff;
-    
-    [Header("Audio")] 
+
+    [Header("Audio")]
     [SerializeField] protected AudioSource _audioSource;
 
-    [Header("WeaponVFX")] 
+    [Header("WeaponVFX")]
     [SerializeField] protected WeaponVFX _weaponVFX;
-    
-    [Header("Weapon option on condition")] 
+
+    [Header("Weapon option on condition")]
     [SerializeField] protected float _angleScatterOnSit = 2f;
     protected float _previousAngleScatter;
 
@@ -42,15 +42,15 @@ public class WeaponCore : MonoBehaviour, IWeapon
     protected ObjectPooler _objectPooler;
 
     public static Action onShoot;
-    
+
     protected bool _canShoot = true;
 
     private Tween _shootTween;
-    
+
     protected void OnEnable()
     {
         _previousAngleScatter = _angleScatter;
-        
+
         PlayerSitAndUpAnimation.onGetUp += OnPlayerGetUp;
         PlayerLegKickAnimation.onPlayed += StopShooting;
         PlayerSitAndUpAnimation.onSitDown += OnPlayerSitDown;
@@ -83,14 +83,14 @@ public class WeaponCore : MonoBehaviour, IWeapon
         if (_playerAmmo.IsEmpty)
         {
             _weaponVFX.PlayEmptyAmmoSound(_transform.position);
-            
+
             return;
         }
-            
+
         if (_shootCoroutine != null || CanShoot() == false) return;
-        
+
         _shootCoroutine = StartCoroutine(Shoot());
-        
+
         ControlShootSpeed();
     }
 
@@ -150,8 +150,8 @@ public class WeaponCore : MonoBehaviour, IWeapon
 
     protected void SpawnBullet()
     {
-        Vector3 bulletPosition = _bulletSpawnPlace.position;
-        Vector3 bulletRotation = new Vector3(0, 0, Random.Range(-_angleScatter, _angleScatter));
+        var bulletPosition = _bulletSpawnPlace.position;
+        var bulletRotation = new Vector3(0, 0, Random.Range(-_angleScatter, _angleScatter));
         ChangeBulletDirection(ref bulletRotation);
 
         _objectPooler.GetFromPool(_bullet, bulletPosition, Quaternion.Euler(bulletRotation));

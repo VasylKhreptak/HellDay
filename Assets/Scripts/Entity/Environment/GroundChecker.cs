@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class GroundChecker : MonoBehaviour
 {
-    [Header("References")] [SerializeField]
-    private Transform _transform;
+    [Header("References")]
+    [SerializeField] private Transform _transform;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private GroundCheckerData _data;
 
     public bool IsGrounded()
     {
         Vector2 origin1, origin2;
 
-        float halfDistanceBtwnRays = _data.DisBetweenRays / 2;
+        var halfDistanceBtwnRays = _data.DisBetweenRays / 2;
 
         origin1 = _transform.position - new Vector3(halfDistanceBtwnRays, 0);
         origin2 = _transform.position + new Vector3(halfDistanceBtwnRays, 0);
@@ -27,8 +27,8 @@ public class GroundChecker : MonoBehaviour
 
         Vector2 origin1, origin2;
 
-        float halfDistacneBtwnRays = _data.DisBetweenRays / 2;
-        
+        var halfDistacneBtwnRays = _data.DisBetweenRays / 2;
+
         origin1 = _transform.position - new Vector3(halfDistacneBtwnRays, 0);
         origin2 = _transform.position + new Vector3(halfDistacneBtwnRays, 0);
 

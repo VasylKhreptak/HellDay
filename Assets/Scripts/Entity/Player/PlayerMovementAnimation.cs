@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerMovementAnimation : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private Animator _animator;
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
@@ -13,13 +13,12 @@ public class PlayerMovementAnimation : MonoBehaviour
 
     private static bool _isMoving;
     public static bool IsMoving => _isMoving;
-    
+
     private readonly int Speed = Animator.StringToHash("Speed");
 
     private void OnEnable()
     {
-        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () =>
-        {
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () => {
             ControlMovementAnimation();
 
             _isMoving = Mathf.Approximately(_rigidbody2D.velocity.x, 0) == false;

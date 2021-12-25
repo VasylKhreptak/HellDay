@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class OnBulletHitAudio : MonoBehaviour
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private OnBulletHitEvent _onBulletHitEvent;
 
-    [Header("Data")] 
+    [Header("Data")]
     [SerializeField] private OnBulletHitAudioData _data;
 
     private Tween _waitTween;
@@ -32,7 +32,7 @@ public class OnBulletHitAudio : MonoBehaviour
     {
         if (_canPlay)
         {
-            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.audioClips.Random(), 
+            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.audioClips.Random(),
                 other.transform.position, 1f, 1f);
 
             ControlPlaySpeed();

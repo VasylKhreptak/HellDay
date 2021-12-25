@@ -1,15 +1,15 @@
 using System.Collections;
 using UnityEngine;
 
-public class FuelBarrel: ExplosiveObjectCore
+public class FuelBarrel : ExplosiveObjectCore
 {
-    [Header("References")] 
+    [Header("References")]
     [SerializeField] private DamageableObject _damageableObject;
 
-    [Header("Smoke Preferences")] 
+    [Header("Smoke Preferences")]
     [SerializeField] private ParticleSystem _smoke;
 
-    [Header("Fuel Barrel Data")] 
+    [Header("Fuel Barrel Data")]
     [SerializeField] private FuelBarrelData _fuelBarrelData;
 
     private GameObject _smokeObj;
@@ -25,13 +25,10 @@ public class FuelBarrel: ExplosiveObjectCore
     {
         _damageableObject.onTakeDamage += ControlSmokeAppearance;
     }
-    
+
     public void ControlSmokeAppearance(float damage)
     {
-        if (_damageableObject.Health < _percentagedHealth)
-        {
-            StartCoroutine(SmokeRoutine());
-        }
+        if (_damageableObject.Health < _percentagedHealth) StartCoroutine(SmokeRoutine());
     }
 
     private IEnumerator SmokeRoutine()
@@ -39,7 +36,7 @@ public class FuelBarrel: ExplosiveObjectCore
         _smoke.Play();
 
         yield return new WaitForSeconds(_fuelBarrelData.ExplodeDelay);
-        
+
         ExplodeActions();
     }
 
@@ -48,14 +45,14 @@ public class FuelBarrel: ExplosiveObjectCore
         _damageableObject.onTakeDamage -= ControlSmokeAppearance;
 
         if (gameObject.scene.isLoaded == false) return;
-        
+
         ExplodeActions();
     }
 
     private void DisableSmoke()
     {
-        if(_smokeObj == null) return;
-        
+        if (_smokeObj == null) return;
+
         _smokeObj.SetActive(false);
     }
 
