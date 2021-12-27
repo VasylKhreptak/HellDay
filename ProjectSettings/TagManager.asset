@@ -50,3 +50,6 @@ TagManager:
   - name: HealthBar
     uniqueID: 2799170593
     locked: 0
+  - name: GameOverSign
+    uniqueID: 4261485163
+    locked: 0

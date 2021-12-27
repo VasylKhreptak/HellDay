@@ -1,4 +1,6 @@
+using System;
 using DG.Tweening;
+using MiscUtil.Collections.Extensions;
 using UnityEngine;
 
 public class PlayerStripesAnimation : MonoBehaviour
@@ -18,7 +20,8 @@ public class PlayerStripesAnimation : MonoBehaviour
     [SerializeField] private float _rotationDur;
 
     [Header("Player Sit Down Preferences")]
-    [SerializeField] private float _minOffset = 1f;
+    [SerializeField] private float _minYOffset = 1f;
+    [SerializeField] private float _moveDur = 1f;
 
     [Header("Preferences")]
     [SerializeField] private float _accuracy = 0.3f;
@@ -37,6 +40,9 @@ public class PlayerStripesAnimation : MonoBehaviour
 
             AlignStripes();
         });
+
+        PlayerSitAndUpAnimation.onSitDown += MoveDown;
+        PlayerSitAndUpAnimation.onGetUp += MoveUp;
     }
 
     private void OnDisable()
@@ -45,6 +51,26 @@ public class PlayerStripesAnimation : MonoBehaviour
 
         _rotateTween.Kill();
         _moveTween.Kill();
+        
+        PlayerSitAndUpAnimation.onSitDown -= MoveDown;
+        PlayerSitAndUpAnimation.onGetUp -= MoveUp;
+    }
+
+    private void MoveDown()
+    {
+        Move(false);
+    }
+
+    private void MoveUp()
+    {
+        Move(true);
+    }
+
+    private void Move(bool up)
+    {
+        _moveTween.Kill();
+        _moveTween = _transform.DOLocalMoveY(_transform.position.y + 
+                                             _minYOffset * (up ? 1 : -1), _moveDur);
     }
 
     private void AlignStripes()
@@ -65,7 +91,7 @@ public class PlayerStripesAnimation : MonoBehaviour
     {
         return Extensions.Mathf.Approximately(_playerRb.velocity.x, 0, _accuracy) == false;
     }
-
+ 
     private void LookAt(Transform target)
     {
         var direction = target.position - _transform.position;

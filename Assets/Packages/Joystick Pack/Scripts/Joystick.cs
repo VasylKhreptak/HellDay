@@ -14,6 +14,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; }
     }
 
+    public bool IsPressed()
+    {
+        return Horizontal != 0 && Vertical != 0;
+    }
+
     public Vector2 Direction
     {
         get { return new Vector2(Horizontal, Vertical); }
