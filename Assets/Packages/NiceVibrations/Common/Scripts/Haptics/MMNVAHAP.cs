@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-#if UNITY_EDITOR 
+#if UNITY_EDITOR
 using Newtonsoft.Json;
 #endif
 
@@ -80,7 +80,7 @@ namespace MoreMountains.NiceVibrations
         public MMNVAHAPMetadata Metadata;
         public List<MMNVAHAPPattern> Pattern;
 
-#if UNITY_EDITOR 
+#if UNITY_EDITOR
         /// <summary>
         /// Converts a AHAP string into a MMNVAndroidWaveForm
         /// </summary>
@@ -88,36 +88,30 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static MMNVAndroidWaveForm AHAPtoAndroidWaveForm(string AHAPasString, float intensityMultiplier, float sharpnessMultiplier)
         {
-            MMNVAHAP ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
+            var ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
 
-            List<long> patterns = new List<long>();
-            List<int> amplitudes = new List<int>();
+            var patterns = new List<long>();
+            var amplitudes = new List<int>();
 
             double totalTimeStamp = 0f;
             double previousTimeStamp = 0f;
-            foreach (MMNVAHAPPattern pattern in ahap.Pattern)
-            {
+            foreach (var pattern in ahap.Pattern)
                 if (pattern.ParameterCurve != null)
-                {
                     if (pattern.ParameterCurve.ParameterID == "HapticIntensityControl")
-                    {
-                        foreach (MMNVAHAPParameterCurveControlPoint point in pattern.ParameterCurve.ParameterCurveControlPoints)
+                        foreach (var point in pattern.ParameterCurve.ParameterCurveControlPoints)
                         {
-                            double timeStamp = point.Time - previousTimeStamp;
+                            var timeStamp = point.Time - previousTimeStamp;
                             totalTimeStamp += timeStamp;
                             patterns.Add((long)(timeStamp * 1000));
 
-                            float originalIntensity = (float)point.ParameterValue * intensityMultiplier;
-                            int intensity = (int)Remap(originalIntensity, 0f, 1f, 0f, 255f);
+                            var originalIntensity = (float)point.ParameterValue * intensityMultiplier;
+                            var intensity = (int)Remap(originalIntensity, 0f, 1f, 0f, 255f);
                             amplitudes.Add(intensity);
 
                             previousTimeStamp = point.Time;
                         }
-                    }
-                }
-            }
 
-            MMNVAndroidWaveForm returnWaveForm = new MMNVAndroidWaveForm();
+            var returnWaveForm = new MMNVAndroidWaveForm();
 
             returnWaveForm.Amplitudes = amplitudes.ToArray();
             returnWaveForm.Pattern = patterns.ToArray();
@@ -132,54 +126,48 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static MMNVRumbleWaveForm AHAPtoRumbleWaveForm(string AHAPasString, float intensityMultiplier, float sharpnessMultiplier)
         {
-            MMNVAHAP ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
+            var ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
 
-            List<long> patterns = new List<long>();
-            List<int> lowFreqAmplitudes = new List<int>();
-            List<int> highFreqAmplitudes = new List<int>();
+            var patterns = new List<long>();
+            var lowFreqAmplitudes = new List<int>();
+            var highFreqAmplitudes = new List<int>();
 
             double totalTimeStamp = 0f;
             double previousTimeStamp = 0f;
-            foreach (MMNVAHAPPattern pattern in ahap.Pattern)
-            {
+            foreach (var pattern in ahap.Pattern)
                 if (pattern.ParameterCurve != null)
                 {
                     if (pattern.ParameterCurve.ParameterID == "HapticIntensityControl")
-                    {
-                        foreach (MMNVAHAPParameterCurveControlPoint point in pattern.ParameterCurve.ParameterCurveControlPoints)
+                        foreach (var point in pattern.ParameterCurve.ParameterCurveControlPoints)
                         {
 
-                            double timeStamp = point.Time - previousTimeStamp;
+                            var timeStamp = point.Time - previousTimeStamp;
                             totalTimeStamp += timeStamp;
                             patterns.Add((long)(timeStamp * 1000));
 
-                            float originalIntensity = (float)point.ParameterValue * intensityMultiplier;
-                            int intensity = (int)Remap(originalIntensity, 0f, 1f, 0f, 255f);
+                            var originalIntensity = (float)point.ParameterValue * intensityMultiplier;
+                            var intensity = (int)Remap(originalIntensity, 0f, 1f, 0f, 255f);
                             lowFreqAmplitudes.Add(intensity);
 
                             previousTimeStamp = point.Time;
                         }
-                    }
                     if (pattern.ParameterCurve.ParameterID == "HapticSharpnessControl")
-                    {
-                        foreach (MMNVAHAPParameterCurveControlPoint point in pattern.ParameterCurve.ParameterCurveControlPoints)
+                        foreach (var point in pattern.ParameterCurve.ParameterCurveControlPoints)
                         {
-                            double timeStamp = point.Time - previousTimeStamp;
+                            var timeStamp = point.Time - previousTimeStamp;
                             totalTimeStamp += timeStamp;
                             patterns.Add((long)(timeStamp * 1000));
 
-                            float originalIntensity = (float)point.ParameterValue * sharpnessMultiplier;
-                            int intensity = (int)Remap(originalIntensity, 0f, 1f, 0f, 255f);
+                            var originalIntensity = (float)point.ParameterValue * sharpnessMultiplier;
+                            var intensity = (int)Remap(originalIntensity, 0f, 1f, 0f, 255f);
                             highFreqAmplitudes.Add(intensity);
 
                             previousTimeStamp = point.Time;
                         }
-                    }
                 }
-            }
 
-            MMNVRumbleWaveForm returnWaveForm = new MMNVRumbleWaveForm();
-            
+            var returnWaveForm = new MMNVRumbleWaveForm();
+
             returnWaveForm.LowFrequencyAmplitudes = lowFreqAmplitudes.ToArray();
             returnWaveForm.HighFrequencyAmplitudes = highFreqAmplitudes.ToArray();
             returnWaveForm.Pattern = patterns.ToArray();
@@ -198,7 +186,7 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static float Remap(float x, float A, float B, float C, float D)
         {
-            float remappedValue = C + (x - A) / (B - A) * (D - C);
+            var remappedValue = C + (x - A) / (B - A) * (D - C);
             return remappedValue;
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace MoreMountains.NiceVibrations
 {
-	public class V2DemoManager : MonoBehaviour
+    public class V2DemoManager : MonoBehaviour
     {
         public List<RectTransform> Pages;
         public int CurrentPage = 0;
@@ -29,12 +29,12 @@ namespace MoreMountains.NiceVibrations
         {
             Application.targetFrameRate = 60;
             _paginations = new List<Pagination>();
-            foreach (RectTransform page in Pages)
+            foreach (var page in Pages)
             {
                 _paginations.Add(page.GetComponentInChildren<Pagination>());
                 page.gameObject.SetActive(false);
             }
-            foreach(Pagination pagination in _paginations)
+            foreach (var pagination in _paginations)
             {
                 pagination.InitializePagination(Pages.Count);
                 pagination.ActiveColor = ActiveColor;
@@ -69,7 +69,7 @@ namespace MoreMountains.NiceVibrations
 
         public virtual void NextPage()
         {
-            if (CurrentPage < Pages.Count-1)
+            if (CurrentPage < Pages.Count - 1)
             {
                 CurrentPage++;
                 Transition(CurrentPage - 1, CurrentPage, true);
@@ -79,20 +79,14 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void SetCurrentPage()
         {
-            foreach (Pagination pagination in _paginations)
-            {
-                pagination.SetCurrentPage(Pages.Count, CurrentPage);
-            }
+            foreach (var pagination in _paginations) pagination.SetCurrentPage(Pages.Count, CurrentPage);
         }
 
         protected virtual void Transition(int previous, int next, bool goingRight)
         {
-						MMVibrationManager.StopAllHaptics(true);
+            MMVibrationManager.StopAllHaptics(true);
 
-            if (_transitionCoroutine != null)
-            {
-                StopCoroutine(_transitionCoroutine);
-            }
+            if (_transitionCoroutine != null) StopCoroutine(_transitionCoroutine);
             _transitionCoroutine = StartCoroutine(TransitionCoroutine(previous, next, goingRight));
         }
 
@@ -101,7 +95,7 @@ namespace MoreMountains.NiceVibrations
             _position.y = Pages[previous].localPosition.y;
             _position.z = Pages[previous].localPosition.z;
 
-            foreach (RectTransform page in Pages)
+            foreach (var page in Pages)
             {
                 _position.x = 1200f;
                 page.localPosition = _position;
@@ -109,7 +103,7 @@ namespace MoreMountains.NiceVibrations
 
             Pages[next].gameObject.SetActive(true);
 
-            float timeSpent = 0f;
+            var timeSpent = 0f;
             while (timeSpent < PageTransitionDuration)
             {
                 if (goingRight)

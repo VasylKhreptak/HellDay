@@ -1,6 +1,5 @@
 using System;
 using DG.Tweening;
-using MiscUtil.Collections.Extensions;
 using UnityEngine;
 
 public class PlayerStripesAnimation : MonoBehaviour
@@ -26,6 +25,14 @@ public class PlayerStripesAnimation : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] private float _accuracy = 0.3f;
 
+    private float _startYpos;
+    private float _targetYpos;
+    private void Awake()
+    {
+        _startYpos = _transform.localPosition.y;
+        _targetYpos = _transform.localPosition.y - _minYOffset;
+    }
+
     private readonly int Speed = Animator.StringToHash("Speed");
 
     private Coroutine _configurableUpdate;
@@ -35,7 +42,8 @@ public class PlayerStripesAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () => {
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () =>
+        {
             _animator.SetFloat(Speed, _playerRb.velocity.magnitude);
 
             AlignStripes();
@@ -51,7 +59,7 @@ public class PlayerStripesAnimation : MonoBehaviour
 
         _rotateTween.Kill();
         _moveTween.Kill();
-        
+
         PlayerSitAndUpAnimation.onSitDown -= MoveDown;
         PlayerSitAndUpAnimation.onGetUp -= MoveUp;
     }
@@ -69,8 +77,7 @@ public class PlayerStripesAnimation : MonoBehaviour
     private void Move(bool up)
     {
         _moveTween.Kill();
-        _moveTween = _transform.DOLocalMoveY(_transform.position.y + 
-                                             _minYOffset * (up ? 1 : -1), _moveDur);
+        _moveTween = _transform.DOLocalMoveY(up ? _startYpos : _targetYpos, _moveDur);
     }
 
     private void AlignStripes()
@@ -91,12 +98,15 @@ public class PlayerStripesAnimation : MonoBehaviour
     {
         return Extensions.Mathf.Approximately(_playerRb.velocity.x, 0, _accuracy) == false;
     }
- 
+
     private void LookAt(Transform target)
     {
         var direction = target.position - _transform.position;
 
-        if (PlayerMovement.Direction == 1) direction = Quaternion.AngleAxis(180, Vector3.forward) * direction;
+        if (PlayerFaceDirectionController.FaceDirection == 1)
+        {
+            direction = Quaternion.AngleAxis(180, Vector3.forward) * direction;
+        }
 
         var rot = Extensions.Quaternion.RotationFromDirection2D(direction);
 

@@ -13,7 +13,7 @@ namespace MoreMountains.NiceVibrations
         public long[] Pattern;
         public int[] Amplitudes;
     }
-    
+
     /// <summary>
     /// A scriptable object used to store waveform values
     /// </summary>

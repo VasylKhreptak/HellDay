@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform _transform;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Joystick _joystick;
     [SerializeField] private GroundChecker _groundChecker;
@@ -23,10 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _canMove = true;
     private bool _isJumpForbidden;
     private bool _isGrounded;
-
-    [Range(-1, 1)] private static int _movementDirection;
-    public static int Direction => _movementDirection;
-
+    
     private float _previousMaxHorVelocity;
 
     public static Action onJumped;
@@ -34,8 +30,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _previousMaxHorVelocity = _maxHorVelocity;
-
-        _movementDirection = (int)Mathf.Sign(_transform.localScale.x);
     }
 
     private void OnEnable()
@@ -81,8 +75,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _rigidbody2D.AddForce(new Vector2(_joystick.Horizontal * _movementForce, 0), _movementMode);
             _rigidbody2D.LimitHorizontalVelocity(_maxHorVelocity);
-
-            _movementDirection = (int)Mathf.Sign(_joystick.Horizontal);
         }
     }
 

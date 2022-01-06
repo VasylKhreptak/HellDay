@@ -43,7 +43,7 @@ namespace MoreMountains.NiceVibrations
         protected float _knobValue;
         protected Vector3 _initialCarPosition;
         protected Vector3 _carPosition;
-        
+
         protected virtual void Awake()
         {
             Power = MaximumPowerDuration;
@@ -66,7 +66,7 @@ namespace MoreMountains.NiceVibrations
 
             if (!_carStarted)
             {
-                if ((_knobValue > MinimumKnobValue) && (Knob.Active))
+                if (_knobValue > MinimumKnobValue && Knob.Active)
                 {
                     _carStarted = true;
                     _carStartedAt = Time.time;
@@ -82,15 +82,12 @@ namespace MoreMountains.NiceVibrations
                     if (Power == MaximumPowerDuration)
                     {
                         Knob.SetActive(true);
-                        Knob._rectTransform.localScale = Vector3.one ;
+                        Knob._rectTransform.localScale = Vector3.one;
                         ReloadingPrompt.SetActive(false);
                     }
                     else
                     {
-                        if (!Knob.Active)
-                        {
-                            Knob.SetValue(CarSpeed);
-                        }                        
+                        if (!Knob.Active) Knob.SetValue(CarSpeed);
                     }
                 }
             }
@@ -132,9 +129,9 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void UpdateCar()
         {
-            float targetSpeed = _carStarted ? NiceVibrationsDemoHelpers.Remap(Knob.Value, MinimumKnobValue, 1f, 0f, 1f) : 0f;
+            var targetSpeed = _carStarted ? NiceVibrationsDemoHelpers.Remap(Knob.Value, MinimumKnobValue, 1f, 0f, 1f) : 0f;
             CarSpeed = Mathf.Lerp(CarSpeed, targetSpeed, Time.deltaTime * 1f);
-            
+
             CarEngineAudioSource.volume = CarSpeed;
             CarEngineAudioSource.pitch = NiceVibrationsDemoHelpers.Remap(CarSpeed, 0f, 1f, 0.5f, 1.25f);
 
@@ -142,7 +139,7 @@ namespace MoreMountains.NiceVibrations
             RightWheel.Rotate(CarSpeed * Time.deltaTime * WheelRotationSpeed, Space.Self);
 
             _carPosition.x = _initialCarPosition.x + 0f;
-            _carPosition.y = _initialCarPosition.y + 10 * CarSpeed  * Mathf.PerlinNoise(Time.time * 10f, CarSpeed * 10f);
+            _carPosition.y = _initialCarPosition.y + 10 * CarSpeed * Mathf.PerlinNoise(Time.time * 10f, CarSpeed * 10f);
             _carPosition.z = 0f;
             CarBody.localPosition = _carPosition;
 
@@ -155,29 +152,24 @@ namespace MoreMountains.NiceVibrations
                 // start dent
                 if (Time.time - _lastStartClickAt < StartClickDuration)
                 {
-                    float elapsedTime = StartClickCurve.Evaluate((Time.time - _lastStartClickAt) * (1 / StartClickDuration));
+                    var elapsedTime = StartClickCurve.Evaluate((Time.time - _lastStartClickAt) * (1 / StartClickDuration));
                     Knob._rectTransform.localScale = Vector3.one + Vector3.one * elapsedTime * 0.05f;
                     Knob._image.color = Color.Lerp(ActiveColor, Color.white, elapsedTime);
                 }
 
                 // other dents
-                foreach (float f in Dents)
-                {
-                    if (((_knobValue >= f) && (_knobValueLastFrame < f)) || ((_knobValue <= f) && (_knobValueLastFrame > f)))
+                foreach (var f in Dents)
+                    if (_knobValue >= f && _knobValueLastFrame < f || _knobValue <= f && _knobValueLastFrame > f)
                     {
                         _lastDentAt = Time.time;
                         break;
                     }
-                }
                 if (Time.time - _lastDentAt < DentDuration)
                 {
-                    float elapsedTime = StartClickCurve.Evaluate((Time.time - _lastDentAt) * (1 / DentDuration));
+                    var elapsedTime = StartClickCurve.Evaluate((Time.time - _lastDentAt) * (1 / DentDuration));
                     Knob._rectTransform.localScale = Vector3.one + Vector3.one * elapsedTime * 0.02f;
                     Knob._image.color = Color.Lerp(ActiveColor, Color.white, elapsedTime * 0.05f);
-                    if (MMVibrationManager.iOS())
-                    {
-                        MMVibrationManager.TransientHaptic(0.4f, 1f);
-                    }                    
+                    if (MMVibrationManager.iOS()) MMVibrationManager.TransientHaptic(0.4f, 1f);
                 }
             }
 
@@ -187,27 +179,15 @@ namespace MoreMountains.NiceVibrations
             // power bars
             if (CarSpeed <= 0.1f)
             {
-                for (int i = 0; i < SpeedBars.Count; i++)
-                {
-                    SpeedBars[i].SetActive(false);
-                }
+                for (var i = 0; i < SpeedBars.Count; i++) SpeedBars[i].SetActive(false);
             }
             else
             {
-                int barsAmount = (int)(CarSpeed * 5f);
-                for (int i = 0; i < SpeedBars.Count; i++)
-                {
-                    if (i <= barsAmount)
-                    {
-                        SpeedBars[i].SetActive(true);
-                    }
-                    else
-                    {
-                        SpeedBars[i].SetActive(false);
-                    }
-                }
+                var barsAmount = (int)(CarSpeed * 5f);
+                for (var i = 0; i < SpeedBars.Count; i++)
+                    if (i <= barsAmount) SpeedBars[i].SetActive(true);
+                    else SpeedBars[i].SetActive(false);
             }
         }
     }
 }
-

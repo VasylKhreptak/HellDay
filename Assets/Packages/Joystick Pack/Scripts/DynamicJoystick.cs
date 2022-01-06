@@ -3,7 +3,11 @@ using UnityEngine.EventSystems;
 
 public class DynamicJoystick : Joystick
 {
-    public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
+    public float MoveThreshold
+    {
+        get => moveThreshold;
+        set => moveThreshold = Mathf.Abs(value);
+    }
 
     [SerializeField] private float moveThreshold = 1;
 
@@ -31,7 +35,7 @@ public class DynamicJoystick : Joystick
     {
         if (magnitude > moveThreshold)
         {
-            Vector2 difference = normalised * (magnitude - moveThreshold) * radius;
+            var difference = normalised * (magnitude - moveThreshold) * radius;
             background.anchoredPosition += difference;
         }
         base.HandleInput(magnitude, normalised, radius, cam);

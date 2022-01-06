@@ -32,7 +32,7 @@ namespace MoreMountains.NiceVibrations
         protected Vector3 _startPosition;
         protected Vector3 _endPosition;
         protected Vector3 _workPoint;
-        
+
         protected virtual void Awake()
         {
             Initialization();
@@ -41,8 +41,8 @@ namespace MoreMountains.NiceVibrations
         protected virtual void Initialization()
         {
             Points = new List<Vector3>();
-            _canvas = this.gameObject.GetComponentInParent<Canvas>();
-            _targetLineRenderer = this.gameObject.GetComponent<LineRenderer>();
+            _canvas = gameObject.GetComponentInParent<Canvas>();
+            _targetLineRenderer = gameObject.GetComponent<LineRenderer>();
             _camera = _canvas.worldCamera;
             DrawCurve();
         }
@@ -55,20 +55,20 @@ namespace MoreMountains.NiceVibrations
             _endPosition.z -= 0.1f;
 
             Points.Clear();
-            
-            for (int i = 0; i < PointsCount; i++)
+
+            for (var i = 0; i < PointsCount; i++)
             {
-                float t = NiceVibrationsDemoHelpers.Remap(i, 0, PointsCount, 0f, 1f);
-                float sinValue = MMSignal.GetValue(t, MMSignal.SignalType.Sine, 1f, AmplitudeFactor, Period, 0f, false);
-                float triangleValue = MMSignal.GetValue(t, MMSignal.SignalType.Triangle, 1f, AmplitudeFactor, Period, 0f, false);
+                var t = NiceVibrationsDemoHelpers.Remap(i, 0, PointsCount, 0f, 1f);
+                var sinValue = MMSignal.GetValue(t, MMSignal.SignalType.Sine, 1f, AmplitudeFactor, Period, 0f, false);
+                var triangleValue = MMSignal.GetValue(t, MMSignal.SignalType.Triangle, 1f, AmplitudeFactor, Period, 0f, false);
 
                 if (Move)
-                {                                        
+                {
                     sinValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Sine, 1f, AmplitudeFactor, Period, 0f, false);
                     triangleValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Triangle, 1f, AmplitudeFactor, Period, 0f, false);
                 }
 
-                float finalValue = Mathf.Lerp(sinValue, triangleValue, Sharpness);
+                var finalValue = Mathf.Lerp(sinValue, triangleValue, Sharpness);
 
 
                 _workPoint.x = Mathf.Lerp(_startPosition.x, _endPosition.x, t);
@@ -77,7 +77,7 @@ namespace MoreMountains.NiceVibrations
                 Points.Add(_workPoint);
             }
 
-            _targetLineRenderer.positionCount = PointsCount ;
+            _targetLineRenderer.positionCount = PointsCount;
             _targetLineRenderer.SetPositions(Points.ToArray());
         }
 

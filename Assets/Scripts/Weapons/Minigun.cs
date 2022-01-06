@@ -36,7 +36,8 @@ public class Minigun : WeaponCore, IWeapon
             return;
         }
 
-        StartPlayingSpinAudio(() => {
+        StartPlayingSpinAudio(() =>
+        {
             _shootCoroutine = StartCoroutine(Shoot());
 
             ControlShootSpeed();
@@ -73,7 +74,8 @@ public class Minigun : WeaponCore, IWeapon
 
     private void FadeSpin()
     {
-        _minigunSpinTween = this.DOWait(1).OnComplete(() => {
+        _minigunSpinTween = this.DOWait(1).OnComplete(() =>
+        {
             _animator.SetBool(SpinTrigger, false);
         });
     }

@@ -21,45 +21,43 @@ namespace MoreMountains.NiceVibrations
         {
             _canvas = GetComponentInParent<Canvas>();
 
-            float horizontalF = (ContentZone.rect.width - 2 * Padding) / (PrefabSize.x + Margin);
-            float verticalF = (ContentZone.rect.height - 2 * Padding) / (PrefabSize.y + Margin);            
-            int horizontal = Mathf.FloorToInt(horizontalF);
-            int vertical = Mathf.FloorToInt(verticalF);
+            var horizontalF = (ContentZone.rect.width - 2 * Padding) / (PrefabSize.x + Margin);
+            var verticalF = (ContentZone.rect.height - 2 * Padding) / (PrefabSize.y + Margin);
+            var horizontal = Mathf.FloorToInt(horizontalF);
+            var vertical = Mathf.FloorToInt(verticalF);
 
-            float centerH = (ContentZone.rect.width - (Padding * 2) - (horizontal * PrefabSize.x) - (horizontal-1)*Margin ) / 2f;
-            float centerV = (ContentZone.rect.height - (Padding * 2) - (vertical * PrefabSize.x) - (vertical - 1) * Margin) / 2f;
+            var centerH = (ContentZone.rect.width - Padding * 2 - horizontal * PrefabSize.x - (horizontal - 1) * Margin) / 2f;
+            var centerV = (ContentZone.rect.height - Padding * 2 - vertical * PrefabSize.x - (vertical - 1) * Margin) / 2f;
 
             Buttons = new List<WobbleButton>();
 
-            for (int i = 0; i < horizontal; i++)
+            for (var i = 0; i < horizontal; i++)
+            for (var j = 0; j < vertical; j++)
             {
-                for (int j = 0; j < vertical; j++)
-                {
-                    _position.x = centerH + Padding + PrefabSize.x/2f + i * (PrefabSize.x + Margin);
-                    _position.y = centerV + Padding + PrefabSize.y/2f + j * (PrefabSize.y + Margin);
-                    _position.z = 0f;
+                _position.x = centerH + Padding + PrefabSize.x / 2f + i * (PrefabSize.x + Margin);
+                _position.y = centerV + Padding + PrefabSize.y / 2f + j * (PrefabSize.y + Margin);
+                _position.z = 0f;
 
-                    WobbleButton button = Instantiate(WobbleButtonPrefab);
-                    button.transform.SetParent(ContentZone.transform);
-                    Buttons.Add(button);
+                var button = Instantiate(WobbleButtonPrefab);
+                button.transform.SetParent(ContentZone.transform);
+                Buttons.Add(button);
 
-                    RectTransform rectTransform = button.GetComponent<RectTransform>();
-                    rectTransform.anchorMin = Vector2.zero;
-                    rectTransform.anchorMax = Vector2.zero;
-                    button.name = "WobbleButton" + i + j;
-                    button.transform.localScale = Vector3.one;
-                    
-                    rectTransform.anchoredPosition3D = _position;
-                    button.TargetCamera = ButtonCamera;
-                    button.Initialization();
+                var rectTransform = button.GetComponent<RectTransform>();
+                rectTransform.anchorMin = Vector2.zero;
+                rectTransform.anchorMax = Vector2.zero;
+                button.name = "WobbleButton" + i + j;
+                button.transform.localScale = Vector3.one;
 
-                }
+                rectTransform.anchoredPosition3D = _position;
+                button.TargetCamera = ButtonCamera;
+                button.Initialization();
+
             }
 
-            int counter = 0;
-            foreach(WobbleButton wbutton in Buttons)
+            var counter = 0;
+            foreach (var wbutton in Buttons)
             {
-                float newPitch = NiceVibrationsDemoHelpers.Remap(counter, 0f, Buttons.Count, 0.3f, 1f);
+                var newPitch = NiceVibrationsDemoHelpers.Remap(counter, 0f, Buttons.Count, 0.3f, 1f);
                 wbutton.SetPitch(newPitch);
                 counter++;
             }

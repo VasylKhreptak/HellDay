@@ -14,7 +14,7 @@ namespace MoreMountains.NiceVibrations
     /// <summary>
     /// This class handles all iOS haptics specific calls for devices that support the CoreHaptics API (post iOS 13)
     /// </summary>
-	public static class MMNViOSCoreHaptics
+    public static class MMNViOSCoreHaptics
     {
         public static event Action OnHapticPatternStopped;
         public static event Action OnHapticPatternError;
@@ -105,10 +105,7 @@ namespace MoreMountains.NiceVibrations
         public static void PlayContinuousHapticPattern(float intensity, float sharpness,
             float duration, MonoBehaviour coroutineMonobehaviour = null, bool threaded = false)
         {
-            if (intensity < 0.01f)
-            {
-                intensity = 0.01f;
-            }
+            if (intensity < 0.01f) intensity = 0.01f;
 
             _initialContinuousIntensity = intensity;
             _initialContinuousSharpness = sharpness;
@@ -163,13 +160,10 @@ namespace MoreMountains.NiceVibrations
         /// <param name="sharpness"></param>
         public static void UpdateContinuousHapticPatternRational(float intensity, float sharpness, bool threaded = false)
         {
-            if (_initialContinuousIntensity < 0.01f)
-            {
-                _initialContinuousIntensity = 0.01f;
-            }
+            if (_initialContinuousIntensity < 0.01f) _initialContinuousIntensity = 0.01f;
 
-            float newIntensity = intensity / _initialContinuousIntensity;
-            float newSharpness = sharpness - _initialContinuousSharpness;
+            var newIntensity = intensity / _initialContinuousIntensity;
+            var newSharpness = sharpness - _initialContinuousSharpness;
 
             MMNViOS_UpdateContinuousHapticPattern(newIntensity, newSharpness, threaded);
         }
@@ -194,9 +188,9 @@ namespace MoreMountains.NiceVibrations
         /// Stops the haptic engine entirely, cutting short any AHAP or transient that may have been playing
         /// </summary>
         public static void StopEngine()
-		{
-			MMNViOS_StopEngine();
-		}
+        {
+            MMNViOS_StopEngine();
+        }
 
         /// <summary>
         /// Sets the debug mode to true or false.

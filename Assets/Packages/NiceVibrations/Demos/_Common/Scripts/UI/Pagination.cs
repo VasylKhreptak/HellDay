@@ -11,39 +11,31 @@ namespace MoreMountains.NiceVibrations
         public Color ActiveColor;
         public Color InactiveColor;
         protected List<Image> _images;
-        
+
         public virtual void InitializePagination(int numberOfPages)
         {
             _images = new List<Image>();
-            for (int i = 0; i < numberOfPages; i++)
+            for (var i = 0; i < numberOfPages; i++)
             {
-                GameObject dotPrefab = Instantiate(PaginationDotPrefab);
-                dotPrefab.transform.SetParent(this.transform);
+                var dotPrefab = Instantiate(PaginationDotPrefab);
+                dotPrefab.transform.SetParent(transform);
                 dotPrefab.name = "PaginationDot" + i;
                 _images.Add(dotPrefab.GetComponent<Image>());
             }
-            foreach(Image image in _images)
+            foreach (var image in _images)
             {
                 image.color = InactiveColor;
                 image.rectTransform.localScale = Vector3.one;
                 image.rectTransform.localPosition = Vector3.zero;
                 image.SetNativeSize();
             }
-        }    
-        
+        }
+
         public virtual void SetCurrentPage(int numberOfPages, int currentPage)
         {
-            for (int i = 0; i < numberOfPages; i++)
-            {
-                if (i == currentPage)
-                {
-                    _images[i].color = ActiveColor;
-                }
-                else
-                {
-                    _images[i].color = InactiveColor;
-                }
-            }
+            for (var i = 0; i < numberOfPages; i++)
+                if (i == currentPage) _images[i].color = ActiveColor;
+                else _images[i].color = InactiveColor;
         }
     }
 }

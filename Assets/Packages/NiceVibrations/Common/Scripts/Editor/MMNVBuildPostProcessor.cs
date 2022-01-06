@@ -37,7 +37,7 @@ namespace MoreMountains.NiceVibrations
             {
                 if (report.summary.platform == BuildTarget.iOS)
                 {
-                    string path = report.summary.outputPath;
+                    var path = report.summary.outputPath;
                     #if UNITY_IOS && UNITY_EDITOR
                         ConfigureXCodeProjectForNativePlugin(path);
                     #endif
@@ -102,7 +102,7 @@ namespace MoreMountains.NiceVibrations
 
             return finalPath;
             #else
-                return "not iOS";
+            return "not iOS";
             #endif
         }
 

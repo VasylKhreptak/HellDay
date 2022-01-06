@@ -14,7 +14,7 @@ namespace MoreMountains.NiceVibrations
         public int[] LowFrequencyAmplitudes;
         public int[] HighFrequencyAmplitudes;
     }
-    
+
     /// <summary>
     /// A scriptable object used to store waveform values
     /// </summary>

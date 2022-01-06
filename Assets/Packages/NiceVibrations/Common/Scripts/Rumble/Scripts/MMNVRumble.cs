@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace MoreMountains.NiceVibrations
 {
-    public static class MMNVRumble 
+    public static class MMNVRumble
     {
         /// whether or not the rumble engine is running right now
         public static bool Rumbling = false;
@@ -16,14 +16,8 @@ namespace MoreMountains.NiceVibrations
         {
             if (id != -1)
             {
-                if (id >= Gamepad.all.Count)
-                {
-                    return Gamepad.current;
-                }
-                else
-                {
-                    return Gamepad.all[id];
-                }                
+                if (id >= Gamepad.all.Count) return Gamepad.current;
+                else return Gamepad.all[id];
             }
             return Gamepad.current;
         }
@@ -39,7 +33,7 @@ namespace MoreMountains.NiceVibrations
         {
             coroutineSupport.StartCoroutine(RumbleCoroutine(lowFrequency, highFrequency, duration, controllerID));
         }
-        
+
         /// <summary>
         /// A coroutine used to rumble 
         /// </summary>
@@ -49,17 +43,11 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         private static IEnumerator RumbleCoroutine(float lowFrequency, float highFrequency, float duration, int controllerID = -1)
         {
-            if (GetGamepad(controllerID) == null)
-            {
-                yield break;
-            }
+            if (GetGamepad(controllerID) == null) yield break;
             Rumbling = true;
             GetGamepad(controllerID).SetMotorSpeeds(lowFrequency, highFrequency);
-            float startedAt = Time.unscaledTime;
-            while (Time.unscaledTime - startedAt < duration)
-            {
-                yield return null;
-            }
+            var startedAt = Time.unscaledTime;
+            while (Time.unscaledTime - startedAt < duration) yield return null;
             InputSystem.ResetHaptics();
             Rumbling = false;
         }
@@ -98,43 +86,31 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         private static IEnumerator RumblePatternCoroutine(long[] pattern, int[] lowFreqAmplitudes, int[] highFreqAmplitudes, int repeat, MonoBehaviour coroutineSupport, int controllerID = -1)
         {
-            float startedAt = Time.unscaledTime;
-            float duration = 0f;
-            for (int i = 0; i < pattern.Length; i++)
+            var startedAt = Time.unscaledTime;
+            var duration = 0f;
+            for (var i = 0; i < pattern.Length; i++)
             {
-                if (GetGamepad(controllerID) == null)
-                {
-                    yield break;
-                }
+                if (GetGamepad(controllerID) == null) yield break;
                 duration = pattern[i];
                 startedAt = Time.unscaledTime;
-                float lowFreqAmplitude = (lowFreqAmplitudes.Length > i) ? lowFreqAmplitudes[i] / 255f : 0f;
-                float highFreqAmplitude = (highFreqAmplitudes.Length > i) ? highFreqAmplitudes[i] / 255f : 0f;
+                var lowFreqAmplitude = lowFreqAmplitudes.Length > i ? lowFreqAmplitudes[i] / 255f : 0f;
+                var highFreqAmplitude = highFreqAmplitudes.Length > i ? highFreqAmplitudes[i] / 255f : 0f;
 
                 GetGamepad(controllerID).SetMotorSpeeds(lowFreqAmplitude, highFreqAmplitude);
-                while (Time.unscaledTime - startedAt < (duration/1000f))
-                {
-                    yield return null;
-                }
+                while (Time.unscaledTime - startedAt < duration / 1000f) yield return null;
             }
 
             InputSystem.ResetHaptics();
 
-            if (repeat == -1)
-            {
-                yield break;
-            }
+            if (repeat == -1) yield break;
             if (repeat > 1)
             {
                 repeat--;
                 coroutineSupport.StartCoroutine(RumblePatternCoroutine(pattern, lowFreqAmplitudes, highFreqAmplitudes, repeat, coroutineSupport));
             }
-            if (repeat == 0)
-            {
-                coroutineSupport.StartCoroutine(RumblePatternCoroutine(pattern, lowFreqAmplitudes, highFreqAmplitudes, repeat, coroutineSupport));
-            }
+            if (repeat == 0) coroutineSupport.StartCoroutine(RumblePatternCoroutine(pattern, lowFreqAmplitudes, highFreqAmplitudes, repeat, coroutineSupport));
         }
-        
+
         /// <summary>
         /// Lets you update rumble values while playing them
         /// </summary>
@@ -142,10 +118,7 @@ namespace MoreMountains.NiceVibrations
         /// <param name="highFrequency"></param>
         public static void RumbleContinuous(float lowFrequency, float highFrequency, int controllerID = -1)
         {
-            if (GetGamepad(controllerID) == null)
-            {
-                return;
-            }
+            if (GetGamepad(controllerID) == null) return;
             Rumbling = true;
             RumblingContinuous = true;
             GetGamepad(controllerID).SetMotorSpeeds(lowFrequency, highFrequency);

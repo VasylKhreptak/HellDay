@@ -23,23 +23,23 @@ namespace MoreMountains.NiceVibrations
             private static IntPtr AndroidVibrateMethodRawClass = AndroidJNIHelper.GetMethodID(AndroidVibrator.GetRawClass(), "vibrate", "(J)V", false);
             private static jvalue[] AndroidVibrateMethodRawClassParameters = new jvalue[1];
         #else
-            private static AndroidJavaClass UnityPlayer;
-            private static AndroidJavaObject CurrentActivity;
-            private static AndroidJavaObject AndroidVibrator = null;
-            private static AndroidJavaClass VibrationEffectClass = null;
-            private static AndroidJavaObject VibrationEffect;
-            private static int DefaultAmplitude;
-            private static IntPtr AndroidVibrateMethodRawClass = IntPtr.Zero;
-            private static jvalue[] AndroidVibrateMethodRawClassParameters = null;
+        private static AndroidJavaClass UnityPlayer;
+        private static AndroidJavaObject CurrentActivity;
+        private static AndroidJavaObject AndroidVibrator = null;
+        private static AndroidJavaClass VibrationEffectClass = null;
+        private static AndroidJavaObject VibrationEffect;
+        private static int DefaultAmplitude;
+        private static IntPtr AndroidVibrateMethodRawClass = IntPtr.Zero;
+        private static jvalue[] AndroidVibrateMethodRawClassParameters = null;
         #endif
 
         /// <summary>
         /// Requests a default vibration on Android, for the specified duration, in milliseconds
         /// </summary>
         /// <param name="milliseconds">Milliseconds.</param>
-        public static void AndroidVibrate(long milliseconds) 
+        public static void AndroidVibrate(long milliseconds)
         {
-            if (!MMNVPlatform.Android()) { return; }
+            if (!MMNVPlatform.Android()) return;
             AndroidVibrateMethodRawClassParameters[0].j = milliseconds;
             AndroidJNI.CallVoidMethod(AndroidVibrator.GetRawObject(), AndroidVibrateMethodRawClass, AndroidVibrateMethodRawClassParameters);
         }
@@ -51,9 +51,9 @@ namespace MoreMountains.NiceVibrations
         /// <param name="amplitude">Amplitude.</param>
         public static void AndroidVibrate(long milliseconds, int amplitude)
         {
-            if (!MMNVPlatform.Android()) { return; }
+            if (!MMNVPlatform.Android()) return;
             // amplitude is only supported after API26
-            if ((AndroidSDKVersion() < 26))
+            if (AndroidSDKVersion() < 26)
             {
                 AndroidVibrate(milliseconds);
             }
@@ -74,8 +74,8 @@ namespace MoreMountains.NiceVibrations
         // repeat:  the index into pattern at which to repeat, or -1 if you don't want to repeat.
         public static void AndroidVibrate(long[] pattern, int repeat)
         {
-            if (!MMNVPlatform.Android()) { return; }
-            if ((AndroidSDKVersion() < 26))
+            if (!MMNVPlatform.Android()) return;
+            if (AndroidSDKVersion() < 26)
             {
                 AndroidVibrator.Call("vibrate", pattern, repeat);
             }
@@ -95,8 +95,8 @@ namespace MoreMountains.NiceVibrations
         /// <param name="repeat">Repeat : -1 : no repeat, 0 : infinite, 1 : repeat once, 2 : repeat twice, etc</param>
         public static void AndroidVibrate(long[] pattern, int[] amplitudes, int repeat)
         {
-            if (!MMNVPlatform.Android()) { return; }
-            if ((AndroidSDKVersion() < 26))
+            if (!MMNVPlatform.Android()) return;
+            if (AndroidSDKVersion() < 26)
             {
                 AndroidVibrator.Call("vibrate", pattern, repeat);
             }
@@ -113,7 +113,7 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         public static void AndroidCancelVibrations()
         {
-            if (!MMNVPlatform.Android()) { return; }
+            if (!MMNVPlatform.Android()) return;
             AndroidVibrator.Call("cancel");
         }
 
@@ -123,7 +123,7 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static bool AndroidHasVibrator()
         {
-            if (!MMNVPlatform.Android()) { return false; }
+            if (!MMNVPlatform.Android()) return false;
             return AndroidVibrator.Call<bool>("hasVibrator");
         }
 
@@ -133,11 +133,8 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static bool AndroidHasAmplitudeControl()
         {
-            if ((AndroidSDKVersion() < 26))
-            {
-                return false;
-            }
-            if (!MMNVPlatform.Android()) { return false; }
+            if (AndroidSDKVersion() < 26) return false;
+            if (!MMNVPlatform.Android()) return false;
             return AndroidVibrator.Call<bool>("hasAmplitudeControl");
         }
 
@@ -146,10 +143,7 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         private static void AndroidVibrationEffectClassInitialization()
         {
-            if (VibrationEffectClass == null)
-            {
-                VibrationEffectClass = new AndroidJavaClass("android.os.VibrationEffect");
-            }
+            if (VibrationEffectClass == null) VibrationEffectClass = new AndroidJavaClass("android.os.VibrationEffect");
         }
 
         /// <summary>
@@ -160,7 +154,7 @@ namespace MoreMountains.NiceVibrations
         {
             if (_sdkVersion == -1)
             {
-                int apiLevel = int.Parse(SystemInfo.operatingSystem.Substring(SystemInfo.operatingSystem.IndexOf("-") + 1, 3));
+                var apiLevel = int.Parse(SystemInfo.operatingSystem.Substring(SystemInfo.operatingSystem.IndexOf("-") + 1, 3));
                 _sdkVersion = apiLevel;
                 return apiLevel;
             }

@@ -9,11 +9,8 @@ public class KillableTargetEditor : Editor
         base.OnInspectorGUI();
 
         EditorGUILayout.Space();
-        DamageableTargetDetection damageableTargetDetection =  (DamageableTargetDetection)target;
+        var damageableTargetDetection = (DamageableTargetDetection)target;
 
-        if (GUILayout.Button("Find killable targets"))
-        {
-            damageableTargetDetection.FindKillableTargets();
-        }
+        if (GUILayout.Button("Find killable targets")) damageableTargetDetection.FindKillableTargets();
     }
 }

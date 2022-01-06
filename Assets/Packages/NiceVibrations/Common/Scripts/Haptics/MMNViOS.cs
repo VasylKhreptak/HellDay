@@ -13,7 +13,7 @@ namespace MoreMountains.NiceVibrations
     /// <summary>
     /// This class handles all iOS haptics specific calls, pre-CoreHaptics API
     /// </summary>
-    public static class MMNViOS 
+    public static class MMNViOS
     {
         // The following will only work if the iOSHapticInterface.m file is in a Plugins folder in your project.
         // It's a pretty straightforward implementation of iOS's UIFeedbackGenerator's methods.
@@ -44,16 +44,16 @@ namespace MoreMountains.NiceVibrations
 			private static extern void MMNViOS_SoftImpactHaptic();
 #else
         private static void MMNViOS_InstantiateFeedbackGenerators() { }
-            private static void MMNViOS_ReleaseFeedbackGenerators() { }
-            private static void MMNViOS_SelectionHaptic() { }
-            private static void MMNViOS_SuccessHaptic() { }
-            private static void MMNViOS_WarningHaptic() { }
-            private static void MMNViOS_FailureHaptic() { }
-            private static void MMNViOS_LightImpactHaptic() { }
-            private static void MMNViOS_MediumImpactHaptic() { }
-            private static void MMNViOS_HeavyImpactHaptic() { }
-            private static void MMNViOS_RigidImpactHaptic() { }
-            private static void MMNViOS_SoftImpactHaptic() { }
+        private static void MMNViOS_ReleaseFeedbackGenerators() { }
+        private static void MMNViOS_SelectionHaptic() { }
+        private static void MMNViOS_SuccessHaptic() { }
+        private static void MMNViOS_WarningHaptic() { }
+        private static void MMNViOS_FailureHaptic() { }
+        private static void MMNViOS_LightImpactHaptic() { }
+        private static void MMNViOS_MediumImpactHaptic() { }
+        private static void MMNViOS_HeavyImpactHaptic() { }
+        private static void MMNViOS_RigidImpactHaptic() { }
+        private static void MMNViOS_SoftImpactHaptic() { }
 #endif
         private static bool iOSHapticsInitialized = false;
 
@@ -63,7 +63,7 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         public static void iOSInitializeHaptics()
         {
-            if (!MMNVPlatform.iOS()) { return; }
+            if (!MMNVPlatform.iOS()) return;
             MMNViOS_InstantiateFeedbackGenerators();
             iOSHapticsInitialized = true;
         }
@@ -74,22 +74,19 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         public static void iOSReleaseHaptics()
         {
-            if (!MMNVPlatform.iOS()) { return; }
+            if (!MMNVPlatform.iOS()) return;
             MMNViOS_ReleaseFeedbackGenerators();
         }
 
         /// <summary>
-		/// iOS only : triggers a haptic feedback of the specified type
-		/// </summary>
-		/// <param name="type">Type.</param>
-		public static void iOSTriggerHaptics(HapticTypes type, bool defaultToRegularVibrate = false)
+        /// iOS only : triggers a haptic feedback of the specified type
+        /// </summary>
+        /// <param name="type">Type.</param>
+        public static void iOSTriggerHaptics(HapticTypes type, bool defaultToRegularVibrate = false)
         {
-            if (!MMNVPlatform.iOS()) { return; }
+            if (!MMNVPlatform.iOS()) return;
 
-            if (!iOSHapticsInitialized)
-            {
-                iOSInitializeHaptics();
-            }
+            if (!iOSHapticsInitialized) iOSInitializeHaptics();
 
             // this will trigger a standard vibration on all the iOS devices that don't support haptic feedback
 
@@ -143,25 +140,25 @@ namespace MoreMountains.NiceVibrations
         }
 
         /// <summary>
-		/// Returns a string containing iOS SDK informations
-		/// </summary>
-		/// <returns>The OSSDK version.</returns>
-		public static string iOSSDKVersion()
+        /// Returns a string containing iOS SDK informations
+        /// </summary>
+        /// <returns>The OSSDK version.</returns>
+        public static string iOSSDKVersion()
         {
             #if UNITY_IOS && !UNITY_EDITOR
 				            return Device.systemVersion;
             #else
-                        return null;
+            return null;
             #endif
         }
 
         /// <summary>
-		/// This methods tests the current device generation against a list of devices that don't support haptics, and returns true if haptics are supported, false otherwise.
-		/// </summary>
-		/// <returns><c>true</c>, if supported was hapticsed, <c>false</c> otherwise.</returns>
-		public static bool iOSHapticsSupported()
+        /// This methods tests the current device generation against a list of devices that don't support haptics, and returns true if haptics are supported, false otherwise.
+        /// </summary>
+        /// <returns><c>true</c>, if supported was hapticsed, <c>false</c> otherwise.</returns>
+        public static bool iOSHapticsSupported()
         {
-            bool hapticsSupported = false;
+            var hapticsSupported = false;
             #if UNITY_IOS
 			    DeviceGeneration generation = Device.generation;
 			    if ((generation == DeviceGeneration.iPhone3G)

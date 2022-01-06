@@ -65,8 +65,8 @@ namespace MoreMountains.NiceVibrations
             ParentCanvasRenderMode = GetComponentInParent<Canvas>().renderMode;
             _canvas = GetComponentInParent<Canvas>();
             _initialZPosition = transform.position.z;
-            _rectTransform = this.gameObject.GetComponent<RectTransform>();
-            SetNeutralPosition();            
+            _rectTransform = gameObject.GetComponent<RectTransform>();
+            SetNeutralPosition();
         }
 
         public virtual void SetNeutralPosition()
@@ -93,26 +93,14 @@ namespace MoreMountains.NiceVibrations
             {
                 _newTargetPosition = GetWorldPosition(_pointerEventData.position);
 
-                float distance = (_newTargetPosition - _neutralPosition).magnitude;
+                var distance = (_newTargetPosition - _neutralPosition).magnitude;
 
-                if (distance < MaxRange)
-                {
-                    _dragging = true;
-                }
-                else
-                {
-                    _dragging = false;
-                }
+                if (distance < MaxRange) _dragging = true;
+                else _dragging = false;
             }
 
-            if (_dragging)
-            {
-                StickToPointer();
-            }
-            else
-            {
-                GoBackToInitialPosition();
-            }
+            if (_dragging) StickToPointer();
+            else GoBackToInitialPosition();
         }
 
         protected virtual void StickToPointer()
@@ -132,16 +120,13 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void GoBackToInitialPosition()
         {
-            if (!_draggedOnce)
-            {
-                return;
-            }
+            if (!_draggedOnce) return;
 
             if (Time.time - _dragEndedAt < DragResetDuration)
             {
-                float time = Remap(Time.time - _dragEndedAt, 0f, DragResetDuration, 0f, 1f);
-                float value = WobbleCurve.Evaluate(time) * WobbleFactor;
-                _newTargetPosition = Vector3.LerpUnclamped(_neutralPosition, _dragEndedPosition, value);                
+                var time = Remap(Time.time - _dragEndedAt, 0f, DragResetDuration, 0f, 1f);
+                var value = WobbleCurve.Evaluate(time) * WobbleFactor;
+                _newTargetPosition = Vector3.LerpUnclamped(_neutralPosition, _dragEndedPosition, value);
                 _newTargetPosition.z = _initialZPosition;
             }
             else
@@ -151,7 +136,7 @@ namespace MoreMountains.NiceVibrations
             }
             transform.position = _newTargetPosition;
         }
-        
+
         public virtual void OnPointerEnter(PointerEventData data)
         {
             _pointerID = data.pointerId;
@@ -168,7 +153,7 @@ namespace MoreMountains.NiceVibrations
             _newTargetPosition = _neutralPosition + _newTargetPosition;
             _newTargetPosition.z = _initialZPosition;
 
-            _dragging = false;            
+            _dragging = false;
             _dragEndedPosition = _newTargetPosition;
             _dragEndedAt = Time.time;
             _dragResetDirection = _dragEndedPosition - _neutralPosition;
@@ -177,15 +162,14 @@ namespace MoreMountains.NiceVibrations
             TargetAnimator.SetTrigger(_sparkAnimationParameter);
             SpringAudioSource.Play();
             MMVibrationManager.AdvancedHapticPattern(AHAPFile.text, _wobbleAndroidPattern, _wobbleAndroidAmplitude, -1,
-                                                        _wobbleAndroidPattern, _wobbleAndroidAmplitude, _wobbleAndroidAmplitude, -1, HapticTypes.LightImpact, 
-                                                        this);
+                _wobbleAndroidPattern, _wobbleAndroidAmplitude, _wobbleAndroidAmplitude, -1, HapticTypes.LightImpact,
+                this);
         }
 
         protected virtual float Remap(float x, float A, float B, float C, float D)
         {
-            float remappedValue = C + (x - A) / (B - A) * (D - C);
+            var remappedValue = C + (x - A) / (B - A) * (D - C);
             return remappedValue;
         }
     }
 }
-

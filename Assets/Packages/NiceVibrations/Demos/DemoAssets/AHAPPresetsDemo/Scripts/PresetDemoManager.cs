@@ -28,26 +28,26 @@ namespace MoreMountains.NiceVibrations
         protected int _idleAnimationParameter;
 
         protected virtual void Awake()
-        {                
+        {
             _ahapTurnDelay = new WaitForSeconds(0.02f);
             _idleAnimationParameter = Animator.StringToHash("Idle");
             IconImageAnimator.SetBool(_idleAnimationParameter, true);
         }
-        
+
         // AHAP ------------------------------------------------------------------------------------------------
 
         public virtual void PlayAHAP(int index)
         {
             Logo.Shaking = true;
-            MMVibrationManager.AdvancedHapticPattern(DemoItems[index].AHAPFile.text, 
-                                                     DemoItems[index].WaveFormAsset.WaveForm.Pattern, DemoItems[index].WaveFormAsset.WaveForm.Amplitudes, -1,
-                                                     DemoItems[index].RumbleWaveFormAsset.WaveForm.Pattern, DemoItems[index].RumbleWaveFormAsset.WaveForm.LowFrequencyAmplitudes,
-                                                     DemoItems[index].RumbleWaveFormAsset.WaveForm.HighFrequencyAmplitudes, -1,
-                                                     HapticTypes.LightImpact, this);
+            MMVibrationManager.AdvancedHapticPattern(DemoItems[index].AHAPFile.text,
+                DemoItems[index].WaveFormAsset.WaveForm.Pattern, DemoItems[index].WaveFormAsset.WaveForm.Amplitudes, -1,
+                DemoItems[index].RumbleWaveFormAsset.WaveForm.Pattern, DemoItems[index].RumbleWaveFormAsset.WaveForm.LowFrequencyAmplitudes,
+                DemoItems[index].RumbleWaveFormAsset.WaveForm.HighFrequencyAmplitudes, -1,
+                HapticTypes.LightImpact, this);
             DemoItems[index].AssociatedSound.Play();
             StartCoroutine(ChangeIcon(DemoItems[index].AssociatedSprite));
         }
-        
+
         // ICON ----------------------------------------------------------------------------------------------
 
         protected virtual IEnumerator ChangeIcon(Sprite newSprite)
@@ -59,7 +59,7 @@ namespace MoreMountains.NiceVibrations
 
         // CALLBACKS ----------------------------------------------------------------------------------------------
 
-            public virtual void Test()
+        public virtual void Test()
         {
             StartCoroutine(BackToIdle());
 

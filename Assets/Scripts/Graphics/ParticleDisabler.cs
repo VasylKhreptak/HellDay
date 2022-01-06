@@ -25,15 +25,14 @@ public class ParticleDisabler : MonoBehaviour, IPooledObject
         _particleSystem.Play();
 
         _waitTween.Kill();
-        _waitTween = this.DOWait(_duration + _additionalDelay).OnComplete(() => {
+        _waitTween = this.DOWait(_duration + _additionalDelay).OnComplete(() =>
+        {
             gameObject.SetActive(false);
         });
     }
 
     private void OnDisable()
     {
-        if (gameObject.scene.isLoaded == false) return;
-
         _waitTween.Kill();
     }
 }

@@ -21,6 +21,6 @@ namespace MoreMountains.NiceVibrations
         {
             return content.Replace("<ReferenceOutputAssembly>false</ReferenceOutputAssembly>", "<ReferenceOutputAssembly>true</ReferenceOutputAssembly>");
         }
-    } 
+    }
 }
 #endif

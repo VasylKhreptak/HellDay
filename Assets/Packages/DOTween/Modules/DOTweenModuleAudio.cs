@@ -13,7 +13,7 @@ using UnityEngine.Audio; // Required for AudioMixer
 #pragma warning disable 1591
 namespace DG.Tweening
 {
-	public static class DOTweenModuleAudio
+    public static class DOTweenModuleAudio
     {
         #region Shortcuts
 
@@ -26,7 +26,7 @@ namespace DG.Tweening
         {
             if (endValue < 0) endValue = 0;
             else if (endValue > 1) endValue = 1;
-            TweenerCore<float, float, FloatOptions> t = DOTween.To(() => target.volume, x => target.volume = x, endValue, duration);
+            var t = DOTween.To(() => target.volume, x => target.volume = x, endValue, duration);
             t.SetTarget(target);
             return t;
         }
@@ -36,7 +36,7 @@ namespace DG.Tweening
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         public static TweenerCore<float, float, FloatOptions> DOPitch(this AudioSource target, float endValue, float duration)
         {
-            TweenerCore<float, float, FloatOptions> t = DOTween.To(() => target.pitch, x => target.pitch = x, endValue, duration);
+            var t = DOTween.To(() => target.pitch, x => target.pitch = x, endValue, duration);
             t.SetTarget(target);
             return t;
         }
@@ -53,11 +53,12 @@ namespace DG.Tweening
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
         public static TweenerCore<float, float, FloatOptions> DOSetFloat(this AudioMixer target, string floatName, float endValue, float duration)
         {
-            TweenerCore<float, float, FloatOptions> t = DOTween.To(()=> {
-                    float currVal;
-                    target.GetFloat(floatName, out currVal);
-                    return currVal;
-                }, x=> target.SetFloat(floatName, x), endValue, duration);
+            var t = DOTween.To(() =>
+            {
+                float currVal;
+                target.GetFloat(floatName, out currVal);
+                return currVal;
+            }, x => target.SetFloat(floatName, x), endValue, duration);
             t.SetTarget(target);
             return t;
         }

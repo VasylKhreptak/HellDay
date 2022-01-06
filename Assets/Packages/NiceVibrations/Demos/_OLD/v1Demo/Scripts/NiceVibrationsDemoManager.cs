@@ -37,18 +37,9 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         protected virtual void DisplayInformation()
         {
-            if (MMVibrationManager.Android())
-            {
-                _platformString = "API version " + MMNVAndroid.AndroidSDKVersion().ToString();
-            }
-            else if (MMVibrationManager.iOS())
-            {
-                _platformString = "iOS " + MMNViOS.iOSSDKVersion();
-            }
-            else
-            {
-                _platformString = Application.platform + ", not supported by Nice Vibrations for now.";
-            }
+            if (MMVibrationManager.Android()) _platformString = "API version " + MMNVAndroid.AndroidSDKVersion().ToString();
+            else if (MMVibrationManager.iOS()) _platformString = "iOS " + MMNViOS.iOSSDKVersion();
+            else _platformString = Application.platform + ", not supported by Nice Vibrations for now.";
 
             DebugTextBox.text = "Platform : " + _platformString + "\n Nice Vibrations v" + _CURRENTVERSION;
         }
@@ -66,14 +57,13 @@ namespace MoreMountains.NiceVibrations
         /// <summary>
         /// The following methods are bound (via the inspector) to buttons in the demo scene, and will call the corresponding vibration methods
         /// </summary>
-
         /// <summary>
         /// Triggers the default Unity vibration, without any control over duration, pattern or amplitude
         /// </summary>
         public virtual void TriggerDefault()
         {
 #if UNITY_IOS || UNITY_ANDROID
-				Handheld.Vibrate ();	
+            Handheld.Vibrate();
 #endif
         }
 

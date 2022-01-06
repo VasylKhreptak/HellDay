@@ -26,7 +26,6 @@ public class WalkAudio : MonoBehaviour
                 _transform.position - new Vector3(0, 1, 0)))
         {
             foreach (var stepAudio in _data.stepAudios)
-            {
                 if (stepAudio.surfaceTypes == steppedSurface)
                 {
                     _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, stepAudio.audioClips.Random(),
@@ -34,9 +33,8 @@ public class WalkAudio : MonoBehaviour
 
                     return;
                 }
-            }
         }
-        else if(_groundChecker.IsGrounded())
+        else if (_groundChecker.IsGrounded())
         {
             _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _data.defaultStepAudios.Random(),
                 _transform.position, 1f, 1f);

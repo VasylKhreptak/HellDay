@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class UI_ButtonPressAnimation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private Transform _transform;
     [SerializeField] private Vector3 _targetScale;
     [SerializeField] private float _time = 0.5f;
     [SerializeField] private AnimationCurve _animationCurve;
@@ -13,7 +13,7 @@ public class UI_ButtonPressAnimation : MonoBehaviour, IPointerDownHandler, IPoin
 
     private void Start()
     {
-        _rawScale = _rectTransform.localScale;
+        _rawScale = _transform.localScale;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -28,7 +28,6 @@ public class UI_ButtonPressAnimation : MonoBehaviour, IPointerDownHandler, IPoin
 
     private void AnimateButton(Vector3 targetScale, float time, AnimationCurve animationCurve)
     {
-        DOTween.To(() => _rectTransform.localScale, x => _rectTransform.localScale = x, targetScale,
-            time).SetEase(animationCurve);
+        _transform.DOScale(targetScale, time).SetEase(animationCurve);
     }
 }

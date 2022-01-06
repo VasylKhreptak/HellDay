@@ -19,7 +19,7 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void Awake()
         {
-            _image = this.gameObject.GetComponent<Image>();
+            _image = gameObject.GetComponent<Image>();
         }
 
         public virtual void SetActive(bool status)
@@ -30,10 +30,7 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void Update()
         {
-            if (_active && !_activeLastFrame)
-            {
-                StartCoroutine(ColorBump());
-            }
+            if (_active && !_activeLastFrame) StartCoroutine(ColorBump());
             _activeLastFrame = _active;
         }
 
@@ -42,7 +39,7 @@ namespace MoreMountains.NiceVibrations
             _bumpDuration = 0f;
             while (_bumpDuration < BumpDuration)
             {
-                float curveValue = Curve.Evaluate(_bumpDuration / BumpDuration);
+                var curveValue = Curve.Evaluate(_bumpDuration / BumpDuration);
                 _image.color = Color.Lerp(NormalColor, Color.white, curveValue);
 
                 _bumpDuration += Time.deltaTime;

@@ -25,30 +25,21 @@ namespace MoreMountains.NiceVibrations
 
         public override void OnGUI(Rect position, SerializedProperty prop, GUIContent label)
         {
-            MMNVInspectorButtonAttribute inspectorButtonAttribute = (MMNVInspectorButtonAttribute)attribute;
+            var inspectorButtonAttribute = (MMNVInspectorButtonAttribute)attribute;
 
-            float buttonLength = position.width;
-            Rect buttonRect = new Rect(position.x, position.y, buttonLength, position.height);
+            var buttonLength = position.width;
+            var buttonRect = new Rect(position.x, position.y, buttonLength, position.height);
             GUI.skin.button.alignment = TextAnchor.MiddleLeft;
 
             if (GUI.Button(buttonRect, inspectorButtonAttribute.MethodName))
             {
-                System.Type eventOwnerType = prop.serializedObject.targetObject.GetType();
-                string eventName = inspectorButtonAttribute.MethodName;
+                var eventOwnerType = prop.serializedObject.targetObject.GetType();
+                var eventName = inspectorButtonAttribute.MethodName;
 
-                if (_eventMethodInfo == null)
-                {
-                    _eventMethodInfo = eventOwnerType.GetMethod(eventName, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
-                }
+                if (_eventMethodInfo == null) _eventMethodInfo = eventOwnerType.GetMethod(eventName, BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
 
-                if (_eventMethodInfo != null)
-                {
-                    _eventMethodInfo.Invoke(prop.serializedObject.targetObject, null);
-                }
-                else
-                {
-                    Debug.LogWarning(string.Format("InspectorButton: Unable to find method {0} in {1}", eventName, eventOwnerType));
-                }
+                if (_eventMethodInfo != null) _eventMethodInfo.Invoke(prop.serializedObject.targetObject, null);
+                else Debug.LogWarning(string.Format("InspectorButton: Unable to find method {0} in {1}", eventName, eventOwnerType));
             }
         }
     }

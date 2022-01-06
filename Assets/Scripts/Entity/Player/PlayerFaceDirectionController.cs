@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerFaceDirectionController : MonoBehaviour
@@ -12,10 +13,23 @@ public class PlayerFaceDirectionController : MonoBehaviour
 
     private Coroutine _configurableUpdate;
 
+    [Range(-1, 1)] private static int _faceDirection;
+
+    public static int FaceDirection => _faceDirection;
+
+    private void Awake()
+    {
+        SetDirection((int)Mathf.Round(_transform.localScale.x));
+    }
+
     public void StartConfiguring()
     {
-        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () => {
-            if (CanConfigureFaceDirection()) SetDirection((int)Mathf.Sign(_joystick.Horizontal));
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () =>
+        {
+            if (CanConfigureFaceDirection())
+            {
+                SetDirection((int)Mathf.Sign(_joystick.Horizontal));
+            }
         });
     }
 
@@ -27,6 +41,8 @@ public class PlayerFaceDirectionController : MonoBehaviour
     private void SetDirection(int direction)
     {
         _transform.localScale = new Vector3(direction, 1, 1);
+
+        _faceDirection = direction;
     }
 
     private bool CanConfigureFaceDirection()

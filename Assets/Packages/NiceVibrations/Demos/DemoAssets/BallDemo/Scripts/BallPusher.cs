@@ -12,16 +12,13 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collider.gameObject != TargetBall.gameObject)
-            {
-                return;
-            }
+            if (collider.gameObject != TargetBall.gameObject) return;
 
-            _direction = (collider.transform.position - this.transform.position).normalized;
+            _direction = (collider.transform.position - transform.position).normalized;
             _direction.y = 1f;
             collider.attachedRigidbody.velocity = Vector2.zero;
             collider.attachedRigidbody.AddForce(_direction * Force);
             TargetBall.HitPusher();
-        }        
+        }
     }
 }

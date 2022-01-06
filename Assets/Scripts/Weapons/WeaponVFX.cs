@@ -34,14 +34,14 @@ public class WeaponVFX : MonoBehaviour
     {
         var pooledObject = _objectPooler.GetFromPool(type, position, rotation);
 
-        pooledObject.transform.localScale = new Vector3(PlayerMovement.Direction, 1, 1);
+        pooledObject.transform.localScale = new Vector3(PlayerFaceDirectionController.FaceDirection, 1, 1);
     }
 
     public void SpawnShootSparks(Pools type, Vector2 position, Quaternion rotation)
     {
         var pooledObject = _objectPooler.GetFromPool(type, position, rotation);
 
-        pooledObject.transform.localScale = new Vector3(PlayerMovement.Direction, 1, 1);
+        pooledObject.transform.localScale = new Vector3(PlayerFaceDirectionController.FaceDirection, 1, 1);
     }
 
     public void PlayEmptyAmmoSound(Vector3 position)

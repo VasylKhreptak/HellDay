@@ -7,7 +7,7 @@ namespace MoreMountains.NiceVibrations
 {
     public class ContinuousHapticsDemoManager : DemoManager
     {
-        [Header("Texts")]        
+        [Header("Texts")]
         public float ContinuousIntensity = 1f;
         public float ContinuousSharpness = 1f;
         public float ContinuousDuration = 3f;
@@ -49,7 +49,7 @@ namespace MoreMountains.NiceVibrations
             SharpnessProgressBar.UpdateBar(ContinuousSharpness, 0f, 1f);
             DurationProgressBar.UpdateBar(ContinuousDuration, 0f, 5f);
         }
-        
+
         protected virtual void Update()
         {
             UpdateContinuousDemo();
@@ -77,10 +77,7 @@ namespace MoreMountains.NiceVibrations
                     OnHapticsStopped();
                 }
             }
-            if ((_sharpnessLastFrame != ContinuousSharpness) || (_intensityLastFrame != ContinuousIntensity))
-            {
-                TargetCurve.UpdateCurve(ContinuousIntensity, ContinuousSharpness);
-            }
+            if (_sharpnessLastFrame != ContinuousSharpness || _intensityLastFrame != ContinuousIntensity) TargetCurve.UpdateCurve(ContinuousIntensity, ContinuousSharpness);
             _intensityLastFrame = ContinuousIntensity;
             _sharpnessLastFrame = ContinuousSharpness;
         }

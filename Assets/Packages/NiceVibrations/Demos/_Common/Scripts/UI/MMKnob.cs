@@ -36,10 +36,10 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void Awake()
         {
-            _image = this.gameObject.GetComponent<Image>();
+            _image = gameObject.GetComponent<Image>();
             _canvas = GetComponentInParent<Canvas>();
             ParentCanvasRenderMode = GetComponentInParent<Canvas>().renderMode;
-            _rectTransform = this.GetComponent<RectTransform>();
+            _rectTransform = GetComponent<RectTransform>();
             SetRotation(MinimumAngle);
         }
 
@@ -56,20 +56,17 @@ namespace MoreMountains.NiceVibrations
                 _image.color = ActiveColor;
             }
 
-            if (!Dragging)
-            {
-                return;
-            }
+            if (!Dragging) return;
 
-            Vector2 v1 = Vector2.down;
-            Vector2 v2 = this.transform.position - GetWorldPosition(_pointerEventData.position);
-            
-            float angle = Vector2.SignedAngle(v1, v2);
+            var v1 = Vector2.down;
+            Vector2 v2 = transform.position - GetWorldPosition(_pointerEventData.position);
+
+            var angle = Vector2.SignedAngle(v1, v2);
 
             angle = Mathf.Clamp(angle, -130f, 130f);
 
             _rotation.z = NiceVibrationsDemoHelpers.Remap(angle, -130f, 130f, MaximumAngle, MinimumAngle);
-            _rectTransform.SetPositionAndRotation(this.transform.position, Quaternion.Euler(_rotation));
+            _rectTransform.SetPositionAndRotation(transform.position, Quaternion.Euler(_rotation));
 
             Value = NiceVibrationsDemoHelpers.Remap(angle, -130f, 130f, 1f, 0f);
         }
@@ -78,7 +75,7 @@ namespace MoreMountains.NiceVibrations
         {
             angle = Mathf.Clamp(angle, MaximumAngle, MinimumAngle);
             _rotation.z = angle;
-            _rectTransform.SetPositionAndRotation(this.transform.position, Quaternion.Euler(_rotation));
+            _rectTransform.SetPositionAndRotation(transform.position, Quaternion.Euler(_rotation));
         }
 
         public virtual void SetActive(bool status)
@@ -90,10 +87,10 @@ namespace MoreMountains.NiceVibrations
         {
             SetRotation(MinimumAngle);
             Value = value;
-            float angle = NiceVibrationsDemoHelpers.Remap(value, 0f, 1f, MinimumAngle, MaximumAngle);
+            var angle = NiceVibrationsDemoHelpers.Remap(value, 0f, 1f, MinimumAngle, MaximumAngle);
 
             _rotation.z = angle;
-            _rectTransform.SetPositionAndRotation(this.transform.position, Quaternion.Euler(_rotation));
+            _rectTransform.SetPositionAndRotation(transform.position, Quaternion.Euler(_rotation));
         }
 
         public void OnPointerDown(PointerEventData eventData)

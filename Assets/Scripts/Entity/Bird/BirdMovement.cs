@@ -27,7 +27,8 @@ public class BirdMovement : MonoBehaviour
         _spriteRenderer.color = _spriteRenderer.color.WithAlpha(1f);
 
         _waitTween = this.DOWait(_birdData.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
-        _fadeTween = this.DOWait(_birdData.LifeTime - _birdData.FadeDuration).OnComplete(() => {
+        _fadeTween = this.DOWait(_birdData.LifeTime - _birdData.FadeDuration).OnComplete(() =>
+        {
             _spriteRenderer.DOFade(0f, _birdData.FadeDuration);
         });
 

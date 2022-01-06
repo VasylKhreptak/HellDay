@@ -1,4 +1,4 @@
-using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerLegKick : MonoBehaviour
@@ -13,6 +13,7 @@ public class PlayerLegKick : MonoBehaviour
     [SerializeField] private float _kickLength;
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private ForceMode2D _forceMode2D;
+    [SerializeField] private int _maxHitObjects = 2;
 
     [Header("Damage")]
     [SerializeField] private float _minKickDamage = 20f;
@@ -28,13 +29,16 @@ public class PlayerLegKick : MonoBehaviour
     {
         if (CanKick() == false) return;
 
-        var atackedObj = GetAttackedObject();
+        GameObject[] atackedObjs = GetAttackedObjects();
 
-        if (atackedObj == null) return;
+        if (atackedObjs == null) return;
 
-        DiscardObject(atackedObj);
+        foreach (var atackedObj in atackedObjs)
+        {
+            DiscardObject(atackedObj);
 
-        DamageObject(atackedObj);
+            DamageObject(atackedObj);
+        }
     }
 
     private bool CanKick()
@@ -47,7 +51,7 @@ public class PlayerLegKick : MonoBehaviour
         if (atackedObj.TryGetComponent(out Rigidbody2D rb))
             if (rb.bodyType != RigidbodyType2D.Static)
             {
-                rb.velocity = new Vector2(_kickVelocity * PlayerMovement.Direction,
+                rb.velocity = new Vector2(_kickVelocity * PlayerFaceDirectionController.FaceDirection,
                     _upwardsVelocity);
 
                 rb.AddTorque(Random.Range(-_minKickTorque, _maxKickTorque), _forceMode2D);
@@ -59,16 +63,21 @@ public class PlayerLegKick : MonoBehaviour
         if (atackedObj.TryGetComponent(out IDamageable target)) target.TakeDamage(DamageValue);
     }
 
-    private GameObject GetAttackedObject()
+    private GameObject[] GetAttackedObjects()
     {
-        var rayDir = new Vector2(PlayerMovement.Direction, 0);
-        RaycastHit2D hit;
+        Vector2 rayDir = new Vector2(PlayerFaceDirectionController.FaceDirection, 0);
+        RaycastHit2D[] hits;
 
-        hit = Physics2D.Raycast(_startKickTransform.position, rayDir, _kickLength, _layerMask);
+        hits = Physics2D.RaycastAll(_startKickTransform.position, rayDir, _kickLength, _layerMask);
+        
+        GameObject[] hitGameObjects = new GameObject[Mathf.Clamp(hits.Length,0, _maxHitObjects )];
+        
+        for (int i = 0; i < hitGameObjects.Length; i++)
+        {
+            hitGameObjects[i] = hits[i].collider.gameObject;
+        }
 
-        if (hit.collider == null) return null;
-
-        return hit.collider.gameObject;
+        return hitGameObjects;
     }
 
     private void OnDrawGizmosSelected()

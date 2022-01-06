@@ -31,14 +31,8 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void Update()
         {
-            if (_holding)
-            {
-                _newPosition = GetWorldPosition(_pointerEventData.position);
-            }
-            else
-            {
-                _newPosition = Vector3.one * 5000f;
-            }
+            if (_holding) _newPosition = GetWorldPosition(_pointerEventData.position);
+            else _newPosition = Vector3.one * 5000f;
 
             _newPosition.z = _initialZPosition;
             BallMover.position = _newPosition;

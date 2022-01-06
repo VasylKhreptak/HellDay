@@ -7,13 +7,10 @@ public class CommonTargetDetectionEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-        
-        EditorGUILayout.Space();
-        CommonTargetDetection commonTargetDetection = (CommonTargetDetection) target;
 
-        if (GUILayout.Button("Find targets"))
-        {
-            commonTargetDetection.FindTargets();
-        }
+        EditorGUILayout.Space();
+        var commonTargetDetection = (CommonTargetDetection)target;
+
+        if (GUILayout.Button("Find targets")) commonTargetDetection.FindTargets();
     }
 }

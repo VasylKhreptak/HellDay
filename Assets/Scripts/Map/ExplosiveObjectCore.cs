@@ -51,7 +51,8 @@ public class ExplosiveObjectCore : MonoBehaviour
 
     protected void ExplodeChainedObject(Collider2D collider2D)
     {
-        this.DOWait(_explosiveObjData.ChainExplosionDelay).OnComplete(() => {
+        this.DOWait(_explosiveObjData.ChainExplosionDelay).OnComplete(() =>
+        {
             if (collider2D != null) collider2D.gameObject.SetActive(false);
         });
     }

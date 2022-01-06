@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEditor;
 #endif
 
-namespace MoreMountains.Feedbacks 
+namespace MoreMountains.Feedbacks
 {
 #if UNITY_EDITOR
     /// <summary>
@@ -18,9 +18,9 @@ namespace MoreMountains.Feedbacks
         /// <summary>
         /// A list of all the symbols you want added to the build settings
         /// </summary>
-        public static readonly string[] Symbols = new string[] 
+        public static readonly string[] Symbols = new string[]
         {
-         "MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE"
+            "MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE"
         };
 
         /// <summary>
@@ -28,8 +28,8 @@ namespace MoreMountains.Feedbacks
         /// </summary>
         static NiceVibrationsRumbleDefineSymbols()
         {
-            string scriptingDefinesString = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup); 
-            List<string> scriptingDefinesStringList = scriptingDefinesString.Split(';').ToList();
+            var scriptingDefinesString = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup);
+            var scriptingDefinesStringList = scriptingDefinesString.Split(';').ToList();
             scriptingDefinesStringList.AddRange(Symbols.Except(scriptingDefinesStringList));
             PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, string.Join(";", scriptingDefinesStringList.ToArray()));
         }

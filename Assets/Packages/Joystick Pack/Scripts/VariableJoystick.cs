@@ -5,8 +5,8 @@ public class VariableJoystick : Joystick
 {
     public float MoveThreshold
     {
-        get { return moveThreshold; }
-        set { moveThreshold = Mathf.Abs(value); }
+        get => moveThreshold;
+        set => moveThreshold = Mathf.Abs(value);
     }
 
     [SerializeField] private float moveThreshold = 1;
@@ -23,7 +23,9 @@ public class VariableJoystick : Joystick
             background.gameObject.SetActive(true);
         }
         else
+        {
             background.gameObject.SetActive(false);
+        }
     }
 
     protected override void Start()
@@ -56,7 +58,7 @@ public class VariableJoystick : Joystick
     {
         if (joystickType == JoystickType.Dynamic && magnitude > moveThreshold)
         {
-            Vector2 difference = normalised * (magnitude - moveThreshold) * radius;
+            var difference = normalised * (magnitude - moveThreshold) * radius;
             background.anchoredPosition += difference;
         }
 

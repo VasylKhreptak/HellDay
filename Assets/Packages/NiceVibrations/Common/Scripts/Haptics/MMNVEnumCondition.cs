@@ -18,7 +18,7 @@ namespace MoreMountains.NiceVibrations
         public string ConditionEnum = "";
         public bool Hidden = false;
 
-        BitArray bitArray = new BitArray(32);
+        private BitArray bitArray = new BitArray(32);
         public bool ContainsBitFlag(int enumValue)
         {
             return bitArray.Get(enumValue);
@@ -26,13 +26,10 @@ namespace MoreMountains.NiceVibrations
 
         public MMNVEnumConditionAttribute(string conditionBoolean, params int[] enumValues)
         {
-            this.ConditionEnum = conditionBoolean;
-            this.Hidden = true;
+            ConditionEnum = conditionBoolean;
+            Hidden = true;
 
-            for (int i = 0; i < enumValues.Length; i++)
-            {
-                bitArray.Set(enumValues[i], true);
-            }
+            for (var i = 0; i < enumValues.Length; i++) bitArray.Set(enumValues[i], true);
         }
     }
 
@@ -43,27 +40,24 @@ namespace MoreMountains.NiceVibrations
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            MMNVEnumConditionAttribute enumConditionAttribute = (MMNVEnumConditionAttribute)attribute;
-            bool enabled = GetConditionAttributeResult(enumConditionAttribute, property);
-            bool previouslyEnabled = GUI.enabled;
+            var enumConditionAttribute = (MMNVEnumConditionAttribute)attribute;
+            var enabled = GetConditionAttributeResult(enumConditionAttribute, property);
+            var previouslyEnabled = GUI.enabled;
             GUI.enabled = enabled;
-            if (!enumConditionAttribute.Hidden || enabled)
-            {
-                EditorGUI.PropertyField(position, property, label, true);
-            }
+            if (!enumConditionAttribute.Hidden || enabled) EditorGUI.PropertyField(position, property, label, true);
             GUI.enabled = previouslyEnabled;
         }
 
         private bool GetConditionAttributeResult(MMNVEnumConditionAttribute enumConditionAttribute, SerializedProperty property)
         {
-            bool enabled = true;
-            string propertyPath = property.propertyPath;
-            string conditionPath = propertyPath.Replace(property.name, enumConditionAttribute.ConditionEnum);
-            SerializedProperty sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
+            var enabled = true;
+            var propertyPath = property.propertyPath;
+            var conditionPath = propertyPath.Replace(property.name, enumConditionAttribute.ConditionEnum);
+            var sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
 
             if (sourcePropertyValue != null)
             {
-                int currentEnum = sourcePropertyValue.enumValueIndex;
+                var currentEnum = sourcePropertyValue.enumValueIndex;
 
                 enabled = enumConditionAttribute.ContainsBitFlag(currentEnum);
             }
@@ -77,19 +71,12 @@ namespace MoreMountains.NiceVibrations
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            MMNVEnumConditionAttribute enumConditionAttribute = (MMNVEnumConditionAttribute)attribute;
-            bool enabled = GetConditionAttributeResult(enumConditionAttribute, property);
+            var enumConditionAttribute = (MMNVEnumConditionAttribute)attribute;
+            var enabled = GetConditionAttributeResult(enumConditionAttribute, property);
 
-            if (!enumConditionAttribute.Hidden || enabled)
-            {
-                return EditorGUI.GetPropertyHeight(property, label);
-            }
-            else
-            {
-                return -EditorGUIUtility.standardVerticalSpacing;
-            }
+            if (!enumConditionAttribute.Hidden || enabled) return EditorGUI.GetPropertyHeight(property, label);
+            else return -EditorGUIUtility.standardVerticalSpacing;
         }
     }
 #endif
 }
-

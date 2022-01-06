@@ -13,7 +13,7 @@ namespace MoreMountains.NiceVibrations
     /// </summary>
     [CustomEditor(typeof(MMNVAndroidWaveFormAsset))]
     public class MMNVAndroidWaveFormAssetEditor : Editor
-    {        
+    {
         /// <summary>
         /// On inspector GUI, we draw an extra button
         /// </summary>
@@ -21,19 +21,17 @@ namespace MoreMountains.NiceVibrations
         {
             serializedObject.Update();
 
-            MMNVAndroidWaveFormAsset waveformAsset = (MMNVAndroidWaveFormAsset)target;            
+            var waveformAsset = (MMNVAndroidWaveFormAsset)target;
 
             DrawDefaultInspector();
 
             if (waveformAsset.AHAPFile != null)
-            {
                 if (GUILayout.Button("Import from AHAP"))
                 {
-                    MMNVAndroidWaveForm tempWaveform = MMNVAHAP.AHAPtoAndroidWaveForm(waveformAsset.AHAPFile.text, waveformAsset.IntensityMultiplier, waveformAsset.SharpnessMultiplier);
+                    var tempWaveform = MMNVAHAP.AHAPtoAndroidWaveForm(waveformAsset.AHAPFile.text, waveformAsset.IntensityMultiplier, waveformAsset.SharpnessMultiplier);
                     waveformAsset.WaveForm.Pattern = tempWaveform.Pattern;
                     waveformAsset.WaveForm.Amplitudes = tempWaveform.Amplitudes;
                 }
-            }            
 
             serializedObject.ApplyModifiedProperties();
         }

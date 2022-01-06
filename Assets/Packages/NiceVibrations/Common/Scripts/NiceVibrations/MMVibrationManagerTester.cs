@@ -13,7 +13,7 @@ namespace MoreMountains.NiceVibrations
         public enum HapticMethods { NativePreset, Transient, Continuous, AdvancedPattern, Stop }
         /// the timescale to operate on
         public enum Timescales { ScaledTime, UnscaledTime }
-        
+
         [Header("Haptics")]
         public HapticMethods HapticMethod = HapticMethods.NativePreset;
 
@@ -68,23 +68,23 @@ namespace MoreMountains.NiceVibrations
         protected virtual void TestVibration()
         {
 
-            Vector3 position = this.transform.position;
+            var position = transform.position;
 
             switch (HapticMethod)
             {
                 case HapticMethods.AdvancedPattern:
-                    string iOSString = (AHAPFileForIOS == null) ? "" : AHAPFileForIOS.text;
+                    var iOSString = AHAPFileForIOS == null ? "" : AHAPFileForIOS.text;
 
-                    long[] androidPattern = (AndroidWaveFormFile == null) ? null : AndroidWaveFormFile.WaveForm.Pattern;
-                    int[] androidAmplitude = (AndroidWaveFormFile == null) ? null : AndroidWaveFormFile.WaveForm.Amplitudes;
-                    
-                    long[] rumblePattern = (RumbleWaveFormFile == null) ? null : RumbleWaveFormFile.WaveForm.Pattern;
-                    int[] lowFreqAmplitude = (RumbleWaveFormFile == null) ? null : RumbleWaveFormFile.WaveForm.LowFrequencyAmplitudes;
-                    int[] highFreqAmplitude = (RumbleWaveFormFile == null) ? null : RumbleWaveFormFile.WaveForm.HighFrequencyAmplitudes;
+                    var androidPattern = AndroidWaveFormFile == null ? null : AndroidWaveFormFile.WaveForm.Pattern;
+                    var androidAmplitude = AndroidWaveFormFile == null ? null : AndroidWaveFormFile.WaveForm.Amplitudes;
+
+                    var rumblePattern = RumbleWaveFormFile == null ? null : RumbleWaveFormFile.WaveForm.Pattern;
+                    var lowFreqAmplitude = RumbleWaveFormFile == null ? null : RumbleWaveFormFile.WaveForm.LowFrequencyAmplitudes;
+                    var highFreqAmplitude = RumbleWaveFormFile == null ? null : RumbleWaveFormFile.WaveForm.HighFrequencyAmplitudes;
 
                     MMVibrationManager.AdvancedHapticPattern(iOSString, androidPattern, androidAmplitude, AndroidRepeat,
-                                                                        rumblePattern, lowFreqAmplitude, highFreqAmplitude, RumbleRepeat,
-                                                                OldIOSFallback, this);
+                        rumblePattern, lowFreqAmplitude, highFreqAmplitude, RumbleRepeat,
+                        OldIOSFallback, this);
                     break;
 
                 case HapticMethods.Continuous:
@@ -115,23 +115,23 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         protected virtual IEnumerator ContinuousHapticsCoroutine()
         {
-            _continuousStartedAt = (Timescale == Timescales.ScaledTime) ? Time.time : Time.unscaledTime;
+            _continuousStartedAt = Timescale == Timescales.ScaledTime ? Time.time : Time.unscaledTime;
             _continuousPlaying = true;
-            float elapsedTime = ComputeElapsedTime();
+            var elapsedTime = ComputeElapsedTime();
 
             MMVibrationManager.ContinuousHaptic(InitialContinuousIntensity, InitialContinuousSharpness, ContinuousDuration, HapticTypes.Success, this);
 
-            while (_continuousPlaying && (elapsedTime < ContinuousDuration))
+            while (_continuousPlaying && elapsedTime < ContinuousDuration)
             {
                 elapsedTime = ComputeElapsedTime();
-                float remappedTime = Remap(elapsedTime, 0f, ContinuousDuration, 0f, 1f);
-                float intensity = ContinuousIntensityCurve.Evaluate(remappedTime);
-                float sharpness = ContinuousSharpnessCurve.Evaluate(remappedTime);
+                var remappedTime = Remap(elapsedTime, 0f, ContinuousDuration, 0f, 1f);
+                var intensity = ContinuousIntensityCurve.Evaluate(remappedTime);
+                var sharpness = ContinuousSharpnessCurve.Evaluate(remappedTime);
                 MMVibrationManager.UpdateContinuousHaptic(intensity, sharpness, true);
                 if (AllowRumble)
                 {
                     #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
-                        MMNVRumble.RumbleContinuous(intensity, sharpness);
+                    MMNVRumble.RumbleContinuous(intensity, sharpness);
                     #endif
                 }
                 yield return null;
@@ -149,7 +149,7 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         protected virtual float ComputeElapsedTime()
         {
-            float elapsedTime = (Timescale == Timescales.ScaledTime) ? Time.time - _continuousStartedAt : Time.unscaledTime - _continuousStartedAt;
+            var elapsedTime = Timescale == Timescales.ScaledTime ? Time.time - _continuousStartedAt : Time.unscaledTime - _continuousStartedAt;
             return elapsedTime;
         }
 
@@ -164,7 +164,7 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static float Remap(float x, float A, float B, float C, float D)
         {
-            float remappedValue = C + (x - A) / (B - A) * (D - C);
+            var remappedValue = C + (x - A) / (B - A) * (D - C);
             return remappedValue;
         }
     }

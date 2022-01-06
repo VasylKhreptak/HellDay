@@ -12,7 +12,7 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void Awake()
         {
-            _switch = this.gameObject.GetComponent<MMSwitch>();
+            _switch = gameObject.GetComponent<MMSwitch>();
         }
 
         protected virtual void OnEnable()
@@ -26,7 +26,7 @@ namespace MoreMountains.NiceVibrations
             {
                 _switch.CurrentSwitchState = MMSwitch.SwitchStates.Off;
                 _switch.InitializeState();
-            }            
+            }
         }
     }
 }

@@ -665,7 +665,9 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    7: MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+    1: OBI_ONI_SUPPORTED
+    4: OBI_ONI_SUPPORTED
+    7: MOREMOUNTAINS_NICEVIBRATIONS;MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE;OBI_ONI_SUPPORTED
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

@@ -13,7 +13,7 @@ namespace MoreMountains.NiceVibrations
     /// </summary>
     [CustomEditor(typeof(MMNVRumbleWaveFormAsset))]
     public class MMNVRumbleWaveFormAssetEditor : Editor
-    {        
+    {
         /// <summary>
         /// On inspector GUI, we draw an extra button
         /// </summary>
@@ -21,20 +21,18 @@ namespace MoreMountains.NiceVibrations
         {
             serializedObject.Update();
 
-            MMNVRumbleWaveFormAsset waveformAsset = (MMNVRumbleWaveFormAsset)target;
+            var waveformAsset = (MMNVRumbleWaveFormAsset)target;
 
             DrawDefaultInspector();
 
             if (waveformAsset.AHAPFile != null)
-            {
                 if (GUILayout.Button("Import from AHAP"))
                 {
-                    MMNVRumbleWaveForm tempWaveform = MMNVAHAP.AHAPtoRumbleWaveForm(waveformAsset.AHAPFile.text, waveformAsset.IntensityMultiplier, waveformAsset.SharpnessMultiplier);
+                    var tempWaveform = MMNVAHAP.AHAPtoRumbleWaveForm(waveformAsset.AHAPFile.text, waveformAsset.IntensityMultiplier, waveformAsset.SharpnessMultiplier);
                     waveformAsset.WaveForm.Pattern = tempWaveform.Pattern;
                     waveformAsset.WaveForm.LowFrequencyAmplitudes = tempWaveform.LowFrequencyAmplitudes;
                     waveformAsset.WaveForm.HighFrequencyAmplitudes = tempWaveform.HighFrequencyAmplitudes;
                 }
-            }            
 
             serializedObject.ApplyModifiedProperties();
         }

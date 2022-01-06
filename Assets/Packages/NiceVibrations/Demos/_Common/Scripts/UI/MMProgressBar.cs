@@ -75,7 +75,7 @@ namespace MoreMountains.NiceVibrations
         /// the current progress of the bar
         [Range(0f, 1f)]
         public float BarProgress;
-        
+
         protected float _targetFill;
         protected Vector3 _targetLocalScale = Vector3.one;
         protected float _newPercent;
@@ -95,17 +95,14 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         protected virtual void Start()
         {
-            _initialScale = this.transform.localScale;
+            _initialScale = transform.localScale;
 
             if (ForegroundBar != null)
             {
                 _foregroundImage = ForegroundBar.GetComponent<Image>();
                 _initialFrontBarSize = _foregroundImage.rectTransform.sizeDelta;
             }
-            if (DelayedBar != null)
-            {
-                _delayedImage = DelayedBar.GetComponent<Image>();
-            }
+            if (DelayedBar != null) _delayedImage = DelayedBar.GetComponent<Image>();
             _initialized = true;
         }
 
@@ -121,14 +118,11 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void AutoUpdate()
         {
-            if (!AutoUpdating)
-            {
-                return;
-            }
+            if (!AutoUpdating) return;
 
             _newPercent = Remap(BarProgress, 0f, 1f, StartValue, EndValue);
             _targetFill = _newPercent;
-            _lastUpdateTimestamp = (TimeScale == TimeScales.Time) ? Time.time : Time.unscaledTime;
+            _lastUpdateTimestamp = TimeScale == TimeScales.Time ? Time.time : Time.unscaledTime;
         }
 
         /// <summary>
@@ -136,10 +130,9 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         protected virtual void UpdateFrontBar()
         {
-            float currentDeltaTime = (TimeScale == TimeScales.Time) ? Time.deltaTime : Time.unscaledTime;
+            var currentDeltaTime = TimeScale == TimeScales.Time ? Time.deltaTime : Time.unscaledTime;
 
             if (ForegroundBar != null)
-            {
                 switch (FillMode)
                 {
                     case FillModes.LocalScale:
@@ -160,54 +153,32 @@ namespace MoreMountains.NiceVibrations
                                 break;
                         }
 
-                        if (LerpForegroundBar)
-                        {
-                            _newScale = Vector3.Lerp(ForegroundBar.localScale, _targetLocalScale, currentDeltaTime * LerpForegroundBarSpeed);
-                        }
-                        else
-                        {
-                            _newScale = _targetLocalScale;
-                        }
+                        if (LerpForegroundBar) _newScale = Vector3.Lerp(ForegroundBar.localScale, _targetLocalScale, currentDeltaTime * LerpForegroundBarSpeed);
+                        else _newScale = _targetLocalScale;
 
                         ForegroundBar.localScale = _newScale;
                         break;
 
                     case FillModes.Width:
-                        if (_foregroundImage == null)
-                        {
-                            return;
-                        }
-                        float newSizeX = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.x);
+                        if (_foregroundImage == null) return;
+                        var newSizeX = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.x);
                         newSizeX = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeX, currentDeltaTime * LerpForegroundBarSpeed);
                         _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newSizeX);
                         break;
 
                     case FillModes.Height:
-                        if (_foregroundImage == null)
-                        {
-                            return;
-                        }
-                        float newSizeY = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.y);
+                        if (_foregroundImage == null) return;
+                        var newSizeY = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.y);
                         newSizeY = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeY, currentDeltaTime * LerpForegroundBarSpeed);
                         _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newSizeY);
                         break;
 
                     case FillModes.FillAmount:
-                        if (_foregroundImage == null)
-                        {
-                            return;
-                        }
-                        if (LerpForegroundBar)
-                        {
-                            _foregroundImage.fillAmount = Mathf.Lerp(_foregroundImage.fillAmount, _targetFill, currentDeltaTime * LerpForegroundBarSpeed);
-                        }
-                        else
-                        {
-                            _foregroundImage.fillAmount = _targetFill;
-                        }
+                        if (_foregroundImage == null) return;
+                        if (LerpForegroundBar) _foregroundImage.fillAmount = Mathf.Lerp(_foregroundImage.fillAmount, _targetFill, currentDeltaTime * LerpForegroundBarSpeed);
+                        else _foregroundImage.fillAmount = _targetFill;
                         break;
                 }
-            }
         }
 
         /// <summary>
@@ -215,11 +186,10 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         protected virtual void UpdateDelayedBar()
         {
-            float currentDeltaTime = (TimeScale == TimeScales.Time) ? Time.deltaTime : Time.unscaledDeltaTime;
-            float currentTime = (TimeScale == TimeScales.Time) ? Time.time : Time.unscaledTime;
+            var currentDeltaTime = TimeScale == TimeScales.Time ? Time.deltaTime : Time.unscaledDeltaTime;
+            var currentTime = TimeScale == TimeScales.Time ? Time.time : Time.unscaledTime;
 
             if (DelayedBar != null)
-            {
                 if (currentTime - _lastUpdateTimestamp > Delay)
                 {
                     if (FillMode == FillModes.LocalScale)
@@ -242,30 +212,17 @@ namespace MoreMountains.NiceVibrations
                                 break;
                         }
 
-                        if (LerpDelayedBar)
-                        {
-                            _newScale = Vector3.Lerp(DelayedBar.localScale, _targetLocalScale, currentDeltaTime * LerpDelayedBarSpeed);
-                        }
-                        else
-                        {
-                            _newScale = _targetLocalScale;
-                        }
+                        if (LerpDelayedBar) _newScale = Vector3.Lerp(DelayedBar.localScale, _targetLocalScale, currentDeltaTime * LerpDelayedBarSpeed);
+                        else _newScale = _targetLocalScale;
                         DelayedBar.localScale = _newScale;
                     }
 
-                    if ((FillMode == FillModes.FillAmount) && (_delayedImage != null))
+                    if (FillMode == FillModes.FillAmount && _delayedImage != null)
                     {
-                        if (LerpDelayedBar)
-                        {
-                            _delayedImage.fillAmount = Mathf.Lerp(_delayedImage.fillAmount, _targetFill, currentDeltaTime * LerpDelayedBarSpeed);
-                        }
-                        else
-                        {
-                            _delayedImage.fillAmount = _targetFill;
-                        }
+                        if (LerpDelayedBar) _delayedImage.fillAmount = Mathf.Lerp(_delayedImage.fillAmount, _targetFill, currentDeltaTime * LerpDelayedBarSpeed);
+                        else _delayedImage.fillAmount = _targetFill;
                     }
                 }
-            }
         }
 
         /// <summary>
@@ -277,13 +234,10 @@ namespace MoreMountains.NiceVibrations
         public virtual void UpdateBar(float currentValue, float minValue, float maxValue)
         {
             _newPercent = Remap(currentValue, minValue, maxValue, StartValue, EndValue);
-            if ((_newPercent != BarProgress) && !Bumping)
-            {
-                Bump();
-            }
+            if (_newPercent != BarProgress && !Bumping) Bump();
             BarProgress = _newPercent;
             _targetFill = _newPercent;
-            _lastUpdateTimestamp = (TimeScale == TimeScales.Time) ? Time.time : Time.unscaledTime;
+            _lastUpdateTimestamp = TimeScale == TimeScales.Time ? Time.time : Time.unscaledTime;
             _lastPercent = _newPercent;
         }
 
@@ -292,18 +246,9 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         public virtual void Bump()
         {
-            if (!BumpScaleOnChange || !_initialized)
-            {
-                return;
-            }
-            if (!BumpOnIncrease && (_lastPercent < _newPercent))
-            {
-                return;
-            }
-            if (this.gameObject.activeInHierarchy)
-            {
-                StartCoroutine(BumpCoroutine());
-            }
+            if (!BumpScaleOnChange || !_initialized) return;
+            if (!BumpOnIncrease && _lastPercent < _newPercent) return;
+            if (gameObject.activeInHierarchy) StartCoroutine(BumpCoroutine());
         }
 
         /// <summary>
@@ -312,27 +257,21 @@ namespace MoreMountains.NiceVibrations
         /// <returns>The coroutine.</returns>
         protected virtual IEnumerator BumpCoroutine()
         {
-            float journey = 0f;
-            float currentDeltaTime = (TimeScale == TimeScales.Time) ? Time.deltaTime : Time.unscaledDeltaTime;
+            var journey = 0f;
+            var currentDeltaTime = TimeScale == TimeScales.Time ? Time.deltaTime : Time.unscaledDeltaTime;
 
             Bumping = true;
-            if (_foregroundImage != null)
-            {
-                _initialColor = _foregroundImage.color;
-            }
+            if (_foregroundImage != null) _initialColor = _foregroundImage.color;
 
             while (journey <= BumpDuration)
             {
                 journey = journey + currentDeltaTime;
-                float percent = Mathf.Clamp01(journey / BumpDuration);
-                float curvePercent = BumpAnimationCurve.Evaluate(percent);
-                float colorCurvePercent = BumpColorAnimationCurve.Evaluate(percent);
-                this.transform.localScale = curvePercent * _initialScale;
+                var percent = Mathf.Clamp01(journey / BumpDuration);
+                var curvePercent = BumpAnimationCurve.Evaluate(percent);
+                var colorCurvePercent = BumpColorAnimationCurve.Evaluate(percent);
+                transform.localScale = curvePercent * _initialScale;
 
-                if (ChangeColorWhenBumping && (_foregroundImage != null))
-                {
-                    _foregroundImage.color = Color.Lerp(_initialColor, BumpColor, colorCurvePercent);
-                }
+                if (ChangeColorWhenBumping && _foregroundImage != null) _foregroundImage.color = Color.Lerp(_initialColor, BumpColor, colorCurvePercent);
 
                 yield return null;
             }
@@ -345,7 +284,7 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual float Remap(float x, float A, float B, float C, float D)
         {
-            float remappedValue = C + (x - A) / (B - A) * (D - C);
+            var remappedValue = C + (x - A) / (B - A) * (D - C);
             return remappedValue;
         }
     }

@@ -4,54 +4,45 @@ using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    public float Horizontal
-    {
-        get { return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; }
-    }
+    public float Horizontal => snapX ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x;
 
-    public float Vertical
-    {
-        get { return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; }
-    }
+    public float Vertical => snapY ? SnapFloat(input.y, AxisOptions.Vertical) : input.y;
 
     public bool IsPressed()
     {
         return Horizontal != 0 && Vertical != 0;
     }
 
-    public Vector2 Direction
-    {
-        get { return new Vector2(Horizontal, Vertical); }
-    }
+    public Vector2 Direction => new Vector2(Horizontal, Vertical);
 
     public float HandleRange
     {
-        get { return handleRange; }
-        set { handleRange = Mathf.Abs(value); }
+        get => handleRange;
+        set => handleRange = Mathf.Abs(value);
     }
 
     public float DeadZone
     {
-        get { return deadZone; }
-        set { deadZone = Mathf.Abs(value); }
+        get => deadZone;
+        set => deadZone = Mathf.Abs(value);
     }
 
     public AxisOptions AxisOptions
     {
-        get { return AxisOptions; }
-        set { axisOptions = value; }
+        get => AxisOptions;
+        set => axisOptions = value;
     }
 
     public bool SnapX
     {
-        get { return snapX; }
-        set { snapX = value; }
+        get => snapX;
+        set => snapX = value;
     }
 
     public bool SnapY
     {
-        get { return snapY; }
-        set { snapY = value; }
+        get => snapY;
+        set => snapY = value;
     }
 
     [SerializeField] private float handleRange = 1;
@@ -80,7 +71,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (canvas == null)
             Debug.LogError("The Joystick is not placed inside a canvas");
 
-        Vector2 center = new Vector2(0.5f, 0.5f);
+        var center = new Vector2(0.5f, 0.5f);
         background.pivot = center;
         handle.anchorMin = center;
         handle.anchorMax = center;
@@ -99,12 +90,12 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
             cam = canvas.worldCamera;
 
-        Vector2 position = RectTransformUtility.WorldToScreenPoint(cam, background.position);
-        Vector2 radius = background.sizeDelta / 2;
+        var position = RectTransformUtility.WorldToScreenPoint(cam, background.position);
+        var radius = background.sizeDelta / 2;
         input = (eventData.position - position) / (radius * canvas.scaleFactor);
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
-        
+
         handle.DOAnchorPos(input * radius * handleRange, _handleMovementTime);
     }
 
@@ -116,7 +107,9 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 input = normalised;
         }
         else
+        {
             input = Vector2.zero;
+        }
     }
 
     private void FormatInput()
@@ -134,20 +127,20 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         if (axisOptions == AxisOptions.Both)
         {
-            float angle = Vector2.Angle(input, Vector2.up);
+            var angle = Vector2.Angle(input, Vector2.up);
             if (snapAxis == AxisOptions.Horizontal)
             {
                 if (angle < 22.5f || angle > 157.5f)
                     return 0;
                 else
-                    return (value > 0) ? 1 : -1;
+                    return value > 0 ? 1 : -1;
             }
             else if (snapAxis == AxisOptions.Vertical)
             {
                 if (angle > 67.5f && angle < 112.5f)
                     return 0;
                 else
-                    return (value > 0) ? 1 : -1;
+                    return value > 0 ? 1 : -1;
             }
 
             return value;
@@ -171,11 +164,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     protected Vector2 ScreenPointToAnchoredPosition(Vector2 screenPosition)
     {
-        Vector2 localPoint = Vector2.zero;
+        var localPoint = Vector2.zero;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(baseRect, screenPosition, cam, out localPoint))
         {
-            Vector2 pivotOffset = baseRect.pivot * baseRect.sizeDelta;
-            return localPoint - (background.anchorMax * baseRect.sizeDelta) + pivotOffset;
+            var pivotOffset = baseRect.pivot * baseRect.sizeDelta;
+            return localPoint - background.anchorMax * baseRect.sizeDelta + pivotOffset;
         }
 
         return Vector2.zero;
