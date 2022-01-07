@@ -1,14 +1,14 @@
-using System;
-
 public class UI_DoorButtonAnimation : UI_SlideAnimation
 {
     private void OnEnable()
     {
-        PlayerDoorInteract.onAnimateOpenDoorBtn += SetAnimationState;
+        PlayerDoorInteract.onEnterDoorArea += Show;
+        PlayerDoorInteract.onExitDoorArea += Hide;
     }
 
     private void OnDisable()
     {
-        PlayerDoorInteract.onAnimateOpenDoorBtn -= SetAnimationState;
+        PlayerDoorInteract.onEnterDoorArea -= Show;
+        PlayerDoorInteract.onExitDoorArea -= Hide;
     }
 }

@@ -17,12 +17,22 @@ public class PlayerFaceDirectionController : MonoBehaviour
 
     public static int FaceDirection => _faceDirection;
 
+    private void OnEnable()
+    {
+        StartConfiguringFaceDirection();
+    }
+
+    private void OnDisable()
+    {
+        StopConfiguringFaceDirection();
+    }
+
     private void Awake()
     {
         SetDirection((int)Mathf.Round(_transform.localScale.x));
     }
 
-    public void StartConfiguring()
+    private void StartConfiguringFaceDirection()
     {
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () =>
         {
@@ -33,7 +43,7 @@ public class PlayerFaceDirectionController : MonoBehaviour
         });
     }
 
-    public void StopConfiguring()
+    private void StopConfiguringFaceDirection()
     {
         ConfigurableUpdate.StopUpdate(this, ref _configurableUpdate);
     }

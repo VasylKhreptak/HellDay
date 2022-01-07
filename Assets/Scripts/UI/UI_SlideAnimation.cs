@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -15,10 +16,7 @@ public class UI_SlideAnimation : MonoBehaviour
 
     protected bool _isShown;
 
-    protected virtual void Start()
-    {
-        HideBehindScreen();
-    }
+    private Tween _moveTween;
 
     protected void Awake()
     {
@@ -26,23 +24,43 @@ public class UI_SlideAnimation : MonoBehaviour
         _startAnchoredPos = _targetAnchoredPos + _offset;
     }
 
+    protected virtual void Start()
+    {
+        HideBehindScreen();
+    }
+
     protected void HideBehindScreen()
     {
         _rectTransform.anchoredPosition = _startAnchoredPos;
     }
 
-    protected void SetAnimationState(bool show)
+    public void Show()
     {
-        if (show && _isShown || show == false && _isShown == false) return;
+        if (_isShown) return;
+        
+        _moveTween.Kill();
+        _moveTween = _rectTransform.DOAnchorPos(_targetAnchoredPos, _duration).SetEase(_animationCurve);
 
-        Animate(show);
-        _isShown = show;
+        _isShown = true;
     }
 
-    private void Animate(bool show)
+    public void Hide() 
     {
-        _rectTransform.DOAnchorPos(
-            show ? _targetAnchoredPos : _startAnchoredPos,
-            _duration).SetEase(_animationCurve);
+        if (_isShown == false) return;
+
+        _moveTween.Kill();
+        _moveTween = _rectTransform.DOAnchorPos(_startAnchoredPos, _duration).SetEase(_animationCurve);
+
+        _isShown = false;
+    }
+
+    private void OnDisable()
+    {
+        _moveTween.Kill();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        
     }
 }

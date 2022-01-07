@@ -2,16 +2,18 @@ using System;
 
 public class PlayerDoorInteract : DoorInteractCore
 {
-    public static Action<bool> onAnimateOpenDoorBtn;
+    public static Action onEnterDoorArea;
+    public static Action onExitDoorArea;
 
     protected override void OnEnteredDoorArea()
     {
-        onAnimateOpenDoorBtn?.Invoke(true);
+        onEnterDoorArea?.Invoke();
     }
 
     protected override void OnExitDoorArea()
     {
-        onAnimateOpenDoorBtn?.Invoke(false);
+        onExitDoorArea?.Invoke();
+
     }
 
     public void ToggleDoor()
