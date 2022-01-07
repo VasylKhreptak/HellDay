@@ -3,7 +3,7 @@ using DG.Tweening.Core;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class OnDamageColor : MonoBehaviour
+public class OnTakeDamageColor : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
@@ -41,8 +41,6 @@ public class OnDamageColor : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (gameObject.scene.isLoaded == false) return;
-
         _seq.Kill();
     }
 }

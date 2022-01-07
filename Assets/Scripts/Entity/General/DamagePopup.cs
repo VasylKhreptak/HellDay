@@ -39,8 +39,6 @@ public class DamagePopup : MonoBehaviour
 
     private void OnDisable()
     {
-        if (gameObject.scene.isLoaded == false) return;
-
         KillTweens();
     }
 

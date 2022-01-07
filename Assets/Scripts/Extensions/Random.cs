@@ -6,6 +6,11 @@ namespace Extensions
         {
             return UnityEngine.Random.value < .5 ? -1 : 1;
         }
+
+        public static bool Bool()
+        {
+            return UnityEngine.Random.value < .5;
+        }
     }
 }
 

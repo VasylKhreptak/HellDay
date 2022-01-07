@@ -11,6 +11,8 @@ public class UI_ButtonPressAnimation : MonoBehaviour, IPointerDownHandler, IPoin
 
     private Vector3 _rawScale;
 
+    private Tween _scaleTween;
+    
     private void Start()
     {
         _rawScale = _transform.localScale;
@@ -28,6 +30,12 @@ public class UI_ButtonPressAnimation : MonoBehaviour, IPointerDownHandler, IPoin
 
     private void AnimateButton(Vector3 targetScale, float time, AnimationCurve animationCurve)
     {
-        _transform.DOScale(targetScale, time).SetEase(animationCurve);
+        _scaleTween.Kill();
+        _scaleTween = _transform.DOScale(targetScale, time).SetEase(animationCurve);
+    }
+
+    private void OnDisable()
+    {
+        _scaleTween.Kill();
     }
 }
