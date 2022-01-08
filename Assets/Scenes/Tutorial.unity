@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 12825437}
   - component: {fileID: 12825439}
   - component: {fileID: 12825438}
+  - component: {fileID: 12825440}
   m_Layer: 5
   m_Name: ChainLinks_0 (5)
   m_TagString: Untagged
@@ -373,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 12825436}
+  _colorAdapter: {fileID: 12825440}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -427,6 +428,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 12825430}
+--- !u!114 &12825440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12825429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 12825436}
 --- !u!1 &13917567
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +455,8 @@ GameObject:
   - component: {fileID: 13917569}
   - component: {fileID: 13917572}
   - component: {fileID: 13917573}
+  - component: {fileID: 13917575}
+  - component: {fileID: 13917574}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -605,6 +621,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioClips:
   - {fileID: 8300000, guid: ef549ce0dcfe4784983f152cf9f4ffe4, type: 3}
+--- !u!114 &13917574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13917567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 13917575}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &13917575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13917567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5f5e946f6e4bcf93b2ca7e27857d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 13917570}
 --- !u!1 &16569180
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,6 +689,8 @@ GameObject:
   - component: {fileID: 16569184}
   - component: {fileID: 16569183}
   - component: {fileID: 16569182}
+  - component: {fileID: 16569189}
+  - component: {fileID: 16569188}
   m_Layer: 0
   m_Name: Blood (1)
   m_TagString: Untagged
@@ -791,6 +862,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &16569188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16569180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 16569187}
+--- !u!114 &16569189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16569180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 16569188}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &23757818
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +964,8 @@ GameObject:
   - component: {fileID: 33702434}
   - component: {fileID: 33702433}
   - component: {fileID: 33702432}
+  - component: {fileID: 33702439}
+  - component: {fileID: 33702438}
   m_Layer: 0
   m_Name: Blood (1)
   m_TagString: Untagged
@@ -1011,6 +1137,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &33702438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33702430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 33702437}
+--- !u!114 &33702439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33702430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 33702438}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &39278589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &62106860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1343,6 +1522,7 @@ GameObject:
   - component: {fileID: 69252258}
   - component: {fileID: 69252257}
   - component: {fileID: 69252260}
+  - component: {fileID: 69252261}
   m_Layer: 5
   m_Name: MiddileBlood_2
   m_TagString: Untagged
@@ -1475,7 +1655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 69252259}
+  _colorAdapter: {fileID: 69252261}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -1503,6 +1683,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &69252261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69252255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 69252259}
 --- !u!1 &72085348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1566,6 +1759,7 @@ GameObject:
   - component: {fileID: 72159976}
   - component: {fileID: 72159978}
   - component: {fileID: 72159977}
+  - component: {fileID: 72159979}
   m_Layer: 5
   m_Name: ChainLinks_1 (7)
   m_TagString: Untagged
@@ -1758,7 +1952,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 72159975}
+  _colorAdapter: {fileID: 72159979}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -1812,6 +2006,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 72159969}
+--- !u!114 &72159979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72159968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 72159975}
 --- !u!4 &72831153 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7781906718964601439, guid: 8a6aea801018ac84e94969bf483eb4d4, type: 3}
@@ -1830,6 +2037,7 @@ GameObject:
   - component: {fileID: 80301814}
   - component: {fileID: 80301813}
   - component: {fileID: 80301816}
+  - component: {fileID: 80301817}
   m_Layer: 5
   m_Name: RightChainAnchor
   m_TagString: Untagged
@@ -1963,7 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 80301815}
+  _colorAdapter: {fileID: 80301817}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -1991,6 +2199,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &80301817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80301811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 80301815}
 --- !u!1 &101434727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,6 +2230,7 @@ GameObject:
   - component: {fileID: 101434735}
   - component: {fileID: 101434737}
   - component: {fileID: 101434736}
+  - component: {fileID: 101434738}
   m_Layer: 5
   m_Name: ChainLinks_0 (5)
   m_TagString: Untagged
@@ -2201,7 +2423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 101434734}
+  _colorAdapter: {fileID: 101434738}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -2255,6 +2477,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 101434728}
+--- !u!114 &101434738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101434727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 101434734}
 --- !u!4 &124967412 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 833735531315736711, guid: f4012dda92ba9da47947dc91364011de, type: 3}
@@ -2283,6 +2518,7 @@ GameObject:
   - component: {fileID: 130966619}
   - component: {fileID: 130966621}
   - component: {fileID: 130966620}
+  - component: {fileID: 130966622}
   m_Layer: 5
   m_Name: ChainLinks_1 (1)
   m_TagString: Untagged
@@ -2475,7 +2711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 130966618}
+  _colorAdapter: {fileID: 130966622}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -2529,6 +2765,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 130966612}
+--- !u!114 &130966622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 130966611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 130966618}
 --- !u!1001 &133761454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2609,6 +2858,7 @@ GameObject:
   - component: {fileID: 146441348}
   - component: {fileID: 146441350}
   - component: {fileID: 146441349}
+  - component: {fileID: 146441351}
   m_Layer: 5
   m_Name: ChainLinks_1 (1)
   m_TagString: Untagged
@@ -2801,7 +3051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 146441347}
+  _colorAdapter: {fileID: 146441351}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -2855,6 +3105,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 146441341}
+--- !u!114 &146441351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146441340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 146441347}
 --- !u!4 &163425994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6592567245772834832, guid: 39f56cafa0f106940bccd8ca374c3f36, type: 3}
@@ -2889,6 +3152,7 @@ GameObject:
   - component: {fileID: 177101684}
   - component: {fileID: 177101686}
   - component: {fileID: 177101685}
+  - component: {fileID: 177101687}
   m_Layer: 5
   m_Name: ChainLinks_1 (5)
   m_TagString: Untagged
@@ -3081,7 +3345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 177101683}
+  _colorAdapter: {fileID: 177101687}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -3135,6 +3399,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 177101677}
+--- !u!114 &177101687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177101676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 177101683}
 --- !u!1 &180473315
 GameObject:
   m_ObjectHideFlags: 0
@@ -3441,6 +3718,7 @@ GameObject:
   - component: {fileID: 233903935}
   - component: {fileID: 233903937}
   - component: {fileID: 233903936}
+  - component: {fileID: 233903938}
   m_Layer: 5
   m_Name: ChainLinks_1 (2)
   m_TagString: Untagged
@@ -3633,7 +3911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 233903934}
+  _colorAdapter: {fileID: 233903938}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -3687,6 +3965,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 233903928}
+--- !u!114 &233903938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233903927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 233903934}
 --- !u!1001 &236090663
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3819,6 +4110,8 @@ GameObject:
   - component: {fileID: 250201172}
   - component: {fileID: 250201173}
   - component: {fileID: 250201174}
+  - component: {fileID: 250201176}
+  - component: {fileID: 250201175}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
@@ -3990,6 +4283,59 @@ MonoBehaviour:
   - {fileID: -6664641046179961983, guid: 6a8eaa8831e350e478af0abba10772fb, type: 3}
   - {fileID: -712031747763754980, guid: 6a8eaa8831e350e478af0abba10772fb, type: 3}
   - {fileID: -3548264000473891649, guid: 6a8eaa8831e350e478af0abba10772fb, type: 3}
+--- !u!114 &250201175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250201167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 250201170}
+--- !u!114 &250201176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250201167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 250201175}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &255593585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4667,6 +5013,7 @@ GameObject:
   - component: {fileID: 339130643}
   - component: {fileID: 339130642}
   - component: {fileID: 339130645}
+  - component: {fileID: 339130646}
   m_Layer: 5
   m_Name: MiddileBlood_3
   m_TagString: Untagged
@@ -4799,7 +5146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 339130644}
+  _colorAdapter: {fileID: 339130646}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -4827,6 +5174,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &339130646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339130640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 339130644}
 --- !u!1001 &343167091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5472,6 +5832,7 @@ GameObject:
   - component: {fileID: 375885114}
   - component: {fileID: 375885116}
   - component: {fileID: 375885115}
+  - component: {fileID: 375885117}
   m_Layer: 5
   m_Name: ChainLinks_0 (7)
   m_TagString: Untagged
@@ -5664,7 +6025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 375885113}
+  _colorAdapter: {fileID: 375885117}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -5718,6 +6079,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 375885107}
+--- !u!114 &375885117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375885106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 375885113}
 --- !u!1001 &401997202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5798,6 +6172,7 @@ GameObject:
   - component: {fileID: 412534879}
   - component: {fileID: 412534881}
   - component: {fileID: 412534880}
+  - component: {fileID: 412534882}
   m_Layer: 5
   m_Name: ChainLinks_0 (2)
   m_TagString: Untagged
@@ -5990,7 +6365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 412534878}
+  _colorAdapter: {fileID: 412534882}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -6044,6 +6419,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 412534872}
+--- !u!114 &412534882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412534871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 412534878}
 --- !u!1 &414755286
 GameObject:
   m_ObjectHideFlags: 0
@@ -6216,6 +6604,7 @@ GameObject:
   - component: {fileID: 424410044}
   - component: {fileID: 424410046}
   - component: {fileID: 424410045}
+  - component: {fileID: 424410047}
   m_Layer: 5
   m_Name: ChainLinks_0 (4)
   m_TagString: Untagged
@@ -6408,7 +6797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 424410043}
+  _colorAdapter: {fileID: 424410047}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -6462,6 +6851,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 424410037}
+--- !u!114 &424410047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424410036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 424410043}
 --- !u!1001 &428108468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7367,6 +7769,8 @@ GameObject:
   m_Component:
   - component: {fileID: 461304171}
   - component: {fileID: 461304172}
+  - component: {fileID: 461304174}
+  - component: {fileID: 461304173}
   m_Layer: 0
   m_Name: AddIcon
   m_TagString: Untagged
@@ -7439,6 +7843,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &461304173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461304170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 461304172}
+--- !u!114 &461304174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461304170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 461304173}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &484893999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63922,6 +64379,7 @@ GameObject:
   - component: {fileID: 501843754}
   - component: {fileID: 501843756}
   - component: {fileID: 501843755}
+  - component: {fileID: 501843757}
   m_Layer: 5
   m_Name: ChainLinks_1 (7)
   m_TagString: Untagged
@@ -64114,7 +64572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 501843753}
+  _colorAdapter: {fileID: 501843757}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -64168,6 +64626,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 501843747}
+--- !u!114 &501843757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501843746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 501843753}
 --- !u!1 &504919774
 GameObject:
   m_ObjectHideFlags: 0
@@ -64852,7 +65323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rectTransform: {fileID: 691253523}
-  _offset: {x: 0, y: -500, z: 0}
+  _offset: {x: -900, y: 0, z: 0}
   _duration: 0.8
   _animationCurve:
     serializedVersion: 2
@@ -64959,6 +65430,7 @@ GameObject:
   - component: {fileID: 548174516}
   - component: {fileID: 548174518}
   - component: {fileID: 548174517}
+  - component: {fileID: 548174519}
   m_Layer: 5
   m_Name: ChainLinks_1 (3)
   m_TagString: Untagged
@@ -65151,7 +65623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 548174515}
+  _colorAdapter: {fileID: 548174519}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -65205,6 +65677,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 548174509}
+--- !u!114 &548174519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548174508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 548174515}
 --- !u!1001 &556238776
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65285,6 +65770,7 @@ GameObject:
   - component: {fileID: 562335112}
   - component: {fileID: 562335114}
   - component: {fileID: 562335113}
+  - component: {fileID: 562335115}
   m_Layer: 5
   m_Name: ChainLinks_1 (6)
   m_TagString: Untagged
@@ -65477,7 +65963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 562335111}
+  _colorAdapter: {fileID: 562335115}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -65531,6 +66017,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 562335105}
+--- !u!114 &562335115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562335104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 562335111}
 --- !u!1001 &570257530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66155,6 +66654,7 @@ GameObject:
   - component: {fileID: 646367079}
   - component: {fileID: 646367078}
   - component: {fileID: 646367081}
+  - component: {fileID: 646367082}
   m_Layer: 5
   m_Name: LeftChainAnchor
   m_TagString: Untagged
@@ -66288,7 +66788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 646367080}
+  _colorAdapter: {fileID: 646367082}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -66316,6 +66816,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &646367082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646367076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 646367080}
 --- !u!1 &646487513
 GameObject:
   m_ObjectHideFlags: 0
@@ -66794,6 +67307,7 @@ GameObject:
   - component: {fileID: 686905103}
   - component: {fileID: 686905106}
   - component: {fileID: 686905107}
+  - component: {fileID: 686905108}
   m_Layer: 5
   m_Name: UpperBlood_1
   m_TagString: Untagged
@@ -66921,7 +67435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 686905105}
+  _colorAdapter: {fileID: 686905108}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -66964,6 +67478,19 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 686905105}
   _x: 1
   _y: 0
+--- !u!114 &686905108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686905101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 686905105}
 --- !u!1 &687944393
 GameObject:
   m_ObjectHideFlags: 0
@@ -67197,6 +67724,7 @@ GameObject:
   - component: {fileID: 699174143}
   - component: {fileID: 699174145}
   - component: {fileID: 699174144}
+  - component: {fileID: 699174146}
   m_Layer: 5
   m_Name: ChainLinks_1 (6)
   m_TagString: Untagged
@@ -67389,7 +67917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 699174142}
+  _colorAdapter: {fileID: 699174146}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -67443,6 +67971,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 699174136}
+--- !u!114 &699174146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699174135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 699174142}
 --- !u!1001 &708715944
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67693,6 +68234,8 @@ GameObject:
   - component: {fileID: 742946716}
   - component: {fileID: 742946715}
   - component: {fileID: 742946717}
+  - component: {fileID: 742946719}
+  - component: {fileID: 742946718}
   m_Layer: 5
   m_Name: GameoverText
   m_TagString: Untagged
@@ -67841,6 +68384,59 @@ MonoBehaviour:
   - Blood everywhere...
   - Your flesh is delicious...
   - Virus has taken up...
+--- !u!114 &742946718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742946713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ff5967206e44a693a12aadd2320a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 742946715}
+--- !u!114 &742946719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742946713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 742946718}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &744433608 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1828525846168805646, guid: a31cab50c235e4243ae6ee2b602a03ac, type: 3}
@@ -68112,6 +68708,7 @@ GameObject:
   - component: {fileID: 761216071}
   - component: {fileID: 761216076}
   - component: {fileID: 761216075}
+  - component: {fileID: 761216077}
   m_Layer: 5
   m_Name: ChainLinks_0
   m_TagString: Untagged
@@ -68206,7 +68803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 761216074}
+  _colorAdapter: {fileID: 761216077}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -68358,6 +68955,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 761216067}
+--- !u!114 &761216077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761216066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 761216074}
 --- !u!4 &773886294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5953720082183312751, guid: f02d248a3c16ba74fb1def5773cb799a, type: 3}
@@ -69336,6 +69946,7 @@ GameObject:
   - component: {fileID: 871958963}
   - component: {fileID: 871958965}
   - component: {fileID: 871958964}
+  - component: {fileID: 871958966}
   m_Layer: 5
   m_Name: ChainLinks_0 (1)
   m_TagString: Untagged
@@ -69528,7 +70139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 871958962}
+  _colorAdapter: {fileID: 871958966}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -69582,6 +70193,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 871958956}
+--- !u!114 &871958966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871958955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 871958962}
 --- !u!4 &874507687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2992080162134271760, guid: 36d73d00ca0d9c841bb4080778e73b96, type: 3}
@@ -69940,6 +70564,7 @@ GameObject:
   - component: {fileID: 885734793}
   - component: {fileID: 885734794}
   - component: {fileID: 885734795}
+  - component: {fileID: 885734796}
   m_Layer: 5
   m_Name: WoodenBanner
   m_TagString: Untagged
@@ -70029,7 +70654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 885734794}
+  _colorAdapter: {fileID: 885734796}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -70057,6 +70682,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &885734796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885734792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 885734794}
 --- !u!4 &887475889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5531183613353782938, guid: f8222cde9bbc10243af78dcabf65a9dc, type: 3}
@@ -70207,6 +70845,7 @@ GameObject:
   - component: {fileID: 918088711}
   - component: {fileID: 918088717}
   - component: {fileID: 918088716}
+  - component: {fileID: 918088718}
   m_Layer: 5
   m_Name: ChainLinks_0
   m_TagString: Untagged
@@ -70277,7 +70916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 918088715}
+  _colorAdapter: {fileID: 918088718}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -70453,6 +71092,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 918088708}
+--- !u!114 &918088718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918088707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 918088715}
 --- !u!1001 &929867188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70868,6 +71520,7 @@ GameObject:
   - component: {fileID: 959956872}
   - component: {fileID: 959956874}
   - component: {fileID: 959956873}
+  - component: {fileID: 959956875}
   m_Layer: 5
   m_Name: ChainLinks_0 (7)
   m_TagString: Untagged
@@ -71060,7 +71713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 959956871}
+  _colorAdapter: {fileID: 959956875}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -71114,6 +71767,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 959956865}
+--- !u!114 &959956875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959956864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 959956871}
 --- !u!4 &969505205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2083933987343572492, guid: 98c12d4d21e5c7242b57704d4d8e731d, type: 3}
@@ -71367,6 +72033,7 @@ GameObject:
   - component: {fileID: 1017701966}
   - component: {fileID: 1017701968}
   - component: {fileID: 1017701967}
+  - component: {fileID: 1017701969}
   m_Layer: 5
   m_Name: ChainLinks_0 (6)
   m_TagString: Untagged
@@ -71559,7 +72226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1017701965}
+  _colorAdapter: {fileID: 1017701969}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -71613,6 +72280,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1017701959}
+--- !u!114 &1017701969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017701958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1017701965}
 --- !u!1 &1036280480
 GameObject:
   m_ObjectHideFlags: 0
@@ -71661,7 +72341,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0414658, y: 1}
+    m_SensorSize: {x: 2.040964, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -71912,6 +72592,7 @@ MonoBehaviour:
   - {fileID: 699174143}
   - {fileID: 375885114}
   - {fileID: 72159976}
+  - {fileID: 742946719}
   - {fileID: 885734795}
   - {fileID: 2109078476}
   - {fileID: 69252260}
@@ -71921,6 +72602,19 @@ MonoBehaviour:
   - {fileID: 1705919270}
   - {fileID: 646367081}
   - {fileID: 80301816}
+  - {fileID: 1895767690}
+  - {fileID: 1086639877}
+  - {fileID: 250201176}
+  - {fileID: 16569189}
+  - {fileID: 13917574}
+  - {fileID: 1828940889}
+  - {fileID: 1872721715}
+  - {fileID: 2113508385}
+  - {fileID: 1052698385}
+  - {fileID: 33702439}
+  - {fileID: 1525953848}
+  - {fileID: 1222771009}
+  - {fileID: 461304174}
   _showDelay: 3
 --- !u!1001 &1044114971
 PrefabInstance:
@@ -72002,6 +72696,7 @@ GameObject:
   - component: {fileID: 1046938030}
   - component: {fileID: 1046938032}
   - component: {fileID: 1046938031}
+  - component: {fileID: 1046938033}
   m_Layer: 5
   m_Name: ChainLinks_0 (3)
   m_TagString: Untagged
@@ -72194,7 +72889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1046938029}
+  _colorAdapter: {fileID: 1046938033}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -72248,6 +72943,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1046938023}
+--- !u!114 &1046938033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1046938022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1046938029}
 --- !u!1 &1052698378
 GameObject:
   m_ObjectHideFlags: 0
@@ -72262,6 +72970,8 @@ GameObject:
   - component: {fileID: 1052698380}
   - component: {fileID: 1052698383}
   - component: {fileID: 1052698384}
+  - component: {fileID: 1052698386}
+  - component: {fileID: 1052698385}
   m_Layer: 5
   m_Name: WatchAddButton
   m_TagString: Untagged
@@ -72427,6 +73137,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioClips:
   - {fileID: 8300000, guid: ef549ce0dcfe4784983f152cf9f4ffe4, type: 3}
+--- !u!114 &1052698385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052698378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 1052698386}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1052698386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052698378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5f5e946f6e4bcf93b2ca7e27857d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1052698381}
 --- !u!1 &1052731197
 GameObject:
   m_ObjectHideFlags: 0
@@ -73510,6 +74273,8 @@ GameObject:
   - component: {fileID: 1086639873}
   - component: {fileID: 1086639875}
   - component: {fileID: 1086639874}
+  - component: {fileID: 1086639877}
+  - component: {fileID: 1086639876}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -73633,6 +74398,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086639872}
   m_CullTransparentMesh: 1
+--- !u!114 &1086639876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086639872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ff5967206e44a693a12aadd2320a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1086639874}
+--- !u!114 &1086639877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086639872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 1086639876}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1090468421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74011,6 +74829,7 @@ GameObject:
   - component: {fileID: 1117347775}
   - component: {fileID: 1117347777}
   - component: {fileID: 1117347776}
+  - component: {fileID: 1117347778}
   m_Layer: 5
   m_Name: ChainLinks_0 (4)
   m_TagString: Untagged
@@ -74203,7 +75022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1117347774}
+  _colorAdapter: {fileID: 1117347778}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -74257,6 +75076,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1117347768}
+--- !u!114 &1117347778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117347767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1117347774}
 --- !u!4 &1117668056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 833735531315736711, guid: f4012dda92ba9da47947dc91364011de, type: 3}
@@ -75099,6 +75931,8 @@ GameObject:
   - component: {fileID: 1222771005}
   - component: {fileID: 1222771007}
   - component: {fileID: 1222771006}
+  - component: {fileID: 1222771009}
+  - component: {fileID: 1222771008}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -75222,6 +76056,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222771004}
   m_CullTransparentMesh: 1
+--- !u!114 &1222771008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222771004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ff5967206e44a693a12aadd2320a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1222771006}
+--- !u!114 &1222771009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222771004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 1222771008}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1224423982
 GameObject:
   m_ObjectHideFlags: 0
@@ -76131,6 +77018,7 @@ GameObject:
   - component: {fileID: 1306160069}
   - component: {fileID: 1306160071}
   - component: {fileID: 1306160070}
+  - component: {fileID: 1306160072}
   m_Layer: 5
   m_Name: ChainLinks_1
   m_TagString: Untagged
@@ -76323,7 +77211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1306160068}
+  _colorAdapter: {fileID: 1306160072}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -76377,6 +77265,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1306160062}
+--- !u!114 &1306160072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306160061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1306160068}
 --- !u!1 &1311310462 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7660482771907218122, guid: f4012dda92ba9da47947dc91364011de, type: 3}
@@ -76715,6 +77616,7 @@ GameObject:
   - component: {fileID: 1356903696}
   - component: {fileID: 1356903698}
   - component: {fileID: 1356903697}
+  - component: {fileID: 1356903699}
   m_Layer: 5
   m_Name: ChainLinks_0 (6)
   m_TagString: Untagged
@@ -76907,7 +77809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1356903695}
+  _colorAdapter: {fileID: 1356903699}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -76961,6 +77863,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1356903689}
+--- !u!114 &1356903699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356903688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1356903695}
 --- !u!4 &1357077517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8095864718571885536, guid: 75cb988e33496d54eb1fd4813068c88d, type: 3}
@@ -76984,6 +77899,7 @@ GameObject:
   - component: {fileID: 1364719368}
   - component: {fileID: 1364719370}
   - component: {fileID: 1364719369}
+  - component: {fileID: 1364719371}
   m_Layer: 5
   m_Name: ChainLinks_1 (3)
   m_TagString: Untagged
@@ -77176,7 +78092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1364719367}
+  _colorAdapter: {fileID: 1364719371}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -77230,6 +78146,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1364719361}
+--- !u!114 &1364719371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364719360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1364719367}
 --- !u!114 &1374816749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77257,6 +78186,7 @@ GameObject:
   - component: {fileID: 1376230091}
   - component: {fileID: 1376230090}
   - component: {fileID: 1376230093}
+  - component: {fileID: 1376230094}
   m_Layer: 5
   m_Name: MiddileBlood_4
   m_TagString: Untagged
@@ -77393,7 +78323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1376230092}
+  _colorAdapter: {fileID: 1376230094}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -77421,6 +78351,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1376230094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376230088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1376230092}
 --- !u!1001 &1378814778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83231,6 +84174,7 @@ GameObject:
   - component: {fileID: 1477549441}
   - component: {fileID: 1477549443}
   - component: {fileID: 1477549442}
+  - component: {fileID: 1477549444}
   m_Layer: 5
   m_Name: ChainLinks_1 (2)
   m_TagString: Untagged
@@ -83423,7 +84367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1477549440}
+  _colorAdapter: {fileID: 1477549444}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -83477,6 +84421,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1477549434}
+--- !u!114 &1477549444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477549433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1477549440}
 --- !u!4 &1483197451 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5531183613353782938, guid: f8222cde9bbc10243af78dcabf65a9dc, type: 3}
@@ -83853,6 +84810,7 @@ GameObject:
   - component: {fileID: 1507909148}
   - component: {fileID: 1507909150}
   - component: {fileID: 1507909149}
+  - component: {fileID: 1507909151}
   m_Layer: 5
   m_Name: ChainLinks_1
   m_TagString: Untagged
@@ -84045,7 +85003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1507909147}
+  _colorAdapter: {fileID: 1507909151}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -84099,6 +85057,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1507909141}
+--- !u!114 &1507909151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507909140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1507909147}
 --- !u!1 &1510148929
 GameObject:
   m_ObjectHideFlags: 0
@@ -87292,6 +88263,8 @@ GameObject:
   - component: {fileID: 1525953843}
   - component: {fileID: 1525953842}
   - component: {fileID: 1525953841}
+  - component: {fileID: 1525953848}
+  - component: {fileID: 1525953847}
   m_Layer: 0
   m_Name: Blood (2)
   m_TagString: Untagged
@@ -87463,6 +88436,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1525953847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525953839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1525953846}
+--- !u!114 &1525953848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525953839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 1525953847}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1546197427
 GameObject:
   m_ObjectHideFlags: 0
@@ -89883,6 +90909,7 @@ GameObject:
   - component: {fileID: 1628242303}
   - component: {fileID: 1628242305}
   - component: {fileID: 1628242304}
+  - component: {fileID: 1628242306}
   m_Layer: 5
   m_Name: ChainLinks_0 (2)
   m_TagString: Untagged
@@ -90075,7 +91102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1628242302}
+  _colorAdapter: {fileID: 1628242306}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -90129,6 +91156,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1628242296}
+--- !u!114 &1628242306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628242295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1628242302}
 --- !u!1 &1635206835
 GameObject:
   m_ObjectHideFlags: 0
@@ -90515,6 +91555,7 @@ GameObject:
   - component: {fileID: 1705919267}
   - component: {fileID: 1705919270}
   - component: {fileID: 1705919271}
+  - component: {fileID: 1705919272}
   m_Layer: 5
   m_Name: UpperBlood_2
   m_TagString: Untagged
@@ -90644,7 +91685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1705919269}
+  _colorAdapter: {fileID: 1705919272}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -90687,6 +91728,19 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1705919269}
   _x: 1
   _y: 0
+--- !u!114 &1705919272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705919265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1705919269}
 --- !u!1001 &1712626084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90914,6 +91968,7 @@ GameObject:
   - component: {fileID: 1740587221}
   - component: {fileID: 1740587223}
   - component: {fileID: 1740587222}
+  - component: {fileID: 1740587224}
   m_Layer: 5
   m_Name: ChainLinks_1 (5)
   m_TagString: Untagged
@@ -91106,7 +92161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1740587220}
+  _colorAdapter: {fileID: 1740587224}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -91160,6 +92215,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1740587214}
+--- !u!114 &1740587224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740587213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1740587220}
 --- !u!1 &1742521768
 GameObject:
   m_ObjectHideFlags: 0
@@ -91278,6 +92346,7 @@ GameObject:
   - component: {fileID: 1749200292}
   - component: {fileID: 1749200294}
   - component: {fileID: 1749200293}
+  - component: {fileID: 1749200295}
   m_Layer: 5
   m_Name: ChainLinks_1 (4)
   m_TagString: Untagged
@@ -91470,7 +92539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1749200291}
+  _colorAdapter: {fileID: 1749200295}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -91524,6 +92593,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1749200285}
+--- !u!114 &1749200295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749200284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1749200291}
 --- !u!1 &1753281296
 GameObject:
   m_ObjectHideFlags: 0
@@ -93019,6 +94101,7 @@ GameObject:
   - component: {fileID: 1819290626}
   - component: {fileID: 1819290628}
   - component: {fileID: 1819290627}
+  - component: {fileID: 1819290629}
   m_Layer: 5
   m_Name: ChainLinks_0 (1)
   m_TagString: Untagged
@@ -93211,7 +94294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1819290625}
+  _colorAdapter: {fileID: 1819290629}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -93265,6 +94348,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1819290619}
+--- !u!114 &1819290629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819290618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1819290625}
 --- !u!1 &1819702983
 GameObject:
   m_ObjectHideFlags: 0
@@ -93522,6 +94618,8 @@ GameObject:
   - component: {fileID: 1828940885}
   - component: {fileID: 1828940887}
   - component: {fileID: 1828940886}
+  - component: {fileID: 1828940889}
+  - component: {fileID: 1828940888}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -93645,6 +94743,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828940884}
   m_CullTransparentMesh: 1
+--- !u!114 &1828940888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828940884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4ff5967206e44a693a12aadd2320a26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1828940886}
+--- !u!114 &1828940889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828940884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 1828940888}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1831425940
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93787,6 +94938,7 @@ GameObject:
   - component: {fileID: 1860274503}
   - component: {fileID: 1860274505}
   - component: {fileID: 1860274504}
+  - component: {fileID: 1860274506}
   m_Layer: 5
   m_Name: ChainLinks_0 (3)
   m_TagString: Untagged
@@ -93979,7 +95131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 1860274502}
+  _colorAdapter: {fileID: 1860274506}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -94033,6 +95185,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 1860274496}
+--- !u!114 &1860274506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860274495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1860274502}
 --- !u!4 &1866588607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 707139307891456772, guid: d1a4fef42dec7444082695675c1fb29f, type: 3}
@@ -94053,6 +95218,8 @@ GameObject:
   - component: {fileID: 1872721710}
   - component: {fileID: 1872721709}
   - component: {fileID: 1872721708}
+  - component: {fileID: 1872721715}
+  - component: {fileID: 1872721714}
   m_Layer: 0
   m_Name: Blood (1)
   m_TagString: Untagged
@@ -94224,6 +95391,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1872721714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872721706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 1872721713}
+--- !u!114 &1872721715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872721706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 1872721714}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1879101105
 GameObject:
   m_ObjectHideFlags: 0
@@ -94662,6 +95882,7 @@ GameObject:
   - component: {fileID: 1895767684}
   - component: {fileID: 1895767687}
   - component: {fileID: 1895767688}
+  - component: {fileID: 1895767690}
   - component: {fileID: 1895767689}
   m_Layer: 5
   m_Name: RestartButton
@@ -94846,11 +96067,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1895767682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d951ec8b510f1442ac60d3c96b83c54, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c5f5e946f6e4bcf93b2ca7e27857d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClips:
-  - {fileID: 8300000, guid: ef549ce0dcfe4784983f152cf9f4ffe4, type: 3}
+  _adaptee: {fileID: 1895767685}
+--- !u!114 &1895767690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895767682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 1895767689}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1897825942 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2332932505156407063, guid: b68253cfaa3aa304f9e626661fb537ba, type: 3}
@@ -96073,6 +97333,7 @@ GameObject:
   - component: {fileID: 2055629669}
   - component: {fileID: 2055629671}
   - component: {fileID: 2055629670}
+  - component: {fileID: 2055629672}
   m_Layer: 5
   m_Name: ChainLinks_1 (4)
   m_TagString: Untagged
@@ -96265,7 +97526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 2055629668}
+  _colorAdapter: {fileID: 2055629672}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -96319,6 +97580,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2055629662}
+--- !u!114 &2055629672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055629661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 2055629668}
 --- !u!1 &2063429130
 GameObject:
   m_ObjectHideFlags: 0
@@ -96640,6 +97914,7 @@ GameObject:
   - component: {fileID: 2109078474}
   - component: {fileID: 2109078473}
   - component: {fileID: 2109078476}
+  - component: {fileID: 2109078477}
   m_Layer: 5
   m_Name: MiddileBlood_1
   m_TagString: Untagged
@@ -96767,7 +98042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 2109078475}
+  _colorAdapter: {fileID: 2109078477}
   _startAlpha: 0
   _targetAlpha: 1
   _fadeDuration: 0.5
@@ -96795,6 +98070,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2109078477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109078471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 2109078475}
 --- !u!4 &2111072230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2332932505156407063, guid: b68253cfaa3aa304f9e626661fb537ba, type: 3}
@@ -96815,6 +98103,8 @@ GameObject:
   - component: {fileID: 2113508380}
   - component: {fileID: 2113508379}
   - component: {fileID: 2113508378}
+  - component: {fileID: 2113508385}
+  - component: {fileID: 2113508384}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
@@ -96986,6 +98276,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2113508384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113508376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adaptee: {fileID: 2113508383}
+--- !u!114 &2113508385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113508376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorAdapter: {fileID: 2113508384}
+  _startAlpha: 0
+  _targetAlpha: 1
+  _fadeDuration: 0.5
+  _fadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2114078572
 GameObject:
   m_ObjectHideFlags: 0

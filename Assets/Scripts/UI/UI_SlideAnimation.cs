@@ -58,9 +58,4 @@ public class UI_SlideAnimation : MonoBehaviour
     {
         _moveTween.Kill();
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        
-    }
 }

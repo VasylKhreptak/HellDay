@@ -4,7 +4,7 @@ using UnityEngine;
 public class UI_FadeAnimation : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private ColorAdapter _colorAdapter;
 
     [Header("Preferences")]
     [SerializeField, Range(0f, 1f)] private float _startAlpha = 0f;
@@ -18,9 +18,12 @@ public class UI_FadeAnimation : MonoBehaviour
     {
         _fadeTween.Kill();
 
-        _spriteRenderer.color = _spriteRenderer.color.WithAlpha(_startAlpha);
+        _colorAdapter.color = _colorAdapter.color.WithAlpha(_startAlpha);
         
-        _fadeTween = _spriteRenderer.DOFade(_targetAlpha, _fadeDuration).SetEase(_fadeCurve);
+        _fadeTween = DOTween.To(() => { return _colorAdapter.color.a;},
+            x => _colorAdapter.color = _colorAdapter.color.WithAlpha(x), 
+            _targetAlpha, _fadeDuration).SetEase(_fadeCurve);
     }
 
 }
+ 
