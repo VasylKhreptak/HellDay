@@ -8,13 +8,13 @@ public class CinemachineCameraStateController : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.onDie += DisableCamera;
+        UI_GameOverSignAnimation.onBeingShowm += DisableCamera;
         Player.onResurrection += EnableCamera;
     }
 
     private void OnDisable()
     {
-        Player.onDie -= DisableCamera;
+        UI_GameOverSignAnimation.onBeingShowm -= DisableCamera;
         Player.onResurrection -= EnableCamera;
     }
 

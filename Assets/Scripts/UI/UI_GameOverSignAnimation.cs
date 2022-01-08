@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class UI_GameOverSignAnimation : MonoBehaviour
     [SerializeField] private float _showDelay = 1f;
 
     private Tween _waitTween;
+
+    public static Action onBeingShowm;
 
     private void OnEnable()
     {
@@ -29,6 +32,8 @@ public class UI_GameOverSignAnimation : MonoBehaviour
         _waitTween = this.DOWait(_showDelay).OnComplete(() =>
         {
             _signObject.SetActive(true);
+            
+            onBeingShowm?.Invoke();
             
             StartAnimation();
         });
