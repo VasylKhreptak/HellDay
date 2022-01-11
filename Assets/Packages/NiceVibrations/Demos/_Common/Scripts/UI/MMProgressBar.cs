@@ -11,11 +11,29 @@ namespace MoreMountains.NiceVibrations
     public class MMProgressBar : MonoBehaviour
     {
         /// the possible fill modes 
-        public enum FillModes { LocalScale, FillAmount, Width, Height }
+        public enum FillModes
+        {
+            LocalScale,
+            FillAmount,
+            Width,
+            Height
+        }
+
         /// the possible directions for the fill (for local scale and fill amount only)
-        public enum BarDirections { LeftToRight, RightToLeft, UpToDown, DownToUp }
+        public enum BarDirections
+        {
+            LeftToRight,
+            RightToLeft,
+            UpToDown,
+            DownToUp
+        }
+
         /// the possible timescales the bar can work on
-        public enum TimeScales { UnscaledTime, Time }
+        public enum TimeScales
+        {
+            UnscaledTime,
+            Time
+        }
 
         [Header("General Settings")]
         /// the local scale or fillamount value to reach when the bar is empty 
@@ -63,9 +81,12 @@ namespace MoreMountains.NiceVibrations
         /// the color to apply to the bar when bumping
         public Color BumpColor = Color.white;
         /// the curve to map the bump animation on
-        public AnimationCurve BumpAnimationCurve = new AnimationCurve(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
+        public AnimationCurve BumpAnimationCurve =
+            new AnimationCurve(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
         /// the curve to map the bump animation color animation on
-        public AnimationCurve BumpColorAnimationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+        public AnimationCurve BumpColorAnimationCurve =
+            new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+
         /// whether or not the bar is bumping right now
         public bool Bumping { get; protected set; }
 
@@ -102,6 +123,7 @@ namespace MoreMountains.NiceVibrations
                 _foregroundImage = ForegroundBar.GetComponent<Image>();
                 _initialFrontBarSize = _foregroundImage.rectTransform.sizeDelta;
             }
+
             if (DelayedBar != null) _delayedImage = DelayedBar.GetComponent<Image>();
             _initialized = true;
         }
@@ -153,7 +175,9 @@ namespace MoreMountains.NiceVibrations
                                 break;
                         }
 
-                        if (LerpForegroundBar) _newScale = Vector3.Lerp(ForegroundBar.localScale, _targetLocalScale, currentDeltaTime * LerpForegroundBarSpeed);
+                        if (LerpForegroundBar)
+                            _newScale = Vector3.Lerp(ForegroundBar.localScale, _targetLocalScale,
+                                currentDeltaTime * LerpForegroundBarSpeed);
                         else _newScale = _targetLocalScale;
 
                         ForegroundBar.localScale = _newScale;
@@ -162,20 +186,25 @@ namespace MoreMountains.NiceVibrations
                     case FillModes.Width:
                         if (_foregroundImage == null) return;
                         var newSizeX = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.x);
-                        newSizeX = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeX, currentDeltaTime * LerpForegroundBarSpeed);
-                        _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, newSizeX);
+                        newSizeX = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeX,
+                            currentDeltaTime * LerpForegroundBarSpeed);
+                        _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
+                            newSizeX);
                         break;
 
                     case FillModes.Height:
                         if (_foregroundImage == null) return;
                         var newSizeY = Remap(_targetFill, 0f, 1f, 0, _initialFrontBarSize.y);
-                        newSizeY = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeY, currentDeltaTime * LerpForegroundBarSpeed);
+                        newSizeY = Mathf.Lerp(_foregroundImage.rectTransform.sizeDelta.x, newSizeY,
+                            currentDeltaTime * LerpForegroundBarSpeed);
                         _foregroundImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, newSizeY);
                         break;
 
                     case FillModes.FillAmount:
                         if (_foregroundImage == null) return;
-                        if (LerpForegroundBar) _foregroundImage.fillAmount = Mathf.Lerp(_foregroundImage.fillAmount, _targetFill, currentDeltaTime * LerpForegroundBarSpeed);
+                        if (LerpForegroundBar)
+                            _foregroundImage.fillAmount = Mathf.Lerp(_foregroundImage.fillAmount, _targetFill,
+                                currentDeltaTime * LerpForegroundBarSpeed);
                         else _foregroundImage.fillAmount = _targetFill;
                         break;
                 }
@@ -212,14 +241,18 @@ namespace MoreMountains.NiceVibrations
                                 break;
                         }
 
-                        if (LerpDelayedBar) _newScale = Vector3.Lerp(DelayedBar.localScale, _targetLocalScale, currentDeltaTime * LerpDelayedBarSpeed);
+                        if (LerpDelayedBar)
+                            _newScale = Vector3.Lerp(DelayedBar.localScale, _targetLocalScale,
+                                currentDeltaTime * LerpDelayedBarSpeed);
                         else _newScale = _targetLocalScale;
                         DelayedBar.localScale = _newScale;
                     }
 
                     if (FillMode == FillModes.FillAmount && _delayedImage != null)
                     {
-                        if (LerpDelayedBar) _delayedImage.fillAmount = Mathf.Lerp(_delayedImage.fillAmount, _targetFill, currentDeltaTime * LerpDelayedBarSpeed);
+                        if (LerpDelayedBar)
+                            _delayedImage.fillAmount = Mathf.Lerp(_delayedImage.fillAmount, _targetFill,
+                                currentDeltaTime * LerpDelayedBarSpeed);
                         else _delayedImage.fillAmount = _targetFill;
                     }
                 }
@@ -271,14 +304,15 @@ namespace MoreMountains.NiceVibrations
                 var colorCurvePercent = BumpColorAnimationCurve.Evaluate(percent);
                 transform.localScale = curvePercent * _initialScale;
 
-                if (ChangeColorWhenBumping && _foregroundImage != null) _foregroundImage.color = Color.Lerp(_initialColor, BumpColor, colorCurvePercent);
+                if (ChangeColorWhenBumping && _foregroundImage != null)
+                    _foregroundImage.color = Color.Lerp(_initialColor, BumpColor, colorCurvePercent);
 
                 yield return null;
             }
+
             _foregroundImage.color = _initialColor;
             Bumping = false;
             yield return null;
-
         }
 
 

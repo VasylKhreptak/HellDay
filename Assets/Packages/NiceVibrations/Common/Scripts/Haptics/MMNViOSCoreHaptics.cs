@@ -49,18 +49,55 @@ namespace MoreMountains.NiceVibrations
         [DllImport("__Internal")]
         private static extern void MMNViOS_CoreHapticsSetDebugMode(bool status);
 #else
-        private static bool MMNViOS_CoreHapticsSupported() { return false; }
-        private static void MMNViOS_CoreHapticsSetDebugMode(bool status) { }
-        private static void MMNViOS_CreateEngine() { }
-        private static void MMNViOS_StopEngine() { }
-        private static void MMNViOS_PlayTransientHapticPattern(float intensity, float sharpness, bool threaded) { }
-        private static void MMNViOS_PlayContinuousHapticPattern(float intensity, float sharpness, float duration, bool threaded) { }
-        private static void MMNViOS_UpdateContinuousHapticPattern(float intensity, float sharpness, bool threaded) { }
-        private static void MMNViOS_StopContinuousHaptic() { }
-        private static void MMNViOS_PlayCoreHapticsFromJSON(string jsonString, bool threaded) { }
-        private static void MMNViOS_CoreHapticsRegisterHapticEngineFinishedCallback(Action callback) { }
-        private static void MMNViOS_CoreHapticsRegisterHapticEngineErrorCallback(Action callback) { }
-        private static void MMNViOS_CoreHapticsRegisterHapticEngineResetCallback(Action callback) { }
+        private static bool MMNViOS_CoreHapticsSupported()
+        {
+            return false;
+        }
+
+        private static void MMNViOS_CoreHapticsSetDebugMode(bool status)
+        {
+        }
+
+        private static void MMNViOS_CreateEngine()
+        {
+        }
+
+        private static void MMNViOS_StopEngine()
+        {
+        }
+
+        private static void MMNViOS_PlayTransientHapticPattern(float intensity, float sharpness, bool threaded)
+        {
+        }
+
+        private static void MMNViOS_PlayContinuousHapticPattern(float intensity, float sharpness, float duration,
+            bool threaded)
+        {
+        }
+
+        private static void MMNViOS_UpdateContinuousHapticPattern(float intensity, float sharpness, bool threaded)
+        {
+        }
+
+        private static void MMNViOS_StopContinuousHaptic()
+        {
+        }
+
+        private static void MMNViOS_PlayCoreHapticsFromJSON(string jsonString, bool threaded)
+        {
+        }
+
+        private static void MMNViOS_CoreHapticsRegisterHapticEngineFinishedCallback(Action callback)
+        {
+        }
+
+        private static void MMNViOS_CoreHapticsRegisterHapticEngineErrorCallback(Action callback)
+        {
+        }
+
+        private static void MMNViOS_CoreHapticsRegisterHapticEngineResetCallback(Action callback)
+        {
+        }
 #endif
 
         /// <summary>
@@ -128,7 +165,8 @@ namespace MoreMountains.NiceVibrations
         /// <param name="intensity"></param>
         /// <param name="sharpness"></param>
         /// <returns></returns>
-        public static IEnumerator ContinuousHapticPatternCoroutine(float intensity, float sharpness, bool threaded = false)
+        public static IEnumerator ContinuousHapticPatternCoroutine(float intensity, float sharpness,
+            bool threaded = false)
         {
             yield return null;
             MMNViOS_UpdateContinuousHapticPattern(intensity, sharpness, threaded);
@@ -158,7 +196,8 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         /// <param name="intensity"></param>
         /// <param name="sharpness"></param>
-        public static void UpdateContinuousHapticPatternRational(float intensity, float sharpness, bool threaded = false)
+        public static void UpdateContinuousHapticPatternRational(float intensity, float sharpness,
+            bool threaded = false)
         {
             if (_initialContinuousIntensity < 0.01f) _initialContinuousIntensity = 0.01f;
 
@@ -216,9 +255,9 @@ namespace MoreMountains.NiceVibrations
         /// <summary>
         /// Triggers the haptics stopped callback
         /// </summary>
-        #if UNITY_IOS
+#if UNITY_IOS
         [MonoPInvokeCallback(typeof(Action))]
-        #endif
+#endif
         private static void HapticStoppedCallback()
         {
             OnHapticPatternStopped?.Invoke();
@@ -227,9 +266,9 @@ namespace MoreMountains.NiceVibrations
         /// <summary>
         /// Triggers the haptics error callback
         /// </summary>
-        #if UNITY_IOS
+#if UNITY_IOS
         [MonoPInvokeCallback(typeof(Action))]
-        #endif
+#endif
         private static void HapticsErrorCallback()
         {
             OnHapticPatternError?.Invoke();
@@ -238,9 +277,9 @@ namespace MoreMountains.NiceVibrations
         /// <summary>
         /// Triggers the haptics reset callback
         /// </summary>
-        #if UNITY_IOS
+#if UNITY_IOS
         [MonoPInvokeCallback(typeof(Action))]
-        #endif
+#endif
         private static void HapticsResetCallback()
         {
             OnHapticPatternReset?.Invoke();

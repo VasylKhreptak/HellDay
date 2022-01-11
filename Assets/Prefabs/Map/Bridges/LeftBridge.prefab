@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 1911973341703940270}
-  _damageableObject: {fileID: 1834710422371254087}
+  _damageableObject: {fileID: -6054044586679249758}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!1 &2670738832622765518
 GameObject:
@@ -113,14 +113,13 @@ GameObject:
   - component: {fileID: -7355577100318436949}
   - component: {fileID: 4042126692544085242}
   - component: {fileID: -5147696483128030103}
-  - component: {fileID: 1834710422371254087}
   - component: {fileID: -6628738613339305837}
   - component: {fileID: 4617722700878504616}
   - component: {fileID: -8661252174275225948}
-  - component: {fileID: -4989328763962487468}
   - component: {fileID: -5902325259608834574}
   - component: {fileID: 4040918607716315181}
   - component: {fileID: -6002493258274735612}
+  - component: {fileID: -6054044586679249758}
   m_Layer: 0
   m_Name: LeftBridge
   m_TagString: Untagged
@@ -264,19 +263,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 5531183613353782938}
   _data: {fileID: 11400000, guid: 966f87c3e9d4e89458d0d77654cd999d, type: 2}
---- !u!114 &1834710422371254087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2670738832622765518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 7481c7dfea9650e4c94bd1e2f5de801f, type: 2}
 --- !u!114 &-6628738613339305837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 1834710422371254087}
+  _damageableObject: {fileID: -6054044586679249758}
   _onBulletHitEvent: {fileID: -5902325259608834574}
 --- !u!114 &4617722700878504616
 MonoBehaviour:
@@ -303,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 1834710422371254087}
+  _damageableObject: {fileID: -6054044586679249758}
   _data: {fileID: 11400000, guid: 6d06bf2c6359c1e43bdd115971ba79f4, type: 2}
 --- !u!114 &-8661252174275225948
 MonoBehaviour:
@@ -319,57 +305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: -5902325259608834574}
   _data: {fileID: 11400000, guid: 90a827b1803f2434298d9737eb50cedc, type: 2}
---- !u!212 &-4989328763962487468
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2670738832622765518}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!114 &-5902325259608834574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,9 +351,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 5531183613353782938}
   _onBulletHitEvent: {fileID: -5902325259608834574}
   _data: {fileID: 11400000, guid: e485e65e079384d49b1bc822e0117ac2, type: 2}
+--- !u!114 &-6054044586679249758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670738832622765518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7a3c0c2b284987ad124eded6ea9f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 7481c7dfea9650e4c94bd1e2f5de801f, type: 2}
 --- !u!1 &8845054882074338933
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,5 +462,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 3243191132855232893}
-  _damageableObject: {fileID: 1834710422371254087}
+  _damageableObject: {fileID: -6054044586679249758}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}

@@ -26,8 +26,10 @@ namespace MoreMountains.NiceVibrations
             var horizontal = Mathf.FloorToInt(horizontalF);
             var vertical = Mathf.FloorToInt(verticalF);
 
-            var centerH = (ContentZone.rect.width - Padding * 2 - horizontal * PrefabSize.x - (horizontal - 1) * Margin) / 2f;
-            var centerV = (ContentZone.rect.height - Padding * 2 - vertical * PrefabSize.x - (vertical - 1) * Margin) / 2f;
+            var centerH =
+                (ContentZone.rect.width - Padding * 2 - horizontal * PrefabSize.x - (horizontal - 1) * Margin) / 2f;
+            var centerV = (ContentZone.rect.height - Padding * 2 - vertical * PrefabSize.x - (vertical - 1) * Margin) /
+                          2f;
 
             Buttons = new List<WobbleButton>();
 
@@ -51,7 +53,6 @@ namespace MoreMountains.NiceVibrations
                 rectTransform.anchoredPosition3D = _position;
                 button.TargetCamera = ButtonCamera;
                 button.Initialization();
-
             }
 
             var counter = 0;
@@ -61,7 +62,6 @@ namespace MoreMountains.NiceVibrations
                 wbutton.SetPitch(newPitch);
                 counter++;
             }
-
         }
     }
 }

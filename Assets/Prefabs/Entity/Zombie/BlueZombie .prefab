@@ -169,7 +169,6 @@ GameObject:
   - component: {fileID: 1128328647874744906}
   - component: {fileID: 2243141985040101696}
   - component: {fileID: 7179392331638266792}
-  - component: {fileID: 5005449065025068211}
   - component: {fileID: 8858061609578700829}
   - component: {fileID: -9096818054651666865}
   - component: {fileID: 7762542097487322059}
@@ -177,6 +176,7 @@ GameObject:
   - component: {fileID: -8229858326003955420}
   - component: {fileID: -4360653561595477680}
   - component: {fileID: 2645773913859700150}
+  - component: {fileID: -904208854784000759}
   m_Layer: 8
   m_Name: 'BlueZombie '
   m_TagString: Zombie
@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 7781906718964601414}
-  _damageableObject: {fileID: 5005449065025068211}
+  _damageableObject: {fileID: -904208854784000759}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &1128328647874744906
 MonoBehaviour:
@@ -505,19 +505,6 @@ MonoBehaviour:
   _transform: {fileID: 7781906718964601439}
   _damageableTarget: {fileID: 492986252328994814}
   _data: {fileID: 11400000, guid: 83aee3a36c283f645a3f21d589ed8333, type: 2}
---- !u!114 &5005449065025068211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7781906718964601438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 42b9df218f603cf44ac02df56e692496, type: 2}
 --- !u!114 &8858061609578700829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 5005449065025068211}
+  _damageableObject: {fileID: -904208854784000759}
   _onBulletHitEvent: {fileID: -8229858326003955420}
 --- !u!114 &-9096818054651666865
 MonoBehaviour:
@@ -573,7 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 7781906718964601439}
-  _damageableObject: {fileID: 5005449065025068211}
+  _damageableObject: {fileID: -904208854784000759}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
 --- !u!114 &-8229858326003955420
 MonoBehaviour:
@@ -600,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ed1c0242aeb544983bc71e8006cd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 5005449065025068211}
+  _damageableObject: {fileID: -904208854784000759}
   _data: {fileID: 11400000, guid: 7da706e9c1ffbfa45873fcced9a5abe5, type: 2}
   _transform: {fileID: 7781906718964601439}
   _boneCrackAudioClips:
@@ -623,6 +610,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: -8229858326003955420}
   _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
+--- !u!114 &-904208854784000759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7781906718964601438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f92bce27f58a8408f16e00018e3e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 42b9df218f603cf44ac02df56e692496, type: 2}
 --- !u!1 &7781906719972901271
 GameObject:
   m_ObjectHideFlags: 0

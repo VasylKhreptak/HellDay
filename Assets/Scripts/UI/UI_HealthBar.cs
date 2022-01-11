@@ -35,7 +35,8 @@ public class UI_HealthBar : MonoBehaviour
     {
         _sliderTween.Kill();
 
-        _sliderTween = DOTween.To(() => _slider.value, x => _slider.value = x, health, _moveTime).SetEase(_animationCurve);
+        _sliderTween = DOTween.To(() => _slider.value, x => _slider.value = x, health, _moveTime)
+            .SetEase(_animationCurve);
         _fill.DOColor(_gradient.Evaluate(health / _slider.maxValue), _moveTime).SetEase(_animationCurve);
     }
 }

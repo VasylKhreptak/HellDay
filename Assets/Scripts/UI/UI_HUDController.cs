@@ -30,17 +30,11 @@ public class UI_HUDController : MonoBehaviour
 
     private void ShowHUDElements()
     {
-        foreach (var slideAnimation in _slideAnimations)
-        {
-            slideAnimation.Show();
-        }
+        foreach (var slideAnimation in _slideAnimations) slideAnimation.Show();
     }
 
     private void HideHUDElements()
     {
-        foreach (var slideAnimation in _slideAnimations)
-        {
-            slideAnimation.Hide();
-        }
+        foreach (var slideAnimation in _slideAnimations) slideAnimation.Hide();
     }
 }

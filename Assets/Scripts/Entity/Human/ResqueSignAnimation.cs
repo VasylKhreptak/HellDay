@@ -43,8 +43,10 @@ public class ResqueSignAnimation : MonoBehaviour
     {
         KillTweens();
 
-        _localMoveTween = _signTransform.DOLocalMove(state ? _end.localPosition : _start.localPosition, _duration).SetEase(_moveCurve);
-        _scaleTween = _signTransform.DOScale(state ? _end.localScale : _start.localScale, _duration).SetEase(_scaleCurve);
+        _localMoveTween = _signTransform.DOLocalMove(state ? _end.localPosition : _start.localPosition, _duration)
+            .SetEase(_moveCurve);
+        _scaleTween = _signTransform.DOScale(state ? _end.localScale : _start.localScale, _duration)
+            .SetEase(_scaleCurve);
         _fadeTween = _signRenderer.DOFade(Convert.ToSingle(state), _duration).SetEase(_alphaCurve);
     }
 

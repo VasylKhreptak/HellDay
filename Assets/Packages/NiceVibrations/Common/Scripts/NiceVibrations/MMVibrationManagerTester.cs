@@ -10,9 +10,21 @@ namespace MoreMountains.NiceVibrations
     public class MMVibrationManagerTester : MonoBehaviour
     {
         /// the possible haptic methods for this feedback
-        public enum HapticMethods { NativePreset, Transient, Continuous, AdvancedPattern, Stop }
+        public enum HapticMethods
+        {
+            NativePreset,
+            Transient,
+            Continuous,
+            AdvancedPattern,
+            Stop
+        }
+
         /// the timescale to operate on
-        public enum Timescales { ScaledTime, UnscaledTime }
+        public enum Timescales
+        {
+            ScaledTime,
+            UnscaledTime
+        }
 
         [Header("Haptics")]
         public HapticMethods HapticMethod = HapticMethods.NativePreset;
@@ -67,7 +79,6 @@ namespace MoreMountains.NiceVibrations
         /// <param name="attenuation"></param>
         protected virtual void TestVibration()
         {
-
             var position = transform.position;
 
             switch (HapticMethod)
@@ -79,8 +90,12 @@ namespace MoreMountains.NiceVibrations
                     var androidAmplitude = AndroidWaveFormFile == null ? null : AndroidWaveFormFile.WaveForm.Amplitudes;
 
                     var rumblePattern = RumbleWaveFormFile == null ? null : RumbleWaveFormFile.WaveForm.Pattern;
-                    var lowFreqAmplitude = RumbleWaveFormFile == null ? null : RumbleWaveFormFile.WaveForm.LowFrequencyAmplitudes;
-                    var highFreqAmplitude = RumbleWaveFormFile == null ? null : RumbleWaveFormFile.WaveForm.HighFrequencyAmplitudes;
+                    var lowFreqAmplitude = RumbleWaveFormFile == null
+                        ? null
+                        : RumbleWaveFormFile.WaveForm.LowFrequencyAmplitudes;
+                    var highFreqAmplitude = RumbleWaveFormFile == null
+                        ? null
+                        : RumbleWaveFormFile.WaveForm.HighFrequencyAmplitudes;
 
                     MMVibrationManager.AdvancedHapticPattern(iOSString, androidPattern, androidAmplitude, AndroidRepeat,
                         rumblePattern, lowFreqAmplitude, highFreqAmplitude, RumbleRepeat,
@@ -105,6 +120,7 @@ namespace MoreMountains.NiceVibrations
                         MMVibrationManager.StopContinuousHaptic(AllowRumble);
                         _continuousPlaying = false;
                     }
+
                     break;
             }
         }
@@ -119,7 +135,8 @@ namespace MoreMountains.NiceVibrations
             _continuousPlaying = true;
             var elapsedTime = ComputeElapsedTime();
 
-            MMVibrationManager.ContinuousHaptic(InitialContinuousIntensity, InitialContinuousSharpness, ContinuousDuration, HapticTypes.Success, this);
+            MMVibrationManager.ContinuousHaptic(InitialContinuousIntensity, InitialContinuousSharpness,
+                ContinuousDuration, HapticTypes.Success, this);
 
             while (_continuousPlaying && elapsedTime < ContinuousDuration)
             {
@@ -130,12 +147,14 @@ namespace MoreMountains.NiceVibrations
                 MMVibrationManager.UpdateContinuousHaptic(intensity, sharpness, true);
                 if (AllowRumble)
                 {
-                    #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
                     MMNVRumble.RumbleContinuous(intensity, sharpness);
-                    #endif
+#endif
                 }
+
                 yield return null;
             }
+
             if (_continuousPlaying)
             {
                 _continuousPlaying = false;
@@ -149,7 +168,9 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         protected virtual float ComputeElapsedTime()
         {
-            var elapsedTime = Timescale == Timescales.ScaledTime ? Time.time - _continuousStartedAt : Time.unscaledTime - _continuousStartedAt;
+            var elapsedTime = Timescale == Timescales.ScaledTime
+                ? Time.time - _continuousStartedAt
+                : Time.unscaledTime - _continuousStartedAt;
             return elapsedTime;
         }
 

@@ -689,8 +689,6 @@ GameObject:
   - component: {fileID: 16569184}
   - component: {fileID: 16569183}
   - component: {fileID: 16569182}
-  - component: {fileID: 16569189}
-  - component: {fileID: 16569188}
   m_Layer: 0
   m_Name: Blood (1)
   m_TagString: Untagged
@@ -862,59 +860,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &16569188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16569180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _adaptee: {fileID: 16569187}
---- !u!114 &16569189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16569180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorAdapter: {fileID: 16569188}
-  _startAlpha: 0
-  _targetAlpha: 1
-  _fadeDuration: 0.5
-  _fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &23757818
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,8 +909,6 @@ GameObject:
   - component: {fileID: 33702434}
   - component: {fileID: 33702433}
   - component: {fileID: 33702432}
-  - component: {fileID: 33702439}
-  - component: {fileID: 33702438}
   m_Layer: 0
   m_Name: Blood (1)
   m_TagString: Untagged
@@ -1137,59 +1080,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &33702438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33702430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _adaptee: {fileID: 33702437}
---- !u!114 &33702439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33702430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorAdapter: {fileID: 33702438}
-  _startAlpha: 0
-  _targetAlpha: 1
-  _fadeDuration: 0.5
-  _fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &39278589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1258,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &53651739
 PrefabInstance:
@@ -4110,8 +4000,6 @@ GameObject:
   - component: {fileID: 250201172}
   - component: {fileID: 250201173}
   - component: {fileID: 250201174}
-  - component: {fileID: 250201176}
-  - component: {fileID: 250201175}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
@@ -4283,59 +4171,6 @@ MonoBehaviour:
   - {fileID: -6664641046179961983, guid: 6a8eaa8831e350e478af0abba10772fb, type: 3}
   - {fileID: -712031747763754980, guid: 6a8eaa8831e350e478af0abba10772fb, type: 3}
   - {fileID: -3548264000473891649, guid: 6a8eaa8831e350e478af0abba10772fb, type: 3}
---- !u!114 &250201175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250201167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _adaptee: {fileID: 250201170}
---- !u!114 &250201176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250201167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorAdapter: {fileID: 250201175}
-  _startAlpha: 0
-  _targetAlpha: 1
-  _fadeDuration: 0.5
-  _fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &255593585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69557,7 +69392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &856029557
 MonoBehaviour:
@@ -72341,7 +72176,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.040964, y: 1}
+    m_SensorSize: {x: 1.9752914, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -72604,15 +72439,9 @@ MonoBehaviour:
   - {fileID: 80301816}
   - {fileID: 1895767690}
   - {fileID: 1086639877}
-  - {fileID: 250201176}
-  - {fileID: 16569189}
   - {fileID: 13917574}
   - {fileID: 1828940889}
-  - {fileID: 1872721715}
-  - {fileID: 2113508385}
   - {fileID: 1052698385}
-  - {fileID: 33702439}
-  - {fileID: 1525953848}
   - {fileID: 1222771009}
   - {fileID: 461304174}
   _showDelay: 3
@@ -75386,7 +75215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145079091
 GameObject:
@@ -75448,7 +75277,7 @@ Transform:
   - {fileID: 992927378}
   - {fileID: 1792729211}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &1145079095
 Tilemap:
@@ -75794,7 +75623,7 @@ MonoBehaviour:
   - {fileID: 880354842}
   - {fileID: 1496388138}
   - {fileID: 646487519}
-  _startupWeapon: 0
+  _startupWeapon: 2
   currentWeapon: {fileID: 0}
 --- !u!1001 &1201416636
 PrefabInstance:
@@ -88263,8 +88092,6 @@ GameObject:
   - component: {fileID: 1525953843}
   - component: {fileID: 1525953842}
   - component: {fileID: 1525953841}
-  - component: {fileID: 1525953848}
-  - component: {fileID: 1525953847}
   m_Layer: 0
   m_Name: Blood (2)
   m_TagString: Untagged
@@ -88436,59 +88263,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1525953847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525953839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _adaptee: {fileID: 1525953846}
---- !u!114 &1525953848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525953839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorAdapter: {fileID: 1525953847}
-  _startAlpha: 0
-  _targetAlpha: 1
-  _fadeDuration: 0.5
-  _fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1546197427
 GameObject:
   m_ObjectHideFlags: 0
@@ -92328,6 +92102,50 @@ MonoBehaviour:
   _verticalParallaxStrength: 0.2
   _enableHorizontalParallax: 1
   _enableVerticalParallax: 1
+--- !u!1 &1742991257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742991258}
+  - component: {fileID: 1742991259}
+  m_Layer: 0
+  m_Name: GameStatictics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1742991258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742991257}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.4090625, y: 0.5897857, z: -239.46387}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1742991259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742991257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd0b5f3169a4f9ab4d3e2ac1ab39a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 4495d11826dd25f4eb0e3d70ca82e7be, type: 2}
 --- !u!1 &1749200284
 GameObject:
   m_ObjectHideFlags: 0
@@ -95218,8 +95036,6 @@ GameObject:
   - component: {fileID: 1872721710}
   - component: {fileID: 1872721709}
   - component: {fileID: 1872721708}
-  - component: {fileID: 1872721715}
-  - component: {fileID: 1872721714}
   m_Layer: 0
   m_Name: Blood (1)
   m_TagString: Untagged
@@ -95391,59 +95207,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1872721714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872721706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _adaptee: {fileID: 1872721713}
---- !u!114 &1872721715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872721706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorAdapter: {fileID: 1872721714}
-  _startAlpha: 0
-  _targetAlpha: 1
-  _fadeDuration: 0.5
-  _fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1879101105
 GameObject:
   m_ObjectHideFlags: 0
@@ -98103,8 +97866,6 @@ GameObject:
   - component: {fileID: 2113508380}
   - component: {fileID: 2113508379}
   - component: {fileID: 2113508378}
-  - component: {fileID: 2113508385}
-  - component: {fileID: 2113508384}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
@@ -98276,59 +98037,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2113508384
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113508376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a4c4c421884466ba9440ea66b5bee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _adaptee: {fileID: 2113508383}
---- !u!114 &2113508385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2113508376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9565adc5227529489e6b27f5238b814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colorAdapter: {fileID: 2113508384}
-  _startAlpha: 0
-  _targetAlpha: 1
-  _fadeDuration: 0.5
-  _fadeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &2114078572
 GameObject:
   m_ObjectHideFlags: 0

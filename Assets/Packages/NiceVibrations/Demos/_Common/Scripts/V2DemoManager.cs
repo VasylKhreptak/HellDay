@@ -34,6 +34,7 @@ namespace MoreMountains.NiceVibrations
                 _paginations.Add(page.GetComponentInChildren<Pagination>());
                 page.gameObject.SetActive(false);
             }
+
             foreach (var pagination in _paginations)
             {
                 pagination.InitializePagination(Pages.Count);
@@ -41,6 +42,7 @@ namespace MoreMountains.NiceVibrations
                 pagination.InactiveColor = InactiveColor;
                 pagination.SetCurrentPage(Pages.Count, 0);
             }
+
             Pages[0].gameObject.SetActive(true);
             if (SoundActive)
             {
@@ -108,16 +110,24 @@ namespace MoreMountains.NiceVibrations
             {
                 if (goingRight)
                 {
-                    _position.x = Mathf.Lerp(0f, -1200f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+                    _position.x = Mathf.Lerp(0f, -1200f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
                     Pages[previous].localPosition = _position;
-                    _position.x = Mathf.Lerp(1200f, 0f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+                    _position.x = Mathf.Lerp(1200f, 0f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
                     Pages[next].localPosition = _position;
                 }
                 else
                 {
-                    _position.x = Mathf.Lerp(0f, 1200f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+                    _position.x = Mathf.Lerp(0f, 1200f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
                     Pages[previous].localPosition = _position;
-                    _position.x = Mathf.Lerp(-1200f, 0f, TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration, 0f, 1f)));
+                    _position.x = Mathf.Lerp(-1200f, 0f,
+                        TransitionCurve.Evaluate(NiceVibrationsDemoHelpers.Remap(timeSpent, 0f, PageTransitionDuration,
+                            0f, 1f)));
                     Pages[next].localPosition = _position;
                 }
 

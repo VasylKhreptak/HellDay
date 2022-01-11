@@ -1,25 +1,37 @@
-using System;
 using UnityEngine;
 
 public class PerformanceCheck : MonoBehaviour
 {
     // private readonly int _iterations = 20000000;
     //
+    // private delegate void test();
+    //
+    // private int a;
+    //
+    // private event test testEvent;
+    //
     // private void Start()
     // {
     //     ObjectPooler testReference = ObjectPooler.Instance;
     //     
-    //     Debug.Log("!= null");
+    //     Debug.Log("normal");
     //     Debug.Log(GetExecutionTime(_iterations, () =>
     //     {
-    //         if (testReference != null) ;
+    //         testEvent = Test;
+    //         testEvent.Invoke();
     //     }));
     //     
-    //     Debug.Log("!");
+    //     Debug.Log("anonimus");
     //     Debug.Log(GetExecutionTime(_iterations, () =>
     //     {
-    //         if (testReference) ;
+    //         testEvent = () => { a = 1;};
+    //         testEvent.Invoke();
     //     }));
+    // }
+    //
+    // private void Test()
+    // {
+    //     a = 1;
     // }
     //
     // private float GetExecutionTime(int iterations, Action action)

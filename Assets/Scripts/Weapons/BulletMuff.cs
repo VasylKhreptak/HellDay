@@ -10,7 +10,6 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     [SerializeField] private BulletMuffData _data;
 
 
-
     public void OnEnable()
     {
         SetMovement();
@@ -22,7 +21,7 @@ public class BulletMuff : MonoBehaviour, IPooledObject
     {
         _rigidbody2D.velocity =
             new Vector2(
-                Random.Range(-_data.MAXHorVelocity, -_data.MINHorVelocity) * 
+                Random.Range(-_data.MAXHorVelocity, -_data.MINHorVelocity) *
                 PlayerFaceDirectionController.FaceDirection, _data.VertVelocity);
 
         _rigidbody2D.AddTorque(Random.Range(-_data.Torque, _data.Torque));

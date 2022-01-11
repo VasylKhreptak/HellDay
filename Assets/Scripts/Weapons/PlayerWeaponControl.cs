@@ -79,5 +79,4 @@ public class PlayerWeaponControl : MonoBehaviour
     {
         return gameObject.transform.parent.gameObject.activeSelf;
     }
-
 }

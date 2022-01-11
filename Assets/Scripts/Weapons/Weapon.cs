@@ -20,6 +20,7 @@ public class Weapon : MonoBehaviour
     {
         return Random.Range(_minDamage, _maxDamage);
     }
+
     public float MovementImpact => _movementImpact;
 
 

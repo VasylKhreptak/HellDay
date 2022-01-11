@@ -17,7 +17,7 @@ public class UI_ScaleAnimation : MonoBehaviour
     public void Animate()
     {
         _scaleTween.Kill();
-        
+
         _rectTransform.localScale = _startScale;
         _scaleTween = _rectTransform.DOScale(_targetScale, _scaleDuration).SetEase(_scaleCurve);
     }

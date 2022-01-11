@@ -13,7 +13,7 @@ public class UI_GameOverSignAnimation : MonoBehaviour
 
     private Tween _waitTween;
 
-    public static Action onBeingShowm;
+    public static Action onShow;
 
     private void OnEnable()
     {
@@ -28,23 +28,19 @@ public class UI_GameOverSignAnimation : MonoBehaviour
     private void ShowSign()
     {
         _waitTween.Kill();
-        
+
         _waitTween = this.DOWait(_showDelay).OnComplete(() =>
         {
             _signObject.SetActive(true);
-            
-            onBeingShowm?.Invoke();
-            
+
+            onShow?.Invoke();
+
             StartAnimation();
         });
-
     }
 
     private void StartAnimation()
     {
-        foreach (var fadeAnimation in _fadeAnimations)
-        {
-            fadeAnimation.Animate();
-        }
+        foreach (var fadeAnimation in _fadeAnimations) fadeAnimation.Animate();
     }
 }

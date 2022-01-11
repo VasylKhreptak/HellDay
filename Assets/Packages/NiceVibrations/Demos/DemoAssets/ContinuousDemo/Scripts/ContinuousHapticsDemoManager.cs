@@ -77,7 +77,9 @@ namespace MoreMountains.NiceVibrations
                     OnHapticsStopped();
                 }
             }
-            if (_sharpnessLastFrame != ContinuousSharpness || _intensityLastFrame != ContinuousIntensity) TargetCurve.UpdateCurve(ContinuousIntensity, ContinuousSharpness);
+
+            if (_sharpnessLastFrame != ContinuousSharpness || _intensityLastFrame != ContinuousIntensity)
+                TargetCurve.UpdateCurve(ContinuousIntensity, ContinuousSharpness);
             _intensityLastFrame = ContinuousIntensity;
             _sharpnessLastFrame = ContinuousSharpness;
         }
@@ -120,7 +122,8 @@ namespace MoreMountains.NiceVibrations
             if (!_continuousActive)
             {
                 // START
-                MMVibrationManager.ContinuousHaptic(ContinuousIntensity, ContinuousSharpness, ContinuousDuration, HapticTypes.LightImpact, this, true);
+                MMVibrationManager.ContinuousHaptic(ContinuousIntensity, ContinuousSharpness, ContinuousDuration,
+                    HapticTypes.LightImpact, this, true);
                 _timeLeft = ContinuousDuration;
                 ContinuousButtonText.text = "Stop continuous haptic pattern";
                 DurationSlider.interactable = false;
@@ -142,12 +145,10 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void OnHapticsError()
         {
-
         }
 
         protected virtual void OnHapticsReset()
         {
-
         }
 
         protected virtual void ResetPlayState()
@@ -157,7 +158,6 @@ namespace MoreMountains.NiceVibrations
             _continuousActive = false;
             DebugAudioContinuous?.Stop();
             DurationSlider.interactable = true;
-
         }
 
         protected virtual void OnEnable()

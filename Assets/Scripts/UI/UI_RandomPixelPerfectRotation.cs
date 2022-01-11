@@ -7,6 +7,7 @@ public class UI_RandomPixelPerfectRotation : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] private UI_RandomPixelPerfectRotationData _data;
+
     private void OnEnable()
     {
         SetRandomRotation();
@@ -14,7 +15,7 @@ public class UI_RandomPixelPerfectRotation : MonoBehaviour
 
     private void SetRandomRotation()
     {
-        _transform.localRotation = 
-            Quaternion.Euler(_transform.localRotation.x, _transform.localRotation.y,_data.possibleZAngles.Random());
+        _transform.localRotation =
+            Quaternion.Euler(_transform.localRotation.x, _transform.localRotation.y, _data.possibleZAngles.Random());
     }
 }

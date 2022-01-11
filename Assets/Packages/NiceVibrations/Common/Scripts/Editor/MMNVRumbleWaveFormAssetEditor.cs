@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace MoreMountains.NiceVibrations
 {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     /// <summary>
     /// This custom inspector for MMNVAndroidWaveFormAssets adds a button to import values from an AHAP file
     /// </summary>
@@ -28,7 +28,8 @@ namespace MoreMountains.NiceVibrations
             if (waveformAsset.AHAPFile != null)
                 if (GUILayout.Button("Import from AHAP"))
                 {
-                    var tempWaveform = MMNVAHAP.AHAPtoRumbleWaveForm(waveformAsset.AHAPFile.text, waveformAsset.IntensityMultiplier, waveformAsset.SharpnessMultiplier);
+                    var tempWaveform = MMNVAHAP.AHAPtoRumbleWaveForm(waveformAsset.AHAPFile.text,
+                        waveformAsset.IntensityMultiplier, waveformAsset.SharpnessMultiplier);
                     waveformAsset.WaveForm.Pattern = tempWaveform.Pattern;
                     waveformAsset.WaveForm.LowFrequencyAmplitudes = tempWaveform.LowFrequencyAmplitudes;
                     waveformAsset.WaveForm.HighFrequencyAmplitudes = tempWaveform.HighFrequencyAmplitudes;
@@ -37,5 +38,5 @@ namespace MoreMountains.NiceVibrations
             serializedObject.ApplyModifiedProperties();
         }
     }
-    #endif
+#endif
 }

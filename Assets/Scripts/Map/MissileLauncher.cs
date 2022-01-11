@@ -71,7 +71,8 @@ public class MissileLauncher : MonoBehaviour
     private bool CanShoot()
     {
         return _weaponAmmo.IsEmpty == false &&
-               _transform.position.ContainsPosition(_data.CheckRange, _target.position) && _target.gameObject.activeSelf;
+               _transform.position.ContainsPosition(_data.CheckRange, _target.position) &&
+               _target.gameObject.activeSelf;
     }
 
     private void Shoot()

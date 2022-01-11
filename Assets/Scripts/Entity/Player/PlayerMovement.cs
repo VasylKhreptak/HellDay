@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _canMove = true;
     private bool _isJumpForbidden;
     private bool _isGrounded;
-    
+
     private float _previousMaxHorVelocity;
 
     public static Action onJumped;

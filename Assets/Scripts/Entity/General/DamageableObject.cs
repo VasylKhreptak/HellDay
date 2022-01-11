@@ -40,7 +40,9 @@ public class DamageableObject : MonoBehaviour, IDamageable
 
     protected virtual void DeathActions()
     {
-        if (_data.CanBeDestroyed) Destroy(gameObject);
-        else gameObject.SetActive(false);
+        if (_data.CanBeDestroyed)
+            Destroy(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 }

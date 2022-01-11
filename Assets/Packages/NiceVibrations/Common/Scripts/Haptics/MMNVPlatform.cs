@@ -6,7 +6,6 @@ namespace MoreMountains.NiceVibrations
 {
     public static class MMNVPlatform
     {
-
         /// <summary>
         /// Returns true if the current platform is Android, false otherwise.
         /// </summary>

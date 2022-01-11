@@ -12,7 +12,7 @@ public class UI_ButtonPressAnimation : MonoBehaviour, IPointerDownHandler, IPoin
     private Vector3 _rawScale;
 
     private Tween _scaleTween;
-    
+
     private void Start()
     {
         _rawScale = _transform.localScale;

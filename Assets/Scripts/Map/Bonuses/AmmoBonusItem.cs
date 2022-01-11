@@ -7,6 +7,8 @@ public class AmmoBonusItem : MonoBehaviour
     [Header("Data")]
     [SerializeField] private AmmoBonusItemData _data;
 
+    public static Action onApply;
+
     private PlayerWeaponControl _playerWeaponControl;
 
     private void Start()
@@ -18,6 +20,10 @@ public class AmmoBonusItem : MonoBehaviour
     {
         if (_data.playerLayerMask.ContainsLayer(player.gameObject.layer) == false ||
             _playerWeaponControl.transform.parent.gameObject.activeSelf == false) return;
+
+        onApply?.Invoke();
+
+        Debug.Log("Took Ammo");
 
         AssignAmmo(_playerWeaponControl.currentWeapon);
 

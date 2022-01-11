@@ -13,7 +13,8 @@ public class GreenZombieAtack : ZombieAtackCore
         if (_transform == null || target == null) return false;
 
         return _transform.position.ContainsPosition(_greenZombieData.ExplosionRadius, target.position) &&
-               _transform.IsInFiendOfView(target, _greenZombieData.ExplosionRadius, _greenZombieData.environmentLayerMask);
+               _transform.IsInFiendOfView(target, _greenZombieData.ExplosionRadius,
+                   _greenZombieData.environmentLayerMask);
     }
 
     protected override void Atack()

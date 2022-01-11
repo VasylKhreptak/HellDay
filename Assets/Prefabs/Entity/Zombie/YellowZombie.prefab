@@ -140,13 +140,13 @@ GameObject:
   - component: {fileID: -2767593547485295550}
   - component: {fileID: 874205219488162536}
   - component: {fileID: -64014290128593452}
-  - component: {fileID: -6800690676723985350}
   - component: {fileID: 4582042604944406389}
   - component: {fileID: 7375401668465794014}
   - component: {fileID: 3044833184838460216}
   - component: {fileID: -2253116775896274004}
   - component: {fileID: 8150916485737283555}
   - component: {fileID: -216546660793126684}
+  - component: {fileID: -1022880810405051252}
   m_Layer: 8
   m_Name: YellowZombie
   m_TagString: Zombie
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 7552724589778891922}
-  _damageableObject: {fileID: -6800690676723985350}
+  _damageableObject: {fileID: -1022880810405051252}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &8136478789381910670
 MonoBehaviour:
@@ -487,21 +487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: -6800690676723985350}
+  _damageableObject: {fileID: -1022880810405051252}
   _onBulletHitEvent: {fileID: -2253116775896274004}
---- !u!114 &-6800690676723985350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7552724589778891914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 3dc5a88db012a8149bb960cf9cc53eed, type: 2}
 --- !u!114 &4582042604944406389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 7552724589778891921}
-  _damageableObject: {fileID: -6800690676723985350}
+  _damageableObject: {fileID: -1022880810405051252}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
 --- !u!114 &-2253116775896274004
 MonoBehaviour:
@@ -570,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ed1c0242aeb544983bc71e8006cd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: -6800690676723985350}
+  _damageableObject: {fileID: -1022880810405051252}
   _data: {fileID: 11400000, guid: 7da706e9c1ffbfa45873fcced9a5abe5, type: 2}
   _transform: {fileID: 7552724589778891921}
   _boneCrackAudioClips:
@@ -593,6 +580,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: -2253116775896274004}
   _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
+--- !u!114 &-1022880810405051252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552724589778891914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f92bce27f58a8408f16e00018e3e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 3dc5a88db012a8149bb960cf9cc53eed, type: 2}
 --- !u!1 &7552724590804465040
 GameObject:
   m_ObjectHideFlags: 0

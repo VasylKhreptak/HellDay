@@ -8,23 +8,18 @@ public class CinemachineCameraStateController : MonoBehaviour
 
     private void OnEnable()
     {
-        UI_GameOverSignAnimation.onBeingShowm += DisableCamera;
-        Player.onResurrection += EnableCamera;
+        UI_GameOverSignAnimation.onShow += () => { SetCameraState(false); };
+        Player.onResurrection += () => { SetCameraState(true); };
     }
 
     private void OnDisable()
     {
-        UI_GameOverSignAnimation.onBeingShowm -= DisableCamera;
-        Player.onResurrection -= EnableCamera;
+        UI_GameOverSignAnimation.onShow -= () => { SetCameraState(false); };
+        Player.onResurrection -= () => { SetCameraState(true); };
     }
 
-    private void EnableCamera()
+    private void SetCameraState(bool state)
     {
-        _virtualCamera.enabled = true;
-    }
-
-    private void DisableCamera()
-    {
-        _virtualCamera.enabled = false;
+        _virtualCamera.enabled = state;
     }
 }

@@ -25,9 +25,7 @@ public class RandomDestroyParticle : MonoBehaviour
     private void SpawnRandomDestroyParticles()
     {
         foreach (var particle in _data.destroyParticles)
-            Probability.Execute(particle.probability, () =>
-            {
-                _objectPooler.GetFromPool(particle.particle, _transform.position, Quaternion.identity);
-            });
+            Probability.Execute(particle.probability,
+                () => { _objectPooler.GetFromPool(particle.particle, _transform.position, Quaternion.identity); });
     }
 }

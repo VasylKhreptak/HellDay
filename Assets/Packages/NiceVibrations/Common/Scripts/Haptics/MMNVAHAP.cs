@@ -86,7 +86,8 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         /// <param name="AHAPasString"></param>
         /// <returns></returns>
-        public static MMNVAndroidWaveForm AHAPtoAndroidWaveForm(string AHAPasString, float intensityMultiplier, float sharpnessMultiplier)
+        public static MMNVAndroidWaveForm AHAPtoAndroidWaveForm(string AHAPasString, float intensityMultiplier,
+            float sharpnessMultiplier)
         {
             var ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
 
@@ -124,7 +125,8 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         /// <param name="AHAPasString"></param>
         /// <returns></returns>
-        public static MMNVRumbleWaveForm AHAPtoRumbleWaveForm(string AHAPasString, float intensityMultiplier, float sharpnessMultiplier)
+        public static MMNVRumbleWaveForm AHAPtoRumbleWaveForm(string AHAPasString, float intensityMultiplier,
+            float sharpnessMultiplier)
         {
             var ahap = JsonConvert.DeserializeObject<MMNVAHAP>(AHAPasString);
 
@@ -140,7 +142,6 @@ namespace MoreMountains.NiceVibrations
                     if (pattern.ParameterCurve.ParameterID == "HapticIntensityControl")
                         foreach (var point in pattern.ParameterCurve.ParameterCurveControlPoints)
                         {
-
                             var timeStamp = point.Time - previousTimeStamp;
                             totalTimeStamp += timeStamp;
                             patterns.Add((long)(timeStamp * 1000));
@@ -151,6 +152,7 @@ namespace MoreMountains.NiceVibrations
 
                             previousTimeStamp = point.Time;
                         }
+
                     if (pattern.ParameterCurve.ParameterID == "HapticSharpnessControl")
                         foreach (var point in pattern.ParameterCurve.ParameterCurveControlPoints)
                         {

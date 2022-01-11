@@ -37,9 +37,14 @@ namespace MoreMountains.NiceVibrations
             }
             else
             {
-                _shakePosition.x = Mathf.PerlinNoise(-Time.time * Sharpness, Time.time * Sharpness) * Intensity - Intensity / 2f;
-                _shakePosition.y = Mathf.PerlinNoise(-(Time.time + 0.25f) * Sharpness, Time.time * Sharpness) * Intensity - Intensity / 2f;
-                _shakePosition.z = Mathf.PerlinNoise(-(Time.time + 0.5f) * Sharpness, Time.time * Sharpness) * Intensity - Intensity / 2f;
+                _shakePosition.x = Mathf.PerlinNoise(-Time.time * Sharpness, Time.time * Sharpness) * Intensity -
+                                   Intensity / 2f;
+                _shakePosition.y =
+                    Mathf.PerlinNoise(-(Time.time + 0.25f) * Sharpness, Time.time * Sharpness) * Intensity -
+                    Intensity / 2f;
+                _shakePosition.z =
+                    Mathf.PerlinNoise(-(Time.time + 0.5f) * Sharpness, Time.time * Sharpness) * Intensity -
+                    Intensity / 2f;
                 _rectTransform.localPosition = _initialPosition + _shakePosition;
             }
         }

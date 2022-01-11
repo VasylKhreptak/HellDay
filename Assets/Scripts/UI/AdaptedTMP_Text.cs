@@ -7,7 +7,12 @@ public class AdaptedTMP_Text : ColorAdapter
 
     public AdaptedTMP_Text(TMP_Text adaptee)
     {
-        this._adaptee = adaptee;
+        _adaptee = adaptee;
     }
-    public override Color color { get { return _adaptee.color;} set { _adaptee.color = value; } }
+
+    public override Color color
+    {
+        get => _adaptee.color;
+        set => _adaptee.color = value;
+    }
 }

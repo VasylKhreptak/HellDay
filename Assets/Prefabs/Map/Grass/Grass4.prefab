@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2087649732385337097}
   - component: {fileID: 3690722292666272381}
-  - component: {fileID: 499820789472899410}
   - component: {fileID: -251903542155792273}
   - component: {fileID: -1251915503846723366}
   - component: {fileID: 2328325752886431292}
   - component: {fileID: 4767269593730210159}
+  - component: {fileID: 4152358440300489943}
   m_Layer: 12
   m_Name: Grass4
   m_TagString: Untagged
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &499820789472899410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52675252603771992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
 --- !u!61 &-251903542155792273
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -140,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2087649732385337097}
   _spriteRenderer: {fileID: 3690722292666272381}
-  _damageableObject: {fileID: 499820789472899410}
+  _damageableObject: {fileID: 4152358440300489943}
   _data: {fileID: 11400000, guid: 2d382cb3d48e37945a457c8d05a5658d, type: 2}
 --- !u!114 &2328325752886431292
 MonoBehaviour:
@@ -177,3 +164,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d8e97e76b51dc3642846a73dffebcbb1, type: 3}
   - {fileID: 8300000, guid: ea5531bc024371e4ebe95dc72bf0b031, type: 3}
   - {fileID: 8300000, guid: 820d14c37fb260443bb1539c2f92c4ea, type: 3}
+--- !u!114 &4152358440300489943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52675252603771992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7a3c0c2b284987ad124eded6ea9f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}

@@ -38,9 +38,9 @@ namespace MoreMountains.NiceVibrations
                 if (report.summary.platform == BuildTarget.iOS)
                 {
                     var path = report.summary.outputPath;
-                    #if UNITY_IOS && UNITY_EDITOR
+#if UNITY_IOS && UNITY_EDITOR
                         ConfigureXCodeProjectForNativePlugin(path);
-                    #endif
+#endif
                 }
             }
             catch (System.Exception e)
@@ -55,8 +55,9 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         public static string GetPluginPath()
         {
-            #if UNITY_IOS && UNITY_EDITOR
-                string[] res = System.IO.Directory.GetFiles(Application.dataPath, "MMNVBuildPostProcessor.cs", SearchOption.AllDirectories);
+#if UNITY_IOS && UNITY_EDITOR
+                string[] res =
+ System.IO.Directory.GetFiles(Application.dataPath, "MMNVBuildPostProcessor.cs", SearchOption.AllDirectories);
                 if (res.Length == 0)
                 {
                     return "error";
@@ -86,7 +87,8 @@ namespace MoreMountains.NiceVibrations
                     }
                 }
                 finalPath = finalPath.Replace("" + SEPARATOR + SEPARATOR + "", SEPARATOR.ToString());
-                finalPath = finalPath.Replace("Common"+SEPARATOR+"Scripts"+SEPARATOR+"Editor", "Common"+SEPARATOR+"Plugins"+SEPARATOR+"iOS"+SEPARATOR+"Swift"+SEPARATOR);
+                finalPath =
+ finalPath.Replace("Common"+SEPARATOR+"Scripts"+SEPARATOR+"Editor", "Common"+SEPARATOR+"Plugins"+SEPARATOR+"iOS"+SEPARATOR+"Swift"+SEPARATOR);
                 finalPath = finalPath.Replace(""+SEPARATOR+SEPARATOR+"", SEPARATOR.ToString());
 
             Debug.Log("[MMNVBuildPostProcessor] Final path : " + finalPath);
@@ -101,12 +103,12 @@ namespace MoreMountains.NiceVibrations
             Debug.Log("[MMNVBuildPostProcessor] Final path : " + finalPath);
 
             return finalPath;
-            #else
+#else
             return "not iOS";
-            #endif
+#endif
         }
 
-    #if UNITY_IOS && UNITY_EDITOR
+#if UNITY_IOS && UNITY_EDITOR
         public static void ConfigureXCodeProjectForNativePlugin(string xcodeProjectPath)
         {
             string pluginPath = GetPluginPath();
@@ -220,7 +222,8 @@ namespace MoreMountains.NiceVibrations
             File.WriteAllText(pbxProjectPath, pbxProject.WriteToString());
 
             // we copy the module file to the project
-            string privateModuleFilepath = Application.dataPath + SEPARATOR + pluginRelativePath + SEPARATOR + privateModuleFilename;
+            string privateModuleFilepath =
+ Application.dataPath + SEPARATOR + pluginRelativePath + SEPARATOR + privateModuleFilename;
             string projFileDir = System.IO.Path.GetDirectoryName(pbxProjectPath);
             string destination = projFileDir + SEPARATOR+".."+ SEPARATOR + module_map_filepath;
             if (!Directory.Exists (Path.GetDirectoryName(destination)))

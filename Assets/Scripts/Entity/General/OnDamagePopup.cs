@@ -33,7 +33,8 @@ public class OnDamagePopup : MonoBehaviour
         var obj = _objectPooler.GetFromPool(_data.damagePopupPool, _transform.position,
             Quaternion.identity);
 
-        if (obj.TryGetComponent(out DamagePopup damagePopup)) damagePopup.Init(((int)damage).ToString(), GetPopupColor(damage));
+        if (obj.TryGetComponent(out DamagePopup damagePopup))
+            damagePopup.Init(((int)damage).ToString(), GetPopupColor(damage));
     }
 
     private Color GetPopupColor(float damage)

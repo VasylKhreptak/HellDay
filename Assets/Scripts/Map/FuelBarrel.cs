@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ public class FuelBarrel : ExplosiveObjectCore
     private GameObject _smokeObj;
     private bool _isSmokeSpawned;
     private float _percentagedHealth;
+
+    public static Action onExplode;
 
     private void Start()
     {
@@ -58,6 +61,8 @@ public class FuelBarrel : ExplosiveObjectCore
 
     private void ExplodeActions()
     {
+        onExplode?.Invoke();
+
         DisableSmoke();
 
         Explode();

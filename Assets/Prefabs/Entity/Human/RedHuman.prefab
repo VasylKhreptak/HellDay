@@ -340,7 +340,6 @@ GameObject:
   - component: {fileID: 4994906563865673803}
   - component: {fileID: 4764513536016222622}
   - component: {fileID: 8856828643998146507}
-  - component: {fileID: 1802687458218053791}
   - component: {fileID: 3767227304296987452}
   - component: {fileID: 5164444463824438023}
   - component: {fileID: 2265316142172481290}
@@ -354,6 +353,7 @@ GameObject:
   - component: {fileID: -6395129145994821158}
   - component: {fileID: -8732474114592856316}
   - component: {fileID: -2347318394220209980}
+  - component: {fileID: -9020201996050738553}
   m_Layer: 13
   m_Name: RedHuman
   m_TagString: Human
@@ -510,19 +510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 6592567245772834832}
---- !u!114 &1802687458218053791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6592567245772834835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 747310918a2d5d542aaa01b45e984a27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
 --- !u!114 &3767227304296987452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,7 +561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 6592567245772834838}
-  _damageableObject: {fileID: 1802687458218053791}
+  _damageableObject: {fileID: -9020201996050738553}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &9025818914224777223
 MonoBehaviour:
@@ -721,7 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 6592567245772834832}
-  _damageableObject: {fileID: 1802687458218053791}
+  _damageableObject: {fileID: -9020201996050738553}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
 --- !u!114 &-2347318394220209980
 MonoBehaviour:
@@ -735,7 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20ed1c0242aeb544983bc71e8006cd27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 1802687458218053791}
+  _damageableObject: {fileID: -9020201996050738553}
   _data: {fileID: 11400000, guid: 85eb35f083579f04d8a99fcf8694bef6, type: 2}
   _transform: {fileID: 6592567245772834832}
   _boneCrackAudioClips:
@@ -744,6 +731,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e19f8eadee8f78047a64fba683350969, type: 3}
   - {fileID: 8300000, guid: 4b268f97ea709d244aee0c1329ea7a32, type: 3}
   - {fileID: 8300000, guid: 3855f0ec390f47e40a38af343ecac56b, type: 3}
+--- !u!114 &-9020201996050738553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6592567245772834835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
 --- !u!1 &6823461262281744566
 GameObject:
   m_ObjectHideFlags: 0

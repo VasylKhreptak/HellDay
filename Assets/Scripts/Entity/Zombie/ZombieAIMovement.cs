@@ -60,7 +60,6 @@ public class ZombieAIMovement : AIMovementCore
 
     protected void StartRandomMovement()
     {
-
         if (_randomMovementCoroutine == null)
         {
             _isFollowingTarget = false;

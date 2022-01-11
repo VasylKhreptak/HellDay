@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5754024052505772159}
   - component: {fileID: 5754024052505772155}
   - component: {fileID: 5754024052505772156}
-  - component: {fileID: 3258598343698460848}
   - component: {fileID: -4022383073505992412}
   - component: {fileID: 1386669110151482632}
   - component: {fileID: 8728029760102592324}
@@ -22,6 +21,7 @@ GameObject:
   - component: {fileID: -7829822247972694787}
   - component: {fileID: -6791143002610996544}
   - component: {fileID: 3712013772544904820}
+  - component: {fileID: -7172161600433217909}
   m_Layer: 12
   m_Name: Turtle
   m_TagString: Zombie
@@ -177,19 +177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 5754024052505772160}
   _data: {fileID: 11400000, guid: 9d9b0af18ccc2dd4d90d261e624c2ebf, type: 2}
---- !u!114 &3258598343698460848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5754024052505772161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}
 --- !u!114 &-4022383073505992412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 3258598343698460848}
+  _damageableObject: {fileID: -7172161600433217909}
   _onBulletHitEvent: {fileID: -6791143002610996544}
 --- !u!114 &1386669110151482632
 MonoBehaviour:
@@ -231,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 5754024052505772157}
-  _damageableObject: {fileID: 3258598343698460848}
+  _damageableObject: {fileID: -7172161600433217909}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &6551192206975482444
 MonoBehaviour:
@@ -260,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 5754024052505772160}
-  _damageableObject: {fileID: 3258598343698460848}
+  _damageableObject: {fileID: -7172161600433217909}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
 --- !u!114 &-6791143002610996544
 MonoBehaviour:
@@ -289,3 +276,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: -6791143002610996544}
   _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
+--- !u!114 &-7172161600433217909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754024052505772161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf6637a872a47219fe6b3ac9ea7fcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}

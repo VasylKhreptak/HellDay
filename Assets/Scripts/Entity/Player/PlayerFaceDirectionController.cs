@@ -36,10 +36,7 @@ public class PlayerFaceDirectionController : MonoBehaviour
     {
         ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () =>
         {
-            if (CanConfigureFaceDirection())
-            {
-                SetDirection((int)Mathf.Sign(_joystick.Horizontal));
-            }
+            if (CanConfigureFaceDirection()) SetDirection((int)Mathf.Sign(_joystick.Horizontal));
         });
     }
 

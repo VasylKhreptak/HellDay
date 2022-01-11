@@ -15,5 +15,4 @@ public class OnPonterDownRandomForceData : ScriptableObject
     public float MaxForce => _MAXForce;
     public float MinTorque => _MINTorque;
     public float MaxTorque => _MAXTorque;
-
 }

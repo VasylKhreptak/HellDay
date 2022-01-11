@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2241750354051892672}
   - component: {fileID: 2241750354051892676}
   - component: {fileID: 2241750354051892675}
-  - component: {fileID: 6906399910844643739}
   - component: {fileID: 8098637672917524577}
   - component: {fileID: 1382383338630164929}
   - component: {fileID: -3030408397500040501}
@@ -23,6 +22,7 @@ GameObject:
   - component: {fileID: 1105675950004768932}
   - component: {fileID: -7736910672398350877}
   - component: {fileID: 2674282608016098651}
+  - component: {fileID: -5600873478736707570}
   m_Layer: 12
   m_Name: Fox
   m_TagString: Zombie
@@ -178,19 +178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2241750354051892543}
   _data: {fileID: 11400000, guid: 9d9b0af18ccc2dd4d90d261e624c2ebf, type: 2}
---- !u!114 &6906399910844643739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2241750354051892542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}
 --- !u!114 &8098637672917524577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 6906399910844643739}
+  _damageableObject: {fileID: -5600873478736707570}
   _onBulletHitEvent: {fileID: -7736910672398350877}
 --- !u!114 &1382383338630164929
 MonoBehaviour:
@@ -218,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2241750354051892674}
-  _damageableObject: {fileID: 6906399910844643739}
+  _damageableObject: {fileID: -5600873478736707570}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &-3030408397500040501
 MonoBehaviour:
@@ -247,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2241750354051892674}
-  _damageableObject: {fileID: 6906399910844643739}
+  _damageableObject: {fileID: -5600873478736707570}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &-3419841217682125325
 MonoBehaviour:
@@ -276,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2241750354051892543}
-  _damageableObject: {fileID: 6906399910844643739}
+  _damageableObject: {fileID: -5600873478736707570}
   _data: {fileID: 11400000, guid: 0a8bef27e1719d442889f27e842c4286, type: 2}
 --- !u!114 &-7736910672398350877
 MonoBehaviour:
@@ -305,3 +292,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: -7736910672398350877}
   _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
+--- !u!114 &-5600873478736707570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2241750354051892542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf6637a872a47219fe6b3ac9ea7fcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}

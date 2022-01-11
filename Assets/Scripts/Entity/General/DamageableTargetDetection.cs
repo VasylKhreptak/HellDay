@@ -83,5 +83,5 @@ public class DamageableTargetDetection : TargetDetectionCore
         _damageableTargets = damageableTargets.ToArray();
     }
 
-    #endif
+#endif
 }

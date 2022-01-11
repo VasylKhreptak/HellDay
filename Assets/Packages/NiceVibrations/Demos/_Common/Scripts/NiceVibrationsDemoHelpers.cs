@@ -18,5 +18,4 @@ namespace MoreMountains.NiceVibrations
             return remappedValue;
         }
     }
-
 }

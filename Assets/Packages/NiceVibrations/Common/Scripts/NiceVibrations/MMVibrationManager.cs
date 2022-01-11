@@ -78,10 +78,14 @@ namespace MoreMountains.NiceVibrations
         private static int[] _successPatternAmplitude = { 0, LightAmplitude, 0, HeavyAmplitude };
         private static long[] _warningPattern = { 0, HeavyDuration, LightDuration, MediumDuration };
         private static int[] _warningPatternAmplitude = { 0, HeavyAmplitude, 0, MediumAmplitude };
-        private static long[] _failurePattern = { 0, MediumDuration, LightDuration, MediumDuration, LightDuration, HeavyDuration, LightDuration, LightDuration };
-        private static int[] _failurePatternAmplitude = { 0, MediumAmplitude, 0, MediumAmplitude, 0, HeavyAmplitude, 0, LightAmplitude };
+        private static long[] _failurePattern =
+        {
+            0, MediumDuration, LightDuration, MediumDuration, LightDuration, HeavyDuration, LightDuration, LightDuration
+        };
+        private static int[] _failurePatternAmplitude =
+            { 0, MediumAmplitude, 0, MediumAmplitude, 0, HeavyAmplitude, 0, LightAmplitude };
 
-        #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
         private static Vector3 _rumbleRigid = new Vector3(0.5f, 1f, 0.08f);
         private static Vector3 _rumbleSoft = new Vector3(1f, 0.03f, 0.1f);
         private static Vector3 _rumbleLight = new Vector3(0.5f, 0.5f, 0.02f);
@@ -91,7 +95,7 @@ namespace MoreMountains.NiceVibrations
         private static Vector3 _rumbleWarning = new Vector3(1f, 1f, 1f);
         private static Vector3 _rumbleFailure = new Vector3(1f, 1f, 1f);
         private static Vector3 _rumbleSelection = new Vector3(1f, 1f, 1f);
-        #endif
+#endif
 
 
         /// <summary>
@@ -124,6 +128,7 @@ namespace MoreMountains.NiceVibrations
                 if (iOSVersion >= 13) return MMNViOSCoreHaptics.CoreHapticsSupported();
                 else return MMNViOS.iOSHapticsSupported();
             }
+
             if (Android()) return MMNVAndroid.AndroidHasVibrator();
             return false;
         }
@@ -184,7 +189,8 @@ namespace MoreMountains.NiceVibrations
         /// Triggers a haptic feedback of the specified type
         /// </summary>
         /// <param name="type">Type.</param>
-        public static void Haptic(HapticTypes type, bool defaultToRegularVibrate = false, bool alsoRumble = false, MonoBehaviour coroutineSupport = null, int controllerID = -1)
+        public static void Haptic(HapticTypes type, bool defaultToRegularVibrate = false, bool alsoRumble = false,
+            MonoBehaviour coroutineSupport = null, int controllerID = -1)
         {
             if (!_vibrationsActive) return;
 
@@ -234,47 +240,55 @@ namespace MoreMountains.NiceVibrations
 
             if (alsoRumble && coroutineSupport != null)
             {
-                #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
                 switch (type)
                 {
                     case HapticTypes.None:
                         // do nothing
                         break;
                     case HapticTypes.Selection:
-                        MMNVRumble.Rumble(_rumbleLight.x, _rumbleMedium.y, _rumbleLight.z, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_rumbleLight.x, _rumbleMedium.y, _rumbleLight.z, coroutineSupport,
+                            controllerID);
                         break;
 
                     case HapticTypes.Success:
-                        MMNVRumble.Rumble(_successPattern, _successPatternAmplitude, -1, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_successPattern, _successPatternAmplitude, -1, coroutineSupport,
+                            controllerID);
                         break;
 
                     case HapticTypes.Warning:
-                        MMNVRumble.Rumble(_warningPattern, _warningPatternAmplitude, -1, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_warningPattern, _warningPatternAmplitude, -1, coroutineSupport,
+                            controllerID);
                         break;
 
                     case HapticTypes.Failure:
-                        MMNVRumble.Rumble(_failurePattern, _failurePatternAmplitude, -1, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_failurePattern, _failurePatternAmplitude, -1, coroutineSupport,
+                            controllerID);
                         break;
 
                     case HapticTypes.LightImpact:
-                        MMNVRumble.Rumble(_rumbleLight.x, _rumbleLight.y, _rumbleLight.z, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_rumbleLight.x, _rumbleLight.y, _rumbleLight.z, coroutineSupport,
+                            controllerID);
                         break;
 
                     case HapticTypes.MediumImpact:
-                        MMNVRumble.Rumble(_rumbleMedium.x, _rumbleMedium.y, _rumbleMedium.z, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_rumbleMedium.x, _rumbleMedium.y, _rumbleMedium.z, coroutineSupport,
+                            controllerID);
                         break;
 
                     case HapticTypes.HeavyImpact:
-                        MMNVRumble.Rumble(_rumbleHeavy.x, _rumbleHeavy.y, _rumbleHeavy.z, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_rumbleHeavy.x, _rumbleHeavy.y, _rumbleHeavy.z, coroutineSupport,
+                            controllerID);
                         break;
                     case HapticTypes.RigidImpact:
-                        MMNVRumble.Rumble(_rumbleRigid.x, _rumbleRigid.y, _rumbleRigid.z, coroutineSupport, controllerID);
+                        MMNVRumble.Rumble(_rumbleRigid.x, _rumbleRigid.y, _rumbleRigid.z, coroutineSupport,
+                            controllerID);
                         break;
                     case HapticTypes.SoftImpact:
                         MMNVRumble.Rumble(_rumbleSoft.x, _rumbleSoft.y, _rumbleSoft.z, coroutineSupport, controllerID);
                         break;
                 }
-                #endif
+#endif
             }
         }
 
@@ -283,9 +297,11 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         /// <param name="intensity"></param>
         /// <param name="sharpness"></param>
-        public static void TransientHaptic(float intensity, float sharpness, bool alsoRumble = false, MonoBehaviour coroutineSupport = null, int controllerID = -1)
+        public static void TransientHaptic(float intensity, float sharpness, bool alsoRumble = false,
+            MonoBehaviour coroutineSupport = null, int controllerID = -1)
         {
-            TransientHaptic(true, intensity, sharpness, true, intensity, sharpness, true, alsoRumble, intensity, sharpness, controllerID, coroutineSupport);
+            TransientHaptic(true, intensity, sharpness, true, intensity, sharpness, true, alsoRumble, intensity,
+                sharpness, controllerID, coroutineSupport);
         }
 
         /// <summary>
@@ -329,15 +345,17 @@ namespace MoreMountains.NiceVibrations
                 else
                 {
                     if (iOSIntensity < 0.3f) MMNViOS.iOSTriggerHaptics(HapticTypes.LightImpact);
-                    else if (iOSIntensity >= 0.3f && iOSIntensity < 0.6f) MMNViOS.iOSTriggerHaptics(HapticTypes.MediumImpact);
+                    else if (iOSIntensity >= 0.3f && iOSIntensity < 0.6f)
+                        MMNViOS.iOSTriggerHaptics(HapticTypes.MediumImpact);
                     else MMNViOS.iOSTriggerHaptics(HapticTypes.HeavyImpact);
                 }
             }
+
             if (rumble && coroutineSupport != null)
             {
-                #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
                 MMNVRumble.Rumble(rumbleIntensity, rumbleSharpness, 0.08f, coroutineSupport, controllerID);
-                #endif
+#endif
             }
         }
 
@@ -348,9 +366,11 @@ namespace MoreMountains.NiceVibrations
         /// <param name="sharpness"></param>
         /// <param name="duration"></param>
         public static void ContinuousHaptic(float intensity, float sharpness, float duration,
-            HapticTypes fallbackOldiOS = HapticTypes.None, MonoBehaviour mono = null, bool alsoRumble = false, int controllerID = -1, bool threaded = false)
+            HapticTypes fallbackOldiOS = HapticTypes.None, MonoBehaviour mono = null, bool alsoRumble = false,
+            int controllerID = -1, bool threaded = false)
         {
-            ContinuousHaptic(true, intensity, sharpness, fallbackOldiOS, true, intensity, sharpness, false, alsoRumble, intensity, sharpness, controllerID, duration, mono, threaded);
+            ContinuousHaptic(true, intensity, sharpness, fallbackOldiOS, true, intensity, sharpness, false, alsoRumble,
+                intensity, sharpness, controllerID, duration, mono, threaded);
         }
 
         /// <summary>
@@ -370,7 +390,8 @@ namespace MoreMountains.NiceVibrations
         /// <param name="controllerID"></param>
         /// <param name="duration"></param>
         /// <param name="mono"></param>
-        public static void ContinuousHaptic(bool vibrateiOS, float iOSIntensity, float iOSSharpness, HapticTypes fallbackOldiOS,
+        public static void ContinuousHaptic(bool vibrateiOS, float iOSIntensity, float iOSSharpness,
+            HapticTypes fallbackOldiOS,
             bool vibrateAndroid, float androidIntensity, float androidSharpness,
             bool vibrateAndroidIfNoSupport,
             bool rumble, float rumbleIntensity, float rumbleSharpness, int controllerID,
@@ -391,7 +412,8 @@ namespace MoreMountains.NiceVibrations
             {
                 if (iOSVersion >= 13 && HapticsSupported())
                 {
-                    MMNViOSCoreHaptics.PlayContinuousHapticPattern(iOSIntensity, iOSSharpness, duration, mono, threaded);
+                    MMNViOSCoreHaptics.PlayContinuousHapticPattern(iOSIntensity, iOSSharpness, duration, mono,
+                        threaded);
                     _hapticsPlayedOnce = true;
                 }
                 else
@@ -399,6 +421,7 @@ namespace MoreMountains.NiceVibrations
                     MMNViOS.iOSTriggerHaptics(fallbackOldiOS);
                 }
             }
+
             if (rumble && mono != null)
             {
 #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
@@ -413,9 +436,11 @@ namespace MoreMountains.NiceVibrations
         /// <param name="intensity"></param>
         /// <param name="sharpness"></param>
         /// <param name="alsoRumble"></param>
-        public static void UpdateContinuousHaptic(float intensity, float sharpness, bool alsoRumble = false, int controllerID = -1, bool threaded = false)
+        public static void UpdateContinuousHaptic(float intensity, float sharpness, bool alsoRumble = false,
+            int controllerID = -1, bool threaded = false)
         {
-            UpdateContinuousHaptic(true, intensity, sharpness, true, intensity, sharpness, alsoRumble, intensity, sharpness, controllerID, threaded);
+            UpdateContinuousHaptic(true, intensity, sharpness, true, intensity, sharpness, alsoRumble, intensity,
+                sharpness, controllerID, threaded);
         }
 
         /// <summary>
@@ -443,6 +468,7 @@ namespace MoreMountains.NiceVibrations
                     MMNViOSCoreHaptics.UpdateContinuousHapticPatternRational(iosIntensity, iosSharpness, threaded);
                     _hapticsPlayedOnce = true;
                 }
+
             if (rumble)
             {
 #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
@@ -462,9 +488,9 @@ namespace MoreMountains.NiceVibrations
             DebugLog("[MMVibrationManager] Stop all haptics");
             MMNViOSCoreHaptics.StopEngine();
             MMNVAndroid.AndroidCancelVibrations();
-			#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
             if (alsoRumble) MMNVRumble.StopRumble();
-			#endif
+#endif
         }
 
         /// <summary>
@@ -475,9 +501,9 @@ namespace MoreMountains.NiceVibrations
             DebugLog("[MMVibrationManager] Stop Continuous Haptic");
             MMNViOSCoreHaptics.StopHapticPatterns();
             MMNVAndroid.AndroidCancelVibrations();
-            #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
+#if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
             if (alsoRumble) MMNVRumble.StopRumble();
-            #endif
+#endif
         }
 
         /// <summary>
@@ -494,8 +520,10 @@ namespace MoreMountains.NiceVibrations
             HapticTypes fallbackOldiOS = HapticTypes.None,
             MonoBehaviour coroutineSupport = null, int controllerID = -1, bool threaded = true)
         {
-            AdvancedHapticPattern(true, iOSJSONString, true, androidPattern, androidAmplitudes, androidRepeat, false, true, rumblePattern,
-                rumbleLowFreqAmplitudes, rumbleHighFreqAmplitudes, rumbleRepeat, fallbackOldiOS, coroutineSupport, controllerID, threaded);
+            AdvancedHapticPattern(true, iOSJSONString, true, androidPattern, androidAmplitudes, androidRepeat, false,
+                true, rumblePattern,
+                rumbleLowFreqAmplitudes, rumbleHighFreqAmplitudes, rumbleRepeat, fallbackOldiOS, coroutineSupport,
+                controllerID, threaded);
         }
 
         /// <summary>
@@ -546,7 +574,9 @@ namespace MoreMountains.NiceVibrations
                 }
             }
 #if MOREMOUNTAINS_NICEVIBRATIONS_RUMBLE
-            if (coroutineSupport != null) MMNVRumble.Rumble(rumblePattern, rumbleLowFreqAmplitudes, rumbleHighFreqAmplitudes, rumbleRepeat, coroutineSupport, controllerID);
+            if (coroutineSupport != null)
+                MMNVRumble.Rumble(rumblePattern, rumbleLowFreqAmplitudes, rumbleHighFreqAmplitudes, rumbleRepeat,
+                    coroutineSupport, controllerID);
 #endif
         }
 
@@ -558,9 +588,9 @@ namespace MoreMountains.NiceVibrations
         {
             var version = 0;
             var versionAsString = "0.0.0";
-            #if UNITY_IOS && !UNITY_EDITOR
+#if UNITY_IOS && !UNITY_EDITOR
                 versionAsString = Device.systemVersion;
-            #endif
+#endif
 
             var versionArray = versionAsString.Split('.');
 

@@ -71,7 +71,8 @@ namespace MoreMountains.NiceVibrations
                     _carStarted = true;
                     _carStartedAt = Time.time;
                     _lastStartClickAt = Time.time;
-                    MMVibrationManager.ContinuousHaptic(_knobValue, _knobValue, MaximumPowerDuration, HapticTypes.MediumImpact, this, false, -1, false);
+                    MMVibrationManager.ContinuousHaptic(_knobValue, _knobValue, MaximumPowerDuration,
+                        HapticTypes.MediumImpact, this, false, -1, false);
                     CarEngineAudioSource.Play();
                 }
                 else
@@ -129,7 +130,8 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void UpdateCar()
         {
-            var targetSpeed = _carStarted ? NiceVibrationsDemoHelpers.Remap(Knob.Value, MinimumKnobValue, 1f, 0f, 1f) : 0f;
+            var targetSpeed =
+                _carStarted ? NiceVibrationsDemoHelpers.Remap(Knob.Value, MinimumKnobValue, 1f, 0f, 1f) : 0f;
             CarSpeed = Mathf.Lerp(CarSpeed, targetSpeed, Time.deltaTime * 1f);
 
             CarEngineAudioSource.volume = CarSpeed;
@@ -142,7 +144,6 @@ namespace MoreMountains.NiceVibrations
             _carPosition.y = _initialCarPosition.y + 10 * CarSpeed * Mathf.PerlinNoise(Time.time * 10f, CarSpeed * 10f);
             _carPosition.z = 0f;
             CarBody.localPosition = _carPosition;
-
         }
 
         protected virtual void UpdateUI()
@@ -152,7 +153,8 @@ namespace MoreMountains.NiceVibrations
                 // start dent
                 if (Time.time - _lastStartClickAt < StartClickDuration)
                 {
-                    var elapsedTime = StartClickCurve.Evaluate((Time.time - _lastStartClickAt) * (1 / StartClickDuration));
+                    var elapsedTime =
+                        StartClickCurve.Evaluate((Time.time - _lastStartClickAt) * (1 / StartClickDuration));
                     Knob._rectTransform.localScale = Vector3.one + Vector3.one * elapsedTime * 0.05f;
                     Knob._image.color = Color.Lerp(ActiveColor, Color.white, elapsedTime);
                 }
@@ -164,6 +166,7 @@ namespace MoreMountains.NiceVibrations
                         _lastDentAt = Time.time;
                         break;
                     }
+
                 if (Time.time - _lastDentAt < DentDuration)
                 {
                     var elapsedTime = StartClickCurve.Evaluate((Time.time - _lastDentAt) * (1 / DentDuration));

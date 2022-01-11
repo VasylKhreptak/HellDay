@@ -13,7 +13,6 @@ public class PlayerDoorInteract : DoorInteractCore
     protected override void OnExitDoorArea()
     {
         onExitDoorArea?.Invoke();
-
     }
 
     public void ToggleDoor()

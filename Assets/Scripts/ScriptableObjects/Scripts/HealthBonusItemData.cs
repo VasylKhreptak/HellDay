@@ -16,5 +16,4 @@ public class HealthBonusItemData : BonusItemData
 
     public float MINHealth => _minHealth;
     public float MAXHealth => _maxHealth;
-
 }

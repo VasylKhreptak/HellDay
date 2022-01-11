@@ -60,12 +60,15 @@ namespace MoreMountains.NiceVibrations
             {
                 var t = NiceVibrationsDemoHelpers.Remap(i, 0, PointsCount, 0f, 1f);
                 var sinValue = MMSignal.GetValue(t, MMSignal.SignalType.Sine, 1f, AmplitudeFactor, Period, 0f, false);
-                var triangleValue = MMSignal.GetValue(t, MMSignal.SignalType.Triangle, 1f, AmplitudeFactor, Period, 0f, false);
+                var triangleValue = MMSignal.GetValue(t, MMSignal.SignalType.Triangle, 1f, AmplitudeFactor, Period, 0f,
+                    false);
 
                 if (Move)
                 {
-                    sinValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Sine, 1f, AmplitudeFactor, Period, 0f, false);
-                    triangleValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Triangle, 1f, AmplitudeFactor, Period, 0f, false);
+                    sinValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Sine, 1f,
+                        AmplitudeFactor, Period, 0f, false);
+                    triangleValue = MMSignal.GetValue(t + Time.time * MovementSpeed, MMSignal.SignalType.Triangle, 1f,
+                        AmplitudeFactor, Period, 0f, false);
                 }
 
                 var finalValue = Mathf.Lerp(sinValue, triangleValue, Sharpness);

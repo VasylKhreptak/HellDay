@@ -66,6 +66,7 @@ namespace MoreMountains.NiceVibrations
                 Debug.LogWarning("FPSCounter requires a GUIText component.");
                 return;
             }
+
             _text = GetComponent<Text>();
             _timeLeft = UpdateInterval;
         }

@@ -12,5 +12,4 @@ public class AmmoBonusItemData : BonusItemData
     }
 
     public BonusPreference[] bonusPreferences;
-
 }

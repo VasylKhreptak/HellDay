@@ -27,6 +27,7 @@ public class PlayerStripesAnimation : MonoBehaviour
 
     private float _startYpos;
     private float _targetYpos;
+
     private void Awake()
     {
         _startYpos = _transform.localPosition.y;
@@ -104,9 +105,7 @@ public class PlayerStripesAnimation : MonoBehaviour
         var direction = target.position - _transform.position;
 
         if (PlayerFaceDirectionController.FaceDirection == 1)
-        {
             direction = Quaternion.AngleAxis(180, Vector3.forward) * direction;
-        }
 
         var rot = Extensions.Quaternion.RotationFromDirection2D(direction);
 

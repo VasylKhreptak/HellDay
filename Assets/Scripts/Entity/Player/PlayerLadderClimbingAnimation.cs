@@ -14,10 +14,8 @@ public class PlayerLadderClimbingAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () =>
-        {
-            ControlLadderClimbingAnimation();
-        });
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate,
+            () => { ControlLadderClimbingAnimation(); });
     }
 
     private void OnDisable()

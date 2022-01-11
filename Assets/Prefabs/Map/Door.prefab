@@ -211,13 +211,13 @@ GameObject:
   - component: {fileID: 2631920038594490531}
   - component: {fileID: 2631920038594490530}
   - component: {fileID: 2631920038594490529}
-  - component: {fileID: 860217084594707549}
   - component: {fileID: 7231389117494755404}
   - component: {fileID: 7226936234029771181}
   - component: {fileID: 994183506022071972}
   - component: {fileID: 1369320811666953573}
   - component: {fileID: 5538755975716982270}
   - component: {fileID: 3849471244031654348}
+  - component: {fileID: 4970057903837533486}
   m_Layer: 0
   m_Name: ClosedDoor
   m_TagString: Untagged
@@ -329,19 +329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transform: {fileID: 2631920038594490532}
---- !u!114 &860217084594707549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2631920038594490533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
 --- !u!114 &7231389117494755404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 860217084594707549}
+  _damageableObject: {fileID: 4970057903837533486}
   _onBulletHitEvent: {fileID: 5538755975716982270}
 --- !u!114 &7226936234029771181
 MonoBehaviour:
@@ -368,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad4fffa7ebb01da42b45317a458925f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 860217084594707549}
+  _damageableObject: {fileID: 4970057903837533486}
   _data: {fileID: 11400000, guid: 6d06bf2c6359c1e43bdd115971ba79f4, type: 2}
 --- !u!114 &994183506022071972
 MonoBehaviour:
@@ -397,7 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2631920038594490531}
-  _damageableObject: {fileID: 860217084594707549}
+  _damageableObject: {fileID: 4970057903837533486}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &5538755975716982270
 MonoBehaviour:
@@ -424,6 +411,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 2631920038594490532}
   _onBulletHitEvent: {fileID: 5538755975716982270}
   _data: {fileID: 11400000, guid: e485e65e079384d49b1bc822e0117ac2, type: 2}
+--- !u!114 &4970057903837533486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2631920038594490533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7a3c0c2b284987ad124eded6ea9f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}

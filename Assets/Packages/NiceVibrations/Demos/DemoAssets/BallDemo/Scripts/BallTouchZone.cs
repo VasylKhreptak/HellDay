@@ -37,11 +37,13 @@ namespace MoreMountains.NiceVibrations
             _newPosition.z = _initialZPosition;
             BallMover.position = _newPosition;
         }
+
         protected virtual Vector3 GetWorldPosition(Vector3 testPosition)
         {
             if (ParentCanvasRenderMode == RenderMode.ScreenSpaceCamera)
             {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, testPosition, _canvas.worldCamera, out _workPosition);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform,
+                    testPosition, _canvas.worldCamera, out _workPosition);
                 return _canvas.transform.TransformPoint(_workPosition);
             }
             else
@@ -60,6 +62,5 @@ namespace MoreMountains.NiceVibrations
         {
             _holding = false;
         }
-
     }
 }

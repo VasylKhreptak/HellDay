@@ -7,11 +7,10 @@ public class UI_RandomText : MonoBehaviour
     [SerializeField] private TMP_Text _TMP;
 
     [Space(10)]
-    [SerializeField, TextArea] private string[] _textVariants;
-    
+    [SerializeField] [TextArea] private string[] _textVariants;
+
     private void OnEnable()
     {
         _TMP.text = _textVariants.Random();
     }
-
 }

@@ -31,7 +31,8 @@ namespace MoreMountains.NiceVibrations
         /// <param name="offset"></param>
         /// <param name="Invert"></param>
         /// <returns></returns>
-        public static float GetValue(float time, SignalType signalType, float phase, float amplitude, float frequency, float offset, bool Invert = false)
+        public static float GetValue(float time, SignalType signalType, float phase, float amplitude, float frequency,
+            float offset, bool Invert = false)
         {
             var value = 0f;
             float invert = Invert ? -1 : 1;

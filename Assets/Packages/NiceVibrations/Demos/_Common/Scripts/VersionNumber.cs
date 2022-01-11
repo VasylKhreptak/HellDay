@@ -25,6 +25,5 @@ namespace MoreMountains.NiceVibrations
 
             if (MMVibrationManager.Android()) _text.text += " Android " + MMNVAndroid.AndroidSDKVersion().ToString();
         }
-
     }
 }

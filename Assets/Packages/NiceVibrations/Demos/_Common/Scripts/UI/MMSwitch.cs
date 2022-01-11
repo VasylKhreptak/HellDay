@@ -15,8 +15,14 @@ namespace MoreMountains.NiceVibrations
         [Header("Switch")]
         /// a SpriteReplace to represent the switch knob
         public Image SwitchKnob;
+
         /// the possible states of the switch
-        public enum SwitchStates { Off, On }
+        public enum SwitchStates
+        {
+            Off,
+            On
+        }
+
         /// the current state of the switch
         public SwitchStates CurrentSwitchState { get; set; }
 
@@ -68,8 +74,12 @@ namespace MoreMountains.NiceVibrations
                 var time = Remap(Time.time - _knobMovementStartedAt, 0f, KnobMovementDuration, 0f, 1f);
                 var value = KnobMovementCurve.Evaluate(time);
 
-                if (CurrentSwitchState == SwitchStates.Off) SwitchKnob.transform.position = Vector3.Lerp(OnPosition.transform.position, OffPosition.transform.position, value);
-                else SwitchKnob.transform.position = Vector3.Lerp(OffPosition.transform.position, OnPosition.transform.position, value);
+                if (CurrentSwitchState == SwitchStates.Off)
+                    SwitchKnob.transform.position = Vector3.Lerp(OnPosition.transform.position,
+                        OffPosition.transform.position, value);
+                else
+                    SwitchKnob.transform.position = Vector3.Lerp(OffPosition.transform.position,
+                        OnPosition.transform.position, value);
             }
         }
 

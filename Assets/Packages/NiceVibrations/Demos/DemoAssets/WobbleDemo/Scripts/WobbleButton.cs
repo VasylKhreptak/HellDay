@@ -78,7 +78,8 @@ namespace MoreMountains.NiceVibrations
         {
             if (ParentCanvasRenderMode == RenderMode.ScreenSpaceCamera)
             {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, testPosition, _canvas.worldCamera, out _workPosition);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform,
+                    testPosition, _canvas.worldCamera, out _workPosition);
                 return _canvas.transform.TransformPoint(_workPosition);
             }
             else
@@ -134,6 +135,7 @@ namespace MoreMountains.NiceVibrations
                 _newTargetPosition = _neutralPosition;
                 _newTargetPosition.z = _initialZPosition;
             }
+
             transform.position = _newTargetPosition;
         }
 

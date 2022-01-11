@@ -7,7 +7,6 @@ namespace MoreMountains.NiceVibrations
 {
     public class RegularPresetsDemoManager : DemoManager
     {
-
         [Header("Image")]
         public Image IconImage;
         public Animator IconImageAnimator;
@@ -54,7 +53,6 @@ namespace MoreMountains.NiceVibrations
             yield return _turnDelay;
             IconImage.sprite = IdleSprite;
         }
-
 
 
         public virtual void SelectionButton()

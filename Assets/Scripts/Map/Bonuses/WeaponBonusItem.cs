@@ -15,6 +15,8 @@ public class WeaponBonusItem : MonoBehaviour
     [SerializeField] private int _minAmmo = 40;
     [SerializeField] private int _maxAmmo = 100;
 
+    public static Action onTook;
+
     private bool _canSwap;
 
     private PlayerWeaponControl _playerWeaponControl;
@@ -40,6 +42,8 @@ public class WeaponBonusItem : MonoBehaviour
 
         if (player.gameObject.activeSelf)
         {
+            onTook?.Invoke();
+
             _playerWeaponControl.SwapWeapon(_weapon);
 
             ConfigureSwapSpeed();

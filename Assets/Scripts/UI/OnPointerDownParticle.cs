@@ -15,7 +15,7 @@ public class OnPointerDownParticle : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Vector3 touchPos = eventData.pointerPressRaycast.worldPosition;
+        var touchPos = eventData.pointerPressRaycast.worldPosition;
 
         _objectPooler.GetFromPool(_particle, touchPos, Quaternion.identity);
     }

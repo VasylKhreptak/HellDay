@@ -22,7 +22,8 @@ namespace DG.Tweening
         /// <summary>Tweens an AudioSource's volume to the given value.
         /// Also stores the AudioSource as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach (0 to 1)</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<float, float, FloatOptions> DOFade(this AudioSource target, float endValue, float duration)
+        public static TweenerCore<float, float, FloatOptions> DOFade(this AudioSource target, float endValue,
+            float duration)
         {
             if (endValue < 0) endValue = 0;
             else if (endValue > 1) endValue = 1;
@@ -34,7 +35,8 @@ namespace DG.Tweening
         /// <summary>Tweens an AudioSource's pitch to the given value.
         /// Also stores the AudioSource as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<float, float, FloatOptions> DOPitch(this AudioSource target, float endValue, float duration)
+        public static TweenerCore<float, float, FloatOptions> DOPitch(this AudioSource target, float endValue,
+            float duration)
         {
             var t = DOTween.To(() => target.pitch, x => target.pitch = x, endValue, duration);
             t.SetTarget(target);
@@ -44,6 +46,7 @@ namespace DG.Tweening
         #endregion
 
 #if UNITY_5 || UNITY_2017_1_OR_NEWER
+
         #region AudioMixer (Unity 5 or Newer)
 
         /// <summary>Tweens an AudioMixer's exposed float to the given value.
@@ -51,7 +54,8 @@ namespace DG.Tweening
         /// Note that you need to manually expose a float in an AudioMixerGroup in order to be able to tween it from an AudioMixer.</summary>
         /// <param name="floatName">Name given to the exposed float to set</param>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<float, float, FloatOptions> DOSetFloat(this AudioMixer target, string floatName, float endValue, float duration)
+        public static TweenerCore<float, float, FloatOptions> DOSetFloat(this AudioMixer target, string floatName,
+            float endValue, float duration)
         {
             var t = DOTween.To(() =>
             {
@@ -195,6 +199,7 @@ namespace DG.Tweening
         #endregion
 
         #endregion
+
 #endif
 
         #endregion

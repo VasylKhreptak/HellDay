@@ -11,7 +11,6 @@ public static class ConfigurableUpdate
 
     public static void StopUpdate(MonoBehaviour owner, ref Coroutine coroutine)
     {
-
         if (coroutine != null)
         {
             owner.StopCoroutine(coroutine);

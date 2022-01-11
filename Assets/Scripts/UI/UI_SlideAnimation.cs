@@ -37,14 +37,14 @@ public class UI_SlideAnimation : MonoBehaviour
     public void Show()
     {
         if (_isShown) return;
-        
+
         _moveTween.Kill();
         _moveTween = _rectTransform.DOAnchorPos(_targetAnchoredPos, _duration).SetEase(_animationCurve);
 
         _isShown = true;
     }
 
-    public void Hide() 
+    public void Hide()
     {
         if (_isShown == false) return;
 

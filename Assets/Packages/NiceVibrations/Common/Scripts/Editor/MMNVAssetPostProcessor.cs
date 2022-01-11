@@ -19,7 +19,8 @@ namespace MoreMountains.NiceVibrations
         /// <returns></returns>
         private static string OnGeneratedCSProject(string path, string content)
         {
-            return content.Replace("<ReferenceOutputAssembly>false</ReferenceOutputAssembly>", "<ReferenceOutputAssembly>true</ReferenceOutputAssembly>");
+            return content.Replace("<ReferenceOutputAssembly>false</ReferenceOutputAssembly>",
+                "<ReferenceOutputAssembly>true</ReferenceOutputAssembly>");
         }
     }
 }

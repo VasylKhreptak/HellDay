@@ -13,12 +13,21 @@ namespace MoreMountains.NiceVibrations
     /// Bind pressed down, pressed continually and released actions to it from the inspector
     /// Handles mouse and multi touch
     /// </summary>
-    public class MMTouchButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler, ISubmitHandler
+    public class MMTouchButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler,
+        IPointerEnterHandler, ISubmitHandler
     {
         /// The different possible states for the button : 
         /// Off (default idle state), ButtonDown (button pressed for the first time), ButtonPressed (button being pressed), ButtonUp (button being released), Disabled (unclickable but still present on screen)
         /// ButtonDown and ButtonUp will only last one frame, the others will last however long you press them / disable them / do nothing
-        public enum ButtonStates { Off, ButtonDown, ButtonPressed, ButtonUp, Disabled }
+        public enum ButtonStates
+        {
+            Off,
+            ButtonDown,
+            ButtonPressed,
+            ButtonUp,
+            Disabled
+        }
+
         [Header("Binding")]
         /// The method(s) to call when the button gets pressed down
         public UnityEvent ButtonPressedFirstTime;
@@ -113,6 +122,7 @@ namespace MoreMountains.NiceVibrations
                 _canvasGroup.alpha = _initialOpacity;
                 _initialOpacity = _canvasGroup.alpha;
             }
+
             ResetButton();
         }
 
@@ -133,6 +143,7 @@ namespace MoreMountains.NiceVibrations
                             if (HighlightedSprite != null)
                                 _image.sprite = HighlightedSprite;
                     }
+
                     break;
 
                 case ButtonStates.Disabled:
@@ -155,6 +166,7 @@ namespace MoreMountains.NiceVibrations
                         if (PressedSprite != null) _image.sprite = PressedSprite;
                         if (PressedChangeColor) _image.color = PressedColor;
                     }
+
                     break;
 
                 case ButtonStates.ButtonUp:
@@ -165,7 +177,8 @@ namespace MoreMountains.NiceVibrations
             if (_image != null && PressedChangeColor)
                 if (Time.time - _lastStateChangeAt < LerpColorDuration)
                 {
-                    var t = LerpColorCurve.Evaluate(Remap(Time.time - _lastStateChangeAt, 0f, LerpColorDuration, 0f, 1f));
+                    var t = LerpColorCurve.Evaluate(
+                        Remap(Time.time - _lastStateChangeAt, 0f, LerpColorDuration, 0f, 1f));
                     _image.color = Color.Lerp(_fromColor, _toColor, t);
                 }
 
@@ -184,6 +197,7 @@ namespace MoreMountains.NiceVibrations
                 _toColor = _initialColor;
                 CurrentState = ButtonStates.Off;
             }
+
             if (CurrentState == ButtonStates.ButtonDown)
             {
                 _lastStateChangeAt = Time.time;
@@ -203,7 +217,8 @@ namespace MoreMountains.NiceVibrations
             if (CurrentState != ButtonStates.Off) return;
             CurrentState = ButtonStates.ButtonDown;
             _lastClickTimestamp = Time.time;
-            if (Time.timeScale != 0 && PressedFirstTimeDelay > 0) Invoke("InvokePressedFirstTime", PressedFirstTimeDelay);
+            if (Time.timeScale != 0 && PressedFirstTimeDelay > 0)
+                Invoke("InvokePressedFirstTime", PressedFirstTimeDelay);
             else ButtonPressedFirstTime.Invoke();
         }
 
@@ -262,6 +277,7 @@ namespace MoreMountains.NiceVibrations
         {
             if (!MouseMode) OnPointerUp(data);
         }
+
         /// <summary>
         /// OnEnable, we reset our button state
         /// </summary>
@@ -288,9 +304,12 @@ namespace MoreMountains.NiceVibrations
         protected virtual void UpdateAnimatorStates()
         {
             if (_animator == null) return;
-            if (DisabledAnimationParameterName != null) _animator.SetBool(DisabledAnimationParameterName, CurrentState == ButtonStates.Disabled);
-            if (PressedAnimationParameterName != null) _animator.SetBool(PressedAnimationParameterName, CurrentState == ButtonStates.ButtonPressed);
-            if (IdleAnimationParameterName != null) _animator.SetBool(IdleAnimationParameterName, CurrentState == ButtonStates.Off);
+            if (DisabledAnimationParameterName != null)
+                _animator.SetBool(DisabledAnimationParameterName, CurrentState == ButtonStates.Disabled);
+            if (PressedAnimationParameterName != null)
+                _animator.SetBool(PressedAnimationParameterName, CurrentState == ButtonStates.ButtonPressed);
+            if (IdleAnimationParameterName != null)
+                _animator.SetBool(IdleAnimationParameterName, CurrentState == ButtonStates.Off);
         }
 
         public virtual void OnSubmit(BaseEventData eventData)

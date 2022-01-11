@@ -40,7 +40,6 @@ public class GrassDestroy : MonoBehaviour
 
             PlayChagneStateAudio();
         }
-
     }
 
     private void SetGrassState(GrassState grass)

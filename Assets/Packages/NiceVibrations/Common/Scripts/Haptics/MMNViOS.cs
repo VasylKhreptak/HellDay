@@ -43,17 +43,49 @@ namespace MoreMountains.NiceVibrations
 			[DllImport ("__Internal")]
 			private static extern void MMNViOS_SoftImpactHaptic();
 #else
-        private static void MMNViOS_InstantiateFeedbackGenerators() { }
-        private static void MMNViOS_ReleaseFeedbackGenerators() { }
-        private static void MMNViOS_SelectionHaptic() { }
-        private static void MMNViOS_SuccessHaptic() { }
-        private static void MMNViOS_WarningHaptic() { }
-        private static void MMNViOS_FailureHaptic() { }
-        private static void MMNViOS_LightImpactHaptic() { }
-        private static void MMNViOS_MediumImpactHaptic() { }
-        private static void MMNViOS_HeavyImpactHaptic() { }
-        private static void MMNViOS_RigidImpactHaptic() { }
-        private static void MMNViOS_SoftImpactHaptic() { }
+        private static void MMNViOS_InstantiateFeedbackGenerators()
+        {
+        }
+
+        private static void MMNViOS_ReleaseFeedbackGenerators()
+        {
+        }
+
+        private static void MMNViOS_SelectionHaptic()
+        {
+        }
+
+        private static void MMNViOS_SuccessHaptic()
+        {
+        }
+
+        private static void MMNViOS_WarningHaptic()
+        {
+        }
+
+        private static void MMNViOS_FailureHaptic()
+        {
+        }
+
+        private static void MMNViOS_LightImpactHaptic()
+        {
+        }
+
+        private static void MMNViOS_MediumImpactHaptic()
+        {
+        }
+
+        private static void MMNViOS_HeavyImpactHaptic()
+        {
+        }
+
+        private static void MMNViOS_RigidImpactHaptic()
+        {
+        }
+
+        private static void MMNViOS_SoftImpactHaptic()
+        {
+        }
 #endif
         private static bool iOSHapticsInitialized = false;
 
@@ -133,9 +165,9 @@ namespace MoreMountains.NiceVibrations
             }
             else if (defaultToRegularVibrate)
             {
-                #if UNITY_IOS
+#if UNITY_IOS
 					Handheld.Vibrate();
-                #endif
+#endif
             }
         }
 
@@ -145,11 +177,11 @@ namespace MoreMountains.NiceVibrations
         /// <returns>The OSSDK version.</returns>
         public static string iOSSDKVersion()
         {
-            #if UNITY_IOS && !UNITY_EDITOR
+#if UNITY_IOS && !UNITY_EDITOR
 				            return Device.systemVersion;
-            #else
+#else
             return null;
-            #endif
+#endif
         }
 
         /// <summary>
@@ -159,7 +191,7 @@ namespace MoreMountains.NiceVibrations
         public static bool iOSHapticsSupported()
         {
             var hapticsSupported = false;
-            #if UNITY_IOS
+#if UNITY_IOS
 			    DeviceGeneration generation = Device.generation;
 			    if ((generation == DeviceGeneration.iPhone3G)
 			    || (generation == DeviceGeneration.iPhone3GS)
@@ -209,7 +241,7 @@ namespace MoreMountains.NiceVibrations
 			    {
 			        hapticsSupported = true;
 			    }
-            #endif
+#endif
             return hapticsSupported;
         }
     }

@@ -12,6 +12,8 @@ public class HealthBonusItem : MonoBehaviour
     private ObjectPooler _objectPooler;
     private float _healthValue;
 
+    public static Action onApply;
+
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
@@ -31,6 +33,8 @@ public class HealthBonusItem : MonoBehaviour
         if (_player && _player.gameObject.activeSelf &&
             Mathf.Approximately(_player.Health, _player.MAXHealth) == false)
         {
+            onApply?.Invoke();
+
             _player.SetHealth(_player.Health + _healthValue);
 
             SpawnHealEffects(_player);
@@ -47,6 +51,7 @@ public class HealthBonusItem : MonoBehaviour
         var healthPopup = _objectPooler.GetFromPool(_data.healthPopup, player.transform.position,
             Quaternion.identity);
 
-        if (healthPopup.TryGetComponent(out DamagePopup popup)) popup.Init("+" + ((int)_healthValue).ToString(), _data.popupColor);
+        if (healthPopup.TryGetComponent(out DamagePopup popup))
+            popup.Init("+" + ((int)_healthValue).ToString(), _data.popupColor);
     }
 }

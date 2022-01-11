@@ -10,7 +10,6 @@ namespace MoreMountains.NiceVibrations
     /// </summary>
     public class MMSpriteReplace : MonoBehaviour
     {
-
         [Header("Sprites")]
         /// the sprite to use when in the "on" state
         public Sprite OnSprite;
@@ -119,7 +118,6 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         protected virtual void SpriteOn()
         {
-
             if (_image != null) _image.sprite = OnSprite;
             if (_spriteRenderer != null) _spriteRenderer.sprite = OnSprite;
         }

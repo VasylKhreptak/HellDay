@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 7050687630367452698}
   - component: {fileID: 7587738914753718026}
   - component: {fileID: -2843719283107617371}
-  - component: {fileID: 7977788013707594839}
   - component: {fileID: -4295071656417762659}
   - component: {fileID: -674100370424033918}
   - component: {fileID: 9032498722071158958}
   - component: {fileID: 6298195858627969700}
   - component: {fileID: 3724761062090539420}
+  - component: {fileID: 5271949773085046173}
   m_Layer: 12
   m_Name: CautionSign
   m_TagString: Untagged
@@ -154,19 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 2992080162134271760}
   _data: {fileID: 11400000, guid: 966f87c3e9d4e89458d0d77654cd999d, type: 2}
---- !u!114 &7977788013707594839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2307197539075415080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309104cb8fc50c14d9ca7529885e33ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}
 --- !u!114 &-4295071656417762659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff771e79c16d674c8f025fa1f8c9c3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageableObject: {fileID: 7977788013707594839}
+  _damageableObject: {fileID: 5271949773085046173}
   _onBulletHitEvent: {fileID: 6298195858627969700}
 --- !u!114 &-674100370424033918
 MonoBehaviour:
@@ -208,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 2351040651910737050}
-  _damageableObject: {fileID: 7977788013707594839}
+  _damageableObject: {fileID: 5271949773085046173}
   _data: {fileID: 11400000, guid: 84efb89393ce4314992173ef0197ce6b, type: 2}
 --- !u!114 &6298195858627969700
 MonoBehaviour:
@@ -235,6 +222,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 2992080162134271760}
   _onBulletHitEvent: {fileID: 6298195858627969700}
   _data: {fileID: 11400000, guid: e485e65e079384d49b1bc822e0117ac2, type: 2}
+--- !u!114 &5271949773085046173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2307197539075415080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7a3c0c2b284987ad124eded6ea9f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: d6f6f1dda586c5e4e93be813195e9aa9, type: 2}

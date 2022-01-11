@@ -20,10 +20,8 @@ public class PlayerSitAndUpAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate, () =>
-        {
-            ControlSitAndUpAnimtion();
-        });
+        ConfigurableUpdate.StartUpdate(this, ref _configurableUpdate, _updateFramerate,
+            () => { ControlSitAndUpAnimtion(); });
     }
 
     private void OnDisable()

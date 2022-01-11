@@ -55,8 +55,6 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void ResetPlayState()
         {
-
-
         }
 
         protected virtual void OnEnable()

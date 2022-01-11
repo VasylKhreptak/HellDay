@@ -8,7 +8,7 @@ public class UI_RandomFlip : MonoBehaviour
     [Header("Preferences")]
     [SerializeField] private bool _x = true;
     [SerializeField] private bool _y = true;
-    
+
     private void OnEnable()
     {
         FlipRandomly();
@@ -16,14 +16,8 @@ public class UI_RandomFlip : MonoBehaviour
 
     private void FlipRandomly()
     {
-        if (_x)
-        {
-            _spriteRenderer.flipX = Extensions.Random.Bool();
-        }
+        if (_x) _spriteRenderer.flipX = Extensions.Random.Bool();
 
-        if (_y)
-        {
-            _spriteRenderer.flipY = Extensions.Random.Bool();
-        }
+        if (_y) _spriteRenderer.flipY = Extensions.Random.Bool();
     }
 }

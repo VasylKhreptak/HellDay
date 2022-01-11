@@ -12,13 +12,16 @@ namespace MoreMountains.NiceVibrations
     /// An attribute to conditionnally hide fields based on the current selection in an enum.
     /// Usage :  [MMNVEnumCondition("rotationMode", (int)RotationMode.LookAtTarget, (int)RotationMode.RotateToAngles)]
     /// </summary>
-    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
+    [AttributeUsage(
+        AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class | AttributeTargets.Struct,
+        Inherited = true)]
     public class MMNVEnumConditionAttribute : PropertyAttribute
     {
         public string ConditionEnum = "";
         public bool Hidden = false;
 
         private BitArray bitArray = new BitArray(32);
+
         public bool ContainsBitFlag(int enumValue)
         {
             return bitArray.Get(enumValue);
@@ -48,7 +51,8 @@ namespace MoreMountains.NiceVibrations
             GUI.enabled = previouslyEnabled;
         }
 
-        private bool GetConditionAttributeResult(MMNVEnumConditionAttribute enumConditionAttribute, SerializedProperty property)
+        private bool GetConditionAttributeResult(MMNVEnumConditionAttribute enumConditionAttribute,
+            SerializedProperty property)
         {
             var enabled = true;
             var propertyPath = property.propertyPath;
@@ -63,7 +67,8 @@ namespace MoreMountains.NiceVibrations
             }
             else
             {
-                Debug.LogWarning("No matching boolean found for ConditionAttribute in object: " + enumConditionAttribute.ConditionEnum);
+                Debug.LogWarning("No matching boolean found for ConditionAttribute in object: " +
+                                 enumConditionAttribute.ConditionEnum);
             }
 
             return enabled;

@@ -41,7 +41,8 @@ namespace MoreMountains.NiceVibrations
             Logo.Shaking = true;
             MMVibrationManager.AdvancedHapticPattern(DemoItems[index].AHAPFile.text,
                 DemoItems[index].WaveFormAsset.WaveForm.Pattern, DemoItems[index].WaveFormAsset.WaveForm.Amplitudes, -1,
-                DemoItems[index].RumbleWaveFormAsset.WaveForm.Pattern, DemoItems[index].RumbleWaveFormAsset.WaveForm.LowFrequencyAmplitudes,
+                DemoItems[index].RumbleWaveFormAsset.WaveForm.Pattern,
+                DemoItems[index].RumbleWaveFormAsset.WaveForm.LowFrequencyAmplitudes,
                 DemoItems[index].RumbleWaveFormAsset.WaveForm.HighFrequencyAmplitudes, -1,
                 HapticTypes.LightImpact, this);
             DemoItems[index].AssociatedSound.Play();
@@ -62,7 +63,6 @@ namespace MoreMountains.NiceVibrations
         public virtual void Test()
         {
             StartCoroutine(BackToIdle());
-
         }
 
         protected virtual void OnHapticsStopped()
@@ -80,12 +80,10 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void OnHapticsError()
         {
-
         }
 
         protected virtual void OnHapticsReset()
         {
-
         }
 
         protected virtual void OnEnable()

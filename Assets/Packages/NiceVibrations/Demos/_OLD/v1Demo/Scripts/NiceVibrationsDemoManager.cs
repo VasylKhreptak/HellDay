@@ -37,7 +37,8 @@ namespace MoreMountains.NiceVibrations
         /// </summary>
         protected virtual void DisplayInformation()
         {
-            if (MMVibrationManager.Android()) _platformString = "API version " + MMNVAndroid.AndroidSDKVersion().ToString();
+            if (MMVibrationManager.Android())
+                _platformString = "API version " + MMNVAndroid.AndroidSDKVersion().ToString();
             else if (MMVibrationManager.iOS()) _platformString = "iOS " + MMNViOS.iOSSDKVersion();
             else _platformString = Application.platform + ", not supported by Nice Vibrations for now.";
 

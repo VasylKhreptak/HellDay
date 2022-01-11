@@ -29,7 +29,7 @@ public class PlayerLegKick : MonoBehaviour
     {
         if (CanKick() == false) return;
 
-        GameObject[] atackedObjs = GetAttackedObjects();
+        var atackedObjs = GetAttackedObjects();
 
         if (atackedObjs == null) return;
 
@@ -65,17 +65,14 @@ public class PlayerLegKick : MonoBehaviour
 
     private GameObject[] GetAttackedObjects()
     {
-        Vector2 rayDir = new Vector2(PlayerFaceDirectionController.FaceDirection, 0);
+        var rayDir = new Vector2(PlayerFaceDirectionController.FaceDirection, 0);
         RaycastHit2D[] hits;
 
         hits = Physics2D.RaycastAll(_startKickTransform.position, rayDir, _kickLength, _layerMask);
-        
-        GameObject[] hitGameObjects = new GameObject[Mathf.Clamp(hits.Length,0, _maxHitObjects )];
-        
-        for (int i = 0; i < hitGameObjects.Length; i++)
-        {
-            hitGameObjects[i] = hits[i].collider.gameObject;
-        }
+
+        var hitGameObjects = new GameObject[Mathf.Clamp(hits.Length, 0, _maxHitObjects)];
+
+        for (var i = 0; i < hitGameObjects.Length; i++) hitGameObjects[i] = hits[i].collider.gameObject;
 
         return hitGameObjects;
     }

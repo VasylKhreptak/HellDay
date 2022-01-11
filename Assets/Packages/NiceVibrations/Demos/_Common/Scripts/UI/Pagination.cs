@@ -22,6 +22,7 @@ namespace MoreMountains.NiceVibrations
                 dotPrefab.name = "PaginationDot" + i;
                 _images.Add(dotPrefab.GetComponent<Image>());
             }
+
             foreach (var image in _images)
             {
                 image.color = InactiveColor;

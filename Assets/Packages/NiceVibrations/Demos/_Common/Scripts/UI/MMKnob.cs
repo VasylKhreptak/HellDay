@@ -104,11 +104,13 @@ namespace MoreMountains.NiceVibrations
             _pointerEventData = null;
             Dragging = false;
         }
+
         protected virtual Vector3 GetWorldPosition(Vector3 testPosition)
         {
             if (ParentCanvasRenderMode == RenderMode.ScreenSpaceCamera)
             {
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, testPosition, _canvas.worldCamera, out _workPosition);
+                RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform,
+                    testPosition, _canvas.worldCamera, out _workPosition);
                 return _canvas.transform.TransformPoint(_workPosition);
             }
             else

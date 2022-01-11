@@ -74,10 +74,7 @@ public class Minigun : WeaponCore, IWeapon
 
     private void FadeSpin()
     {
-        _minigunSpinTween = this.DOWait(1).OnComplete(() =>
-        {
-            _animator.SetBool(SpinTrigger, false);
-        });
+        _minigunSpinTween = this.DOWait(1).OnComplete(() => { _animator.SetBool(SpinTrigger, false); });
     }
 
     private void PlayAudioClip(AudioSource audioSource, AudioClip audioClip, bool loop = false)
@@ -89,8 +86,6 @@ public class Minigun : WeaponCore, IWeapon
 
     protected override IEnumerator Shoot()
     {
-        onShoot?.Invoke();
-
         _isShooting = true;
 
         PlayAudioClip(_audioSource, _shootSound, true);
@@ -99,8 +94,11 @@ public class Minigun : WeaponCore, IWeapon
 
         while (true)
         {
-            if (CanShoot()) ShootActions();
+            if (CanShoot())
+                ShootActions();
             else if (_playerAmmo.IsEmpty) StopShooting();
+
+            onShoot?.Invoke();
 
             yield return new WaitForSecondsRealtime(_shootDelay);
         }
