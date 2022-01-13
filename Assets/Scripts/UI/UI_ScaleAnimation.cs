@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -20,5 +21,10 @@ public class UI_ScaleAnimation : MonoBehaviour
 
         _rectTransform.localScale = _startScale;
         _scaleTween = _rectTransform.DOScale(_targetScale, _scaleDuration).SetEase(_scaleCurve);
+    }
+
+    private void OnDisable()
+    {
+        _scaleTween.Kill();
     }
 }

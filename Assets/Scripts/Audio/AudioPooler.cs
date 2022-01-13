@@ -45,8 +45,19 @@ public class AudioPooler : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        DontDestroyOnLoad(gameObject);
         
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+
+            return;
+        }
+
         FillTrackInfo();
 
         FillPool();

@@ -18,7 +18,7 @@ public class PlayerJumpAndLandAnimation : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerMovement.onJumped += OnPlayerJumped;
+        PlayerMovement.onJumped -= OnPlayerJumped;
     }
 
     private void OnPlayerJumped()
@@ -31,14 +31,13 @@ public class PlayerJumpAndLandAnimation : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (_playerJumped)
-        {
-            _animator.ResetTrigger(Jump);
-            _animator.SetTrigger(Landed);
+        if (_playerJumped == false) return;
 
-            _walkAudio.PlayStepSound();
+        _animator.ResetTrigger(Jump);
+        _animator.SetTrigger(Landed);
 
-            _playerJumped = false;
-        }
+        _walkAudio.PlayStepSound();
+
+        _playerJumped = false;
     }
 }

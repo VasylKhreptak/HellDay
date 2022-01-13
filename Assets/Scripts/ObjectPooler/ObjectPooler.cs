@@ -20,7 +20,17 @@ public class ObjectPooler : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         CreatePoolFolders();
 
@@ -68,9 +78,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
         var objectFromPool = _poolDictionary[pool].Dequeue();
-
-        Debug.Log(objectFromPool == null);
-
+        
         objectFromPool.transform.position = Position;
         objectFromPool.transform.rotation = Rotation;
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class BulletMuffAudio : MonoBehaviour
@@ -11,19 +12,26 @@ public class BulletMuffAudio : MonoBehaviour
 
     private AudioPooler _audioPooler;
     private Tilemap _tilemap;
-    private bool _playedAudio;
     private PlayerWeaponControl _playerWeaponControl;
-
-    private void Start()
+    
+    private bool _playedAudio;
+    
+    private void LoadReferences(Scene scene, LoadSceneMode mode)
     {
         _audioPooler = AudioPooler.Instance;
         _playerWeaponControl = GameAssets.Instance.playerWeaponControl;
         _tilemap = GameAssets.Instance.mainTilemap;
     }
 
-    private void OnEnable()
+    private void Awake()
     {
         _playedAudio = false;
+        SceneManager.sceneLoaded += LoadReferences;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= LoadReferences;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

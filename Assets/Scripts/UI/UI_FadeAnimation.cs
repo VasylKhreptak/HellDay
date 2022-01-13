@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -23,5 +24,10 @@ public class UI_FadeAnimation : MonoBehaviour
         _fadeTween = DOTween.To(() => { return _colorAdapter.color.a; },
             x => _colorAdapter.color = _colorAdapter.color.WithAlpha(x),
             _targetAlpha, _fadeDuration).SetEase(_fadeCurve);
+    }
+
+    private void OnDisable()
+    {
+        _fadeTween.Kill();
     }
 }

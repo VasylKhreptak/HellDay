@@ -5,7 +5,23 @@ public class GameStatistics : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private GameStatisticsData _data;
-    
+
+    private static GameStatistics Instance;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         StartCoroutine(PlayTimeCounterRoutine());
@@ -34,7 +50,7 @@ public class GameStatistics : MonoBehaviour
         WeaponCore.onShoot -= () => { _data.totalUsedAmmo++; };
         WeaponBonusItem.onTook -= () => { _data.changedWeapons++; };
         HealthBonusItem.onApply -= () => { _data.appliedBandages++; };
-        AmmoBonusItem.onApply += () => { _data.appliedAmmoBonuses++; };
+        AmmoBonusItem.onApply -= () => { _data.appliedAmmoBonuses++; };
     }
 
     private IEnumerator PlayTimeCounterRoutine()

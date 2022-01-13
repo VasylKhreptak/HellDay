@@ -28,6 +28,15 @@ public class FuelBarrel : ExplosiveObjectCore
     {
         _damageableObject.onTakeDamage += ControlSmokeAppearance;
     }
+    
+    public void OnDisable()
+    {
+        _damageableObject.onTakeDamage -= ControlSmokeAppearance;
+
+        if (gameObject.scene.isLoaded == false) return;
+
+        ExplodeActions();
+    }
 
     public void ControlSmokeAppearance(float damage)
     {
@@ -39,15 +48,6 @@ public class FuelBarrel : ExplosiveObjectCore
         _smoke.Play();
 
         yield return new WaitForSeconds(_fuelBarrelData.ExplodeDelay);
-
-        ExplodeActions();
-    }
-
-    public void OnDisable()
-    {
-        _damageableObject.onTakeDamage -= ControlSmokeAppearance;
-
-        if (gameObject.scene.isLoaded == false) return;
 
         ExplodeActions();
     }
