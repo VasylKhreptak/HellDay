@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class GameStatistics : MonoBehaviour
 {
     [Header("Data")]
     [SerializeField] private GameStatisticsData _data;
-
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
+    
     private void Start()
     {
         StartCoroutine(PlayTimeCounterRoutine());

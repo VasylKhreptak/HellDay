@@ -16,7 +16,6 @@ public class ObjectPooler : MonoBehaviour
     private Dictionary<Pools, Queue<GameObject>> _poolDictionary;
     [SerializeField] private List<Pool> _pools;
 
-
     public static ObjectPooler Instance;
 
     private void Awake()
@@ -60,7 +59,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    public GameObject GetFromPool(Pools pool, Vector2 Position, Quaternion Rotation)
+    public GameObject GetFromPool(Pools pool, Vector3 Position, Quaternion Rotation)
     {
         if (_poolDictionary.ContainsKey(pool) == false)
         {
@@ -70,10 +69,15 @@ public class ObjectPooler : MonoBehaviour
 
         var objectFromPool = _poolDictionary[pool].Dequeue();
 
+        Debug.Log(objectFromPool == null);
+
         objectFromPool.transform.position = Position;
         objectFromPool.transform.rotation = Rotation;
 
-        if (objectFromPool.activeSelf) objectFromPool.SetActive(false);
+        if (objectFromPool.activeSelf)
+        {
+            objectFromPool.SetActive(false);
+        }
 
         objectFromPool.SetActive(true);
 
