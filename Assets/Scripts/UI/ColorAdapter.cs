@@ -2,5 +2,5 @@ using UnityEngine;
 
 public abstract class ColorAdapter : MonoBehaviour
 {
-    public abstract Color color { get; set; }
+    public abstract UnityEngine.Color color { get; set; }
 }

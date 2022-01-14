@@ -41,7 +41,7 @@ namespace DG.Tweening
         /// <summary>Tweens an Graphic's color to the given value.
         /// Also stores the image as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOColor(this Graphic target, Color endValue,
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOColor(this Graphic target, UnityEngine.Color endValue,
             float duration)
         {
             var t = DOTween.To(() => target.color, x => target.color = x, endValue, duration);
@@ -52,7 +52,7 @@ namespace DG.Tweening
         /// <summary>Tweens an Graphic's alpha color to the given value.
         /// Also stores the image as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOFade(this Graphic target, float endValue,
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOFade(this Graphic target, float endValue,
             float duration)
         {
             var t = DOTween.ToAlpha(() => target.color, x => target.color = x, endValue, duration);
@@ -67,7 +67,7 @@ namespace DG.Tweening
         /// <summary>Tweens an Image's color to the given value.
         /// Also stores the image as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOColor(this Image target, Color endValue, float duration)
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOColor(this Image target, UnityEngine.Color endValue, float duration)
         {
             var t = DOTween.To(() => target.color, x => target.color = x, endValue, duration);
             t.SetTarget(target);
@@ -77,7 +77,7 @@ namespace DG.Tweening
         /// <summary>Tweens an Image's alpha color to the given value.
         /// Also stores the image as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOFade(this Image target, float endValue, float duration)
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOFade(this Image target, float endValue, float duration)
         {
             var t = DOTween.ToAlpha(() => target.color, x => target.color = x, endValue, duration);
             t.SetTarget(target);
@@ -184,7 +184,7 @@ namespace DG.Tweening
         /// <summary>Tweens a Outline's effectColor to the given value.
         /// Also stores the Outline as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOColor(this Outline target, Color endValue,
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOColor(this Outline target, UnityEngine.Color endValue,
             float duration)
         {
             var t = DOTween.To(() => target.effectColor, x => target.effectColor = x, endValue, duration);
@@ -195,7 +195,7 @@ namespace DG.Tweening
         /// <summary>Tweens a Outline's effectColor alpha to the given value.
         /// Also stores the Outline as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOFade(this Outline target, float endValue,
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOFade(this Outline target, float endValue,
             float duration)
         {
             var t = DOTween.ToAlpha(() => target.effectColor, x => target.effectColor = x, endValue, duration);
@@ -543,7 +543,7 @@ namespace DG.Tweening
         /// <summary>Tweens a Text's color to the given value.
         /// Also stores the Text as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOColor(this Text target, Color endValue, float duration)
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOColor(this Text target, UnityEngine.Color endValue, float duration)
         {
             var t = DOTween.To(() => target.color, x => target.color = x, endValue, duration);
             t.SetTarget(target);
@@ -579,7 +579,7 @@ namespace DG.Tweening
         /// <summary>Tweens a Text's alpha color to the given value.
         /// Also stores the Text as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The end value to reach</param><param name="duration">The duration of the tween</param>
-        public static TweenerCore<Color, Color, ColorOptions> DOFade(this Text target, float endValue, float duration)
+        public static TweenerCore<UnityEngine.Color, UnityEngine.Color, ColorOptions> DOFade(this Text target, float endValue, float duration)
         {
             var t = DOTween.ToAlpha(() => target.color, x => target.color = x, endValue, duration);
             t.SetTarget(target);
@@ -624,10 +624,10 @@ namespace DG.Tweening
         /// instead than fight each other as multiple DOColor would do.
         /// Also stores the Graphic as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The value to tween to</param><param name="duration">The duration of the tween</param>
-        public static Tweener DOBlendableColor(this Graphic target, Color endValue, float duration)
+        public static Tweener DOBlendableColor(this Graphic target, UnityEngine.Color endValue, float duration)
         {
             endValue = endValue - target.color;
-            var to = new Color(0, 0, 0, 0);
+            var to = new UnityEngine.Color(0, 0, 0, 0);
             return DOTween.To(() => to, x =>
                 {
                     var diff = x - to;
@@ -646,10 +646,10 @@ namespace DG.Tweening
         /// instead than fight each other as multiple DOColor would do.
         /// Also stores the Image as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The value to tween to</param><param name="duration">The duration of the tween</param>
-        public static Tweener DOBlendableColor(this Image target, Color endValue, float duration)
+        public static Tweener DOBlendableColor(this Image target, UnityEngine.Color endValue, float duration)
         {
             endValue = endValue - target.color;
-            var to = new Color(0, 0, 0, 0);
+            var to = new UnityEngine.Color(0, 0, 0, 0);
             return DOTween.To(() => to, x =>
                 {
                     var diff = x - to;
@@ -668,10 +668,10 @@ namespace DG.Tweening
         /// instead than fight each other as multiple DOColor would do.
         /// Also stores the Text as the tween's target so it can be used for filtered operations</summary>
         /// <param name="endValue">The value to tween to</param><param name="duration">The duration of the tween</param>
-        public static Tweener DOBlendableColor(this Text target, Color endValue, float duration)
+        public static Tweener DOBlendableColor(this Text target, UnityEngine.Color endValue, float duration)
         {
             endValue = endValue - target.color;
-            var to = new Color(0, 0, 0, 0);
+            var to = new UnityEngine.Color(0, 0, 0, 0);
             return DOTween.To(() => to, x =>
                 {
                     var diff = x - to;

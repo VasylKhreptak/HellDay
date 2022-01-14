@@ -13,7 +13,7 @@ public class OnTakeDamageColor : MonoBehaviour
     [SerializeField] private ObjectOnDamageColorData _data;
 
     private Sequence _seq;
-    private Color _previousColor;
+    private UnityEngine.Color _previousColor;
 
     private void Awake()
     {

@@ -61,7 +61,7 @@ public class ExplosiveObjectCore : MonoBehaviour
     {
         if (_transform == null) return;
 
-        Gizmos.color = Color.red;
+        Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawWireSphere(_transform.position, _explosiveObjData.ExplosionRadius);
     }
 }

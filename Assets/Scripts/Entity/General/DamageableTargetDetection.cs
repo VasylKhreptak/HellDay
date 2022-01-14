@@ -62,7 +62,7 @@ public class DamageableTargetDetection : TargetDetectionCore
     {
         if (_closestTarget == null) return;
 
-        Gizmos.color = Color.red;
+        Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawWireCube(_closestTarget.Transform.position,
             Vector2.one);
 

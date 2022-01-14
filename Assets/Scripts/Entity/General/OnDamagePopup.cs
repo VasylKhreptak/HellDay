@@ -37,7 +37,7 @@ public class OnDamagePopup : MonoBehaviour
             damagePopup.Init(((int)damage).ToString(), GetPopupColor(damage));
     }
 
-    private Color GetPopupColor(float damage)
+    private UnityEngine.Color GetPopupColor(float damage)
     {
         var clampedDamage = Mathf.Clamp(damage, _data.MINDamageColorValue, _data.MAXDamageColorValue);
 

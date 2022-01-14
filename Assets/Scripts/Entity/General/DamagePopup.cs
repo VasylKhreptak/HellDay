@@ -18,7 +18,7 @@ public class DamagePopup : MonoBehaviour
         _data.previousScale = _rectTransform.localScale;
     }
 
-    public void Init(string damage, Color color)
+    public void Init(string damage, UnityEngine.Color color)
     {
         _TMP.text = damage;
         _TMP.color = color;
@@ -30,7 +30,7 @@ public class DamagePopup : MonoBehaviour
 
         _rectTransform.localScale = _data.previousScale;
 
-        _TMP.color = _TMP.color.WithAlpha(0f);
+        _TMP.color =_TMP.color.WithAlpha(0f);
 
         _waitTween = this.DOWait(_data.Lifetime).OnComplete(() => { gameObject.SetActive(false); });
         _fadeTween = _TMP.DOFade(0, _data.Lifetime).SetEase(_data._alphaCurve);

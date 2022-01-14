@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectOnDamageColorData : ScriptableObject
 {
     [Header("Preferences")]
-    public Color onDamageColor;
+    public UnityEngine.Color onDamageColor;
     [SerializeField] private float _duration = 0.2f;
     private float _halfDuration;
     public float Duration => _duration;

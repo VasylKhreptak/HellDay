@@ -32,7 +32,7 @@ public class GroundChecker : MonoBehaviour
         origin1 = _transform.position - new Vector3(halfDistacneBtwnRays, 0);
         origin2 = _transform.position + new Vector3(halfDistacneBtwnRays, 0);
 
-        Gizmos.color = Color.green;
+        Gizmos.color = UnityEngine.Color.green;
         Gizmos.DrawRay(origin1, Vector3.down * _data.RayHeight);
         Gizmos.DrawRay(origin2, Vector3.down * _data.RayHeight);
     }

@@ -48,7 +48,7 @@ public class WalkAudio : MonoBehaviour
         var tilePos = _tilemap.WorldToCell(_transform.position -
                                            new Vector3(0, 1f, 0.0f));
 
-        Gizmos.color = Color.green;
+        Gizmos.color = UnityEngine.Color.green;
         Gizmos.DrawWireCube(_tilemap.CellToWorld(tilePos) + new Vector3(0.5f, 0.5f, 0), Vector3.one);
     }
 }

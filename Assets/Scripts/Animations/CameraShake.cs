@@ -58,7 +58,7 @@ public class CameraShake : MonoBehaviour
     {
         if (_transform == null) return;
 
-        Gizmos.color = Color.green;
+        Gizmos.color = UnityEngine.Color.green;
         Gizmos.DrawWireSphere(_transform.position, _maxSourceRange);
     }
 }

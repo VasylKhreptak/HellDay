@@ -69,7 +69,7 @@ public class BulletMuffAudio : MonoBehaviour
     {
         if (_transform == null) return;
 
-        Gizmos.color = Color.green;
+        Gizmos.color = UnityEngine.Color.green;
         Gizmos.DrawLine(_transform.position, _transform.position - new Vector3(0, _data.TileDetectLength, 0));
     }
 }

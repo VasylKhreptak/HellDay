@@ -10,7 +10,7 @@ public class AdaptedTMP_Text : ColorAdapter
         _adaptee = adaptee;
     }
 
-    public override Color color
+    public override UnityEngine.Color color
     {
         get => _adaptee.color;
         set => _adaptee.color = value;

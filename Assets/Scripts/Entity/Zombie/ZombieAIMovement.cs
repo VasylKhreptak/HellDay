@@ -165,10 +165,10 @@ public class ZombieAIMovement : AIMovementCore
 
     protected void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.magenta;
+        Gizmos.color = UnityEngine.Color.magenta;
         Gizmos.DrawWireSphere(_transform.position, _mainDetectionRadius);
 
-        Gizmos.color = Color.yellow;
+        Gizmos.color = UnityEngine.Color.yellow;
         Gizmos.DrawWireSphere(_transform.position, _movementData.AudioDetectionRadius);
     }
 }

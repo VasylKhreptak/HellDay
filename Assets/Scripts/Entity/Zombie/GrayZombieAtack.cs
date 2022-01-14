@@ -41,7 +41,7 @@ public class GrayZombieAtack : CommonZombieAtack
     {
         base.OnDrawGizmosSelected();
 
-        Gizmos.color = Color.green;
+        Gizmos.color = UnityEngine.Color.green;
         Gizmos.DrawWireSphere(_transform.position, _grayZombieData.MAXJumpRadius);
         Gizmos.DrawWireSphere(_transform.position, _grayZombieData.MINJumpRadius);
     }

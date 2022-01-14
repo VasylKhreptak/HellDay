@@ -12,7 +12,7 @@ public class HealthBonusItemData : BonusItemData
     public Pools healthPopup = Pools.DamagePopup;
 
     [Header("Popup Color")]
-    public Color popupColor = Color.green;
+    public UnityEngine.Color popupColor = UnityEngine.Color.green;
 
     public float MINHealth => _minHealth;
     public float MAXHealth => _maxHealth;

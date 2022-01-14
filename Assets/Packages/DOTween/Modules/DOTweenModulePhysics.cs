@@ -153,7 +153,7 @@ namespace DG.Tweening
         /// <param name="gizmoColor">The color of the path (shown when gizmos are active in the Play panel and the tween is running)</param>
         public static TweenerCore<Vector3, Path, PathOptions> DOPath(
             this Rigidbody target, Vector3[] path, float duration, PathType pathType = PathType.Linear,
-            PathMode pathMode = PathMode.Full3D, int resolution = 10, Color? gizmoColor = null
+            PathMode pathMode = PathMode.Full3D, int resolution = 10, UnityEngine.Color? gizmoColor = null
         )
         {
             if (resolution < 1) resolution = 1;
@@ -180,7 +180,7 @@ namespace DG.Tweening
         /// <param name="gizmoColor">The color of the path (shown when gizmos are active in the Play panel and the tween is running)</param>
         public static TweenerCore<Vector3, Path, PathOptions> DOLocalPath(
             this Rigidbody target, Vector3[] path, float duration, PathType pathType = PathType.Linear,
-            PathMode pathMode = PathMode.Full3D, int resolution = 10, Color? gizmoColor = null
+            PathMode pathMode = PathMode.Full3D, int resolution = 10, UnityEngine.Color? gizmoColor = null
         )
         {
             if (resolution < 1) resolution = 1;

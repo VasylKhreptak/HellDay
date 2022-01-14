@@ -81,7 +81,7 @@ public class PlayerLegKick : MonoBehaviour
     {
         if (_startKickTransform == null) return;
 
-        Gizmos.color = Color.green;
+        Gizmos.color = UnityEngine.Color.green;
         Gizmos.DrawLine(_startKickTransform.position, _startKickTransform.position + new Vector3(_kickLength, 0, 0));
     }
 }

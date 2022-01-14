@@ -8,5 +8,8 @@ public class GreenZombieAtackData : ZombieAtackCoreData
 
     public LayerMask environmentLayerMask;
 
+    [Header("Explosion preferences")]
+    public Pools explodeParticle = Pools.GreenZombieExplosion;
+    
     public float ExplosionRadius => _explosionRadius;
 }

@@ -118,7 +118,7 @@ public class PlayerStripesAnimation : MonoBehaviour
         if (_transform == null || _upTransform == null ||
             _middleTransform == null || _bottomTransform == null) return;
 
-        Gizmos.color = Color.red;
+        Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawLine(_transform.position, _upTransform.position);
         Gizmos.DrawLine(_transform.position, _middleTransform.position);
         Gizmos.DrawLine(_transform.position, _bottomTransform.position);

@@ -187,7 +187,7 @@ public class HumanAIMovement : AIMovementCore
     {
         if (_transform == null) return;
 
-        Gizmos.color = Color.red;
+        Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawWireSphere(_transform.position, _movementData.DetectionRadius);
 
         if (_commonTargetDetectin.ClosestTarget == null) return;

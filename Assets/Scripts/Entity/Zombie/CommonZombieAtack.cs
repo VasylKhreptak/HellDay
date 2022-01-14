@@ -38,7 +38,7 @@ public class CommonZombieAtack : ZombieAtackCore
     {
         if (_atackCenter == null) return;
 
-        Gizmos.color = Color.red;
+        Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawWireSphere(_atackCenter.position, _commonZombieData.BiteRadius);
     }
 }
