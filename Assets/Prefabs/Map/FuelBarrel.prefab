@@ -159,8 +159,8 @@ MonoBehaviour:
   _transform: {fileID: 2332932505156407063}
   _explosiveObjData: {fileID: 11400000, guid: 0ecb8988479863e478b07eafa9b2fd5a, type: 2}
   _damageableObject: {fileID: 4834108193137379625}
-  _smoke: {fileID: 857037403123436573}
   _fuelBarrelData: {fileID: 11400000, guid: 9432ebf8e73433b4f8e08564c10f56b8, type: 2}
+  _smokeObj: {fileID: 1091612463960333699}
 --- !u!114 &8510690795750098952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,19 +377,23 @@ PrefabInstance:
       propertyPath: looping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6989260779262445024, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7222707960136979582, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
       propertyPath: m_Name
       value: FuelBarrelSmoke
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+--- !u!1 &1091612463960333699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7222707960136979582, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
+  m_PrefabInstance: {fileID: 7717508810803726845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4558552942433850535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6077927519283289434, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
-  m_PrefabInstance: {fileID: 7717508810803726845}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &857037403123436573 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6989260779262445024, guid: 6342d4e18b17b6242821e82405e6b3b0, type: 3}
   m_PrefabInstance: {fileID: 7717508810803726845}
   m_PrefabAsset: {fileID: 0}

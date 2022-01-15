@@ -7,17 +7,22 @@ public class FuelBarrel : ExplosiveObjectCore
     [Header("References")]
     [SerializeField] private DamageableObject _damageableObject;
 
-    [Header("Smoke Preferences")]
-    [SerializeField] private ParticleSystem _smoke;
 
     [Header("Fuel Barrel Data")]
     [SerializeField] private FuelBarrelData _fuelBarrelData;
 
-    private GameObject _smokeObj;
+    [Header("Preferences")]
+    [SerializeField] private GameObject _smokeObj;
+
     private bool _isSmokeSpawned;
     private float _percentagedHealth;
 
     public static Action onExplode;
+
+    private void Awake()
+    {
+        _smokeObj.SetActive(false);
+    }
 
     private void Start()
     {
@@ -28,24 +33,31 @@ public class FuelBarrel : ExplosiveObjectCore
     {
         _damageableObject.onTakeDamage += ControlSmokeAppearance;
     }
-    
+
     public void OnDisable()
     {
         _damageableObject.onTakeDamage -= ControlSmokeAppearance;
 
-        if (gameObject.scene.isLoaded == false) return;
+        if (gameObject.scene.isLoaded == false)
+            return;
 
         ExplodeActions();
     }
 
     public void ControlSmokeAppearance(float damage)
     {
-        if (_damageableObject.Health < _percentagedHealth) StartCoroutine(SmokeRoutine());
+        if (_damageableObject.Health < _percentagedHealth &&
+            _isSmokeSpawned == false)
+        {
+            _isSmokeSpawned = true;
+            
+            StartCoroutine(SmokeRoutine());
+        }
     }
 
     private IEnumerator SmokeRoutine()
     {
-        _smoke.Play();
+        _smokeObj.SetActive(true);
 
         yield return new WaitForSeconds(_fuelBarrelData.ExplodeDelay);
 
@@ -54,7 +66,8 @@ public class FuelBarrel : ExplosiveObjectCore
 
     private void DisableSmoke()
     {
-        if (_smokeObj == null) return;
+        if (_smokeObj == null)
+            return;
 
         _smokeObj.SetActive(false);
     }

@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
 
     public static Action onJumped;
 
+    private void EnableMovement() => _canMove = true;
+    private void DisableMovement() => _canMove = false;
+
     private void Awake()
     {
         _previousMaxHorVelocity = _maxHorVelocity;
@@ -34,15 +37,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerSitAndUpAnimation.onGetUp += () => { _canMove = true; };
-        PlayerSitAndUpAnimation.onSitDown += () => { _canMove = false; };
+        PlayerSitAndUpAnimation.onGetUp += EnableMovement;
+        PlayerSitAndUpAnimation.onSitDown += DisableMovement;
         PlayerWeaponControl.onImpactMovement += ImpactMovement;
     }
 
     private void OnDisable()
     {
-        PlayerSitAndUpAnimation.onGetUp -= () => { _canMove = true; };
-        PlayerSitAndUpAnimation.onSitDown -= () => { _canMove = false; };
+        PlayerSitAndUpAnimation.onGetUp -= EnableMovement;
+        PlayerSitAndUpAnimation.onSitDown -= DisableMovement;
         PlayerWeaponControl.onImpactMovement -= ImpactMovement;
     }
 
@@ -62,7 +65,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_joystick.Horizontal == 0 || _canMove == false || PlayerLegKickAnimation.IsPlaying) return;
+        if (_joystick.Horizontal == 0 ||
+            _canMove == false ||
+            PlayerLegKickAnimation.IsPlaying)
+            return;
 
         HorizontalMovement();
 
@@ -80,7 +86,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void VerticalMovement()
     {
-        if (CanJump()) Jump();
+        if (CanJump())
+            Jump();
     }
 
     private void Jump()
@@ -96,7 +103,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool CanJump()
     {
-        if (_isJumpForbidden) return false;
+        if (_isJumpForbidden)
+            return false;
 
         return _joystick.Vertical > _verticalSensetivity && _groundChecker.IsGrounded() &&
                LadderMovement.isOnLadder == false;

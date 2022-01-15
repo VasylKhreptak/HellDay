@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStatistics : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class GameStatistics : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 
     private void Start()
@@ -29,35 +31,47 @@ public class GameStatistics : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.onDie += () => { _data.deaths++; };
-        Zombie.onDeath += () => { _data.killedZombies++; };
-        FuelBarrel.onExplode += () => { _data.explodedFuelBarrels++; };
-        Animal.onDeath += () => { _data.killedAnimals++; };
-        PhysicalObject.onDestroy += () => { _data.destroyedPhysicalObjects++; };
-        WeaponCore.onShoot += () => { _data.totalUsedAmmo++; };
-        WeaponBonusItem.onTook += () => { _data.changedWeapons++; };
-        HealthBonusItem.onApply += () => { _data.appliedBandages++; };
-        AmmoBonusItem.onApply += () => { _data.appliedAmmoBonuses++; };
+        SceneManager.sceneLoaded += AddListeners;
+        SceneManager.sceneUnloaded += RemoveListeners;
     }
 
     private void OnDisable()
     {
-        Player.onDie -= () => { _data.deaths++; };
-        Zombie.onDeath -= () => { _data.killedZombies++; };
-        FuelBarrel.onExplode -= () => { _data.explodedFuelBarrels++; };
-        Animal.onDeath -= () => { _data.killedAnimals++; };
-        PhysicalObject.onDestroy -= () => { _data.destroyedPhysicalObjects++; };
-        WeaponCore.onShoot -= () => { _data.totalUsedAmmo++; };
-        WeaponBonusItem.onTook -= () => { _data.changedWeapons++; };
-        HealthBonusItem.onApply -= () => { _data.appliedBandages++; };
-        AmmoBonusItem.onApply -= () => { _data.appliedAmmoBonuses++; };
+        SceneManager.sceneLoaded -= AddListeners;
+        SceneManager.sceneUnloaded -= RemoveListeners;
+    }
+
+    private void AddListeners(Scene scene, LoadSceneMode mode)
+    {
+        Player.onDie += _data.IncPlayerDeaths;
+        Zombie.onDeath += _data.IncKilledZombies;
+        FuelBarrel.onExplode += _data.IncExplodedBarrels;
+        Animal.onDeath += _data.IncKilledAnimals;
+        PhysicalObject.onDestroy += _data.IncDestroyedPhysicalObjects;
+        WeaponCore.onShoot += _data.IncUsedAmmo;
+        WeaponBonusItem.onTook += _data.IncChangedWeapons;
+        HealthBonusItem.onApply += _data.IncAppliedBandages;
+        AmmoBonusItem.onApply += _data.IncAppliedAmmoBonuses;
+    }
+
+    private void RemoveListeners(Scene scene)
+    {
+        Player.onDie -= _data.IncPlayerDeaths;
+        Zombie.onDeath -= _data.IncKilledZombies;
+        FuelBarrel.onExplode -= _data.IncExplodedBarrels;
+        Animal.onDeath -= _data.IncKilledAnimals;
+        PhysicalObject.onDestroy -= _data.IncDestroyedPhysicalObjects;
+        WeaponCore.onShoot -= _data.IncUsedAmmo;
+        WeaponBonusItem.onTook -= _data.IncChangedWeapons;
+        HealthBonusItem.onApply -= _data.IncAppliedBandages;
+        AmmoBonusItem.onApply -= _data.IncAppliedAmmoBonuses;
     }
 
     private IEnumerator PlayTimeCounterRoutine()
     {
         while (true)
         {
-            _data.playTime += 1;
+            _data.IncPlayTime();
 
             yield return new WaitForSeconds(1f);
         }
