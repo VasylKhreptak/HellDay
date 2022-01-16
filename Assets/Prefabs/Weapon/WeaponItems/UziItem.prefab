@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -1647486761995717894}
   - component: {fileID: 5007802055032710270}
   - component: {fileID: 1392225055886328798}
+  - component: {fileID: -3212005916670248324}
   m_Layer: 0
   m_Name: UziItem
   m_TagString: Untagged
@@ -170,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 419d7067a404f4a44b81bc36be5ecb32, type: 2}
   _weapon: {fileID: 3990610599738284175}
+  _onCollisionWithPlayerEvent: {fileID: -3212005916670248324}
   _minAmmo: 40
   _maxAmmo: 120
 --- !u!114 &8150079230491154423
@@ -239,6 +241,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 3315356953291174459}
   _onBulletHitEvent: {fileID: 5007802055032710270}
   _data: {fileID: 11400000, guid: a55b21e741984bc40916956e4e3595d9, type: 2}
+--- !u!114 &-3212005916670248324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665631738911750275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167c289830a2b054cad3cc0231edd986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 37c5b605f4318f6428ad0ccf81f4bb68, type: 2}

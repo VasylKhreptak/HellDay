@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3670401215029178893}
   - component: {fileID: 3670401215029178894}
   - component: {fileID: 4103401361379493032}
+  - component: {fileID: 2658499181186312972}
   m_Layer: 0
   m_Name: HealthBonusItem
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 4497375752756908399, guid: 97e9b9f01b8d3f542888c1eab4f54a73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e29976714062341bf6b095ca813df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _onCollisionWithPlayerEvent: {fileID: 2658499181186312972}
   _data: {fileID: 11400000, guid: 34aef32f726c668449bdc383075b588c, type: 2}
 --- !u!114 &4103401361379493032
 MonoBehaviour:
@@ -161,3 +163,16 @@ MonoBehaviour:
   _transform: {fileID: 3670401215029178898}
   _audioClips:
   - {fileID: 8300000, guid: d19fc05d0c616ed4d80a42b106b06318, type: 3}
+--- !u!114 &2658499181186312972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670401215029178895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167c289830a2b054cad3cc0231edd986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 37c5b605f4318f6428ad0ccf81f4bb68, type: 2}

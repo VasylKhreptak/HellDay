@@ -18,8 +18,10 @@ public class DestroyAudio : MonoBehaviour
 
     private void OnDisable()
     {
-        if (gameObject.scene.isLoaded)
-            _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _audioClips.Random(), _transform.position,
-                1f, 1f);
+        if (gameObject.scene.isLoaded == false)
+            return;
+
+        _audioPooler.PlayOneShootSound(AudioMixerGroups.VFX, _audioClips.Random(), _transform.position,
+            1f, 1f);
     }
 }

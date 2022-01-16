@@ -1,11 +1,12 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "HealthBonusItemData", menuName = "ScriptableObjects/HealthBonusItemData")]
-public class HealthBonusItemData : BonusItemData
+public class HealthBonusItemData : ScriptableObject
 {
     [Header("Preferences")]
     [SerializeField] private float _minHealth = 10f;
     [SerializeField] private float _maxHealth = 40f;
+    [SerializeField] private float _applyDelay = 1f;
 
     [Header("Apply effect")]
     public Pools applyEffect;
@@ -16,4 +17,5 @@ public class HealthBonusItemData : BonusItemData
 
     public float MINHealth => _minHealth;
     public float MAXHealth => _maxHealth;
+    public float ApplyDelay => _applyDelay;
 }

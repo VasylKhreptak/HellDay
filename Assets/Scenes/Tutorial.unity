@@ -72489,7 +72489,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.3994334, y: 1}
+    m_SensorSize: {x: 2.4005666, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -97036,10 +97036,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.27130133, y: -0.003237456}
+    - - {x: -0.27130133, y: -0.005977456}
       - {x: -0.12853569, y: -0.03318894}
       - {x: 0.19583952, y: -0.032402754}
-      - {x: 0.32641697, y: -0.0041335225}
+      - {x: 0.32641697, y: -0.006933523}
 --- !u!114 &2021404587
 MonoBehaviour:
   m_ObjectHideFlags: 0

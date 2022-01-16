@@ -1,10 +1,14 @@
 using System;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class HealthBonusItem : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private OnCollisionWithPlayerEvent _onCollisionWithPlayerEvent;
+    
     [Header("Data")]
     [SerializeField] private HealthBonusItemData _data;
 
@@ -14,6 +18,8 @@ public class HealthBonusItem : MonoBehaviour
 
     public static Action onApply;
 
+    private bool _canApply = true;
+
     private void Start()
     {
         _objectPooler = ObjectPooler.Instance;
@@ -22,15 +28,24 @@ public class HealthBonusItem : MonoBehaviour
     private void OnEnable()
     {
         _healthValue = Random.Range(_data.MINHealth, _data.MAXHealth);
+
+        _onCollisionWithPlayerEvent.onCollision += ProcessCollisionWithPlayer;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnDisable()
     {
-        if (_data.playerLayerMask.ContainsLayer(other.gameObject.layer) == false) return;
+        _onCollisionWithPlayerEvent.onCollision -= ProcessCollisionWithPlayer;
+    }
 
-        if (_player == null) other.gameObject.TryGetComponent(out _player);
+    private void ProcessCollisionWithPlayer(Collision2D col)
+    {
+        if (_canApply == false)
+            return;
 
-        if (_player && _player.gameObject.activeSelf &&
+        col.gameObject.TryGetComponent(out _player);
+
+        if (_player &&
+            _player.gameObject.activeSelf &&
             Mathf.Approximately(_player.Health, _player.MAXHealth) == false)
         {
             onApply?.Invoke();
@@ -38,9 +53,17 @@ public class HealthBonusItem : MonoBehaviour
             _player.SetHealth(_player.Health + _healthValue);
 
             SpawnHealEffects(_player);
+            
+            ControlApplySpeed();
 
             gameObject.SetActive(false);
         }
+    }
+
+    private void ControlApplySpeed()
+    {
+        _canApply = false;
+        this.DOWait(_data.ApplyDelay).OnComplete(() => { _canApply = true; });
     }
 
     private void SpawnHealEffects(Player player)

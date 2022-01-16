@@ -7,7 +7,6 @@ public class FuelBarrel : ExplosiveObjectCore
     [Header("References")]
     [SerializeField] private DamageableObject _damageableObject;
 
-
     [Header("Fuel Barrel Data")]
     [SerializeField] private FuelBarrelData _fuelBarrelData;
 
@@ -44,7 +43,7 @@ public class FuelBarrel : ExplosiveObjectCore
         ExplodeActions();
     }
 
-    public void ControlSmokeAppearance(float damage)
+    private void ControlSmokeAppearance(float damage)
     {
         if (_damageableObject.Health < _percentagedHealth &&
             _isSmokeSpawned == false)

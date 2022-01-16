@@ -14,7 +14,7 @@ public class SpikesInteract : MonoBehaviour
     private Coroutine _damageCoroutine;
     private ObjectPooler _objectPooler;
     private AudioPooler _audioPooler;
-
+    
     private void Start()
     {
         _audioPooler = AudioPooler.Instance;
@@ -23,20 +23,30 @@ public class SpikesInteract : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Spikes")) StartDamage();
+        if (other.CompareTag("Spikes") &&
+            gameObject.activeSelf)
+        {
+            StartDamaging();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        StopDamage();
+        if (other.CompareTag("Spikes"))
+        {
+            StopDamaging();
+        }
     }
 
-    private void StartDamage()
+    private void StartDamaging()
     {
-        if (_damageCoroutine == null) _damageCoroutine = StartCoroutine(DamageRoutine());
+        if (_damageCoroutine == null)
+        {
+            _damageCoroutine = StartCoroutine(DamageRoutine());
+        }
     }
 
-    private void StopDamage()
+    private void StopDamaging()
     {
         if (_damageCoroutine != null)
         {

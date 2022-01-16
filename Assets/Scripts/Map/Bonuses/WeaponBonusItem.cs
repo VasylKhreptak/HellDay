@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class WeaponBonusItem : MonoBehaviour
@@ -10,6 +11,7 @@ public class WeaponBonusItem : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private Weapon _weapon;
+    [SerializeField] private OnCollisionWithPlayerEvent _onCollisionWithPlayerEvent;
 
     [Header("Preferences")]
     [SerializeField] private int _minAmmo = 40;
@@ -23,24 +25,54 @@ public class WeaponBonusItem : MonoBehaviour
 
     private Tween _waitTween;
 
-    private void Start()
+    private void Awake()
     {
-        _playerWeaponControl = GameAssets.Instance.playerWeaponControl;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
     }
 
     private void OnEnable()
     {
+        ConfigureSwapSpeed();
+        
         _weapon.playerAmmo.SetAmmo(Random.Range(_minAmmo, _maxAmmo));
 
-        ConfigureSwapSpeed();
+        _onCollisionWithPlayerEvent.onCollision += ProcessCollisionWithPlayer;
     }
 
-    private void OnCollisionEnter2D(Collision2D player)
+    private void OnDisable()
     {
-        if (_data.playerLayerMask.ContainsLayer(player.gameObject.layer) == false ||
-            _canSwap == false) return;
+        _waitTween.Kill();
+        
+        _onCollisionWithPlayerEvent.onCollision -= ProcessCollisionWithPlayer;
+    }
 
-        if (player.gameObject.activeSelf)
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ReloadReferences();
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        ReloadReferences();
+    }
+
+    private void ReloadReferences()
+    {
+        _playerWeaponControl = GameAssets.Instance.playerWeaponControl;
+    }
+    
+    private void ProcessCollisionWithPlayer(Collision2D other)
+    {
+        if (_canSwap == false ) return;
+
+        if (other.gameObject.activeSelf)
         {
             onTook?.Invoke();
 
@@ -57,10 +89,5 @@ public class WeaponBonusItem : MonoBehaviour
         _canSwap = false;
         _waitTween.Kill();
         _waitTween = this.DOWait(_data.SwapDelay).OnComplete(() => { _canSwap = true; });
-    }
-
-    private void OnDisable()
-    {
-        _waitTween.Kill();
     }
 }

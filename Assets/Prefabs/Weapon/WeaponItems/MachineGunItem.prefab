@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: -4061693654702539870}
   - component: {fileID: 6920078118774750463}
   - component: {fileID: -8369231816284671167}
+  - component: {fileID: 5392159860133709137}
   m_Layer: 0
   m_Name: MachineGunItem
   m_TagString: Untagged
@@ -170,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 419d7067a404f4a44b81bc36be5ecb32, type: 2}
   _weapon: {fileID: 2019471789815420121}
+  _onCollisionWithPlayerEvent: {fileID: 5392159860133709137}
   _minAmmo: 40
   _maxAmmo: 120
 --- !u!114 &4604613445435881645
@@ -239,6 +241,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea82ee9118b9404fb3f0f00fcbf8ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 8214794755279542285}
   _onBulletHitEvent: {fileID: 6920078118774750463}
   _data: {fileID: 11400000, guid: a55b21e741984bc40916956e4e3595d9, type: 2}
+--- !u!114 &5392159860133709137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059317982297807274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 167c289830a2b054cad3cc0231edd986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data: {fileID: 11400000, guid: 37c5b605f4318f6428ad0ccf81f4bb68, type: 2}
