@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectPooler : MonoBehaviour
 {
@@ -20,8 +21,11 @@ public class ObjectPooler : MonoBehaviour
 
     private void Awake()
     {
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+
+
         DontDestroyOnLoad(gameObject);
-        
+
         if (Instance == null)
         {
             Instance = this;
@@ -37,6 +41,10 @@ public class ObjectPooler : MonoBehaviour
         FillPool();
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
 
     private void CreatePoolFolders()
     {
@@ -78,7 +86,7 @@ public class ObjectPooler : MonoBehaviour
         }
 
         var objectFromPool = _poolDictionary[pool].Dequeue();
-        
+
         objectFromPool.transform.position = Position;
         objectFromPool.transform.rotation = Rotation;
 
@@ -92,5 +100,21 @@ public class ObjectPooler : MonoBehaviour
         _poolDictionary[pool].Enqueue(objectFromPool);
 
         return objectFromPool;
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        DisableAllObjects();
+    }
+
+    private void DisableAllObjects()
+    {
+        foreach (Transform poolFolder in transform)
+        {
+            foreach (Transform poolObjTransform in poolFolder)
+            {
+                poolObjTransform.gameObject.SetActive(false);
+            }
+        }
     }
 }

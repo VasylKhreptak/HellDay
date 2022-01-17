@@ -226,6 +226,9 @@ public class AudioPooler : MonoBehaviour
 
     private bool CanPlayAudio(Vector3 spawnPosition)
     {
+        if (_listenerTransform == null)
+            return false;
+        
         return Vector3.Distance(spawnPosition, _listenerTransform.position) < _maxSoundDistance;
     }
 }

@@ -16,6 +16,8 @@ public class ParticleFade : MonoBehaviour, IPooledObject
 
     public void OnEnable()
     {
+        _spriteRenderer.color = _spriteRenderer.color.WithAlpha(1f);
+        
         _currentLifetime = Random.Range(_data.MINLifetime, _data.MAXLifetime);
 
         StartCoroutine(FadeRoutine());
