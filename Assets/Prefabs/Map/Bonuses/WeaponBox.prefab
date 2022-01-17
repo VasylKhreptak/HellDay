@@ -339,20 +339,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 7108319023248761734}
   _lootItems:
+  - weapon: 38
+    weight: 80
   - weapon: 39
-    weight: 40
+    weight: 60
   - weapon: 40
-    weight: 40
-  - weapon: 41
     weight: 1
-  - weapon: 42
-    weight: 10
-  - weapon: 43
-    weight: 3
-  - weapon: 44
+  - weapon: 41
     weight: 15
-  - weapon: 45
-    weight: 8
+  - weapon: 42
+    weight: 3
+  - weapon: 43
+    weight: 25
+  - weapon: 44
+    weight: 14
 --- !u!114 &2872726742636390066
 MonoBehaviour:
   m_ObjectHideFlags: 0

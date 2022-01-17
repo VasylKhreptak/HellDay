@@ -14,7 +14,7 @@ public class DamageableObject : MonoBehaviour, IDamageable
     public float Health => _health;
     public float MAXHealth => _data.MAXHealth;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         SetMaxHealth(_data.MAXHealth);
     }

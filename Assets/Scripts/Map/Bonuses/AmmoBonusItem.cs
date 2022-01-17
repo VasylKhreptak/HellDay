@@ -64,9 +64,7 @@ public class AmmoBonusItem : MonoBehaviour
             return;
 
         onApply?.Invoke();
-
-        Debug.Log("Took Ammo");
-
+        
         AssignAmmo(_playerWeaponControl.currentWeapon);
 
         ControlApplySpeed();

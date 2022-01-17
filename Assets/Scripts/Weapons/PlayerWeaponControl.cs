@@ -1,5 +1,4 @@
 using System;
-using Unity.Collections;
 using UnityEngine;
 
 public class PlayerWeaponControl : MonoBehaviour
@@ -53,7 +52,10 @@ public class PlayerWeaponControl : MonoBehaviour
 
         weaponObj.transform.localScale = _transform.localScale;
 
-        if (weaponObj.TryGetComponent(out PlayerAmmo playerAmmo)) playerAmmo.SetAmmo(currentWeapon.playerAmmo.Ammo);
+        if (weaponObj.TryGetComponent(out PlayerAmmo playerAmmo))
+        {
+            playerAmmo.SetAmmo(currentWeapon.playerAmmo.Ammo);
+        }
     }
 
     private void ImpactPlayerMovement(float percentage)

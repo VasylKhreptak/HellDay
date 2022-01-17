@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FuelBarrel : ExplosiveObjectCore
@@ -25,9 +26,9 @@ public class FuelBarrel : ExplosiveObjectCore
 
     private void Start()
     {
-        _percentagedHealth = _damageableObject.Health * (_fuelBarrelData.HealthPercentage / 100f);
+        _percentagedHealth = _damageableObject.Health * _fuelBarrelData.HealthPercentage / 100f;
     }
-
+    
     private void OnEnable()
     {
         _damageableObject.onTakeDamage += ControlSmokeAppearance;
@@ -59,6 +60,8 @@ public class FuelBarrel : ExplosiveObjectCore
         _smokeObj.SetActive(true);
 
         yield return new WaitForSeconds(_fuelBarrelData.ExplodeDelay);
+
+        _isSmokeSpawned = false;
 
         ExplodeActions();
     }
