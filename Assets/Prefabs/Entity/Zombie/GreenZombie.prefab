@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: -9089097612350914268}
   - component: {fileID: 6411837123057971327}
   - component: {fileID: -2261378449690966742}
+  - component: {fileID: -1841268908738279058}
   m_Layer: 8
   m_Name: GreenZombie
   m_TagString: Zombie
@@ -427,20 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 7416989929528155681}
   _data: {fileID: 11400000, guid: d71c3135bed2a784196f2e554daf4b58, type: 2}
-  _damageableTargets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _damageableTargets: []
   _closestTarget: {fileID: 0}
   _findLayerMask:
     serializedVersion: 2
@@ -662,3 +650,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 6a356da6c6df95a42aac63c92849fb02, type: 2}
+--- !u!114 &-1841268908738279058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7416989929528155694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda564becb336d2488eef79f272e7ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 7416989929528155685}
+  _onBulletHitEvent: {fileID: 1924365669771130917}
+  _data: {fileID: 11400000, guid: 7187fc61307cae4439d8b2be21277991, type: 2}

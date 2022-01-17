@@ -22,6 +22,9 @@ public class OnBulletHitImpulse : MonoBehaviour
 
     private void ProcessCollision(Collision2D collision2D)
     {
+        Vector2 dir = collision2D.gameObject.transform.right;
         
+        _rigidbody2D.AddForceAtPosition(dir * _data.Impulse, 
+            collision2D.GetContact(0).point, ForceMode2D.Impulse);
     }
 }

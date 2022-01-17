@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 2294335549803244675}
   - component: {fileID: 6654636464745255055}
   - component: {fileID: -4327467807896415651}
+  - component: {fileID: -5863205661774769596}
   m_Layer: 9
   m_Name: EntityDestroyParticle_6
   m_TagString: Untagged
@@ -250,3 +251,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: 6654636464745255055}
   _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
+--- !u!114 &-5863205661774769596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8854377639268142993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda564becb336d2488eef79f272e7ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 8854377639268142994}
+  _onBulletHitEvent: {fileID: 6654636464745255055}
+  _data: {fileID: 11400000, guid: fb2b3b1248bd55e4093ebcee1b69668c, type: 2}

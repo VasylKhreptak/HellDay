@@ -647,20 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transform: {fileID: 5361956689193760204}
   _data: {fileID: 11400000, guid: d71c3135bed2a784196f2e554daf4b58, type: 2}
-  _targets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _targets: []
   _findLayerMask:
     serializedVersion: 2
     m_Bits: 256

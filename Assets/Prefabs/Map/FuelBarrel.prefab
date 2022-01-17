@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: -7710512303906793430}
   - component: {fileID: -7262268117712673338}
   - component: {fileID: -1298053040064316947}
+  - component: {fileID: 2953796860765348897}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: FuelBarrel
@@ -322,6 +323,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: -7322198967888827408}
   _data: {fileID: 11400000, guid: a55b21e741984bc40916956e4e3595d9, type: 2}
+--- !u!114 &2953796860765348897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2332932505156407061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda564becb336d2488eef79f272e7ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 2332932505156407065}
+  _onBulletHitEvent: {fileID: -7322198967888827408}
+  _data: {fileID: 11400000, guid: 7187fc61307cae4439d8b2be21277991, type: 2}
 --- !u!1001 &7717508810803726845
 PrefabInstance:
   m_ObjectHideFlags: 0

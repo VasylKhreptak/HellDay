@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 1873493029142163791}
   - component: {fileID: 108602311213784470}
   - component: {fileID: 4199578747534603873}
+  - component: {fileID: 7422976842702240388}
   m_Layer: 9
   m_Name: HumanLeftLeg
   m_TagString: Untagged
@@ -250,3 +251,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: 108602311213784470}
   _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
+--- !u!114 &7422976842702240388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5893158776618802567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda564becb336d2488eef79f272e7ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 5893158776618802564}
+  _onBulletHitEvent: {fileID: 108602311213784470}
+  _data: {fileID: 11400000, guid: fb2b3b1248bd55e4093ebcee1b69668c, type: 2}

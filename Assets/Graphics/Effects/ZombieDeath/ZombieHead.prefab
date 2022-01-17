@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 540936765819105208}
   - component: {fileID: 9136052630816907113}
   - component: {fileID: -3330159922035681072}
+  - component: {fileID: 3464296582544422213}
   m_Layer: 9
   m_Name: ZombieHead
   m_TagString: Untagged
@@ -250,3 +251,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onBulletHitEvent: {fileID: 9136052630816907113}
   _data: {fileID: 11400000, guid: 88e1ac0f392f3e1499899dc623879303, type: 2}
+--- !u!114 &3464296582544422213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326083451539426016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda564becb336d2488eef79f272e7ebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 3326083451539426045}
+  _onBulletHitEvent: {fileID: 9136052630816907113}
+  _data: {fileID: 11400000, guid: fb2b3b1248bd55e4093ebcee1b69668c, type: 2}
