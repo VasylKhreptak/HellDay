@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MapAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 55e3db0999d28664ebb84097281c02f8, type: 3}
+    - {fileID: 2800000, guid: 25f09762dd81acc46ae3d82961ac2aa6, type: 3}
+    - {fileID: 2800000, guid: c00ce9d97a8b75846bad02a0f7e4d245, type: 3}
+    - {fileID: 2800000, guid: d575fdf3fee998243a1d313146ae773e, type: 3}
+    - {fileID: 2800000, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+    totalSpriteSurfaceArea: 3161
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -9111637078767152734, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -7916051508826805029, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -3609230868581577368, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -3376543668398642069, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 5205050422656533244, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -7954054984863651702, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -4121877427344541656, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 156748049202961623, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 6661035270502510563, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 3792550365331517790, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 8294199495801267656, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -4026711307569352759, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 2035486713903874361, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 3497470647093425393, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -6692205473211027154, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -5205164212982050611, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 1671360287113678656, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 61650525647921712, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 4097866520768509616, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -4759586138535965038, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: -934808525714601443, guid: ac27c8d00dd5d8647a2a4de273b6d226, type: 3}
+  - {fileID: 21300000, guid: 25f09762dd81acc46ae3d82961ac2aa6, type: 3}
+  - {fileID: 21300000, guid: d575fdf3fee998243a1d313146ae773e, type: 3}
+  - {fileID: 21300000, guid: 55e3db0999d28664ebb84097281c02f8, type: 3}
+  - {fileID: 21300000, guid: c00ce9d97a8b75846bad02a0f7e4d245, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - WeaponSpriteSheet_8
+  - WeaponSpriteSheet_9
+  - WeaponSpriteSheet_4
+  - WeaponSpriteSheet_5
+  - WeaponSpriteSheet_6
+  - WeaponSpriteSheet_7
+  - WeaponSpriteSheet_0
+  - WeaponSpriteSheet_1
+  - WeaponSpriteSheet_2
+  - WeaponSpriteSheet_3
+  - WeaponSpriteSheet_17
+  - WeaponSpriteSheet_16
+  - WeaponSpriteSheet_15
+  - WeaponSpriteSheet_14
+  - WeaponSpriteSheet_13
+  - WeaponSpriteSheet_12
+  - WeaponSpriteSheet_11
+  - WeaponSpriteSheet_10
+  - WeaponSpriteSheet_20
+  - WeaponSpriteSheet_19
+  - WeaponSpriteSheet_18
+  - ClosedDoor
+  - Mortar Missile
+  - OpenedDoor
+  - Mortar
+  m_RenderDataMap: {}
+  m_Tag: MapAtlas
+  m_IsVariant: 0
