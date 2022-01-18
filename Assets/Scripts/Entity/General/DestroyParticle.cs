@@ -14,17 +14,20 @@ public class DestroyParticle : MonoBehaviour
     {
         _objectPooler = ObjectPooler.Instance;
     }
-
-    private void SpawnDestroyParticles()
-    {
-        foreach (var particle in _data.destroyParticles)
-            _objectPooler.GetFromPool(particle, _transform.position, Quaternion.identity);
-    }
-
+    
     private void OnDisable()
     {
         if (gameObject.scene.isLoaded == false) return;
 
         SpawnDestroyParticles();
     }
+    
+    private void SpawnDestroyParticles()
+    {
+        foreach (var particle in _data.destroyParticles)
+        {
+            _objectPooler.GetFromPool(particle, _transform.position, Quaternion.identity);
+        }
+    }
+
 }

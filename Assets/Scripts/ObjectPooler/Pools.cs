@@ -57,4 +57,5 @@ public enum Pools
     IronItemDestroyParticle = 59,
     WoodImpactParticle = 60,
     MetalImpactParticle = 61,
+    Missile = 62,
 }

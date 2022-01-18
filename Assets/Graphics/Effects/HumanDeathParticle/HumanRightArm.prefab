@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 735369992556925499}
   - component: {fileID: 1288840568681809104}
   - component: {fileID: -5715597973201493795}
+  - component: {fileID: 2362518986816757082}
   m_Layer: 9
   m_Name: HumanRightArm
   m_TagString: Untagged
@@ -266,3 +267,17 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 8970426155243964067}
   _onBulletHitEvent: {fileID: 735369992556925499}
   _data: {fileID: 11400000, guid: fb2b3b1248bd55e4093ebcee1b69668c, type: 2}
+--- !u!114 &2362518986816757082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970426155243964064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee928a6a3323bb24e8813ebe718a47aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 8970426155243964069}
+  _data: {fileID: 11400000, guid: 8bb48aa0b259a514d9234eae980fbeea, type: 2}

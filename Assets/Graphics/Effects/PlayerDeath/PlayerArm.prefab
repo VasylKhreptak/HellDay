@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: -6541478527293090690}
   - component: {fileID: 5520348422257722081}
   - component: {fileID: -4772002511930178976}
+  - component: {fileID: 6778354136757435300}
   m_Layer: 9
   m_Name: PlayerArm
   m_TagString: Untagged
@@ -281,3 +282,17 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 7703747415392470761}
   _onBulletHitEvent: {fileID: -8673661280777532868}
   _data: {fileID: 11400000, guid: fb2b3b1248bd55e4093ebcee1b69668c, type: 2}
+--- !u!114 &6778354136757435300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7703747415392470762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee928a6a3323bb24e8813ebe718a47aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 7703747415392470767}
+  _data: {fileID: 11400000, guid: 8bb48aa0b259a514d9234eae980fbeea, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1140200971997530117}
   - component: {fileID: 4020811441923683654}
   - component: {fileID: 2648681683994215980}
+  - component: {fileID: 1349090283703133198}
   m_Layer: 9
   m_Name: ZombieLeg
   m_TagString: Untagged
@@ -266,3 +267,17 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 8129099873947751160}
   _onBulletHitEvent: {fileID: 1140200971997530117}
   _data: {fileID: 11400000, guid: fb2b3b1248bd55e4093ebcee1b69668c, type: 2}
+--- !u!114 &1349090283703133198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8129099873947751163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee928a6a3323bb24e8813ebe718a47aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transform: {fileID: 8129099873947751166}
+  _data: {fileID: 11400000, guid: 8bb48aa0b259a514d9234eae980fbeea, type: 2}
