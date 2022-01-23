@@ -2,12 +2,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameStatistics : MonoBehaviour
+public class GameStatisticObserver : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] private GameStatisticsData _data;
+    [SerializeField] private GameStatisticData _data;
 
-    private static GameStatistics Instance;
+    private static GameStatisticObserver Instance;
 
     private void Awake()
     {

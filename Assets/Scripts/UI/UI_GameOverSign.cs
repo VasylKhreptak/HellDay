@@ -2,7 +2,7 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class UI_GameOverSignAnimation : MonoBehaviour
+public class UI_GameOverSign : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _signObject;
@@ -17,30 +17,33 @@ public class UI_GameOverSignAnimation : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.onDie += ShowSign;
+        Player.onDie += ShowSignWithDelay;
     }
 
     private void OnDisable()
     {
-        Player.onDie -= ShowSign;
+        Player.onDie -= ShowSignWithDelay;
     }
 
-    private void ShowSign()
+    private void SetState(bool state)
+    {
+        _signObject.SetActive(state);
+
+        if (state)
+        {
+            onShow?.Invoke();
+            
+            UI_FadeAnimation.Animate(_fadeAnimations, true);
+        }
+    }
+    
+    private void ShowSignWithDelay()
     {
         _waitTween.Kill();
 
         _waitTween = this.DOWait(_showDelay).OnComplete(() =>
         {
-            _signObject.SetActive(true);
-
-            onShow?.Invoke();
-
-            StartAnimation();
+            SetState(true);
         });
-    }
-
-    private void StartAnimation()
-    {
-        foreach (var fadeAnimation in _fadeAnimations) fadeAnimation.Animate();
     }
 }

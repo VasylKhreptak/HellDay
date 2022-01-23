@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameStatisticsData", menuName = "ScriptableObjects/GameStatisticsData")]
-public class GameStatisticsData : ScriptableObject
+public class GameStatisticData : ScriptableObject
 {
     private ulong _playTime;
     private int _killedZombies;

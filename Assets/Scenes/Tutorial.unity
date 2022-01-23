@@ -2025,6 +2025,7 @@ GameObject:
   - component: {fileID: 80301816}
   - component: {fileID: 80301817}
   - component: {fileID: 80301818}
+  - component: {fileID: 80301819}
   m_Layer: 5
   m_Name: RightChainAnchor
   m_TagString: Untagged
@@ -2212,6 +2213,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particle: 61
+--- !u!114 &80301819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80301811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 832d6b8f57bffea49b7525a99cbe74ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 458090256}
+  _data: {fileID: 11400000, guid: 145b2104783bccf409c9850e98aa32a5, type: 2}
 --- !u!1 &101434727
 GameObject:
   m_ObjectHideFlags: 0
@@ -66302,6 +66317,7 @@ GameObject:
   - component: {fileID: 646367081}
   - component: {fileID: 646367082}
   - component: {fileID: 646367083}
+  - component: {fileID: 646367084}
   m_Layer: 5
   m_Name: LeftChainAnchor
   m_TagString: Untagged
@@ -66489,6 +66505,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particle: 61
+--- !u!114 &646367084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646367076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 832d6b8f57bffea49b7525a99cbe74ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 458090256}
+  _data: {fileID: 11400000, guid: 145b2104783bccf409c9850e98aa32a5, type: 2}
 --- !u!1 &646487513
 GameObject:
   m_ObjectHideFlags: 0
@@ -69048,7 +69078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafc6d0a7712a2d48a392332cff89fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canSleep: 1
+  _canSleep: 0
 --- !u!1 &856029555
 GameObject:
   m_ObjectHideFlags: 0
@@ -71904,7 +71934,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0058765, y: 1}
+    m_SensorSize: {x: 1.9695781, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

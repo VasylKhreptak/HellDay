@@ -15,15 +15,23 @@ public class UI_FadeAnimation : MonoBehaviour
 
     private Tween _fadeTween;
 
-    public void Animate()
+    public void Animate(bool show)
     {
         _fadeTween.Kill();
 
-        _colorAdapter.color = _colorAdapter.color.WithAlpha(_startAlpha);
+        _colorAdapter.color = _colorAdapter.color.WithAlpha(show ? _startAlpha : _targetAlpha);
 
-        _fadeTween = DOTween.To(() => { return _colorAdapter.color.a; },
+        _fadeTween = DOTween.To(() => _colorAdapter.color.a,
             x => _colorAdapter.color = _colorAdapter.color.WithAlpha(x),
-            _targetAlpha, _fadeDuration).SetEase(_fadeCurve);
+            show ? _targetAlpha : _startAlpha, _fadeDuration).SetEase(_fadeCurve);
+    }
+
+    public static void Animate(UI_FadeAnimation[] fadeAnimations, bool state)
+    {
+        foreach (var fadeAnimation in fadeAnimations)
+        {
+            fadeAnimation.Animate(state);
+        }
     }
 
     private void OnDisable()

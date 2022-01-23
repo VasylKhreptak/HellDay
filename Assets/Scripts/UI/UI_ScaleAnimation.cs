@@ -15,12 +15,21 @@ public class UI_ScaleAnimation : MonoBehaviour
 
     private Tween _scaleTween;
 
-    public void Animate()
+    public void Animate(bool show)
     {
         _scaleTween.Kill();
 
-        _rectTransform.localScale = _startScale;
-        _scaleTween = _rectTransform.DOScale(_targetScale, _scaleDuration).SetEase(_scaleCurve);
+        _rectTransform.localScale = show ? _startScale : _targetScale;
+        _scaleTween = _rectTransform.DOScale(show ? _targetScale : _startScale, 
+            _scaleDuration).SetEase(_scaleCurve);
+    }
+
+    public static void Animate(UI_ScaleAnimation[] scaleAnimations, bool state)
+    {
+        foreach (var scaleAnimation in scaleAnimations)
+        {
+            scaleAnimation.Animate(state);
+        }
     }
 
     private void OnDisable()

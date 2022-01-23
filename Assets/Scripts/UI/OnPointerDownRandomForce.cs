@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class OnPonterDownRandomForce : MonoBehaviour, IPointerDownHandler
+public class OnPointerDownRandomForce : MonoBehaviour, IPointerDownHandler
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody;
