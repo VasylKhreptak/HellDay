@@ -71934,7 +71934,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9695781, y: 1}
+    m_SensorSize: {x: 1.9676154, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -89391,7 +89391,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd0b5f3169a4f9ab4d3e2ac1ab39a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: 4495d11826dd25f4eb0e3d70ca82e7be, type: 2}
+  statistic:
+    _playTime: 0
+    _killedZombies: 0
+    _deaths: 0
+    _explodedFuelBarrels: 0
+    _killedAnimals: 0
+    _destroyedPhysicalObjects: 0
+    _totalUsedAmmo: 0
+    _changedWeapons: 0
+    _appliedBandages: 0
+    _appliedAmmoBonuses: 0
 --- !u!1 &1749200284
 GameObject:
   m_ObjectHideFlags: 0

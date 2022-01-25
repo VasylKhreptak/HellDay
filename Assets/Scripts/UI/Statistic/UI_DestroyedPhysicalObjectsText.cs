@@ -1,19 +1,7 @@
-using TMPro;
-using UnityEngine;
-
 public class UI_DestroyedPhysicalObjectsText : UI_StatisticText
 {
-    [Header("References")]
-    [SerializeField] private TMP_Text _tmp;
-    [SerializeField] private GameStatisticData _data;
-    
-    private void OnEnable()
+    protected override void UpdateValue()
     {
-        UpdateValue();
-    }
-
-    public override void UpdateValue()
-    {
-        _tmp.text = _data.DestroyedPhysicalObjects.ToString();
+        _tmp.text = _gameStatisticObserver.statistic.DestroyedPhysicalObjects.ToString();
     }
 }

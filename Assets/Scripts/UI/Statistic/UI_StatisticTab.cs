@@ -24,7 +24,7 @@ public class UI_StatisticTab : MonoBehaviour
 
     public void Show()
     {
-        if (_isShown)
+        if (_isShown && _container.activeSelf)
             return;
 
         _isShown = true;
@@ -36,8 +36,7 @@ public class UI_StatisticTab : MonoBehaviour
 
     public void Hide()
     {
-        if (_isShown == false)
-            return;
+        if (_isShown == false && _container.activeSelf == false) return;
 
         _isShown = false;
 

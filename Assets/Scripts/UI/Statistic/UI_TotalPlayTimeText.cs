@@ -1,20 +1,17 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class UI_TotalPlayTimeText : UI_StatisticText
 {
-    [Header("References")]
-    [SerializeField] private TMP_Text _tmp;
-    [SerializeField] private GameStatisticData _data;
-
     [Header("Preferences")]
-    [SerializeField] private float _updateDelay = 60f;
+    [SerializeField] private float _updateDelay = 10f;
     
     private Coroutine _updateValueCoroutine;
-    
-    private void OnEnable()
+
+    protected override void OnEnable()
     {
+        _gameStatisticObserver = GameStatisticObserver.Instance;
+        
         StartUpdatingValue();
     }
 
@@ -23,9 +20,9 @@ public class UI_TotalPlayTimeText : UI_StatisticText
         StopUpdatingValue();
     }
 
-    public override void UpdateValue()
+    protected override void UpdateValue()
     {
-        _tmp.text = (_data.PlayTime / (60 * 60)).ToString();
+        _tmp.text = (_gameStatisticObserver.statistic.PlayTime / (60 * 60)).ToString();
     }
 
     private void StartUpdatingValue()

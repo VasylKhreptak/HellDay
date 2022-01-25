@@ -1,6 +1,24 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEngine;
 
-public abstract class UI_StatisticText : MonoBehaviour
+public class UI_StatisticText : MonoBehaviour
 {
-    public abstract void UpdateValue();
+    [Header("References")]
+    [SerializeField] protected TMP_Text _tmp;
+
+    protected GameStatisticObserver _gameStatisticObserver;
+    
+    protected virtual void OnEnable()
+    {
+        _gameStatisticObserver = GameStatisticObserver.Instance;
+        
+        UpdateValue();
+    }
+
+    protected virtual void UpdateValue()
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -2,36 +2,16 @@ using UnityEngine;
 
 public class PerformanceCheck : MonoBehaviour
 {
-    // private readonly int _iterations = 20000000;
-    //
-    // private delegate void test();
-    //
-    // private int a;
-    //
-    // private event test testEvent;
+    // private readonly int _iterations = 2000;
     //
     // private void Start()
     // {
-    //     ObjectPooler testReference = ObjectPooler.Instance;
-    //     
     //     Debug.Log("normal");
     //     Debug.Log(GetExecutionTime(_iterations, () =>
     //     {
-    //         testEvent = Test;
-    //         testEvent.Invoke();
+    //         PlayerPrefsSafe.SetString("test", "123");
+    //         PlayerPrefsSafe.GetString("test");
     //     }));
-    //     
-    //     Debug.Log("anonimus");
-    //     Debug.Log(GetExecutionTime(_iterations, () =>
-    //     {
-    //         testEvent = () => { a = 1;};
-    //         testEvent.Invoke();
-    //     }));
-    // }
-    //
-    // private void Test()
-    // {
-    //     a = 1;
     // }
     //
     // private float GetExecutionTime(int iterations, Action action)

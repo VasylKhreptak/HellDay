@@ -1,13 +1,53 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameStatisticObserver : MonoBehaviour
 {
-    [Header("Data")]
-    [SerializeField] private GameStatisticData _data;
+    [Serializable]
+    public class Statistic
+    {
+        [SerializeField] private ulong _playTime;
+        [SerializeField] private int _killedZombies;
+        [SerializeField] private int _deaths;
+        [SerializeField] private int _explodedFuelBarrels;
+        [SerializeField] private int _killedAnimals;
+        [SerializeField] private int _destroyedPhysicalObjects;
+        [SerializeField] private int _totalUsedAmmo;
+        [SerializeField] private int _changedWeapons;
+        [SerializeField] private int _appliedBandages;
+        [SerializeField] private int _appliedAmmoBonuses;
+        
+        public ulong PlayTime => _playTime;
+        public int KilledZombies => _killedZombies;
+        public int Deaths => _deaths;
+        public int ExplodedFuelBarrels => _explodedFuelBarrels;
+        public int KilledAnimals => _killedAnimals;
+        public int DestroyedPhysicalObjects => _destroyedPhysicalObjects;
+        public int TotalUsedAmmo => _totalUsedAmmo;
+        public int ChangedWeapons => _changedWeapons;
+        public int AppliedBandages => _appliedBandages;
+        public int AppliedAmmoBonuses => _appliedAmmoBonuses;
 
-    private static GameStatisticObserver Instance;
+        public void IncPlayTime() => _playTime++;
+        public void IncKilledZombies() => _killedZombies++;
+        public void IncPlayerDeaths() => _deaths++;
+        public void IncExplodedBarrels() => _explodedFuelBarrels++;
+        public void IncKilledAnimals() => _killedAnimals++;
+        public void IncDestroyedPhysicalObjects() => _destroyedPhysicalObjects++;
+        public void IncUsedAmmo() => _totalUsedAmmo++;
+        public void IncChangedWeapons() => _changedWeapons++;
+        public void IncAppliedBandages() => _appliedBandages++;
+        public void IncAppliedAmmoBonuses() => _appliedAmmoBonuses++;
+    }
+
+    public static GameStatisticObserver Instance;
+
+    public Statistic statistic = new Statistic();
+
+    private const string KEY = "Statistic";
 
     private void Awake()
     {
@@ -21,7 +61,8 @@ public class GameStatisticObserver : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
+        statistic = GameDataProvider.Load<Statistic>(KEY, new Statistic());
     }
 
     private void Start()
@@ -39,39 +80,41 @@ public class GameStatisticObserver : MonoBehaviour
     {
         SceneManager.sceneLoaded -= AddListeners;
         SceneManager.sceneUnloaded -= RemoveListeners;
+
+        GameDataProvider.Save(statistic, KEY);
     }
 
     private void AddListeners(Scene scene, LoadSceneMode mode)
     {
-        Player.onDie += _data.IncPlayerDeaths;
-        Zombie.onDeath += _data.IncKilledZombies;
-        FuelBarrel.onExplode += _data.IncExplodedBarrels;
-        Animal.onDeath += _data.IncKilledAnimals;
-        PhysicalObject.onDestroy += _data.IncDestroyedPhysicalObjects;
-        WeaponCore.onShoot += _data.IncUsedAmmo;
-        WeaponBonusItem.onTook += _data.IncChangedWeapons;
-        HealthBonusItem.onApply += _data.IncAppliedBandages;
-        AmmoBonusItem.onApply += _data.IncAppliedAmmoBonuses;
+        Player.onDie += statistic.IncPlayerDeaths;
+        Zombie.onDeath += statistic.IncKilledZombies;
+        FuelBarrel.onExplode += statistic.IncExplodedBarrels;
+        Animal.onDeath += statistic.IncKilledAnimals;
+        PhysicalObject.onDestroy += statistic.IncDestroyedPhysicalObjects;
+        WeaponCore.onShoot += statistic.IncUsedAmmo;
+        WeaponBonusItem.onTook += statistic.IncChangedWeapons;
+        HealthBonusItem.onApply += statistic.IncAppliedBandages;
+        AmmoBonusItem.onApply += statistic.IncAppliedAmmoBonuses;
     }
 
     private void RemoveListeners(Scene scene)
     {
-        Player.onDie -= _data.IncPlayerDeaths;
-        Zombie.onDeath -= _data.IncKilledZombies;
-        FuelBarrel.onExplode -= _data.IncExplodedBarrels;
-        Animal.onDeath -= _data.IncKilledAnimals;
-        PhysicalObject.onDestroy -= _data.IncDestroyedPhysicalObjects;
-        WeaponCore.onShoot -= _data.IncUsedAmmo;
-        WeaponBonusItem.onTook -= _data.IncChangedWeapons;
-        HealthBonusItem.onApply -= _data.IncAppliedBandages;
-        AmmoBonusItem.onApply -= _data.IncAppliedAmmoBonuses;
+        Player.onDie -= statistic.IncPlayerDeaths;
+        Zombie.onDeath -= statistic.IncKilledZombies;
+        FuelBarrel.onExplode -= statistic.IncExplodedBarrels;
+        Animal.onDeath -= statistic.IncKilledAnimals;
+        PhysicalObject.onDestroy -= statistic.IncDestroyedPhysicalObjects;
+        WeaponCore.onShoot -= statistic.IncUsedAmmo;
+        WeaponBonusItem.onTook -= statistic.IncChangedWeapons;
+        HealthBonusItem.onApply -= statistic.IncAppliedBandages;
+        AmmoBonusItem.onApply -= statistic.IncAppliedAmmoBonuses;
     }
 
     private IEnumerator PlayTimeCounterRoutine()
     {
         while (true)
         {
-            _data.IncPlayTime();
+            statistic.IncPlayTime();
 
             yield return new WaitForSeconds(1f);
         }
