@@ -12574,7 +12574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tmp: {fileID: 1915720121}
-  _updateDelay: 60
+  _updateDelay: 10
 --- !u!1 &1957315904
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -22,7 +23,7 @@ public class UI_TotalPlayTimeText : UI_StatisticText
 
     protected override void UpdateValue()
     {
-        _tmp.text = (_gameStatisticObserver.statistic.PlayTime / (60 * 60)).ToString();
+        _tmp.text = (_gameStatisticObserver.statistic.PlayTime / (60f*60f)).ToString("F4");
     }
 
     private void StartUpdatingValue()
