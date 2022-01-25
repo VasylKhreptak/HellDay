@@ -50,7 +50,7 @@ public class UI_TotalPlayTimeText : UI_StatisticText
         {
             UpdateValue();
     
-            yield return new WaitForSeconds(_updateDelay);
+            yield return new WaitForSecondsRealtime(_updateDelay);
         }
     }
 
