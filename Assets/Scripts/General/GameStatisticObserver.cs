@@ -79,13 +79,15 @@ public class GameStatisticObserver : MonoBehaviour
     {
         SceneManager.sceneLoaded -= AddListeners;
         SceneManager.sceneUnloaded -= RemoveListeners;
+        
+        GameDataProvider.Save(KEY, statistic);
     }
 
     private void OnApplicationPause(bool pauseStatus)
     {
         if (pauseStatus)
         {
-            GameDataProvider.Save(statistic, KEY);
+            GameDataProvider.Save(KEY, statistic);
         }
     }
 

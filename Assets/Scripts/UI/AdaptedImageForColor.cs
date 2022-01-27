@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class AdaptedImage : ColorAdapter
+public class AdaptedImageForColor : ColorAdapter
 {
     [SerializeField] private Image _adaptee;
 
-    public AdaptedImage(Image adaptee)
+    public AdaptedImageForColor(Image adaptee)
     {
         _adaptee = adaptee;
     }

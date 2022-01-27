@@ -1,41 +1,26 @@
-using System;
-using DG.Tweening;
-using UnityEngine;
+ using System;
+ using System.Collections;
+using System.Collections.Generic;
+ using DG.Tweening;
+ using UnityEngine;
 
 public class UI_FadeAnimation : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private ColorAdapter _colorAdapter;
-
     [Header("Preferences")]
-    [SerializeField] [Range(0f, 1f)] private float _startAlpha = 0f;
-    [SerializeField] [Range(0f, 1f)] private float _targetAlpha = 1f;
-    [SerializeField] private float _fadeDuration = 0.7f;
-    [SerializeField] private AnimationCurve _fadeCurve;
+    [SerializeField] [Range(0f, 1f)] protected float _startAlpha = 0f;
+    [SerializeField] [Range(0f, 1f)] protected float _targetAlpha = 1f;
+    [SerializeField] protected float _fadeDuration = 0.7f;
+    [SerializeField] protected AnimationCurve _fadeCurve;
 
-    private Tween _fadeTween;
+    protected Tween _fadeTween;
 
-    public void Animate(bool show)
+    public virtual void Animate(bool show)
     {
-        _fadeTween.Kill();
-
-        _colorAdapter.color = _colorAdapter.color.WithAlpha(show ? _startAlpha : _targetAlpha);
-
-        _fadeTween = DOTween.To(() => _colorAdapter.color.a,
-            x => _colorAdapter.color = _colorAdapter.color.WithAlpha(x),
-            show ? _targetAlpha : _startAlpha, _fadeDuration).SetEase(_fadeCurve);
+        throw new NotImplementedException();
     }
 
-    public static void Animate(UI_FadeAnimation[] fadeAnimations, bool state)
+    protected void OnDisable()
     {
-        foreach (var fadeAnimation in fadeAnimations)
-        {
-            fadeAnimation.Animate(state);
-        }
-    }
-
-    private void OnDisable()
-    {
-        _fadeTween.Kill();
+       _fadeTween.Kill(); 
     }
 }

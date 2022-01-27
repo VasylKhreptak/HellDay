@@ -6,7 +6,7 @@ public class UI_GameOverSign : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _signObject;
-    [SerializeField] private UI_FadeAnimation[] _fadeAnimations;
+    [SerializeField] private UI_ColorFadeAnimation[] _fadeAnimations;
 
     [Header("Preferences")]
     [SerializeField] private float _showDelay = 1f;
@@ -33,7 +33,7 @@ public class UI_GameOverSign : MonoBehaviour
         {
             onShow?.Invoke();
             
-            UI_FadeAnimation.Animate(_fadeAnimations, true);
+            UI_ColorFadeAnimation.Animate(_fadeAnimations, true);
         }
     }
     

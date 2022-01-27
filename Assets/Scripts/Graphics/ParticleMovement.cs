@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using Random = UnityEngine.Random;
 
-public class ParticleMovement : MonoBehaviour, IPooledObject
+public class ParticleMovement : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;

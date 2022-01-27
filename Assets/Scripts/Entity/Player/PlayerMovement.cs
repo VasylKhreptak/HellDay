@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public static Action onJumped;
 
+    private Tween _waitTween;
+
     private void EnableMovement() => _canMove = true;
     private void DisableMovement() => _canMove = false;
 
@@ -47,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
         PlayerSitAndUpAnimation.onGetUp -= EnableMovement;
         PlayerSitAndUpAnimation.onSitDown -= DisableMovement;
         PlayerWeaponControl.onImpactMovement -= ImpactMovement;
+
+        _waitTween.Kill();
     }
 
     private void ImpactMovement(float percentage)
@@ -96,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             _minJumpForce, _maxJumpForce)), _movementMode);
 
         _isJumpForbidden = true;
-        this.DOWait(_jumpDelay).OnComplete(() => { _isJumpForbidden = false; });
+        _waitTween = this.DOWait(_jumpDelay).OnComplete(() => { _isJumpForbidden = false; });
 
         onJumped?.Invoke();
     }

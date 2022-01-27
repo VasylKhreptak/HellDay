@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using GrassState = GrassDestroyData.GrassState;
 
@@ -13,6 +14,15 @@ public class GrassDestroy : MonoBehaviour
 
     private ObjectPooler _objectPooler;
     private AudioPooler _audioPooler;
+
+    private const string KEY = "EnableShadersValue";
+
+    private bool _enableShader;
+
+    private void Awake()
+    {
+        _enableShader = PlayerPrefsSafe.GetBool(KEY, true);
+    }
 
     private void Start()
     {
@@ -45,20 +55,27 @@ public class GrassDestroy : MonoBehaviour
     private void SetGrassState(GrassState grass)
     {
         _spriteRenderer.sprite = grass.sprite;
-        _spriteRenderer.material = grass.shaderMaterial;
+
+        if (_enableShader)
+        {
+            _spriteRenderer.material = grass.shaderMaterial;
+        }
     }
 
     private bool TryFindAppropriateState(GrassState[] states, out GrassState state)
     {
         state = null;
 
-        if (states.Length == 0) return false;
+        if (states.Length == 0)
+            return false;
 
         foreach (var potentialState in states)
             if (_damageableObject.Health < potentialState.healthPercentage / 100f * _damageableObject.MAXHealth)
                 state = potentialState;
 
-        if (state == null || state.sprite == _spriteRenderer.sprite) return false;
+        if (state == null ||
+            state.sprite == _spriteRenderer.sprite)
+            return false;
 
         return true;
     }

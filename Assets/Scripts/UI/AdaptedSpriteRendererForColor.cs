@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class AdaptedSpriteRenderer : ColorAdapter
+public class AdaptedSpriteRendererForColor : ColorAdapter
 {
     [SerializeField] private SpriteRenderer _adaptee;
 

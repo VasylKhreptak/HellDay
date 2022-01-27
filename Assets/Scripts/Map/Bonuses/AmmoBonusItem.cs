@@ -18,6 +18,8 @@ public class AmmoBonusItem : MonoBehaviour
 
     private bool _canApply = true;
 
+    private Tween _waitTween;
+
     private void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -75,7 +77,8 @@ public class AmmoBonusItem : MonoBehaviour
     private void ControlApplySpeed()
     {
         _canApply = false;
-        this.DOWait(_data.ApplyDelay).OnComplete(() => { _canApply = true; });
+        _waitTween.Kill();
+        _waitTween = this.DOWait(_data.ApplyDelay).OnComplete(() => { _canApply = true; });
     }
 
     private void AssignAmmo(Weapon currentWeapon)

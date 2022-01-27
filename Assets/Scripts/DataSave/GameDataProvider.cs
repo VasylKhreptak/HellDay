@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class GameDataProvider
 {
-    public static void Save<T>(T obj, string key)
+    public static void Save<T>(string key, T obj)
     {
         string saveJson = JsonUtility.ToJson(obj);
         

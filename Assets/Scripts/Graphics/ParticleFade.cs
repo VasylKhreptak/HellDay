@@ -2,7 +2,7 @@ using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
-public class ParticleFade : MonoBehaviour, IPooledObject
+public class ParticleFade : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private SpriteRenderer _spriteRenderer;

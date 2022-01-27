@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class UI_RandomAlpha : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private ColorAdapter _colorAdapter;
 
     [Header("Data")]
     [SerializeField] private UI_RandomAlphaData _data;
@@ -18,6 +17,6 @@ public class UI_RandomAlpha : MonoBehaviour
 
     private void SetRandomAlpha()
     {
-        _spriteRenderer.color = _spriteRenderer.color.WithAlpha(Random.Range(_data.MinAlpha, _data.MaxAlpha));
+        _colorAdapter.color = _colorAdapter.color.WithAlpha(Random.Range(_data.MinAlpha, _data.MaxAlpha));
     }
 }

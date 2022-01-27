@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using UnityCipher;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public static class PlayerPrefsSafe
     {
         if (PlayerPrefs.HasKey(key) == false)
         {
-            throw new NotImplementedException("No key: " + (key));
+            throw new ArgumentException("No key: " + (key));
         }
         
         string decrypted = RijndaelEncryption.Decrypt(PlayerPrefs.GetString(key), _password);
@@ -27,6 +28,56 @@ public static class PlayerPrefsSafe
         return decrypted;
     }
 
+    public static string GetString(string key, string @default)
+    {
+        return HasKey(key) ? GetString(key) : @default;
+    }
+
+    public static void SetInt(string key, int value)
+    {
+        SetString(key, value.ToString());
+    }
+
+    public static int GetInt(string key)
+    {
+        return int.Parse(GetString(key));
+    }
+
+    public static int GetInt(string key, int @default)
+    {
+        return HasKey(key) ? GetInt(key) : @default;
+    }
+
+    public static void SetFloat(string key, float value)
+    {
+        SetString(key, value.ToString(CultureInfo.InvariantCulture));
+    }
+
+    public static float GetFloat(string key)
+    {
+        return float.Parse(GetString(key), CultureInfo.InvariantCulture);
+    }
+
+    public static float GetFloat(string key, float @default)
+    {
+        return HasKey(key) ? GetFloat(key) : @default;
+    }
+
+    public static void SetBool(string key, bool value)
+    {
+        SetString(key, value.ToString());
+    }
+
+    public static bool GetBool(string key)
+    {
+        return bool.Parse(GetString(key));
+    }
+
+    public static bool GetBool(string key, bool @default)
+    {
+        return HasKey(key) ? GetBool(key) : @default;
+    }
+    
     public static bool HasKey(string key)
     {
         return PlayerPrefs.HasKey(key);

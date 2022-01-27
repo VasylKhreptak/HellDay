@@ -1,12 +1,14 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class UI_GoToMenuButton : MonoBehaviour
+public class UI_LoadSceneButton : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Button _button;
+
+    [Header("Preferences")]
+    [SerializeField] private string _sceneName = "Menu";
 
     private void OnEnable()
     {
@@ -20,6 +22,6 @@ public class UI_GoToMenuButton : MonoBehaviour
 
     private void LoadMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(_sceneName);
     }
 }

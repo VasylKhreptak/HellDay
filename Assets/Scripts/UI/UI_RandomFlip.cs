@@ -3,7 +3,7 @@ using UnityEngine;
 public class UI_RandomFlip : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Transform _transform;
 
     [Header("Preferences")]
     [SerializeField] private bool _x = true;
@@ -16,8 +16,18 @@ public class UI_RandomFlip : MonoBehaviour
 
     private void FlipRandomly()
     {
-        if (_x) _spriteRenderer.flipX = Extensions.Random.Bool();
+        if (_x)
+        {
+            transform.localScale = new Vector3(Extensions.Random.Sign() * transform.localScale.x, 
+                transform.localScale.y, 
+                transform.localScale.z);
+        }
 
-        if (_y) _spriteRenderer.flipY = Extensions.Random.Bool();
+        if (_y)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, 
+                Extensions.Random.Sign() * transform.localScale.y, 
+                transform.localScale.z);
+        }
     }
 }

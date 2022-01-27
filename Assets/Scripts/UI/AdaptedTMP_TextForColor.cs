@@ -1,11 +1,11 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class AdaptedTMP_Text : ColorAdapter
+public class AdaptedTMP_TextForColor : ColorAdapter
 {
     [SerializeField] private TMP_Text _adaptee;
 
-    public AdaptedTMP_Text(TMP_Text adaptee)
+    public AdaptedTMP_TextForColor(TMP_Text adaptee)
     {
         _adaptee = adaptee;
     }

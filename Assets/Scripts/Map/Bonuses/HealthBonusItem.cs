@@ -8,7 +8,7 @@ public class HealthBonusItem : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private OnCollisionWithPlayerEvent _onCollisionWithPlayerEvent;
-    
+
     [Header("Data")]
     [SerializeField] private HealthBonusItemData _data;
 
@@ -19,6 +19,8 @@ public class HealthBonusItem : MonoBehaviour
     public static Action onApply;
 
     private bool _canApply = true;
+
+    private Tween _waitTween;
 
     private void Start()
     {
@@ -53,7 +55,7 @@ public class HealthBonusItem : MonoBehaviour
             _player.SetHealth(_player.Health + _healthValue);
 
             SpawnHealEffects(_player);
-            
+
             ControlApplySpeed();
 
             gameObject.SetActive(false);
@@ -63,7 +65,8 @@ public class HealthBonusItem : MonoBehaviour
     private void ControlApplySpeed()
     {
         _canApply = false;
-        this.DOWait(_data.ApplyDelay).OnComplete(() => { _canApply = true; });
+        _waitTween.Kill();
+        _waitTween = this.DOWait(_data.ApplyDelay).OnComplete(() => { _canApply = true; });
     }
 
     private void SpawnHealEffects(Player player)

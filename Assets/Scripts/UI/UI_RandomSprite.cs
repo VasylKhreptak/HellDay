@@ -3,13 +3,13 @@ using UnityEngine;
 public class UI_RandomSprite : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-
+    [SerializeField] private SpriteAdapter _spriteAdapter;
+        
     [Header("Preferences")]
     [SerializeField] private Sprite[] _sprites;
 
     private void OnEnable()
     {
-        _spriteRenderer.sprite = _sprites.Random();
+        _spriteAdapter.sprite = _sprites.Random();
     }
 }

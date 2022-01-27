@@ -3,7 +3,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-public class ParticleDisabler : MonoBehaviour, IPooledObject
+public class ParticleDisabler : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ParticleSystem _particleSystem;

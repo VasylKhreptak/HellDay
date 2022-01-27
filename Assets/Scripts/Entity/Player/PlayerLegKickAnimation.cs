@@ -13,19 +13,25 @@ public class PlayerLegKickAnimation : MonoBehaviour
     private static bool _isPlaying;
     public static bool IsPlaying => _isPlaying;
 
-    private Tween _waitTween;
+    private Tween _waitTween1, _waitTween2;
 
     private readonly int LegKick = Animator.StringToHash("LegKick");
 
     public void PlayLegKickAnimation()
     {
         _animator.SetTrigger(LegKick);
-        this.DOWait(0.1f).OnComplete(() => { _animator.ResetTrigger(LegKick); });
+        _waitTween2 = this.DOWait(0.1f).OnComplete(() => { _animator.ResetTrigger(LegKick); });
 
         _isPlaying = true;
-        _waitTween.Kill();
-        _waitTween = this.DOWait(_legKickDuration).OnComplete(() => { _isPlaying = false; });
+        _waitTween1.Kill();
+        _waitTween1 = this.DOWait(_legKickDuration).OnComplete(() => { _isPlaying = false; });
 
         onPlayed?.Invoke();
+    }
+
+    private void OnDisable()
+    {
+        _waitTween1.Kill();
+        _waitTween2.Kill();
     }
 }

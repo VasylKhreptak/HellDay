@@ -1,26 +1,31 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
 public class UI_BillboardAnimation : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject _billboard;
-    [SerializeField] private UI_FadeAnimation[] _fadeAnimations;
+    [SerializeField] private GameObject _container;
+    [SerializeField] private UI_CanvasFadeAnimation _fadeAnimation;
 
     [Header("Preferences")]
     [SerializeField] private float _showDelay = 0.5f;
 
+    private Tween _waitTween;
+    
     private void OnEnable()
     {
-        _billboard.SetActive(false);
+        _container.SetActive(false);
         
-        this.DOWait(_showDelay).OnComplete(ShowBillboard);
+       _waitTween = this.DOWait(_showDelay).OnComplete(() =>
+        {
+            _container.SetActive(true);
+            _fadeAnimation.Animate(true);
+        });
     }
 
-    private void ShowBillboard()
+    private void OnDisable()
     {
-        _billboard.SetActive(true);
-
-        UI_FadeAnimation.Animate(_fadeAnimations, true);
+        _waitTween.Kill();
     }
 }

@@ -26,6 +26,8 @@ public class OnBulletHitAudio : MonoBehaviour
     private void OnDisable()
     {
         _onBulletHitEvent.onHit -= PlaySound;
+
+        _waitTween.Kill();
     }
 
     private void PlaySound(Collision2D other)
@@ -43,6 +45,6 @@ public class OnBulletHitAudio : MonoBehaviour
     {
         _waitTween.Kill();
         _canPlay = false;
-        this.DOWait(_data.MINDelay).OnComplete(() => { _canPlay = true; });
+        _waitTween = this.DOWait(_data.MINDelay).OnComplete(() => { _canPlay = true; });
     }
 }

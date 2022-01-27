@@ -10,6 +10,8 @@ public class ConsoleLog : MonoBehaviour
     [Header("Prefernces")]
     [SerializeField] private float _showTome = 3f;
 
+    private Tween _waitTween;
+    
     private void OnEnable()
     {
         Application.logMessageReceived += ProcessLog;
@@ -18,11 +20,14 @@ public class ConsoleLog : MonoBehaviour
     private void OnDisable()
     {
         Application.logMessageReceived -= ProcessLog;
+
+        _waitTween.Kill();
     }
 
     private void ProcessLog(string log, string stackTrace, LogType logType)
     {
+        _waitTween.Kill();
         _tmp.text += "\n* " + log;
-        this.DOWait(_showTome).OnComplete(() => { _tmp.text = ""; });
+        _waitTween = this.DOWait(_showTome).OnComplete(() => { _tmp.text = ""; });
     }
 }

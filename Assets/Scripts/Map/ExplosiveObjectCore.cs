@@ -13,6 +13,7 @@ public class ExplosiveObjectCore : MonoBehaviour
     public static Action onPlayedLoudSound;
     public static Action<Vector3, float, float> onCameraShake;
 
+    private Tween _waitTween;
 
     protected void Explode()
     {
@@ -51,7 +52,7 @@ public class ExplosiveObjectCore : MonoBehaviour
 
     protected void ExplodeChainedObject(Collider2D collider2D)
     {
-        this.DOWait(_explosiveObjData.ChainExplosionDelay).OnComplete(() =>
+        _waitTween = this.DOWait(_explosiveObjData.ChainExplosionDelay).OnComplete(() =>
         {
             if (collider2D != null) collider2D.gameObject.SetActive(false);
         });
@@ -63,5 +64,10 @@ public class ExplosiveObjectCore : MonoBehaviour
 
         Gizmos.color = UnityEngine.Color.red;
         Gizmos.DrawWireSphere(_transform.position, _explosiveObjData.ExplosionRadius);
+    }
+
+    private void OnDisable()
+    {
+        _waitTween.Kill();
     }
 }

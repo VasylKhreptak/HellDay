@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3527506991245770656}
   - component: {fileID: 8837155666839503823}
   - component: {fileID: 1943609486612953870}
+  - component: {fileID: 8600559489102911366}
   m_Layer: 12
   m_Name: Grass3
   m_TagString: Untagged
@@ -177,3 +178,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: 90a30eb8885d30747bee8b3e5fa0b0b2, type: 2}
+--- !u!114 &8600559489102911366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314339177182102518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00d8c75d57e493458f19de20aa0987c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 8864016964000208594}
+  _defaultMaterial: {fileID: 2100000, guid: 49b2390425b66d44088f836b487a25a4, type: 2}

@@ -1,20 +1,30 @@
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class BulletMuff : MonoBehaviour, IPooledObject
+public class BulletMuff : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
     [Header("Bullet Muff Data")]
     [SerializeField] private BulletMuffData _data;
-
-
+    
+    private Tween _waitTween;
+    
     public void OnEnable()
     {
         SetMovement();
 
-        if (gameObject.activeSelf) this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
+        if (gameObject.activeSelf)
+        {
+            _waitTween = this.DOWait(_data.LifeTime).OnComplete(() => { gameObject.SetActive(false); });
+        }
+    }
+
+    private void OnDisable()
+    {
+        _waitTween.Kill();
     }
 
     private void SetMovement()
