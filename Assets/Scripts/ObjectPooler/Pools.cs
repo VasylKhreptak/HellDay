@@ -58,4 +58,6 @@ public enum Pools
     WoodImpactParticle = 60,
     MetalImpactParticle = 61,
     Missile = 62,
+    FleshTouchParticle = 63,
+    WindshieldTouchParticle = 64,
 }
