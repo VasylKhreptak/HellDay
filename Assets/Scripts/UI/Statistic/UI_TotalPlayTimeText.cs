@@ -6,6 +6,7 @@ public class UI_TotalPlayTimeText : UI_StatisticText
 {
     [Header("Preferences")]
     [SerializeField] private float _updateDelay = 10f;
+    [SerializeField] private int _precision = 2;
     
     private Coroutine _updateValueCoroutine;
 
@@ -23,7 +24,7 @@ public class UI_TotalPlayTimeText : UI_StatisticText
 
     protected override void UpdateValue()
     {
-        _tmp.text = (_gameStatisticObserver.statistic.PlayTime / (60f*60f)).ToString("F4");
+        _tmp.text = (_gameStatisticObserver.statistic.PlayTime / (60f*60f)).ToString("F" + (_precision));
     }
 
     private void StartUpdatingValue()
