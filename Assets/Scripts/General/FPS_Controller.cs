@@ -9,11 +9,11 @@ public class FPS_Controller : MonoBehaviour
     private void Start()
     {
         SetTargetFrameRate(PlayerPrefsSafe.GetInt(KEY, _defaultTargetFrameRate));
+        QualitySettings.vSyncCount = 0;
     }
 
     public void SetTargetFrameRate(int frameRate)
     {
         Application.targetFrameRate = frameRate;
-        QualitySettings.vSyncCount = 0;
     }
 }

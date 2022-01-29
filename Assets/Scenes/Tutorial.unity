@@ -65240,7 +65240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -73.95681, y: -15.434004, z: 10.717207}
+  m_LocalPosition: {x: -73.95681, y: -15.337004, z: 10.717207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 518623207}
@@ -72304,7 +72304,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9921364, y: 1}
+    m_SensorSize: {x: 2.0845966, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -72321,7 +72321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036280480}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -73.95681, y: -15.434004, z: 10.717207}
+  m_LocalPosition: {x: -73.95681, y: -15.337004, z: 10.717207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1126636726}
@@ -90837,7 +90837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755073905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.164, y: -2.179, z: 0}
+  m_LocalPosition: {x: 13.164, y: -2.082, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1199932468}

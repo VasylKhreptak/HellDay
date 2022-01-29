@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class UI_Tab : MonoBehaviour
+public class UI_TabAnimation : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private GameObject _container;
