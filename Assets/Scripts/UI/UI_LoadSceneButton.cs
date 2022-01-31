@@ -8,7 +8,7 @@ public class UI_LoadSceneButton : MonoBehaviour
     [SerializeField] private Button _button;
 
     [Header("Preferences")]
-    [SerializeField] private string _sceneName = "Menu";
+    [SerializeField, Scene] private string _scene;
 
     private void OnEnable()
     {
@@ -22,6 +22,6 @@ public class UI_LoadSceneButton : MonoBehaviour
 
     private void LoadMenu()
     {
-        SceneManager.LoadScene(_sceneName);
+        SceneManager.LoadScene(_scene);
     }
 }
