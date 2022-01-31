@@ -6,8 +6,8 @@ public class Zombie : DamageableObject
 
     protected override void DeathActions()
     {
-        onDeath?.Invoke();
-
         base.DeathActions();
+
+        onDeath?.Invoke();
     }
 }

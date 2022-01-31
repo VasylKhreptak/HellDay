@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_HUDController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private UI_SlideAnimation[] _slideAnimations;
-
+    [SerializeField] private GraphicRaycaster _hudRaycaster;
+    
     [Header("Preferences")]
     [SerializeField] private float _startupShowDelay = 0.5f;
     [SerializeField] private float _hideDelay = 1f;
@@ -23,12 +25,14 @@ public class UI_HUDController : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.onDie += HideHUDElements;
+        LevelFailedObserver.onLevelFailed += HideHUDElements;
+        LevelCompleteObserver.onLevelComplete += HideHUDElements;
     }
 
     private void OnDisable()
     {
-        Player.onDie -= HideHUDElements;
+        LevelFailedObserver.onLevelFailed -= HideHUDElements;
+        LevelCompleteObserver.onLevelComplete -= HideHUDElements;
     }
 
     private void ShowHUDElements()
@@ -36,6 +40,8 @@ public class UI_HUDController : MonoBehaviour
         foreach (var slideAnimation in _slideAnimations)
         {
             slideAnimation.Show();
+
+            _hudRaycaster.enabled = true;
         }
     }
 
@@ -47,6 +53,8 @@ public class UI_HUDController : MonoBehaviour
             foreach (var slideAnimation in _slideAnimations)
             {
                 slideAnimation.Hide();
+
+                _hudRaycaster.enabled = false;
             }
         });
     }

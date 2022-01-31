@@ -8,8 +8,6 @@ public class UI_ColorFadeAnimation : UI_FadeAnimation
 
     public override void Animate(bool show)
     {
-        Debug.Log("Color adapter == null: " + (_colorAdapter == null));
-        
         _fadeTween.Kill();
         
         _colorAdapter.color = _colorAdapter.color.WithAlpha(show ? _startAlpha : _targetAlpha);

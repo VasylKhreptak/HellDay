@@ -13,7 +13,11 @@ public class AdaptedImageForSprite : SpriteAdapter
 
     public override Sprite sprite
     {
-        get => _image.sprite;
-        set => _image.sprite = value;
+        get { return _image.overrideSprite; }
+        set
+        {
+            _image.overrideSprite = value;
+            _image.SetNativeSize();
+        }
     }
 }

@@ -11,6 +11,9 @@ public class CommonTargetDetectionEditor : Editor
         EditorGUILayout.Space();
         var commonTargetDetection = (CommonTargetDetection)target;
 
-        if (GUILayout.Button("Find targets")) commonTargetDetection.FindTargets();
+        if (GUILayout.Button("Find targets"))
+        {
+            commonTargetDetection.FindTargets();
+        }
     }
 }
