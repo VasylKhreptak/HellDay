@@ -719,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 13917569}
-  _sceneName: Menu
+  _scene: Menu
 --- !u!1 &16569180
 GameObject:
   m_ObjectHideFlags: 0
@@ -8294,6 +8294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 1122515623}
+  _playerPrefsKey: ShowFPS
+  _defaultState: 0
 --- !u!1 &412534871
 GameObject:
   m_ObjectHideFlags: 0
@@ -77474,7 +77476,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1466992, y: 1}
+    m_SensorSize: {x: 2.1498532, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -89554,7 +89556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1433533668}
-  _sceneName: Menu
+  _scene: Menu
 --- !u!1 &1433683579
 GameObject:
   m_ObjectHideFlags: 0
@@ -99319,6 +99321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageableObject: {fileID: 1755073913}
   _vibrationType: 4
+  _playerPrefsKey: EnableVibration
+  _defaultState: 1
 --- !u!114 &1755073933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100901,7 +100905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1835307409}
-  _sceneName: Menu
+  _scene: Menu
 --- !u!114 &1835307407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102296,10 +102300,10 @@ GameObject:
   - component: {fileID: 1895767686}
   - component: {fileID: 1895767685}
   - component: {fileID: 1895767684}
-  - component: {fileID: 1895767687}
   - component: {fileID: 1895767688}
   - component: {fileID: 1895767689}
   - component: {fileID: 1895767690}
+  - component: {fileID: 1895767687}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -102373,7 +102377,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1895767687}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UI_RestartButton, Assembly-CSharp
         m_MethodName: RestartCurrentLevel
         m_Mode: 1
@@ -102432,9 +102436,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1895767682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72000813c8c0b574994082fdc9e23338, type: 3}
+  m_Script: {fileID: 11500000, guid: c726abc93fad7c94898db08a65c56bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 1895767684}
+  _scene: TutorialOffline
 --- !u!114 &1895767688
 MonoBehaviour:
   m_ObjectHideFlags: 0

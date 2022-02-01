@@ -8,12 +8,14 @@ public class ShaderControl : MonoBehaviour
 
     [Header("Preferences")]
     [SerializeField] private Material _defaultMaterial;
-
-    private const string KEY = "EnableShadersValue";
-
+    
+    [Header("PlayerPrefs Preferences")]
+    [SerializeField] private string _playerPrefsKey = "EnableShaders";
+    [SerializeField] private bool _defaultState = true;
+    
     private void Awake()
     {
-        if (PlayerPrefsSafe.GetBool(KEY, true) == false)
+        if (PlayerPrefsSafe.GetBool(_playerPrefsKey, _defaultState) == false)
         {
             _renderer.material = _defaultMaterial;
         }

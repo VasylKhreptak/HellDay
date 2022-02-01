@@ -11,7 +11,7 @@ public class LevelCompleteObserver : MonoBehaviour
     public static Action onLevelComplete;
 
     private int _killedZombies;
-    
+
     private void OnEnable()
     {
         Zombie.onDeath += CheckZombies;
@@ -31,9 +31,10 @@ public class LevelCompleteObserver : MonoBehaviour
             onLevelComplete?.Invoke();
         }
     }
-    
-    #region  EDITOR
-    
+
+    #region EDITOR
+
+#if UNITY_EDITOR
     [CustomEditor(typeof(LevelCompleteObserver))]
     public class LevelCompleteObserverEditor : Editor
     {
@@ -61,5 +62,7 @@ public class LevelCompleteObserver : MonoBehaviour
             targetScript._zombies = FindObjectsOfType<Zombie>().Select(x => x.gameObject).ToArray();
         }
     }
+#endif
+
     #endregion
 }

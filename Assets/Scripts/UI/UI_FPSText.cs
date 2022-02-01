@@ -5,11 +5,13 @@ public class UI_FPSText : MonoBehaviour
     [Header("References")]
     [SerializeField] private GameObject _container;
 
-    private const string KEY = "ShowFPSValue";
+    [Header("PlayerPrefs Preferences")]
+    [SerializeField] private string _playerPrefsKey;
+    [SerializeField] private bool _defaultState;
 
     private void Awake()
     {
-        if (PlayerPrefsSafe.GetBool(KEY, false))
+        if (PlayerPrefsSafe.GetBool(_playerPrefsKey, _defaultState))
         {
             _container.SetActive(true);
         }

@@ -22,7 +22,8 @@ public class SceneDrawer : PropertyDrawer
                 if (sceneObj == null)
                 {
                     Debug.LogWarning("The scene " + scene.name +
-                                     " cannot be used. To use this scene add it to the build settings for the project");
+                                     " cannot be used. To use this scene add it to the build settings for" +
+                                     " the project");
                 }
                 else
                 {
